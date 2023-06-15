@@ -1,9 +1,9 @@
-# DirectX_Team_Portfolio (DNF imitation for Study)
-### DirectX11_Team_Portfolio 2023/05/16
-It's a project to __study collaboration__ and __creating game content.__ <br/>
-This project for __Game Copy Practice__ __*(DNF, feat.Nexon)*__ <br/>
+# DirectX_Portfolio (MapleStory imitation for Study)
+### DirectX11_Portfolio 2023/05/16
+It's a project to __creating game content.__ <br/>
+This project for __Game Copy Practice__ __*(MapleStory, feat.Nexon)*__ <br/>
 This is a link to the way we studied and the direction of work. <br/>
-*__Notion link__ : https://www.notion.so/Dungeon-Fighter-10d2c84540644d419fc34e7dba866678*
+*__Notion link__ : https://www.notion.so/708b5790be024de0a1010a0d66aee51c?v=7c1075b2fe844f94b6cc7cb379b368e3*
 
 
 # Week 1(5/16 ~ 5/21) 
@@ -36,5 +36,4 @@ This is a link to the way we studied and the direction of work. <br/>
   
 - Vertex Buffer Create & Vertex Shader Create (2023/05/25)
 
-  
   
