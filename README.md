@@ -52,7 +52,7 @@ This is a link to the way we studied and the direction of work. <br/>
 
 - Make Sample Game (2023/06/08)
 
-# Week 4(6/12 ~ 6/19) 
+# Week 5(6/12 ~ 6/19) 
 
 - Make GameObject, Component, Scene, SceneManager, Layer (2023/06/14)
  
