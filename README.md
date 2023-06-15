@@ -36,4 +36,27 @@ This is a link to the way we studied and the direction of work. <br/>
   
 - Vertex Buffer Create & Vertex Shader Create (2023/05/25)
 
+# Week 3(5/29 ~ 6/04) 
+
+- Index Buffer, Constant Buffer (2023/05/31)
+
+- Renderer Release (2023/06/01)
+
+- Create Rectangle Mesh, Make Mesh Class & Shader Class (2023/06/02)
+
+# Week 4(6/05 ~ 6/11) 
+
+- Modify Shader Class & Set InputLayout (2023/06/07)
+
+- Constant Buffer Class (2023/06/07)
+
+- Make Sample Game (2023/06/08)
+
+# Week 4(6/12 ~ 6/19) 
+
+- Make GameObject, Component, Scene, SceneManager, Layer (2023/06/14)
+ 
+- Make Transform & MeshRenderer Component (2023/06/15)
+
+
   
