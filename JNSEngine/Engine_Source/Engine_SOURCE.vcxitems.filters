@@ -46,6 +46,15 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{ca164367-f9bd-420f-9af3-8913305120fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\PlayScene">
+      <UniqueIdentifier>{50e5f358-80b6-41c1-95bf-57b0115c10f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSVconverter">
+      <UniqueIdentifier>{9154bfda-f195-4a23-b795-59eec05c72c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManager">
+      <UniqueIdentifier>{0e3a51d5-0836-4121-8de5-8110b27912d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -114,7 +123,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMonster.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h">
+      <Filter>Scene\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayScene.h">
+      <Filter>Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h">
+      <Filter>CSVconverter</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h">
+      <Filter>SceneManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -170,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMonster.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp">
+      <Filter>Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayScene.cpp">
+      <Filter>Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
+      <Filter>SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
