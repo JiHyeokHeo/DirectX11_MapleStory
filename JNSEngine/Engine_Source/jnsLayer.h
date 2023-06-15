@@ -1,14 +1,13 @@
 #pragma once
-#include "jnsEntity.h"
-#include "jnsLayer.h"
+#include "jnsGameObject.h"
 
 namespace jns
 {
-	class Scene : public Entity
+	class Layer
 	{
 	public:
-		Scene();
-		virtual ~Scene();
+		Layer();
+		~Layer();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -16,6 +15,6 @@ namespace jns
 		virtual void Render();
 
 	private:
-		std::vector<Layer*> mLayers;
+		std::vector<GameObject*> mGameObjects;
 	};
-}	
+}

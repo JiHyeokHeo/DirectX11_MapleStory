@@ -27,41 +27,43 @@ namespace jns
 		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render();
-		
+		virtual void Render()
+			
+			;
+		template <typename T>
+		T* GetComponent()
+		{
+			T* component;
+			for (T* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component != nullptr)
+					return component;
+			}
 
-		//------------------------------------------------
-		void SetPos(Vector2 pos) { mStatus.mPos = pos; }
-		void SetScale(float scale) { mStatus.mScale = scale; }
-		void SetRGB(Vector3 rgb) { mRGB = rgb; }
-		void SetState(eState state) { mState = state; }
-		eState GetState() { return mState; }
-		void SetCol(bool isCol) { isCollider = isCol; }
+			return nullptr;
+		}
 
-		mGameObjectStatus GetStatus () { return mStatus; }
-		Vector2 GetPos() { return mStatus.mPos; }
-		float GetScale() { return mStatus.mScale; }
+		template <typename T>
+		T* AddComponent()
+		{
+			T* comp = new T();
 
-		bool GetIsCol() { return isCollider; }
-		void SetIsCol(bool isCol) { isCollider = isCol; }
-		
-		float GetTime() { return mTime; }
-	public:
-		void PipeLineRender();
-		bool CheckTime();
-		void CheckPauseTime();
-		void SetScaleAndPostion();
+			Component* buff
+				= dynamic_cast<Component*>(comp);
+
+			if (buff == nullptr)
+				return nullptr;
+
+			mComponents.push_back(buff);
+
+			return comp;
+		}
+
 
 	private:
 		eState mState;
-		mGameObjectStatus mStatus;
-		Vector3 mRGB;
-		float mTime;
-		
-		
-		bool isCollider;
-		bool isChanged;
-		//std::vector<Component*> mComponents;
+		std::vector<Component*> mComponents;
 	};
 
 }

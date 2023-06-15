@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{ef382c18-c456-428f-9c15-458a51343df7}</ItemsProjectGuid>
+    <ItemsProjectName>Engine_Source</ItemsProjectName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMonster.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMonster.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)jnsMath.inl" />
+  </ItemGroup>
+</Project>
