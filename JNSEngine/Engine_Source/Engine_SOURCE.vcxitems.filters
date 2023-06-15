@@ -108,13 +108,20 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayer.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMonster.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -165,11 +172,18 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayer.cpp">
-      <Filter>GameObject</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMonster.cpp">
-      <Filter>GameObject</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

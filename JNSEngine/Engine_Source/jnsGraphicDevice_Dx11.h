@@ -38,12 +38,12 @@ namespace jns::graphics
 		void BindViewPort(D3D11_VIEWPORT* viewPort);
 		
 		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+		void ClearTarget();
+		void UpdateViewPort();
 		void Draw();
 		
 		void Present();
 
-
-		D3D11_VIEWPORT GetViewPort() { return mViewPort; }
 	private:
 		// 실제 그래픽카드 하드웨어 객체
 		Microsoft::WRL::ComPtr<ID3D11Device> mDevice;

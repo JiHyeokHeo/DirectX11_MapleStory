@@ -25,18 +25,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMonster.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
   </ItemGroup>
   <ItemGroup>
@@ -47,17 +50,20 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMonster.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl" />

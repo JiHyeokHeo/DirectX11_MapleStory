@@ -69,8 +69,10 @@ namespace renderer
 		 transformconstantBuffer = new jns::graphics::ConstantBuffer(eCBType::Transform);
 		 transformconstantBuffer->Create(sizeof(Vector4));
 
-		 colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
-		 colorConstanttBuffer->Create(sizeof(Vector4));
+
+		 // 추가 상수 버퍼
+		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
+		 //colorConstanttBuffer->Create(sizeof(Vector4));
 
 		 //Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 		 //constantBuffer->SetData(&pos);

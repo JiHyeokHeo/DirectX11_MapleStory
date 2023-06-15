@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsEntity.h"
+#include "jnsComponent.h"
 
 namespace jns
 {
@@ -7,13 +8,6 @@ namespace jns
 	class GameObject : public Entity
 	{
 	public:
-		struct mGameObjectStatus
-		{
-			float mScale;
-			Vector2 mPos;
-			float dummy;
-		};
-
 		enum eState
 		{
 			Active,
@@ -30,38 +24,40 @@ namespace jns
 		virtual void Render();
 		
 
-		//------------------------------------------------
-		void SetPos(Vector2 pos) { mStatus.mPos = pos; }
-		void SetScale(float scale) { mStatus.mScale = scale; }
-		void SetRGB(Vector3 rgb) { mRGB = rgb; }
-		void SetState(eState state) { mState = state; }
-		eState GetState() { return mState; }
-		void SetCol(bool isCol) { isCollider = isCol; }
+		template <typename T>
+		T* GetComponent()
+		{
+			T* component;
+			for (Component* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component != nullptr)
+					return component;
+			}
 
-		mGameObjectStatus GetStatus () { return mStatus; }
-		Vector2 GetPos() { return mStatus.mPos; }
-		float GetScale() { return mStatus.mScale; }
+			return nullptr;
+		}
 
-		bool GetIsCol() { return isCollider; }
-		void SetIsCol(bool isCol) { isCollider = isCol; }
-		
-		float GetTime() { return mTime; }
-	public:
-		void PipeLineRender();
-		bool CheckTime();
-		void CheckPauseTime();
-		void SetScaleAndPostion();
+		template <typename T>
+		T* AddComponent()
+		{
+			T* comp = new T();
+
+			Component* buff
+				= dynamic_cast<Component*>(comp);
+
+			if (buff == nullptr)
+				return nullptr;
+
+			mComponents.push_back(buff);
+			comp->SetOwner(this);
+
+			return comp;
+		}
 
 	private:
 		eState mState;
-		mGameObjectStatus mStatus;
-		Vector3 mRGB;
-		float mTime;
-		
-		
-		bool isCollider;
-		bool isChanged;
-		//std::vector<Component*> mComponents;
+		std::vector<Component*> mComponents;
 	};
 
 }

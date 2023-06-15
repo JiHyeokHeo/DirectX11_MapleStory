@@ -32,6 +32,5 @@ namespace jns
 		UINT mWidth;
 		UINT mHeight;
 		
-		Scene* mScene;
 	};
 }

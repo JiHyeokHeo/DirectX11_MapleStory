@@ -1,13 +1,15 @@
 #pragma once
-#include "jnsGameObject.h"
+#include "jnsComponent.h"
+#include "jnsMesh.h"
+#include "jnsShader.h"
 
 namespace jns
 {
-	class Monster : public GameObject
+	class MeshRenderer : public Component
 	{
 	public:
-		Monster();
-		~Monster();
+		MeshRenderer();
+		~MeshRenderer();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -15,6 +17,7 @@ namespace jns
 		virtual void Render() override;
 
 	private:
-		Vector3 mRGB;
+		Mesh* mMesh;
+		Shader* mShader;
 	};
 }

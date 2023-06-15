@@ -1,6 +1,6 @@
 #pragma once
 #include "jnsEntity.h"
-#include "jnsGameObject.h"
+#include "jnsLayer.h"
 
 namespace jns
 {
@@ -15,23 +15,9 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
-			
-
-	public:
-		void CollisionCheck(GameObject* Target);
-		void FindTarget(GameObject* Target) { mTarget = Target; }
-		void InterSect(GameObject* Target, GameObject* CheckList);
-
-		void CollisionEnter(GameObject* Target);
-		void CollisionOut(GameObject* Target);
-
-
-		void SetRandomPos();
-
+		void AddGameObject(enums::eLayerType type, GameObject* gameObj);
 
 	private:
-		std::vector<GameObject*> mGameObjects;
-		float mTime;
-		GameObject* mTarget;
+		std::vector<Layer> mLayers;
 	};
 }	
