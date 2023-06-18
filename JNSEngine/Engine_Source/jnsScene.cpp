@@ -34,6 +34,12 @@ namespace jns
 			layer.Render();
 		}
 	}
+	void Scene::OnEnter()
+	{
+	}
+	void Scene::OnExit()
+	{
+	}
 	void Scene::AddGameObject(enums::eLayerType type, GameObject* gameObj)
 	{
 		mLayers[(int)type].AddGameObject(gameObj);

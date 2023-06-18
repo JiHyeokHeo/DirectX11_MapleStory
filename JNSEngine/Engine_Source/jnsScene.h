@@ -15,6 +15,9 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
+		virtual void OnEnter();
+		virtual void OnExit();
+
 		void AddGameObject(enums::eLayerType type, GameObject* gameObj);
 
 	private:

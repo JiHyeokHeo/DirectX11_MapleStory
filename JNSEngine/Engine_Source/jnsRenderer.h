@@ -13,6 +13,7 @@ namespace renderer
 	{
 		Vector3 pos;
 		Vector4 color;
+		Vector2 uv;
 	};
 
 
@@ -20,7 +21,7 @@ namespace renderer
 	extern jns::Mesh* mesh;
 	extern jns::Shader* shader;
 	extern jns::graphics::ConstantBuffer* transformconstantBuffer;
-	extern jns::graphics::ConstantBuffer* colorConstanttBuffer;
+	//extern jns::graphics::ConstantBuffer* colorConstanttBuffer;
 
 	void Initialize();
 	void Release();
