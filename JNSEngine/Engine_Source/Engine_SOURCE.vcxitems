@@ -37,6 +37,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h" />
@@ -61,6 +62,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp" />

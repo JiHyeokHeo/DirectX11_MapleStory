@@ -1,33 +1,21 @@
 #include "jnsRenderer.h"
-#include "jnsMath.h"
-#include "jnsInput.h"
-#include "jnsTime.h"
-
+#include "jnsTexture.h"
+#include "jnsResources.h"
 
 namespace renderer
 {
-	inline static void Rotate(float& x, float& y, float degree)
-	{
-		float radian = (degree / 180.0f) * 3.141592;   // 1라디안은 57.3돈가? 그정도임 즉 코사인과 사인 세타값을 구하기 위해서는 라디안의 개념을 사용해야하고
-		//Vector2(x,y).Normalize();						// Normalize는 결국 1, 1로 만들어 준것이고.
-
-		float t = x * cosf(radian) - y * sinf(radian); // 이것이 바로 강사 선생님이 주신 삼각함수를 활용한 벡터의 회전이다. x좌표는 x코사인세타 - y사인세타
-		float z = x * sinf(radian) + y * cosf(radian); // 
-		//atan
-		//atan();
-		x = t;
-		y = z;
-	}
-	Vertex vertexes[362] = {};
+	using namespace jns;
+	using namespace jns::graphics;
+	Vertex vertexes[4] = {};
 	jns::Mesh* mesh = nullptr;
 	jns::Shader* shader = nullptr;
 	jns::graphics::ConstantBuffer* transformconstantBuffer;
-	jns::graphics::ConstantBuffer* colorConstanttBuffer;
+	//jns::graphics::ConstantBuffer* colorConstanttBuffer;
 
 	 void SetupState()
 	 {
 		 // Input layout 정점 구조 정보를 넘겨줘야한다.
-		 D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
+		 D3D11_INPUT_ELEMENT_DESC arrLayout[3] = {};
 
 		 arrLayout[0].AlignedByteOffset = 0;
 		 arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -43,8 +31,14 @@ namespace renderer
 		 arrLayout[1].SemanticName = "COLOR";
 		 arrLayout[1].SemanticIndex = 0;
 
+		 arrLayout[2].AlignedByteOffset = 28;
+		 arrLayout[2].Format = DXGI_FORMAT_R32G32_FLOAT;
+		 arrLayout[2].InputSlot = 0;
+		 arrLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		 arrLayout[2].SemanticName = "TEXCOORD";
+		 arrLayout[2].SemanticIndex = 0;
 
-		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
 	 }
@@ -53,16 +47,17 @@ namespace renderer
 	 {
 		 // Vertex Buffer
 		 mesh = new jns::Mesh();
-		 mesh->CreateVertexBuffer(vertexes, 362);
+		 mesh->CreateVertexBuffer(vertexes, 4);
 
 		 std::vector<UINT> indexes = {};
 
-		 for (int i = 1; i < 361; i++)
-		 {
-			 indexes.push_back(0);
-			 indexes.push_back(i);
-			 indexes.push_back(i + 1);
-		 }
+		 indexes.push_back(0);
+		 indexes.push_back(1);
+		 indexes.push_back(2);
+
+		 indexes.push_back(0);
+		 indexes.push_back(2);
+		 indexes.push_back(3);
 		 mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		 // Constant Buffer
@@ -89,25 +84,30 @@ namespace renderer
 
 	 void Initialize()
 	 {
-		 float start_x = 0.0f;
-		 float start_y = 1.0f;
-		 float angle = -1.0f;
-		 float center_x = 0.0f;
-		 float center_y = 0.0f;
+		 vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		 vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		 vertexes[0].uv = Vector2(0.0f, 0.0f);
 
-		 vertexes[0].pos = Vector3(center_x, center_y, 0.5f);
-		 vertexes[0].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		 Vector3 turnPos = Vector3(start_x, start_y, angle);
-		 for (int i = 1; i < 362; i++)
-		 {
-			 vertexes[i].pos = Vector3(turnPos.x, turnPos.y, 0.5f);
-			 vertexes[i].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-			 Rotate(turnPos.x, turnPos.y, angle);
-		 }
+		 vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		 vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		 vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		 vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		 vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		 vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		 vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		 vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		 vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		 LoadBuffer();
 		 LoadShader();
 		 SetupState();
+
+		 Texture* texture
+			 = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+
+		 texture->BindShader(eShaderStage::PS, 0);
 	 }
 
 	 void Release()
@@ -115,7 +115,7 @@ namespace renderer
 		 delete mesh;
 		 delete shader;
 		 delete transformconstantBuffer;
-		 delete colorConstanttBuffer;
+		// delete colorConstanttBuffer;
 	 }
 
 	
