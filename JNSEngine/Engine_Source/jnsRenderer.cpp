@@ -39,12 +39,12 @@ namespace renderer
 		 arrLayout[2].SemanticIndex = 0;
 		 
 		 
-		 //Shader* shader = jns::Resources::Find<Shader>(L"TriangleShader");
-		 //jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
-			// , shader->GetVSCode()
-			// , shader->GetInputLayoutAddressOf());
+		 Shader* shader = jns::Resources::Find<Shader>(L"TriangleShader");
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 
-		 Shader* shader = jns::Resources::Find<Shader>(L"SpriteShader");
+		 shader = jns::Resources::Find<Shader>(L"SpriteShader");
 
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
@@ -70,6 +70,8 @@ namespace renderer
 		 // Vertex Buffer
 		 Mesh* mesh = new jns::Mesh();
 		 Resources::Insert(L"RectMesh", mesh);
+
+		 mesh->CreateVertexBuffer(vertexes, 4);
 
 		 std::vector<UINT> indexes = {};
 
@@ -99,10 +101,10 @@ namespace renderer
 
 	 void LoadShader()
 	 {
-		 //Shader* shader = new jns::Shader();
-		 //shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
-		 //shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
-		 //jns::Resources::Insert(L"TriangleShader", shader);
+		 Shader* shader = new jns::Shader();
+		 shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		 shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		 jns::Resources::Insert(L"TriangleShader", shader);
 
 		 Shader* spriteShader = new jns::Shader();
 		 spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
