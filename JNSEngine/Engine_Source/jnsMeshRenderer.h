@@ -1,7 +1,8 @@
 #pragma once
 #include "jnsComponent.h"
 #include "jnsMesh.h"
-#include "jnsShader.h"
+#include "jnsMaterial.h"
+
 
 namespace jns
 {
@@ -16,8 +17,11 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetMesh(Mesh* mesh) { mMesh = mesh; }
+		void SetMaterial(Material* material) { mMaterial = material; }
+
 	private:
 		Mesh* mMesh;
-		Shader* mShader;
+		Material* mMaterial;
 	};
 }

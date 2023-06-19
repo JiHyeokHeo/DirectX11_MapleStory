@@ -18,7 +18,8 @@ namespace jns
 		bool CreateIndexBuffer(void* data, UINT Count);
 
 		void BindBuffer(); //Buffer 파이프라인에 묶어준다.
-
+		void Render();
+		
 		UINT GetIndexCount() { return mIndexCount; }
 
 	private:

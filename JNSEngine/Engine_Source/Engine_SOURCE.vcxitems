@@ -26,6 +26,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp" />

@@ -1,15 +1,15 @@
 #include "jnsRenderer.h"
 #include "jnsTexture.h"
 #include "jnsResources.h"
+#include "jnsMaterial.h"
 
 namespace renderer
 {
 	using namespace jns;
 	using namespace jns::graphics;
 	Vertex vertexes[4] = {};
-	jns::Mesh* mesh = nullptr;
-	jns::Shader* shader = nullptr;
-	jns::graphics::ConstantBuffer* transformconstantBuffer;
+	jns::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
+
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
 	 void SetupState()
@@ -37,6 +37,14 @@ namespace renderer
 		 arrLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
 		 arrLayout[2].SemanticName = "TEXCOORD";
 		 arrLayout[2].SemanticIndex = 0;
+		 
+		 
+		 //Shader* shader = jns::Resources::Find<Shader>(L"TriangleShader");
+		 //jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			// , shader->GetVSCode()
+			// , shader->GetInputLayoutAddressOf());
+
+		 Shader* shader = jns::Resources::Find<Shader>(L"SpriteShader");
 
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
@@ -60,8 +68,8 @@ namespace renderer
 	 void LoadBuffer()
 	 {
 		 // Vertex Buffer
-		 mesh = new jns::Mesh();
-		 mesh->CreateVertexBuffer(vertexes, 4);
+		 Mesh* mesh = new jns::Mesh();
+		 Resources::Insert(L"RectMesh", mesh);
 
 		 std::vector<UINT> indexes = {};
 
@@ -75,8 +83,8 @@ namespace renderer
 		 mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		 // Constant Buffer
-		 transformconstantBuffer = new jns::graphics::ConstantBuffer(eCBType::Transform);
-		 transformconstantBuffer->Create(sizeof(Vector4));
+		 constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
+		 constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
 
 
 		 // 추가 상수 버퍼
@@ -91,9 +99,23 @@ namespace renderer
 
 	 void LoadShader()
 	 {
-		 shader = new jns::Shader();
-		 shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
-		 shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		 //Shader* shader = new jns::Shader();
+		 //shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		 //shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		 //jns::Resources::Insert(L"TriangleShader", shader);
+
+		 Shader* spriteShader = new jns::Shader();
+		 spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		 spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		 jns::Resources::Insert(L"SpriteShader", spriteShader);
+
+		 Texture* texture
+			 = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+
+		 Material* spriteMateiral = new jns::graphics::Material();
+		 spriteMateiral->SetShader(spriteShader);
+		 spriteMateiral->SetTexture(texture);
+		 Resources::Insert(L"SpriteMaterial", spriteMateiral);
 	 }
 
 	 void Initialize()
@@ -129,10 +151,14 @@ namespace renderer
 
 	 void Release()
 	 {
-		 delete mesh;
-		 delete shader;
-		 delete transformconstantBuffer;
-		// delete colorConstanttBuffer;
+		 for (ConstantBuffer* buff : constantBuffer)
+		 {
+			 if (buff == nullptr)
+				 continue;
+
+			 delete buff;
+			 buff = nullptr;
+		 }
 	 }
 
 	

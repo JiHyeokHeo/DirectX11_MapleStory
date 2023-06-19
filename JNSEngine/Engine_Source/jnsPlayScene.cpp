@@ -1,9 +1,8 @@
 #include "jnsPlayScene.h"
-#include "jnsPlayScene.h"
-#include "jnsPlayScene.h"
 #include "jnsTransform.h"
 #include "jnsMeshRenderer.h"
-
+#include "jnsResources.h"
+#include "jnsMesh.h"
 
 namespace jns
 {
@@ -17,7 +16,10 @@ namespace jns
 	{
 		GameObject* player = new GameObject();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<MeshRenderer>();
+		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);

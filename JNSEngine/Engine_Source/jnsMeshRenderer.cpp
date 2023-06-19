@@ -25,12 +25,9 @@ namespace jns
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
-
-		//mMesh->BindBuffer();
-		//mShader->Binds();
-
-		renderer::mesh->BindBuffer();
-		renderer::shader->Binds();
-		GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+		
+		mMesh->BindBuffer();
+		mMaterial->Binds();
+		mMesh->Render();
 	}
 }

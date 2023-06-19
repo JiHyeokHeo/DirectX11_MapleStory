@@ -122,7 +122,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTexture.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -186,7 +191,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTexture.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

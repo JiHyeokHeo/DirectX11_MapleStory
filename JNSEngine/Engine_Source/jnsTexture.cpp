@@ -5,7 +5,8 @@
 namespace jns::graphics
 {
 	Texture::Texture()
-		: mImage{}
+		: Resource(enums::eResourceType::Texture)
+		, mImage{}
 		, mTexture(nullptr)
 		, mSRV(nullptr)
 		, mDesc{}
