@@ -6,7 +6,7 @@
 #include "jnsConstantBuffer.h"
 
 using namespace jns::math;
-
+using namespace jns::graphics;
 namespace renderer
 {
 	struct Vertex
@@ -18,9 +18,7 @@ namespace renderer
 
 
 	extern Vertex vertexes[];
-	extern jns::Mesh* mesh;
-	extern jns::Shader* shader;
-	extern jns::graphics::ConstantBuffer* transformconstantBuffer;
+	extern jns::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 	//extern jns::graphics::ConstantBuffer* colorConstanttBuffer;
 
 	void Initialize();

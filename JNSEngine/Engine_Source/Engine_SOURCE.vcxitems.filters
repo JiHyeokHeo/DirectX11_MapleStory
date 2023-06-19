@@ -123,6 +123,7 @@
       <Filter>GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -187,6 +188,7 @@
       <Filter>GameObject\Component</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

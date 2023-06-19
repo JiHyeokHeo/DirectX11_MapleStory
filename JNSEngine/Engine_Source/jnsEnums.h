@@ -20,4 +20,12 @@ namespace jns::enums
 		End,
 	};
 
+	enum class eResourceType
+	{
+		Texture,
+		Shader,
+		Material,
+		Mesh,
+		End,
+	};
 }
