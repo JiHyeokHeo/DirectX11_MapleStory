@@ -399,5 +399,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-!/[Dd]ebug/DirectXTex.lib
-!/[Rr]elease/DirectXTex.lib
+!JNSEngine/External/DirectXTex/Lib/[Dd]ebug
+!JNSEngine/External/DirectXTex/Lib/[Rr]elease
