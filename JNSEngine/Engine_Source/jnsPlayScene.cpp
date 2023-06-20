@@ -3,6 +3,7 @@
 #include "jnsMeshRenderer.h"
 #include "jnsResources.h"
 #include "jnsMesh.h"
+#include "jnsCameraScript.h"
 
 namespace jns
 {
@@ -20,6 +21,7 @@ namespace jns
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 
+		player->AddComponent<CameraScript>();
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);

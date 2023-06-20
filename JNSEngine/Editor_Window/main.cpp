@@ -68,7 +68,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     renderer::Release();
-    jns::Resources::Release();
     jns::SceneManager::Release();
 
     return (int) msg.wParam;
