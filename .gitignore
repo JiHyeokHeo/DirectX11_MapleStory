@@ -23,8 +23,8 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
-YamYamEngine_Windows/x64/
-YamYamEngine_Windows/x86/
+JNSEngine_Windows/x64/
+JNSEngine_Windows/x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
@@ -398,3 +398,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+!/[Dd]ebug/DirectXTex.lib
+!/[Rr]elease/DirectXTex.lib
