@@ -17,6 +17,7 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h" />
@@ -47,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />

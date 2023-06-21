@@ -28,9 +28,19 @@ namespace jns
 		Vector3 GetRotation() { return mRotation; }
 		Vector3 GetScale() { return mScale; }
 
+		Vector3 Foward() { return mFoward; }
+		Vector3 Right() { return mRight; }
+		Vector3 Up() { return mUp; }
+
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;
 		Vector3 mScale;
+
+		Vector3 mUp;
+		Vector3 mFoward;
+		Vector3 mRight;
+
+		Matrix mWorld;
 	};
 }
