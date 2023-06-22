@@ -1,6 +1,7 @@
 #include "jnsTransform.h"
 #include "jnsRenderer.h"
 #include "jnsConstantBuffer.h"
+#include "jnsCamera.h"
 
 namespace jns
 {
@@ -31,7 +32,6 @@ namespace jns
 		mWorld = Matrix::Identity;
 
 		Matrix scale = Matrix::CreateScale(mScale);
-
 		Matrix rotation;
 		rotation = Matrix::CreateRotationX(mRotation.x);
 		rotation *= Matrix::CreateRotationY(mRotation.y);
@@ -40,7 +40,7 @@ namespace jns
 		Matrix position;
 		position.Translation(mPosition);
 
-		mWorld = scale * rotation * position;
+		mWorld = scale* rotation * position;
 
 		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 		mFoward = Vector3::TransformNormal(Vector3::Forward, rotation);
@@ -56,8 +56,8 @@ namespace jns
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;
-		//trCB.mView = mWorld;
-		//trCB.mProjection = mWorld;
+		trCB.mView = Camera::GetViewMatrix();;
+		trCB.mProjection = Camera::GetProjectionMatrix();
 		
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 		cb->SetData(&trCB);
