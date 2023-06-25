@@ -24,7 +24,7 @@ namespace jns
 
 	void Transform::Update()
 	{
-		// 이동 회전 크기 변경
+		// 이동 회전 크기 변경	
 	}
 
 	void Transform::LateUpdate()

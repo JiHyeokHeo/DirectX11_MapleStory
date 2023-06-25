@@ -29,6 +29,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLoginBG.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLoginScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h" />
@@ -46,6 +48,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsWorldSelectBG.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsWorldSelectScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +64,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLoginBG.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLoginScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
@@ -76,6 +82,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsWorldSelectBG.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsWorldSelectScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl" />

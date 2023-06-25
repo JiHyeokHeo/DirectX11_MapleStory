@@ -120,7 +120,7 @@ namespace renderer
 			 spriteMateiral->SetTexture(texture);
 			 Resources::Insert(L"SpriteMaterial", spriteMateiral);
 		 }
-
+		 
 		 {
 			 std::shared_ptr<Texture> texture
 				 = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
@@ -137,6 +137,42 @@ namespace renderer
 			 spriteMateiral->SetShader(spriteShader);
 			 spriteMateiral->SetTexture(texture);
 			 Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
+		 }
+
+		 {
+			 std::shared_ptr<Texture> texture
+				 = Resources::Load<Texture>(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png");
+			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			 spriteMateiral->SetShader(spriteShader);
+			 spriteMateiral->SetTexture(texture);
+			 Resources::Insert(L"CharactorMakeMaterial", spriteMateiral);
+		 }
+
+		 {
+			 std::shared_ptr<Texture> texture
+				 = Resources::Load<Texture>(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png");
+			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			 spriteMateiral->SetShader(spriteShader);
+			 spriteMateiral->SetTexture(texture);
+			 Resources::Insert(L"LoginBGMaterial", spriteMateiral);
+		 }
+
+		 {
+			 std::shared_ptr<Texture> texture
+				 = Resources::Load<Texture>(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png");
+			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			 spriteMateiral->SetShader(spriteShader);
+			 spriteMateiral->SetTexture(texture);
+			 Resources::Insert(L"SelectBGMaterial", spriteMateiral);
+		 }
+
+		 {
+			 std::shared_ptr<Texture> texture
+				 = Resources::Load<Texture>(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png");
+			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			 spriteMateiral->SetShader(spriteShader);
+			 spriteMateiral->SetTexture(texture);
+			 Resources::Insert(L"WorldSelectBGMaterial", spriteMateiral);
 		 }
 	 }
 
@@ -162,13 +198,13 @@ namespace renderer
 		 LoadShader();
 		 SetupState();
 
-		 std::shared_ptr<Texture> texture
+	/*	 std::shared_ptr<Texture> texture
 			 = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 		 texture
 			 = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
 
-		 texture->BindShader(eShaderStage::PS, 0);
+		 texture->BindShader(eShaderStage::PS, 0);*/
 	 }
 
 	 void Release()

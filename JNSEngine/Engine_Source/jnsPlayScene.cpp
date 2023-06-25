@@ -6,6 +6,8 @@
 #include "jnsCameraScript.h"
 #include "jnsCamera.h"
 #include "jnsRootAbyssMain.h"
+#include "jnsInput.h"
+#include "jnsSceneManager.h"
 
 namespace jns
 {
@@ -27,15 +29,15 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
-		//{
-		//	GameObject* player = new GameObject();
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-		//	//player->AddComponent<CameraScript>();
-		//}
+		{
+			GameObject* player = new GameObject();
+			AddGameObject(eLayerType::Player, player);
+			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
+			//player->AddComponent<CameraScript>();
+		}
 
 		//Main Camera
 		GameObject* camera = new GameObject();
@@ -53,6 +55,10 @@ namespace jns
 
 	void PlayScene::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(L"Login");
+		}
 		Scene::Update();
 	}
 
