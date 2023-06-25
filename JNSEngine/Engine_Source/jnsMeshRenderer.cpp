@@ -24,6 +24,8 @@ namespace jns
 	void MeshRenderer::Render()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		//Vector3 scale = mMaterial->GetTexture()->GetRatio();
+		//tr->SetScale(scale);
 		tr->BindConstantBuffer();
 		
 		mMesh->BindBuffer();

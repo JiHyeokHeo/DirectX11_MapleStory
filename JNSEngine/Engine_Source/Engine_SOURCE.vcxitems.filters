@@ -46,6 +46,18 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{ca164367-f9bd-420f-9af3-8913305120fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{b7633ad2-f7ea-4423-8ec3-cff9fe848f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass">
+      <UniqueIdentifier>{3fb80702-8443-409b-89bf-9d3ad9f67397}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\Base">
+      <UniqueIdentifier>{9815d65a-5ab2-4a51-8586-fc911bdaddf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\RootAbyss">
+      <UniqueIdentifier>{4ce938c7-9096-4ab7-b3fd-54e5268ae895}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -132,6 +144,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsBGBase.h">
+      <Filter>Contents\BGclass\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRootAbyssMain.h">
+      <Filter>Contents\BGclass\RootAbyss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -204,6 +222,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp">
       <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsBGBase.cpp">
+      <Filter>Contents\BGclass\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRootAbyssMain.cpp">
+      <Filter>Contents\BGclass\RootAbyss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

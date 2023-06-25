@@ -10,8 +10,9 @@ namespace jns
 	{
 	}
 	void Scene::Initialize()
-	{
-	
+	{	
+
+
 	}
 	void Scene::Update()
 	{

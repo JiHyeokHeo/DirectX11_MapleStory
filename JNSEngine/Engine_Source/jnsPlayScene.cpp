@@ -5,6 +5,7 @@
 #include "jnsMesh.h"
 #include "jnsCameraScript.h"
 #include "jnsCamera.h"
+#include "jnsRootAbyssMain.h"
 
 namespace jns
 {
@@ -16,25 +17,25 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-			//player->AddComponent<CameraScript>();
-		}
+		//{
+		//	GameObject* player = new GameObject();
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		//	//player->AddComponent<CameraScript>();
+		//}
 
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-			//player->AddComponent<CameraScript>();
-		}
+		//{
+		//	GameObject* player = new GameObject();
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
+		//	//player->AddComponent<CameraScript>();
+		//}
 
 		//Main Camera
 		GameObject* camera = new GameObject();
@@ -43,10 +44,9 @@ namespace jns
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		camera->AddComponent<CameraScript>();
 
-		//GameObject* player2 = new GameObject();
-		//AddGameObject(eLayerType::Player, player2);
-		//player2->AddComponent<MeshRenderer>();
-
+		RootAbyssMain* raScene = new RootAbyssMain();
+		AddGameObject(eLayerType::BG, raScene);
+		raScene->Initialize();
 		//Transform* tr = player->GetComponent<Transform>();
 		//tr->SetPosition(Vector3(0.5f, 0.5f, 0.0f));
 	}

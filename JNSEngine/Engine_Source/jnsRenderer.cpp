@@ -129,6 +129,15 @@ namespace renderer
 			 spriteMateiral->SetTexture(texture);
 			 Resources::Insert(L"SpriteMaterial02", spriteMateiral);
 		 }
+
+		 {
+			 std::shared_ptr<Texture> texture
+				 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
+			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			 spriteMateiral->SetShader(spriteShader);
+			 spriteMateiral->SetTexture(texture);
+			 Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
+		 }
 	 }
 
 	 void Initialize()
