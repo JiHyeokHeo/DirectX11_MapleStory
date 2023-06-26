@@ -52,11 +52,28 @@ This is a link to the way we studied and the direction of work. <br/>
 
 - Make Sample Game (2023/06/08)
 
-# Week 5(6/12 ~ 6/19) 
+# Week 5(6/12 ~ 6/18) 
 
 - Make GameObject, Component, Scene, SceneManager, Layer (2023/06/14)
  
 - Make Transform & MeshRenderer Component (2023/06/15)
 
+- Add Git OpenSource Library (Texture Library) (2023/06/16)
+
+- Add Texture Class (2023/06/16)
+
+# Week 6(6/19 ~ 6/25)
+
+- Make SamplerState & Make Material(Shader & Texture) Class (2023/06/19)
+
+- Make ScriptComponent Class(2023/06/20) with Sharedptr(SmartPointer) (2023/06/20)
+
+- Local Coordinate to World Coordinate using World Matrix (2023/06/21)
+
+- Use ViewMatrix & ProjectionMatrix to change Coordinate (2023/06/22)
+
+# Week 7(6/27 ~ 7/2)
+
+- Make RasterizerState & DepthStencilState & BlendState Option (2023/06/27)
 
   
