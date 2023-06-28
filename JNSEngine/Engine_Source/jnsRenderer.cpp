@@ -326,6 +326,8 @@ namespace renderer
 
 			 cam->Render();
 		 }
+
+		 cameras.clear();
 	 }
 
 	 void Release()

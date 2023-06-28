@@ -7,6 +7,7 @@ namespace jns::graphics
 		: Resource(jns::enums::eResourceType::Material)
 		, mShader(nullptr)
 		, mTexture(nullptr)
+		, mMode(eRenderingMode::Opaque)
 	{
 
 	}
