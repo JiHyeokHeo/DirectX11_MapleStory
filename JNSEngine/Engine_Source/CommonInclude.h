@@ -80,14 +80,14 @@ constexpr bool has_flag(E lhs, E rhs)
 }
 
 
-#include <random>
-std::mt19937 gen{ std::random_device{}() };
-// Define a uniform distribution between 0 and 1
-std::uniform_real_distribution<float> dist{ 0.0f, 1.0f };
-
-std::uniform_real_distribution<> disX(-800.0f, 800.0f);
-std::uniform_real_distribution<> disY(-420.0f, 420.0f);
-std::uniform_real_distribution<> rangecolorR(0.0f, 1.0f);
-std::uniform_real_distribution<> rangecolorG(0.0f, 1.0f);
-std::uniform_real_distribution<> rangecolorB(0.0f, 1.0f);
-std::uniform_real_distribution<> rangeScale(10.0f, 30.0f);
+//#include <random>
+//std::mt19937 gen{ std::random_device{}() };
+//// Define a uniform distribution between 0 and 1
+//std::uniform_real_distribution<float> dist{ 0.0f, 1.0f };
+//
+//std::uniform_real_distribution<> disX(-800.0f, 800.0f);
+//std::uniform_real_distribution<> disY(-420.0f, 420.0f);
+//std::uniform_real_distribution<> rangecolorR(0.0f, 1.0f);
+//std::uniform_real_distribution<> rangecolorG(0.0f, 1.0f);
+//std::uniform_real_distribution<> rangecolorB(0.0f, 1.0f);
+//std::uniform_real_distribution<> rangeScale(10.0f, 30.0f);

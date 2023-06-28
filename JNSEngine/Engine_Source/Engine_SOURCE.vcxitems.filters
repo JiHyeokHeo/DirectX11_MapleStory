@@ -46,26 +46,41 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{ca164367-f9bd-420f-9af3-8913305120fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents">
-      <UniqueIdentifier>{b7633ad2-f7ea-4423-8ec3-cff9fe848f2a}</UniqueIdentifier>
+    <Filter Include="GameObject\Component\Base">
+      <UniqueIdentifier>{fca95a5e-5e7a-44f7-adfd-18d15b9eaa9c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\BGclass">
-      <UniqueIdentifier>{3fb80702-8443-409b-89bf-9d3ad9f67397}</UniqueIdentifier>
+    <Filter Include="GameObject\Component\Camera">
+      <UniqueIdentifier>{1dfe3315-b689-4217-9446-007d0b11927e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\BGclass\Base">
-      <UniqueIdentifier>{9815d65a-5ab2-4a51-8586-fc911bdaddf0}</UniqueIdentifier>
+    <Filter Include="GameObject\Component\MeshRenderer">
+      <UniqueIdentifier>{81898714-b54a-4169-b947-0ce8a3b4249d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\BGclass\RootAbyss">
-      <UniqueIdentifier>{4ce938c7-9096-4ab7-b3fd-54e5268ae895}</UniqueIdentifier>
+    <Filter Include="GameObject\Component\Transform">
+      <UniqueIdentifier>{9d922109-b902-48c7-90a9-8f60e1e93918}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\BGclass\Login">
-      <UniqueIdentifier>{9b290ef0-3301-401a-adbc-4c004f2f1525}</UniqueIdentifier>
+    <Filter Include="Graphics\ConstantBuffer">
+      <UniqueIdentifier>{9fd65f9b-0d21-47f2-9b0c-3c9381f77d19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scenes">
-      <UniqueIdentifier>{4de80970-9c0f-4cd5-a2d2-f9236b76c08b}</UniqueIdentifier>
+    <Filter Include="Graphics\GraphicDevice">
+      <UniqueIdentifier>{1ddc04e1-156c-480b-b916-ec1134abe493}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\BGclass\WorldSelect">
-      <UniqueIdentifier>{079d436a-0690-42b6-a627-12f9763774f4}</UniqueIdentifier>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{2edf3be1-52d8-4332-8d12-f5cdbf197200}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{023acc49-0eb2-4619-b61b-843bac72a3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{26413295-aaf4-491a-9c66-e6282acc02fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{d4a6ed15-5eea-463a-bfef-f2f07ad5916f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Base">
+      <UniqueIdentifier>{d1b2db4a-9535-4c69-b973-dfe7e3bbe185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Manager">
+      <UniqueIdentifier>{2d7fb462-7acd-4cf3-9dbc-25629dd6adcd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,74 +117,54 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h">
       <Filter>Graphics\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h">
       <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h">
-      <Filter>GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h">
+      <Filter>GameObject\Component\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h">
-      <Filter>Scene</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h">
+      <Filter>GameObject\Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTransform.h">
-      <Filter>GameObject\Component</Filter>
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h">
+      <Filter>Graphics\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h">
+      <Filter>Resource\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h">
+      <Filter>Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsTexture.h">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraScript.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h">
+      <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsBGBase.h">
-      <Filter>Contents\BGclass\Base</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h">
+      <Filter>Scene\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRootAbyssMain.h">
-      <Filter>Contents\BGclass\RootAbyss</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayScene.h">
-      <Filter>Contents\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLoginBG.h">
-      <Filter>Contents\BGclass\Login</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLoginScene.h">
-      <Filter>Contents\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsWorldSelectScene.h">
-      <Filter>Contents\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsWorldSelectBG.h">
-      <Filter>Contents\BGclass\WorldSelect</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h">
+      <Filter>Scene\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,73 +189,53 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp">
       <Filter>Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScene.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp">
+      <Filter>GameObject\Component\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
-      <Filter>Scene</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp">
+      <Filter>GameObject\Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTransform.cpp">
-      <Filter>GameObject\Component</Filter>
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp">
+      <Filter>Graphics\ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp">
+      <Filter>Resource\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp">
+      <Filter>Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsTexture.cpp">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraScript.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScene.cpp">
+      <Filter>Scene\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsBGBase.cpp">
-      <Filter>Contents\BGclass\Base</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp">
+      <Filter>Scene\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRootAbyssMain.cpp">
-      <Filter>Contents\BGclass\RootAbyss</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayScene.cpp">
-      <Filter>Contents\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLoginBG.cpp">
-      <Filter>Contents\BGclass\Login</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLoginScene.cpp">
-      <Filter>Contents\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsWorldSelectScene.cpp">
-      <Filter>Contents\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsWorldSelectBG.cpp">
-      <Filter>Contents\BGclass\WorldSelect</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
+      <Filter>Scene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

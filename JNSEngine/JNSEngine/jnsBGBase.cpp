@@ -1,6 +1,5 @@
 #include "jnsBGBase.h"
 
-
 namespace jns
 {
 	BGBase::BGBase()

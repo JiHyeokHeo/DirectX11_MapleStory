@@ -2,8 +2,88 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="JNSEngine.cpp" />
+    <ClCompile Include="jnsBGBase.cpp">
+      <Filter>Contents\BGclass\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsLoginBG.cpp">
+      <Filter>Contents\BGclass\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsWorldSelectBG.cpp">
+      <Filter>Contents\BGclass\WorldSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsCameraScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsLoginScene.cpp">
+      <Filter>Contents\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPlayScene.cpp">
+      <Filter>Contents\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsWorldSelectScene.cpp">
+      <Filter>Contents\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsRootAbyssMain.cpp">
+      <Filter>Contents\BGclass\RootAbyss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScene.h">
+      <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBGBase.h">
+      <Filter>Contents\BGclass\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsWorldSelectBG.h">
+      <Filter>Contents\BGclass\WorldSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsLoginBG.h">
+      <Filter>Contents\BGclass\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsCameraScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsLoginScene.h">
+      <Filter>Contents\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayScene.h">
+      <Filter>Contents\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsWorldSelectScene.h">
+      <Filter>Contents\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsRootAbyssMain.h">
+      <Filter>Contents\BGclass\RootAbyss</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{d6b676d0-5e84-4e38-adea-589158957292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass">
+      <UniqueIdentifier>{e27dfaf8-51bc-43ab-856c-8d418a089bd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\Base">
+      <UniqueIdentifier>{27979ad5-1da6-4e6a-823e-965f375435e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\RootAbyss">
+      <UniqueIdentifier>{9d2508d4-9fd7-442b-a898-4d8e5a9fbca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\Login">
+      <UniqueIdentifier>{d5d20792-c87c-49d6-8bb5-6f065771f9a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BGclass\WorldSelect">
+      <UniqueIdentifier>{065216b3-c938-4600-aea6-0ead1ba8074f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes">
+      <UniqueIdentifier>{a62972e2-fd6b-41a6-921a-da915b11494d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script">
+      <UniqueIdentifier>{d58dd3b1-9043-4176-ab06-8304d0a46169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Load">
+      <UniqueIdentifier>{bdc2b44d-23ec-4cdf-a5fc-51b0ff96a61c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "jnsMesh.h"
 #include "jnsShader.h"
 #include "jnsConstantBuffer.h"
+#include "jnsCamera.h"
 
 using namespace jns::math;
 using namespace jns::graphics;
@@ -31,8 +32,10 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern std::vector<jns::Camera*> cameras;
 
 	void Initialize();
+	void Render();
 	void Release();
 
 

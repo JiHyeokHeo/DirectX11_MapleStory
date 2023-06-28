@@ -1,7 +1,4 @@
 #include "jnsSceneManager.h"
-#include "jnsPlayScene.h"
-#include "jnsLoginScene.h"
-#include "jnsWorldSelectScene.h"
 
 namespace jns
 {
@@ -9,26 +6,7 @@ namespace jns
 	std::map<std::wstring, Scene*>  SceneManager::mScenes;
 	void SceneManager::Initialize()
 	{
-		//PlayScene* test = new PlayScene();
-		
-		Scene* mLogin = new LoginScene();
-		Scene* mWorld = new WorldSelectScene();
-		Scene* mPlay= new PlayScene();
 
-		mScenes.insert(std::make_pair(L"Login", mLogin));
-		mScenes.insert(std::make_pair(L"WorldSelect", mWorld));
-		mScenes.insert(std::make_pair(L"PlayScene", mPlay));
-
-		std::map<std::wstring, Scene*>::iterator iter
-			= mScenes.begin();
-		
-		for (iter; iter != mScenes.end(); iter++)
-		{
-			iter->second->Initialize();
-		}
-
-		LoadScene(L"PlayScene");
-		//mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
 	{
@@ -45,7 +23,7 @@ namespace jns
 
 	void SceneManager::Release()
 	{
-		for (auto iter : mScenes)
+		for (auto& iter : mScenes)
 		{
 			delete iter.second;
 			iter.second = nullptr;

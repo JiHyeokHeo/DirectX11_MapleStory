@@ -4,12 +4,12 @@
 #include "jnsApplication.h"
 #include "jnsRenderer.h"
 #include "jnsResources.h"
-#include "jnsSceneManager.h"
+#include "LoadScene.h"
 
+jns::Application application;
 
 #define MAX_LOADSTRING 100
 
-jns::Application application;
 
 // 전역 변수:
 HINSTANCE hInst;                                                          // 현재 인스턴스입니다.
@@ -30,7 +30,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(553);
+    //_CrtSetBreakAlloc(593);
 
 
     // 전역 문자열을 초기화합니다.
@@ -78,7 +78,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex = {};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -121,6 +121,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
+   jns::IntializeScenes();
    return TRUE;
 }
 
