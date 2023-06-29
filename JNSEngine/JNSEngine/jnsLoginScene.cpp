@@ -16,15 +16,17 @@ namespace jns
 	}
 	void LoginScene::Initialize()
 	{
-		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
+		//GameObject* camera = new GameObject();
+		//AddGameObject(eLayerType::Player, camera);
+		//camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//Camera* cameraComp = camera->AddComponent<Camera>();
+		//camera->AddComponent<CameraScript>();
 
 		LoginBG* loginBG = new LoginBG();
 		AddGameObject(eLayerType::BG, loginBG);
 		loginBG->Initialize();
+
+		PlayScene::Initialize();
 	}
 	void LoginScene::Update()
 	{
@@ -32,14 +34,14 @@ namespace jns
 		{
 			SceneManager::LoadScene(L"WorldSelect");
 		}
-		Scene::Update();
+		PlayScene::Update();
 	}
 	void LoginScene::LateUpdate()
 	{
-		Scene::LateUpdate();
+		PlayScene::LateUpdate();
 	}
 	void LoginScene::Render()
 	{
-		Scene::Render();
+		PlayScene::Render();
 	}
 }

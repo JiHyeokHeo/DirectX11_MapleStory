@@ -1,10 +1,10 @@
 #pragma once
 #include "..\Engine_Source\jnsScene.h"
-
+#include "jnsPlayScene.h"
 
 namespace jns
 {
-	class LoginScene : public Scene
+	class LoginScene : public PlayScene
 	{
 	public:
 		LoginScene();

@@ -19,46 +19,10 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::UI, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-			//player->AddComponent<CameraScript>();
-		}
-
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::UI, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.2f, 0.0f, 1.0f));
-			//player->AddComponent<CameraScript>();
-		}
-
 		//Main Camera
-		{
-			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::Player, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
-			camera->AddComponent<CameraScript>();
-		}
-
-		//UI Ä«¸Þ¶ó
-		{
-			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::Player, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::Player, false);
-			//camera->AddComponent<CameraScript>();
-		}
-
+		CreateMainCamera();
+		CreateUICamera();
+		
 		//RootAbyssMain* raScene = new RootAbyssMain();
 		//AddGameObject(eLayerType::Player, raScene);
 		//raScene->Initialize();
@@ -68,11 +32,12 @@ namespace jns
 
 	void PlayScene::Update()
 	{
+		Scene::Update();
+
 		if (Input::GetKeyDown(eKeyCode::P))
 		{
 			SceneManager::LoadScene(L"Login");
 		}
-		Scene::Update();
 	}
 
 	void PlayScene::LateUpdate()
@@ -83,5 +48,24 @@ namespace jns
 	void PlayScene::Render()
 	{
 		Scene::Render();
+	}
+
+	void PlayScene::CreateMainCamera()
+	{
+		GameObject* maincamera = new GameObject();
+		AddGameObject(eLayerType::Player, maincamera);
+		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		Camera* maincameraComp = maincamera->AddComponent<Camera>();
+		maincameraComp->TurnLayerMask(eLayerType::UI, false);
+		maincamera->AddComponent<CameraScript>();
+	}
+	void PlayScene::CreateUICamera()
+	{
+		GameObject* uicamera = new GameObject();
+		AddGameObject(eLayerType::Player, uicamera);
+		uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		Camera* uicameraComp = uicamera->AddComponent<Camera>();
+		uicameraComp->TurnLayerMask(eLayerType::Player, false);
+		//camera->AddComponent<CameraScript>();
 	}
 }

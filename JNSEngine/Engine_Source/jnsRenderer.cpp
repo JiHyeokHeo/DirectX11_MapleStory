@@ -222,14 +222,15 @@ namespace renderer
 		 jns::Resources::Insert(L"SpriteShader", spriteShader);
 
 
-		 //LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
-		 //SET_MATERIAL(spriteMaterial1, texture1);
-		 //spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
-		 //INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
+		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
+		 SET_MATERIAL(spriteMaterial1, texture1);
+		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
 
-		 //LOAD_TEXTURE(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png", texture2);
-		 //SET_MATERIAL(spriteMaterial2, texture2);
-		 //INSERT_MATERIAL(L"RutabysMainMaterial", spriteMaterial2);
+		 LOAD_TEXTURE(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png", texture2);
+		 SET_MATERIAL(spriteMaterial2, texture2);
+		 INSERT_MATERIAL(L"RutabysMainMaterial", spriteMaterial2);
+
 		 {
 			 std::shared_ptr<Texture> texture
 				 = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");

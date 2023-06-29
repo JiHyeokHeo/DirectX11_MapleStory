@@ -15,7 +15,9 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+	
 	private:
-
+		void CreateMainCamera();
+		void CreateUICamera();
 	};
 }
