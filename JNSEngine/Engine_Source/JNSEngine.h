@@ -21,3 +21,14 @@
 #include "jnsEnums.h"
 #include "jnsMath.h"
 
+
+#define LOAD_TEXTURE(textureName, texturePath, textureVar) \
+    std::shared_ptr<Texture> textureVar = Resources::Load<Texture>(textureName, texturePath)
+
+#define SET_MATERIAL(spriteMaterialVar, textureVar) \
+    std::shared_ptr<Material> spriteMaterialVar = std::make_shared<Material>(); \
+    spriteMaterialVar->SetShader(spriteShader); \
+    spriteMaterialVar->SetTexture(textureVar)
+
+#define INSERT_MATERIAL(textureName, spriteMaterialVar) \
+    Resources::Insert(textureName, spriteMaterialVar)

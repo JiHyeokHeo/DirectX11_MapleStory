@@ -15,8 +15,8 @@ namespace jns
 			None,
 		};
 
-		static Matrix GetViewMatrix() { return mView; }
-		static Matrix GetProjectionMatrix() { return mProjection; }
+		static Matrix GetViewMatrix() { return View; }
+		static Matrix GetProjectionMatrix() { return Projection; }
 
 		Camera();
 		~Camera();
@@ -39,10 +39,12 @@ namespace jns
 		void RenderCutOut();
 		void RenderTransparent();
 
-
 	private:
-		static Matrix mView;
-		static Matrix mProjection;
+		static Matrix View;
+		static Matrix Projection;
+
+		Matrix mView;
+		Matrix mProjection;
 
 		eProjectionType mType;
 		float mAspectRatio;

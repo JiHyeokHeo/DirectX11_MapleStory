@@ -1,5 +1,5 @@
 #pragma once
-#include "jnsSceneManager.h"
+#include "..\Engine_Source\jnsSceneManager.h"
 #include "jnsPlayScene.h"
 
 #ifdef _DEBUG

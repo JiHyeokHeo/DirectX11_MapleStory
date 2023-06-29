@@ -13,12 +13,12 @@ namespace jns
 
 		if (Input::GetKey(eKeyCode::W))
 		{
-			pos.z += 5.0f * Time::DeltaTime();
+			pos.y += 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.z -= 5.0f * Time::DeltaTime();
+			pos.y -= 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::A))
@@ -33,12 +33,12 @@ namespace jns
 		}
 		else if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.y -= 5.0f * Time::DeltaTime();
+			pos.z -= 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::E))
 		{
-			pos.y += 5.0f * Time::DeltaTime();
+			pos.z += 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 	}

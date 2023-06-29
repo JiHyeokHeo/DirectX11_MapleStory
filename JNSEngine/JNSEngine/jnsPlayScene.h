@@ -1,5 +1,5 @@
 #pragma once
-#include "jnsScene.h"
+#include "..\Engine_Source\jnsScene.h"
 
 
 namespace jns

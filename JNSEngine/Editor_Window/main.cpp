@@ -1,10 +1,18 @@
 ﻿// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 #include "framework.h"
 #include "Editor_Window.h"
-#include "jnsApplication.h"
-#include "jnsRenderer.h"
-#include "jnsResources.h"
+
+#include "..\Engine_Source\jnsApplication.h"
+#include "..\Engine_Source\jnsApplication.h"
+#include "..\Engine_Source\jnsRenderer.h"
+#include "..\Engine_Source\jnsResources.h"
 #include "LoadScene.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\JNSEngine.lib")
+#endif
 
 jns::Application application;
 

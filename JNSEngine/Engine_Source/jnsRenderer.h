@@ -38,5 +38,6 @@ namespace renderer
 	void Render();
 	void Release();
 
-
 }
+
+
