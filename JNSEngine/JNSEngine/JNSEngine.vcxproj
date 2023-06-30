@@ -156,24 +156,38 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsCameraScript.h" />
+    <ClInclude Include="jnsCharactorMakeBG.h" />
+    <ClInclude Include="jnsCharactorMakeScene.h" />
     <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsPlayScene.h" />
-    <ClInclude Include="jnsRootAbyssMain.h" />
+    <ClInclude Include="jnsRutabysBossBG.h" />
+    <ClInclude Include="jnsRutabysMain.h" />
+    <ClInclude Include="jnsRutabysScene.h" />
+    <ClInclude Include="jnsSelectBG.h" />
+    <ClInclude Include="jnsSelectScene.h" />
     <ClInclude Include="jnsWorldSelectBG.h" />
     <ClInclude Include="jnsWorldSelectScene.h" />
     <ClInclude Include="LoadScene.h" />
+    <ClInclude Include="jnsRutabysBossScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsCameraScript.cpp" />
+    <ClCompile Include="jnsCharactorMakeBG.cpp" />
+    <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
     <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
-    <ClCompile Include="jnsRootAbyssMain.cpp" />
+    <ClCompile Include="jnsRutabysBossBG.cpp" />
+    <ClCompile Include="jnsRutabysMain.cpp" />
+    <ClCompile Include="jnsRutabysScene.cpp" />
+    <ClCompile Include="jnsSelectBG.cpp" />
+    <ClCompile Include="jnsSelectScene.cpp" />
     <ClCompile Include="jnsWorldSelectBG.cpp" />
     <ClCompile Include="jnsWorldSelectScene.cpp" />
+    <ClCompile Include="jnsRutabysBossScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Update="C:\Users\tmdgu\OneDrive\Desktop\DNF_Git\DirectX_Team_Portfolio\YamYamEngine\Engine_SOURCE\jnsMath.inl">

@@ -12,7 +12,6 @@ namespace jns
 	}
 	void BGBase::Initialize()
 	{
-
 		GameObject::Initialize();
 	}
 	void BGBase::Update()

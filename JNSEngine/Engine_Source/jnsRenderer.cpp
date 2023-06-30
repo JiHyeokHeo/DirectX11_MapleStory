@@ -230,7 +230,8 @@ namespace renderer
 			// spriteMateiral->SetTexture(texture);
 			// Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
 		 //}
-
+		
+#pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
 		 SET_MATERIAL(spriteMaterial, texture, spriteShader);
 		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
@@ -239,37 +240,49 @@ namespace renderer
 		 SET_MATERIAL(spriteMaterial1, texture1, spriteShader);
 		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
+#pragma endregion
 
-		 LOAD_TEXTURE(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png", texture2);
-		 SET_MATERIAL(spriteMaterial2, texture2, spriteShader);
-		 INSERT_MATERIAL(L"RutabysMainMaterial", spriteMaterial2);
+#pragma region BackGround
+		 LOAD_TEXTURE(L"RutabysMainBG", L"..\\Resources\\Map\\Rutabys\\rutabys.png", RutaBG_Texture);
+		 SET_MATERIAL(RutaMaterial_BG, RutaBG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"RutabysMainMaterial", RutaMaterial_BG);
 
-		 LOAD_TEXTURE(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png", texture3);
-		 SET_MATERIAL(spriteMaterial3, texture3, spriteShader);
-		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", spriteMaterial3);
+		 LOAD_TEXTURE(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png", CharactorMakeBG_Texture);
+		 SET_MATERIAL(CharactorMakeBG_Material, CharactorMakeBG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", CharactorMakeBG_Material);
 
-		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", texture4);
-		 SET_MATERIAL(spriteMaterial4, texture4, spriteShader);
-		 INSERT_MATERIAL(L"LoginBGMaterial", spriteMaterial4);
+		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", LoginBG_Texture);
+		 SET_MATERIAL(LoginBG_Material, LoginBG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"LoginBGMaterial", LoginBG_Material);
 	
-		 LOAD_TEXTURE(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png", texture5);
-		 SET_MATERIAL(spriteMaterial5, texture5, spriteShader);
-		 INSERT_MATERIAL(L"SelectBGMaterial", spriteMaterial5);
+		 LOAD_TEXTURE(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png", Select_BG_Texture);
+		 SET_MATERIAL(SelectBG_Material, Select_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SelectBGMaterial", SelectBG_Material);
 
-		 LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", texture5);
-		 SET_MATERIAL(spriteMaterial5, texture5, spriteShader);
-		 INSERT_MATERIAL(L"SelectBGMaterial", spriteMaterial5);
+		 LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", WorldSelect_BG_Texture);
+		 SET_MATERIAL(WorldSelect_BGMaterial, WorldSelect_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"WorldSelectBGMaterial", WorldSelect_BGMaterial);
 
+		 LOAD_TEXTURE(L"RutabysBossBG", L"..\\Resources\\Map\\Rutabys\\rutabys_boss.png", RutaBoss_BG_Texture);
+		 SET_MATERIAL(RutaBossBG_Material, RutaBoss_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"RutabysBossBGMaterial", RutaBossBG_Material);
+		
 
+#pragma endregion
 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"WorldSelectBGMaterial", spriteMateiral);
-		 }
+#pragma region UI
+		 //LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", texture7);
+		 //SET_MATERIAL(WorldSelectBGMaterial, texture7, spriteShader);
+		 //INSERT_MATERIAL(L"WorldSelectBGMaterial", WorldSelectBGMaterial);
+		 //{
+			// std::shared_ptr<Texture> texture
+			//	 = Resources::Load<Texture>(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png");
+			// std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			// spriteMateiral->SetShader(spriteShader);
+			// spriteMateiral->SetTexture(texture);
+			// Resources::Insert(L"WorldSelectBGMaterial", spriteMateiral);
+		 //}
+#pragma endregion
 	 }
 
 	 void Initialize()

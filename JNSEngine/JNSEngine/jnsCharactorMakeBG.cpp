@@ -1,35 +1,35 @@
-#include "jnsRootAbyssMain.h"
+#include "jnsCharactorMakeBG.h"
 #include "jnsResources.h"
 #include "jnsTransform.h"
 
 namespace jns
 {
-	RootAbyssMain::RootAbyssMain()
+	CharactorMakeBG::CharactorMakeBG()
 	{
 	}
-	RootAbyssMain::~RootAbyssMain()
+	CharactorMakeBG::~CharactorMakeBG()
 	{
 	}
-	void RootAbyssMain::Initialize()
+	void CharactorMakeBG::Initialize()
 	{
 		mr = GetComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"RutabysMainMaterial"));
+		mr->SetMaterial(Resources::Find<Material>(L"CharactorMakeBGMaterial"));
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		tr->SetScale(Vector3(8.0f, 4.5f, 0.0f));
+		tr->SetScale(Vector3(8.0f, 4.5f, 1.0f));
 
 		BGBase::Initialize();
 	}
-	void RootAbyssMain::Update()
+	void CharactorMakeBG::Update()
 	{
 		BGBase::Update();
 	}
-	void RootAbyssMain::LateUpdate()
+	void CharactorMakeBG::LateUpdate()
 	{
 		BGBase::LateUpdate();
 	}
-	void RootAbyssMain::Render()
+	void CharactorMakeBG::Render()
 	{
 		BGBase::Render();
 	}

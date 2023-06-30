@@ -5,7 +5,6 @@
 #include "jnsMesh.h"
 #include "jnsCameraScript.h"
 #include "jnsCamera.h"
-#include "jnsRootAbyssMain.h"
 #include "jnsInput.h"
 #include "jnsSceneManager.h"
 
@@ -34,10 +33,10 @@ namespace jns
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"Login");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"Login");
+		//}
 	}
 
 	void PlayScene::LateUpdate()

@@ -3,11 +3,11 @@
 
 namespace jns
 {
-	class RootAbyssMain : public BGBase
+	class RutabysBossBG : public BGBase
 	{
 	public:
-		RootAbyssMain();
-		~RootAbyssMain();
+		RutabysBossBG();
+		~RutabysBossBG();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -18,4 +18,7 @@ namespace jns
 	};
 
 }
+
+
+
 

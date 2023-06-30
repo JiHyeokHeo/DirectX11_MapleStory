@@ -30,15 +30,16 @@ namespace jns
 	}
 	void LoginScene::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"WorldSelect");
-		}
 		PlayScene::Update();
 	}
 	void LoginScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
+		
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(L"WorldSelect");
+		}
 	}
 	void LoginScene::Render()
 	{

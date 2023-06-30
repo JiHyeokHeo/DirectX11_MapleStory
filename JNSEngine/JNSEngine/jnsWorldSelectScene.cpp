@@ -19,30 +19,33 @@ namespace jns
 	}
 	void WorldSelectScene::Initialize()
 	{
-		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
+		//GameObject* camera = new GameObject();
+		//AddGameObject(eLayerType::Player, camera);
+		//camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//Camera* cameraComp = camera->AddComponent<Camera>();
+		//camera->AddComponent<CameraScript>();
 
 		WorldSelectBG* wBG = new WorldSelectBG();
 		AddGameObject(eLayerType::BG, wBG);
 		wBG->Initialize();
+
+		PlayScene::Initialize();
 	}
 	void WorldSelectScene::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"PlayScene");
-		}
-		Scene::Update();
+		PlayScene::Update();
 	}
 	void WorldSelectScene::LateUpdate()
 	{
-		Scene::LateUpdate();
+		PlayScene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(L"Select");
+		}
 	}
 	void WorldSelectScene::Render()
 	{
-		Scene::Render();
+		PlayScene::Render();
 	}
 }

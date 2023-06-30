@@ -3,6 +3,10 @@
 #include "jnsPlayScene.h"
 #include "jnsLoginScene.h"
 #include "jnsWorldSelectScene.h"
+#include "jnsRutabysScene.h"
+#include "jnsRutabysBossScene.h"
+#include "jnsSelectScene.h"
+#include "jnsCharactorMakeScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
@@ -14,8 +18,11 @@ namespace jns
 {
 	void IntializeScenes()
 	{
-		SceneManager::CreateScene<LoginScene>(L"Login");
 		SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
-		SceneManager::CreateScene<PlayScene>(L"Play");
+		SceneManager::CreateScene<SelectScene>(L"Select");
+		SceneManager::CreateScene<CharactorMakeScene>(L"CharactorMake");
+		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
+		SceneManager::CreateScene<RutabysBossScene>(L"RutabysBoss");
+		SceneManager::CreateScene<LoginScene>(L"Login");
 	}
 }
