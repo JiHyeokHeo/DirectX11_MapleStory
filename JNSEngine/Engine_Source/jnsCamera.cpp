@@ -110,6 +110,10 @@ namespace jns
 	{
 		mLayerMask.set((UINT)type, enable);
 	}
+	void Camera::TurnOFFLayerMask(eLayerType type, bool enable)
+	{
+		mLayerMask.set((UINT)type, enable);
+	}
 	void Camera::SortGameObjects()
 	{
 		mOpaqueGameObjects.clear();

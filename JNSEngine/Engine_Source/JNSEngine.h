@@ -25,9 +25,9 @@
 #define LOAD_TEXTURE(textureName, texturePath, textureVar) \
     std::shared_ptr<Texture> textureVar = Resources::Load<Texture>(textureName, texturePath)
 
-#define SET_MATERIAL(spriteMaterialVar, textureVar) \
+#define SET_MATERIAL(spriteMaterialVar, textureVar, shaderVar) \
     std::shared_ptr<Material> spriteMaterialVar = std::make_shared<Material>(); \
-    spriteMaterialVar->SetShader(spriteShader); \
+    spriteMaterialVar->SetShader(shaderVar); \
     spriteMaterialVar->SetTexture(textureVar)
 
 #define INSERT_MATERIAL(textureName, spriteMaterialVar) \

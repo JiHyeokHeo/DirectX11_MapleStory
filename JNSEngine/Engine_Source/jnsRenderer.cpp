@@ -222,70 +222,45 @@ namespace renderer
 		 jns::Resources::Insert(L"SpriteShader", spriteShader);
 
 
+		 //{
+			// std::shared_ptr<Texture> texture
+			//	 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
+			// std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			// spriteMateiral->SetShader(spriteShader);
+			// spriteMateiral->SetTexture(texture);
+			// Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
+		 //}
+
+		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
+		 SET_MATERIAL(spriteMaterial, texture, spriteShader);
+		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
+
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
-		 SET_MATERIAL(spriteMaterial1, texture1);
+		 SET_MATERIAL(spriteMaterial1, texture1, spriteShader);
 		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
 
 		 LOAD_TEXTURE(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png", texture2);
-		 SET_MATERIAL(spriteMaterial2, texture2);
+		 SET_MATERIAL(spriteMaterial2, texture2, spriteShader);
 		 INSERT_MATERIAL(L"RutabysMainMaterial", spriteMaterial2);
 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+		 LOAD_TEXTURE(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png", texture3);
+		 SET_MATERIAL(spriteMaterial3, texture3, spriteShader);
+		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", spriteMaterial3);
 
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"SpriteMaterial", spriteMateiral);
-		 }
-		 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
-			 Resources::Insert(L"SpriteMaterial02", spriteMateiral);
-		 }
+		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", texture4);
+		 SET_MATERIAL(spriteMaterial4, texture4, spriteShader);
+		 INSERT_MATERIAL(L"LoginBGMaterial", spriteMaterial4);
+	
+		 LOAD_TEXTURE(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png", texture5);
+		 SET_MATERIAL(spriteMaterial5, texture5, spriteShader);
+		 INSERT_MATERIAL(L"SelectBGMaterial", spriteMaterial5);
 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
-		 }
+		 LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", texture5);
+		 SET_MATERIAL(spriteMaterial5, texture5, spriteShader);
+		 INSERT_MATERIAL(L"SelectBGMaterial", spriteMaterial5);
 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"CharactorMakeMaterial", spriteMateiral);
-		 }
 
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"LoginBGMaterial", spriteMateiral);
-		 }
-
-		 {
-			 std::shared_ptr<Texture> texture
-				 = Resources::Load<Texture>(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png");
-			 std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			 spriteMateiral->SetShader(spriteShader);
-			 spriteMateiral->SetTexture(texture);
-			 Resources::Insert(L"SelectBGMaterial", spriteMateiral);
-		 }
 
 		 {
 			 std::shared_ptr<Texture> texture

@@ -31,6 +31,7 @@ namespace jns
 		void RegisterCameraInRenderer();
 
 		void TurnLayerMask(eLayerType type, bool enable = true);
+		void TurnOFFLayerMask(eLayerType type, bool enable = false);
 		void EnableLayerMasks() { mLayerMask.set(); }
 		void DisableLayerMasks() { mLayerMask.reset(); }
 

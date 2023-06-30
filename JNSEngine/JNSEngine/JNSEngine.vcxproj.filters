@@ -85,5 +85,8 @@
     <Filter Include="Contents\Load">
       <UniqueIdentifier>{bdc2b44d-23ec-4cdf-a5fc-51b0ff96a61c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\BGclass\CharactorMake">
+      <UniqueIdentifier>{38515cc9-7fcd-42ed-b685-1c7cfc4be8d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
