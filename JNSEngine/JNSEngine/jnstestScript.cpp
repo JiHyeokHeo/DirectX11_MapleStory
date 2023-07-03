@@ -31,7 +31,8 @@ namespace jns
 	void testScript::BindConstantBuffer()
 	{
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
-		cb->SetData(&mTime);
-		cb->Bind(eShaderStage::PS);
+		//cb->SetData(&mTime);
+		//cb->Bind(eShaderStage::PS);
+		cb->Bind(eShaderStage::VS);
 	}
 }

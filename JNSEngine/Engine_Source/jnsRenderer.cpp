@@ -230,7 +230,7 @@ namespace renderer
 		 jns::Resources::Insert(L"SpriteShader", spriteShader);
 
 		 std::shared_ptr<Shader> moveShader = std::make_shared<Shader>();
-		 moveShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		 moveShader->Create(eShaderStage::VS, L"MoveVS.hlsl", "main");
 		 moveShader->Create(eShaderStage::PS, L"MovePS.hlsl", "main");
 		 jns::Resources::Insert(L"MoveShader", moveShader);
 

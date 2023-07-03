@@ -17,9 +17,6 @@ namespace jns
 	}
 	void RutabysBossScene::Initialize()
 	{
-
-
-
 		RutabysBossBG* rutabysBossBG = new RutabysBossBG();
 		AddGameObject(eLayerType::BG, rutabysBossBG);
 		rutabysBossBG->Initialize();

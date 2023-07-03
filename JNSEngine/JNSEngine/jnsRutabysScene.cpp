@@ -7,6 +7,7 @@
 #include "jnsRutabysMain.h"
 #include "jnsResources.h"
 #include "jnstestScript.h"
+#include "jnsExpMaxBar.h"
 
 namespace jns
 {
@@ -20,13 +21,13 @@ namespace jns
 	{
 		//// Test
 		//{
-			GameObject* player = new GameObject();
-			player->SetName(L"Zelda");
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+			//GameObject* player = new GameObject();
+			//player->SetName(L"Zelda");
+			//AddGameObject(eLayerType::Player, player);
+			//MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			//mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 			//player->AddComponent<CameraScript>();
 
 		//	GameObject* player2 = new GameObject();
@@ -47,18 +48,18 @@ namespace jns
 		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, degree));
 		//}
 
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
-		//	player->AddComponent<testScript>();
-		//	//player->AddComponent<CameraScript>();
-		//}
+		{
+			GameObject* player = new GameObject();
+			player->SetName(L"Smile");
+			AddGameObject(eLayerType::Player, player);
+			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
+			player->AddComponent<testScript>();
+			//player->AddComponent<CameraScript>();
+		}
 		
 		//{
 		//	GameObject* player = new GameObject();
@@ -71,26 +72,23 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
-		//RutabysMain* rutabysMainBG = new RutabysMain();
-		//AddGameObject(eLayerType::BG, rutabysMainBG);
-		//rutabysMainBG->Initialize();
+		ExpMaxBar* maxBarUI = new ExpMaxBar();
+		maxBarUI->AddComponent<testScript>();
+		AddGameObject(eLayerType::UI, maxBarUI);
+		maxBarUI->Initialize();
 
-		GameObject* maincamera = new GameObject();
-		AddGameObject(eLayerType::Player, maincamera);
-		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* maincameraComp = maincamera->AddComponent<Camera>();
-		maincameraComp->TurnLayerMask(eLayerType::UI, false);
-		maincamera->AddComponent<CameraScript>();
+		RutabysMain* rutabysMainBG = new RutabysMain();
+		AddGameObject(eLayerType::BG, rutabysMainBG);
+		rutabysMainBG->Initialize();
 
-		GameObject* maincamera2 = new GameObject();
-		AddGameObject(eLayerType::Player, maincamera2);
-		maincamera2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 10.0f));
-		maincamera2->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(30.0f)));
-		Camera* maincameraComp2 = maincamera2->AddComponent<Camera>();
-		maincameraComp2 ->TurnLayerMask(eLayerType::UI, false);
-		maincamera2->AddComponent<CameraScript>();
+		//GameObject* maincamera = new GameObject();
+		//AddGameObject(eLayerType::Player, maincamera);
+		//maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//Camera* maincameraComp = maincamera->AddComponent<Camera>();
+		//maincameraComp->TurnLayerMask(eLayerType::UI, false);
+		//maincamera->AddComponent<CameraScript>();
 
-		//PlayScene::Initialize();
+		PlayScene::Initialize();
 	}
 	void RutabysScene::Update()
 	{

@@ -158,6 +158,9 @@
     <ClInclude Include="jnsCameraScript.h" />
     <ClInclude Include="jnsCharactorMakeBG.h" />
     <ClInclude Include="jnsCharactorMakeScene.h" />
+    <ClInclude Include="jnsExpBar.h" />
+    <ClInclude Include="jnsExpBarMoveScript.h" />
+    <ClInclude Include="jnsExpMaxBar.h" />
     <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsPlayScene.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
     <ClInclude Include="jnstestScript.h" />
+    <ClInclude Include="jnsUIBase.h" />
     <ClInclude Include="jnsWorldSelectBG.h" />
     <ClInclude Include="jnsWorldSelectScene.h" />
     <ClInclude Include="LoadScene.h" />
@@ -178,6 +182,9 @@
     <ClCompile Include="jnsCharactorMakeBG.cpp" />
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
+    <ClCompile Include="jnsExpBar.cpp" />
+    <ClCompile Include="jnsExpBarMoveScript.cpp" />
+    <ClCompile Include="jnsExpMaxBar.cpp" />
     <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
@@ -187,6 +194,7 @@
     <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
+    <ClCompile Include="jnsUIBase.cpp" />
     <ClCompile Include="jnsWorldSelectBG.cpp" />
     <ClCompile Include="jnsWorldSelectScene.cpp" />
     <ClCompile Include="jnsRutabysBossScene.cpp" />

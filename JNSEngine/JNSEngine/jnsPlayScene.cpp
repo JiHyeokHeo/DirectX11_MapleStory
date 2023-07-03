@@ -21,22 +21,11 @@ namespace jns
 	/*	Main Camera*/
 		CreateMainCamera();
 		CreateUICamera();
-		
-		//RootAbyssMain* raScene = new RootAbyssMain();
-		//AddGameObject(eLayerType::Player, raScene);
-		//raScene->Initialize();
-		//Transform* tr = player->GetComponent<Transform>();
-		//tr->SetPosition(Vector3(0.5f, 0.5f, 0.0f));
 	}
 
 	void PlayScene::Update()
 	{
 		Scene::Update();
-
-		//if (Input::GetKeyDown(eKeyCode::P))
-		//{
-		//	SceneManager::LoadScene(L"Login");
-		//}
 	}
 
 	void PlayScene::LateUpdate()

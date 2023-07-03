@@ -1,32 +1,32 @@
-#include "jnsBGBase.h"
+#include "jnsUIBase.h"
+
 
 namespace jns
 {
-	BGBase::BGBase()
-		: mType(eLayerType::BG)
+	UIBase::UIBase()
+		: mType(eLayerType::UI)
 		, mr(nullptr)
-	    , tr(nullptr)
+		, tr(nullptr)
 	{
 		AddComponent<MeshRenderer>();
 	}
-	BGBase::~BGBase()
+	UIBase::~UIBase()
 	{
 	}
-	void BGBase::Initialize()
+	void UIBase::Initialize()
 	{
 		GameObject::Initialize();
 	}
-	void BGBase::Update()
+	void UIBase::Update()
 	{
 		GameObject::Update();
 	}
-	void BGBase::LateUpdate()
+	void UIBase::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	void BGBase::Render()
+	void UIBase::Render()
 	{
 		GameObject::Render();
 	}
-
 }
