@@ -35,10 +35,15 @@ namespace jns
 		void EnableLayerMasks() { mLayerMask.set(); }
 		void DisableLayerMasks() { mLayerMask.reset(); }
 
-		void SortGameObjects();
+		void AlphaSortGameObjects();
+		void ZSortTransparencyGameObjects();
+		void DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs);
 		void RenderOpaque();
 		void RenderCutOut();
 		void RenderTransparent();
+
+		void EnableDepthStencilState();
+		void DisableDepthStencilState();
 
 	private:
 		static Matrix View;

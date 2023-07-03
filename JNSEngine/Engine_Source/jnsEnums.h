@@ -15,10 +15,10 @@ namespace jns::enums
 
 	enum class eLayerType
 	{
+		BG,
 		Player,
 		Monster,
 		UI,
-		BG,
 		End,
 	};
 

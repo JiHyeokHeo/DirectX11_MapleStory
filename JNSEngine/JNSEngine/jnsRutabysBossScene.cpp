@@ -5,6 +5,7 @@
 #include "jnsInput.h"
 #include "jnsSceneManager.h"
 #include "jnsRutabysBossBG.h"
+#include "jnsResources.h"
 
 namespace jns
 {
@@ -16,6 +17,9 @@ namespace jns
 	}
 	void RutabysBossScene::Initialize()
 	{
+
+
+
 		RutabysBossBG* rutabysBossBG = new RutabysBossBG();
 		AddGameObject(eLayerType::BG, rutabysBossBG);
 		rutabysBossBG->Initialize();

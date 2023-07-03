@@ -21,8 +21,8 @@ namespace jns
 		SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
 		SceneManager::CreateScene<SelectScene>(L"Select");
 		SceneManager::CreateScene<CharactorMakeScene>(L"CharactorMake");
-		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
 		SceneManager::CreateScene<RutabysBossScene>(L"RutabysBoss");
 		SceneManager::CreateScene<LoginScene>(L"Login");
+		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
 	}
 }
