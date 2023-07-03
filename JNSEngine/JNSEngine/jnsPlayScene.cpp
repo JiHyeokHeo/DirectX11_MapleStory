@@ -18,7 +18,7 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		//Main Camera
+	/*	Main Camera*/
 		CreateMainCamera();
 		CreateUICamera();
 		

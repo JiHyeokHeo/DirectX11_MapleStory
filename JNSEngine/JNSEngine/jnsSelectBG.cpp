@@ -17,7 +17,7 @@ namespace jns
 		mr->SetMaterial(Resources::Find<Material>(L"SelectBGMaterial"));
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		tr->SetScale(Vector3(8.0f, 4.5f, 0.0f));
+		tr->SetScale(Vector3(7.0f, 4.5f, 0.0f));
 
 		BGBase::Initialize();
 	}

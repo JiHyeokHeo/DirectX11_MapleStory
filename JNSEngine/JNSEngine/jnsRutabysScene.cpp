@@ -20,14 +20,14 @@ namespace jns
 	{
 		//// Test
 		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Zelda");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-		//	//player->AddComponent<CameraScript>();
+			GameObject* player = new GameObject();
+			player->SetName(L"Zelda");
+			AddGameObject(eLayerType::Player, player);
+			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+			//player->AddComponent<CameraScript>();
 
 		//	GameObject* player2 = new GameObject();
 		//	player2->SetName(L"ZeldaChild");
@@ -47,18 +47,18 @@ namespace jns
 		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, degree));
 		//}
 
-		{
-			GameObject* player = new GameObject();
-			player->SetName(L"Smile");
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(90.0f)));
-			player->AddComponent<testScript>();
-			//player->AddComponent<CameraScript>();
-		}
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Smile");
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
+		//	player->AddComponent<testScript>();
+		//	//player->AddComponent<CameraScript>();
+		//}
 		
 		//{
 		//	GameObject* player = new GameObject();
@@ -82,13 +82,13 @@ namespace jns
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
 
-		//GameObject* maincamera = new GameObject();
-		//AddGameObject(eLayerType::Player, maincamera);
-		//maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		//maincamera->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, -10.0f));
-		//Camera* maincameraComp = maincamera->AddComponent<Camera>();
-		//maincameraComp->TurnLayerMask(eLayerType::UI, false);
-		//maincamera->AddComponent<CameraScript>();
+		GameObject* maincamera2 = new GameObject();
+		AddGameObject(eLayerType::Player, maincamera2);
+		maincamera2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 10.0f));
+		maincamera2->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(30.0f)));
+		Camera* maincameraComp2 = maincamera2->AddComponent<Camera>();
+		maincameraComp2 ->TurnLayerMask(eLayerType::UI, false);
+		maincamera2->AddComponent<CameraScript>();
 
 		//PlayScene::Initialize();
 	}
