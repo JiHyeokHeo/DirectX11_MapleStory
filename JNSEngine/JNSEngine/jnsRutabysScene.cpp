@@ -55,10 +55,11 @@ namespace jns
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(90.0f)));
 			player->AddComponent<testScript>();
 			//player->AddComponent<CameraScript>();
 		}
-
+		
 		//{
 		//	GameObject* player = new GameObject();
 		//	player->SetName(L"Smile");
@@ -74,7 +75,22 @@ namespace jns
 		//AddGameObject(eLayerType::BG, rutabysMainBG);
 		//rutabysMainBG->Initialize();
 
-		PlayScene::Initialize();
+		GameObject* maincamera = new GameObject();
+		AddGameObject(eLayerType::Player, maincamera);
+		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		Camera* maincameraComp = maincamera->AddComponent<Camera>();
+		maincameraComp->TurnLayerMask(eLayerType::UI, false);
+		maincamera->AddComponent<CameraScript>();
+
+		//GameObject* maincamera = new GameObject();
+		//AddGameObject(eLayerType::Player, maincamera);
+		//maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//maincamera->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, -10.0f));
+		//Camera* maincameraComp = maincamera->AddComponent<Camera>();
+		//maincameraComp->TurnLayerMask(eLayerType::UI, false);
+		//maincamera->AddComponent<CameraScript>();
+
+		//PlayScene::Initialize();
 	}
 	void RutabysScene::Update()
 	{

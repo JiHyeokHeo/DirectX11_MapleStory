@@ -256,46 +256,80 @@ namespace renderer
 #pragma endregion
 
 #pragma region BackGround
-		 LOAD_TEXTURE(L"RutabysMainBG", L"..\\Resources\\Map\\Rutabys\\rutabys.png", RutaBG_Texture);
-		 SET_MATERIAL(RutaMaterial_BG, RutaBG_Texture, spriteShader);
-		 INSERT_MATERIAL(L"RutabysMainMaterial", RutaMaterial_BG);
+		 LOAD_TEXTURE(L"RutabysMainBG", L"..\\Resources\\Map\\Rutabys\\rutabys.png", Ruta_BG_Texture);
+		 SET_MATERIAL(Ruta_BG_Material, Ruta_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"RutabysMainMaterial", Ruta_BG_Material);
 
-		 LOAD_TEXTURE(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png", CharactorMakeBG_Texture);
-		 SET_MATERIAL(CharactorMakeBG_Material, CharactorMakeBG_Texture, spriteShader);
-		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", CharactorMakeBG_Material);
+		 LOAD_TEXTURE(L"CharactorMakeBG", L"..\\Resources\\Map\\CharactorMake_BG.png", CharactorMake_BG_Texture);
+		 SET_MATERIAL(CharactorMake_BG_Material, CharactorMake_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", CharactorMake_BG_Material);
 
-		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", LoginBG_Texture);
-		 SET_MATERIAL(LoginBG_Material, LoginBG_Texture, spriteShader);
-		 INSERT_MATERIAL(L"LoginBGMaterial", LoginBG_Material);
+		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", Login_BG_Texture);
+		 SET_MATERIAL(Login_BG_Material, Login_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"LoginBGMaterial", Login_BG_Material);
 	
 		 LOAD_TEXTURE(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png", Select_BG_Texture);
-		 SET_MATERIAL(SelectBG_Material, Select_BG_Texture, spriteShader);
-		 INSERT_MATERIAL(L"SelectBGMaterial", SelectBG_Material);
+		 SET_MATERIAL(Select_BG_Material, Select_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SelectBGMaterial", Select_BG_Material);
 
 		 LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", WorldSelect_BG_Texture);
 		 SET_MATERIAL(WorldSelect_BGMaterial, WorldSelect_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"WorldSelectBGMaterial", WorldSelect_BGMaterial);
 
 		 LOAD_TEXTURE(L"RutabysBossBG", L"..\\Resources\\Map\\Rutabys\\rutabys_boss.png", RutaBoss_BG_Texture);
-		 SET_MATERIAL(RutaBossBG_Material, RutaBoss_BG_Texture, spriteShader);
-		 INSERT_MATERIAL(L"RutabysBossBGMaterial", RutaBossBG_Material);
+		 SET_MATERIAL(RutaBoss_BG_Material, RutaBoss_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"RutabysBossBGMaterial", RutaBoss_BG_Material);
 		
 
 #pragma endregion
 
 #pragma region UI
-		 //LOAD_TEXTURE(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png", texture7);
-		 //SET_MATERIAL(WorldSelectBGMaterial, texture7, spriteShader);
-		 //INSERT_MATERIAL(L"WorldSelectBGMaterial", WorldSelectBGMaterial);
-		 //{
-			// std::shared_ptr<Texture> texture
-			//	 = Resources::Load<Texture>(L"WorldSelectBG", L"..\\Resources\\Map\\WorldSelect_BG.png");
-			// std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			// spriteMateiral->SetShader(spriteShader);
-			// spriteMateiral->SetTexture(texture);
-			// Resources::Insert(L"WorldSelectBGMaterial", spriteMateiral);
-		 //}
+		 // exp 
+		 LOAD_TEXTURE(L"ExpBar", L"..\\Resources\\UI\\Status\\ExpBar.png", ExpBar_UI_Texture);
+		 SET_MATERIAL(ExpBar_UI_Material, ExpBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"ExpBarUIMaterial", ExpBar_UI_Material);
+
+		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture);
+		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
+
+		 // status
+		 LOAD_TEXTURE(L"SkillQuickSlotBackLayer", L"..\\Resources\\UI\\Status\\SkillQuickSlotBackLayer.png", SkillQuickSlotBackLayer_UI_Texture);
+		 SET_MATERIAL(SkillQuickSlotBackLayer_UI_Material, SkillQuickSlotBackLayer_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SkillQuickSlotBackMaterial", SkillQuickSlotBackLayer_UI_Material);
+
+		 LOAD_TEXTURE(L"SkillQuickSlotFrontLayer", L"..\\Resources\\UI\\Status\\SkillQuickSlotFrontLayer.png", SkillQuickSlotFrontLayer_UI_Texture);
+		 SET_MATERIAL(SkillQuickSlotFrontLayer_UI_Material, SkillQuickSlotFrontLayer_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SkillQuickSlotFrontMaterial", SkillQuickSlotFrontLayer_UI_Material);
+
+		 LOAD_TEXTURE(L"SkillSlotExtension", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", SkillSlotExtension_UI_Texture);
+		 SET_MATERIAL(SkillSlotExtension_UI_Material, SkillSlotExtension_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
+
+		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
+		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
+
+		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", MpBar_Texture);
+		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, spriteShader);
+		 INSERT_MATERIAL(L"MpBarMaterial", MpBar_UI_Material);
+
+		 LOAD_TEXTURE(L"Option", L"..\\Resources\\UI\\Status\\OptionBar.png", OptionBar_UI_Texture);
+		 SET_MATERIAL(OptionBar_UI_Material, OptionBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"OptionBarMaterial", OptionBar_UI_Material);
+		 
+		 LOAD_TEXTURE(L"Sound", L"..\\Resources\\UI\\Status\\SoundBar.png", SoundBar_UI_Texture);
+		 SET_MATERIAL(SoundBar_UI_Material, SoundBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"SoundBarMaterial", SoundBar_UI_Material);
+
+		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
+		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
+
+
 #pragma endregion
+
+
 	 }
 
 	 void Initialize()

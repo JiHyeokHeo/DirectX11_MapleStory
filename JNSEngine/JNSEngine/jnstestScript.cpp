@@ -19,7 +19,6 @@ namespace jns
 	}
 	void testScript::Update()
 	{
-		
 	}
 	void testScript::LateUpdate()
 	{

@@ -20,6 +20,16 @@ using namespace DirectX::PackedVector;
 
 namespace jns::math
 {
+    // Degree to Radian
+   
+    inline float DegreeToRadian(float mDegree)
+    {
+        const float PI = std::acos(-1.0f); 
+        float degree = (PI / 180.0f) * mDegree;
+        return degree;
+    }
+
+
     struct Vector2;
     struct Vector4;
     struct Matrix;
