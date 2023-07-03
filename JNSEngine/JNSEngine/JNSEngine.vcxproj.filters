@@ -47,6 +47,7 @@
     <ClCompile Include="jnsRutabysBossBG.cpp">
       <Filter>Contents\BGclass\Base\RutabysBoss</Filter>
     </ClCompile>
+    <ClCompile Include="jnstestScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="jnsRutabysBossBG.h">
       <Filter>Contents\BGclass\Base\RutabysBoss</Filter>
     </ClInclude>
+    <ClInclude Include="jnstestScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

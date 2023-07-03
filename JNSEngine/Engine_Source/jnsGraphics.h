@@ -28,8 +28,10 @@ enum class eCBType
 {
 	Transform,
 	Material,
+	Move,
 	End,
 };
+
 
 enum class eSamplerType
 {

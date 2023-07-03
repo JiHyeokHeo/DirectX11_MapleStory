@@ -25,6 +25,7 @@ namespace jns::graphics
 	{
 		if (mTexture)
 			mTexture->BindShader(eShaderStage::PS, 0);
+		mTexture->BindShader(eShaderStage::PS, 1);
 
 		if (mShader)
 			mShader->Binds();

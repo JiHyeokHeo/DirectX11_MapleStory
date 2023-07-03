@@ -6,6 +6,7 @@
 #include "jnsSceneManager.h"
 #include "jnsRutabysMain.h"
 #include "jnsResources.h"
+#include "jnstestScript.h"
 
 namespace jns
 {
@@ -54,23 +55,24 @@ namespace jns
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+			player->AddComponent<testScript>();
 			//player->AddComponent<CameraScript>();
 		}
 
-		{
-			GameObject* player = new GameObject();
-			player->SetName(L"Smile");
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.2f, 0.0f, 0.0f));
-			//player->AddComponent<CameraScript>();
-		}
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Smile");
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.2f, 0.0f, 0.0f));
+		//	//player->AddComponent<CameraScript>();
+		//}
 
-		RutabysMain* rutabysMainBG = new RutabysMain();
-		AddGameObject(eLayerType::BG, rutabysMainBG);
-		rutabysMainBG->Initialize();
+		//RutabysMain* rutabysMainBG = new RutabysMain();
+		//AddGameObject(eLayerType::BG, rutabysMainBG);
+		//rutabysMainBG->Initialize();
 
 		PlayScene::Initialize();
 	}

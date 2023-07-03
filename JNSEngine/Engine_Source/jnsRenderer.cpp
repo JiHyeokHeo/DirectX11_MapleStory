@@ -55,6 +55,12 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"MoveShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -198,6 +204,8 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
 		 constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
+		 constantBuffer[(UINT)eCBType::Move] = new ConstantBuffer(eCBType::Move);
+		 constantBuffer[(UINT)eCBType::Move]->Create(sizeof(Vector4));
 
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
@@ -221,6 +229,11 @@ namespace renderer
 		 spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		 jns::Resources::Insert(L"SpriteShader", spriteShader);
 
+		 std::shared_ptr<Shader> moveShader = std::make_shared<Shader>();
+		 moveShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		 moveShader->Create(eShaderStage::PS, L"MovePS.hlsl", "main");
+		 jns::Resources::Insert(L"MoveShader", moveShader);
+
 
 		 //{
 			// std::shared_ptr<Texture> texture
@@ -237,7 +250,7 @@ namespace renderer
 		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
 
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
-		 SET_MATERIAL(spriteMaterial1, texture1, spriteShader);
+		 SET_MATERIAL(spriteMaterial1, texture1, moveShader);
 		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
 #pragma endregion
