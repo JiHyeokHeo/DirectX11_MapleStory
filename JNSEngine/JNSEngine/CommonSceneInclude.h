@@ -19,6 +19,8 @@
 #include "jnsExpMaxBar.h"
 #include "jnsSkillQuickSlotBackUI.h"
 #include "jnsCenterStatus.h"
+#include "jnsHpBar.h"
+#include "jnsMpBar.h"
 
 // Component
 #include "jnsTransform.h"

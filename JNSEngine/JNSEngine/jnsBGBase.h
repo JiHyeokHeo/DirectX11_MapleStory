@@ -21,7 +21,7 @@ namespace jns
 		MeshRenderer* mr;
 		Transform* tr; 
 		Vector2 mSize; 
-		float mTextureRatio;
+		Vector2 mTextureRatio;
 	};
 }
 

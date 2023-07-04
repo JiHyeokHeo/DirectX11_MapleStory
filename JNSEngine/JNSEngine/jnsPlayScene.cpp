@@ -11,7 +11,6 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-	/*	Main Camera*/
 		CreateMainCamera();
 		CreateUICamera();
 	}
@@ -41,6 +40,7 @@ namespace jns
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
 	}
+
 	void PlayScene::CreateUICamera()
 	{
 		GameObject* uicamera = new GameObject();
@@ -52,6 +52,7 @@ namespace jns
 		uicameraComp->TurnLayerMask(eLayerType::BG, false);
 		//uicamera->AddComponent<CameraScript>();
 	}
+
 	void PlayScene::CreatePlayerUI()
 	{
 		// NoMove UI
@@ -73,5 +74,14 @@ namespace jns
 		AddGameObject(eLayerType::UI, centerStatusUI);
 		centerStatusUI->Initialize();
 
+		HpBar* centerStatusHpUI = new HpBar();
+		AddGameObject(eLayerType::UI, centerStatusHpUI);
+		centerStatusHpUI->Initialize();
+	
+		MpBar* centerStatusMpUI = new MpBar();
+		AddGameObject(eLayerType::UI, centerStatusMpUI);
+		centerStatusMpUI->Initialize();
+
+		//SetParent(centerStatusMpUI, centerStatusHpUI);
 	}
 }

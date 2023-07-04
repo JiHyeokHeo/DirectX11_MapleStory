@@ -27,19 +27,21 @@ namespace jns::graphics
 		
 		Vector2 GetTextureSize() { return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); }
 		
-		float GetTextureRatio() 
+		Vector2 GetTextureRatio() 
 		{
 			mWidth = mImage.GetMetadata().width;
 			mHeight = mImage.GetMetadata().height;
 			if (mWidth > mHeight)
 			{
-				
+				mRatio.x = 1.0f;
+				mRatio.y = mHeight / mWidth;
 			}
 			else
 			{
-
-			}
-			return float(mImage.GetMetadata().width / mImage.GetMetadata().height); 
+				mRatio.x = mHeight / mWidth;
+				mRatio.y = 1.0f;
+			}	
+			return mRatio;
 		}
 		
 	private:
@@ -49,7 +51,8 @@ namespace jns::graphics
 		D3D11_TEXTURE2D_DESC mDesc;
 
 
-		int mWidth;
-		int mHeight;
+		float mWidth;
+		float mHeight;
+		Vector2 mRatio;
 	};
 }

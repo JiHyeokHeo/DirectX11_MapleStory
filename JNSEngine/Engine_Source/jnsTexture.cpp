@@ -69,19 +69,4 @@ namespace jns::graphics
 		GetDevice()->BindShaderResource(eShaderStage::CS, 0, &srv);
 		GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
 	}
-	//Vector3 Texture::GetRatio()
-	//{
-	//	if (mWidth > mHeight)
-	//	{
-	//		return Vector3(mWidth / mHeight, 1.0f, 1.0f);
-	//	}
-	//	else if (mWidth < mHeight)
-	//	{
-	//		return Vector3(1.0f, mHeight / mWidth, 1.0f);
-	//	}
-	//	else if (mWidth == mHeight)
-	//	{
-	//		return Vector3(1.0f, 1.0f, 1.0f);
-	//	}
-	//}
 }

@@ -309,10 +309,12 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
 		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, spriteShader);
+		 HpBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
 
-		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", MpBar_Texture);
+		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\MpBar.png", MpBar_Texture);
 		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, spriteShader);
+		 MpBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"MpBarMaterial", MpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"Option", L"..\\Resources\\UI\\Status\\OptionBar.png", OptionBar_UI_Texture);
@@ -325,6 +327,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
 		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
+		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 
