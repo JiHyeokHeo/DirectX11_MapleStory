@@ -173,7 +173,9 @@
     <ClInclude Include="jnsRutabysScene.h" />
     <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
+    <ClInclude Include="jnsSkillExtentionSlot.h" />
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
+    <ClInclude Include="jnsSkillQuickSlotFront.h" />
     <ClInclude Include="jnstestScript.h" />
     <ClInclude Include="jnsUIBase.h" />
     <ClInclude Include="jnsWorldSelectBG.h" />
@@ -203,7 +205,9 @@
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
+    <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
+    <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
     <ClCompile Include="jnsUIBase.cpp" />
     <ClCompile Include="jnsWorldSelectBG.cpp" />

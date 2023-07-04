@@ -12,18 +12,18 @@ namespace jns
 	void RutabysScene::Initialize()
 	{
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
-		{
+		//{
 
-			GameObject* player = new GameObject();
-			player->SetName(L"Zelda");
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
-			//player->AddComponent<ExpBarMoveScript>();
-		}
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Zelda");
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+		//	//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
+		//	//player->AddComponent<ExpBarMoveScript>();
+		//}
 
 		//Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		{
@@ -36,7 +36,7 @@ namespace jns
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
 			player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
-			player->AddComponent<testScript>();
+			//player->AddComponent<testScript>();
 			//player->AddComponent<CameraScript>();
 		}
 

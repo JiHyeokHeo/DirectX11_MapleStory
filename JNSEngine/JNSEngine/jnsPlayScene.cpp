@@ -53,15 +53,21 @@ namespace jns
 		// 1600 x 900 Display Resolution
 		object::InstantiateUIandBG<ExpBar>(eLayerType::UI);
 		object::InstantiateUIandBG<ExpMaxBar>(eLayerType::UI);
-		object::InstantiateUIandBG<SkillQuickSlotBackUI>(eLayerType::UI);
-		
+
+		// Slot
+		GameObject* mSkillSlotBack= object::InstantiateUIandBG<SkillQuickSlotBackUI>(eLayerType::UI);
+		GameObject* mSkillSlotFront = object::InstantiateUIandBG<SkillQuickSlotFront>(eLayerType::UI);
+		GameObject* mSkillExtensionSlot = object::InstantiateUIandBG<SkillExtentionSlot>(eLayerType::UI);
+		mSkillSlotFront->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
+		mSkillExtensionSlot->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
+
+		// Status
 		GameObject* mStatus = object::InstantiateUIandBG<CenterStatus>(eLayerType::UI);
 		GameObject* mHpBar= object::InstantiateUIandBG<HpBar>(eLayerType::UI);
-		mHpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		GameObject* mMpBar = object::InstantiateUIandBG<MpBar>(eLayerType::UI);
+		mHpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		mMpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		
-		
-		
+		//
 	}
 }

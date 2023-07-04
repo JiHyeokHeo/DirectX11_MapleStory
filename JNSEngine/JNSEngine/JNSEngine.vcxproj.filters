@@ -74,6 +74,12 @@
     <ClCompile Include="jnsMpBar.cpp">
       <Filter>Contents\UI\Status\MpBar</Filter>
     </ClCompile>
+    <ClCompile Include="jnsSkillQuickSlotFront.cpp">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotFront</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsSkillExtentionSlot.cpp">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotExtension</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -160,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="ObjectTemplate.h">
       <Filter>Contents\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsSkillQuickSlotFront.h">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotFront</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsSkillExtentionSlot.h">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotExtension</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -35,9 +35,9 @@ VSOut main(VSIn In)
     
     Out.Pos = proj;
     Out.Color = In.Color;
-    Out.UV = float2(In.UV.x * 0.5f, In.UV.y);
+    Out.UV = float2(In.UV.x * 0.5f, In.UV.y * 0.5f);
     
-    Out.Pos.x /= 2.0f;
+    //Out.Pos.x /= 2.0f;
     
     
     // test

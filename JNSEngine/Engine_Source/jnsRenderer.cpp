@@ -291,7 +291,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
 		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, moveShader);
-		 ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
 		 // status
@@ -301,10 +301,12 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"SkillQuickSlotFrontLayer", L"..\\Resources\\UI\\Status\\SkillQuickSlotFrontLayer.png", SkillQuickSlotFrontLayer_UI_Texture);
 		 SET_MATERIAL(SkillQuickSlotFrontLayer_UI_Material, SkillQuickSlotFrontLayer_UI_Texture, spriteShader);
+		 SkillQuickSlotFrontLayer_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SkillQuickSlotFrontMaterial", SkillQuickSlotFrontLayer_UI_Material);
 
 		 LOAD_TEXTURE(L"SkillSlotExtension", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", SkillSlotExtension_UI_Texture);
 		 SET_MATERIAL(SkillSlotExtension_UI_Material, SkillSlotExtension_UI_Texture, spriteShader);
+		 SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);

@@ -21,6 +21,8 @@
 #include "jnsCenterStatus.h"
 #include "jnsHpBar.h"
 #include "jnsMpBar.h"
+#include "jnsSkillQuickSlotFront.h"
+#include "jnsSkillExtentionSlot.h"
 
 // Component
 #include "jnsTransform.h"
