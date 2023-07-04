@@ -285,12 +285,13 @@ namespace renderer
 
 #pragma region UI
 		 // exp 
-		 LOAD_TEXTURE(L"ExpBar", L"..\\Resources\\UI\\Status\\ExpBar.png", ExpBar_UI_Texture);
+		 LOAD_TEXTURE(L"ExpBar", L"..\\Resources\\UI\\Status\\ExpBar.png", ExpBar_UI_Texture); // Èò»ö Åõ¸í
 		 SET_MATERIAL(ExpBar_UI_Material, ExpBar_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"ExpBarUIMaterial", ExpBar_UI_Material);
 
-		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture);
-		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, spriteShader);
+		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
+		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, moveShader);
+		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
 		 // status
@@ -354,13 +355,6 @@ namespace renderer
 		 LoadShader();
 		 SetupState();
 
-	/*	 std::shared_ptr<Texture> texture
-			 = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-		 texture
-			 = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
-
-
-		 texture->BindShader(eShaderStage::PS, 0);*/
 	 }
 
 	 void Render()

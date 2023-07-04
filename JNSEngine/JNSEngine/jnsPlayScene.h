@@ -16,8 +16,10 @@ namespace jns
 		virtual void Render() override;
 
 	
-	private:
+
+	protected:
 		void CreateMainCamera();
 		void CreateUICamera();
+		void CreatePlayerUI();
 	};
 }

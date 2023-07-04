@@ -62,6 +62,18 @@
     <ClCompile Include="jnsExpBarMoveScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsSkillQuickSlotBackUI.cpp">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotBack</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsHpBar.cpp">
+      <Filter>Contents\UI\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsCenterStatus.cpp">
+      <Filter>Contents\UI\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsMpBar.cpp">
+      <Filter>Contents\UI\Status</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -127,6 +139,24 @@
     </ClInclude>
     <ClInclude Include="jnsExpBarMoveScript.h">
       <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonUIInclude.h">
+      <Filter>Contents\UI\Common_UI_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonSceneInclude.h">
+      <Filter>Contents\Scenes\Common_Scene_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsSkillQuickSlotBackUI.h">
+      <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotBack</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsHpBar.h">
+      <Filter>Contents\UI\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsCenterStatus.h">
+      <Filter>Contents\UI\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsMpBar.h">
+      <Filter>Contents\UI\Status</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +246,12 @@
     </Filter>
     <Filter Include="Contents\UI\Status">
       <UniqueIdentifier>{d0423d8f-d317-49d9-b0ba-f5d7b13bb161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Common_UI_Include">
+      <UniqueIdentifier>{71a0510d-f333-4623-92f7-27cea89bdaad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\Common_Scene_Include">
+      <UniqueIdentifier>{6f016909-143a-474d-8b90-d1b3fb5f06c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

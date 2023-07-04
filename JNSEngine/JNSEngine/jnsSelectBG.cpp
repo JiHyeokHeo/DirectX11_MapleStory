@@ -15,9 +15,10 @@ namespace jns
 		mr = GetComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SelectBGMaterial"));
+		mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		tr->SetScale(Vector3(7.0f, 4.5f, 0.0f));
+		tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
+		tr->SetScale(Vector3(mSize.x / 170, mSize.y / 170, 1.0f));
 
 		BGBase::Initialize();
 	}

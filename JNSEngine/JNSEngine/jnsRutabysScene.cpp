@@ -1,14 +1,5 @@
 #include "jnsRutabysScene.h"
-#include "jnsTransform.h"
-#include "jnsCamera.h"
-#include "jnsCameraScript.h"
-#include "jnsInput.h"
-#include "jnsSceneManager.h"
-#include "jnsRutabysMain.h"
-#include "jnsResources.h"
-#include "jnstestScript.h"
-#include "jnsExpMaxBar.h"
-#include "jnsExpBarMoveScript.h"
+#include "CommonSceneInclude.h"
 
 namespace jns
 {
@@ -21,33 +12,34 @@ namespace jns
 	void RutabysScene::Initialize()
 	{
 		//// Test
-		//{
+		////{
 			GameObject* player = new GameObject();
 			player->SetName(L"Zelda");
 			AddGameObject(eLayerType::Player, player);
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
 			player->AddComponent<ExpBarMoveScript>();
 
-		//	GameObject* player2 = new GameObject();
-		//	player2->SetName(L"ZeldaChild");
-		//	AddGameObject(eLayerType::Player, player2);
-		//	MeshRenderer* mr2 = player2->AddComponent<MeshRenderer>();
-		//	mr2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr2->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-		//	player2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 1.0001f));
+		////	GameObject* player2 = new GameObject();
+		////	player2->SetName(L"ZeldaChild");
+		////	AddGameObject(eLayerType::Player, player2);
+		////	MeshRenderer* mr2 = player2->AddComponent<MeshRenderer>();
+		////	mr2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		////	mr2->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+		////	player2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 1.0001f));
 
-		//	player2->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
-		//	//player->AddComponent<CameraScript>();
+		////	player2->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
+		////	//player->AddComponent<CameraScript>();
 
-		//	const float pi = 3.141592f;
-		//	float degree = pi / 2.0f;
+		////	const float pi = 3.141592f;
+		////	float degree = pi / 2.0f;
 
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(-3.0f, 0.0f, 1.0001f));
-		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, degree));
-		//}
+		////	player->GetComponent<Transform>()->SetPosition(Vector3(-3.0f, 0.0f, 1.0001f));
+		////	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, degree));
+		////}
 
 		{
 			GameObject* player = new GameObject();
@@ -58,6 +50,7 @@ namespace jns
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 			player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
 			player->AddComponent<testScript>();
 			//player->AddComponent<CameraScript>();
 		}
@@ -73,14 +66,14 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
-		ExpMaxBar* maxBarUI = new ExpMaxBar();
-		maxBarUI->AddComponent<testScript>();
-		AddGameObject(eLayerType::UI, maxBarUI);
-		maxBarUI->Initialize();
-
+		// NoMove BackGround
 		RutabysMain* rutabysMainBG = new RutabysMain();
 		AddGameObject(eLayerType::BG, rutabysMainBG);
 		rutabysMainBG->Initialize();
+
+		CreatePlayerUI();
+
+
 
 		//GameObject* maincamera = new GameObject();
 		//AddGameObject(eLayerType::Player, maincamera);

@@ -25,8 +25,23 @@ namespace jns::graphics
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
 		
-		//Vector3 GetRatio();
+		Vector2 GetTextureSize() { return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); }
+		
+		float GetTextureRatio() 
+		{
+			mWidth = mImage.GetMetadata().width;
+			mHeight = mImage.GetMetadata().height;
+			if (mWidth > mHeight)
+			{
+				
+			}
+			else
+			{
 
+			}
+			return float(mImage.GetMetadata().width / mImage.GetMetadata().height); 
+		}
+		
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;
@@ -34,7 +49,7 @@ namespace jns::graphics
 		D3D11_TEXTURE2D_DESC mDesc;
 
 
-		//int mWidth;
-		//int mHeight;
+		int mWidth;
+		int mHeight;
 	};
 }

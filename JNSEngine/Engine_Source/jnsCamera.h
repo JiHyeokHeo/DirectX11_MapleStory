@@ -20,7 +20,6 @@ namespace jns
 
 		Camera();
 		~Camera();
-	
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -44,6 +43,8 @@ namespace jns
 
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
+
+		void SetCameraSize(float size) { mSize = size; }
 
 	private:
 		static Matrix View;

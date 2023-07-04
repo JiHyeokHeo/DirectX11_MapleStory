@@ -1,6 +1,5 @@
 #include "jnsExpMaxBar.h"
-#include "jnsResources.h"
-#include "jnsTransform.h"
+#include "CommonUIInclude.h"
 
 namespace jns
 {
@@ -16,8 +15,8 @@ namespace jns
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"ExpMaxBarMaterial"));
 		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, -2.2f, 4.0f));
-		tr->SetScale(Vector3(8.0f, 0.05f, 1.0f));
+		tr->SetPosition(Vector3(0.05f, -2.2f, 4.0f));
+		tr->SetScale(Vector3(7.95f, 0.05f, 1.0f));
 
 		UIBase::Initialize();
 	}

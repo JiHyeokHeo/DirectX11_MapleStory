@@ -1,10 +1,5 @@
 #include "jnsCharactorMakeScene.h"
-#include "jnsTransform.h"
-#include "jnsCamera.h"
-#include "jnsCameraScript.h"
-#include "jnsInput.h"
-#include "jnsSceneManager.h"
-#include "jnsCharactorMakeBG.h"
+#include "CommonSceneInclude.h"
 
 namespace jns
 {

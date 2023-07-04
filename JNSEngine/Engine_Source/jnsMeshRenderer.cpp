@@ -14,6 +14,10 @@ namespace jns
 	}
 	void MeshRenderer::Initialize()
 	{
+		//Vector2 mScale = mMaterial->GetTexture()->GetTextureSize();
+		//Transform* tr = GetOwner()->GetComponent<Transform>();
+
+		//tr->SetScale(mScale.x, mScale.y, 1.0f);
 	}
 	void MeshRenderer::Update()
 	{

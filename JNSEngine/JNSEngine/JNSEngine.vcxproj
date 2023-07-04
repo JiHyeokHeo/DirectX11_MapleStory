@@ -153,46 +153,56 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsCameraScript.h" />
+    <ClInclude Include="jnsCenterStatus.h" />
     <ClInclude Include="jnsCharactorMakeBG.h" />
     <ClInclude Include="jnsCharactorMakeScene.h" />
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
+    <ClInclude Include="jnsHpBar.h" />
     <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
+    <ClInclude Include="jnsMpBar.h" />
     <ClInclude Include="jnsPlayScene.h" />
     <ClInclude Include="jnsRutabysBossBG.h" />
     <ClInclude Include="jnsRutabysMain.h" />
     <ClInclude Include="jnsRutabysScene.h" />
     <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
+    <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnstestScript.h" />
     <ClInclude Include="jnsUIBase.h" />
     <ClInclude Include="jnsWorldSelectBG.h" />
     <ClInclude Include="jnsWorldSelectScene.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="jnsRutabysBossScene.h" />
+    <ClInclude Include="CommonUIInclude.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsCameraScript.cpp" />
+    <ClCompile Include="jnsCenterStatus.cpp" />
     <ClCompile Include="jnsCharactorMakeBG.cpp" />
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
+    <ClCompile Include="jnsHpBar.cpp" />
     <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
+    <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
     <ClCompile Include="jnsRutabysBossBG.cpp" />
     <ClCompile Include="jnsRutabysMain.cpp" />
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
+    <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
     <ClCompile Include="jnsUIBase.cpp" />
     <ClCompile Include="jnsWorldSelectBG.cpp" />
