@@ -45,7 +45,7 @@ namespace renderer
 		 arrLayout[2].SemanticIndex = 0;
 		 
 		 
-		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"TriangleShader");
+		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"halfshaderShader");
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
@@ -219,10 +219,10 @@ namespace renderer
 
 	 void LoadShader()
 	 {
-		 std::shared_ptr<Shader> shader = std::make_shared<Shader>();
-		 shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
-		 shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
-		 jns::Resources::Insert(L"TriangleShader", shader);
+		 std::shared_ptr<Shader> halfshader = std::make_shared<Shader>();
+		 halfshader->Create(eShaderStage::VS, L"MoveVS.hlsl", "main");
+		 halfshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		 jns::Resources::Insert(L"halfshaderShader", halfshader);
 
 		 std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
 		 spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
@@ -230,7 +230,7 @@ namespace renderer
 		 jns::Resources::Insert(L"SpriteShader", spriteShader);
 
 		 std::shared_ptr<Shader> moveShader = std::make_shared<Shader>();
-		 moveShader->Create(eShaderStage::VS, L"MoveVS.hlsl", "main");
+		 moveShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		 moveShader->Create(eShaderStage::PS, L"MovePS.hlsl", "main");
 		 jns::Resources::Insert(L"MoveShader", moveShader);
 
@@ -246,7 +246,7 @@ namespace renderer
 		
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
-		 SET_MATERIAL(spriteMaterial, texture, spriteShader);
+		 SET_MATERIAL(spriteMaterial, texture, halfshader);
 		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
 
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);

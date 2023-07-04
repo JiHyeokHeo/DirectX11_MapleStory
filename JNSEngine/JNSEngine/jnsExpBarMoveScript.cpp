@@ -16,6 +16,7 @@ namespace jns
 	}
 	void ExpBarMoveScript::Update()
 	{
+		mTime += Time::DeltaTime();
 	}
 	void ExpBarMoveScript::LateUpdate()
 	{

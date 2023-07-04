@@ -54,6 +54,7 @@ namespace jns
 		uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* uicameraComp = uicamera->AddComponent<Camera>();
 		uicameraComp->TurnLayerMask(eLayerType::Player, false);
+		uicameraComp->TurnLayerMask(eLayerType::BG, false);
 		//camera->AddComponent<CameraScript>();
 	}
 }

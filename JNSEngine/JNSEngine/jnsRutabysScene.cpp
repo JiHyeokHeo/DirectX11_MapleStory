@@ -8,6 +8,7 @@
 #include "jnsResources.h"
 #include "jnstestScript.h"
 #include "jnsExpMaxBar.h"
+#include "jnsExpBarMoveScript.h"
 
 namespace jns
 {
@@ -21,14 +22,14 @@ namespace jns
 	{
 		//// Test
 		//{
-			//GameObject* player = new GameObject();
-			//player->SetName(L"Zelda");
-			//AddGameObject(eLayerType::Player, player);
-			//MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			//mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-			//player->AddComponent<CameraScript>();
+			GameObject* player = new GameObject();
+			player->SetName(L"Zelda");
+			AddGameObject(eLayerType::Player, player);
+			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
+			player->AddComponent<ExpBarMoveScript>();
 
 		//	GameObject* player2 = new GameObject();
 		//	player2->SetName(L"ZeldaChild");
