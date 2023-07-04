@@ -291,7 +291,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
 		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, moveShader);
-		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
 		 // status
@@ -309,12 +309,12 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
 		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, spriteShader);
-		 HpBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\MpBar.png", MpBar_Texture);
 		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, spriteShader);
-		 MpBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 //MpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"MpBarMaterial", MpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"Option", L"..\\Resources\\UI\\Status\\OptionBar.png", OptionBar_UI_Texture);

@@ -17,8 +17,8 @@ namespace jns
 
 		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
 		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.065f, -2.06f, 4.2f));
-		tr->SetScale(Vector3(mTextureRatio.x * 1.247f, mTextureRatio.y * 1.247f, 1.0f));
+		tr->SetPosition(Vector3(0.0f, -0.2, 0.1f));
+		tr->SetScale(Vector3(mTextureRatio.x * 0.9f, mTextureRatio.y * 1.25f, 1.0f));
 		
 		UIBase::Initialize();
 	}

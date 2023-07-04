@@ -44,7 +44,6 @@ namespace jns
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
 
-		void SetCameraSize(float size) { mSize = size; }
 
 	private:
 		static Matrix View;
@@ -63,5 +62,7 @@ namespace jns
 		std::vector<GameObject*> mOpaqueGameObjects;
 		std::vector<GameObject*> mCutOutGameObjects;
 		std::vector<GameObject*> mTransparentGameObjects;
+
+		GameObject* mTarget;
 	};
 }

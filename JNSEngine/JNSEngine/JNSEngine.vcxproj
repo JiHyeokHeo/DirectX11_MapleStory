@@ -181,6 +181,7 @@
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="jnsRutabysBossScene.h" />
     <ClInclude Include="CommonUIInclude.h" />
+    <ClInclude Include="ObjectTemplate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jnsBGBase.cpp" />

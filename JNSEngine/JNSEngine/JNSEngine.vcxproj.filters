@@ -65,14 +65,14 @@
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp">
       <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotBack</Filter>
     </ClCompile>
-    <ClCompile Include="jnsHpBar.cpp">
-      <Filter>Contents\UI\Status</Filter>
-    </ClCompile>
     <ClCompile Include="jnsCenterStatus.cpp">
-      <Filter>Contents\UI\Status</Filter>
+      <Filter>Contents\UI\Status\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsHpBar.cpp">
+      <Filter>Contents\UI\Status\HpBar</Filter>
     </ClCompile>
     <ClCompile Include="jnsMpBar.cpp">
-      <Filter>Contents\UI\Status</Filter>
+      <Filter>Contents\UI\Status\MpBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,14 +149,17 @@
     <ClInclude Include="jnsSkillQuickSlotBackUI.h">
       <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotBack</Filter>
     </ClInclude>
-    <ClInclude Include="jnsHpBar.h">
-      <Filter>Contents\UI\Status</Filter>
-    </ClInclude>
     <ClInclude Include="jnsCenterStatus.h">
-      <Filter>Contents\UI\Status</Filter>
+      <Filter>Contents\UI\Status\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsHpBar.h">
+      <Filter>Contents\UI\Status\HpBar</Filter>
     </ClInclude>
     <ClInclude Include="jnsMpBar.h">
-      <Filter>Contents\UI\Status</Filter>
+      <Filter>Contents\UI\Status\MpBar</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTemplate.h">
+      <Filter>Contents\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +255,18 @@
     </Filter>
     <Filter Include="Contents\Scenes\Common_Scene_Include">
       <UniqueIdentifier>{6f016909-143a-474d-8b90-d1b3fb5f06c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Status\Status">
+      <UniqueIdentifier>{ea109b0d-a33a-4323-9906-7f445d754042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Status\HpBar">
+      <UniqueIdentifier>{adc49d43-3898-4ef7-8dfe-b820da992a48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Status\MpBar">
+      <UniqueIdentifier>{065f278a-a7b9-4f97-bd39-b78ebfdffa2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{d19b53d9-0d61-451d-bce3-792120a28bf2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

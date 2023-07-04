@@ -32,56 +32,36 @@ namespace jns
 
 	void PlayScene::CreateMainCamera()
 	{
-		GameObject* maincamera = new GameObject();
-		AddGameObject(eLayerType::Player, maincamera);
+		GameObject* maincamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* maincameraComp = maincamera->AddComponent<Camera>();
-		//maincameraComp->SetCameraSize(2.5f);
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
 	}
 
 	void PlayScene::CreateUICamera()
 	{
-		GameObject* uicamera = new GameObject();
-		AddGameObject(eLayerType::Player, uicamera);
+		GameObject* uicamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* uicameraComp = uicamera->AddComponent<Camera>();
-
 		uicameraComp->TurnLayerMask(eLayerType::Player, false);
 		uicameraComp->TurnLayerMask(eLayerType::BG, false);
-		//uicamera->AddComponent<CameraScript>();
 	}
 
 	void PlayScene::CreatePlayerUI()
 	{
-		// NoMove UI
-		ExpBar* expBarUI = new ExpBar();
-		//expBarUI->AddComponent<testScript>();
-		AddGameObject(eLayerType::UI, expBarUI);
-		expBarUI->Initialize();
-
-		ExpMaxBar* maxBarUI = new ExpMaxBar();
-		maxBarUI->AddComponent<testScript>();
-		AddGameObject(eLayerType::UI, maxBarUI);
-		maxBarUI->Initialize();
+		// 1600 x 900 Display Resolution
+		object::InstantiateUIandBG<ExpBar>(eLayerType::UI);
+		object::InstantiateUIandBG<ExpMaxBar>(eLayerType::UI);
+		object::InstantiateUIandBG<SkillQuickSlotBackUI>(eLayerType::UI);
 		
-		SkillQuickSlotBackUI* skillSlotUI = new SkillQuickSlotBackUI();
-		AddGameObject (eLayerType::UI, skillSlotUI);
-		skillSlotUI->Initialize();
+		GameObject* mStatus = object::InstantiateUIandBG<CenterStatus>(eLayerType::UI);
+		GameObject* mHpBar= object::InstantiateUIandBG<HpBar>(eLayerType::UI);
+		mHpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
+		GameObject* mMpBar = object::InstantiateUIandBG<MpBar>(eLayerType::UI);
+		mMpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		
-		CenterStatus* centerStatusUI = new CenterStatus();
-		AddGameObject(eLayerType::UI, centerStatusUI);
-		centerStatusUI->Initialize();
-
-		HpBar* centerStatusHpUI = new HpBar();
-		AddGameObject(eLayerType::UI, centerStatusHpUI);
-		centerStatusHpUI->Initialize();
-	
-		MpBar* centerStatusMpUI = new MpBar();
-		AddGameObject(eLayerType::UI, centerStatusMpUI);
-		centerStatusMpUI->Initialize();
-
-		//SetParent(centerStatusMpUI, centerStatusHpUI);
+		
+		
 	}
 }

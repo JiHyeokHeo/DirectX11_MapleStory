@@ -20,6 +20,7 @@ namespace jns
 		tr->SetPosition(Vector3(0.0f, -1.95f, 4.3f));
 		tr->SetScale(Vector3(mTextureRatio.x * 1.5f, mTextureRatio.y * 1.5f, 1.0f));
 
+		
 		UIBase::Initialize();
 	}
 	void CenterStatus::Update()

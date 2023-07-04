@@ -11,8 +11,9 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
-		//// Test
-		////{
+		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
+		{
+
 			GameObject* player = new GameObject();
 			player->SetName(L"Zelda");
 			AddGameObject(eLayerType::Player, player);
@@ -21,26 +22,10 @@ namespace jns
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
-			player->AddComponent<ExpBarMoveScript>();
+			//player->AddComponent<ExpBarMoveScript>();
+		}
 
-		////	GameObject* player2 = new GameObject();
-		////	player2->SetName(L"ZeldaChild");
-		////	AddGameObject(eLayerType::Player, player2);
-		////	MeshRenderer* mr2 = player2->AddComponent<MeshRenderer>();
-		////	mr2->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		////	mr2->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-		////	player2->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 1.0001f));
-
-		////	player2->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
-		////	//player->AddComponent<CameraScript>();
-
-		////	const float pi = 3.141592f;
-		////	float degree = pi / 2.0f;
-
-		////	player->GetComponent<Transform>()->SetPosition(Vector3(-3.0f, 0.0f, 1.0001f));
-		////	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, degree));
-		////}
-
+		//Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		{
 			GameObject* player = new GameObject();
 			player->SetName(L"Smile");
@@ -54,33 +39,11 @@ namespace jns
 			player->AddComponent<testScript>();
 			//player->AddComponent<CameraScript>();
 		}
-		
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.2f, 0.0f, 0.0f));
-		//	//player->AddComponent<CameraScript>();
-		//}
 
 		// NoMove BackGround
-		RutabysMain* rutabysMainBG = new RutabysMain();
-		AddGameObject(eLayerType::BG, rutabysMainBG);
-		rutabysMainBG->Initialize();
+		object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 
 		CreatePlayerUI();
-
-
-
-		//GameObject* maincamera = new GameObject();
-		//AddGameObject(eLayerType::Player, maincamera);
-		//maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		//Camera* maincameraComp = maincamera->AddComponent<Camera>();
-		//maincameraComp->TurnLayerMask(eLayerType::UI, false);
-		//maincamera->AddComponent<CameraScript>();
 
 		PlayScene::Initialize();
 	}

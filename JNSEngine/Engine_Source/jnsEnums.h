@@ -19,6 +19,7 @@ namespace jns::enums
 		Player,
 		Monster,
 		UI,
+		Camera,
 		End,
 	};
 

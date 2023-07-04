@@ -32,3 +32,7 @@
 // Resources
 #include "jnsResources.h"
 #include "jnsMesh.h"
+
+
+// Instantiate Template
+#include "ObjectTemplate.h"

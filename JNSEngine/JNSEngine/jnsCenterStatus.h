@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsUIBase.h"
 
+
 namespace jns
 {
 	class CenterStatus : public UIBase
@@ -15,7 +16,6 @@ namespace jns
 		virtual void Render() override;
 
 	private:
-
 	};
 }
 
