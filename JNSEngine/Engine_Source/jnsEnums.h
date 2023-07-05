@@ -15,6 +15,7 @@ namespace jns::enums
 
 	enum class eLayerType
 	{
+		Grid,
 		BG,
 		Player,
 		Monster,

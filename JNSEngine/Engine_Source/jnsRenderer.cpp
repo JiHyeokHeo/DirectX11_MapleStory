@@ -61,6 +61,12 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"GridShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -181,6 +187,26 @@ namespace renderer
 
 	 }
 
+	 void LoadMesh()
+	 {
+		 //RECT
+		 vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		 vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		 vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		 vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		 vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		 vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		 vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		 vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		 vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		 vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		 vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		 vertexes[3].uv = Vector2(0.0f, 1.0f);
+	 }
+
 	 void LoadBuffer()
 	 {
 		 // Vertex Buffer
@@ -207,6 +233,10 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Move] = new ConstantBuffer(eCBType::Move);
 		 constantBuffer[(UINT)eCBType::Move]->Create(sizeof(Vector4));
 
+		 // Grid Buffer
+		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
+		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
+
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
 		 //colorConstanttBuffer->Create(sizeof(Vector4));
@@ -222,7 +252,7 @@ namespace renderer
 		 std::shared_ptr<Shader> halfshader = std::make_shared<Shader>();
 		 halfshader->Create(eShaderStage::VS, L"MoveVS.hlsl", "main");
 		 halfshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
-		 jns::Resources::Insert(L"halfshaderShader", halfshader);
+		 jns::Resources::Insert(L"halfShader", halfshader);
 
 		 std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
 		 spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
@@ -234,6 +264,10 @@ namespace renderer
 		 moveShader->Create(eShaderStage::PS, L"MovePS.hlsl", "main");
 		 jns::Resources::Insert(L"MoveShader", moveShader);
 
+		 std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
+		 gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
+		 gridShader->Create(eShaderStage::PS, L"GridVS.hlsl", "main");
+		 jns::Resources::Insert(L"GridShader", gridShader);
 
 		 //{
 			// std::shared_ptr<Texture> texture
@@ -244,6 +278,21 @@ namespace renderer
 			// Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
 		 //}
 		
+
+
+	 }
+
+	 void LoadMaterial()
+	 {
+		 std::shared_ptr<Shader> spriteShader
+			 = Resources::Find<Shader>(L"SpriteShader");
+		 std::shared_ptr<Shader> halfshader
+			 = Resources::Find<Shader>(L"halfShader");
+		 std::shared_ptr<Shader> moveShader
+			 = Resources::Find<Shader>(L"MoveShader");
+		 std::shared_ptr<Shader> gridShader
+			 = Resources::Find<Shader>(L"GridShader");
+
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
 		 SET_MATERIAL(spriteMaterial, texture, halfshader);
@@ -252,7 +301,7 @@ namespace renderer
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
 		 SET_MATERIAL(spriteMaterial1, texture1, moveShader);
 		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
-		 INSERT_MATERIAL(L"SpriteMaterial02" ,spriteMaterial1);
+		 INSERT_MATERIAL(L"SpriteMaterial02", spriteMaterial1);
 #pragma endregion
 
 #pragma region BackGround
@@ -267,7 +316,7 @@ namespace renderer
 		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", Login_BG_Texture);
 		 SET_MATERIAL(Login_BG_Material, Login_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"LoginBGMaterial", Login_BG_Material);
-	
+
 		 LOAD_TEXTURE(L"SelectBG", L"..\\Resources\\Map\\Select_BG.png", Select_BG_Texture);
 		 SET_MATERIAL(Select_BG_Material, Select_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"SelectBGMaterial", Select_BG_Material);
@@ -279,7 +328,7 @@ namespace renderer
 		 LOAD_TEXTURE(L"RutabysBossBG", L"..\\Resources\\Map\\Rutabys\\rutabys_boss.png", RutaBoss_BG_Texture);
 		 SET_MATERIAL(RutaBoss_BG_Material, RutaBoss_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"RutabysBossBGMaterial", RutaBoss_BG_Material);
-		
+
 
 #pragma endregion
 
@@ -322,7 +371,7 @@ namespace renderer
 		 LOAD_TEXTURE(L"Option", L"..\\Resources\\UI\\Status\\OptionBar.png", OptionBar_UI_Texture);
 		 SET_MATERIAL(OptionBar_UI_Material, OptionBar_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"OptionBarMaterial", OptionBar_UI_Material);
-		 
+
 		 LOAD_TEXTURE(L"Sound", L"..\\Resources\\UI\\Status\\SoundBar.png", SoundBar_UI_Texture);
 		 SET_MATERIAL(SoundBar_UI_Material, SoundBar_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"SoundBarMaterial", SoundBar_UI_Material);
@@ -335,31 +384,15 @@ namespace renderer
 
 #pragma endregion
 
-
 	 }
 
 	 void Initialize()
 	 {
-		 vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		 vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		 vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		 vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		 vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		 vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		 vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		 vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		 vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		 vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		 vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		 vertexes[3].uv = Vector2(0.0f, 1.0f);
-
+		 LoadMesh();
 		 LoadBuffer();
 		 LoadShader();
 		 SetupState();
-
+		 LoadMaterial();
 	 }
 
 	 void Render()
