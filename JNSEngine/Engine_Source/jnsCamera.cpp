@@ -37,6 +37,7 @@ namespace jns
 		, mView(Matrix::Identity)
 		, mProjection(Matrix::Identity)
 		, mTarget(nullptr)
+		
 	{
 		EnableLayerMasks();
 	}
@@ -51,7 +52,7 @@ namespace jns
 	{
 	}
 	void Camera::LateUpdate()
-	{
+	{	
 		CreateViewMatrix();
 		CreateProjectionMatrix(mType);
 		RegisterCameraInRenderer();
@@ -74,6 +75,7 @@ namespace jns
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
+		
 
 		// View Translate Matrix
 		mView = Matrix::Identity;

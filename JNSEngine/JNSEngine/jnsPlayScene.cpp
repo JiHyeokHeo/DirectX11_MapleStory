@@ -67,7 +67,25 @@ namespace jns
 		GameObject* mMpBar = object::InstantiateUIandBG<MpBar>(eLayerType::UI);
 		mHpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		mMpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
-		
-		//
 	}
+
+	void PlayScene::CreateCursor()
+	{
+		object::InstantiateUIandBG<Cursor>(eLayerType::Cursor);
+	}
+
+	void PlayScene::CreateInventory()
+	{
+		GameObject* mShopSlotBackBase = object::InstantiateUIandBG<ShopSlotBack>(eLayerType::UI);
+		GameObject* mShopSlotBack02 = object::InstantiateUIandBG<ShopSlotBack2>(eLayerType::UI);
+		GameObject* mShopSlotBack03 = object::InstantiateUIandBG<ShopSlotBack3>(eLayerType::UI);
+
+
+		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());
+		mShopSlotBack03->GetComponent<Transform>()->SetParent(mShopSlotBack02->GetComponent<Transform>());
+	
+	}	
+
+
+
 }

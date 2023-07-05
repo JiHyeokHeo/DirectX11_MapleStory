@@ -21,6 +21,7 @@ namespace jns::enums
 		Monster,
 		UI,
 		Camera,
+		Cursor,
 		End,
 	};
 

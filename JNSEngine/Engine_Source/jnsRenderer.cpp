@@ -355,7 +355,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"SkillSlotExtension", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", SkillSlotExtension_UI_Texture);
 		 SET_MATERIAL(SkillSlotExtension_UI_Material, SkillSlotExtension_UI_Texture, spriteShader);
-		 SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 //SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
@@ -382,6 +382,25 @@ namespace renderer
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 
+		 // Shop
+		 LOAD_TEXTURE(L"ShopBackGround", L"..\\Resources\\UI\\ShopUI\\UIWindow2.img.Shop2.backgrnd.png", ShopBackGround_UI_Texture);
+		 SET_MATERIAL(ShopBackGround_UI_Material, ShopBackGround_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"ShopBackGroundMaterial", ShopBackGround_UI_Material);
+
+		 LOAD_TEXTURE(L"ShopBackGround2", L"..\\Resources\\UI\\ShopUI\\UIWindow2.img.Shop2.backgrnd2.png", ShopBackGround2_UI_Texture);
+		 SET_MATERIAL(ShopBackGround2_UI_Material, ShopBackGround2_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"ShopBackGround2Material", ShopBackGround2_UI_Material);
+
+		 LOAD_TEXTURE(L"ShopBackGround3", L"..\\Resources\\UI\\ShopUI\\UIWindow2.img.Shop2.backgrnd3.png", ShopBackGround3_UI_Texture);
+		 SET_MATERIAL(ShopBackGround3_UI_Material, ShopBackGround3_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"ShopBackGround3Material", ShopBackGround3_UI_Material);
+
+#pragma endregion
+
+#pragma region Cursor
+		 LOAD_TEXTURE(L"CursorSpirte0", L"..\\Resources\\UI\\CursorUI\\BasicCursor0.png", CursorSprite0_Texture);
+		 SET_MATERIAL(CursorSpirte0_Material, CursorSprite0_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CursorSpirte0Material", CursorSpirte0_Material);
 #pragma endregion
 
 	 }

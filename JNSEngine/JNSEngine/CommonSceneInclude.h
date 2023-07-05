@@ -23,6 +23,10 @@
 #include "jnsMpBar.h"
 #include "jnsSkillQuickSlotFront.h"
 #include "jnsSkillExtentionSlot.h"
+#include "jnsCursor.h"
+#include "jnsShopSlotBack.h"
+#include "jnsShopSlotBack2.h"
+#include "jnsShopSlotBack3.h"
 
 // Component
 #include "jnsTransform.h"

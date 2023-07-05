@@ -21,5 +21,7 @@ namespace jns
 		void CreateMainCamera();
 		void CreateUICamera();
 		void CreatePlayerUI();
+		void CreateCursor();
+		void CreateInventory();
 	};
 }

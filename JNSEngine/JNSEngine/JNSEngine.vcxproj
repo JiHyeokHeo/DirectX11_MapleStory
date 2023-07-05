@@ -160,6 +160,7 @@
     <ClInclude Include="jnsCenterStatus.h" />
     <ClInclude Include="jnsCharactorMakeBG.h" />
     <ClInclude Include="jnsCharactorMakeScene.h" />
+    <ClInclude Include="jnsCursor.h" />
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
@@ -173,6 +174,9 @@
     <ClInclude Include="jnsRutabysScene.h" />
     <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
+    <ClInclude Include="jnsShopSlotBack.h" />
+    <ClInclude Include="jnsShopSlotBack2.h" />
+    <ClInclude Include="jnsShopSlotBack3.h" />
     <ClInclude Include="jnsSkillExtentionSlot.h" />
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnsSkillQuickSlotFront.h" />
@@ -191,6 +195,7 @@
     <ClCompile Include="jnsCenterStatus.cpp" />
     <ClCompile Include="jnsCharactorMakeBG.cpp" />
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
+    <ClCompile Include="jnsCursor.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
@@ -205,6 +210,9 @@
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
+    <ClCompile Include="jnsShopSlotBack.cpp" />
+    <ClCompile Include="jnsShopSlotBack2.cpp" />
+    <ClCompile Include="jnsShopSlotBack3.cpp" />
     <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
