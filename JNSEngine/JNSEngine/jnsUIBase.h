@@ -20,7 +20,7 @@ namespace jns
 		eLayerType mType;
 		MeshRenderer* mr;
 		Transform* tr;
-		Vector2 mSize;
 		Vector2 mTextureRatio;
+		Vector2 mSize;
 	};
 }

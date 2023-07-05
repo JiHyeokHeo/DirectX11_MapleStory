@@ -1,5 +1,6 @@
 #include "jnsTime.h"
 #include "jnsApplication.h"
+#include "jnsInput.h"
 
 extern jns::Application application;
 
@@ -38,10 +39,10 @@ namespace jns
 		if (mSecond > 1.0f)
 		{
 			HWND hWnd = application.GetHwnd();
-
+			Vector2 mPos = jns::Input::GetMousePos();
 			wchar_t szFloat[50] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
-			swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
+			swprintf_s(szFloat, 50, L"FPS : %d Mouse : %d, %d", (UINT)FPS, (UINT)mPos.x, (UINT)mPos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 			

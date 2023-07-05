@@ -1,6 +1,6 @@
 #pragma once
 #include "jnsGameObject.h"
-
+#include "jnsMeshRenderer.h"
 
 namespace jns
 {
@@ -16,6 +16,8 @@ namespace jns
 		virtual void Render();
 
 	private:
-
+		MeshRenderer* mr;
+		Transform* tr;
+		Vector2 mTextureRatio;
 	};
 }

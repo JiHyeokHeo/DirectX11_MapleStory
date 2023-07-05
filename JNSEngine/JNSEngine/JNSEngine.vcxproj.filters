@@ -80,6 +80,18 @@
     <ClCompile Include="jnsSkillExtentionSlot.cpp">
       <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotExtension</Filter>
     </ClCompile>
+    <ClCompile Include="jnsShopSlotBack.cpp">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsShopSlotBack2.cpp">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack2</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsShopSlotBack3.cpp">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack3</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsCursor.cpp">
+      <Filter>Contents\Cursor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -172,6 +184,18 @@
     </ClInclude>
     <ClInclude Include="jnsSkillExtentionSlot.h">
       <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotExtension</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsShopSlotBack.h">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsShopSlotBack2.h">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack2</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsShopSlotBack3.h">
+      <Filter>Contents\UI\ShopSlotBase\ShopSlotBack3</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsCursor.h">
+      <Filter>Contents\Cursor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +303,21 @@
     </Filter>
     <Filter Include="Contents\Object">
       <UniqueIdentifier>{d19b53d9-0d61-451d-bce3-792120a28bf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ShopSlotBase">
+      <UniqueIdentifier>{245ddfc0-0a82-45ed-b0b8-2f45dda81beb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ShopSlotBase\ShopSlotBack">
+      <UniqueIdentifier>{1b81cb58-d204-4624-9b6e-0ffcda9d5d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ShopSlotBase\ShopSlotBack2">
+      <UniqueIdentifier>{d78fecb9-fe00-4caf-9d80-2c579e1a28b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\ShopSlotBase\ShopSlotBack3">
+      <UniqueIdentifier>{6f19ab81-29da-4c66-a777-7b04d4128473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Cursor">
+      <UniqueIdentifier>{a34497c8-eae2-4f75-8e5d-69f689f9b0fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

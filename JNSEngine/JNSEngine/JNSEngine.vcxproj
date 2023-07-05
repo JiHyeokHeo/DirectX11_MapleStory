@@ -174,6 +174,9 @@
     <ClInclude Include="jnsRutabysScene.h" />
     <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
+    <ClInclude Include="jnsShopSlotBack.h" />
+    <ClInclude Include="jnsShopSlotBack2.h" />
+    <ClInclude Include="jnsShopSlotBack3.h" />
     <ClInclude Include="jnsSkillExtentionSlot.h" />
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnsSkillQuickSlotFront.h" />
@@ -207,6 +210,9 @@
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
+    <ClCompile Include="jnsShopSlotBack.cpp" />
+    <ClCompile Include="jnsShopSlotBack2.cpp" />
+    <ClCompile Include="jnsShopSlotBack3.cpp" />
     <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
