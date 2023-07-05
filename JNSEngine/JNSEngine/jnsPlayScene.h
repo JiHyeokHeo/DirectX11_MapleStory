@@ -20,8 +20,12 @@ namespace jns
 	protected:
 		void CreateMainCamera();
 		void CreateUICamera();
+		void CreateGridCamera();
 		void CreatePlayerUI();
 		void CreateCursor();
 		void CreateInventory();
+
+	private:
+		class Camera* maincameraComp;
 	};
 }

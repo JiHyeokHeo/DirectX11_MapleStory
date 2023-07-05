@@ -92,6 +92,7 @@
     <ClCompile Include="jnsCursor.cpp">
       <Filter>Contents\Cursor</Filter>
     </ClCompile>
+    <ClCompile Include="jnsGridScrpt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="jnsCursor.h">
       <Filter>Contents\Cursor</Filter>
     </ClInclude>
+    <ClInclude Include="jnsGridScrpt.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

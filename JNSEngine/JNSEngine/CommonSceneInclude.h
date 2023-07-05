@@ -4,9 +4,10 @@
 #include "jnstestScript.h"
 #include "jnsExpBarMoveScript.h"	
 #include "jnsCameraScript.h"
-#include "jnsLoginBG.h"
+#include "jnsGridScrpt.h"
 
 // BackGround 
+#include "jnsLoginBG.h"
 #include "jnsCharactorMakeBG.h"
 #include "jnsRutabysBossBG.h"
 #include "jnsLoginBG.h"

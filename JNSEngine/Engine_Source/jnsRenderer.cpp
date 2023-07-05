@@ -45,7 +45,7 @@ namespace renderer
 		 arrLayout[2].SemanticIndex = 0;
 		 
 		 
-		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"halfshaderShader");
+		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"halfShader");
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
@@ -266,7 +266,7 @@ namespace renderer
 
 		 std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
 		 gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
-		 gridShader->Create(eShaderStage::PS, L"GridVS.hlsl", "main");
+		 gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
 		 jns::Resources::Insert(L"GridShader", gridShader);
 
 		 //{
@@ -292,7 +292,12 @@ namespace renderer
 			 = Resources::Find<Shader>(L"MoveShader");
 		 std::shared_ptr<Shader> gridShader
 			 = Resources::Find<Shader>(L"GridShader");
+		
 
+		 std::shared_ptr<Material> material = std::make_shared<Material>();
+		 material = std::make_shared<Material>();
+		 material->SetShader(gridShader);
+		 Resources::Insert(L"GridMaterial", material);
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
 		 SET_MATERIAL(spriteMaterial, texture, halfshader);

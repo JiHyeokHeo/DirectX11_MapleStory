@@ -164,6 +164,7 @@
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
+    <ClInclude Include="jnsGridScrpt.h" />
     <ClInclude Include="jnsHpBar.h" />
     <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
+    <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsHpBar.cpp" />
     <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />

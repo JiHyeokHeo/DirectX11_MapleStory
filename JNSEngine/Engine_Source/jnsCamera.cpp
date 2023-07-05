@@ -46,7 +46,7 @@ namespace jns
 	}
 	void Camera::Initialize()
 	{
-		//EnableLayerMasks();
+		
 	}
 	void Camera::Update()
 	{

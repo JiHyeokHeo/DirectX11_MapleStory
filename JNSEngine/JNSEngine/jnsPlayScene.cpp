@@ -13,6 +13,7 @@ namespace jns
 	{
 		CreateMainCamera();
 		CreateUICamera();
+		CreateGridCamera();
 	}
 
 	void PlayScene::Update()
@@ -34,7 +35,7 @@ namespace jns
 	{
 		GameObject* maincamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* maincameraComp = maincamera->AddComponent<Camera>();
+		maincameraComp = maincamera->AddComponent<Camera>();
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
 	}
@@ -46,6 +47,18 @@ namespace jns
 		Camera* uicameraComp = uicamera->AddComponent<Camera>();
 		uicameraComp->TurnLayerMask(eLayerType::Player, false);
 		uicameraComp->TurnLayerMask(eLayerType::BG, false);
+	}
+
+	void PlayScene::CreateGridCamera()
+	{
+		GameObject* grid = new GameObject();
+		grid->SetName(L"Grid");
+		AddGameObject(eLayerType::Grid, grid);
+		MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
+		GridScript* gridSc = grid->AddComponent<GridScript>();
+		gridSc->SetCamera(maincameraComp);
 	}
 
 	void PlayScene::CreatePlayerUI()
@@ -83,7 +96,6 @@ namespace jns
 
 		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());
 		mShopSlotBack03->GetComponent<Transform>()->SetParent(mShopSlotBack02->GetComponent<Transform>());
-	
 	}	
 
 

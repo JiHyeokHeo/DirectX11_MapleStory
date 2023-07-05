@@ -1,3 +1,5 @@
+#include "globals.hlsli"
+
 struct VSIn
 {
     float3 Pos : POSITION;
@@ -17,11 +19,6 @@ cbuffer Time: register(b2)
     float4 mTime;
 }
 
-
-Texture2D albedoTexture : register(t0);
-
-SamplerState pointSampler : register(s0);
-SamplerState anisotropicSampler : register(s1);
 
 float4 main(VSOut In) : SV_TARGET
 {
