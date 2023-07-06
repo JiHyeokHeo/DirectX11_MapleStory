@@ -1,27 +1,22 @@
 #pragma once
-#include "jnsScript.h"
+#include "jnsGameObject.h"
+#include "jnsMeshRenderer.h"
 
 namespace jns
 {
-	struct Data
-	{
-
-	};
-
-	class testScript : public Script
+	class Smoke : public GameObject	
 	{
 	public:
-		testScript();
-		~testScript();
+		Smoke();
+		Smoke(Vector3 mPos);
+		virtual ~Smoke();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void BindConstantBuffer();
-
 	private:
-		float mTime;
+		MeshRenderer* mr;
 	};
 }

@@ -22,6 +22,7 @@ namespace jns::enums
 		UI,
 		Camera,
 		Cursor,
+		MapEffect,
 		End,
 	};
 

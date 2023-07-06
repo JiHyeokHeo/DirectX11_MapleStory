@@ -47,7 +47,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>true</EnableUnitySupport>
+    <EnableUnitySupport>false</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -124,6 +124,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -181,6 +182,7 @@
     <ClInclude Include="jnsSkillExtentionSlot.h" />
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnsSkillQuickSlotFront.h" />
+    <ClInclude Include="jnsSmoke.h" />
     <ClInclude Include="jnstestScript.h" />
     <ClInclude Include="jnsUIBase.h" />
     <ClInclude Include="jnsWorldSelectBG.h" />
@@ -218,6 +220,7 @@
     <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
+    <ClCompile Include="jnsSmoke.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
     <ClCompile Include="jnsUIBase.cpp" />
     <ClCompile Include="jnsWorldSelectBG.cpp" />

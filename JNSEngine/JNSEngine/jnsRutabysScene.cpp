@@ -33,17 +33,51 @@ namespace jns
 		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 0.0f, 0.0f));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
 		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
 		//	player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
 		//	//player->AddComponent<testScript>();
 		//	//player->AddComponent<CameraScript>();
 		//}
 
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Smile");
+		//	AddGameObject(eLayerType::Player, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.5f, 0.0f, -1.0f));
+		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
+		//	player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
+		//	//player->AddComponent<testScript>();
+		//	//player->AddComponent<CameraScript>();
+		//}
+
+		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-4.0f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-5.5f,-1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-6.0f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-7.5f,-1.0f, 4.9f));
+																		 
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1.5f, -1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(2.0f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(3.5f, -1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(4.0f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(5.5f, -1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -1.0f, 4.9f));
+
+
 		// NoMove BackGround
 		object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 
-		CreateInventory();
+		//CreateInventory();
 		CreatePlayerUI();
 		CreateCursor();
 

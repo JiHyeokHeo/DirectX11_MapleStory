@@ -24,7 +24,7 @@ namespace jns
 		void CreatePlayerUI();
 		void CreateCursor();
 		void CreateInventory();
-
+		void CreateEffectCamera();
 	private:
 		class Camera* maincameraComp;
 	};

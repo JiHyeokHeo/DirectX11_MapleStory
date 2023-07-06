@@ -14,9 +14,10 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-cbuffer Time: register(b2)
+cbuffer Time: register(b3)
 {
-    float4 mTime;
+    float type;
+    float3 mTime;
 }
 
 
@@ -24,9 +25,16 @@ float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float4) 0.0f;
     float2 uv = In.UV;
-    uv.x += mTime.x;
+    
+    if (type == 1.0f)
+        uv.x += mTime.x;
+    if (type == 2)
+        uv.x -= mTime.x;
+
     
     color = albedoTexture.Sample(anisotropicSampler, uv);
+    
+    color.rgb *= 0.4f;
     
     return color;
 }

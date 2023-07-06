@@ -13,6 +13,7 @@ namespace jns
 	{
 		CreateMainCamera();
 		CreateUICamera();
+		//CreateEffectCamera();
 		CreateGridCamera();
 	}
 
@@ -47,6 +48,7 @@ namespace jns
 		Camera* uicameraComp = uicamera->AddComponent<Camera>();
 		uicameraComp->TurnLayerMask(eLayerType::Player, false);
 		uicameraComp->TurnLayerMask(eLayerType::BG, false);
+		uicameraComp->TurnLayerMask(eLayerType::MapEffect, false);
 	}
 
 	void PlayScene::CreateGridCamera()
@@ -96,7 +98,16 @@ namespace jns
 
 		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());
 		mShopSlotBack03->GetComponent<Transform>()->SetParent(mShopSlotBack02->GetComponent<Transform>());
-	}	
+	}
+	//void PlayScene::CreateEffectCamera()
+	//{
+	//	GameObject* uicamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
+	//	uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+	//	Camera* uicameraComp = uicamera->AddComponent<Camera>();
+	//	uicameraComp->TurnLayerMask(eLayerType::Player, false);
+	//	uicameraComp->TurnLayerMask(eLayerType::BG, false);
+	//}
+
 
 
 

@@ -22,4 +22,18 @@ namespace jns::object
 	}
 
 
+
+	template<typename T>
+	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mRotation = (Vector3::Zero), Vector3 mScale = (Vector3::One))
+	{
+		T* gameobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->Initialize();
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->GetComponent<Transform>()->SetRotation(mRotation);
+		//gameobj->GetComponent<Transform>()->SetScale(mScale);
+
+		return gameobj;
+	}
 }

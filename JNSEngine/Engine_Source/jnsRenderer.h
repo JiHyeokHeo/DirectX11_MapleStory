@@ -31,6 +31,12 @@ namespace renderer
 		Vector2 Resolution;
 	};
 
+	CBUFFER(ObjectTypeMoveCB, CBSLOT_MOVE)
+	{	
+		float mtype;
+		Vector3 mTime;
+	};
+
 	extern Vertex vertexes[];
 	extern jns::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 

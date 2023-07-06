@@ -23,10 +23,10 @@ float4 main(VSOut In) : SV_TARGET
     int gridX = (int) In.GridPos.x;
     int gridY = (int) In.GridPos.y;
     
-    if (abs((gridX + 1) % width) <= 1.0f)
+    if (abs((gridX + 1) % width) <= 1)
         return Out;
     
-    if (abs((gridY + 1) % height) <= 1.0f)
+    if (abs((gridY + 1) % height) <= 1)
         return Out;
     
     discard;

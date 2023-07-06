@@ -231,11 +231,11 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
 		 constantBuffer[(UINT)eCBType::Move] = new ConstantBuffer(eCBType::Move);
-		 constantBuffer[(UINT)eCBType::Move]->Create(sizeof(Vector4));
+		 constantBuffer[(UINT)eCBType::Move]->Create(sizeof(ObjectTypeMoveCB));
 
 		 // Grid Buffer
 		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
-		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
+		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
 
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
@@ -293,11 +293,11 @@ namespace renderer
 		 std::shared_ptr<Shader> gridShader
 			 = Resources::Find<Shader>(L"GridShader");
 		
-
 		 std::shared_ptr<Material> material = std::make_shared<Material>();
 		 material = std::make_shared<Material>();
 		 material->SetShader(gridShader);
 		 Resources::Insert(L"GridMaterial", material);
+
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
 		 SET_MATERIAL(spriteMaterial, texture, halfshader);
@@ -305,7 +305,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
 		 SET_MATERIAL(spriteMaterial1, texture1, moveShader);
-		 spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
+		 //spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02", spriteMaterial1);
 #pragma endregion
 
@@ -383,7 +383,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
 		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
-		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 
@@ -399,6 +399,14 @@ namespace renderer
 		 LOAD_TEXTURE(L"ShopBackGround3", L"..\\Resources\\UI\\ShopUI\\UIWindow2.img.Shop2.backgrnd3.png", ShopBackGround3_UI_Texture);
 		 SET_MATERIAL(ShopBackGround3_UI_Material, ShopBackGround3_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"ShopBackGround3Material", ShopBackGround3_UI_Material);
+
+		  
+		 LOAD_TEXTURE(L"Mist01", L"..\\Resources\\Effect\\particle.img.adele_castle_mist.texture.png", Mist01_UI_Texture);
+		 SET_MATERIAL(Mist01_UI_Material, Mist01_UI_Texture, moveShader);
+		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"Mist01Material", Mist01_UI_Material);
+
+
 
 #pragma endregion
 

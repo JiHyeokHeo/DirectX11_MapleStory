@@ -11,6 +11,7 @@
 
 #define CBSLOT_TRANSFORM		0
 #define CBSLOT_GRID			2
+#define CBSLOT_MOVE			3
 //#define CBSLOT_PARTICLE			1
 
 

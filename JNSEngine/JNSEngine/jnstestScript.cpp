@@ -22,7 +22,7 @@ namespace jns
 	}
 	void testScript::LateUpdate()
 	{
-		mTime += Time::DeltaTime();
+		mTime += Time::DeltaTime() * 0.5f;
 	}
 	void testScript::Render()
 	{
@@ -30,9 +30,13 @@ namespace jns
 	}
 	void testScript::BindConstantBuffer()
 	{
+		renderer::ObjectTypeMoveCB objmoveCB= {};
+
+		objmoveCB.mtype = 1.0f;
+		objmoveCB.mTime = Vector3(mTime, 0.0f, 0.0f);
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
-		cb->SetData(&mTime);
-		//cb->Bind(eShaderStage::PS);
-		cb->Bind(eShaderStage::VS);
+		cb->SetData(&objmoveCB);
+		cb->Bind(eShaderStage::PS);
+		//cb->Bind(eShaderStage::VS);
 	}
 }

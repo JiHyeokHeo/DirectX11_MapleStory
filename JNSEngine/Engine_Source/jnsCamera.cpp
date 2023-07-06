@@ -104,7 +104,7 @@ namespace jns
 
 		if (type == eProjectionType::OrthoGraphic)
 		{
-			float OrthorGraphicRatio = mSize / 1000.0f;
+			float OrthorGraphicRatio = mSize / 1000;
 			width *= OrthorGraphicRatio;
 			height *= OrthorGraphicRatio;
 

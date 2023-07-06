@@ -43,3 +43,6 @@
 
 // Instantiate Template
 #include "ObjectTemplate.h"
+
+// Effect
+#include "jnsSmoke.h"

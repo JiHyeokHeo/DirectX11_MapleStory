@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsGameObject.h"
 #include "jnsMeshRenderer.h"
+#include "jnsTransform.h"
 
 namespace jns
 {

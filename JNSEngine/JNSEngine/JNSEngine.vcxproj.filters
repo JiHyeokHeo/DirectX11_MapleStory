@@ -93,6 +93,9 @@
       <Filter>Contents\Cursor</Filter>
     </ClCompile>
     <ClCompile Include="jnsGridScrpt.cpp" />
+    <ClCompile Include="jnsSmoke.cpp">
+      <Filter>Effect\CloudEffect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -199,6 +202,9 @@
       <Filter>Contents\Cursor</Filter>
     </ClInclude>
     <ClInclude Include="jnsGridScrpt.h" />
+    <ClInclude Include="jnsSmoke.h">
+      <Filter>Effect\CloudEffect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -320,6 +326,12 @@
     </Filter>
     <Filter Include="Contents\Cursor">
       <UniqueIdentifier>{a34497c8-eae2-4f75-8e5d-69f689f9b0fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{c7f83e6f-e308-4e08-9069-9a57307adaa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect\CloudEffect">
+      <UniqueIdentifier>{ccd36ea5-6164-40c5-95d1-87fa5badda18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
