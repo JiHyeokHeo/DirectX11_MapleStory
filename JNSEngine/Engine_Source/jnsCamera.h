@@ -63,7 +63,5 @@ namespace jns
 		std::vector<GameObject*> mOpaqueGameObjects;
 		std::vector<GameObject*> mCutOutGameObjects;
 		std::vector<GameObject*> mTransparentGameObjects;
-
-		GameObject* mTarget;
 	};
 }

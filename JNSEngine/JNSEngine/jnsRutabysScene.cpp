@@ -12,18 +12,18 @@ namespace jns
 	void RutabysScene::Initialize()
 	{
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
-		//{
+		
 
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Zelda");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-		//	//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
-		//	//player->AddComponent<ExpBarMoveScript>();
-		//}
+			GameObject* player = new GameObject();
+			player->SetName(L"Zelda");
+			AddGameObject(eLayerType::Player, player);
+			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
+			player->AddComponent<PlayerScript>();
+		
 
 		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		//{
@@ -54,25 +54,25 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
-		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-4.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-5.5f,-1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-6.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-7.5f,-1.0f, 4.9f));
-																		 
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(2.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(3.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(4.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(5.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -1.0f, 4.9f));
-
+		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-4.0f,-1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-5.5f,-1.0f, 4.9f));d
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-6.0f,-1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-7.5f,-1.0f, 4.9f));
+		//																 
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f, -1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1.5f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(2.0f, -1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(3.5f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(4.0f, -1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(5.5f, -1.0f, 4.9f));
+		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -1.0f, 4.9f));
+		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -1.0f, 4.9f));
+	
 
 		// NoMove BackGround
 		object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);

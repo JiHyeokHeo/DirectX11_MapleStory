@@ -96,6 +96,9 @@
     <ClCompile Include="jnsSmoke.cpp">
       <Filter>Effect\CloudEffect</Filter>
     </ClCompile>
+    <ClCompile Include="jnsPlayerScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -204,6 +207,9 @@
     <ClInclude Include="jnsGridScrpt.h" />
     <ClInclude Include="jnsSmoke.h">
       <Filter>Effect\CloudEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayerScript.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

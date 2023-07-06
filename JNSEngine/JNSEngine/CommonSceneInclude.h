@@ -5,6 +5,7 @@
 #include "jnsExpBarMoveScript.h"	
 #include "jnsCameraScript.h"
 #include "jnsGridScrpt.h"
+#include "jnsPlayerScript.h"
 
 // BackGround 
 #include "jnsLoginBG.h"

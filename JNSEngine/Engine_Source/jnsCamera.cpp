@@ -36,7 +36,6 @@ namespace jns
 		, mTransparentGameObjects{}
 		, mView(Matrix::Identity)
 		, mProjection(Matrix::Identity)
-		, mTarget(nullptr)
 		
 	{
 		EnableLayerMasks();

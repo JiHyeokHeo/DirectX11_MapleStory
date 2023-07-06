@@ -300,7 +300,7 @@ namespace renderer
 
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);
-		 SET_MATERIAL(spriteMaterial, texture, halfshader);
+		 SET_MATERIAL(spriteMaterial, texture, spriteShader);
 		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
 
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
@@ -344,7 +344,7 @@ namespace renderer
 		 INSERT_MATERIAL(L"ExpBarUIMaterial", ExpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
-		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, moveShader);
+		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, spriteShader);
 		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
