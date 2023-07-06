@@ -23,6 +23,6 @@ namespace jns
 
 	private:
 		float mTime;
-		float mT;
+		int mT;
 	};
 }

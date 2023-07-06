@@ -16,7 +16,7 @@ struct VSOut
 
 cbuffer Time: register(b3)
 {
-    float type;
+    int type;
     float3 mTime;
 }
 
@@ -26,10 +26,10 @@ float4 main(VSOut In) : SV_TARGET
     float4 color = (float4) 0.0f;
     float2 uv = In.UV;
     
-    //if (type == 1.0f)
-    //    uv.x += mTime.x;
-    //if (type == 2)
-    //    uv.x -= mTime.x;
+    if (type == 1)
+        uv.x += mTime.x;
+    if (type == 2)
+        uv.x -= mTime.x;
 
     if(In.UV.x >= 0.5f)
     {

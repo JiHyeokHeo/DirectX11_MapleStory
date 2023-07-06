@@ -33,7 +33,7 @@ namespace renderer
 
 	CBUFFER(ObjectTypeMoveCB, CBSLOT_MOVE)
 	{	
-		float mtype;
+		int mtype;
 		Vector3 mTime;
 	};
 

@@ -10,7 +10,7 @@ namespace jns
 
 	testScript::testScript()
 		: mTime(1.0f)
-		, mT(1.0f)
+		, mT(1)
 	{
 	}
 	testScript::~testScript()
@@ -26,11 +26,11 @@ namespace jns
 	{
 		if(Input::GetKeyDown(eKeyCode::G))
 		{
-			mT = 1.0f;
+			mT = 1;
 		}
 		else if(Input::GetKeyDown(eKeyCode::H))
 		{
-			mT = 2.0f;
+			mT = 2;
 		}
 		mTime += Time::DeltaTime() * 0.5f;
 	}
