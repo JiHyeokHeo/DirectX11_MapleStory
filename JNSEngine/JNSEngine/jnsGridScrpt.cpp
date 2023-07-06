@@ -5,7 +5,8 @@
 #include "jnsApplication.h"
 #include "jnsGameObject.h"
 #include "jnsRenderer.h"
-
+#include "jnsTime.h"
+#include "ObjectTemplate.h"
 
 extern jns::Application application;
 
@@ -25,7 +26,13 @@ namespace jns
 	{
 		if (mCamera == nullptr)
 			return;
+		static float chTime = 0.0f;
+		chTime += Time::DeltaTime();
 
+		//if (chTime > 3.0f)
+		//{
+		//	object::Destroy(GetOwner());
+		//}
 
 		GameObject* gameObj = mCamera->GetOwner();
 

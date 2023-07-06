@@ -36,4 +36,10 @@ namespace jns::object
 
 		return gameobj;
 	}
+
+	static __forceinline void Destroy(GameObject* gameObj)
+	{
+		gameObj->SetState(jns::GameObject::eState::Dead);
+	}
+
 }

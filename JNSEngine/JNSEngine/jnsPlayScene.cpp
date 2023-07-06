@@ -18,7 +18,20 @@ namespace jns
 	}
 
 	void PlayScene::Update()
-	{
+	{		
+		//Vector3 pos(600, 450, 0.0f);
+		//Vector3 pos2(600, 450, 1000.0f);
+		//Viewport viewport;
+		//viewport.width = 1600.0f;
+		//viewport.height = 900.0f;
+		//viewport.x = 0;
+		//viewport.y = 0;
+		//viewport.minDepth = 0.0f;
+		//viewport.maxDepth = 1.0f;
+
+		//pos = viewport.Unproject(pos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		//pos2 = viewport.Unproject(pos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+
 		Scene::Update();
 	}
 

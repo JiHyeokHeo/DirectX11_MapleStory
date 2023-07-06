@@ -55,7 +55,7 @@ namespace jns
 		//}
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
 		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-1.0f, 4.9f));
 		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-1.0f, 4.9f));
 		////object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-1.0f, 4.9f));

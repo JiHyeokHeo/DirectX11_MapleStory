@@ -6,7 +6,7 @@
 namespace jns
 {
 	GameObject::GameObject()
-		:mState(GameObject::Active)
+		:mState(GameObject::eState::Active)
 	{
 		AddComponent<Transform>();
 	}

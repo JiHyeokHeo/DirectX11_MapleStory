@@ -20,6 +20,10 @@ namespace jns
 	{
 		mActiveScene->Render();
 	}
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
+	}
 
 	void SceneManager::Release()
 	{

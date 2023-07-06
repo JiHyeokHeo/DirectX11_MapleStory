@@ -25,6 +25,7 @@ namespace jns
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 
 	void Application::Initialize()
@@ -58,6 +59,10 @@ namespace jns
 		//graphicDevice->Draw();
 
 		graphicDevice->Present();
+	}
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
 	{
