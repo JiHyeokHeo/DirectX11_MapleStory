@@ -50,6 +50,7 @@ namespace jns
 		GameObject* maincamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		maincameraComp = maincamera->AddComponent<Camera>();
+		maincameraComp->SetTarget(followtarget);
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
 	}

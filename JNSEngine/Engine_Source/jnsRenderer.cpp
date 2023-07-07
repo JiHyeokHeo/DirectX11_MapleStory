@@ -403,7 +403,7 @@ namespace renderer
 		  
 		 LOAD_TEXTURE(L"Mist01", L"..\\Resources\\Effect\\particle.img.adele_castle_mist.texture.png", Mist01_UI_Texture);
 		 SET_MATERIAL(Mist01_UI_Material, Mist01_UI_Texture, moveShader);
-		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"Mist01Material", Mist01_UI_Material);
 
 

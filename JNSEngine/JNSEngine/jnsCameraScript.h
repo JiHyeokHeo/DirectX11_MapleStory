@@ -8,7 +8,11 @@ namespace jns
 	public:
 		virtual void Update() override;
 
-	private:
 
+	private:
+		bool FollowTarget();
+		class Camera* comp;
+		class Transform* cameratr;
+		Vector3 pos;
 	};
 }

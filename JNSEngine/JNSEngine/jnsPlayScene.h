@@ -25,7 +25,9 @@ namespace jns
 		void CreateCursor();
 		void CreateInventory();
 		void CreateEffectCamera();
+		void SetTarget(GameObject* target) { followtarget = target; }
 	private:
 		class Camera* maincameraComp;
+		GameObject* followtarget;
 	};
 }

@@ -27,7 +27,7 @@ float4 main(VSOut In) : SV_TARGET
     float2 uv = In.UV;
     
     if (type == 1)
-        uv.x += mTime.x;
+        uv.x += mTime.x * 0.3f;
     if (type == 2)
         uv.x -= mTime.x;
 
@@ -40,8 +40,9 @@ float4 main(VSOut In) : SV_TARGET
     //    color = albedoTexture.Sample(anisotropicSampler, uv);
     //}
     
-   // color = albedoTexture.Sample(anisotropicSampler, uv);
+    color = albedoTexture.Sample(anisotropicSampler, uv);
     
+    color.rgb = 1.0f;
     color.rgb *= 0.4f;
     
     return color;

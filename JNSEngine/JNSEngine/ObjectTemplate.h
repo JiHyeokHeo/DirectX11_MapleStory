@@ -29,10 +29,10 @@ namespace jns::object
 		T* gameobj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
-		gameobj->Initialize();
-		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->GetComponent<Transform>()->SetScale(mScale);
 		gameobj->GetComponent<Transform>()->SetRotation(mRotation);
-		//gameobj->GetComponent<Transform>()->SetScale(mScale);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
 
 		return gameobj;
 	}

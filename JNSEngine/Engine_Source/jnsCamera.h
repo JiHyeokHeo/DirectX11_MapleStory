@@ -45,7 +45,8 @@ namespace jns
 		void DisableDepthStencilState();
 
 		float GetSize() { return mSize; }
-
+		GameObject* GetTarget() { return mTarget; }
+		void SetTarget(GameObject* target) { mTarget = target; }
 	private:
 		static Matrix View;
 		static Matrix Projection;
@@ -63,5 +64,7 @@ namespace jns
 		std::vector<GameObject*> mOpaqueGameObjects;
 		std::vector<GameObject*> mCutOutGameObjects;
 		std::vector<GameObject*> mTransparentGameObjects;
+
+		GameObject* mTarget;
 	};
 }
