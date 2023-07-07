@@ -11,13 +11,12 @@ namespace jns
 	}
 	void SkillQuickSlotFront::Initialize()
 	{
-		mr = GetComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"SkillQuickSlotFrontMaterial"));
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
-		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, 0.0f, -0.1f));
-		tr->SetScale(Vector3(1.0f , 1.0f, 1.0f));
+		SetMesh(L"RectMesh");
+		SetMaterial(L"SkillQuickSlotFrontMaterial");
+
+		SetPosition(Vector3(0.0f, 0.0f, -0.1f));
+		SetScale(Vector3(1.0f, 1.0f, 1.0f));
+	
 		UIBase::Initialize();
 	}
 	void SkillQuickSlotFront::Update()

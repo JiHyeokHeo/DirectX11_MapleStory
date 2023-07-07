@@ -11,15 +11,11 @@ namespace jns
 	}
 	void CenterStatus::Initialize()
 	{
-		mr = GetComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"StatusMainBarMaterial"));
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		
-		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
-		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, -1.95f, 4.3f));
-		tr->SetScale(Vector3(mTextureRatio.x , mTextureRatio.y , 1.0f));
+		SetMesh(L"RectMesh");
+		SetMaterial(L"StatusMainBarMaterial");
 
+		SetPosition(Vector3(0.0f, -1.95f, 4.3f));
+		SetScaleWithOrginalImageScale();
 		
 		UIBase::Initialize();
 	}

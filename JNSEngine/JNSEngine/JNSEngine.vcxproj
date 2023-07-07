@@ -170,6 +170,7 @@
     <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsMpBar.h" />
+    <ClInclude Include="jnsPlayer.h" />
     <ClInclude Include="jnsPlayerScript.h" />
     <ClInclude Include="jnsPlayScene.h" />
     <ClInclude Include="jnsRutabysBossBG.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
+    <ClCompile Include="jnsPlayer.cpp" />
     <ClCompile Include="jnsPlayerScript.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
     <ClCompile Include="jnsRutabysBossBG.cpp" />

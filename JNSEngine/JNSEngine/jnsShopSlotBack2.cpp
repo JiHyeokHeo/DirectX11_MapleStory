@@ -11,13 +11,11 @@ namespace jns
 	}
 	void ShopSlotBack2::Initialize()
 	{
-		mr = GetComponent<MeshRenderer>();
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"ShopBackGround2Material"));
-		//mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
-		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, 0.0f, -0.1f));
-		tr->SetScale(Vector3(0.97f, 0.97f, 1.0f));
+		SetMesh(L"RectMesh");
+		SetMaterial(L"ShopBackGround2Material");
+
+		SetPosition(Vector3(0.0f, 0.0f, -0.1f));
+		SetScaleWithOrginalImageScale(Vector2(0.97f,0.97f));
 
 		UIBase::Initialize();
 	}

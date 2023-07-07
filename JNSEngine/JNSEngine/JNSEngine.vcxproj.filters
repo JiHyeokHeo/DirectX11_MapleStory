@@ -99,6 +99,9 @@
     <ClCompile Include="jnsPlayerScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsPlayer.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="jnsPlayerScript.h">
       <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayer.h">
+      <Filter>Contents\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +344,9 @@
     </Filter>
     <Filter Include="Effect\CloudEffect">
       <UniqueIdentifier>{ccd36ea5-6164-40c5-95d1-87fa5badda18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player">
+      <UniqueIdentifier>{cf935b49-fa4d-4ce5-9be0-da440a776684}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

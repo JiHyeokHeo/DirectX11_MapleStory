@@ -11,13 +11,12 @@ namespace jns
 	}
 	void SkillQuickSlotBackUI::Initialize()
 	{
-		mr = GetComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"SkillQuickSlotBackMaterial"));
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
-		tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(2.3f, -1.95f, 4.3f));
-		tr->SetScale(Vector3(mTextureRatio.x * 3.4f, mTextureRatio.y * 3.4f, 1.0f));
+		SetMesh(L"RectMesh");
+		SetMaterial(L"SkillQuickSlotBackMaterial");
+
+		SetPosition(Vector3(2.3f, -1.95f, 4.3f));
+		SetScaleWithOrginalImageScale(Vector2(3.4f,3.4f));
+	
 		UIBase::Initialize();
 	}
 	void SkillQuickSlotBackUI::Update()

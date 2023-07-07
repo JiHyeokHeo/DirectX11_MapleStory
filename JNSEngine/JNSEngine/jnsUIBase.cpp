@@ -9,6 +9,7 @@ namespace jns
 		, tr(nullptr)
 	{
 		AddComponent<MeshRenderer>();
+		tr = GetComponent<Transform>();
 	}
 	UIBase::~UIBase()
 	{

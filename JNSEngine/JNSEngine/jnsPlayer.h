@@ -1,13 +1,13 @@
 #pragma once
-#include "jnsUIBase.h"
+#include "jnsGameObject.h"
 
 namespace jns
 {
-	class SkillQuickSlotBackUI : public UIBase
+	class Player : public GameObject 
 	{
 	public:
-		SkillQuickSlotBackUI();
-		virtual ~SkillQuickSlotBackUI();
+		Player();
+		~Player();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -15,10 +15,8 @@ namespace jns
 		virtual void Render() override;
 
 	private:
-		
+
 	};
+
 }
-
-
-
 

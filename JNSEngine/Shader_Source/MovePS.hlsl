@@ -31,14 +31,14 @@ float4 main(VSOut In) : SV_TARGET
     if (type == 2)
         uv.x -= mTime.x;
 
-    if(In.UV.x >= 0.5f)
-    {
-        discard;
-    }
-    else
-    {
-        color = albedoTexture.Sample(anisotropicSampler, uv);
-    }
+    //if(In.UV.x >= 0.5f)
+    //{
+    //    discard;
+    //}
+    //else
+    //{
+    //    color = albedoTexture.Sample(anisotropicSampler, uv);
+    //}
     
    // color = albedoTexture.Sample(anisotropicSampler, uv);
     
