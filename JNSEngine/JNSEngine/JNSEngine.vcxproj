@@ -157,6 +157,7 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jnsBGBase.h" />
+    <ClInclude Include="jnsCameraObject.h" />
     <ClInclude Include="jnsCameraScript.h" />
     <ClInclude Include="jnsCenterStatus.h" />
     <ClInclude Include="jnsCharactorMakeBG.h" />
@@ -196,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jnsBGBase.cpp" />
+    <ClCompile Include="jnsCameraObject.cpp" />
     <ClCompile Include="jnsCameraScript.cpp" />
     <ClCompile Include="jnsCenterStatus.cpp" />
     <ClCompile Include="jnsCharactorMakeBG.cpp" />

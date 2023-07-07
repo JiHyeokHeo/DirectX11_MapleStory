@@ -102,6 +102,9 @@
     <ClCompile Include="jnsPlayer.cpp">
       <Filter>Contents\Player</Filter>
     </ClCompile>
+    <ClCompile Include="jnsCameraObject.cpp">
+      <Filter>Contents\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -216,6 +219,9 @@
     </ClInclude>
     <ClInclude Include="jnsPlayer.h">
       <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsCameraObject.h">
+      <Filter>Contents\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +353,9 @@
     </Filter>
     <Filter Include="Contents\Player">
       <UniqueIdentifier>{cf935b49-fa4d-4ce5-9be0-da440a776684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Camera">
+      <UniqueIdentifier>{7dddd1f5-4e6a-4a5c-8b42-a1353f27dae6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

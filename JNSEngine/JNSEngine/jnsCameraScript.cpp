@@ -21,6 +21,7 @@ namespace jns
 		{
 			pos = cameratr->GetPosition();
 		}
+
 		
 
 		if (Input::GetKey(eKeyCode::W))
@@ -54,16 +55,21 @@ namespace jns
 			cameratr->SetPosition(pos);
 		}
 	}
+
 	bool CameraScript::FollowTarget()
 	{
+		if (comp->GetCameraType() != jns::Camera::eCameraType::MainCamera)
+			return false;
+
 		GameObject* checkTarget = comp->GetTarget();
+		
 		if (checkTarget == nullptr)
 			return false;
 		
 		Transform* followTR = checkTarget->GetComponent<Transform>();
 		pos = followTR->GetPosition();
 
-		cameratr->SetPosition(pos);
+		cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
 		return true;
 	}
 }

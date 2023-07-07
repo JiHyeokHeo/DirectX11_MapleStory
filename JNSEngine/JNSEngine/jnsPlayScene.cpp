@@ -50,6 +50,7 @@ namespace jns
 		GameObject* maincamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		maincameraComp = maincamera->AddComponent<Camera>();
+		maincameraComp->SetCameraType(jns::Camera::eCameraType::MainCamera);
 		maincameraComp->SetTarget(followtarget);
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
@@ -60,6 +61,7 @@ namespace jns
 		GameObject* uicamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
 		uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* uicameraComp = uicamera->AddComponent<Camera>();
+		uicameraComp->SetCameraType(jns::Camera::eCameraType::UICamera);
 		uicameraComp->TurnLayerMask(eLayerType::Player, false);
 		uicameraComp->TurnLayerMask(eLayerType::BG, false);
 		uicameraComp->TurnLayerMask(eLayerType::MapEffect, false);

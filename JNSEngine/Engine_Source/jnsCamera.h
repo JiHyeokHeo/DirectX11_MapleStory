@@ -15,6 +15,13 @@ namespace jns
 			None,
 		};
 
+		enum class eCameraType
+		{
+			MainCamera,
+			UICamera,
+			None,
+		};
+
 		static Matrix GetViewMatrix() { return View; }
 		static Matrix GetProjectionMatrix() { return Projection; }
 
@@ -45,8 +52,12 @@ namespace jns
 		void DisableDepthStencilState();
 
 		float GetSize() { return mSize; }
+		
 		GameObject* GetTarget() { return mTarget; }
 		void SetTarget(GameObject* target) { mTarget = target; }
+		void SetCameraType(eCameraType type) { mCameraType = type; }
+		eCameraType& GetCameraType() { return mCameraType; }
+	
 	private:
 		static Matrix View;
 		static Matrix Projection;
@@ -66,5 +77,6 @@ namespace jns
 		std::vector<GameObject*> mTransparentGameObjects;
 
 		GameObject* mTarget;
+		eCameraType mCameraType;
 	};
 }

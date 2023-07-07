@@ -4,6 +4,7 @@
 
 namespace jns
 {
+	class Camera;
 	class PlayScene : public Scene
 	{
 	public:
@@ -24,10 +25,11 @@ namespace jns
 		void CreatePlayerUI();
 		void CreateCursor();
 		void CreateInventory();
-		void CreateEffectCamera();
 		void SetTarget(GameObject* target) { followtarget = target; }
+	
 	private:
-		class Camera* maincameraComp;
 		GameObject* followtarget;
+		Camera* maincameraComp;
+		class Player* mPlayer;
 	};
 }

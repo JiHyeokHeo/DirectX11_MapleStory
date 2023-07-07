@@ -37,6 +37,7 @@ namespace jns
 		, mView(Matrix::Identity)
 		, mProjection(Matrix::Identity)
 		, mTarget(nullptr)
+		, mCameraType(eCameraType::MainCamera)
 		
 	{
 		EnableLayerMasks();
