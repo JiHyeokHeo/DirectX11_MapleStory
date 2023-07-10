@@ -413,6 +413,7 @@ namespace renderer
 #pragma region Cursor
 		 LOAD_TEXTURE(L"CursorSpirte0", L"..\\Resources\\UI\\CursorUI\\BasicCursor0.png", CursorSprite0_Texture);
 		 SET_MATERIAL(CursorSpirte0_Material, CursorSprite0_Texture, spriteShader);
+		 CursorSpirte0_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"CursorSpirte0Material", CursorSpirte0_Material);
 #pragma endregion
 

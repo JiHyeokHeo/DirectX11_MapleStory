@@ -102,7 +102,7 @@ namespace jns
 
 	void PlayScene::CreateCursor()
 	{
-		object::InstantiateUIandBG<Cursor>(eLayerType::Cursor);
+		object::InstantiateUIandBG<Cursor>(eLayerType::UI);
 	}
 
 	void PlayScene::CreateInventory()

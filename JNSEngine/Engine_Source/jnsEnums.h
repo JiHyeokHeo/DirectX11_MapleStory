@@ -15,13 +15,13 @@ namespace jns::enums
 
 	enum class eLayerType
 	{
+		Cursor,
 		Grid,
 		BG,
 		Player,
 		Monster,
 		UI,
 		Camera,
-		Cursor,
 		MapEffect,
 		End,
 	};

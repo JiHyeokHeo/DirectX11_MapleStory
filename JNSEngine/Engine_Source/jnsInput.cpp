@@ -61,7 +61,12 @@ namespace jns
 			}
 
 			POINT mousePos = {};
+			
+			// 윈도우 마우스 좌표
 			GetCursorPos(&mousePos);
+			// 마우스 스크린 상대 좌표
+			ScreenToClient(application.GetHwnd(), &mousePos);
+
 			mMousePos.x = mousePos.x;
 			mMousePos.y = mousePos.y;
 		}

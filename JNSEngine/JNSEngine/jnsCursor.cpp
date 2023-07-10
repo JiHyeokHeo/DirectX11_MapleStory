@@ -3,6 +3,7 @@
 #include "jnsInput.h"
 #include "jnsCamera.h"
 
+#define MOUSEZPOS -9.0f;
 namespace jns
 {
 	Vector3 Cursor::mCursorPos = {};
@@ -29,7 +30,10 @@ namespace jns
 	void Cursor::Update()
 	{
 		mCursorPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f);
-		//Vector3 pos2(600, 450, 1000.0f);
+
+		// UI ÁÂÇ¥ 
+		Vector3 UIpos2(800, 450, 0.0f);
+
 		Viewport viewport;
 		viewport.width = 1600.0f;
 		viewport.height = 900.0f;
@@ -39,8 +43,9 @@ namespace jns
 		viewport.maxDepth = 1.0f;
 
 		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		mCursorPos.z = 1.0f;
-		//pos2 = viewport.Unproject(pos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mCursorPos.z = MOUSEZPOS;
+		UIpos2 = viewport.Unproject(UIpos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		UIpos2.z = MOUSEZPOS;
 		tr->SetPosition(mCursorPos);
 
 		GameObject::Update();
