@@ -14,12 +14,7 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-cbuffer Transform : register(b0)
-{
-    float4 Position;
-    //float4 Rotation;
-    //float4 Scale;
-}
+
 
 //cbuffer Color : register(b1)
 //{

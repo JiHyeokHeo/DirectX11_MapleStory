@@ -243,8 +243,8 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
 
-		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Player);
-		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(PlayerCB));
+		 constantBuffer[(UINT)eCBType::Player] = new ConstantBuffer(eCBType::Player);
+		 constantBuffer[(UINT)eCBType::Player]->Create(sizeof(PlayerCB));
 
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
