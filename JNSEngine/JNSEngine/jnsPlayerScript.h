@@ -7,7 +7,9 @@ namespace jns
 	{
 	public:
 		virtual void Update() override;
+		virtual void Render() override;
 
+		void bindConstantBuffer();
 	private:
 	};
 }

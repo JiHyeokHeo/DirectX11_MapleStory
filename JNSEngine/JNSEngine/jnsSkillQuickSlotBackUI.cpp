@@ -16,7 +16,7 @@ namespace jns
 
 		SetPosition(Vector3(2.3f, -1.95f, 4.3f));
 		SetScaleWithOrginalImageScale(Vector2(3.4f,3.4f));
-	
+		
 		UIBase::Initialize();
 	}
 	void SkillQuickSlotBackUI::Update()

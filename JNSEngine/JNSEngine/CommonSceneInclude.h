@@ -7,6 +7,9 @@
 #include "jnsGridScrpt.h"
 #include "jnsPlayerScript.h"
 
+// Player
+#include "jnsPlayer.h"
+
 // BackGround 
 #include "jnsLoginBG.h"
 #include "jnsCharactorMakeBG.h"
@@ -36,6 +39,7 @@
 #include "jnsCamera.h"
 #include "jnsInput.h"
 #include "jnsSceneManager.h"
+#include "jnsTime.h"
 
 // Resources
 #include "jnsResources.h"

@@ -12,6 +12,7 @@
 #define CBSLOT_TRANSFORM		0
 #define CBSLOT_GRID			2
 #define CBSLOT_MOVE			3
+#define CBSLOT_PLAYER		4
 //#define CBSLOT_PARTICLE			1
 
 
@@ -32,6 +33,7 @@ enum class eCBType
 	Material,
 	Grid,
 	Move,
+	Player,
 	End,
 };
 

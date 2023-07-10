@@ -15,7 +15,7 @@ namespace jns
 		virtual void Render() override;
 
 	private:
-
+		int hp;
 	};
 
 }

@@ -14,13 +14,6 @@ struct VSOut
     float2 UV : TEXCOORD;
 };
 
-cbuffer Time: register(b3)
-{
-    int type;
-    float3 mTime;
-}
-
-
 float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float4) 0.0f;

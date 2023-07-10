@@ -15,8 +15,8 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"ShopBackGround3Material");
 
-		SetPosition(Vector3(0.0f, 0.0f, -0.1f));
-		SetScaleWithOrginalImageScale();
+		SetPosition(Vector3(0.0f, -0.1f, -0.1f));
+		SetScaleWithOrginalImageScale(Vector2(1.0f,1.0f));
 
 		UIBase::Initialize();
 	}

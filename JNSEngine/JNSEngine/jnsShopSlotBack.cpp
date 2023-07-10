@@ -12,7 +12,7 @@ namespace jns
 	void ShopSlotBack::Initialize()
 	{
 		SetMesh(L"RectMesh");
-		SetMaterial(L"ExpMaxBarMaterial");
+		SetMaterial(L"ShopBackGroundMaterial");
 
 		SetPosition(Vector3(0.0f, 0.0f, 4.0f));
 		SetScaleWithOrginalImageScale(Vector2(2.8f,2.8f));

@@ -3,6 +3,8 @@
 #include "jnsGameObject.h"
 #include "jnsInput.h"
 #include "jnsTime.h"
+#include "jnsConstantBuffer.h"
+#include "jnsRenderer.h"
 
 namespace jns
 {
@@ -41,5 +43,25 @@ namespace jns
 			pos.z += 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
+	}
+	void PlayerScript::Render()
+	{
+		bindConstantBuffer();
+	}
+	void PlayerScript::bindConstantBuffer()
+	{
+
+		//PlayerUIScript를만들어야 한다.
+		//renderer::PlayerCB playerUICB = {};
+		//int mhp = 100;
+		//int mmp = 100;
+		//
+		//playerUICB.hp = mhp;
+		//playerUICB.mp = mmp;
+		//playerUICB.mTime = Vector2(0.0f, 0.0f);
+		//ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
+		//
+		//cb->SetData(&playerUICB);
+		//cb->Bind(eShaderStage::PS);
 	}
 }

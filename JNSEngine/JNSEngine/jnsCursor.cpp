@@ -7,6 +7,7 @@
 namespace jns
 {
 	Vector3 Cursor::mCursorPos = {};
+	Vector3 Cursor::mUIPos = {};
 	Cursor::Cursor()
 	{
 		AddComponent<MeshRenderer>();
@@ -31,8 +32,8 @@ namespace jns
 	{
 		mCursorPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f);
 
-		// UI 좌표 
-		Vector3 UIpos2(800, 450, 0.0f);
+		// UI 
+		mUIPos = Vector3(800.0f, 450.0f, 0.0f);
 
 		Viewport viewport;
 		viewport.width = 1600.0f;
@@ -44,8 +45,13 @@ namespace jns
 
 		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
 		mCursorPos.z = MOUSEZPOS;
-		UIpos2 = viewport.Unproject(UIpos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		UIpos2.z = MOUSEZPOS;
+		
+		// 추후 UI좌표를 사용하기 위해!
+		mUIPos = viewport.Unproject(mUIPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mUIPos.z = MOUSEZPOS;
+		
+		
+		
 		tr->SetPosition(mCursorPos);
 
 		GameObject::Update();

@@ -14,17 +14,9 @@ namespace jns
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
 		
 
-			GameObject* player = new GameObject();
-			player->SetName(L"Zelda");
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-			//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
-			player->AddComponent<PlayerScript>();
+		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		
-			SetTarget(player);
+		SetTarget(player);
 		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		//{
 		//	GameObject* player = new GameObject();
@@ -77,7 +69,7 @@ namespace jns
 		// NoMove BackGround
 		object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 
-		//CreateInventory();
+		CreateInventory();
 		CreatePlayerUI();
 		CreateCursor();
 

@@ -13,6 +13,21 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
+
+cbuffer Time: register(b3)
+{
+    int type;
+    float3 mTime;
+}
+
+
+cbuffer PlayerUI : register(b4)
+{
+    int hp;
+    int mp;
+    float2 mPlayerTime;
+}
+
 Texture2D albedoTexture : register(t0);
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);

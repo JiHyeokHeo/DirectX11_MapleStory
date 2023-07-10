@@ -37,6 +37,13 @@ namespace renderer
 		Vector3 mTime;
 	};
 
+	CBUFFER(PlayerCB, CBSLOT_PLAYER)
+	{
+		int hp;
+		int mp;
+		Vector2 mTime;
+	};
+
 	extern Vertex vertexes[];
 	extern jns::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 

@@ -67,6 +67,12 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"PlayerUIShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -237,6 +243,9 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(GridCB));
 
+		 constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Player);
+		 constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(PlayerCB));
+
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
 		 //colorConstanttBuffer->Create(sizeof(Vector4));
@@ -269,6 +278,11 @@ namespace renderer
 		 gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
 		 jns::Resources::Insert(L"GridShader", gridShader);
 
+		 std::shared_ptr<Shader> playerUIShader = std::make_shared<Shader>();
+		 playerUIShader->Create(eShaderStage::VS, L"PlayerUIVS.hlsl", "main");
+		 playerUIShader->Create(eShaderStage::PS, L"PlayerUIPS.hlsl", "main");
+		 jns::Resources::Insert(L"PlayerUIShader", playerUIShader);
+
 		 //{
 			// std::shared_ptr<Texture> texture
 			//	 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
@@ -292,7 +306,9 @@ namespace renderer
 			 = Resources::Find<Shader>(L"MoveShader");
 		 std::shared_ptr<Shader> gridShader
 			 = Resources::Find<Shader>(L"GridShader");
-		
+		 std::shared_ptr<Shader> playerUIShader
+			 = Resources::Find<Shader>(L"PlayerUIShader");
+
 		 std::shared_ptr<Material> material = std::make_shared<Material>();
 		 material = std::make_shared<Material>();
 		 material->SetShader(gridShader);
@@ -364,12 +380,12 @@ namespace renderer
 		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
-		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, spriteShader);
+		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, playerUIShader);
 		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\MpBar.png", MpBar_Texture);
-		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, spriteShader);
+		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, playerUIShader);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 		 //MpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"MpBarMaterial", MpBar_UI_Material);
 

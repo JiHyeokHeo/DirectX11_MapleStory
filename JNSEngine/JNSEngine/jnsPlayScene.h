@@ -30,6 +30,5 @@ namespace jns
 	private:
 		GameObject* followtarget;
 		Camera* maincameraComp;
-		class Player* mPlayer;
 	};
 }
