@@ -2,9 +2,11 @@
 #include "jnsGameObject.h"
 #include "jnsMeshRenderer.h"
 #include "jnsTransform.h"
+#include "jnsMath.h"
 
 namespace jns
 {
+	using namespace jns::math;
 	class Cursor : public GameObject
 	{
 	public:
@@ -16,9 +18,11 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
+		static __forceinline Vector3 GetCursorPos() { return mCursorPos; }
 	private:
 		MeshRenderer* mr;
 		Transform* tr;
 		Vector2 mTextureRatio;
+		static Vector3 mCursorPos;
 	};
 }

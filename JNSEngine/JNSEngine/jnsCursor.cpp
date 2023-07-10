@@ -5,6 +5,7 @@
 
 namespace jns
 {
+	Vector3 Cursor::mCursorPos = {};
 	Cursor::Cursor()
 	{
 		AddComponent<MeshRenderer>();
@@ -21,31 +22,26 @@ namespace jns
 		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(1.0f, 0.0, 0.1f));
-		tr->SetScale(Vector3(mTextureRatio.x * 1.0f, mTextureRatio.y * 1.0f, 1.0f));
+		tr->SetScale(Vector3(mTextureRatio.x * 0.15f, mTextureRatio.y * 0.15f, 1.0f));
 
 		GameObject::Initialize();
 	}
 	void Cursor::Update()
 	{
-		
-		//Vector3 pos(600, 450, 0.0f);
+		mCursorPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f);
 		//Vector3 pos2(600, 450, 1000.0f);
-		//Viewport viewport;
-		//viewport.width = 1600.0f;
-		//viewport.height = 900.0f;
-		//viewport.x = 0;
-		//viewport.y = 0;
-		//viewport.minDepth = 0.0f;
-		//viewport.maxDepth = 1.0f;
+		Viewport viewport;
+		viewport.width = 1600.0f;
+		viewport.height = 900.0f;
+		viewport.x = 0;
+		viewport.y = 0;
+		viewport.minDepth = 0.0f;
+		viewport.maxDepth = 1.0f;
 
-		//pos = viewport.Unproject(pos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mCursorPos.z = 1.0f;
 		//pos2 = viewport.Unproject(pos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		Vector2 mMousePos = jns::Input::GetMousePos();
-		tr->SetPosition(Vector3(mMousePos.x, mMousePos.y, 1.0f));
-
-		Camera::GetProjectionMatrix();
-		//Viewport::Unproject(mMousePos, Camera::GetProjectionMatrix(),Camera::GetViewMatrix(), )
-
+		tr->SetPosition(mCursorPos);
 
 		GameObject::Update();
 	}

@@ -1,6 +1,7 @@
 #include "jnsTime.h"
 #include "jnsApplication.h"
 #include "jnsInput.h"
+#include "../JNSEngine/jnsCursor.h"
 
 extern jns::Application application;
 
@@ -39,7 +40,7 @@ namespace jns
 		if (mSecond > 1.0f)
 		{
 			HWND hWnd = application.GetHwnd();
-			Vector2 mPos = jns::Input::GetMousePos();
+			Vector3 mPos = jns::Cursor::GetCursorPos();
 			wchar_t szFloat[50] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
 			swprintf_s(szFloat, 50, L"FPS : %d Mouse : %d, %d", (UINT)FPS, (UINT)mPos.x, (UINT)mPos.y);
