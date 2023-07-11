@@ -35,6 +35,7 @@ namespace jns
 		void SetParent(Transform* transform) { mParent = transform; }
 		Transform* GetParent() { return mParent; }
 
+
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;

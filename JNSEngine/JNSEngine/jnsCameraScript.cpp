@@ -11,17 +11,17 @@ namespace jns
 	void CameraScript::Update()
 	{
 		cameratr = GetOwner()->GetComponent<Transform>();
-		comp = GetOwner()->GetComponent<Camera>();
+		//comp = GetOwner()->;
 
-		if (FollowTarget())
+		if (true/*FollowTarget()*/)
 		{
 
 		}
 		else
 		{
-			pos = cameratr->GetPosition();
 		}
 
+			pos = cameratr->GetPosition();
 		
 
 		if (Input::GetKey(eKeyCode::W))
@@ -56,20 +56,20 @@ namespace jns
 		}
 	}
 
-	bool CameraScript::FollowTarget()
-	{
-		if (comp->GetCameraType() != jns::Camera::eCameraType::MainCamera)
-			return false;
+	//bool CameraScript::FollowTarget()
+	//{
+	//	//if (comp->GetCameraType() != jns::Camera::eCameraType::MainCamera)
+	//	//	return false;
 
-		GameObject* checkTarget = comp->GetTarget();
-		
-		if (checkTarget == nullptr)
-			return false;
-		
-		Transform* followTR = checkTarget->GetComponent<Transform>();
-		pos = followTR->GetPosition();
+	//	//GameObject* checkTarget = comp->GetTarget();
+	//	//
+	//	//if (checkTarget == nullptr)
+	//	//	return false;
+	//	//
+	//	//Transform* followTR = checkTarget->GetComponent<Transform>();
+	//	//pos = followTR->GetPosition();
 
-		cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
-		return true;
-	}
+	//	//cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
+	//	//return true;
+	//}
 }

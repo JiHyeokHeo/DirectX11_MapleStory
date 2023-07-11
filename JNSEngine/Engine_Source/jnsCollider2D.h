@@ -8,7 +8,7 @@ namespace jns
 	class Collider2D : public Component
 	{
 	public:
-		Collider2D();
+		Collider2D(); 
 		~Collider2D();
 
 		virtual void Initialize() override;

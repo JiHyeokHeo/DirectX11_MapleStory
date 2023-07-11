@@ -14,7 +14,7 @@ namespace jns
 		CreateMainCamera();
 		CreateUICamera();
 		//CreateEffectCamera();
-		CreateGridCamera();
+		//CreateGridCamera();
 	}
 
 	void PlayScene::Update()
@@ -47,70 +47,64 @@ namespace jns
 
 	void PlayScene::CreateMainCamera()
 	{
-		GameObject* maincamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
-		maincamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		maincameraComp = maincamera->AddComponent<Camera>();
-		maincameraComp->SetCameraType(jns::Camera::eCameraType::MainCamera);
-		maincameraComp->SetTarget(followtarget);
-		maincameraComp->TurnLayerMask(eLayerType::UI, false);
-		maincamera->AddComponent<CameraScript>();
-		renderer::cameras.push_back(maincameraComp);
+		CameraObject* mainCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
+		AddGameObject(eLayerType::Camera, mainCamera);
+		mainCamera->TurnOffMainCameraMask(eLayerType::UI);
+		mainCamera->AddComponent<CameraScript>();
 	}
 
 	void PlayScene::CreateUICamera()
 	{
-		GameObject* uicamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
-		uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* uicameraComp = uicamera->AddComponent<Camera>();
-		uicameraComp->SetCameraType(jns::Camera::eCameraType::UICamera);
-		uicameraComp->TurnLayerMask(eLayerType::Player, false);
-		uicameraComp->TurnLayerMask(eLayerType::BG, false);
-		uicameraComp->TurnLayerMask(eLayerType::MapEffect, false);
+		CameraObject* uiCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
+		AddGameObject(eLayerType::Camera, uiCamera);
+		uiCamera->TurnOffUICameraMask(eLayerType::Player);
+		uiCamera->TurnOffUICameraMask(eLayerType::BG);
+		uiCamera->TurnOffUICameraMask(eLayerType::MapEffect);
 	}
 
-	void PlayScene::CreateGridCamera()
-	{
-		GameObject* grid = new GameObject();
-		grid->SetName(L"Grid");
-		AddGameObject(eLayerType::Grid, grid);
-		MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
-		GridScript* gridSc = grid->AddComponent<GridScript>();
-		gridSc->SetCamera(maincameraComp);
-	}
+	//void PlayScene::CreateGridCamera()
+	//{
+	//	GameObject* grid = new GameObject();
+	//	grid->SetName(L"Grid");
+	//	AddGameObject(eLayerType::Grid, grid);
+	//	MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
+	//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+	//	mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
+	//	GridScript* gridSc = grid->AddComponent<GridScript>();
+	//	gridSc->SetCamera(maincameraComp);
+	//}
 
 	void PlayScene::CreatePlayerUI()
 	{
 		// 1600 x 900 Display Resolution
-		object::InstantiateUIandBG<ExpBar>(eLayerType::UI);
-		object::InstantiateUIandBG<ExpMaxBar>(eLayerType::UI);
+		object::InstantiateNOmove<ExpBar>(eLayerType::UI);
+		object::InstantiateNOmove<ExpMaxBar>(eLayerType::UI);
 
 		// Slot
-		GameObject* mSkillSlotBack= object::InstantiateUIandBG<SkillQuickSlotBackUI>(eLayerType::UI);
-		GameObject* mSkillSlotFront = object::InstantiateUIandBG<SkillQuickSlotFront>(eLayerType::UI);
-		GameObject* mSkillExtensionSlot = object::InstantiateUIandBG<SkillExtentionSlot>(eLayerType::UI);
+		GameObject* mSkillSlotBack= object::InstantiateNOmove<SkillQuickSlotBackUI>(eLayerType::UI);
+		GameObject* mSkillSlotFront = object::InstantiateNOmove<SkillQuickSlotFront>(eLayerType::UI);
+		GameObject* mSkillExtensionSlot = object::InstantiateNOmove<SkillExtentionSlot>(eLayerType::UI);
 		mSkillSlotFront->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
 		mSkillExtensionSlot->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
 
 		// Status
-		GameObject* mStatus = object::InstantiateUIandBG<CenterStatus>(eLayerType::UI);
-		GameObject* mHpBar= object::InstantiateUIandBG<HpBar>(eLayerType::UI);
-		GameObject* mMpBar = object::InstantiateUIandBG<MpBar>(eLayerType::UI);
+		GameObject* mStatus = object::InstantiateNOmove<CenterStatus>(eLayerType::UI);
+		GameObject* mHpBar= object::InstantiateNOmove<HpBar>(eLayerType::UI);
+		GameObject* mMpBar = object::InstantiateNOmove<MpBar>(eLayerType::UI);
 		mHpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 		mMpBar->GetComponent<Transform>()->SetParent(mStatus->GetComponent<Transform>());
 	}
 
 	void PlayScene::CreateCursor()
 	{
-		object::InstantiateUIandBG<Cursor>(eLayerType::UI);
+		object::InstantiateNOmove<Cursor>(eLayerType::UI);
 	}
 
 	void PlayScene::CreateInventory()
 	{
-		GameObject* mShopSlotBackBase = object::InstantiateUIandBG<ShopSlotBack>(eLayerType::UI);
-		GameObject* mShopSlotBack02 = object::InstantiateUIandBG<ShopSlotBack2>(eLayerType::UI);
-		GameObject* mShopSlotBack03 = object::InstantiateUIandBG<ShopSlotBack3>(eLayerType::UI);
+		GameObject* mShopSlotBackBase = object::InstantiateNOmove<ShopSlotBack>(eLayerType::UI);
+		GameObject* mShopSlotBack02 = object::InstantiateNOmove<ShopSlotBack2>(eLayerType::UI);
+		GameObject* mShopSlotBack03 = object::InstantiateNOmove<ShopSlotBack3>(eLayerType::UI);
 
 
 		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());

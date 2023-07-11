@@ -11,7 +11,7 @@ namespace jns
 	}
 	void RutabysBossScene::Initialize()
 	{
-		object::InstantiateUIandBG<RutabysBossBG>(eLayerType::BG);
+		object::InstantiateNOmove<RutabysBossBG>(eLayerType::BG);
 		CreatePlayerUI();
 
 		PlayScene::Initialize();

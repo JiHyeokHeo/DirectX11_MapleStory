@@ -10,6 +10,10 @@
 // Player
 #include "jnsPlayer.h"
 
+// Camera
+#include "jnsCameraObject.h"
+
+
 // BackGround 
 #include "jnsLoginBG.h"
 #include "jnsCharactorMakeBG.h"

@@ -7,6 +7,7 @@ namespace jns::enums
 		Transform,
 		Mesh,
 		Collider2D,
+		RayCollider2D,
 		Particle,
 		MeshRenderer,
 		Script,
@@ -16,13 +17,13 @@ namespace jns::enums
 
 	enum class eLayerType
 	{
-		Cursor,
 		Grid,
 		BG,
 		Player,
 		Monster,
 		UI,
 		Camera,
+		Cursor,
 		MapEffect,
 		End,
 	};
