@@ -44,7 +44,6 @@ namespace renderer
 		Vector2 mTime;
 	};
 
-	extern Vertex vertexes[];
 	extern jns::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
@@ -53,10 +52,13 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
 	extern std::vector<jns::Camera*> cameras;
+	extern std::vector<DebugMesh> debugMeshes;
 
 	void Initialize();
 	void Render();
 	void Release();
+
+	void PushDebugMeshAttribute(DebugMesh& mesh);
 
 }
 

@@ -50,18 +50,16 @@ namespace jns
 	}
 	void PlayerScript::bindConstantBuffer()
 	{
-
-		//PlayerUIScript를만들어야 한다.
-		//renderer::PlayerCB playerUICB = {};
-		//int mhp = 100;
-		//int mmp = 100;
-		//
-		//playerUICB.hp = mhp;
-		//playerUICB.mp = mmp;
-		//playerUICB.mTime = Vector2(0.0f, 0.0f);
-		//ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
-		//
-		//cb->SetData(&playerUICB);
-		//cb->Bind(eShaderStage::PS);
+		renderer::PlayerCB playerUICB = {};
+		int mhp = 40;
+		int mmp = 100;
+		
+		playerUICB.hp = mhp;
+		playerUICB.mp = mmp;
+		playerUICB.mTime = Vector2(0.0f, 0.0f);
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
+		
+		cb->SetData(&playerUICB);
+		cb->Bind(eShaderStage::PS);
 	}
 }

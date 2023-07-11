@@ -40,6 +40,7 @@
 #include "jnsInput.h"
 #include "jnsSceneManager.h"
 #include "jnsTime.h"
+#include "jnsRenderer.h"
 
 // Resources
 #include "jnsResources.h"

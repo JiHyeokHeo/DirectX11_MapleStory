@@ -54,6 +54,7 @@ namespace jns
 		maincameraComp->SetTarget(followtarget);
 		maincameraComp->TurnLayerMask(eLayerType::UI, false);
 		maincamera->AddComponent<CameraScript>();
+		renderer::cameras.push_back(maincameraComp);
 	}
 
 	void PlayScene::CreateUICamera()
