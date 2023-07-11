@@ -15,7 +15,7 @@ namespace jns
 		
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
-		
+		SetTarget(player);
 		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		//{
 		//	GameObject* player = new GameObject();

@@ -14,15 +14,15 @@ namespace jns
 		cameratr = GetOwner()->GetComponent<Transform>();
 		//comp = GetOwner()->;
 
-		if (true/*FollowTarget()*/)
+		if (FollowTarget())
 		{
 
 		}
 		else
 		{
+			pos = cameratr->GetPosition();
 		}
 
-			pos = cameratr->GetPosition();
 		
 
 		if (Input::GetKey(eKeyCode::W))

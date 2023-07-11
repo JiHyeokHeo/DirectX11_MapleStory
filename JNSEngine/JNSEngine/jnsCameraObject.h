@@ -26,8 +26,10 @@ namespace jns
 		GameObject* GetFollowTarget() { return mFollowTarget; }
 
 	public:
-		void TurnOffMainCameraMask(eLayerType type);
-		void TurnOffUICameraMask(eLayerType type);
+		void TurnOffLayer(eLayerType type);
+		void TurnOnLayer(eLayerType type);
+		void TurnOnAllLayer();
+		void TurnOffAllLayer();
 
 		eCameraType GetCameraType() { return mCameraType; }
 

@@ -45,13 +45,24 @@ namespace jns
 		GameObject::Render();
 	}
 
-	void CameraObject::TurnOffMainCameraMask(eLayerType type)
+	void CameraObject::TurnOffLayer(eLayerType type)
 	{
-		mCameraComp->TurnLayerMask(type, false);
+		mCameraComp->TurnOFFLayerMask(type);
 	}
-	
-	void CameraObject::TurnOffUICameraMask(eLayerType type)
+
+	void CameraObject::TurnOnLayer(eLayerType type)
 	{
-		mCameraComp->TurnLayerMask(type, false);
+		mCameraComp->TurnLayerMask(type);
 	}
+
+	void CameraObject::TurnOnAllLayer()
+	{
+		mCameraComp->EnableLayerMasks();
+	}
+
+	void CameraObject::TurnOffAllLayer()
+	{
+		mCameraComp->DisableLayerMasks();
+	}
+
 }

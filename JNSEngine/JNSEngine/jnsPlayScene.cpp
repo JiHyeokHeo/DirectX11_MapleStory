@@ -11,8 +11,8 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		CreateUICamera();
 		CreateMainCamera();
+		CreateUICamera();
 		//CreateEffectCamera();
 		//CreateGridCamera();
 	}
@@ -36,8 +36,9 @@ namespace jns
 	{
 		CameraObject* mainCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
 		mainCamera->Initialize();
+		mainCamera->SetFollowTarget(followtarget);
 		AddGameObject(eLayerType::Camera, mainCamera);
-		mainCamera->TurnOffMainCameraMask(eLayerType::UI);
+		mainCamera->TurnOffLayer(eLayerType::UI);
 		mainCamera->AddComponent<CameraScript>();
 	}
 
@@ -46,9 +47,9 @@ namespace jns
 		CameraObject* uiCamera = new CameraObject(CameraObject::eCameraType::UICamera);
 		uiCamera->Initialize();
 		AddGameObject(eLayerType::Camera, uiCamera);
-		uiCamera->TurnOffUICameraMask(eLayerType::Player);
-		uiCamera->TurnOffUICameraMask(eLayerType::BG);
-		uiCamera->TurnOffUICameraMask(eLayerType::MapEffect);
+		uiCamera->TurnOffAllLayer();
+		uiCamera->TurnOnLayer(eLayerType::UI);
+	
 	}
 
 	//void PlayScene::CreateGridCamera()

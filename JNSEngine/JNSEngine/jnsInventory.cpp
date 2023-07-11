@@ -14,8 +14,8 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"InventoryMaterial");
 
-		SetPosition(Vector3(0.0f, 0.0f, 4.5f));
-		SetScaleWithOrginalImageScale(Vector2(2.0f,2.0f));
+		SetPosition(Vector3(-1.0f, 0.0f, 4.5f));
+		SetScaleWithOrginalImageScale(Vector2(2.3f,2.3f));
 		UIBase::Initialize();
 	}
 	void Inventory::Update()
