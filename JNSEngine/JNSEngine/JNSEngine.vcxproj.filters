@@ -105,6 +105,9 @@
     <ClCompile Include="jnsCameraObject.cpp">
       <Filter>Contents\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="jnsInventory.cpp">
+      <Filter>Contents\UI\Inventory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -222,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="jnsCameraObject.h">
       <Filter>Contents\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsInventory.h">
+      <Filter>Contents\UI\Inventory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -356,6 +362,9 @@
     </Filter>
     <Filter Include="Contents\Camera">
       <UniqueIdentifier>{7dddd1f5-4e6a-4a5c-8b42-a1353f27dae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Inventory">
+      <UniqueIdentifier>{c0507744-4161-4da1-8cc3-ae2c45d13008}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

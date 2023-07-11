@@ -398,6 +398,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
 		 SET_MATERIAL(spriteMaterial1, texture1, moveShader);
+		 //texture1->GetTextureSize();
 		 //spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02", spriteMaterial1);
 #pragma endregion
@@ -499,8 +500,10 @@ namespace renderer
 		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"Mist01Material", Mist01_UI_Material);
 
-
-
+		 // Inventory
+		 LOAD_TEXTURE(L"Inventory", L"..\\Resources\\UI\\Item.backgrnd3.png", Inventory_UI_Texture);
+		 SET_MATERIAL(Inventory_UI_Material, Inventory_UI_Texture, moveShader);
+		 INSERT_MATERIAL(L"InventoryMaterial", Inventory_UI_Material);
 #pragma endregion
 
 #pragma region Cursor

@@ -4,17 +4,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)guiDebugObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)guiEditorObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)guiWidget.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Editor\guiEditor.h">
-      <Filter>Editor</Filter>
-    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)guiDebugObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)guiEditorObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)guiWidget.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Editor\guiEditor.cpp">
-      <Filter>Editor</Filter>
-    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Editor">

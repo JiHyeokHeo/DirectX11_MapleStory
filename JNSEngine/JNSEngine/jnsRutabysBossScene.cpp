@@ -11,6 +11,7 @@ namespace jns
 	}
 	void RutabysBossScene::Initialize()
 	{
+		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		object::InstantiateNOmove<RutabysBossBG>(eLayerType::BG);
 		CreatePlayerUI();
 

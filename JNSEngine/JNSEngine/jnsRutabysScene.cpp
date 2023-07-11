@@ -45,24 +45,24 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
-		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
+		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-4.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-5.5f,-1.0f, 4.9f));d
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-6.0f,-1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-7.5f,-1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-1.5f,-0.8f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-2.0f,-0.9f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-3.5f,-0.7f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-4.0f,-0.8f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-5.5f,-1.1f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-6.0f,-0.6f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-7.5f,-0.5f, 4.9f));
 																		 
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(2.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(3.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(4.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(5.5f, -1.0f, 4.9f));
-		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -1.0f, 4.9f));
-		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -1.0f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f, -0.7f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1.5f, -0.6f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(2.0f, -1.1f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(3.5f, -0.8f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(4.0f, -0.9f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(5.5f, -0.6f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -0.8f, 4.9f));
+		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -0.9f, 4.9f));
 	
 
 		// NoMove BackGround
