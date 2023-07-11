@@ -5,6 +5,7 @@
 #include "jnsInput.h"
 #include "jnsSceneManager.h"
 #include "jnsCamera.h"
+#include "jnsCameraObject.h"
 
 namespace jns
 {
@@ -56,20 +57,19 @@ namespace jns
 		}
 	}
 
-	//bool CameraScript::FollowTarget()
-	//{
-	//	//if (comp->GetCameraType() != jns::Camera::eCameraType::MainCamera)
-	//	//	return false;
+	bool CameraScript::FollowTarget()
+	{
+		GameObject* mCamera = this->GetOwner();
+		CameraObject* mMainCamera = dynamic_cast<CameraObject*>(mCamera);
+		GameObject* checkTarget = mMainCamera->GetFollowTarget();
+		
+		if (checkTarget == nullptr)
+			return false;
+		
+		Transform* followTR = checkTarget->GetComponent<Transform>();
+		pos = followTR->GetPosition();
 
-	//	//GameObject* checkTarget = comp->GetTarget();
-	//	//
-	//	//if (checkTarget == nullptr)
-	//	//	return false;
-	//	//
-	//	//Transform* followTR = checkTarget->GetComponent<Transform>();
-	//	//pos = followTR->GetPosition();
-
-	//	//cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
-	//	//return true;
-	//}
+		cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
+		return true;
+	}
 }

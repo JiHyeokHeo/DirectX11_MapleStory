@@ -11,27 +11,14 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		CreateMainCamera();
 		CreateUICamera();
+		CreateMainCamera();
 		//CreateEffectCamera();
 		//CreateGridCamera();
 	}
 
 	void PlayScene::Update()
 	{		
-		//Vector3 pos(600, 450, 0.0f);
-		//Vector3 pos2(600, 450, 1000.0f);
-		//Viewport viewport;
-		//viewport.width = 1600.0f;
-		//viewport.height = 900.0f;
-		//viewport.x = 0;
-		//viewport.y = 0;
-		//viewport.minDepth = 0.0f;
-		//viewport.maxDepth = 1.0f;
-
-		//pos = viewport.Unproject(pos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		//pos2 = viewport.Unproject(pos2, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-
 		Scene::Update();
 	}
 
@@ -48,6 +35,7 @@ namespace jns
 	void PlayScene::CreateMainCamera()
 	{
 		CameraObject* mainCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
+		mainCamera->Initialize();
 		AddGameObject(eLayerType::Camera, mainCamera);
 		mainCamera->TurnOffMainCameraMask(eLayerType::UI);
 		mainCamera->AddComponent<CameraScript>();
@@ -55,7 +43,8 @@ namespace jns
 
 	void PlayScene::CreateUICamera()
 	{
-		CameraObject* uiCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
+		CameraObject* uiCamera = new CameraObject(CameraObject::eCameraType::UICamera);
+		uiCamera->Initialize();
 		AddGameObject(eLayerType::Camera, uiCamera);
 		uiCamera->TurnOffUICameraMask(eLayerType::Player);
 		uiCamera->TurnOffUICameraMask(eLayerType::BG);
@@ -100,6 +89,7 @@ namespace jns
 		object::InstantiateNOmove<Cursor>(eLayerType::UI);
 	}
 
+
 	void PlayScene::CreateInventory()
 	{
 		GameObject* mShopSlotBackBase = object::InstantiateNOmove<ShopSlotBack>(eLayerType::UI);
@@ -110,16 +100,4 @@ namespace jns
 		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());
 		mShopSlotBack03->GetComponent<Transform>()->SetParent(mShopSlotBack02->GetComponent<Transform>());
 	}
-	//void PlayScene::CreateEffectCamera()
-	//{
-	//	GameObject* uicamera = object::InstantiateUIandBG<GameObject>(eLayerType::Camera);
-	//	uicamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-	//	Camera* uicameraComp = uicamera->AddComponent<Camera>();
-	//	uicameraComp->TurnLayerMask(eLayerType::Player, false);
-	//	uicameraComp->TurnLayerMask(eLayerType::BG, false);
-	//}
-
-
-
-
 }

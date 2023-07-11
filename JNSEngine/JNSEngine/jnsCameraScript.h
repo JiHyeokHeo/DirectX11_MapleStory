@@ -10,7 +10,7 @@ namespace jns
 
 
 	private:
-		//bool FollowTarget();
+		bool FollowTarget();
 		class Camera* comp;
 		class Transform* cameratr;
 		Vector3 pos;

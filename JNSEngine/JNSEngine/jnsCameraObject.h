@@ -22,6 +22,9 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
+		void SetFollowTarget(GameObject* target) { mFollowTarget = target; }
+		GameObject* GetFollowTarget() { return mFollowTarget; }
+
 	public:
 		void TurnOffMainCameraMask(eLayerType type);
 		void TurnOffUICameraMask(eLayerType type);
@@ -33,6 +36,8 @@ namespace jns
 		eCameraType mCameraType;
 		Camera* mCameraComp;
 		eLayerType mTurnOffLayer;
+
+		GameObject* mFollowTarget;
 	};
 }
 

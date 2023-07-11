@@ -99,7 +99,6 @@ namespace jns::graphics
 		virtual ~GpuBuffer() = default;
 	};
 
-
 	struct DebugMesh
 	{
 		enums::eColliderType type;
