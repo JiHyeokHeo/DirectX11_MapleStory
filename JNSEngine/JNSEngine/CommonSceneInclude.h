@@ -36,6 +36,7 @@
 #include "jnsShopSlotBack.h"
 #include "jnsShopSlotBack2.h"
 #include "jnsShopSlotBack3.h"
+#include "jnsInventory.h"
 
 // Component
 #include "jnsTransform.h"

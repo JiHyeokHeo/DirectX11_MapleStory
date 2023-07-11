@@ -14,7 +14,7 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"StatusMainBarMaterial");
 
-		SetPosition(Vector3(0.0f, -1.95f, 4.3f));
+		SetPosition(Vector3(0.0f, -1.95f, 4.1f));
 		SetScaleWithOrginalImageScale();
 		
 		UIBase::Initialize();

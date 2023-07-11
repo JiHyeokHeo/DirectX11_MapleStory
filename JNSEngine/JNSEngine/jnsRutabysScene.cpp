@@ -64,11 +64,11 @@ namespace jns
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(6.0f, -0.8f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(7.5f, -0.9f, 4.9f));
 	
-
+		object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
 		object::InstantiateNOmove<RutabysMain>(eLayerType::BG);
 
-		CreateInventory();
+		//CreateInventory();
 		CreatePlayerUI();
 		CreateCursor();
 

@@ -449,7 +449,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"SkillQuickSlotFrontLayer", L"..\\Resources\\UI\\Status\\SkillQuickSlotFrontLayer.png", SkillQuickSlotFrontLayer_UI_Texture);
 		 SET_MATERIAL(SkillQuickSlotFrontLayer_UI_Material, SkillQuickSlotFrontLayer_UI_Texture, spriteShader);
-		 SkillQuickSlotFrontLayer_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 //SkillQuickSlotFrontLayer_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SkillQuickSlotFrontMaterial", SkillQuickSlotFrontLayer_UI_Material);
 
 		 LOAD_TEXTURE(L"SkillSlotExtension", L"..\\Resources\\UI\\Status\\SkillSlotExtension.png", SkillSlotExtension_UI_Texture);
@@ -477,7 +477,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
 		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
-		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 //StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 
@@ -501,8 +501,8 @@ namespace renderer
 		 INSERT_MATERIAL(L"Mist01Material", Mist01_UI_Material);
 
 		 // Inventory
-		 LOAD_TEXTURE(L"Inventory", L"..\\Resources\\UI\\Item.backgrnd3.png", Inventory_UI_Texture);
-		 SET_MATERIAL(Inventory_UI_Material, Inventory_UI_Texture, moveShader);
+		 LOAD_TEXTURE(L"Inventory", L"..\\Resources\\UI\\Inventory\\InventoryBG.png", Inventory_UI_Texture);
+		 SET_MATERIAL(Inventory_UI_Material, Inventory_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"InventoryMaterial", Inventory_UI_Material);
 #pragma endregion
 

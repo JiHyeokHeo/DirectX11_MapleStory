@@ -38,7 +38,7 @@ namespace jns::graphics
 			}
 			else
 			{
-				mRatio.x = mHeight / mWidth;
+				mRatio.x = mWidth / mHeight;
 				mRatio.y = 1.0f;
 			}	
 			return mRatio;

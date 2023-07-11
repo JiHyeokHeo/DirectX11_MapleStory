@@ -12,10 +12,10 @@ namespace jns
 	void Inventory::Initialize()
 	{
 		SetMesh(L"RectMesh");
-		SetMaterial(L"ExpBarUIMaterial");
+		SetMaterial(L"InventoryMaterial");
 
-		SetPosition(Vector3(0.0f, -2.2f, 4.5f));
-		SetScale(Vector3(7.95f, 0.05f, 1.0f));
+		SetPosition(Vector3(0.0f, 0.0f, 4.5f));
+		SetScaleWithOrginalImageScale(Vector2(2.0f,2.0f));
 		UIBase::Initialize();
 	}
 	void Inventory::Update()
