@@ -22,7 +22,8 @@ namespace jns
 	{
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"Mist01Material"));
-		tr->SetScale(1.0f, 1.0f, 1.0f);
+		Vector2 mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+		tr->SetScale(mSize.x, mSize.y, 1.0f);
 		//AddComponent<testScript>();
 		GameObject::Initialize();
 	
@@ -35,7 +36,7 @@ namespace jns
 			mPos.x = 1600.0f;
 		}
 
-		mPos.x -= 0.5f * Time::DeltaTime();
+		mPos.x -= 155.5f * Time::DeltaTime();
 		
 		tr->SetPosition(mPos.x, mPos.y, mPos.z);
 		GameObject::Update();

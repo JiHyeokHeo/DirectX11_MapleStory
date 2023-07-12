@@ -3,8 +3,11 @@
 #include "jnsInput.h"
 #include "jnsCamera.h"
 #include "jnsRenderer.h"
+#include "jnsApplication.h"
 
+extern jns::Application application;
 #define MOUSEZPOS -9.0f;
+
 namespace jns
 {
 	Vector3 Cursor::mCursorPos = {};
@@ -68,8 +71,8 @@ namespace jns
 		mUIPos = Vector3(800.0f, 450.0f, 0.0f);
 
 		Viewport viewport;
-		viewport.width = 1600.0f;
-		viewport.height = 900.0f;
+		viewport.width = application.GetWidth();
+		viewport.height = application.GetHeight();
 		viewport.x = 0;
 		viewport.y = 0;
 		viewport.minDepth = 0.0f;
