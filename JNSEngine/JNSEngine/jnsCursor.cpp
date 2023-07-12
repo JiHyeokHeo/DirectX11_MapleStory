@@ -28,7 +28,7 @@ namespace jns
 		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(1.0f, 0.0, 0.1f));
-		tr->SetScale(Vector3(mTextureRatio.x * 0.15f, mTextureRatio.y * 0.15f, 1.0f));
+		tr->SetScale(Vector3(mTextureRatio.x, mTextureRatio.y, 1.0f));
 
 		GameObject::Initialize();
 	}

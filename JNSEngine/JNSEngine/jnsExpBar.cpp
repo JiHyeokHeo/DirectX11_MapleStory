@@ -14,8 +14,8 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"ExpBarUIMaterial");
 		
-		SetPosition(Vector3(0.0f, -2.2f, 4.5f));
-		SetScaleWithOriginalImageScale(Vector2(0.70f, 1.0f));
+		SetPosition(Vector3(0.0f, -379.0f, 4.5f));
+		SetScaleWithOriginalImageScale(Vector2(0.71f, 1.0f));
 
 		UIBase::Initialize();
 	}
