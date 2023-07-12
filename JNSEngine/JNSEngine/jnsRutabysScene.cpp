@@ -70,7 +70,7 @@ namespace jns
 
 		//CreateInventory();
 		CreatePlayerUI();
-		CreateCursor();
+		//CreateCursor();
 
 		PlayScene::Initialize();
 	}

@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"SkillQuickSlotFrontMaterial");
 
 		SetPosition(Vector3(0.0f, 0.0f, -0.1f));
-		SetScale(Vector3(1.0f, 1.0f, 1.0f));
+		//SetScaleWithOriginalImageScale(Vector2(1.0f, 1.0f));
 	
 		UIBase::Initialize();
 	}

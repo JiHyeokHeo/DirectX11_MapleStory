@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"MpBarMaterial");
 
 		SetPosition(Vector3(0.0f, -0.2, -0.1f));
-		SetScaleWithOrginalImageScale(Vector2(0.9f,1.25f));
+		//SetScaleWithOriginalImageScale(Vector2(0.9f,1.25f));
 	
 		
 		UIBase::Initialize();

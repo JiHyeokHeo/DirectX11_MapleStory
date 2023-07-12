@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"ShopBackGroundMaterial");
 
 		SetPosition(Vector3(0.0f, 0.0f, 4.0f));
-		SetScaleWithOrginalImageScale(Vector2(2.8f,2.8f));
+		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 		
 
 		UIBase::Initialize();

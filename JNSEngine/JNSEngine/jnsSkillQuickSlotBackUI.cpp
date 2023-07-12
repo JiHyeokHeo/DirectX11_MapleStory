@@ -14,8 +14,8 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SkillQuickSlotBackMaterial");
 
-		SetPosition(Vector3(2.3f, -1.95f, 4.3f));
-		SetScaleWithOrginalImageScale(Vector2(3.4f,3.4f));
+		SetPosition(Vector3(400.3f, -400.0f, 4.3f));
+		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 		
 		UIBase::Initialize();
 	}

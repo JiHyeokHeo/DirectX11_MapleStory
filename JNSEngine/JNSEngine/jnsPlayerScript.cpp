@@ -15,32 +15,32 @@ namespace jns
 
 		if (Input::GetKey(eKeyCode::UP))
 		{
-			pos.y += 5.0f * Time::DeltaTime();
+			pos.y += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::DOWN))
 		{
-			pos.y -= 5.0f * Time::DeltaTime();
+			pos.y -= 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::LEFT))
 		{
-			pos.x -= 5.0f * Time::DeltaTime();
+			pos.x -= 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::RIGHT))
 		{
-			pos.x += 5.0f * Time::DeltaTime();
+			pos.x += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.z -= 5.0f * Time::DeltaTime();
+			pos.z -= 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::E))
 		{
-			pos.z += 5.0f * Time::DeltaTime();
+			pos.z += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 	}

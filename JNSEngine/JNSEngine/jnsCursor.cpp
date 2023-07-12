@@ -22,7 +22,7 @@ namespace jns
 		mr->SetMaterial(Resources::Find<Material>(L"CursorSpirte0Material"));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 
-		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureRatio();
+		mTextureRatio = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(1.0f, 0.0, 0.1f));
 		tr->SetScale(Vector3(mTextureRatio.x * 0.15f, mTextureRatio.y * 0.15f, 1.0f));

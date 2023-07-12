@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"InventoryMaterial");
 
 		SetPosition(Vector3(-1.0f, 0.0f, 4.5f));
-		SetScaleWithOrginalImageScale(Vector2(2.3f,2.3f));
+		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 		UIBase::Initialize();
 	}
 	void Inventory::Update()

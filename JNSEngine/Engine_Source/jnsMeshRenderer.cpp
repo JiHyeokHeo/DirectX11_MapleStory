@@ -17,7 +17,7 @@ namespace jns
 		//Vector2 mScale = mMaterial->GetTexture()->GetTextureSize();
 		//Transform* tr = GetOwner()->GetComponent<Transform>();
 
-		//tr->SetScale(mScale.x, mScale.y, 1.0f);
+		//tr->SetScaleWithOriginalImgScale(mScale.x, mScale.y, 1.0f);
 	}
 	void MeshRenderer::Update()
 	{
@@ -29,7 +29,7 @@ namespace jns
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		//Vector3 scale = mMaterial->GetTexture()->GetRatio();
-		//tr->SetScale(scale);
+		//tr->SetScaleWithOriginalImgScale(scale);
 		tr->BindConstantBuffer();
 		
 		mMesh->BindBuffer();

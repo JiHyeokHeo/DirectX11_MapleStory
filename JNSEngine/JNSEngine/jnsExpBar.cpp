@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"ExpBarUIMaterial");
 		
 		SetPosition(Vector3(0.0f, -2.2f, 4.5f));
-		SetScale(Vector3(7.95f, 0.05f, 1.0f));
+		SetScaleWithOriginalImageScale(Vector2(0.70f, 1.0f));
 
 		UIBase::Initialize();
 	}

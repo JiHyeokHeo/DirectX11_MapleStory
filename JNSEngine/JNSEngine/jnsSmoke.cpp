@@ -22,7 +22,7 @@ namespace jns
 	{
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"Mist01Material"));
-		tr->SetScale(2.0f, 1.0f, 1.0f);
+		tr->SetScale(1.0f, 1.0f, 1.0f);
 		//AddComponent<testScript>();
 		GameObject::Initialize();
 	
@@ -30,9 +30,9 @@ namespace jns
 	void Smoke::Update()
 	{
 		mPos = tr->GetPosition();
-		if (mPos.x <= -7.0f)
+		if (mPos.x <= -1600.0f)
 		{
-			mPos.x = 7.0f;
+			mPos.x = 1600.0f;
 		}
 
 		mPos.x -= 0.5f * Time::DeltaTime();

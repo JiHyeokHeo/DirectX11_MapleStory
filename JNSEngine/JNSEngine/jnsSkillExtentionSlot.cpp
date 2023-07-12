@@ -15,7 +15,7 @@ namespace jns
 		SetMaterial(L"SkillSlotExtensionMaterial");
 
 		SetPosition(Vector3(-0.505, 0.0f, -0.2f));
-		SetScale(Vector3(0.02f, 1.0f, 1.0f));
+		SetScaleWhenParentOn(Vector3(0.1f, 1.0f, 1.0f));
 
 		UIBase::Initialize();
 	}

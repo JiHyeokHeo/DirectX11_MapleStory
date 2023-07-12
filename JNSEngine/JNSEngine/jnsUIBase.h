@@ -61,24 +61,27 @@ namespace jns
 			tr->SetRotation(Vector3(1.0f, 1.0f, DegreeToRadian(degree)));
 		}
 
-		virtual void SetScale(Vector3 scale)
-		{
-			tr->SetScale(scale);
-		}
-
-		virtual void SetScaleWithOrginalImageScale(Vector2 scale = Vector2::One)
+		virtual void SetScaleWhenParentOn(Vector3 scale)
 		{
 			if (tr == nullptr)
 				return;
-			mTextureRatio = mr->GetMaterial()->GetTexture()->GetTextureRatio();
-			tr->SetScale(Vector3(mTextureRatio.x * scale.x, mTextureRatio.y * scale.y, 1.0f));
+			mTextureSize = mr->GetMaterial()->GetTexture()->GetTextureRatio();
+			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
+		}
+
+		virtual void SetScaleWithOriginalImageScale(Vector2 scale = Vector2::One)
+		{
+			if (tr == nullptr)
+				return;
+			mTextureSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
 
 	private:
 		eLayerType mType;
 		MeshRenderer* mr;
 		Transform* tr;
-		Vector2 mTextureRatio;
+		Vector2 mTextureSize;
 		Vector2 mSize;
 	};
 }
