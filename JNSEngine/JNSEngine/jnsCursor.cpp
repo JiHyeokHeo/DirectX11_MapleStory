@@ -64,8 +64,8 @@ namespace jns
 	void Cursor::LateUpdate()
 	{	
 		int a = 0;
-		//Vector3 testPos = renderer::cameras[0]->GetOwner()->GetComponent<Transform>()->GetPosition();
-		mCursorPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f); //ui용도로만 쓰라는건가?
+		Vector3 testPos = renderer::mainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
+		mCursorPos = Vector3(Input::GetMousePos().x - testPos.x, Input::GetMousePos().y - testPos.y, 0.0f); //ui용도로만 쓰라는건가?
 
 		// UI 
 		mUIPos = Vector3(800.0f, 450.0f, 0.0f);
@@ -78,11 +78,11 @@ namespace jns
 		viewport.minDepth = 0.0f;
 		viewport.maxDepth = 1.0f;
 
-		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		mCursorPos.z = MOUSEZPOS;
 
 		// 추후 UI좌표를 사용하기 위해!
-		mUIPos = viewport.Unproject(mUIPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		mUIPos = viewport.Unproject(mUIPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		mUIPos.z = MOUSEZPOS;
 
 		tr->SetPosition(mCursorPos);

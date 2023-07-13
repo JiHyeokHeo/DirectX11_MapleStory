@@ -1,6 +1,6 @@
 #pragma once
-#include <jnsScript.h>
-#include "jnsCamera.h"
+#include "..\\Engine_Source\\jnsScript.h"
+#include "..\\Engine_Source\\jnsCamera.h"
 
 namespace jns
 {

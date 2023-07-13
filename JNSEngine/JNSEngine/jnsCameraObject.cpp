@@ -24,6 +24,7 @@ namespace jns
 		{
 		case eCameraType::MainCamera:
 			renderer::cameras.push_back(mCameraComp);
+			renderer::mainCamera = mCameraComp;
 			break;
 		case eCameraType::UICamera:
 			renderer::cameras.push_back(mCameraComp);

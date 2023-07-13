@@ -1,10 +1,11 @@
 #pragma once
-#include "CommonInclude.h"
-#include "JNSEngine.h"
-#include "guiWidget.h"
+#include "..\\Engine_SOURCE\\CommonInclude.h"
+#include "..\\Engine_Source\\JNSEngine.h"
+#include "..\\Engine_Source\\jnsGraphics.h"
+
 #include "guiEditorObject.h"
 #include "guiDebugObject.h"
-#include "jnsGraphics.h"
+#include "guiWidget.h"
 
 namespace gui
 {

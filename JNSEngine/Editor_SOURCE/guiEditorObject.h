@@ -1,5 +1,5 @@
 #pragma once
-#include "jnsGameObject.h"
+#include "..\\Engine_Source\\jnsGameObject.h"
 
 namespace gui
 {

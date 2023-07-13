@@ -24,6 +24,7 @@ namespace jns
 		eColliderType mType;
 		Transform* mTransform;
 
+		Vector3 mPosition;
 		Vector2 mSize;
 		Vector2 mCenter;
 	};

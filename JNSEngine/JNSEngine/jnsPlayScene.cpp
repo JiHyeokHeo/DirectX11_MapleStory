@@ -40,6 +40,7 @@ namespace jns
 		AddGameObject(eLayerType::Camera, mainCamera);
 		mainCamera->TurnOffLayer(eLayerType::UI);
 		mainCamera->AddComponent<CameraScript>();
+		
 	}
 
 	void PlayScene::CreateUICamera()

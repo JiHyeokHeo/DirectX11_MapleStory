@@ -15,6 +15,16 @@ namespace jns
 		
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
+		player->AddComponent<Collider2D>();
+		//Collider2D* cd = player->AddComponent<Collider2D>();
+		//cd->SetCenter(Vector2(0.5f, 0.0f));
+
+		//cd = player->AddComponent<Collider2D>();
+		////cd->SetCenter(Vector2(0.f, 0.0f));
+
+		//std::vector<Collider2D*> comps 
+		//	= player->GetComponents<Collider2D>();
+
 		SetTarget(player);
 		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		//{
@@ -72,7 +82,7 @@ namespace jns
 		// NoMove BackGround
 		object::InstantiateNOmove<RutabysMain>(eLayerType::BG);
 
-		//CreateInventory();
+		////CreateInventory();
 		CreatePlayerUI();
 		CreateCursor();
 
