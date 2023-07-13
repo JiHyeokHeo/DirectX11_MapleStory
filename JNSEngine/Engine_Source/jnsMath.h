@@ -25,8 +25,8 @@ namespace jns::math
     inline float DegreeToRadian(float mDegree)
     {
         const float PI = std::acos(-1.0f); 
-        float degree = (PI / 180.0f) * mDegree;
-        return degree;
+        float radian= (PI / 180.0f) * mDegree;
+        return radian;
     }
 
 

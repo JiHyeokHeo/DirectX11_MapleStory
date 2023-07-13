@@ -109,6 +109,10 @@ namespace jns
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{		
+		const Vector3& leftpos = left->GetPosition();
+		const Vector3& rightpos = right->GetPosition();
+
+		float dotProduct = leftpos.Dot(rightpos);
 		// 네모 네모 충돌
 		// 분리축 이론
 
@@ -116,9 +120,7 @@ namespace jns
 		// 분리축이 어렵다 하시는분들은
 		// 원 - 원 충돌
 
-		left->GetOwner();
-		right->GetOwner();
-
+		//math::
 
 		return false;
 	}

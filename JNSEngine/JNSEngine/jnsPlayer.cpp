@@ -17,10 +17,11 @@ namespace jns
 		SetName(L"Zelda");
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 		Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-		GetComponent<Transform>()->SetScale(Vector3(mSize.x *0.15f, mSize.y*0.15f, 1.0f));
+		GetComponent<Transform>()->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(30.0f)));
 		//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
 		AddComponent<PlayerScript>();
 

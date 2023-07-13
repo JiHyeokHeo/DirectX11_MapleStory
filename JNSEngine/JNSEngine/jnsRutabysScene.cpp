@@ -13,9 +13,10 @@ namespace jns
 	{
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
 		
-
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		player->AddComponent<Collider2D>();
+		
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
 
