@@ -105,4 +105,11 @@ namespace jns
 	{
 		PlayScene::Render();
 	}
+	void RutabysScene::OnEnter()
+	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+	}
+	void RutabysScene::OnExit()
+	{
+	}
 }

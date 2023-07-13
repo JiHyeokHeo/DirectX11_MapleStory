@@ -21,6 +21,7 @@ namespace jns
 	}
 	void Cursor::Initialize()
 	{
+		SetName(L"Cursor");
 		mr = GetComponent<MeshRenderer>();
 		mr->SetMaterial(Resources::Find<Material>(L"CursorSpirte0Material"));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

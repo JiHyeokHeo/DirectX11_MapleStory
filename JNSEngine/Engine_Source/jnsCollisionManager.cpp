@@ -7,26 +7,26 @@
 
 namespace jns
 {
-	std::bitset<LAYER_MAX> ColiisionManager::mMatrix[LAYER_MAX] = {};
-	std::map<UINT64, bool>ColiisionManager::mCollisionMap = {};
+	std::bitset<LAYER_MAX> CollisionManager::mMatrix[LAYER_MAX] = {};
+	std::map<UINT64, bool>CollisionManager::mCollisionMap = {};
 
-	void ColiisionManager::Initialize()
+	void CollisionManager::Initialize()
 	{
 	}
-	void ColiisionManager::Update()
+	void CollisionManager::Update()
 	{
 		for (UINT column = 0; column < (UINT)eLayerType::End; column++)
 		{
 			for (UINT row = 0; row < (UINT)eLayerType::End; row++)
 			{
-				if (mMatrix[row] == true)
+				if (mMatrix[column][row] == true)
 				{
 					LayerCollision((eLayerType)column, (eLayerType)row);
 				}
 			}
 		}
 	}
-	void ColiisionManager::LayerCollision(eLayerType left, eLayerType right)
+	void CollisionManager::LayerCollision(eLayerType left, eLayerType right)
 	{
 		Scene* activeScene = SceneManager::GetActiveScene();
 
@@ -62,7 +62,7 @@ namespace jns
 
 
 	}
-	void ColiisionManager::ColliderCollision(Collider2D* left, Collider2D* right)
+	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right)
 	{	
 		// 두 충돌체의 ID bool값을 확인
 		ColliderID id = {};
@@ -107,17 +107,22 @@ namespace jns
 		}
 	
 	}
-	bool ColiisionManager::Intersect(Collider2D* left, Collider2D* right)
-	{	
+	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
+	{		
 		// 네모 네모 충돌
 		// 분리축 이론
 
 		// To do... (숙제)
 		// 분리축이 어렵다 하시는분들은
 		// 원 - 원 충돌
+
+		left->GetOwner();
+		right->GetOwner();
+
+
 		return false;
 	}
-	void ColiisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)
+	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)
 	{
 		UINT row = -1;
 		UINT col = -1;
@@ -136,10 +141,10 @@ namespace jns
 			col = iLeft;
 		}
 
-		mMatrix[col][row] = enable; // 이거 반대로 된거 아닌가?
+		mMatrix[col][row] = enable; 
 
 	}
-	void ColiisionManager::Clear()
+	void CollisionManager::Clear()
 	{
 		mMatrix->reset();
 		mCollisionMap.clear();

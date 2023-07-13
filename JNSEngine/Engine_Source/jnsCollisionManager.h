@@ -7,7 +7,7 @@ namespace jns
 	using namespace enums;
 
 	class Collider2D;
-	class ColiisionManager
+	class CollisionManager
 	{
 	public:
 		union ColliderID

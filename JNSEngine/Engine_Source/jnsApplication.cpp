@@ -3,6 +3,7 @@
 #include "jnsTime.h"
 #include "jnsRenderer.h"
 #include "jnsSceneManager.h"
+#include "jnsCollisionManager.h"
 
 namespace jns
 {
@@ -42,7 +43,7 @@ namespace jns
 		Input::Update();
 
 		SceneManager::Update();
-
+		CollisionManager::Update();
 	}
 	void Application::LateUpdate()
 	{
