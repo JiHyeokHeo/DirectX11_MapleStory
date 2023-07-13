@@ -109,10 +109,22 @@ namespace jns
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{		
-		const Vector3& leftpos = left->GetPosition();
-		const Vector3& rightpos = right->GetPosition();
+		const Vector3& leftColCenterPos = left->GetPosition();
+		const Vector3& righColCentertPos = right->GetPosition();
 
-		float dotProduct = leftpos.Dot(rightpos);
+		Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
+
+		
+		Vector3 leftColRightVec = left->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 rightColRightVec = right->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 leftColUpVec = left->GetOwner()->GetComponent<Transform>()->Up();
+		Vector3 rightColUpVec = right->GetOwner()->GetComponent<Transform>()->Up();
+		Vector3 leftColLocalScale = left->GetOwner()->GetComponent<Transform>()->GetScale();
+		Vector3 rightColLocalScale = right->GetOwner()->GetComponent<Transform>()->GetScale();
+		//CheckSplitShaft(collisionInfo.leftColRight, colPosDiff, collisionInfo);
+		//CheckSplitShaft(collisionInfo.rightColRight, colPosDiff, collisionInfo);
+		//CheckSplitShaft(collisionInfo.leftColUp, colPosDiff, collisionInfo);
+		//CheckSplitShaft(collisionInfo.rightColUp, colPosDiff, collisionInfo);
 		// 네모 네모 충돌
 		// 분리축 이론
 
@@ -129,18 +141,18 @@ namespace jns
 		UINT row = -1;
 		UINT col = -1;
 
-		UINT iLeft = (UINT)left;
-		UINT iRight = (UINT)right;
+		UINT mLeft = (UINT)left;
+		UINT mRight = (UINT)right;
 
-		if (iLeft <= iRight)
+		if (mLeft <= mRight)
 		{
-			row = iLeft;
-			col = iRight;
+			row = mLeft;
+			col = mRight;
 		}
 		else
 		{
-			row = iRight;
-			col = iLeft;
+			row = mRight;
+			col = mLeft;
 		}
 
 		mMatrix[col][row] = enable; 
@@ -151,4 +163,12 @@ namespace jns
 		mMatrix->reset();
 		mCollisionMap.clear();
 	}
+
+	//void CollisionManager::CheckSplitShaft(Vector3& colNormalVec, Vector3& colPosDiff, const CollisionInfo& collisionInfo)
+	//{
+	//	Vector3 colPosDiffProjection = (Vector3)colPosDiff.Dot(colNormalVec);
+
+	//	if(colPosDiffProjection > abs(colNormalVec.Dot(collisionInfo.leftColUp * leftColUp.)
+	//}
+
 }

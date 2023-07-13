@@ -1,5 +1,6 @@
 #pragma once
 #include "JNSEngine.h"
+#include "jnsMath.h"
 
 namespace jns
 {
@@ -20,6 +21,7 @@ namespace jns
 			UINT64 id;
 		};
 
+
 		static void Initialize();
 		static void Update();
 		static void LayerCollision(eLayerType left, eLayerType right);
@@ -28,7 +30,6 @@ namespace jns
 
 		static void SetLayer(eLayerType left, eLayerType right, bool enable);
 		static void Clear();
-
 
 
 	private:

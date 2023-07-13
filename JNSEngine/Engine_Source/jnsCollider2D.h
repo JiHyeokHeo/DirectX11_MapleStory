@@ -29,9 +29,7 @@ namespace jns
 		Vector2 GetSize() { return mSize; }
 		Vector2 GetCenter() { return mCenter; }
 		
-		Vector3 GetFoward() { return mFoward; }
-		Vector3 GetRight() { return mRight; }
-		Vector3 GetUp() { return mUp; }
+
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -43,8 +41,5 @@ namespace jns
 		Vector2 mSize;
 		Vector2 mCenter;
 
-		Vector3 mUp;
-		Vector3 mFoward;
-		Vector3 mRight;
 	};
 }
