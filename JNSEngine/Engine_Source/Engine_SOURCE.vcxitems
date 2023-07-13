@@ -18,7 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsColiisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h" />
@@ -50,7 +50,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsColiisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />

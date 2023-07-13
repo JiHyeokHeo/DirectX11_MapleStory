@@ -81,6 +81,7 @@ namespace gui
 		{
 			DebugRender(mesh);
 		}
+		renderer::debugMeshes.clear();
 	}
 	void Editor::Release()
 	{

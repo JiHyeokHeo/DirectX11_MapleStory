@@ -48,6 +48,15 @@ namespace jns
 	{
 		bindConstantBuffer();
 	}
+	void PlayerScript::OnCollisionEnter(Collider2D* other)
+	{
+	}
+	void PlayerScript::OnCollisionStay(Collider2D* other)
+	{
+	}
+	void PlayerScript::OnCollisionExit(Collider2D* other)
+	{
+	}
 	void PlayerScript::bindConstantBuffer()
 	{
 		renderer::PlayerCB playerUICB = {};

@@ -1,6 +1,6 @@
 #pragma once
 #include "jnsComponent.h"
-
+#include "jnsCollider2D.h"
 
 namespace jns
 {
@@ -14,6 +14,10 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		virtual void OnCollisionEnter(Collider2D* other) {};
+		virtual void OnCollisionStay(Collider2D* other) {};
+		virtual void OnCollisionExit(Collider2D* other) {};
 
 	private:
 

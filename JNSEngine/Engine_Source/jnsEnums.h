@@ -25,7 +25,7 @@ namespace jns::enums
 		Camera,
 		Cursor,
 		MapEffect,
-		End,
+		End = 16,
 	};
 
 
