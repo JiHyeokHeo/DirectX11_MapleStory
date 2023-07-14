@@ -109,24 +109,51 @@ namespace jns
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{		
+		if (left == nullptr || right == nullptr)
+			return false;
+
+
 		const Vector3& leftColCenterPos = left->GetPosition();
 		const Vector3& righColCentertPos = right->GetPosition();
 
 		Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
 
+		Vector3 leftColR = left->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 leftColUp = left->GetOwner()->GetComponent<Transform>()->Up();
+		Vector3 rightColR = right->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 rightColUp = right->GetOwner()->GetComponent<Transform>()->Up();
 		
-		Vector3 leftColRightVec = left->GetOwner()->GetComponent<Transform>()->Right();
-		Vector3 rightColRightVec = right->GetOwner()->GetComponent<Transform>()->Right();
-		Vector3 leftColUpVec = left->GetOwner()->GetComponent<Transform>()->Up();
-		Vector3 rightColUpVec = right->GetOwner()->GetComponent<Transform>()->Up();
 		Vector3 leftColLocalScale = left->GetOwner()->GetComponent<Transform>()->GetScale();
 		Vector3 rightColLocalScale = right->GetOwner()->GetComponent<Transform>()->GetScale();
+		
+		leftColR *= leftColLocalScale.x / 2;
+		leftColUp *= leftColLocalScale.y / 2;
+		rightColR *= rightColLocalScale.x / 2;
+		rightColUp *= rightColLocalScale.y / 2;
 		//CheckSplitShaft(collisionInfo.leftColRight, colPosDiff, collisionInfo);
 		//CheckSplitShaft(collisionInfo.rightColRight, colPosDiff, collisionInfo);
 		//CheckSplitShaft(collisionInfo.leftColUp, colPosDiff, collisionInfo);
 		//CheckSplitShaft(collisionInfo.rightColUp, colPosDiff, collisionInfo);
 		// 네모 네모 충돌
 		// 분리축 이론
+		std::vector<Vector3> checkPos = {};
+		checkPos.push_back(leftColR);
+		checkPos.push_back(leftColUp);
+		checkPos.push_back(rightColR);
+		checkPos.push_back(rightColUp);
+
+		for (int i = 0; i < 4; i++)
+		{
+			float colDistance = abs((checkPos[i].Dot(colPosDiff)));
+
+			if (colDistance > abs(checkPos[i].Dot(leftColR))
+				+ abs(checkPos[i].Dot(leftColUp))
+				+ abs(checkPos[i].Dot(rightColR))
+				+ abs(checkPos[i].Dot(rightColUp)))
+				return false;
+		}
+		
+		
 
 		// To do... (숙제)
 		// 분리축이 어렵다 하시는분들은
@@ -134,7 +161,7 @@ namespace jns
 
 		//math::
 
-		return false;
+		return true;
 	}
 	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)
 	{
@@ -164,11 +191,7 @@ namespace jns
 		mCollisionMap.clear();
 	}
 
-	//void CollisionManager::CheckSplitShaft(Vector3& colNormalVec, Vector3& colPosDiff, const CollisionInfo& collisionInfo)
-	//{
-	//	Vector3 colPosDiffProjection = (Vector3)colPosDiff.Dot(colNormalVec);
 
-	//	if(colPosDiffProjection > abs(colNormalVec.Dot(collisionInfo.leftColUp * leftColUp.)
-	//}
+
 
 }
