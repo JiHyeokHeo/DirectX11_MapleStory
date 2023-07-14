@@ -123,24 +123,33 @@ namespace jns
 		Vector3 rightColR = right->GetOwner()->GetComponent<Transform>()->Right();
 		Vector3 rightColUp = right->GetOwner()->GetComponent<Transform>()->Up();
 		
-		Vector3 leftColLocalScale = left->GetOwner()->GetComponent<Transform>()->GetScale();
-		Vector3 rightColLocalScale = right->GetOwner()->GetComponent<Transform>()->GetScale();
+
+		// 스케일 전환을 해줘도 문제없도록 Collider의 스케일을 가져오도록함
+		Vector3 leftColLocalScale = left->GetScale();
+		Vector3 rightColLocalScale = right->GetScale();
 		
-		leftColR *= leftColLocalScale.x / 2;
-		leftColUp *= leftColLocalScale.y / 2;
-		rightColR *= rightColLocalScale.x / 2;
-		rightColUp *= rightColLocalScale.y / 2;
-		//CheckSplitShaft(collisionInfo.leftColRight, colPosDiff, collisionInfo);
-		//CheckSplitShaft(collisionInfo.rightColRight, colPosDiff, collisionInfo);
-		//CheckSplitShaft(collisionInfo.leftColUp, colPosDiff, collisionInfo);
-		//CheckSplitShaft(collisionInfo.rightColUp, colPosDiff, collisionInfo);
-		// 네모 네모 충돌
-		// 분리축 이론
+		// 단위 법선 벡터들을 넣어주고              // 제가 실수로 여기를 밑으로 내려서 작업쳤거든요? 그래도 작동이 됐었는데 이유 궁금..
 		std::vector<Vector3> checkPos = {};
 		checkPos.push_back(leftColR);
 		checkPos.push_back(leftColUp);
 		checkPos.push_back(rightColR);
 		checkPos.push_back(rightColUp);
+
+		// 두 충돌체의 길이측정용 
+		leftColR *= leftColLocalScale.x / 2;
+		leftColUp *= leftColLocalScale.y / 2;
+		rightColR *= rightColLocalScale.x / 2;
+		rightColUp *= rightColLocalScale.y / 2;
+		
+
+		//// 단위 법선 벡터들을 넣어주고              // 제가 실수로 여기를 밑으로 내려서 작업쳤거든요?
+		//std::vector<Vector3> checkPos = {};
+		//checkPos.push_back(leftColR);
+		//checkPos.push_back(leftColUp);
+		//checkPos.push_back(rightColR);
+		//checkPos.push_back(rightColUp);
+		// 네모 네모 충돌
+		// 분리축 이론
 
 		for (int i = 0; i < 4; i++)
 		{

@@ -30,6 +30,7 @@ namespace jns
 		tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(1.0f, 0.0, 0.1f));
 		tr->SetScale(Vector3(mTextureRatio.x, mTextureRatio.y, 1.0f));
+		tr->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(80.0f)));
 
 		GameObject::Initialize();
 	}

@@ -89,7 +89,9 @@ namespace jns
 	void PlayScene::CreateCursor()
 	{
 		GameObject* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
-		mCursor->AddComponent<Collider2D>();
+		Collider2D * mCol = mCursor->AddComponent<Collider2D>();
+		mCol->SetSize(Vector2(2.0f, 2.0f));
+		
 	}
 
 
