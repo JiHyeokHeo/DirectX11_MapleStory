@@ -21,8 +21,6 @@ namespace jns::object
 		return gameobj;
 	}
 
-
-
 	template<typename T>
 	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mRotation = (Vector3::Zero), Vector3 mScale = (Vector3::One))
 	{

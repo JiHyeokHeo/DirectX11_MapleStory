@@ -505,6 +505,36 @@ namespace renderer
 		 LOAD_TEXTURE(L"Inventory", L"..\\Resources\\UI\\Inventory\\InventoryBG.png", Inventory_UI_Texture);
 		 SET_MATERIAL(Inventory_UI_Material, Inventory_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"InventoryMaterial", Inventory_UI_Material);
+		 
+		 LOAD_TEXTURE(L"CharacSelectUI", L"..\\Resources\\UI\\Button\\CharSelect.adventure.0.png", CharacSelect_UI_Texture);
+		 SET_MATERIAL(CharacSelect_UI_Material, CharacSelect_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharacSelectMaterial", CharacSelect_UI_Material);
+
+		 LOAD_TEXTURE(L"CharacSelectInfoUI", L"..\\Resources\\UI\\Button\\CharSelect.charInfo1.png", CharacSelectInfo_UI_Texture);
+		 SET_MATERIAL(CharacSelectInfo_UI_Material, CharacSelectInfo_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharacSelectInfoMaterial", CharacSelectInfo_UI_Material);
+
+
+		 LOAD_TEXTURE(L"CharSelectBtSelectUI", L"..\\Resources\\UI\\Button\\CharSelect.BtSelect.normal.0.png", CharSelectBtSelect_UI_Texture);
+		 SET_MATERIAL(CharSelectBtSelect_UI_Material, CharSelectBtSelect_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharSelectBtSelectMaterial", CharSelectBtSelect_UI_Material);
+
+		 LOAD_TEXTURE(L"CharSelectBtNewUI", L"..\\Resources\\UI\\Button\\CharSelect.BtNew.normal.0.png", CharSelectBtNew_UI_Texture);
+		 SET_MATERIAL(CharSelectBtNew_UI_Material, CharSelectBtNew_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CharSelectBtNewMaterial", CharSelectBtNew_UI_Material);
+
+		 LOAD_TEXTURE(L"CommonBtPreviewUI", L"..\\Resources\\UI\\Button\\Common.BtPreview.normal.0.png", CommonBtPreview_UI_Texture);
+		 SET_MATERIAL(CommonBtPreview_UI_Material, CommonBtPreview_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"CommonBtPreviewMaterial", CommonBtPreview_UI_Material);
+
+		 LOAD_TEXTURE(L"LoginButtonUI", L"..\\Resources\\UI\\Button\\LoginUIButton.png", LoginButton_UI_Texture);
+		 SET_MATERIAL(LoginButton_UI_Material, LoginButton_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"LoginButtonMaterial", LoginButton_UI_Material);
+
+		 LOAD_TEXTURE(L"WorldSelectButtonUI", L"..\\Resources\\UI\\Button\\WorldSelectButton.png", WorldSelectButton_UI_Texture);
+		 SET_MATERIAL(WorldSelectButton_UI_Material, WorldSelectButton_UI_Texture, spriteShader);
+		 INSERT_MATERIAL(L"WorldSelectButtonMaterial", WorldSelectButton_UI_Material);
+
 #pragma endregion
 
 #pragma region Cursor

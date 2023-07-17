@@ -15,6 +15,7 @@ namespace jns
 		AddGameObject(eLayerType::BG, charactorMakeBG);
 		charactorMakeBG->Initialize();
 
+		CreateCursor();
 		PlayScene::Initialize();
 	}
 	void CharactorMakeScene::Update()
