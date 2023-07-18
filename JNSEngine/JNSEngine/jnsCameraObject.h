@@ -37,8 +37,6 @@ namespace jns
 		Vector3 mCameraPos;
 		eCameraType mCameraType;
 		Camera* mCameraComp;
-		eLayerType mTurnOffLayer;
-
 		GameObject* mFollowTarget;
 	};
 }
