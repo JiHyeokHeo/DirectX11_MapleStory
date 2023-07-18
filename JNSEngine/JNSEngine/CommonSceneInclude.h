@@ -6,6 +6,7 @@
 #include "jnsCameraScript.h"
 #include "jnsGridScrpt.h"
 #include "jnsPlayerScript.h"
+#include "jnsItemResourcesScript.h"
 
 // Player
 #include "jnsPlayer.h"
@@ -37,6 +38,7 @@
 #include "jnsShopSlotBack2.h"
 #include "jnsShopSlotBack3.h"
 #include "jnsInventory.h"
+#include "jnsItemResources.h"
 
 // Component
 #include "jnsTransform.h"

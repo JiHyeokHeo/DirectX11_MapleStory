@@ -25,7 +25,9 @@ namespace jns
 		tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		player2->AddComponent<Collider2D>();
 
-
+		ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
+		testitem->Initialize();
+		AddGameObject(eLayerType::Item, testitem);
 		
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));

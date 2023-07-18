@@ -2,8 +2,7 @@
 
 namespace jns
 {
-	ItemResourcesScript::ItemResourcesScript(eItemType type)
-		: mItemType(type)
+	ItemResourcesScript::ItemResourcesScript()
 	{
 	}
 	ItemResourcesScript::~ItemResourcesScript()
@@ -11,25 +10,32 @@ namespace jns
 	}
 	void ItemResourcesScript::Initialize()
 	{
-		switch (mItemType)
-		{
-		case eItemType::PowerPotion:
-			SetPowerPotion();
-			break;
-		}
 
 	}
 	void ItemResourcesScript::Update()
 	{
+		Script::Update();
 	}
 	void ItemResourcesScript::LateUpdate()
 	{
+		Script::LateUpdate();
 	}
 	void ItemResourcesScript::Render()
 	{
+		Script::Render();
 	}
-	void ItemResourcesScript::SetPowerPotion()
-	{
 
+	void ItemResourcesScript::OnCollisionEnter(Collider2D* other)
+	{
+		int x;
 	}
+
+	void ItemResourcesScript::OnCollisionStay(Collider2D* other)
+	{
+	}
+
+	void ItemResourcesScript::OnCollisionExit(Collider2D* other)
+	{
+	}
+
 }

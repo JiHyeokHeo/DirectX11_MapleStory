@@ -1,18 +1,12 @@
 #pragma once
-#include "jnsGameObject.h"
+#include "jnsScript.h"
 
 namespace jns
 {
-	class ItemResourcesScript : public GameObject
+	class ItemResourcesScript : public Script
 	{
 	public:
-		enum class eItemType
-		{
-			PowerPotion,
-			End,
-		};
-
-		ItemResourcesScript(eItemType type);
+		ItemResourcesScript();
 		~ItemResourcesScript();
 
 		virtual void Initialize() override;
@@ -20,8 +14,11 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetPowerPotion();
+
+		virtual void OnCollisionEnter(Collider2D* other) override;
+		virtual void OnCollisionStay(Collider2D* other) override;
+		virtual void OnCollisionExit(Collider2D* other) override;
+
 	private:
-		eItemType mItemType;
 	};
 }

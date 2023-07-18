@@ -19,6 +19,8 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+	
+		void SetPowerPotion();
 	private:
 		eItemType mItemType;
 	};

@@ -41,12 +41,11 @@ namespace jns
 
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;
-		mesh.scale = mScale;
+		mesh.scale = mScale;	
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
 		
 		mesh.isCollide = isColliding;
-	
 		
 		renderer::PushDebugMeshAttribute(mesh);
 	}

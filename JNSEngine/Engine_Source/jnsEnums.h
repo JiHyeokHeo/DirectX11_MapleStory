@@ -19,6 +19,7 @@ namespace jns::enums
 	{
 		Grid,
 		BG,
+		Item,
 		Player,
 		Monster,
 		UI,
