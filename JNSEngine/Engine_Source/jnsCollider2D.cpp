@@ -10,6 +10,7 @@ namespace jns
 		, mTransform(nullptr)
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
+		, isColliding(false)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;
@@ -43,14 +44,19 @@ namespace jns
 		mesh.scale = mScale;
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
-
+		
+		mesh.isCollide = isColliding;
+	
+		
 		renderer::PushDebugMeshAttribute(mesh);
 	}
+
 	void Collider2D::Render()
 	{
 	}
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
+		isColliding = true;
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetComponents<Script>();
 
@@ -62,6 +68,7 @@ namespace jns
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{
+		isColliding = true;
 		const std::vector<Script*>& scripts
 			= GetOwner()->GetComponents<Script>();
 
@@ -79,5 +86,6 @@ namespace jns
 		{
 			script->OnCollisionExit(other);
 		}
+		isColliding = false;
 	}
 }

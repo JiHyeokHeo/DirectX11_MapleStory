@@ -109,5 +109,7 @@ namespace jns::graphics
 		float radius;
 		float duration;
 		float time;
+
+		bool isCollide;
 	};
 }

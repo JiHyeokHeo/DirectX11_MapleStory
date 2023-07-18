@@ -16,14 +16,15 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
-		player->AddComponent<Collider2D>();
 		player->AddComponent<PlayerScript>();
+		player->AddComponent<Collider2D>();
 		SetTarget(player);
-		
-		Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(300.0f, 0.0f, 1.0001f));
-		player2->AddComponent<Collider2D>();
+
+		Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(0.0f, 0.0f, 1.0001f));
 		Transform* tr = player2->GetComponent<Transform>();
-		tr->SetPosition(300.0f, 0.0f, 1.0001f);
+		tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
+		player2->AddComponent<Collider2D>();
+
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
 
@@ -91,7 +92,7 @@ namespace jns
 
 		////CreateInventory();
 		CreatePlayerUI();
-		//CreateCursor();
+		CreateCursor();
 
 		PlayScene::Initialize();
 	}

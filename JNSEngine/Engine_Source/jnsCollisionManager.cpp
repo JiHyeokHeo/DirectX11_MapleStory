@@ -101,6 +101,7 @@ namespace jns
 				left->OnCollisionStay(right);
 				right->OnCollisionStay(left);
 			}
+			iter->second = true;
 		}
 		else
 		{
@@ -111,6 +112,7 @@ namespace jns
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
 			}
+			iter->second = false;
 		}
 	
 	}

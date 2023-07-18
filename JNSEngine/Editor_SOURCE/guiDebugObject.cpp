@@ -13,7 +13,6 @@ namespace gui
 	}
 	void DebugObject::Update()
 	{
-		GameObject::Update();
 	}
 	void DebugObject::LateUpdate()
 	{

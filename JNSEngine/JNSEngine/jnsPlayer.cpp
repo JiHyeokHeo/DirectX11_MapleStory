@@ -24,7 +24,7 @@ namespace jns
 		//GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(-60.0f)));
 		//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
 		
-		AddComponent<PlayerScript>();
+		//AddComponent<PlayerScript>();
 
 		GameObject::Initialize();
 	}

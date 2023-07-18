@@ -113,6 +113,7 @@ namespace gui
 		// 해당 게임오브젝트위에 그려주면된다.
 		jns::Transform* tr = debugObj->GetComponent<jns::Transform>();
 
+
 		Vector3 pos = mesh.position;
 		pos.z -= 0.01f;
 
@@ -121,6 +122,27 @@ namespace gui
 		tr->SetRotation(mesh.rotation);
 
 		tr->LateUpdate();
+
+		if (mesh.isCollide == true)
+		{
+			renderer::ObjectTypeMoveCB colObj = {};
+
+			colObj.mtype = mesh.isCollide;
+			colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
+			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
+			cb->SetData(&colObj);
+			cb->Bind(eShaderStage::PS);
+		}
+		else if (mesh.isCollide == false)
+		{
+			renderer::ObjectTypeMoveCB colObj = {};
+
+			colObj.mtype = mesh.isCollide;
+			colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
+			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
+			cb->SetData(&colObj);
+			cb->Bind(eShaderStage::PS);
+		}
 
 		/*ya::MeshRenderer * mr
 			= debugObj->GetComponent<ya::MeshRenderer>();*/
