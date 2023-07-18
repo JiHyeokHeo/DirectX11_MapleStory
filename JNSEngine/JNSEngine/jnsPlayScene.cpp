@@ -34,13 +34,12 @@ namespace jns
 
 	void PlayScene::CreateMainCamera()
 	{
-		CameraObject* mainCamera = new CameraObject(CameraObject::eCameraType::MainCamera);
-		mainCamera->Initialize();
-		mainCamera->SetFollowTarget(followtarget);
-		AddGameObject(eLayerType::Camera, mainCamera);
-		mainCamera->TurnOffLayer(eLayerType::UI);
-		mainCamera->AddComponent<CameraScript>();
-		
+		mainCameraObj = new CameraObject(CameraObject::eCameraType::MainCamera);
+		mainCameraObj->Initialize();
+		mainCameraObj->SetFollowTarget(followtarget);
+		AddGameObject(eLayerType::Camera, mainCameraObj);
+		mainCameraObj->TurnOffLayer(eLayerType::UI);
+		mainCameraObj->AddComponent<CameraScript>();
 	}
 
 	void PlayScene::CreateUICamera()
@@ -90,6 +89,7 @@ namespace jns
 	{
 		GameObject* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
 		Collider2D * mCol = mCursor->AddComponent<Collider2D>();
+		mCol->Initialize();
 		mCol->SetSize(Vector2(2.0f, 2.0f));
 		
 	}

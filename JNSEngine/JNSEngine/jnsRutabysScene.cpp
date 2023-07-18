@@ -14,9 +14,16 @@ namespace jns
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
 		
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		player->AddComponent<Collider2D>();
+		player->AddComponent<PlayerScript>();
+		SetTarget(player);
 		
+		Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(300.0f, 0.0f, 1.0001f));
+		player2->AddComponent<Collider2D>();
+		Transform* tr = player2->GetComponent<Transform>();
+		tr->SetPosition(300.0f, 0.0f, 1.0001f);
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
 
@@ -26,7 +33,6 @@ namespace jns
 		//std::vector<Collider2D*> comps 
 		//	= player->GetComponents<Collider2D>();
 
-		SetTarget(player);
 		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
 		//{
 		//	GameObject* player = new GameObject();
@@ -85,7 +91,7 @@ namespace jns
 
 		////CreateInventory();
 		CreatePlayerUI();
-		CreateCursor();
+		//CreateCursor();
 
 		PlayScene::Initialize();
 	}

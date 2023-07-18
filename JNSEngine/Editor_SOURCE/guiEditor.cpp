@@ -58,6 +58,7 @@ namespace gui
 		{
 			obj->Update();
 		}
+
 	}
 	void Editor::LateUpdate()
 	{
@@ -65,6 +66,7 @@ namespace gui
 		{
 			obj->LateUpdate();
 		}
+
 	}
 	void Editor::Render()
 	{

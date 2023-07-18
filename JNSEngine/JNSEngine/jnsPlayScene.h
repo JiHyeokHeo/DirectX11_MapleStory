@@ -4,7 +4,7 @@
 
 namespace jns
 {
-	class Camera;
+	class CameraObject;
 	class PlayScene : public Scene
 	{
 	public:
@@ -25,9 +25,9 @@ namespace jns
 		void CreateCursor();
 		void CreateInventory();
 		void SetTarget(GameObject* target) { followtarget = target; }
-	
+		
+		CameraObject* mainCameraObj;
 	private:
 		GameObject* followtarget;
-		Camera* maincameraComp;
 	};
 }

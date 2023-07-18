@@ -86,6 +86,7 @@ namespace jns
 		mUIPos = viewport.Unproject(mUIPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		mUIPos.z = MOUSEZPOS;
 
+		this;
 		tr->SetPosition(mCursorPos);
 		GameObject::LateUpdate();
 	}

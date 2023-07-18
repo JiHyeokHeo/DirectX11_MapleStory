@@ -42,8 +42,8 @@ namespace jns
 		Time::Update();
 		Input::Update();
 
-		SceneManager::Update();
 		CollisionManager::Update();
+		SceneManager::Update();
 	}
 	void Application::LateUpdate()
 	{

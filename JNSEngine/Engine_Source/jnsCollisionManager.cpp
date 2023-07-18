@@ -9,21 +9,28 @@ namespace jns
 {
 	std::bitset<LAYER_MAX> CollisionManager::mMatrix[LAYER_MAX] = {};
 	std::map<UINT64, bool>CollisionManager::mCollisionMap = {};
-
+	bool CollisionManager::isStart = false;
 	void CollisionManager::Initialize()
 	{
 	}
 	void CollisionManager::Update()
 	{
-		for (UINT column = 0; column < (UINT)eLayerType::End; column++)
+		if (isStart == true)
 		{
-			for (UINT row = 0; row < (UINT)eLayerType::End; row++)
+			for (UINT column = 0; column < (UINT)eLayerType::End; column++)
 			{
-				if (mMatrix[column][row] == true)
+				for (UINT row = 0; row < (UINT)eLayerType::End; row++)
 				{
-					LayerCollision((eLayerType)column, (eLayerType)row);
+					if (mMatrix[column][row] == true)
+					{
+						LayerCollision((eLayerType)column, (eLayerType)row);
+					}
 				}
 			}
+		}
+		else
+		{
+			isStart = true;
 		}
 	}
 	void CollisionManager::LayerCollision(eLayerType left, eLayerType right)
@@ -128,7 +135,7 @@ namespace jns
 		Vector3 leftColLocalScale = left->GetScale();
 		Vector3 rightColLocalScale = right->GetScale();
 		
-		// 단위 법선 벡터들을 넣어주고              // 제가 실수로 여기를 밑으로 내려서 작업쳤거든요? 그래도 작동이 됐었는데 이유 궁금..
+		// 단위 법선 벡터들을 넣어주고              
 		std::vector<Vector3> checkPos = {};
 		checkPos.push_back(leftColR);
 		checkPos.push_back(leftColUp);
@@ -141,16 +148,6 @@ namespace jns
 		rightColR *= rightColLocalScale.x / 2;
 		rightColUp *= rightColLocalScale.y / 2;
 		
-
-		//// 단위 법선 벡터들을 넣어주고              // 제가 실수로 여기를 밑으로 내려서 작업쳤거든요?
-		//std::vector<Vector3> checkPos = {};
-		//checkPos.push_back(leftColR);
-		//checkPos.push_back(leftColUp);
-		//checkPos.push_back(rightColR);
-		//checkPos.push_back(rightColUp);
-		// 네모 네모 충돌
-		// 분리축 이론
-
 		for (int i = 0; i < 4; i++)
 		{
 			float colDistance = abs((checkPos[i].Dot(colPosDiff)));
@@ -161,14 +158,7 @@ namespace jns
 				+ abs(checkPos[i].Dot(rightColUp)))
 				return false;
 		}
-		
-		
 
-		// To do... (숙제)
-		// 분리축이 어렵다 하시는분들은
-		// 원 - 원 충돌
-
-		//math::
 
 		return true;
 	}
