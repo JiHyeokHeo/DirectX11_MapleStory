@@ -25,6 +25,8 @@ namespace jns
 		tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		player2->AddComponent<Collider2D>();
 
+
+		
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
 
@@ -115,6 +117,7 @@ namespace jns
 	}
 	void RutabysScene::OnEnter()
 	{
+
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 	}
 	void RutabysScene::OnExit()

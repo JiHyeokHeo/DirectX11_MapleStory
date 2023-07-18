@@ -108,6 +108,10 @@
     <ClCompile Include="jnsInventory.cpp">
       <Filter>Contents\UI\Inventory</Filter>
     </ClCompile>
+    <ClCompile Include="jnsItemResources.cpp">
+      <Filter>Contents\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsItemResourcesScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -213,7 +217,6 @@
     <ClInclude Include="jnsCursor.h">
       <Filter>Contents\Cursor</Filter>
     </ClInclude>
-    <ClInclude Include="jnsGridScrpt.h" />
     <ClInclude Include="jnsSmoke.h">
       <Filter>Effect\CloudEffect</Filter>
     </ClInclude>
@@ -228,6 +231,13 @@
     </ClInclude>
     <ClInclude Include="jnsInventory.h">
       <Filter>Contents\UI\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsItemResources.h">
+      <Filter>Contents\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsItemResourcesScript.h" />
+    <ClInclude Include="jnsGridScrpt.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +375,9 @@
     </Filter>
     <Filter Include="Contents\UI\Inventory">
       <UniqueIdentifier>{c0507744-4161-4da1-8cc3-ae2c45d13008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Items">
+      <UniqueIdentifier>{4f6b5383-eead-421d-90bd-7eb3382d9514}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

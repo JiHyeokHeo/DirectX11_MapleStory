@@ -123,26 +123,13 @@ namespace gui
 
 		tr->LateUpdate();
 
-		if (mesh.isCollide == true)
-		{
-			renderer::ObjectTypeMoveCB colObj = {};
-
-			colObj.mtype = mesh.isCollide;
-			colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
-			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
-			cb->SetData(&colObj);
-			cb->Bind(eShaderStage::PS);
-		}
-		else if (mesh.isCollide == false)
-		{
-			renderer::ObjectTypeMoveCB colObj = {};
-
-			colObj.mtype = mesh.isCollide;
-			colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
-			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
-			cb->SetData(&colObj);
-			cb->Bind(eShaderStage::PS);
-		}
+		renderer::ObjectTypeMoveCB colObj = {};
+		colObj.mtype = mesh.isCollide;
+		colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
+		cb->SetData(&colObj);
+		cb->Bind(eShaderStage::PS);
+		
 
 		/*ya::MeshRenderer * mr
 			= debugObj->GetComponent<ya::MeshRenderer>();*/

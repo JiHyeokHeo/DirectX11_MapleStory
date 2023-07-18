@@ -1,0 +1,1 @@
+#include "jnsItemResourcesScript.h"

@@ -11,7 +11,7 @@ extern jns::Application application;
 namespace jns
 {
 	Vector3 Cursor::mCursorPos = {};
-	Vector3 Cursor::mUIPos = {};
+	Vector3 Cursor::mCursorEndPos = {};
 	Cursor::Cursor()
 	{
 		AddComponent<MeshRenderer>();
@@ -36,31 +36,6 @@ namespace jns
 	}
 	void Cursor::Update()
 	{
-		////Vector3 testPos = renderer::cameras[0]->GetOwner()->GetComponent<Transform>()->GetPosition();
-		//mCursorPos = Vector3(Input::GetMousePos().x , Input::GetMousePos().y, 0.0f); //ui용도로만 쓰라는건가?
-
-		//// UI 
-		//mUIPos = Vector3(800.0f, 450.0f, 0.0f);
-
-		//Viewport viewport;
-		//viewport.width = 1600.0f;
-		//viewport.height = 900.0f;
-		//viewport.x = 0;
-		//viewport.y = 0;
-		//viewport.minDepth = 0.0f;
-		//viewport.maxDepth = 1.0f;
-
-		//mCursorPos = viewport.Unproject(mCursorPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		//mCursorPos.z = MOUSEZPOS;
-		//
-		//// 추후 UI좌표를 사용하기 위해!
-		//mUIPos = viewport.Unproject(mUIPos, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
-		//mUIPos.z = MOUSEZPOS;
-		//
-		//
-		//
-		//tr->SetPosition(mCursorPos);
-
 		GameObject::Update();
 	}
 	void Cursor::LateUpdate()
@@ -69,7 +44,7 @@ namespace jns
 		Vector3 testPos = renderer::mainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
 		mCursorPos = Vector3(Input::GetMousePos().x , Input::GetMousePos().y , 0.0f); //ui용도로만 쓰라는건가?
 
-		mUIPos = Vector3(800.0f, 450.0f, 0.0f); 
+		mCursorEndPos = Vector3(800.0f, 450.0f, 0.0f);
 			
 		Viewport viewport;
 		viewport.width = application.GetWidth();
@@ -83,8 +58,8 @@ namespace jns
 		mCursorPos.z = MOUSEZPOS;
 
 		// 추후 UI좌표를 사용하기 위해!
-		mUIPos = viewport.Unproject(mUIPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
-		mUIPos.z = MOUSEZPOS;
+		mCursorEndPos = viewport.Unproject(mCursorEndPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+		mCursorEndPos.z = MOUSEZPOS;
 
 		this;
 		tr->SetPosition(mCursorPos);
