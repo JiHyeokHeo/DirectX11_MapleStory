@@ -41,7 +41,8 @@ namespace renderer
 	{
 		int hp;
 		int mp;
-		Vector2 mTime;
+		int exp;
+		int type;
 	};
 
 	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)

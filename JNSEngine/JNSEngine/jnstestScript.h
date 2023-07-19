@@ -3,14 +3,15 @@
 
 namespace jns
 {
-	struct Data
-	{
-
-	};
-
 	class testScript : public Script
 	{
 	public:
+		enum class eSmokeType
+		{
+			Right,
+			Left,
+			None,
+		};
 		testScript();
 		~testScript();
 
@@ -24,5 +25,6 @@ namespace jns
 	private:
 		float mTime;
 		int mT;
+		eSmokeType mSmokeType;
 	};
 }

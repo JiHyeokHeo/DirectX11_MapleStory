@@ -27,15 +27,15 @@ namespace jns
 		SceneManager::CreateScene<SelectScene>(L"Select");
 		SceneManager::CreateScene<CharactorMakeScene>(L"CharactorMake");
 		SceneManager::CreateScene<RutabysBossScene>(L"RutabysBoss");
-		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
 		SceneManager::CreateScene<StartScene1>(L"StartScene1");
 		SceneManager::CreateScene<StartScene2>(L"StartScene2");
 		SceneManager::CreateScene<StartScene3>(L"StartScene3");
 		SceneManager::CreateScene<StartScene4>(L"StartScene4");
 		SceneManager::CreateScene<StartScene5>(L"StartScene5");
 		SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
-		SceneManager::CreateScene<LoginScene>(L"Login");
 		SceneManager::CreateScene<RutabysMobScene>(L"RutabysMob");
+		SceneManager::CreateScene<LoginScene>(L"Login");
+		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
 
 
 		//SceneManager::LoadScene(L"Login");

@@ -22,7 +22,7 @@ float4 main(VSOut In) : SV_TARGET
     if (type == 1)
         uv.x += mTime.x * 0.3f;
     if (type == 2)
-        uv.x -= mTime.x;
+        uv.x -= mTime.x * 0.3f;
 
     //if(In.UV.x >= 0.5f)
     //{

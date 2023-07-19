@@ -44,10 +44,11 @@ namespace jns
 			tr->SetPosition(pos);
 		}
 	}
-	void PlayerScript::Render()
+	void PlayerScript::LateUpdate()
 	{
 		bindConstantBuffer();
 	}
+	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
 	{
 	}
@@ -60,12 +61,14 @@ namespace jns
 	void PlayerScript::bindConstantBuffer()
 	{
 		renderer::PlayerCB playerUICB = {};
-		int mhp = 40;
-		int mmp = 100;
+		int mHp = 40;
+		int mMp = 100;
+		int mExp = 100;
 		
-		playerUICB.hp = mhp;
-		playerUICB.mp = mmp;
-		playerUICB.mTime = Vector2(0.0f, 0.0f);
+		playerUICB.hp = mHp;
+		playerUICB.mp = mMp;
+		playerUICB.exp = mExp;
+		playerUICB.type = 0.0f;
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
 		
 		cb->SetData(&playerUICB);

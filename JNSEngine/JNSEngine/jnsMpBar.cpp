@@ -14,8 +14,8 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"MpBarMaterial");
 
-		SetPosition(Vector3(0.0f, -0.2, -0.1f));
-		SetScaleWhenParentOn(Vector3(0.8f, 1.0f, 1.0f));
+		SetPosition(Vector3(0.0f, -0.2, 0.1f));
+		SetScaleWhenParentOn(Vector3(0.8f, 1.1f, 1.0f));
 	
 		
 		UIBase::Initialize();

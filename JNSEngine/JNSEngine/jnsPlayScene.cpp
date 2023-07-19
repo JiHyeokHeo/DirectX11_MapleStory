@@ -40,6 +40,7 @@ namespace jns
 		mainCameraObj->SetFollowTarget(followtarget);
 		AddGameObject(eLayerType::Camera, mainCameraObj);
 		mainCameraObj->TurnOffLayer(eLayerType::UI);
+		mainCameraObj->TurnOffLayer(eLayerType::Cursor);
 		mainCameraObj->AddComponent<CameraScript>();
 	}
 
@@ -50,6 +51,7 @@ namespace jns
 		AddGameObject(eLayerType::Camera, uiCamera);
 		uiCamera->TurnOffAllLayer();
 		uiCamera->TurnOnLayer(eLayerType::UI);
+		uiCamera->TurnOnLayer(eLayerType::Cursor);
 	
 	}
 
@@ -91,7 +93,7 @@ namespace jns
 		GameObject* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
 		Collider2D * mCol = mCursor->AddComponent<Collider2D>();
 		mCol->Initialize();
-		mCol->SetSize(Vector2(2.0f, 2.0f));
+		mCol->SetSize(Vector2(1.0f, 1.0f));
 		
 	}
 

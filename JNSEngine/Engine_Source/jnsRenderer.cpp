@@ -471,7 +471,7 @@ namespace renderer
 		 INSERT_MATERIAL(L"ExpBarUIMaterial", ExpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
-		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, spriteShader);
+		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, playerUIShader);
 		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
@@ -510,7 +510,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
 		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
-		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 //StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 
@@ -530,7 +530,7 @@ namespace renderer
 		  
 		 LOAD_TEXTURE(L"Mist01", L"..\\Resources\\Effect\\particle.img.adele_castle_mist.texture.png", Mist01_UI_Texture);
 		 SET_MATERIAL(Mist01_UI_Material, Mist01_UI_Texture, moveShader);
-		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 Mist01_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"Mist01Material", Mist01_UI_Material);
 
 		 // Inventory

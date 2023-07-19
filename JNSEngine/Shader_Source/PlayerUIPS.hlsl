@@ -16,15 +16,22 @@ struct VSOut
 
 float4 main(VSOut In) : SV_TARGET
 {
-    float4 color = (float4) 0.0f;
+    float4 color = float4(0.0f, 0.0f, 0.0f, 0.0f);
     
-    float uvPos = ((float)hp) / 100.0f;
+    float uvPos = ((float) hp) / 100.0f;
     
-    if(In.UV.x >= 0.5f && hp <= 50)
+    if (barType == 0) // hp bar
     {
-        discard;
+        if (In.UV.x >= 0.5f && hp <= 50)
+        {
+            discard;
+        }
+        else
+        {
+            color = albedoTexture.Sample(anisotropicSampler, In.UV);
+        }
     }
-    else
+    else if (barType == 1) // mp bar
     {
         color = albedoTexture.Sample(anisotropicSampler, In.UV);
     }
