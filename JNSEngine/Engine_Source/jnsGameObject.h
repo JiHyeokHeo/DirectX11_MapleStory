@@ -47,7 +47,7 @@ namespace jns
 		}
 
 		template <typename T>
-		const std::vector<T*>& GetComponents()
+		std::vector<T*> GetComponents()
 		{
 			std::vector<T*> comps;
 

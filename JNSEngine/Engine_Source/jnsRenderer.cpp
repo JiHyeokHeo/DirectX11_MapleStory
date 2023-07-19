@@ -346,10 +346,11 @@ namespace renderer
 		 std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		 debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		 debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
-		 //debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		 debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		 debugShader->SetRSState(eRSType::WireframeNone);
 		 //debugShader->SetDSState(eDSType::NoWrite);
 		 jns::Resources::Insert(L"DebugShader", debugShader);
+
 
 		 std::shared_ptr<Shader> playerUIShader = std::make_shared<Shader>();
 		 playerUIShader->Create(eShaderStage::VS, L"PlayerUIVS.hlsl", "main");
@@ -547,6 +548,10 @@ namespace renderer
 		 INSERT_MATERIAL(L"CursorSpirte0Material", CursorSpirte0_Material);
 #pragma endregion
 
+		 LOAD_TEXTURE(L"HP_MP_Potion", L"..\\Resources\\Item\\0553.img.05530006.info.icon.png", HP_MP_Potion_Texture);
+		 SET_MATERIAL(HP_MP_Potion_Material, HP_MP_Potion_Texture, spriteShader);
+		 INSERT_MATERIAL(L"HP_MP_PotionMaterial", HP_MP_Potion_Material);
+
 	 }
 
 	 void Initialize()
@@ -560,6 +565,7 @@ namespace renderer
 
 	 void Render()
 	 {
+		 mainCamera = cameras[0];
 		 for (Camera* cam : cameras)
 		 {
 			 if (cam == nullptr)

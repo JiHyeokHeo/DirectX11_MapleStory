@@ -27,32 +27,32 @@ namespace jns
 
 		if (Input::GetKey(eKeyCode::W))
 		{
-			pos.y += 5.0f * Time::DeltaTime();
+			pos.y += 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.y -= 5.0f * Time::DeltaTime();
+			pos.y -= 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 5.0f * Time::DeltaTime();
+			pos.x -= 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 5.0f * Time::DeltaTime();
+			pos.x += 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.z -= 5.0f * Time::DeltaTime();
+			pos.z -= 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::E))
 		{
-			pos.z += 5.0f * Time::DeltaTime();
+			pos.z += 255.0f * Time::DeltaTime();
 			cameratr->SetPosition(pos);
 		}
 	}

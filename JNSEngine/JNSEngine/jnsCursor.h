@@ -24,6 +24,6 @@ namespace jns
 		Transform* tr;
 		Vector2 mTextureRatio;
 		static Vector3 mCursorPos;
-		static Vector3 mUIPos;
+		static Vector3 mCursorEndPos;
 	};
 }

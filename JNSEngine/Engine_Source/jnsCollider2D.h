@@ -42,5 +42,6 @@ namespace jns
 		Vector2 mCenter;
 
 		Vector3 mScale;
+		bool isColliding;
 	};
 }

@@ -10,6 +10,7 @@ namespace jns
 		, mTransform(nullptr)
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
+		, isColliding(false)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;
@@ -40,18 +41,22 @@ namespace jns
 
 		graphics::DebugMesh mesh = {};
 		mesh.position = pos;
-		mesh.scale = mScale;
+		mesh.scale = mScale;	
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
-
+		
+		mesh.isCollide = isColliding;
+		
 		renderer::PushDebugMeshAttribute(mesh);
 	}
+
 	void Collider2D::Render()
 	{
 	}
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
+		isColliding = true;
+		std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
 
 		for (Script* script : scripts)
@@ -62,7 +67,8 @@ namespace jns
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
+		isColliding = true;
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
 
 		for (Script* script : scripts)
@@ -72,12 +78,13 @@ namespace jns
 	}
 	void Collider2D::OnCollisionExit(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
 
 		for (Script* script : scripts)
 		{
 			script->OnCollisionExit(other);
 		}
+		isColliding = false;
 	}
 }

@@ -21,9 +21,10 @@ namespace jns
 		Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
-		GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(60.0f)));
+		//GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(-60.0f)));
 		//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
-		AddComponent<PlayerScript>();
+		
+		//AddComponent<PlayerScript>();
 
 		GameObject::Initialize();
 	}
