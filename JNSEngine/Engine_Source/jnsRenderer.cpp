@@ -308,6 +308,9 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Player] = new ConstantBuffer(eCBType::Player);
 		 constantBuffer[(UINT)eCBType::Player]->Create(sizeof(PlayerCB));
 
+
+		 constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
+		 constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
 		 //colorConstanttBuffer->Create(sizeof(Vector4));

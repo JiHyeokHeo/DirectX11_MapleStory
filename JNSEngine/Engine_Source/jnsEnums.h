@@ -10,6 +10,7 @@ namespace jns::enums
 		RayCollider2D,
 		Particle,
 		MeshRenderer,
+		Animator,
 		Script,
 		Camera,
 		End,
@@ -36,6 +37,7 @@ namespace jns::enums
 		Shader,
 		Material,
 		Mesh,
+		Animation,
 		End,
 	};
 

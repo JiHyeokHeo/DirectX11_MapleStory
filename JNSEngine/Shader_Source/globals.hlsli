@@ -6,6 +6,11 @@ cbuffer Transform : register(b0)
     row_major matrix ProjectionMatrix;
 }
 
+// 1
+//
+///
+
+
 cbuffer Grid : register(b2)
 {
     float4 CameraPosition;
@@ -28,6 +33,16 @@ cbuffer PlayerUI : register(b4)
     float2 mPlayerTime;
 }
 
+cbuffer Animator : register(b5)
+{
+    float2 SpriteLeftTop;
+    float2 SpriteSize;
+    float2 SpriteOffset;
+    float2 AtlasSize;
+}
+
 Texture2D albedoTexture : register(t0);
+Texture2D atlasTexture : register(t12);
+
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);

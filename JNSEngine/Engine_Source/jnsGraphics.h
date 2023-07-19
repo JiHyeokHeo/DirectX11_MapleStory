@@ -16,6 +16,7 @@
 #define CBSLOT_GRID			2
 #define CBSLOT_MOVE			3
 #define CBSLOT_PLAYER		4
+#define CBSLOT_ANIMATION2D		5
 //#define CBSLOT_PARTICLE			1
 
 namespace jns::graphics
@@ -39,6 +40,7 @@ namespace jns::graphics
 		Grid,
 		Move,
 		Player,
+		Animator,
 		End,
 	};
 

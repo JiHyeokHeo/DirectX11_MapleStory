@@ -27,6 +27,9 @@ namespace jns::graphics
 		
 		Vector2 GetTextureSize() { return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); }
 		
+		size_t GetWidth() { return mImage.GetMetadata().width; }
+		size_t GetHeight() { return mImage.GetMetadata().height; }
+
 		Vector2 GetTextureRatio() 
 		{
 			mWidth = mImage.GetMetadata().width;
