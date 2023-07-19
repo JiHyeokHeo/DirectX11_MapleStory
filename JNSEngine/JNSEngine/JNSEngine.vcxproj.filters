@@ -5,23 +5,8 @@
     <ClCompile Include="jnsBGBase.cpp">
       <Filter>Contents\BGclass\Base</Filter>
     </ClCompile>
-    <ClCompile Include="jnsLoginBG.cpp">
-      <Filter>Contents\BGclass\Login</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsWorldSelectBG.cpp">
-      <Filter>Contents\BGclass\WorldSelect</Filter>
-    </ClCompile>
     <ClCompile Include="jnsCameraScript.cpp">
       <Filter>Contents\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsRutabysMain.cpp">
-      <Filter>Contents\BGclass\Rutabys</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsCharactorMakeBG.cpp">
-      <Filter>Contents\BGclass\CharactorMake</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsSelectBG.cpp">
-      <Filter>Contents\BGclass\Select</Filter>
     </ClCompile>
     <ClCompile Include="jnsLoginScene.cpp">
       <Filter>Contents\Scenes\LoginScene</Filter>
@@ -40,9 +25,6 @@
     </ClCompile>
     <ClCompile Include="jnsSelectScene.cpp">
       <Filter>Contents\Scenes\SelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsRutabysBossBG.cpp">
-      <Filter>Contents\BGclass\RutabysBoss</Filter>
     </ClCompile>
     <ClCompile Include="jnstestScript.cpp">
       <Filter>Contents\Script</Filter>
@@ -112,6 +94,27 @@
       <Filter>Contents\Items</Filter>
     </ClCompile>
     <ClCompile Include="jnsItemResourcesScript.cpp" />
+    <ClCompile Include="jnsStartScene1.cpp">
+      <Filter>Contents\Scenes\StoryLine\Start1Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsStartScene3.cpp">
+      <Filter>Contents\Scenes\StoryLine\Start3Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsStartScene2.cpp">
+      <Filter>Contents\Scenes\StoryLine\Start2Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsStartScene4.cpp">
+      <Filter>Contents\Scenes\StoryLine\Start4Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsStartScene5.cpp">
+      <Filter>Contents\Scenes\StoryLine\Start5Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsBGInstance.cpp">
+      <Filter>Contents\BGclass</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsRutabysMobScene.cpp">
+      <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -121,23 +124,8 @@
     <ClInclude Include="jnsBGBase.h">
       <Filter>Contents\BGclass\Base</Filter>
     </ClInclude>
-    <ClInclude Include="jnsWorldSelectBG.h">
-      <Filter>Contents\BGclass\WorldSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsLoginBG.h">
-      <Filter>Contents\BGclass\Login</Filter>
-    </ClInclude>
     <ClInclude Include="jnsCameraScript.h">
       <Filter>Contents\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsRutabysMain.h">
-      <Filter>Contents\BGclass\Rutabys</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsCharactorMakeBG.h">
-      <Filter>Contents\BGclass\CharactorMake</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsSelectBG.h">
-      <Filter>Contents\BGclass\Select</Filter>
     </ClInclude>
     <ClInclude Include="jnsLoginScene.h">
       <Filter>Contents\Scenes\LoginScene</Filter>
@@ -156,9 +144,6 @@
     </ClInclude>
     <ClInclude Include="jnsSelectScene.h">
       <Filter>Contents\Scenes\SelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsRutabysBossBG.h">
-      <Filter>Contents\BGclass\RutabysBoss</Filter>
     </ClInclude>
     <ClInclude Include="jnstestScript.h">
       <Filter>Contents\Script</Filter>
@@ -239,6 +224,27 @@
     <ClInclude Include="jnsGridScrpt.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
+    <ClInclude Include="jnsStartScene1.h">
+      <Filter>Contents\Scenes\StoryLine\Start1Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsStartScene3.h">
+      <Filter>Contents\Scenes\StoryLine\Start3Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsStartScene2.h">
+      <Filter>Contents\Scenes\StoryLine\Start2Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsStartScene4.h">
+      <Filter>Contents\Scenes\StoryLine\Start4Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsStartScene5.h">
+      <Filter>Contents\Scenes\StoryLine\Start5Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBGInstance.h">
+      <Filter>Contents\BGclass</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsRutabysMobScene.h">
+      <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -285,24 +291,6 @@
     </Filter>
     <Filter Include="Contents\Scenes\SelectScene">
       <UniqueIdentifier>{903899f2-90a8-48de-836f-5d54e6366c4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\WorldSelect">
-      <UniqueIdentifier>{065216b3-c938-4600-aea6-0ead1ba8074f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\CharactorMake">
-      <UniqueIdentifier>{38515cc9-7fcd-42ed-b685-1c7cfc4be8d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\Login">
-      <UniqueIdentifier>{d5d20792-c87c-49d6-8bb5-6f065771f9a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\Rutabys">
-      <UniqueIdentifier>{9d2508d4-9fd7-442b-a898-4d8e5a9fbca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\RutabysBoss">
-      <UniqueIdentifier>{18295b91-db7c-49a4-86fa-e80414a29f6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\BGclass\Select">
-      <UniqueIdentifier>{100acdc9-77ed-426e-87d3-a6516ca32861}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\UI\ExpBarBase">
       <UniqueIdentifier>{4f6e29fe-7f26-47e7-a2c0-f2a77c9db7ac}</UniqueIdentifier>
@@ -378,6 +366,27 @@
     </Filter>
     <Filter Include="Contents\Items">
       <UniqueIdentifier>{4f6b5383-eead-421d-90bd-7eb3382d9514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine">
+      <UniqueIdentifier>{21a33d02-26a9-4986-84a4-c1ec84b1ea51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine\Start5Scene">
+      <UniqueIdentifier>{1028bc86-b0a3-44df-99c1-dc0f0a54371f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine\Start4Scene">
+      <UniqueIdentifier>{7e8017c3-bf0c-413d-8128-4a6453561258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine\Start3Scene">
+      <UniqueIdentifier>{f6c96a32-6325-4d4f-863f-e1d3d917ccb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine\Start2Scene">
+      <UniqueIdentifier>{8d62d34b-b21c-4411-9939-c78b36ea81fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\StoryLine\Start1Scene">
+      <UniqueIdentifier>{e6dfb2be-b9ef-47e0-b6ee-532db06fe17e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scenes\RutabysQueenMobScene">
+      <UniqueIdentifier>{f44c36a1-473d-49b8-8cee-7b033e16ea76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

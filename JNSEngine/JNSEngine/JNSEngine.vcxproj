@@ -157,10 +157,10 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jnsBGBase.h" />
+    <ClInclude Include="jnsBGInstance.h" />
     <ClInclude Include="jnsCameraObject.h" />
     <ClInclude Include="jnsCameraScript.h" />
     <ClInclude Include="jnsCenterStatus.h" />
-    <ClInclude Include="jnsCharactorMakeBG.h" />
     <ClInclude Include="jnsCharactorMakeScene.h" />
     <ClInclude Include="jnsCursor.h" />
     <ClInclude Include="jnsExpBar.h" />
@@ -171,16 +171,13 @@
     <ClInclude Include="jnsInventory.h" />
     <ClInclude Include="jnsItemResources.h" />
     <ClInclude Include="jnsItemResourcesScript.h" />
-    <ClInclude Include="jnsLoginBG.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsMpBar.h" />
     <ClInclude Include="jnsPlayer.h" />
     <ClInclude Include="jnsPlayerScript.h" />
     <ClInclude Include="jnsPlayScene.h" />
-    <ClInclude Include="jnsRutabysBossBG.h" />
-    <ClInclude Include="jnsRutabysMain.h" />
+    <ClInclude Include="jnsRutabysMobScene.h" />
     <ClInclude Include="jnsRutabysScene.h" />
-    <ClInclude Include="jnsSelectBG.h" />
     <ClInclude Include="jnsSelectScene.h" />
     <ClInclude Include="jnsShopSlotBack.h" />
     <ClInclude Include="jnsShopSlotBack2.h" />
@@ -189,9 +186,13 @@
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnsSkillQuickSlotFront.h" />
     <ClInclude Include="jnsSmoke.h" />
+    <ClInclude Include="jnsStartScene1.h" />
+    <ClInclude Include="jnsStartScene2.h" />
+    <ClInclude Include="jnsStartScene3.h" />
+    <ClInclude Include="jnsStartScene4.h" />
+    <ClInclude Include="jnsStartScene5.h" />
     <ClInclude Include="jnstestScript.h" />
     <ClInclude Include="jnsUIBase.h" />
-    <ClInclude Include="jnsWorldSelectBG.h" />
     <ClInclude Include="jnsWorldSelectScene.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="jnsRutabysBossScene.h" />
@@ -200,10 +201,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="jnsBGBase.cpp" />
+    <ClCompile Include="jnsBGInstance.cpp" />
     <ClCompile Include="jnsCameraObject.cpp" />
     <ClCompile Include="jnsCameraScript.cpp" />
     <ClCompile Include="jnsCenterStatus.cpp" />
-    <ClCompile Include="jnsCharactorMakeBG.cpp" />
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="jnsCursor.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
@@ -215,16 +216,13 @@
     <ClCompile Include="jnsInventory.cpp" />
     <ClCompile Include="jnsItemResources.cpp" />
     <ClCompile Include="jnsItemResourcesScript.cpp" />
-    <ClCompile Include="jnsLoginBG.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />
     <ClCompile Include="jnsPlayerScript.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
-    <ClCompile Include="jnsRutabysBossBG.cpp" />
-    <ClCompile Include="jnsRutabysMain.cpp" />
+    <ClCompile Include="jnsRutabysMobScene.cpp" />
     <ClCompile Include="jnsRutabysScene.cpp" />
-    <ClCompile Include="jnsSelectBG.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
     <ClCompile Include="jnsShopSlotBack.cpp" />
     <ClCompile Include="jnsShopSlotBack2.cpp" />
@@ -233,9 +231,13 @@
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
     <ClCompile Include="jnsSmoke.cpp" />
+    <ClCompile Include="jnsStartScene1.cpp" />
+    <ClCompile Include="jnsStartScene2.cpp" />
+    <ClCompile Include="jnsStartScene3.cpp" />
+    <ClCompile Include="jnsStartScene4.cpp" />
+    <ClCompile Include="jnsStartScene5.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
     <ClCompile Include="jnsUIBase.cpp" />
-    <ClCompile Include="jnsWorldSelectBG.cpp" />
     <ClCompile Include="jnsWorldSelectScene.cpp" />
     <ClCompile Include="jnsRutabysBossScene.cpp" />
   </ItemGroup>

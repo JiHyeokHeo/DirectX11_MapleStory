@@ -417,6 +417,26 @@ namespace renderer
 		 SET_MATERIAL(CharactorMake_BG_Material, CharactorMake_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"CharactorMakeBGMaterial", CharactorMake_BG_Material);
 
+		 LOAD_TEXTURE(L"StartBG", L"..\\Resources\\Map\\Start_BG.png", Start_BG_Texture);
+		 SET_MATERIAL(Start_BG_Material, Start_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"StartBGMaterial", Start_BG_Material);
+
+		 LOAD_TEXTURE(L"Start2BG", L"..\\Resources\\Map\\Start2_BG.png", Start2_BG_Texture);
+		 SET_MATERIAL(Start2_BG_Material, Start2_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Start2BGMaterial", Start2_BG_Material);
+
+		 LOAD_TEXTURE(L"Start3BG", L"..\\Resources\\Map\\Start3_BG.png", Start3_BG_Texture);
+		 SET_MATERIAL(Start3_BG_Material, Start3_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Start3BGMaterial", Start3_BG_Material);
+
+		 LOAD_TEXTURE(L"Start4BG", L"..\\Resources\\Map\\Start4_BG.png", Start4_BG_Texture);
+		 SET_MATERIAL(Start4_BG_Material, Start4_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Start4BGMaterial", Start4_BG_Material);
+
+		 LOAD_TEXTURE(L"Start5BG", L"..\\Resources\\Map\\Start5_BG.png", Start5_BG_Texture);
+		 SET_MATERIAL(Start5_BG_Material, Start5_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Start5BGMaterial", Start5_BG_Material);
+
 		 LOAD_TEXTURE(L"LoginBG", L"..\\Resources\\Map\\Login_BG.png", Login_BG_Texture);
 		 SET_MATERIAL(Login_BG_Material, Login_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"LoginBGMaterial", Login_BG_Material);
@@ -433,7 +453,15 @@ namespace renderer
 		 SET_MATERIAL(RutaBoss_BG_Material, RutaBoss_BG_Texture, spriteShader);
 		 INSERT_MATERIAL(L"RutabysBossBGMaterial", RutaBoss_BG_Material);
 
+		 LOAD_TEXTURE(L"Rutabysqueen1", L"..\\Resources\\Map\\Rutabys\\rutabys_queen1.png", Rutabysqueen1_BG_Texture);
+		 SET_MATERIAL(Rutabysqueen1_BG_Material, Rutabysqueen1_BG_Texture, spriteShader);
 
+		 INSERT_MATERIAL(L"Rutabysqueen1Material", Rutabysqueen1_BG_Material);
+
+		 LOAD_TEXTURE(L"Rutabysqueen2", L"..\\Resources\\Map\\Rutabys\\rutabys_queen2.png", Rutabysqueen2_BG_Texture);
+		 SET_MATERIAL(Rutabysqueen2_BG_Material, Rutabysqueen2_BG_Texture, spriteShader);
+		 Rutabysqueen2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"Rutabysqueen2Material", Rutabysqueen2_BG_Material);
 #pragma endregion
 
 #pragma region UI

@@ -7,7 +7,8 @@ namespace jns
 		, mr(nullptr)
 	    , tr(nullptr)
 	{
-		AddComponent<MeshRenderer>();
+		mr = AddComponent<MeshRenderer>();
+		tr = GetComponent<Transform>();
 	}
 	BGBase::~BGBase()
 	{

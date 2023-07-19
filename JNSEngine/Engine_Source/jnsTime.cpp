@@ -43,7 +43,7 @@ namespace jns
 			Vector3 mPos = jns::Cursor::GetCursorPos();
 			wchar_t szFloat[50] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
-			swprintf_s(szFloat, 50, L"FPS : %d Mouse X COR : %d, Mouse Y COR : %d", (UINT)FPS, (UINT)mPos.x, (UINT)mPos.y);
+			//swprintf_s(szFloat, 50, L"FPS : %d Mouse X COR : %d, Mouse Y COR : %d", (UINT)FPS, (UINT)mPos.x, (UINT)mPos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 			

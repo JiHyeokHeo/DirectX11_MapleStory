@@ -12,6 +12,7 @@ namespace jns
 			End,
 		};
 
+
 		ItemResources(eItemType type);
 		~ItemResources();
 

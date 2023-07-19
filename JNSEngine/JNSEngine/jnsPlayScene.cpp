@@ -15,6 +15,7 @@ namespace jns
 		CreateUICamera();
 		//CreateEffectCamera();
 		//CreateGridCamera();
+		CreateCursor();
 	}
 
 	void PlayScene::Update()

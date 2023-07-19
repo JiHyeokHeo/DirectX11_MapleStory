@@ -25,9 +25,13 @@ namespace jns
 		tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		player2->AddComponent<Collider2D>();
 
-		ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
+		GameObject* obj = object::InstantiateItem<ItemResources>(eLayerType::Item, jns::ItemResources::eItemType::PowerPotion);
+		Transform* tr2 = obj->GetComponent<Transform>();
+		tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
+		
+		/*	ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
 		testitem->Initialize();
-		AddGameObject(eLayerType::Item, testitem);
+		AddGameObject(eLayerType::Item, testitem);*/
 		
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
@@ -92,12 +96,9 @@ namespace jns
 	
 		object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
-		object::InstantiateNOmove<RutabysMain>(eLayerType::BG);
-
+		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		////CreateInventory();
 		CreatePlayerUI();
-		CreateCursor();
-
 		PlayScene::Initialize();
 	}
 	void RutabysScene::Update()
@@ -110,7 +111,7 @@ namespace jns
 
 		if (Input::GetKeyDown(eKeyCode::P))
 		{
-			SceneManager::LoadScene(L"RutabysBoss");
+			SceneManager::LoadScene(L"RutabysMob");
 		}
 	}
 	void RutabysScene::Render()

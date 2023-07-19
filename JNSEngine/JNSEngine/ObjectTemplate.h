@@ -2,6 +2,8 @@
 #include "jnsEnums.h"
 #include "jnsScene.h"
 #include "jnsSceneManager.h"
+#include "jnsItemResources.h"
+#include "jnsBGInstance.h"
 
 namespace jns::object
 {
@@ -14,6 +16,28 @@ namespace jns::object
 	T* InstantiateNOmove(jns::enums::eLayerType type)
 	{
 		T* gameobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
+	T* InstantiateBG(jns::enums::eLayerType type, BGInstance::eBGType type2)
+	{
+		T* gameobj = new T(type2);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
+	T* InstantiateItem(jns::enums::eLayerType type, ItemResources::eItemType type2)
+	{
+		T* gameobj = new T(type2);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->Initialize();

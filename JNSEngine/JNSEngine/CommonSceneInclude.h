@@ -16,13 +16,12 @@
 
 
 // BackGround 
-#include "jnsLoginBG.h"
+#include "jnsBGInstance.h"
 #include "jnsCharactorMakeBG.h"
 #include "jnsRutabysBossBG.h"
-#include "jnsLoginBG.h"
 #include "jnsSelectBG.h"
-#include "jnsLoginBG.h"
 #include "jnsRutabysMain.h"
+#include "jnsLoginBG.h"
 
 // UI
 #include "jnsExpBar.h"
@@ -61,3 +60,4 @@
 
 // Effect
 #include "jnsSmoke.h"
+

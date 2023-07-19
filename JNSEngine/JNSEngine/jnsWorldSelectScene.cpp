@@ -27,12 +27,9 @@ namespace jns
 			tr->SetPosition(Vector3(450.0f, 100.0f, 4.8f));
 			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
 		}
-		WorldSelectBG* wBG = new WorldSelectBG();
-		AddGameObject(eLayerType::BG, wBG);
-		wBG->Initialize();
+		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::WorldSelect);
 
 
-		CreateCursor();
 		PlayScene::Initialize();
 	}
 	void WorldSelectScene::Update()

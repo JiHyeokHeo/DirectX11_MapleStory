@@ -11,11 +11,9 @@ namespace jns
 	}
 	void CharactorMakeScene::Initialize()
 	{
-		CharactorMakeBG* charactorMakeBG = new CharactorMakeBG();
-		AddGameObject(eLayerType::BG, charactorMakeBG);
-		charactorMakeBG->Initialize();
+		//BG
+		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorMake);
 
-		CreateCursor();
 		PlayScene::Initialize();
 	}
 	void CharactorMakeScene::Update()

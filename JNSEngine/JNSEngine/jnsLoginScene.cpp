@@ -26,11 +26,7 @@ namespace jns
 			tr->SetPosition(Vector3(0.0f, -20.0f, 4.8f));
 			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
 		}
-
-		LoginBG* loginBG = new LoginBG();
-		AddGameObject(eLayerType::BG, loginBG);
-		loginBG->Initialize();
-		CreateCursor();
+		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::Login);
 		PlayScene::Initialize();
 	}
 	void LoginScene::Update()

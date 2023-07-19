@@ -11,9 +11,7 @@ namespace jns
 	}
 	void SelectScene::Initialize()
 	{
-		SelectBG* selectBG = new SelectBG();
-		AddGameObject(eLayerType::BG, selectBG);
-		selectBG->Initialize();
+		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorSelect);
 
 		{
 			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
@@ -95,7 +93,7 @@ namespace jns
 
 		if (Input::GetKeyDown(eKeyCode::P))
 		{
-			SceneManager::LoadScene(L"CharactorMake");
+			SceneManager::LoadScene(L"StartScene1");
 		}
 	}
 	void SelectScene::Render()
