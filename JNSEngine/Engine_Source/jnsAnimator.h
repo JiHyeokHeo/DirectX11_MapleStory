@@ -1,11 +1,11 @@
 #pragma once
 #include "jnsComponent.h"
-#include "jnsAnimator.h"
+#include "jnsAnimation.h"
 
 
 namespace jns
 {
-	class Animator
+	class Animator : public Component	
 	{
 	public:
 		struct Event
@@ -28,6 +28,9 @@ namespace jns
 			Event completeEvent;
 			Event endEvent;
 		};
+
+		Animator();
+		~Animator();
 
 		virtual void Initialize();
 		virtual void Update();

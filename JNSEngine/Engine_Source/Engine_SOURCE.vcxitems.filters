@@ -82,6 +82,15 @@
     <Filter Include="Scene\Manager">
       <UniqueIdentifier>{2d7fb462-7acd-4cf3-9dbc-25629dd6adcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Coliider">
+      <UniqueIdentifier>{ee1a07c2-7ca4-4483-9c39-c97ec85f605e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Animator">
+      <UniqueIdentifier>{7894c899-48d8-4bdf-b4c6-a06de114a515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{73e7a8cb-a3bb-400c-bdc7-7f518e3f7871}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -166,9 +175,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h">
       <Filter>Scene\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollider2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollider2D.h">
+      <Filter>GameObject\Component\Coliider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.h">
+      <Filter>GameObject\Component\Coliider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimator.h">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimation.h">
+      <Filter>Resource\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -240,9 +261,21 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollider2D.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollider2D.cpp">
+      <Filter>GameObject\Component\Coliider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.cpp">
+      <Filter>GameObject\Component\Coliider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp">
+      <Filter>Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimator.cpp">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimation.cpp">
+      <Filter>Resource\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

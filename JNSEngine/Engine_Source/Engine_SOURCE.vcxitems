@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
@@ -48,6 +50,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)rapidcsv.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
