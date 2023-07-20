@@ -37,13 +37,16 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
-		void Create(std::wstring name
+		Animation* Create(const std::wstring& name
 			, std::shared_ptr<graphics::Texture> atlas
 			, Vector2 leftTop
 			, Vector2 size
 			, UINT columnLength
 			, Vector2 offset = Vector2::Zero
-			, float duration = 0.0f);
+			, float duration = 0.1f);
+		Animation* FindAnimation(const std::wstring& name);
+		void PlayAnimation(const std::wstring& name, bool loop);
+		void Binds();
 
 
 	private:

@@ -2,6 +2,7 @@
 #include "jnsGameObject.h"
 #include "jnsTransform.h"
 #include "jnsRenderer.h"
+#include "jnsAnimator.h"
 
 namespace jns
 {
@@ -34,6 +35,13 @@ namespace jns
 		
 		mMesh->BindBuffer();
 		mMaterial->Binds();
+
+		Animator* animator = GetOwner()->GetComponent<Animator>();
+		if (animator)
+		{
+			animator->Binds();
+		}
+
 		mMesh->Render();
 
 		mMaterial->Clear();

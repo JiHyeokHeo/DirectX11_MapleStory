@@ -73,6 +73,12 @@ namespace jns
 		//	//player->AddComponent<CameraScript>();
 		//}
 
+		std::shared_ptr<Texture> atlas
+			= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\Texture\\linkSprites.png");
+
+		Animator* at = player->AddComponent<Animator>();
+		at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
+
 		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-200.5f,-170.0f, 4.9f));
@@ -96,7 +102,7 @@ namespace jns
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1600.0f, -120.0f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1850.5f, -140.0f, 4.9f));
 	
-		//object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		CreateInventory();

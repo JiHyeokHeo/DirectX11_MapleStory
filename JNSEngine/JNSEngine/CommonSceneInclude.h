@@ -49,6 +49,7 @@
 #include "jnsRenderer.h"
 #include "jnsCollider2D.h"
 #include "jnsCollisionManager.h"
+#include "jnsAnimator.h"
 
 // Resources
 #include "jnsResources.h"
