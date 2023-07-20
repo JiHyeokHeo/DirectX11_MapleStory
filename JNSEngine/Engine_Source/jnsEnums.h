@@ -39,6 +39,7 @@ namespace jns::enums
 		Material,
 		Mesh,
 		Animation,
+		Image,
 		End,
 	};
 

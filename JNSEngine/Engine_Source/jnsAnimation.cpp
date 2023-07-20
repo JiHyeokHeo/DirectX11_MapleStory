@@ -18,6 +18,24 @@ namespace jns
 	Animation::~Animation()
 	{
 	}
+	HRESULT Animation::Load(const std::wstring& path)
+	{
+#define LOAD_TEXTURE(textureName, texturePath, textureVar) \
+    std::shared_ptr<Texture> textureVar = Resources::Load<Texture>(textureName, texturePath)
+
+#define SET_MATERIAL(spriteMaterialVar, textureVar, shaderVar) \
+    std::shared_ptr<Material> spriteMaterialVar = std::make_shared<Material>(); \
+    spriteMaterialVar->SetShader(shaderVar); \
+    spriteMaterialVar->SetTexture(textureVar)
+
+#define INSERT_MATERIAL(textureName, spriteMaterialVar) \
+    Resources::Insert(textureName, spriteMaterialVar)
+
+		
+
+
+		 return S_FALSE;
+	}
 	void Animation::Update()
 	{
 	}
@@ -71,6 +89,8 @@ namespace jns
 	}
 	void Animation::Binds()
 	{	
+
+
 		// texture bind
 		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
 

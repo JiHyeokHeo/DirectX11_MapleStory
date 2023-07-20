@@ -3,7 +3,6 @@
 #include "jnsTexture.h"
 
 
-
 namespace jns
 {	
 	using namespace math;
@@ -33,7 +32,7 @@ namespace jns
 		Animation();
 		~Animation();
 
-		virtual HRESULT Load(const std::wstring& path) { return S_FALSE; };
+		virtual HRESULT Load(const std::wstring& path);
 
 		void Update();
 		void LateUpdate();
