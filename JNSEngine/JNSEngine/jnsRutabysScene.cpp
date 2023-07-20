@@ -13,8 +13,10 @@ namespace jns
 	{
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
 		
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		player->AddComponent<PlayerScript>();
 		player->AddComponent<Collider2D>();
@@ -29,9 +31,9 @@ namespace jns
 		//Transform* tr2 = obj->GetComponent<Transform>();
 		//tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		
-		/*	ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
+		ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
 		testitem->Initialize();
-		AddGameObject(eLayerType::Item, testitem);*/
+		AddGameObject(eLayerType::Item, testitem);
 		
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
@@ -97,7 +99,7 @@ namespace jns
 		//object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
-		////CreateInventory();
+		CreateInventory();
 		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
@@ -120,7 +122,8 @@ namespace jns
 	}
 	void RutabysScene::OnEnter()
 	{
-
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 	}
 	void RutabysScene::OnExit()

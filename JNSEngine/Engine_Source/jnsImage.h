@@ -1,9 +1,11 @@
 #pragma once
 #include "jnsResource.h"
+#include "jnsTexture.h"
 
 namespace jns
 {
 	using namespace math;
+	using namespace graphics;
 	class Image : public Resource
 	{
 	public:

@@ -12,10 +12,10 @@ namespace jns
 	void ShopSlotBack2::Initialize()
 	{
 		SetMesh(L"RectMesh");
-		SetMaterial(L"ShopBackGround2Material");
+		SetMaterial(L"ShopBackGroundMaterial");
 
-		SetPosition(Vector3(0.0f, 0.0f, -0.1f));
-		//SetScaleWithOriginalImageScale(Vector2(0.97f,0.97f));
+		SetPosition(Vector3(0.0f, 0.0f, 4.5f));
+		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 
 		UIBase::Initialize();
 	}

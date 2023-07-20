@@ -100,12 +100,8 @@ namespace jns
 
 	void PlayScene::CreateInventory()
 	{
-		GameObject* mShopSlotBackBase = object::InstantiateNOmove<ShopSlotBack>(eLayerType::UI);
 		GameObject* mShopSlotBack02 = object::InstantiateNOmove<ShopSlotBack2>(eLayerType::UI);
-		GameObject* mShopSlotBack03 = object::InstantiateNOmove<ShopSlotBack3>(eLayerType::UI);
 
 
-		mShopSlotBack02->GetComponent<Transform>()->SetParent(mShopSlotBackBase->GetComponent<Transform>());
-		mShopSlotBack03->GetComponent<Transform>()->SetParent(mShopSlotBack02->GetComponent<Transform>());
 	}
 }

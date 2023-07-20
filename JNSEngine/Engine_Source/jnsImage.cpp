@@ -12,6 +12,7 @@ namespace jns
 	}
 	Image::Image()
 		: Resource(enums::eResourceType::Image)
+		, mImage(nullptr)
 	{
 
 	}
