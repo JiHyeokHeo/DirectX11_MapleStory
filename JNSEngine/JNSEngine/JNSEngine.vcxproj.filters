@@ -115,6 +115,9 @@
     <ClCompile Include="jnsRutabysMobScene.cpp">
       <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
     </ClCompile>
+    <ClCompile Include="jnsInventoryScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="jnsRutabysMobScene.h">
       <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsInventoryScript.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

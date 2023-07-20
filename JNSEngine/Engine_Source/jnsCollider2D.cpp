@@ -28,6 +28,7 @@ namespace jns
 	void Collider2D::LateUpdate()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		eLayerType mLayertype = GetOwner()->GetLayerType();
 
 		mScale = tr->GetScale();
 		mScale.x *= mSize.x;
@@ -44,7 +45,7 @@ namespace jns
 		mesh.scale = mScale;	
 		mesh.rotation = tr->GetRotation();
 		mesh.type = eColliderType::Rect;
-		
+		mesh.layertype = mLayertype;
 		mesh.isCollide = isColliding;
 		
 		renderer::PushDebugMeshAttribute(mesh);

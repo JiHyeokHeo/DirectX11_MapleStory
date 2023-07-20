@@ -22,7 +22,8 @@ namespace jns
 
 		void SetType(eColliderType type) { mType = type; }
 		void SetSize(Vector2 size) { mSize = size; }
-		void SetCenter(Vector2 size) { mCenter = size; }
+		void SetPosition(Vector3 position) { mPosition = position; }
+		void SetCenter(Vector2 center) { mCenter = center; }
 		UINT GetColliderID() { return mColliderID; }
 
 		Vector3 GetPosition() { return mPosition; }

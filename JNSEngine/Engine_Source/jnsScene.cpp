@@ -50,6 +50,7 @@ namespace jns
 	}
 	void Scene::AddGameObject(enums::eLayerType type, GameObject* gameObj)
 	{
+		gameObj->SetType(type);
 		mLayers[(int)type].AddGameObject(gameObj);
 	}
 }

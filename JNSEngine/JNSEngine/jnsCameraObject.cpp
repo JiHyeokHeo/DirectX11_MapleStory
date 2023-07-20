@@ -28,6 +28,7 @@ namespace jns
 			break;
 		case eCameraType::UICamera:
 			renderer::cameras.push_back(mCameraComp);
+			renderer::UICamera = mCameraComp;
 			break;
 		default:
 			break;

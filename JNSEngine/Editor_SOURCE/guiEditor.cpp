@@ -27,7 +27,6 @@ namespace gui
 			= jns::Resources::Find<jns::Material>(L"DebugMaterial");
 
 		mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
-		mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<jns::Transform>();
 		jns::MeshRenderer* mr
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<jns::MeshRenderer>();
 		mr->SetMaterial(material);
@@ -113,7 +112,7 @@ namespace gui
 		// 해당 게임오브젝트위에 그려주면된다.
 		jns::Transform* tr = debugObj->GetComponent<jns::Transform>();
 
-
+		
 		Vector3 pos = mesh.position;
 		pos.z -= 0.01f;
 
@@ -122,7 +121,9 @@ namespace gui
 		tr->SetRotation(mesh.rotation);
 
 		tr->LateUpdate();
-
+		
+		
+		// 붉은색 세팅
 		renderer::ObjectTypeMoveCB colObj = {};
 		colObj.mtype = mesh.isCollide;
 		colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
@@ -134,11 +135,21 @@ namespace gui
 		/*ya::MeshRenderer * mr
 			= debugObj->GetComponent<ya::MeshRenderer>();*/
 			// main camera
-		jns::Camera* mainCamara = renderer::mainCamera;
+		//if(debugObj->GetLayerType())
+		if (mesh.layertype != eLayerType::UI)
+		{
+			jns::Camera* mainCamara = renderer::mainCamera;
 
-		jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
-		jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
+			jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
+			jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
+		}
+		else
+		{
+			jns::Camera* uiCamara = renderer::UICamera;
 
+			jns::Camera::SetGpuViewMatrix(uiCamara->GetViewMatrix());
+			jns::Camera::SetGpuProjectionMatrix(uiCamara->GetProjectionMatrix());
+		}
 
 		debugObj->Render();
 	}

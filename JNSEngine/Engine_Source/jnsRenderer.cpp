@@ -15,6 +15,7 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 
 	jns::Camera* mainCamera = nullptr;
+	jns::Camera* UICamera = nullptr;
 	std::vector<jns::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshes = {};
 
@@ -510,7 +511,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"StatusMainBar", L"..\\Resources\\UI\\Status\\StatusMainBar.png", StatusMainBar_UI_Texture);
 		 SET_MATERIAL(StatusMainBar_UI_Material, StatusMainBar_UI_Texture, spriteShader);
-		 //StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 StatusMainBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"StatusMainBarMaterial", StatusMainBar_UI_Material);
 
 

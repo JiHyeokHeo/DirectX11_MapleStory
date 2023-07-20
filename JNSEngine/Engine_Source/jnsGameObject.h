@@ -95,11 +95,14 @@ namespace jns
 
 		void SetState(eState state) { mState = state; }
 		eState GetState() { return mState; }
+		void SetType(eLayerType type) { mLayerType = type; }
+		eLayerType GetLayerType() { return mLayerType; }
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
+		eLayerType mLayerType;
 	};
 
 }

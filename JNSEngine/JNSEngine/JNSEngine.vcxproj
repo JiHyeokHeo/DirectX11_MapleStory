@@ -169,6 +169,7 @@
     <ClInclude Include="jnsGridScrpt.h" />
     <ClInclude Include="jnsHpBar.h" />
     <ClInclude Include="jnsInventory.h" />
+    <ClInclude Include="jnsInventoryScript.h" />
     <ClInclude Include="jnsItemResources.h" />
     <ClInclude Include="jnsItemResourcesScript.h" />
     <ClInclude Include="jnsLoginScene.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsHpBar.cpp" />
     <ClCompile Include="jnsInventory.cpp" />
+    <ClCompile Include="jnsInventoryScript.cpp" />
     <ClCompile Include="jnsItemResources.cpp" />
     <ClCompile Include="jnsItemResourcesScript.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />

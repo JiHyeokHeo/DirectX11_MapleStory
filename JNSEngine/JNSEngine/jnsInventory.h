@@ -15,6 +15,8 @@ namespace jns
 		virtual void Render() override;
 
 	private:
+		Collider2D* mInventoryIn;
+		Collider2D* mInventoryBar;
 	};
 	
 }

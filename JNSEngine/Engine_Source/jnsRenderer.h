@@ -61,6 +61,7 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
 	extern jns::Camera* mainCamera;
+	extern jns::Camera* UICamera;
 	extern std::vector<jns::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshes;
 

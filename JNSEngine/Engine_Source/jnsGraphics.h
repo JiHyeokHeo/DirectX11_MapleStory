@@ -103,6 +103,7 @@ namespace jns::graphics
 
 	struct DebugMesh
 	{
+		enums::eLayerType layertype;
 		enums::eColliderType type;
 		math::Vector3 position;
 		math::Vector3 rotation;
