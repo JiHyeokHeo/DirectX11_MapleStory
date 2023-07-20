@@ -12,6 +12,7 @@ namespace jns
 {
 	Vector3 Cursor::mCursorPos = {};
 	Vector3 Cursor::mCursorEndPos = {};
+	Vector3 Cursor::mCursorWorldPos = {};
 	Cursor::Cursor()
 	{
 		AddComponent<MeshRenderer>();
@@ -41,9 +42,9 @@ namespace jns
 	void Cursor::LateUpdate()
 	{	
 		int a = 0;
-		//Vector3 testPos = renderer::mainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
-		mCursorPos = Vector3(Input::GetMousePos().x , Input::GetMousePos().y , 0.0f); //ui용도로만 쓰라는건가?
-
+		Vector3 testPos = renderer::mainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
+		mCursorPos = Vector3(Input::GetMousePos().x - testPos.x, Input::GetMousePos().y - testPos.y, 0.0f); //ui용도로만 쓰라는건가?
+		mCursorWorldPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f);
 		mCursorEndPos = Vector3(800.0f, 450.0f, 0.0f);
 			
 		Viewport viewport;
@@ -57,12 +58,14 @@ namespace jns
 		mCursorPos = viewport.Unproject(mCursorPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		mCursorPos.z = MOUSEZPOS;
 
+		mCursorWorldPos = viewport.Unproject(mCursorWorldPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
+		mCursorWorldPos.z = MOUSEZPOS;
 		// 추후 UI좌표를 사용하기 위해!
 		mCursorEndPos = viewport.Unproject(mCursorEndPos, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		mCursorEndPos.z = MOUSEZPOS;
 
 		this;
-		tr->SetPosition(mCursorPos);
+		tr->SetPosition(mCursorWorldPos);
 		GameObject::LateUpdate();
 	}
 	void Cursor::Render()

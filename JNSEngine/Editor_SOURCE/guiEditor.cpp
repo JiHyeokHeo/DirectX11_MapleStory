@@ -6,7 +6,7 @@
 #include "..\\Engine_Source\\jnsMeshRenderer.h"
 #include "..\\Engine_Source\\jnsMaterial.h"
 #include "..\\Engine_Source\\jnsRenderer.h"
-
+#include "jnsCursor.h"
 #include "jnsGridScrpt.h"
 
 
@@ -113,6 +113,8 @@ namespace gui
 		jns::Transform* tr = debugObj->GetComponent<jns::Transform>();
 
 		
+
+
 		Vector3 pos = mesh.position;
 		pos.z -= 0.01f;
 
@@ -121,6 +123,7 @@ namespace gui
 		tr->SetRotation(mesh.rotation);
 
 		tr->LateUpdate();
+		
 		
 		
 		// ºÓÀº»ö ¼¼ÆÃ
@@ -136,14 +139,14 @@ namespace gui
 			= debugObj->GetComponent<ya::MeshRenderer>();*/
 			// main camera
 		//if(debugObj->GetLayerType())
-		if (mesh.layertype != eLayerType::UI)
+		if (mesh.layertype != eLayerType::UI || mesh.layertype == eLayerType::Cursor)
 		{
 			jns::Camera* mainCamara = renderer::mainCamera;
 
 			jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
 			jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
 		}
-		else
+		else if(mesh.layertype == eLayerType::UI )
 		{
 			jns::Camera* uiCamara = renderer::UICamera;
 

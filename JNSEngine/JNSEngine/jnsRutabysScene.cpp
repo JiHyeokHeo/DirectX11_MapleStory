@@ -20,14 +20,14 @@ namespace jns
 		player->AddComponent<Collider2D>();
 		SetTarget(player);
 
-		Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(0.0f, 0.0f, 1.0001f));
-		Transform* tr = player2->GetComponent<Transform>();
-		tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
-		player2->AddComponent<Collider2D>();
+		//Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(0.0f, 0.0f, 1.0001f));
+		//Transform* tr = player2->GetComponent<Transform>();
+		//tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
+		//player2->AddComponent<Collider2D>();
 
-		GameObject* obj = object::InstantiateItem<ItemResources>(eLayerType::Item, jns::ItemResources::eItemType::PowerPotion);
-		Transform* tr2 = obj->GetComponent<Transform>();
-		tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
+		//GameObject* obj = object::InstantiateItem<ItemResources>(eLayerType::Item, jns::ItemResources::eItemType::PowerPotion);
+		//Transform* tr2 = obj->GetComponent<Transform>();
+		//tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		
 		/*	ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
 		testitem->Initialize();
@@ -94,7 +94,7 @@ namespace jns
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1600.0f, -120.0f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1850.5f, -140.0f, 4.9f));
 	
-		object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		//object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		////CreateInventory();
