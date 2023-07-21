@@ -79,6 +79,8 @@ namespace jns
 		Animator* at = player->AddComponent<Animator>();
 		at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
 
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
+
 		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(-200.5f,-170.0f, 4.9f));

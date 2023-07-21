@@ -44,6 +44,9 @@ namespace jns
 			, UINT columnLength
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.1f);
+
+		Animation* CreateAnimations(const std::wstring& path);
+
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);
 		void Binds();

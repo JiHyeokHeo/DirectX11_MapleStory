@@ -21,6 +21,8 @@ namespace jns::graphics
 		Texture();
 		~Texture();
 
+
+	    HRESULT Create(const std::vector<std::wstring>& imagePaths, std::shared_ptr<graphics::Texture>& atlasTexture, std::vector<RECT>& uvCoordinates);
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();

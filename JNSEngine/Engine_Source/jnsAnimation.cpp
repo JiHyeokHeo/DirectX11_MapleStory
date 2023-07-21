@@ -21,18 +21,6 @@ namespace jns
 	}
 	HRESULT Animation::Load(const std::wstring& path)
 	{
-#define LOAD_TEXTURE(textureName, texturePath, textureVar) \
-    std::shared_ptr<Texture> textureVar = Resources::Load<Texture>(textureName, texturePath)
-
-#define SET_MATERIAL(spriteMaterialVar, textureVar, shaderVar) \
-    std::shared_ptr<Material> spriteMaterialVar = std::make_shared<Material>(); \
-    spriteMaterialVar->SetShader(shaderVar); \
-    spriteMaterialVar->SetTexture(textureVar)
-
-#define INSERT_MATERIAL(textureName, spriteMaterialVar) \
-    Resources::Insert(textureName, spriteMaterialVar)
-
-		
 
 
 		 return S_FALSE;
@@ -89,6 +77,29 @@ namespace jns
 
 			mSprites.push_back(sprite);
 		}
+	}
+	void Animation::CreateAnimations(const std::wstring& path)
+	{
+		UINT width = 0;
+		UINT height = 0;
+		UINT fileCount = 0;
+
+		std::filesystem::path fs(path);
+		std::shared_ptr<Texture*> textures = {};
+		//for (const auto& p : std::filesystem::recursive_directory_iterator(path))
+		//{
+		//	std::wstring fileName = p.path().filename();
+		//	std::wstring fullName = path + L"\\" + fileName;
+		//	
+		//	const std::wstring ext = p.path().extension();
+
+		//	if (ext == L".png")
+		//		std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
+		//	
+		//	textures.push_back(tex)
+
+		//	fileCount++;
+		//}
 	}
 	void Animation::Binds()
 	{	
