@@ -80,6 +80,7 @@ namespace jns
 		at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
 
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
+		at->PlayAnimation(L"CharactorCharWalk", true);
 
 		//object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));

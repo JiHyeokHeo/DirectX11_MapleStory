@@ -22,7 +22,9 @@ namespace jns::graphics
 		~Texture();
 
 
-	    HRESULT Create(const std::vector<std::wstring>& imagePaths, std::shared_ptr<graphics::Texture>& atlasTexture, std::vector<RECT>& uvCoordinates);
+		HRESULT CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture);
+
+	
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
@@ -48,6 +50,8 @@ namespace jns::graphics
 			}	
 			return mRatio;
 		}
+		const ScratchImage& GetAtlasImage() { return atlasImage; }
+		
 		
 	private:
 		ScratchImage mImage;
@@ -55,6 +59,7 @@ namespace jns::graphics
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
 		D3D11_TEXTURE2D_DESC mDesc;
 
+		ScratchImage atlasImage;
 
 		float mWidth;
 		float mHeight;

@@ -56,7 +56,7 @@ namespace jns
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
 		Animation* mActiveAnimation;
-
+		std::shared_ptr<graphics::Texture> mImageAtlas;
 		bool mbLoop;
 
 	};

@@ -30,6 +30,9 @@ namespace jns
 	}
 	void Animator::Render()
 	{
+		//at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
+
+		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
 	}
 	Animation* Animator::Create(const std::wstring& name
 		, std::shared_ptr<graphics::Texture> atlas
@@ -62,21 +65,27 @@ namespace jns
 		UINT fileCount = 0;
 
 		std::filesystem::path fs(path);
-		std::shared_ptr<Texture*> textures = {};
-		//for (const auto& p : std::filesystem::recursive_directory_iterator(path))
-		//{
-		//	std::wstring fileName = p.path().filename();
-		//	std::wstring fullName = path + L"\\" + fileName;
-		//	
-		//	const std::wstring ext = p.path().extension();
+		std::vector<std::shared_ptr<Texture>> textures = {};
+		for (const auto& p : std::filesystem::recursive_directory_iterator(path))
+		{
+			std::wstring fileName = p.path().filename();
+			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
 
-		//	if (ext == L".png")
-		//		std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
-		//	
-		//	textures.push_back(tex)
+			const std::wstring ext = p.path().extension();
 
-		//	fileCount++;
-		//}
+			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
+
+			textures.push_back(tex);
+
+			fileCount++;
+		}
+
+		std::wstring key = fs.parent_path().filename();
+		key += fs.filename();
+	
+		textures[0]->CreateTex(path, mImageAtlas);
+		Create(key, mImageAtlas, Vector2(0.0), Vector2(100.0f, 100.0f), 5);
+
 
 		return nullptr;
 	}

@@ -48,7 +48,6 @@ namespace jns
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.0f);
 
-		void CreateAnimations(const std::wstring& path);
 		void Binds();
 		void Reset();
 
