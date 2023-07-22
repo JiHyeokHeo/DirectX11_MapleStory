@@ -112,8 +112,6 @@ namespace jns::graphics
                     // Handle the conversion error if necessary
                     return hr;
                 }
-                // imageMaxWidth * filecnt, imageMaxHeight
-                // Initialize the atlas image
                 if (isMake == false)
                 {
                     hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 2, 1, 1);
@@ -142,10 +140,6 @@ namespace jns::graphics
             return hr;
         }
 
-        // Create a DirectX 11 texture from the combined image data
-        //hr = CreateTexture(GetDevice()->GetID3D11Device(),
-        //    atlasImage.GetImages(), atlasImage.GetImageCount(),
-        //    atlasImage.GetMetadata(), (ID3D11Resource**)mTexture.GetAddressOf());
         if (FAILED(hr))
         {
             // Error handling if the texture creation failed
@@ -160,13 +154,10 @@ namespace jns::graphics
             , atlasImage.GetMetadata()
             , mSRV.GetAddressOf()
         );
-        //mWidth = mImage.GetMetadata().width;
-        //mHeight = mImage.GetMetadata().height;
         mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 
         // Create an atlas texture object
         // Assign the DirectX 11 texture and SRV to the atlasTexture
-        
 
         // Copy the image data from atlasImage to atlasTexture->mImage
         this->mImage.Initialize2D(
@@ -176,20 +167,6 @@ namespace jns::graphics
             atlasImage.GetMetadata().arraySize,
             atlasImage.GetMetadata().mipLevels
         );
-
- /*       for (size_t mip = 0; mip < atlasImage.GetMetadata().mipLevels; ++mip)
-        {
-            const Image* srcImage = atlasImage.GetImage(mip, 0, 0);
-            const Image* destImage = atlasTexture->mImage.GetImage(mip, 0, 0);
-
-            if (srcImage && destImage)
-            {
-                memcpy(destImage->pixels, srcImage->pixels, srcImage->rowPitch * srcImage->height);
-            }
-        }*/
-        // Calculate UV coordinates for each individual image in the atlasz
-        // and store them in the uvCoordinates vector
-        // You need to decide how to map each image in the atlas, such as evenly dividing the atlas or using a sprite sheet layout.
 
         return S_OK;
     }
