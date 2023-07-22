@@ -69,7 +69,7 @@ namespace jns::graphics
         GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
     }
 
-    HRESULT Texture::CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture)
+    HRESULT Texture::CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture, UINT filecnt, UINT imageMaxWidth, UINT imageMaxHeight)
     {
         ScratchImage atlasImage;
         HRESULT hr = S_OK;
@@ -112,11 +112,11 @@ namespace jns::graphics
                     // Handle the conversion error if necessary
                     return hr;
                 }
-
+                // imageMaxWidth * filecnt, imageMaxHeight
                 // Initialize the atlas image
                 if (isMake == false)
                 {
-                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, 1600, 900, 1, 1);
+                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 2, 1, 1);
                     isMake = true;
                 }
                 if (FAILED(hr))
@@ -127,7 +127,7 @@ namespace jns::graphics
 
                 // Copy the converted image data to the atlas image
                 hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, convertedImage.GetMetadata().width * idx, convertedImage.GetMetadata().height);
+                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (convertedImage.GetMetadata().width * idx), 0);
                 if (FAILED(hr))
                 {
                     // Handle the copy rectangle error if necessary
@@ -182,16 +182,16 @@ namespace jns::graphics
             atlasImage.GetMetadata().mipLevels
         );
 
-        for (size_t mip = 0; mip < atlasImage.GetMetadata().mipLevels; ++mip)
-        {
-            const Image* srcImage = atlasImage.GetImage(mip, 0, 0);
-            const Image* destImage = atlasTexture->mImage.GetImage(mip, 0, 0);
+        //for (size_t mip = 0; mip < atlasImage.GetMetadata().mipLevels; ++mip)
+        //{
+        //    const Image* srcImage = atlasImage.GetImage(mip, 0, 0);
+        //    const Image* destImage = atlasTexture->mImage.GetImage(mip, 0, 0);
 
-            if (srcImage && destImage)
-            {
-                memcpy(destImage->pixels, srcImage->pixels, srcImage->rowPitch * srcImage->height);
-            }
-        }
+        //    if (srcImage && destImage)
+        //    {
+        //        memcpy(destImage->pixels, srcImage->pixels, srcImage->rowPitch * srcImage->height);
+        //    }
+        //}
         // Calculate UV coordinates for each individual image in the atlasz
         // and store them in the uvCoordinates vector
         // You need to decide how to map each image in the atlas, such as evenly dividing the atlas or using a sprite sheet layout.

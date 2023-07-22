@@ -81,6 +81,11 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"SpriteAnimationShader");
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -339,6 +344,11 @@ namespace renderer
 		 moveShader->Create(eShaderStage::PS, L"MovePS.hlsl", "main");
 		 jns::Resources::Insert(L"MoveShader", moveShader);
 
+		 std::shared_ptr<Shader> spriteAniShader = std::make_shared<Shader>();
+		 spriteAniShader->Create(eShaderStage::VS, L"SpriteAnimationVS.hlsl", "main");
+		 spriteAniShader->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
+		 jns::Resources::Insert(L"SpriteAnimationShader", spriteAniShader);
+
 		 std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
 		 gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
 		 gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
@@ -385,7 +395,8 @@ namespace renderer
 			 = Resources::Find<Shader>(L"PlayerUIShader");
 		 std::shared_ptr<Shader> debugShader
 			 = Resources::Find<Shader>(L"DebugShader");
-
+		 std::shared_ptr<Shader> spriteAniShader
+			 = Resources::Find<Shader>(L"SpriteAnimationShader");
 
 
 		 std::shared_ptr<Material> material = std::make_shared<Material>();
@@ -393,6 +404,12 @@ namespace renderer
 		 material->SetShader(gridShader);
 		 Resources::Insert(L"GridMaterial", material);
 		 
+	
+		 material = std::make_shared<Material>();
+		 material->SetShader(spriteAniShader);
+		 material->SetRenderingMode(eRenderingMode::Transparent);
+		 Resources::Insert(L"SpriteAnimaionMaterial", material);
+
 		 material = std::make_shared<Material>();
 		 material->SetShader(debugShader);
 		 Resources::Insert(L"DebugMaterial", material);

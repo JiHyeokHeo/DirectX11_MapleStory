@@ -22,14 +22,20 @@ namespace jns::graphics
 		~Texture();
 
 
-		HRESULT CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture);
+		HRESULT CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture, UINT filecnt ,UINT imageMaxWidth, UINT imageMaxHeight);
 
 	
 		virtual HRESULT Load(const std::wstring& path) override;
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
 		
-		Vector2 GetTextureSize() { return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); }
+		Vector2 GetTextureSize() 
+		{ 
+			/*if (mImage == nullptr)*/
+
+			
+			return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); 
+		}
 		
 		size_t GetWidth() { return mImage.GetMetadata().width; }
 		size_t GetHeight() { return mImage.GetMetadata().height; }
