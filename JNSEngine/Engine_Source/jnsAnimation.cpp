@@ -19,6 +19,7 @@ namespace jns
 	}
 	Animation::~Animation()
 	{
+		mAtlas.reset();
 	}
 	HRESULT Animation::Load(const std::wstring& path)
 	{

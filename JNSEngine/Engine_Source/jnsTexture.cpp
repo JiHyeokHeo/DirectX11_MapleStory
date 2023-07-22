@@ -69,7 +69,7 @@ namespace jns::graphics
         GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
     }
 
-    HRESULT Texture::CreateTex(const std::wstring& path, std::shared_ptr<graphics::Texture>& atlasTexture, UINT filecnt, UINT imageMaxWidth, UINT imageMaxHeight)
+    HRESULT Texture::CreateTex(const std::wstring& path, UINT filecnt, UINT imageMaxWidth, UINT imageMaxHeight)
     {
         ScratchImage atlasImage;
         HRESULT hr = S_OK;
@@ -165,16 +165,11 @@ namespace jns::graphics
         mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 
         // Create an atlas texture object
-
-
-
         // Assign the DirectX 11 texture and SRV to the atlasTexture
-        atlasTexture = std::make_shared<graphics::Texture>();
-        atlasTexture->mTexture = mTexture.Get();
-        atlasTexture->mSRV = mSRV.Get();
+        
 
         // Copy the image data from atlasImage to atlasTexture->mImage
-        atlasTexture->mImage.Initialize2D(
+        this->mImage.Initialize2D(
             atlasImage.GetMetadata().format,
             atlasImage.GetMetadata().width,
             atlasImage.GetMetadata().height,
@@ -182,16 +177,16 @@ namespace jns::graphics
             atlasImage.GetMetadata().mipLevels
         );
 
-        //for (size_t mip = 0; mip < atlasImage.GetMetadata().mipLevels; ++mip)
-        //{
-        //    const Image* srcImage = atlasImage.GetImage(mip, 0, 0);
-        //    const Image* destImage = atlasTexture->mImage.GetImage(mip, 0, 0);
+ /*       for (size_t mip = 0; mip < atlasImage.GetMetadata().mipLevels; ++mip)
+        {
+            const Image* srcImage = atlasImage.GetImage(mip, 0, 0);
+            const Image* destImage = atlasTexture->mImage.GetImage(mip, 0, 0);
 
-        //    if (srcImage && destImage)
-        //    {
-        //        memcpy(destImage->pixels, srcImage->pixels, srcImage->rowPitch * srcImage->height);
-        //    }
-        //}
+            if (srcImage && destImage)
+            {
+                memcpy(destImage->pixels, srcImage->pixels, srcImage->rowPitch * srcImage->height);
+            }
+        }*/
         // Calculate UV coordinates for each individual image in the atlasz
         // and store them in the uvCoordinates vector
         // You need to decide how to map each image in the atlas, such as evenly dividing the atlas or using a sprite sheet layout.

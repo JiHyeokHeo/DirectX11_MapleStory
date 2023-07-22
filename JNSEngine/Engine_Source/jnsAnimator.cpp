@@ -21,6 +21,7 @@ namespace jns
 			delete iter.second;
 			iter.second = nullptr;
 		}
+
 	}
 	void Animator::Initialize()
 	{
@@ -117,7 +118,8 @@ namespace jns
 		std::wstring key = fs.parent_path().filename();
 		key += fs.filename();
 	
-		textures[0]->CreateTex(path, mImageAtlas, fileCount, maxwidth, maxheight);
+		mImageAtlas = std::make_shared<graphics::Texture>();
+		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
 		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, Vector2::Zero, duration);
 
 
