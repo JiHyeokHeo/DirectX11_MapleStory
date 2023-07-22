@@ -83,7 +83,7 @@ namespace jns
 		mEvents.insert(std::make_pair(name, events));
 
 	}
-	Animation* Animator::CreateAnimations(const std::wstring& path)
+	Animation* Animator::CreateAnimations(const std::wstring& path , float duration)
 	{
 		UINT maxwidth = 0;
 		UINT maxheight = 0;
@@ -118,7 +118,7 @@ namespace jns
 		key += fs.filename();
 	
 		textures[0]->CreateTex(path, mImageAtlas, fileCount, maxwidth, maxheight);
-		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount);
+		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, Vector2::Zero, duration);
 
 
 		return nullptr;
