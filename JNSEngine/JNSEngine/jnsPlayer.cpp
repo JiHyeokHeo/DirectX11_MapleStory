@@ -37,7 +37,7 @@ namespace jns
 		at->PlayAnimation(L"CharactorCharIdle", true);
 		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
 		//at->PlayAnimation(L"CharactorCharWalk", true);
-
+		
 		//Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(300.0f, 300.0f, 1.0f));

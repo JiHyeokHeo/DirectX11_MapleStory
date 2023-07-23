@@ -6,6 +6,17 @@ namespace jns
 	class PlayerScript : public Script
 	{
 	public:
+		enum class ePlayerState
+		{
+			Idle,
+			Move,
+			Attack,
+			Attacked,
+			Die,
+			End,
+		};
+
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -17,6 +28,20 @@ namespace jns
 		void Complete();
 
 		void bindConstantBuffer();
+
+	public:
+		void Idle();
+		void Move();
+		void Attack();
+		void Attacked();
+		void Die();
+
+
+		void AnimatorControl();
 	private:
+		ePlayerState mPlayerState;
+		ePlayerState mPrevPlayerState;
+		bool isPlayed;
+		bool isRight;
 	};
 }

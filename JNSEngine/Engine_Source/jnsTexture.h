@@ -22,7 +22,7 @@ namespace jns::graphics
 		~Texture();
 
 
-		HRESULT CreateTex(const std::wstring& path,  UINT filecnt ,UINT imageMaxWidth, UINT imageMaxHeight);
+		HRESULT CreateTex(const std::wstring& path,  UINT filecnt , size_t imageMaxWidth, size_t imageMaxHeight);
 
 	
 		virtual HRESULT Load(const std::wstring& path) override;

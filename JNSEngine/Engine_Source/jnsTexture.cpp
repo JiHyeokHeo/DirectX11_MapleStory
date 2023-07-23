@@ -69,7 +69,7 @@ namespace jns::graphics
         GetDevice()->BindShaderResource(eShaderStage::PS, 0, &srv);
     }
 
-    HRESULT Texture::CreateTex(const std::wstring& path, UINT filecnt, UINT imageMaxWidth, UINT imageMaxHeight)
+    HRESULT Texture::CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight)
     {
         ScratchImage atlasImage;
         HRESULT hr = S_OK;
@@ -125,7 +125,7 @@ namespace jns::graphics
 
                 // Copy the converted image data to the atlas image
                 hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (convertedImage.GetMetadata().width * idx), 0);
+                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth) * idx, 0);
                 if (FAILED(hr))
                 {
                     // Handle the copy rectangle error if necessary

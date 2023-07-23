@@ -86,8 +86,8 @@ namespace jns
 	}
 	Animation* Animator::CreateAnimations(const std::wstring& path , float duration)
 	{
-		UINT maxwidth = 0;
-		UINT maxheight = 0;
+		size_t maxwidth = 0;
+		size_t maxheight = 0;
 		UINT fileCount = 0;
 
 		std::filesystem::path fs(path);
