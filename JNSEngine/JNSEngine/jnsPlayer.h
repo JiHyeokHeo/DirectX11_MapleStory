@@ -6,6 +6,14 @@ namespace jns
 	class Player : public GameObject 
 	{
 	public:
+		enum class ePlayerState
+		{
+			Idle,
+			Prone,
+			Move,
+			Attack,
+
+		};
 		Player();
 		~Player();
 

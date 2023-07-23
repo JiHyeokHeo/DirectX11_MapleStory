@@ -61,10 +61,16 @@ namespace jns
 			return mKeys[static_cast<UINT>(keyCode)].state == eKeyState::Up;
 		}
 		
-		static __forceinline Vector2 GetMousePos() { return mMousePos; }
+		static __forceinline void SetWorldMousePos(Vector3 pos)
+		{
+			mCursorWorldPos = pos;
+		}
 
+		static __forceinline Vector2 GetMousePos() { return mMousePos; }
+		static __forceinline Vector3 GetWorldMousePos() { return mCursorWorldPos; }
 	private:
 		static std::vector<Key> mKeys;
 		static Vector2 mMousePos;
+		static Vector3 mCursorWorldPos;
 	};
 }

@@ -5,9 +5,15 @@
 #include "jnsTime.h"
 #include "jnsConstantBuffer.h"
 #include "jnsRenderer.h"
+#include "CommonSceneInclude.h"
 
 namespace jns
 {
+	void PlayerScript::Initialize()
+	{
+		Animator* at = GetOwner()->GetComponent<Animator>();
+		at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
+	}
 	void PlayerScript::Update()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -73,5 +79,10 @@ namespace jns
 		
 		cb->SetData(&playerUICB);
 		cb->Bind(eShaderStage::PS);
+	}
+
+	void PlayerScript::Complete()
+	{
+		int a = 0;
 	}
 }

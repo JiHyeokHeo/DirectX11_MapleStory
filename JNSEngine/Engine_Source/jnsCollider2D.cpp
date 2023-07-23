@@ -1,6 +1,7 @@
 #include "jnsCollider2D.h"
 #include "jnsGameObject.h"
 #include "jnsRenderer.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -30,11 +31,23 @@ namespace jns
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		eLayerType mLayertype = GetOwner()->GetLayerType();
 
+
+			
+		
+
 		mScale = tr->GetScale();
 		mScale.x *= mSize.x;
 		mScale.y *= mSize.y;
 
-		Vector3 pos = tr->GetPosition();
+		Vector3 pos = Vector3::Zero;
+		if (tr->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		{
+			pos = Input::GetWorldMousePos();
+		}
+		else
+		{
+			pos = tr->GetPosition();
+		}
 		pos.x += mCenter.x;
 		pos.y += mCenter.y;
 

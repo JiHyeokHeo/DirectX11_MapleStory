@@ -19,6 +19,8 @@ float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float4) 0.0f;
     
+    
+    
     // 1200 1032 // 120 130
     // 1080 -> 540
     // -540 + 1200 
@@ -34,6 +36,7 @@ float4 main(VSOut In) : SV_TARGET
             || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
             discard;
         
+        UV.x = UV.x * -1;
         color = atlasTexture.Sample(anisotropicSampler, UV);
     }
     
