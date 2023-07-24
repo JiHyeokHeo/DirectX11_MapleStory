@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -10,8 +11,9 @@ namespace jns
 		{
 			Idle,
 			Move,
+			Prone,
 			Attack,
-			Attacked,
+			Hitted,
 			Die,
 			End,
 		};
@@ -25,23 +27,27 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
-		void Complete();
 
 		void bindConstantBuffer();
 
 	public:
 		void Idle();
 		void Move();
+		void Prone();
 		void Attack();
-		void Attacked();
+		void Hitted();
 		void Die();
 
 
+		void CompleteAssasinHit1();
+		void CompleteAnimation();
 		void AnimatorControl();
 	private:
 		ePlayerState mPlayerState;
-		ePlayerState mPrevPlayerState;
+		ePlayerState mPrevPlayerState = ePlayerState::End;
 		bool isPlayed;
 		bool isRight;
+		float mDeathTime;
+		float mHittedTime;
 	};
 }

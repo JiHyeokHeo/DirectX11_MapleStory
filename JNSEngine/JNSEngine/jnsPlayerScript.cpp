@@ -14,7 +14,8 @@ namespace jns
 		mPlayerState = ePlayerState::Idle;
 		Animator* at = GetOwner()->GetComponent<Animator>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
-		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::Complete, this);
+		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
+		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
 	}
 	void PlayerScript::Update()
 	{
@@ -22,22 +23,30 @@ namespace jns
 		{
 		case ePlayerState::Idle:
 			Idle();
+			AnimatorControl();
 			break;
 		case ePlayerState::Move:
 			Move();
+			AnimatorControl();
+			break;
+		case ePlayerState::Prone:
+			Prone();
+			AnimatorControl();
 			break;
 		case ePlayerState::Attack:
 			Attack();
+			AnimatorControl();
 			break;
-		case ePlayerState::Attacked:
-			Attacked();
+		case ePlayerState::Hitted:
+			Hitted();
+			AnimatorControl();
 			break;
 		case ePlayerState::Die:
 			Die();
+			AnimatorControl();
 			break;
 		default:
 			break;
-
 		}
 		mPrevPlayerState = mPlayerState;
 	}
@@ -55,6 +64,7 @@ namespace jns
 	void PlayerScript::OnCollisionExit(Collider2D* other)
 	{
 	}
+
 	void PlayerScript::bindConstantBuffer()
 	{
 		renderer::PlayerCB playerUICB = {};
@@ -86,35 +96,36 @@ namespace jns
 
 	void PlayerScript::Idle()
 	{	
-		if (Input::GetKeyDown(eKeyCode::UP))
+		if (Input::GetKey(eKeyCode::UP))
 		{
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKeyDown(eKeyCode::DOWN))
+		else if (Input::GetKey(eKeyCode::DOWN))
 		{
-			mPlayerState = ePlayerState::Move; 
+			mPlayerState = ePlayerState::Prone; 
 		}
-		else if (Input::GetKeyDown(eKeyCode::LEFT))
+		else if (Input::GetKey(eKeyCode::LEFT))
 		{
+			isRight = false;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKeyDown(eKeyCode::RIGHT))
+		else if (Input::GetKey(eKeyCode::RIGHT))
 		{
+			isRight = true;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKeyDown(eKeyCode::LCTRL))
+		else if (Input::GetKey(eKeyCode::LCTRL))
 		{
 			mPlayerState = ePlayerState::Attack;
 		}
-		else if (Input::GetKeyDown(eKeyCode::Y))
+		else if (Input::GetKey(eKeyCode::Y))
 		{
 			mPlayerState = ePlayerState::Die;
 		}
-		else if (Input::GetKeyDown(eKeyCode::U))
+		else if (Input::GetKey(eKeyCode::U))
 		{
-			mPlayerState = ePlayerState::Attacked;
+			mPlayerState = ePlayerState::Hitted;
 		}
-		AnimatorControl();
 	}
 
 	void PlayerScript::Move()
@@ -126,45 +137,73 @@ namespace jns
 			pos.y += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::DOWN))
+		if (Input::GetKey(eKeyCode::DOWN))
 		{
-			pos.y -= 255.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			//pos.y -= 255.0f * Time::DeltaTime();
+			//tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::LEFT))
+		if (Input::GetKey(eKeyCode::LEFT))
 		{
 			pos.x -= 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::RIGHT))
+		if (Input::GetKey(eKeyCode::RIGHT))
 		{
 			pos.x += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::Q))
+		if (Input::GetKey(eKeyCode::Q))
 		{
 			pos.z -= 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::E))
+		if (Input::GetKey(eKeyCode::E))
 		{
 			pos.z += 255.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 
-		AnimatorControl();
+		if (Input::GetKeyUp(eKeyCode::LEFT) || Input::GetKeyUp(eKeyCode::RIGHT) || Input::GetKeyUp(eKeyCode::UP) ||  Input::GetKeyUp(eKeyCode::DOWN))
+		{
+			mPlayerState = ePlayerState::Idle;
+		}
+	}
+
+	void PlayerScript::Prone()
+	{
+		if (Input::GetKeyUp(eKeyCode::DOWN))
+		{
+			mPlayerState = ePlayerState::Idle;
+		}
 	}
 
 	void PlayerScript::Attack()
 	{
 	}
 
-	void PlayerScript::Attacked()
+	void PlayerScript::Hitted()
 	{
+		mHittedTime += Time::DeltaTime();
+
+
+		if (mHittedTime >= 1.0f)
+		{
+			mPlayerState = ePlayerState::Idle;
+			mHittedTime = 0.0f;
+		}
 	}
 
 	void PlayerScript::Die()
 	{
+		mDeathTime += Time::DeltaTime();
+
+
+
+		if (mDeathTime >= 3.0f)
+		{
+			mPlayerState = ePlayerState::Idle;
+			mDeathTime = 0.0f;
+		}
 	}
 
 	void PlayerScript::AnimatorControl()
@@ -196,11 +235,15 @@ namespace jns
 			if (mPrevPlayerState != mPlayerState)
 			at->PlayAnimation(L"CharactorCharWalk", true);
 			break;
+		case ePlayerState::Prone:
+			if (mPrevPlayerState != mPlayerState)
+				at->PlayAnimation(L"CharactorCharProne", true);
+			break;
 		case ePlayerState::Attack:
 			if (mPrevPlayerState != mPlayerState)
 			at->PlayAnimation(L"CharactorCharAssain1Hit", true);
 			break;
-		case ePlayerState::Attacked:
+		case ePlayerState::Hitted:
 			if (mPrevPlayerState != mPlayerState)
 			at->PlayAnimation(L"CharactorCharHit", true);
 			break;
@@ -213,9 +256,15 @@ namespace jns
 		}
 	}
 
-	void PlayerScript::Complete()
+	void PlayerScript::CompleteAssasinHit1()
 	{
 		Animator* at = GetOwner()->GetComponent<Animator>();
-		//at->PlayAnimation(L"CharactorCharAssain2Hit", false);
+		at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+	}
+	void PlayerScript::CompleteAnimation()
+	{
+		Animator* at = GetOwner()->GetComponent<Animator>();
+		mPlayerState = ePlayerState::Idle;
+		at->PlayAnimation(L"CharactorCharIdle", true);
 	}
 }
