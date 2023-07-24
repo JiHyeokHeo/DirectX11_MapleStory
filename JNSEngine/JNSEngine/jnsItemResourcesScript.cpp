@@ -19,6 +19,8 @@ namespace jns
 		if (isPicked)
 			ItemMove();
 
+		if (InventoryScript::GetInventoryItemSet() == true)
+			ItemSetPos();
 
 		Script::Update();
 	}
@@ -55,6 +57,14 @@ namespace jns
 		mUIMousePos += Vector3(-10.0f, 10.0f, 0.0f);
 		tr->SetPosition(mUIMousePos);
 
+	}
+
+	void ItemResourcesScript::ItemSetPos()
+	{
+		InventoryScript::SetInventoryItemSet(false);
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 setPos = InventoryScript::GetInventoryItemPos();
+		tr->SetPosition(setPos);
 	}
 
 }

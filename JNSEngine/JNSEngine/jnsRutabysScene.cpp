@@ -33,10 +33,12 @@ namespace jns
 		//Transform* tr2 = obj->GetComponent<Transform>();
 		//tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
 		
-		ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
-		testitem->Initialize();
-		AddGameObject(eLayerType::Item, testitem);
+		//ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
+		//testitem->Initialize();
+		//AddGameObject(eLayerType::Item, testitem);
 		
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion);
+
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));
 
@@ -107,7 +109,7 @@ namespace jns
 		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1600.0f, -120.0f, 4.9f));
 		//object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1850.5f, -140.0f, 4.9f));
 	
-		object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		//object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		// NoMove BackGround
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		//CreateInventory();

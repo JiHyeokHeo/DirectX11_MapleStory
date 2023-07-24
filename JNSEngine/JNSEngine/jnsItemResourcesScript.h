@@ -22,7 +22,7 @@ namespace jns
 
 	public:
 		void ItemMove();
-
+		void ItemSetPos();
 
 	private:
 		bool isPicked;
