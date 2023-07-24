@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsUIBase.h"
+#include "jnsItemResources.h"
 
 namespace jns
 {
@@ -17,6 +18,9 @@ namespace jns
 	private:
 		Collider2D* mInventoryIn;
 		Collider2D* mInventoryBar;
+
+		std::vector<ItemResources*> mResources;
+
 	};
 	
 }

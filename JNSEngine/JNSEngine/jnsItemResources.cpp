@@ -39,6 +39,9 @@ namespace jns
 		AddComponent<Collider2D>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"HP_MP_PotionMaterial"));
+		mr->GetMaterial()->SetRenderingMode(eRenderingMode::Transparent);
+
+
 		Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 		GetComponent<Transform>()->SetPosition(Vector3(300.0f, 250.0f, 3.0f));
 		GetComponent<Transform>()->SetScale(Vector3(mSize.x *2.0f, mSize.y *2.0f, 1.0f));

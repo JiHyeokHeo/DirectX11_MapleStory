@@ -1,5 +1,6 @@
 #include "jnsInventory.h"
 #include "CommonUIInclude.h"
+#include "CommonSceneInclude.h"
 
 namespace jns
 {
@@ -11,7 +12,8 @@ namespace jns
 	}
 	void Inventory::Initialize()
 	{
-		
+		AddComponent<InventoryScript>();
+
 		mInventoryBar = AddComponent<Collider2D>();
 		SetMesh(L"RectMesh");
 		SetMaterial(L"InventoryMaterial");

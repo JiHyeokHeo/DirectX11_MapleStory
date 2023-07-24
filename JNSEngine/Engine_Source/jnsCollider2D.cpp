@@ -31,10 +31,6 @@ namespace jns
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		eLayerType mLayertype = GetOwner()->GetLayerType();
 
-
-			
-		
-
 		mScale = tr->GetScale();
 		mScale.x *= mSize.x;
 		mScale.y *= mSize.y;

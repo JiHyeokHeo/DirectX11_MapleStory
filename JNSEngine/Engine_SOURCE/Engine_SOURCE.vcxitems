@@ -29,7 +29,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsImage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMaterial.h" />
@@ -62,7 +61,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsImage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMaterial.cpp" />

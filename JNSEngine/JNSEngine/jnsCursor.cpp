@@ -65,6 +65,7 @@ namespace jns
 		mCursorEndPos.z = MOUSEZPOS;
 
 		Input::SetWorldMousePos(mCursorWorldPos);
+		Input::SetUIMousePos(mCursorPos);
 
 		tr->SetPosition(mCursorPos);
 		GameObject::LateUpdate();

@@ -7,6 +7,7 @@
 #include "jnsGridScrpt.h"
 #include "jnsPlayerScript.h"
 #include "jnsItemResourcesScript.h"
+#include "jnsInventoryScript.h"
 
 // Player
 #include "jnsPlayer.h"

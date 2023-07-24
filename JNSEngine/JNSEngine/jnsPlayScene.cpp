@@ -41,6 +41,7 @@ namespace jns
 		AddGameObject(eLayerType::Camera, mainCameraObj);
 		mainCameraObj->TurnOffLayer(eLayerType::UI);
 		mainCameraObj->TurnOffLayer(eLayerType::Cursor);
+		mainCameraObj->TurnOffLayer(eLayerType::Item);
 		mainCameraObj->AddComponent<CameraScript>();
 	}
 
@@ -52,6 +53,7 @@ namespace jns
 		uiCamera->TurnOffAllLayer();
 		uiCamera->TurnOnLayer(eLayerType::UI);
 		uiCamera->TurnOnLayer(eLayerType::Cursor);
+		uiCamera->TurnOnLayer(eLayerType::Item);
 	
 	}
 

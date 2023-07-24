@@ -71,6 +71,11 @@ namespace jns
 	}
 	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right)
 	{	
+		bool isCursor = false;
+		if (left->GetOwner()->GetLayerType() == eLayerType::Cursor ||
+			right->GetOwner()->GetLayerType() == eLayerType::Cursor)
+			isCursor = true;
+
 		// 두 충돌체의 ID bool값을 확인
 		ColliderID id = {};
 		id.left = left->GetColliderID();
@@ -86,33 +91,68 @@ namespace jns
 			iter = mCollisionMap.find(id.id);
 		}
 
-		if (Intersect(left, right))
+		if (isCursor == false)
 		{
-			// 충돌
-			if (iter->second == false)
+			if (Intersect(left, right))
 			{
-				// 최초충돌
-				left->OnCollisionEnter(right);
-				right->OnCollisionEnter(left);
+				// 충돌
+				if (iter->second == false)
+				{
+					// 최초충돌
+					left->OnCollisionEnter(right);
+					right->OnCollisionEnter(left);
+				}
+				else
+				{
+					// 충돌 중
+					left->OnCollisionStay(right);
+					right->OnCollisionStay(left);
+				}
+				iter->second = true;
 			}
 			else
 			{
-				// 충돌 중
-				left->OnCollisionStay(right);
-				right->OnCollisionStay(left);
+				// 충돌 X
+				if (iter->second == true)
+				{
+					// 충돌하고 있다가 나갈떄
+					left->OnCollisionExit(right);
+					right->OnCollisionExit(left);
+				}
+				iter->second = false;
 			}
-			iter->second = true;
 		}
-		else
+
+		if (isCursor == true)
 		{
-			// 충돌 X
-			if (iter->second == true)
+			if (Intersect(left, right))
 			{
-				// 충돌하고 있다가 나갈떄
-				left->OnCollisionExit(right);
-				right->OnCollisionExit(left);
+				// 충돌
+				if (iter->second == false)
+				{
+					// 최초충돌
+					left->OnCollisionEnter(right);
+					right->OnCollisionEnter(left);
+				}
+				else
+				{
+					// 충돌 중
+					left->OnCollisionStay(right);
+					right->OnCollisionStay(left);
+				}
+				iter->second = true;
 			}
-			iter->second = false;
+			else
+			{
+				// 충돌 X
+				if (iter->second == true)
+				{
+					// 충돌하고 있다가 나갈떄
+					left->OnCollisionExit(right);
+					right->OnCollisionExit(left);
+				}
+				iter->second = false;
+			}
 		}
 	
 	}

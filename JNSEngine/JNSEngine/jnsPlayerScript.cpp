@@ -179,6 +179,7 @@ namespace jns
 
 	void PlayerScript::Attack()
 	{
+
 	}
 
 	void PlayerScript::Hitted()

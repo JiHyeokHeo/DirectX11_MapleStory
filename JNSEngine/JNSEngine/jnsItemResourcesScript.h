@@ -19,6 +19,12 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
+
+	public:
+		void ItemMove();
+
+
 	private:
+		bool isPicked;
 	};
 }

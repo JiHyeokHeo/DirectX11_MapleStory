@@ -34,17 +34,12 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
-		at->PlayAnimation(L"CharactorCharIdle", true);
-		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
-		//at->PlayAnimation(L"CharactorCharWalk", true);
 		
-		//Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(300.0f, 300.0f, 1.0f));
-		//GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, DegreeToRadian(-60.0f)));
-		//player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 1.0001f));
 		
-		//AddComponent<PlayerScript>();
+		AddComponent<PlayerScript>();
+		AddComponent<Collider2D>();
 
 		GameObject::Initialize();
 	}

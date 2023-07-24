@@ -18,6 +18,8 @@ namespace jns
 	std::vector<Input::Key> Input::mKeys;
 	Vector2 Input::mMousePos = Vector2::Zero;
 	Vector3 Input::mCursorWorldPos = Vector3::Zero;
+	Vector3 Input::mCursorUIPos = Vector3::Zero;
+
 	void Input::Initialize()
 	{
 		for (UINT i = 0; i < (UINT)eKeyCode::END; i++)
