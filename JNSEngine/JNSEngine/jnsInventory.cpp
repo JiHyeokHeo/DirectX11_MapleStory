@@ -22,7 +22,7 @@ namespace jns
 		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 
 		mInventoryIn = AddComponent<Collider2D>();
-		mInventoryIn->SetPosition(Vector3(0.0f, 200.0f, 4.5f));
+		//mInventoryIn->SetPosition(Vector3(0.0f, 200.0f, 4.5f));
 		UIBase::Initialize();
 	}
 	void Inventory::Update()

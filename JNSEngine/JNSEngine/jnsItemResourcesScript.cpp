@@ -52,6 +52,7 @@ namespace jns
 		Vector3 mUIMousePos = Input::GetUIMousePos();
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		mUIMousePos += Vector3(-10.0f, 10.0f, 0.0f);
 		tr->SetPosition(mUIMousePos);
 
 	}
