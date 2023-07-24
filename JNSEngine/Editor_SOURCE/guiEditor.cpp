@@ -139,14 +139,12 @@ namespace gui
 			= debugObj->GetComponent<ya::MeshRenderer>();*/
 			// main camera
 		//if(debugObj->GetLayerType())
-		if (mesh.layertype != eLayerType::UI || mesh.layertype == eLayerType::Cursor)
-		{
-			jns::Camera* mainCamara = renderer::mainCamera;
+		jns::Camera* mainCamara = renderer::mainCamera;
 
-			jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
-			jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
-		}
-		else if(mesh.layertype == eLayerType::UI )
+		jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
+		jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
+		
+		if(mesh.layertype == eLayerType::UI || mesh.layertype == eLayerType::Item)
 		{
 			jns::Camera* uiCamara = renderer::UICamera;
 

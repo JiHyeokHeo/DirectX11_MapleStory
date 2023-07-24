@@ -4,6 +4,7 @@
 #include "jnsSceneManager.h"
 #include "jnsLayer.h"
 #include "jnsCollider2D.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -125,7 +126,7 @@ namespace jns
 
 		if (isCursor == true)
 		{
-			if (Intersect(left, right))
+			if (IntersectForMouse(left, right))
 			{
 				// 충돌
 				if (iter->second == false)
@@ -190,6 +191,62 @@ namespace jns
 		rightColR *= rightColLocalScale.x / 2;
 		rightColUp *= rightColLocalScale.y / 2;
 		
+		for (int i = 0; i < 4; i++)
+		{
+			float colDistance = abs((checkPos[i].Dot(colPosDiff)));
+
+			if (colDistance > abs(checkPos[i].Dot(leftColR))
+				+ abs(checkPos[i].Dot(leftColUp))
+				+ abs(checkPos[i].Dot(rightColR))
+				+ abs(checkPos[i].Dot(rightColUp)))
+				return false;
+		}
+
+
+		return true;
+	}
+	bool CollisionManager::IntersectForMouse(Collider2D* left, Collider2D* right)
+	{
+		if (left == nullptr || right == nullptr)
+			return false;
+
+		Vector3 leftColCenterPos = {};
+		Vector3 righColCentertPos = {};
+		if (left->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		{
+			leftColCenterPos = Input::GetUIMousePos();
+			righColCentertPos = right->GetPosition();
+		}
+		else if (right->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		{
+			leftColCenterPos = left->GetPosition();
+			righColCentertPos = Input::GetUIMousePos();
+		}
+	
+		Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
+		Vector3 leftColR = left->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 leftColUp = left->GetOwner()->GetComponent<Transform>()->Up();
+		Vector3 rightColR = right->GetOwner()->GetComponent<Transform>()->Right();
+		Vector3 rightColUp = right->GetOwner()->GetComponent<Transform>()->Up();
+
+
+		// 스케일 전환을 해줘도 문제없도록 Collider의 스케일을 가져오도록함
+		Vector3 leftColLocalScale = left->GetScale();
+		Vector3 rightColLocalScale = right->GetScale();
+
+		// 단위 법선 벡터들을 넣어주고              
+		std::vector<Vector3> checkPos = {};
+		checkPos.push_back(leftColR);
+		checkPos.push_back(leftColUp);
+		checkPos.push_back(rightColR);
+		checkPos.push_back(rightColUp);
+
+		// 두 충돌체의 길이측정용 
+		leftColR *= leftColLocalScale.x / 2;
+		leftColUp *= leftColLocalScale.y / 2;
+		rightColR *= rightColLocalScale.x / 2;
+		rightColUp *= rightColLocalScale.y / 2;
+
 		for (int i = 0; i < 4; i++)
 		{
 			float colDistance = abs((checkPos[i].Dot(colPosDiff)));

@@ -74,7 +74,7 @@ namespace jns
 
 		static __forceinline Vector2 GetMousePos() { return mMousePos; }
 		static __forceinline Vector3 GetWorldMousePos() { return mCursorWorldPos; }
-		static __forceinline Vector3 GetUIMousePos() { return mCursorWorldPos; }
+		static __forceinline Vector3 GetUIMousePos() { return mCursorUIPos; }
 	private:
 		static std::vector<Key> mKeys;
 		static Vector2 mMousePos;

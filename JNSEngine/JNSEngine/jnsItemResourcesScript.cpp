@@ -3,8 +3,8 @@
 
 namespace jns
 {
+	bool ItemResourcesScript::isPicked = false;
 	ItemResourcesScript::ItemResourcesScript()
-		: isPicked(false)
 	{
 	}
 	ItemResourcesScript::~ItemResourcesScript()
@@ -54,14 +54,15 @@ namespace jns
 		Vector3 mUIMousePos = Input::GetUIMousePos();
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		mUIMousePos += Vector3(-10.0f, 10.0f, 0.0f);
 		tr->SetPosition(mUIMousePos);
-
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		InventoryScript::SetInventoryItemSet(false);
 	}
 
 	void ItemResourcesScript::ItemSetPos()
 	{
-		InventoryScript::SetInventoryItemSet(false);
+		//InventoryScript::SetInventoryItemSet(false);
+		isPicked = false;
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 setPos = InventoryScript::GetInventoryItemPos();
 		tr->SetPosition(setPos);
