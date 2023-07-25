@@ -3,6 +3,12 @@
 
 namespace jns
 {
+	struct ItemInfo
+	{
+		Vector3 mItemFinalPos;
+		int mItemCnt;
+		bool isPicked;
+	};
 	class ItemResources;
 	class InventoryScript : public Script
 	{
@@ -20,7 +26,6 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 		
 	private:
-		std::map<UINT64, ItemResources*> mInventory;
-		Vector3 mItemFinalPos;
+		std::vector<std::pair<ItemInfo, ItemResources*>> mInventory;
 	};
 }

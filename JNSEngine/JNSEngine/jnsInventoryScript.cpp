@@ -47,12 +47,20 @@ namespace jns
 
 			if (xidx >= 4 || yidx >= 6)
 				return;
-
+			
 			Vector3 mItemSetPos = Vector3((xidx) * (INVENTORY_SIZE)+(12.5f * xidx) + (INVENTORY_SIZE / 2), (yidx) * (INVENTORY_SIZE)+(12.5f * yidx) + (INVENTORY_SIZE / 2), mPos.z);
-			mItemFinalPos = Vector3(mItemSetPos.x + mLeftTop.x, mLeftTop.y - mItemSetPos.y, mItemSetPos.z);
+			Vector3 mItemFinalPos = Vector3(mItemSetPos.x + mLeftTop.x, mLeftTop.y - mItemSetPos.y, mItemSetPos.z);
+
+			ItemInfo info = {};
+			info.mItemCnt = 0;
+			info.mItemFinalPos = mItemFinalPos;
+			info.isPicked = true;
+
 			ItemResources* t = object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mItemFinalPos);
+			mInventory.push_back(std::make_pair(info, t ));
+			//mInventory.push_back({ info, t });
+
 			t->GetComponent<ItemResourcesScript>()->SetInventoryScript(this);
-		
 		}
 		
 		if (Input::GetKey(eKeyCode::LBUTTON))
@@ -69,6 +77,7 @@ namespace jns
 	}
 	void InventoryScript::OnCollisionEnter(Collider2D* other)
 	{
+		
 	}
 	void InventoryScript::OnCollisionStay(Collider2D* other)
 	{

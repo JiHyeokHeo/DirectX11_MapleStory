@@ -20,9 +20,6 @@
     <ClCompile Include="jnsRutabysBossScene.cpp">
       <Filter>Contents\Scenes\RutabysBossScene</Filter>
     </ClCompile>
-    <ClCompile Include="jnsRutabysScene.cpp">
-      <Filter>Contents\Scenes\RutabysScene</Filter>
-    </ClCompile>
     <ClCompile Include="jnsSelectScene.cpp">
       <Filter>Contents\Scenes\SelectScene</Filter>
     </ClCompile>
@@ -125,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="jnsItemResourcesScript.cpp">
       <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsRutabysScene.cpp">
+      <Filter>Contents\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

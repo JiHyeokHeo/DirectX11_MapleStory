@@ -43,6 +43,8 @@ namespace jns
 		void CompleteAnimation();
 		void AnimatorControl();
 	
+		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
+
 	private:
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;

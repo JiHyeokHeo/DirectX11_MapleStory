@@ -18,8 +18,6 @@ namespace jns
 	private:
 		Collider2D* mInventoryIn;
 		Collider2D* mInventoryBar;
-
-
 	};
 	
 }

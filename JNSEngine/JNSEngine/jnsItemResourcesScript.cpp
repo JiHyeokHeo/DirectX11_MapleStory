@@ -49,6 +49,7 @@ namespace jns
 	void ItemResourcesScript::ItemSetPos()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+
 		
 	}
 
