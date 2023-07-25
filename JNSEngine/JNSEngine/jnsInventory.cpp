@@ -27,7 +27,7 @@ namespace jns
 	}
 	void Inventory::Update()
 	{
-		this;
+		
 		UIBase::Update();
 	}
 	void Inventory::LateUpdate()

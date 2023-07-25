@@ -40,7 +40,7 @@ namespace jns
 		//testitem->Initialize();
 		//AddGameObject(eLayerType::Item, testitem);
 		
-		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion);
+		//object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion);
 
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetCenter(Vector2(0.5f, 0.0f));

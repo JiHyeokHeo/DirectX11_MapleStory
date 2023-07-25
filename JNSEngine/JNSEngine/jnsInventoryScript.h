@@ -20,7 +20,7 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 		
 	private:
-		
-		std::map<std::string, ItemResources*> mItemResources;
+		std::map<UINT64, ItemResources*> mInventory;
+		Vector3 mItemFinalPos;
 	};
 }

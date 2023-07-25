@@ -15,18 +15,16 @@ namespace jns
 	}
 	void ItemResourcesScript::Update()
 	{
+		if()
 		ItemMove();
 		ItemSetPos();
-
-		Script::Update();
+		this;
 	}
 	void ItemResourcesScript::LateUpdate()
 	{
-		Script::LateUpdate();
 	}
 	void ItemResourcesScript::Render()
 	{
-		Script::Render();
 	}
 
 	void ItemResourcesScript::OnCollisionEnter(Collider2D* other)
@@ -45,15 +43,14 @@ namespace jns
 	void ItemResourcesScript::ItemMove()
 	{
 		Vector3 mUIMousePos = Input::GetUIMousePos();
-
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->SetPosition(mUIMousePos);
 	}
 
 	void ItemResourcesScript::ItemSetPos()
 	{
-		//InventoryScript::SetInventoryItemSet(false);
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		
 	}
 
 }

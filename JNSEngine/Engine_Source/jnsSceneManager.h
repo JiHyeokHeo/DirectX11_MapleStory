@@ -3,6 +3,7 @@
 
 namespace jns
 {
+	class Player;
 	class SceneManager
 	{
 	public:

@@ -43,7 +43,7 @@ namespace jns
 
 
 		Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
-		GetComponent<Transform>()->SetPosition(Vector3(300.0f, 250.0f, 3.0f));
+		//GetComponent<Transform>()->SetPosition(Vector3(300.0f, 250.0f, 3.0f));
 		GetComponent<Transform>()->SetScale(Vector3(mSize.x , mSize.y , 1.0f));
 	}
 }

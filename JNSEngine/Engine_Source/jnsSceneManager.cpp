@@ -1,4 +1,5 @@
 #include "jnsSceneManager.h"
+#include "..\\JNSEngine\jnsPlayer.h"
 
 namespace jns
 {
@@ -38,12 +39,13 @@ namespace jns
 	{
 		std::map<std::wstring, Scene*>::iterator iter
 			= mScenes.find(name);
-
+		
 		if (iter == mScenes.end())
 			return nullptr;
 
 		if (mActiveScene == nullptr)
 			mActiveScene = iter->second;
+		
 		
 		mActiveScene->OnExit();
 		mActiveScene = iter->second;

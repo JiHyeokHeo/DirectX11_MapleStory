@@ -53,4 +53,5 @@ namespace jns
 		gameObj->SetType(type);
 		mLayers[(int)type].AddGameObject(gameObj);
 	}
+
 }

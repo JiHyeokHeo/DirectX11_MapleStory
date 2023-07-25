@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsInventoryScript.h"
 
 namespace jns
 {
@@ -19,10 +20,12 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
+		void SetInventoryScript(InventoryScript* script) { mInventory = script; }
 	public:
 		void ItemMove();
 		void ItemSetPos();
-
+		
 	private:
+		InventoryScript* mInventory;
 	};
 }

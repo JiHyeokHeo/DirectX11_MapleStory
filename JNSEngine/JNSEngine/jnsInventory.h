@@ -19,7 +19,6 @@ namespace jns
 		Collider2D* mInventoryIn;
 		Collider2D* mInventoryBar;
 
-		std::vector<ItemResources*> mResources;
 
 	};
 	

@@ -93,7 +93,6 @@
     <ClCompile Include="jnsItemResources.cpp">
       <Filter>Contents\Items</Filter>
     </ClCompile>
-    <ClCompile Include="jnsItemResourcesScript.cpp" />
     <ClCompile Include="jnsStartScene1.cpp">
       <Filter>Contents\Scenes\StoryLine\Start1Scene</Filter>
     </ClCompile>
@@ -121,7 +120,12 @@
     <ClCompile Include="jnsGround.cpp">
       <Filter>Contents\Ground</Filter>
     </ClCompile>
-    <ClCompile Include="jnsGroundScript.cpp" />
+    <ClCompile Include="jnsGroundScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsItemResourcesScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -227,7 +231,6 @@
     <ClInclude Include="jnsItemResources.h">
       <Filter>Contents\Items</Filter>
     </ClInclude>
-    <ClInclude Include="jnsItemResourcesScript.h" />
     <ClInclude Include="jnsGridScrpt.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
@@ -258,7 +261,12 @@
     <ClInclude Include="jnsGround.h">
       <Filter>Contents\Ground</Filter>
     </ClInclude>
-    <ClInclude Include="jnsGroundScript.h" />
+    <ClInclude Include="jnsGroundScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsItemResourcesScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
