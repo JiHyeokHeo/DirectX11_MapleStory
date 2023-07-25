@@ -20,6 +20,8 @@ namespace jns
 		virtual void OnExit();
 
 		void AddGameObject(enums::eLayerType type, GameObject* gameObj);
+		void DeleteGameObject(enums::eLayerType type, GameObject* gameObj);
+
 
 		template <typename T>
 		std::vector<T*> FindObjectsOfType()
@@ -41,7 +43,6 @@ namespace jns
 			return findObjs;
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
-
 
 	private:
 		std::vector<Layer> mLayers;

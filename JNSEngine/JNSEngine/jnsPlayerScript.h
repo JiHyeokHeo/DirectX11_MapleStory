@@ -46,12 +46,17 @@ namespace jns
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 
 	private:
+		struct PlayerInfo
+		{
+			bool isPlayed;
+			bool isRight;
+			float mDeathTime;
+			float mHittedTime;
+		};
+
+		PlayerInfo mPlayerInfo;
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
-		bool isPlayed;
-		bool isRight;
-		float mDeathTime;
-		float mHittedTime;
 		InventoryScript* mInventoryScript;
 	};
 }

@@ -16,7 +16,6 @@ namespace jns
 	}
 	void BGInstance::Initialize()
 	{
-		/////////
 		mr = GetComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		tr = GetComponent<Transform>();

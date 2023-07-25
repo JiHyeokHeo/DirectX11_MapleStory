@@ -84,7 +84,7 @@ namespace jns
 		mEvents.insert(std::make_pair(name, events));
 
 	}
-	Animation* Animator::CreateAnimations(const std::wstring& path , float duration)
+	Animation* Animator::CreateAnimations(const std::wstring& path , float duration, Vector2 offset)
 	{
 		size_t maxwidth = 0;
 		size_t maxheight = 0;
@@ -120,7 +120,7 @@ namespace jns
 	
 		mImageAtlas = std::make_shared<graphics::Texture>();
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
-		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, Vector2::Zero, duration);
+		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, offset, duration);
 
 
 		return nullptr;

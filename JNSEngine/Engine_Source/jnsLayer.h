@@ -16,6 +16,7 @@ namespace jns
 		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObj);
+		void DeleteGameObject(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects() 
 		{
 			return mGameObjects; 

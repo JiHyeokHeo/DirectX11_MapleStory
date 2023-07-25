@@ -45,7 +45,7 @@ namespace jns
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.1f);
 
-		Animation* CreateAnimations(const std::wstring& path, float duration);
+		Animation* CreateAnimations(const std::wstring& path, float duration, Vector2 offset = Vector2::Zero);
 		Events* FindEvents(const std::wstring& name);
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);

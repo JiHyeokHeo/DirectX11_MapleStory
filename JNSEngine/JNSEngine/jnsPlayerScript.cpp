@@ -11,6 +11,7 @@ namespace jns
 {
 	void PlayerScript::Initialize()
 	{
+		mPlayerInfo = {};
 		mPlayerState = ePlayerState::Idle;
 		Animator* at = GetOwner()->GetComponent<Animator>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
@@ -85,7 +86,7 @@ namespace jns
 		// 좌우 판정 + 애니메이터 작동 편하게 !
 
 		renderer::ObjectTypeMoveCB MoveCB = {};
-		MoveCB.mtype = isRight;
+		MoveCB.mtype = mPlayerInfo.isRight;
 		MoveCB.mTime = Vector3::Zero;
 
 		ConstantBuffer* cb2 = renderer::constantBuffer[(UINT)eCBType::Move];
@@ -106,12 +107,12 @@ namespace jns
 		}
 		else if (Input::GetKey(eKeyCode::LEFT))
 		{
-			isRight = false;
+			mPlayerInfo.isRight = false;
 			mPlayerState = ePlayerState::Move;
 		}
 		else if (Input::GetKey(eKeyCode::RIGHT))
 		{
-			isRight = true;
+			mPlayerInfo.isRight = true;
 			mPlayerState = ePlayerState::Move;
 		}
 		else if (Input::GetKey(eKeyCode::LCTRL))
@@ -184,26 +185,26 @@ namespace jns
 
 	void PlayerScript::Hitted()
 	{
-		mHittedTime += Time::DeltaTime();
+		mPlayerInfo.mHittedTime += Time::DeltaTime();
 
 
-		if (mHittedTime >= 1.0f)
+		if (mPlayerInfo.mHittedTime >= 1.0f)
 		{
 			mPlayerState = ePlayerState::Idle;
-			mHittedTime = 0.0f;
+			mPlayerInfo.mHittedTime = 0.0f;
 		}
 	}
 
 	void PlayerScript::Die()
 	{
-		mDeathTime += Time::DeltaTime();
+		mPlayerInfo.mDeathTime += Time::DeltaTime();
 
 
 
-		if (mDeathTime >= 3.0f)
+		if (mPlayerInfo.mDeathTime >= 3.0f)
 		{
 			mPlayerState = ePlayerState::Idle;
-			mDeathTime = 0.0f;
+			mPlayerInfo.mDeathTime = 0.0f;
 		}
 	}
 

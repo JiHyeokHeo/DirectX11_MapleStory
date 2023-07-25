@@ -44,6 +44,7 @@ namespace jns
 	}
 	void Scene::OnEnter()
 	{
+
 	}
 	void Scene::OnExit()
 	{
@@ -52,6 +53,10 @@ namespace jns
 	{
 		gameObj->SetType(type);
 		mLayers[(int)type].AddGameObject(gameObj);
+	}
+	void Scene::DeleteGameObject(enums::eLayerType type, GameObject* gameObj)
+	{
+		mLayers[(int)type].DeleteGameObject(gameObj);
 	}
 
 }

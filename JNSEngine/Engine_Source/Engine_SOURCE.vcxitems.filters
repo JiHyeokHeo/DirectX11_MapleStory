@@ -193,6 +193,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsInventoryManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRigidbody.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -282,6 +283,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInventoryManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRigidbody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

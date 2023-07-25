@@ -24,7 +24,7 @@ namespace jns
 		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
-		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
+		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		player->AddComponent<PlayerScript>()->SetInventoryScript(invenScript);
 		
 		SetTarget(player);
@@ -141,7 +141,6 @@ namespace jns
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 	}
 	void RutabysScene::OnExit()
 	{

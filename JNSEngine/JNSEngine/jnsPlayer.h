@@ -6,14 +6,6 @@ namespace jns
 	class Player : public GameObject 
 	{
 	public:
-		enum class ePlayerState
-		{
-			Idle,
-			Prone,
-			Move,
-			Attack,
-
-		};
 		Player();
 		~Player();
 
@@ -23,7 +15,6 @@ namespace jns
 		virtual void Render() override;
 
 	private:
-		int hp;
 	};
 
 }

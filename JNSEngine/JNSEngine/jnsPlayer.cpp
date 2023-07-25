@@ -4,7 +4,6 @@
 namespace jns
 {
 	Player::Player()
-		:hp(100)
 	{
 	}
 
@@ -29,7 +28,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharIdle", 0.3f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharJump", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharLadder", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 0.1f, Vector2(0.0f, 0.15f));
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
@@ -39,7 +38,8 @@ namespace jns
 		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));
 		
 		AddComponent<PlayerScript>();
-		AddComponent<Collider2D>();
+		Collider2D* col = AddComponent<Collider2D>();
+		col->SetSize(Vector2(0.5f, 0.8f));
 		RigidBody* rb = AddComponent<RigidBody>();
 		rb->SetMass(1.0f);
 		GameObject::Initialize();
@@ -47,7 +47,6 @@ namespace jns
 
 	void Player::Update()
 	{
-		hp -= 1 * Time::DeltaTime();
 
 		GameObject::Update();
 	}

@@ -89,4 +89,15 @@ namespace jns
 	{
 		mGameObjects.push_back(gameObj);
 	}
+	void Layer::DeleteGameObject(GameObject* gameObj)
+	{
+		std::vector<GameObject*>::iterator iter;
+		for (iter = mGameObjects.begin(); iter != mGameObjects.end();)
+		{
+			if (*iter == gameObj)
+				mGameObjects.erase(iter);
+
+			iter++;
+		}
+	}
 }
