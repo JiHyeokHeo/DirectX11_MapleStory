@@ -6,29 +6,29 @@ using namespace jns::math;
 
 namespace jns
 {
-	class ItemResourcesScript;
-	class InventoryManager
-	{
-	public:
-		static InventoryManager& GetInstance();
+	class ItemResources;
+    class InventoryManager
+    {
+    public:
+        static InventoryManager& GetInstance()
+        {
+            static InventoryManager instance;
+            return instance;
+        }
 
-		void Initialize();
-		void Update();
-		void LateUpdate();
-		void Render();
+        void AddItem(const std::string& itemName, int quantity);
+        void RemoveItem(const std::string& itemName, int quantity);
+        void ClearInventory();
+        bool HasItem(const std::string& itemName, int quantity);
+        bool CanAddItem(const std::string& itemName, int quantity);
+        bool FindSlotForItem(const std::string& itemName, int quantity, Vector3& position);
 
-		void AddItemToInventory(ItemResourcesScript* item);
-		void RemoveItemFromInventory(ItemResourcesScript* item);
-		void ArrangeItemsInInventory();
-		void SetInventoryPosition(Vector3 invenPos) { mInventoryPosition = invenPos; }
 
-	private:
-		InventoryManager();
-		~InventoryManager();
+    private:
+        std::map<std::string, ItemResources*> mInventory;
 
-		static InventoryManager* instance; 
-		std::vector<ItemResourcesScript*> mInventoryItems;
-		Vector3 mInventoryPosition; 
-	};
+        InventoryManager() {}
+        ~InventoryManager() {}
+    };
 
 }

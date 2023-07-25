@@ -9,6 +9,10 @@
 
 namespace jns
 {
+	void CameraScript::Initialize()
+	{
+		setYCord = 200.0f;
+	}
 	void CameraScript::Update()
 	{
 		cameratr = GetOwner()->GetComponent<Transform>();
@@ -69,7 +73,8 @@ namespace jns
 		Transform* followTR = checkTarget->GetComponent<Transform>();
 		pos = followTR->GetPosition();
 
-		cameratr->SetPosition(Vector3(pos.x, pos.y, -10.0f));
+
+		cameratr->SetPosition(Vector3(pos.x, pos.y + setYCord, -10.0f));
 		return true;
 	}
 }

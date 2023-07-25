@@ -24,5 +24,6 @@ namespace jns
 		void SetPowerPotion();
 	private:
 		eItemType mItemType;
+
 	};
 }

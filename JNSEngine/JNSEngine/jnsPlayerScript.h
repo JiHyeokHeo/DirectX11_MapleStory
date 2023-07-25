@@ -4,6 +4,7 @@
 
 namespace jns
 {
+	class InventoryScript;
 	class PlayerScript : public Script
 	{
 	public:
@@ -38,10 +39,10 @@ namespace jns
 		void Hitted();
 		void Die();
 
-
 		void CompleteAssasinHit1();
 		void CompleteAnimation();
 		void AnimatorControl();
+	
 	private:
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
@@ -49,5 +50,6 @@ namespace jns
 		bool isRight;
 		float mDeathTime;
 		float mHittedTime;
+		InventoryScript* mInventoryScript;
 	};
 }

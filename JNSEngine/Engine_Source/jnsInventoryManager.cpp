@@ -2,40 +2,34 @@
 
 namespace jns
 {
-	InventoryManager& InventoryManager::GetInstance()
+	void InventoryManager::AddItem(const std::string& itemName, int quantity)
 	{
-		if (instance == nullptr)
-		{
-			instance = new InventoryManager();
-		}
-		return *instance;
+		if (quantity < 0)
+			return;
+
+		//auto iter = mInventory.find(itemName);
+		//if (iter != mInventory.end())
+		//{
+		//	iter->second.quantity += quantity;
+		//}
+
 	}
-	void InventoryManager::Initialize()
-	{
-	}
-	void InventoryManager::Update()
-	{
-	}
-	void InventoryManager::LateUpdate()
+	void InventoryManager::RemoveItem(const std::string& itemName, int quantity)
 	{
 	}
-	void InventoryManager::Render()
+	void InventoryManager::ClearInventory()
 	{
 	}
-	void InventoryManager::AddItemToInventory(ItemResourcesScript* item)
+	bool InventoryManager::HasItem(const std::string& itemName, int quantity)
 	{
+		return false;
 	}
-	void InventoryManager::RemoveItemFromInventory(ItemResourcesScript* item)
+	bool InventoryManager::CanAddItem(const std::string& itemName, int quantity)
 	{
+		return false;
 	}
-	void InventoryManager::ArrangeItemsInInventory()
+	bool InventoryManager::FindSlotForItem(const std::string& itemName, int quantity, Vector3& position)
 	{
-	}
-	InventoryManager::InventoryManager()
-	{
-		mInventoryPosition = Vector3(0.0f, 0.0f, 0.0f);
-	}
-	InventoryManager::~InventoryManager()
-	{
+		return false;
 	}
 }
