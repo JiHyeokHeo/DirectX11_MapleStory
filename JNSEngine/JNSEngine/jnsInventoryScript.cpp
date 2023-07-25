@@ -55,6 +55,10 @@ namespace jns
 		
 		}
 		
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		{
+
+		}
 		
 	}
 	void InventoryScript::LateUpdate()

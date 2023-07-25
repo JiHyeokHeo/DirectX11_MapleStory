@@ -36,7 +36,6 @@ namespace jns
 	{
 		SetName(L"PowerPotion");
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
-		AddComponent<Collider2D>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"HP_MP_PotionMaterial"));
 		mr->GetMaterial()->SetRenderingMode(eRenderingMode::Transparent);
