@@ -118,6 +118,10 @@
     <ClCompile Include="jnsInventoryScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsGround.cpp">
+      <Filter>Contents\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsGroundScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -251,6 +255,10 @@
     <ClInclude Include="jnsInventoryScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
+    <ClInclude Include="jnsGround.h">
+      <Filter>Contents\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsGroundScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -393,6 +401,9 @@
     </Filter>
     <Filter Include="Contents\Scenes\RutabysQueenMobScene">
       <UniqueIdentifier>{f44c36a1-473d-49b8-8cee-7b033e16ea76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Ground">
+      <UniqueIdentifier>{ceb99534-f3ae-408b-97f9-ff5bdd7baf2d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

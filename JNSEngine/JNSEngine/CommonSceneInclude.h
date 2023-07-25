@@ -8,6 +8,7 @@
 #include "jnsPlayerScript.h"
 #include "jnsItemResourcesScript.h"
 #include "jnsInventoryScript.h"
+#include "jnsGroundScript.h"
 
 // Player
 #include "jnsPlayer.h"
@@ -39,6 +40,7 @@
 #include "jnsShopSlotBack3.h"
 #include "jnsInventory.h"
 #include "jnsItemResources.h"
+#include "jnsGround.h"
 
 // Component
 #include "jnsTransform.h"
@@ -51,6 +53,7 @@
 #include "jnsCollider2D.h"
 #include "jnsCollisionManager.h"
 #include "jnsAnimator.h"
+#include "jnsRigidbody.h"
 
 // Resources
 #include "jnsResources.h"

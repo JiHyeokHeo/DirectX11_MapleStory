@@ -12,6 +12,7 @@ namespace jns::enums
 		MeshRenderer,
 		Animator,
 		Script,
+		RigidBody,
 		Camera,
 		End,
 	};
@@ -19,6 +20,7 @@ namespace jns::enums
 	enum class eLayerType
 	{
 		Grid,
+		Ground,
 		BG,
 		Item,
 		Player,

@@ -46,7 +46,7 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mRotation = (Vector3::Zero), Vector3 mScale = (Vector3::One))
+	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
 	{
 		T* gameobj = new T();
 		Scene* scene = SceneManager::GetActiveScene();

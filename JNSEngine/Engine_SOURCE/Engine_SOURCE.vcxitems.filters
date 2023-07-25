@@ -190,6 +190,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsInventoryManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -275,6 +278,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimation.cpp">
       <Filter>Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsInventoryManager.cpp">
+      <Filter>Scene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

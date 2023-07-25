@@ -17,6 +17,9 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+
+		object::Instantiate<Ground>(eLayerType::Ground, Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
 
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));

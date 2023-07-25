@@ -167,6 +167,8 @@
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
     <ClInclude Include="jnsGridScrpt.h" />
+    <ClInclude Include="jnsGround.h" />
+    <ClInclude Include="jnsGroundScript.h" />
     <ClInclude Include="jnsHpBar.h" />
     <ClInclude Include="jnsInventory.h" />
     <ClInclude Include="jnsInventoryScript.h" />
@@ -213,6 +215,8 @@
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
     <ClCompile Include="jnsGridScrpt.cpp" />
+    <ClCompile Include="jnsGround.cpp" />
+    <ClCompile Include="jnsGroundScript.cpp" />
     <ClCompile Include="jnsHpBar.cpp" />
     <ClCompile Include="jnsInventory.cpp" />
     <ClCompile Include="jnsInventoryScript.cpp" />

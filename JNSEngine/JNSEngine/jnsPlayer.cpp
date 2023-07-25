@@ -40,14 +40,14 @@ namespace jns
 		
 		AddComponent<PlayerScript>();
 		AddComponent<Collider2D>();
-
+		RigidBody* rb = AddComponent<RigidBody>();
+		rb->SetMass(1.0f);
 		GameObject::Initialize();
 	}
 
 	void Player::Update()
 	{
 		hp -= 1 * Time::DeltaTime();
-
 
 		GameObject::Update();
 	}
