@@ -44,10 +44,17 @@ namespace jns
 	}
 	void Scene::OnEnter()
 	{
-
+		for (Layer& layer : mLayers)
+		{
+			layer.DontDestroySceneEnter();
+		}
 	}
 	void Scene::OnExit()
 	{
+		for (Layer& layer : mLayers)
+		{
+			layer.DontDestroySceneExit();
+		}
 	}
 	void Scene::AddGameObject(enums::eLayerType type, GameObject* gameObj)
 	{

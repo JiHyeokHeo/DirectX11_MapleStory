@@ -33,6 +33,14 @@ namespace jns
 		Scene::Render();
 	}
 
+	void PlayScene::OnEnter()
+	{
+	}
+
+	void PlayScene::OnExit()
+	{
+	}
+
 	void PlayScene::CreateMainCamera()
 	{
 		mainCameraObj = new CameraObject(CameraObject::eCameraType::MainCamera);
@@ -106,4 +114,7 @@ namespace jns
 
 
 	}
+
+
+
 }

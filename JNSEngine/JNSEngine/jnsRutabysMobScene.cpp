@@ -13,6 +13,8 @@ namespace jns
 	{
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob1);
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob2);
+
+
 		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
@@ -35,6 +37,11 @@ namespace jns
 	void RutabysMobScene::OnEnter()
 	{
 		PlayScene::OnEnter();
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 	}
 	void RutabysMobScene::OnExit()
 	{

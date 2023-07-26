@@ -17,11 +17,12 @@ namespace jns
 
 		void AddGameObject(GameObject* gameObj);
 		void DeleteGameObject(GameObject* gameObj);
+		void DontDestroySceneExit();
+		void DontDestroySceneEnter();
 		const std::vector<GameObject*> GetGameObjects() 
 		{
 			return mGameObjects; 
 		}
-
 	private:
 		std::vector<GameObject*> mGameObjects;
 	};

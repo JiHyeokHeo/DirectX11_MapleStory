@@ -27,9 +27,9 @@ namespace jns
 		std::vector<T*> FindObjectsOfType()
 		{
 			std::vector<T*> findObjs = {};
-			for (Layer* layer : mLayers)
+			for (Layer layer : mLayers)
 			{
-				auto gameObjs = layer->GetGameObjects();
+				auto gameObjs = layer.GetGameObjects();
 
 				for (GameObject* obj : gameObjs)
 				{
@@ -43,7 +43,7 @@ namespace jns
 			return findObjs;
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
-
+		std::vector<Layer>& GetLayers() { return mLayers; }
 	private:
 		std::vector<Layer> mLayers;
 	};

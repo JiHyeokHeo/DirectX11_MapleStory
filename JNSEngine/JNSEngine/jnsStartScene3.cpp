@@ -31,4 +31,12 @@ namespace jns
 	{
 		PlayScene::Render();
 	}
+	void StartScene3::OnEnter()
+	{
+		PlayScene::OnEnter();
+	}
+	void StartScene3::OnExit()
+	{
+		PlayScene::OnExit();
+	}
 }

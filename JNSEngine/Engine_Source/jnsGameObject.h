@@ -14,6 +14,7 @@ namespace jns
 			Active,
 			Paused,
 			Dead,
+			DontDestroy,
 		};
 
 		GameObject();
@@ -97,12 +98,14 @@ namespace jns
 		eState GetState() { return mState; }
 		void SetType(eLayerType type) { mLayerType = type; }
 		eLayerType GetLayerType() { return mLayerType; }
-
+		bool GetIsOnlyOne() { return mOnlyOne; }
+		void SetIsOnlyOne(bool isOne) { mOnlyOne = isOne; }
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		eLayerType mLayerType;
+		bool mOnlyOne;
 	};
 
 }

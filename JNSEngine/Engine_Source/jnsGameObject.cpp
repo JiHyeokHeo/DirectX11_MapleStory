@@ -8,6 +8,7 @@ namespace jns
 	GameObject::GameObject()
 		:mState(GameObject::eState::Active)
 	{
+		mOnlyOne = false;
 		AddComponent<Transform>();
 	}
 	GameObject::~GameObject()

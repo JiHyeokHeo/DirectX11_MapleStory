@@ -150,10 +150,15 @@ namespace jns
 	}
 	void RutabysScene::OnEnter()
 	{
+		PlayScene::OnEnter();
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 	}
 	void RutabysScene::OnExit()
 	{
+		PlayScene::OnExit();
 	}
 }

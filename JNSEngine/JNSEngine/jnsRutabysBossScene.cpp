@@ -12,7 +12,7 @@ namespace jns
 	void RutabysBossScene::Initialize()
 	{
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenBoss);
-		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
+		//player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
@@ -35,9 +35,10 @@ namespace jns
 	}
 	void RutabysBossScene::OnEnter()
 	{
-		mainCameraObj->SetFollowTarget(player);
+		PlayScene::OnEnter();
 	}
 	void RutabysBossScene::OnExit()
 	{
+		PlayScene::OnExit();
 	}
 }

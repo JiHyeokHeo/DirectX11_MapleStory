@@ -5,6 +5,8 @@ namespace jns
 {
 	Player::Player()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 
 	Player::~Player()
@@ -40,8 +42,8 @@ namespace jns
 		AddComponent<PlayerScript>();
 		Collider2D* col = AddComponent<Collider2D>();
 		col->SetSize(Vector2(0.5f, 0.8f));
-		RigidBody* rb = AddComponent<RigidBody>();
-		rb->SetMass(1.0f);
+		//RigidBody* rb = AddComponent<RigidBody>();
+		//rb->SetMass(1.0f);
 		GameObject::Initialize();
 	}
 

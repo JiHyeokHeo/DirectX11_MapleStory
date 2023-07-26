@@ -85,6 +85,24 @@ namespace jns
 			gameObj = nullptr;
 		}
 	}
+	void Layer::DontDestroySceneExit()
+	{
+		for (GameObject* gameObj : mGameObjects)
+		{
+			if (gameObj->GetState()
+				== GameObject::eState::DontDestroy)
+				DeleteGameObject(gameObj);
+		}
+	}
+	void Layer::DontDestroySceneEnter()
+	{
+		for (GameObject* gameObj : mGameObjects)
+		{
+			if (gameObj->GetState()
+				== GameObject::eState::DontDestroy)
+				AddGameObject(gameObj);
+		}
+	}
 	void Layer::AddGameObject(GameObject* gameObj)
 	{
 		mGameObjects.push_back(gameObj);
@@ -95,7 +113,10 @@ namespace jns
 		for (iter = mGameObjects.begin(); iter != mGameObjects.end();)
 		{
 			if (*iter == gameObj)
-				mGameObjects.erase(iter);
+			{
+				iter = mGameObjects.erase(iter);
+				continue;
+			}
 
 			iter++;
 		}
