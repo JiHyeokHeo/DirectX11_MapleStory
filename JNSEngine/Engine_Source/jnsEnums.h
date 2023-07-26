@@ -13,6 +13,7 @@ namespace jns::enums
 		Animator,
 		Script,
 		RigidBody,
+		Light,
 		Camera,
 		End,
 	};
@@ -29,6 +30,8 @@ namespace jns::enums
 		Camera,
 		Cursor,
 		MapEffect,
+		Portal,
+		Light,
 		End = 16,
 	};
 
@@ -53,4 +56,14 @@ namespace jns::enums
 		Cube,
 		End,
 	};
+
+	enum class eLightType
+	{
+		Directional,
+		Point,
+		Spot,
+		End,
+	};
+
+
 }

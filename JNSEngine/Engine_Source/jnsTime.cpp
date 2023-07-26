@@ -40,10 +40,11 @@ namespace jns
 		if (mSecond > 1.0f)
 		{
 			HWND hWnd = application.GetHwnd();
-			Vector3 mPos = jns::Cursor::GetCursorPos();
-			wchar_t szFloat[100] = {};
+			Vector3 mPos = jns::Input::GetWorldMousePos();
+			Vector3 mUIPos = jns::Input::GetUIMousePos();
+			wchar_t szFloat[256] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
-			swprintf_s(szFloat, 100, L"FPS : %d Mouse X COR : %d, Mouse Y COR : %d", (UINT)FPS, (UINT)mPos.x, (UINT)mPos.y);
+			swprintf_s(szFloat, 256, L"FPS : %d Mouse X COR : %d, Mouse Y COR : %d, MouseWorld X : %d, MouseWorld Y : %d", (UINT)FPS, (UINT)mUIPos.x, (UINT)mUIPos.y, (UINT)mPos.x, (UINT)mPos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 			

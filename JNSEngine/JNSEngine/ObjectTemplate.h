@@ -47,6 +47,18 @@ namespace jns::object
 	}
 
 	template<typename T>
+	T* InstantiatePortal(std::wstring portalname, Vector3 mPos, jns::enums::eLayerType type = eLayerType::Portal)
+	{
+		T* gameobj = new T(portalname);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
 	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
 	{
 		T* gameobj = new T();

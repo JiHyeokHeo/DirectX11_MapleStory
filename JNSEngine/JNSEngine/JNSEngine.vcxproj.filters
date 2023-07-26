@@ -126,6 +126,15 @@
     <ClCompile Include="jnsRutabysScene.cpp">
       <Filter>Contents\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryBTN.cpp">
+      <Filter>Contents\UI\InventoryBTN</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPortalBase.cpp">
+      <Filter>Contents\Portal\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPortal.cpp">
+      <Filter>Contents\Portal\Portal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -266,6 +275,15 @@
     </ClInclude>
     <ClInclude Include="jnsItemResourcesScript.h">
       <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryBTN.h">
+      <Filter>Contents\UI\InventoryBTN</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPortalBase.h">
+      <Filter>Contents\Portal\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPortal.h">
+      <Filter>Contents\Portal\Portal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +430,18 @@
     </Filter>
     <Filter Include="Contents\Ground">
       <UniqueIdentifier>{ceb99534-f3ae-408b-97f9-ff5bdd7baf2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\InventoryBTN">
+      <UniqueIdentifier>{55c007b7-68f1-46bd-9dd4-84e2651f6296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Portal">
+      <UniqueIdentifier>{1a647a00-7fd1-415e-8e10-faacee6339fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Portal\Base">
+      <UniqueIdentifier>{740465b0-eb42-49f0-9913-9048069d8501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Portal\Portal">
+      <UniqueIdentifier>{e67f237e-4e94-4ae9-be6b-1381ba5db1ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

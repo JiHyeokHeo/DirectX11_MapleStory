@@ -12,6 +12,7 @@ namespace jns
 	}
 	void ItemResources::Initialize()
 	{
+		SetName(L"Item");
 		AddComponent<ItemResourcesScript>();
 		switch (mItemType)
 		{
@@ -34,7 +35,6 @@ namespace jns
 	}
 	void ItemResources::SetPowerPotion()
 	{
-		SetName(L"PowerPotion");
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"HP_MP_PotionMaterial"));

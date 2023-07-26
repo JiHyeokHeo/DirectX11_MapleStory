@@ -5,6 +5,7 @@
 #include "jnsShader.h"
 #include "jnsConstantBuffer.h"
 #include "jnsCamera.h"
+#include "jnsLight.h"
 
 using namespace jns::math;
 using namespace jns::graphics;
@@ -61,12 +62,15 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+
+	extern std::vector<jns::Light*> lights;
 	extern jns::Camera* mainCamera;
 	extern jns::Camera* UICamera;
 	extern std::vector<jns::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshes;
 
 	void Initialize();
+	void BindLights();
 	void Render();
 	void Release();
 

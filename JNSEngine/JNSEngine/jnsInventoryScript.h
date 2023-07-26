@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsGameObject.h"
 
 namespace jns
 {
@@ -9,7 +10,7 @@ namespace jns
 		int mItemCnt;
 		bool isPicked;
 	};
-	class ItemResources;
+
 	class InventoryScript : public Script
 	{
 	public:
@@ -25,7 +26,10 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 		
+		//void CheckItem(ItemResources* item);
 	private:
-		std::vector<std::pair<ItemInfo, ItemResources*>> mInventory;
+		std::map<std::wstring, ItemInfo> mInventory;
+		jns::GameObject::eState mPrevState;
+		jns::GameObject::eState mNowState;
 	};
 }

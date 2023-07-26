@@ -16,6 +16,8 @@
 // Camera
 #include "jnsCameraObject.h"
 
+// Portal
+#include "jnsPortal.h"
 
 // BackGround 
 #include "jnsBGInstance.h"
@@ -54,6 +56,7 @@
 #include "jnsCollisionManager.h"
 #include "jnsAnimator.h"
 #include "jnsRigidbody.h"
+#include "jnsLight.h"
 
 // Resources
 #include "jnsResources.h"

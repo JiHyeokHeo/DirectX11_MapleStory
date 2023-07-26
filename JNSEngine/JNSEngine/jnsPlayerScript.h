@@ -52,6 +52,7 @@ namespace jns
 			bool isRight;
 			float mDeathTime;
 			float mHittedTime;
+			float mMoveSpeed;
 		};
 
 		PlayerInfo mPlayerInfo;

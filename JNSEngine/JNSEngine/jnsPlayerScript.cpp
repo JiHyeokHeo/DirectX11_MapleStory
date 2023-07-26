@@ -12,6 +12,7 @@ namespace jns
 	void PlayerScript::Initialize()
 	{
 		mPlayerInfo = {};
+		mPlayerInfo.mMoveSpeed = 125.0f;
 		mPlayerState = ePlayerState::Idle;
 		Animator* at = GetOwner()->GetComponent<Animator>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
@@ -58,9 +59,14 @@ namespace jns
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
 	{
+		
 	}
 	void PlayerScript::OnCollisionStay(Collider2D* other)
 	{
+		if (other->GetName() == L"Item" && Input::GetKeyDown(eKeyCode::Z))
+		{
+			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
+		}
 	}
 	void PlayerScript::OnCollisionExit(Collider2D* other)
 	{
@@ -135,7 +141,7 @@ namespace jns
 		Vector3 pos = tr->GetPosition();
 		if (Input::GetKey(eKeyCode::UP))
 		{
-			pos.y += 255.0f * Time::DeltaTime();
+			pos.y += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::DOWN))
@@ -145,22 +151,22 @@ namespace jns
 		}
 		if (Input::GetKey(eKeyCode::LEFT))
 		{
-			pos.x -= 255.0f * Time::DeltaTime();
+			pos.x -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::RIGHT))
 		{
-			pos.x += 255.0f * Time::DeltaTime();
+			pos.x += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.z -= 255.0f * Time::DeltaTime();
+			pos.z -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::E))
 		{
-			pos.z += 255.0f * Time::DeltaTime();
+			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 

@@ -61,6 +61,8 @@ namespace jns
 	}
 	void GameObject::Render()
 	{
+		if (mState == eState::Paused)
+			return;
 		for (Component* comp : mComponents)
 		{
 			comp->Render();

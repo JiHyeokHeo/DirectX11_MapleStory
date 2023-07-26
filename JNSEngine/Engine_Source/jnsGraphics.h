@@ -86,6 +86,12 @@ namespace jns::graphics
 		End,
 	};
 
+	enum class eSRVType
+	{
+		None,
+		End,
+	};
+
 
 	struct GpuBuffer
 	{
@@ -114,5 +120,17 @@ namespace jns::graphics
 		float time;
 
 		bool isCollide;
+	};
+
+	struct LightAttribute
+	{
+		math::Vector4 color;
+		math::Vector4 position;
+		math::Vector4 direction;
+
+		enums::eLightType type;
+		float radius;
+		float angle;
+		int pad;
 	};
 }

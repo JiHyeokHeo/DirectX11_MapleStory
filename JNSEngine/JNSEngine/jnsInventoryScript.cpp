@@ -16,7 +16,9 @@ namespace jns
 	}
 	void InventoryScript::Initialize()
 	{
-
+		GetOwner()->SetState(GameObject::eState::Paused);
+		mNowState = GameObject::eState::Paused;
+		mPrevState = GameObject::eState::Active;
 	}
 	void InventoryScript::Update()
 	{
@@ -55,17 +57,24 @@ namespace jns
 			info.mItemCnt = 0;
 			info.mItemFinalPos = mItemFinalPos;
 			info.isPicked = true;
-
-			ItemResources* t = object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mItemFinalPos);
-			mInventory.push_back(std::make_pair(info, t ));
-			//mInventory.push_back({ info, t });
-
-			t->GetComponent<ItemResourcesScript>()->SetInventoryScript(this);
+			
+			mInventory.insert(std::make_pair(L"PowerPotion", info));
 		}
 		
-		if (Input::GetKey(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::I) && mPrevState != mNowState)
 		{
-
+			if (mNowState == GameObject::eState::Active)
+			{
+				GetOwner()->SetState(GameObject::eState::Paused);
+				mNowState = GameObject::eState::Paused;
+				mPrevState = GameObject::eState::Active; 
+			}
+			else if (mNowState == GameObject::eState::Paused)
+			{
+				GetOwner()->SetState(GameObject::eState::Active);
+				mNowState = GameObject::eState::Active;
+				mPrevState = GameObject::eState::Paused; 
+			}
 		}
 		
 	}
@@ -84,5 +93,15 @@ namespace jns
 	}
 	void InventoryScript::OnCollisionExit(Collider2D* other)
 	{
+		
 	}
+	//void InventoryScript::CheckItem(ItemResources* item)
+	//{
+	//	std::map<std::wstring, ItemInfo>::iterator iter
+	//		= mInventory.find(item->GetName());
+
+	//	if(iter == mInventory.end())
+	//		//mInventory.insert	
+
+	//}
 }

@@ -6,11 +6,11 @@
 
 namespace jns
 {
-	class UIBase : public GameObject
+	class PortalBase : public GameObject
 	{
 	public:
-		UIBase();
-		~UIBase();
+		PortalBase();
+		~PortalBase();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -22,7 +22,7 @@ namespace jns
 			std::shared_ptr<Mesh> mMesh = Resources::Find<Mesh>(name);
 			if (mMesh == nullptr)
 				return;
-			
+
 			this->mr = GetComponent<MeshRenderer>();
 
 			if (this->mr == nullptr)
@@ -83,5 +83,7 @@ namespace jns
 		Transform* tr;
 		Vector2 mTextureSize;
 		Vector2 mSize;
+
+		
 	};
 }

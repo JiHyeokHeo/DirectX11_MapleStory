@@ -37,6 +37,7 @@ float4 main(VSOut In) : SV_TARGET
     
     color.rgb = 1.0f;
     color.rgb *= 0.4f;
+    color.a *= 0.5f;
     
     return color;
 }

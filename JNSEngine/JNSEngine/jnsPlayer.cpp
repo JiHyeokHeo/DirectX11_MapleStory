@@ -34,7 +34,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
 		
-		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
+		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 200.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));
 		
 		AddComponent<PlayerScript>();

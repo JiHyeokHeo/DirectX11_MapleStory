@@ -2,6 +2,7 @@
 #include "jnsTexture.h"
 #include "jnsResources.h"
 #include "jnsMaterial.h"
+#include "jnsStructedBuffer.h"
 
 namespace renderer
 {
@@ -13,6 +14,10 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
+
+	// light
+	std::vector<Light*> lights = {};
+	StructedBuffer* lightsBuffer = nullptr;
 
 	jns::Camera* mainCamera = nullptr;
 	jns::Camera* UICamera = nullptr;
@@ -317,6 +322,11 @@ namespace renderer
 
 		 constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
 		 constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
+		 
+		 // light structed buffer
+		 lightsBuffer = new StructedBuffer();
+		 lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
+		 
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
 		 //colorConstanttBuffer->Create(sizeof(Vector4));
@@ -611,6 +621,7 @@ namespace renderer
 
 	 void Render()
 	 {
+		 BindLights();
 		 mainCamera = cameras[0];
 		 for (Camera* cam : cameras)
 		 {
@@ -621,6 +632,7 @@ namespace renderer
 		 }
 
 		 cameras.clear();
+		 lights.clear();
 	 }
 
 	 void Release()
@@ -633,11 +645,28 @@ namespace renderer
 			 delete buff;
 			 buff = nullptr;
 		 }
+
+		 delete lightsBuffer;
+		 lightsBuffer = nullptr;
 	 }
 
 	 void PushDebugMeshAttribute(DebugMesh& mesh)
 	 {
 		 debugMeshes.push_back(mesh);
+	 }
+
+	 void BindLights()
+	 {
+		 std::vector<LightAttribute> lightsAttributes = {};
+		 for (Light* light : lights)
+		 {
+			 LightAttribute attribute = light->GetAttribute();
+			 lightsAttributes.push_back(attribute);
+		 }
+
+		 lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
+		 lightsBuffer->Bind(eShaderStage::VS, 13);
+		 lightsBuffer->Bind(eShaderStage::PS, 13);
 	 }
 
 	

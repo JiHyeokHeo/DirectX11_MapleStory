@@ -36,7 +36,7 @@ namespace jns
 			mPos.x = 1600.0f;
 		}
 
-		mPos.x -= 155.5f * Time::DeltaTime();
+		mPos.x -= 75.5f * Time::DeltaTime();
 		
 		tr->SetPosition(mPos.x, mPos.y, mPos.z);
 		GameObject::Update();
