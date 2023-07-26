@@ -47,12 +47,24 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* InstantiatePortal(std::wstring portalname, Vector3 mPos, jns::enums::eLayerType type = eLayerType::Portal)
+	T* InstantiatePortal(std::wstring portalName, Vector3 mPos, jns::enums::eLayerType type = eLayerType::Portal)
 	{
-		T* gameobj = new T(portalname);
+		T* gameobj = new T(portalName);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+	template<typename T>
+	T* InstantiateGroundCollider(std::wstring groundName, Vector3 mPos, Vector3 mScale = (Vector3::One),jns::enums::eLayerType type = eLayerType::Ground)
+	{
+		T* gameobj = new T(groundName);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->GetComponent<Transform>()->SetScale(mScale);
 		gameobj->Initialize();
 
 		return gameobj;

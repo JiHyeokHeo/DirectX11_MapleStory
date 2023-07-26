@@ -12,7 +12,8 @@ namespace jns
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 
 		VK_SPACE, VK_LCONTROL, VK_RCONTROL,
-		VK_LEFT, VK_UP, VK_RIGHT, VK_DOWN, VK_LBUTTON, VK_RBUTTON, VK_LSHIFT, VK_RSHIFT,
+		VK_LEFT, VK_UP, VK_RIGHT, VK_DOWN, VK_LBUTTON, VK_RBUTTON, VK_LSHIFT, VK_LMENU,
+		
 	};
 
 	std::vector<Input::Key> Input::mKeys;

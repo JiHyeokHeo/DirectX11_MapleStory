@@ -77,4 +77,10 @@ namespace jns
 	void RigidBody::Render()
 	{
 	}
+
+	void RigidBody::AddForce(Vector3 force)
+	{
+		mForce += force;
+	}
+
 }

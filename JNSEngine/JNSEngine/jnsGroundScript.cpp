@@ -26,7 +26,6 @@ namespace jns
 
 		RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
 		rb->SetGround(true);
-
 		Collider2D* playerCol = player->GetComponent<Collider2D>();
 		Vector3 playerPos = playerCol->GetPosition();
 

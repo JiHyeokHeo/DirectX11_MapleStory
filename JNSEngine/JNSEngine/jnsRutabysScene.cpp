@@ -19,13 +19,13 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 
-		object::Instantiate<Ground>(eLayerType::Ground, Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
 
 		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
-		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, -200.0f, 1.0f));
-		player->AddComponent<PlayerScript>()->SetInventoryScript(invenScript);
+		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 1.0f));
+		player->GetComponent<PlayerScript>()->SetInventoryScript(invenScript);
 		SetTarget(player);
 
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 4.0f));

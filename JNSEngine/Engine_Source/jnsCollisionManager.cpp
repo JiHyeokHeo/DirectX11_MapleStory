@@ -49,9 +49,9 @@ namespace jns
 
 			if (leftCol == nullptr)
 				continue;
-			if (leftObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
+			//if (leftObj->GetState()
+			//	!= GameObject::eState::Active)
+			//	continue;
 
 			for (GameObject* rightObj : rights)
 			{
@@ -60,9 +60,9 @@ namespace jns
 					continue;
 				if (leftObj == rightObj)
 					continue;
-				if (rightObj->GetState()
-					!= GameObject::eState::Active)
-					continue;
+				//if (rightObj->GetState()
+				//	!= GameObject::eState::Active)
+				//	continue;
 
 				ColliderCollision(leftCol, rightCol);
 			}

@@ -43,14 +43,14 @@ float4 main(VSOut In) : SV_TARGET
     if (type == 1)
     {
         float2 diff = (AtlasSize - SpriteSize) / 2.0f;
-        float2 UV = (SpriteLeftTop - diff - SpriteOffset)
-                + (AtlasSize * In.UV);
+        float2 UV = (SpriteLeftTop - diff - SpriteOffset) 
+            + float2(AtlasSize.x * (1.0f - In.UV.x), AtlasSize.y * In.UV.y);
+
     
         if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x
             || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
             discard;
         
-        UV.x = UV.x * -1;
         color = atlasTexture.Sample(anisotropicSampler, UV);
     }
    // color *= lightsAttribute[0].color;

@@ -1,6 +1,8 @@
 #pragma once
 #include "jnsScript.h"
 #include "jnsInput.h"
+#include "jnsRigidbody.h"
+#include "jnsScene.h"
 
 namespace jns
 {
@@ -12,13 +14,13 @@ namespace jns
 		{
 			Idle,
 			Move,
+			Jump,
 			Prone,
 			Attack,
 			Hitted,
 			Die,
 			End,
 		};
-
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -34,6 +36,7 @@ namespace jns
 	public:
 		void Idle();
 		void Move();
+		void Jump();
 		void Prone();
 		void Attack();
 		void Hitted();
@@ -45,19 +48,28 @@ namespace jns
 	
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 
+		void Clear();
+		void CheckPlayerIsGrounded();
 	private:
 		struct PlayerInfo
 		{
+			float mJumpForce;
+			bool isGrounded;
 			bool isPlayed;
 			bool isRight;
 			float mDeathTime;
 			float mHittedTime;
 			float mMoveSpeed;
+			int LeftRight;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
 		};
 
+		RigidBody* mRb;
 		PlayerInfo mPlayerInfo;
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
 		InventoryScript* mInventoryScript;
+
+		Scene* mPreveScene;
+		Scene* mActveScene;
 	};
 }

@@ -7,6 +7,7 @@ namespace jns
 	{
 	public:
 		Ground();
+		Ground(const std::wstring name);
 		virtual ~Ground();
 
 		virtual void Initialize() override;
@@ -15,6 +16,7 @@ namespace jns
 		virtual void Render() override;
 
 	private:
+		std::wstring mGroundName;
 	};
 
 }

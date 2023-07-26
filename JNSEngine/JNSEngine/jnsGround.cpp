@@ -6,6 +6,10 @@ namespace jns
 	Ground::Ground()
 	{
 	}
+	Ground::Ground(const std::wstring name)
+		: mGroundName(name)
+	{
+	}
 	Ground::~Ground()
 	{
 	}

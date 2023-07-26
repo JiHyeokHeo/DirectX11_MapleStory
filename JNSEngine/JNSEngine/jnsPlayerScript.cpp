@@ -11,16 +11,27 @@ namespace jns
 {
 	void PlayerScript::Initialize()
 	{
+		mPreveScene = nullptr;
 		mPlayerInfo = {};
-		mPlayerInfo.mMoveSpeed = 125.0f;
+		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerState = ePlayerState::Idle;
 		Animator* at = GetOwner()->GetComponent<Animator>();
+		mRb = GetOwner()->GetComponent<RigidBody>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
 		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
 	}
 	void PlayerScript::Update()
 	{
+		mActveScene = SceneManager::GetActiveScene();
+		if (mPreveScene != mActveScene)
+		{
+			mPreveScene = mActveScene;
+			Clear();
+		}
+
+		CheckPlayerIsGrounded();
+		
 		switch (mPlayerState)
 		{
 		case ePlayerState::Idle:
@@ -31,7 +42,10 @@ namespace jns
 			Move();
 			AnimatorControl();
 			break;
-		case ePlayerState::Prone:
+		case ePlayerState::Jump:
+			Jump();
+			AnimatorControl();
+;		case ePlayerState::Prone:
 			Prone();
 			AnimatorControl();
 			break;
@@ -103,9 +117,9 @@ namespace jns
 
 	void PlayerScript::Idle()
 	{	
-		if (Input::GetKey(eKeyCode::UP))
+		if (Input::GetKey(eKeyCode::C))
 		{
-			mPlayerState = ePlayerState::Move;
+			mPlayerState = ePlayerState::Jump;
 		}
 		else if (Input::GetKey(eKeyCode::DOWN))
 		{
@@ -114,11 +128,13 @@ namespace jns
 		else if (Input::GetKey(eKeyCode::LEFT))
 		{
 			mPlayerInfo.isRight = false;
+			mPlayerInfo.LeftRight = -1;
 			mPlayerState = ePlayerState::Move;
 		}
 		else if (Input::GetKey(eKeyCode::RIGHT))
 		{
 			mPlayerInfo.isRight = true;
+			mPlayerInfo.LeftRight = 1;
 			mPlayerState = ePlayerState::Move;
 		}
 		else if (Input::GetKey(eKeyCode::LCTRL))
@@ -137,11 +153,19 @@ namespace jns
 
 	void PlayerScript::Move()
 	{
+		if (Input::GetKeyUp(eKeyCode::LEFT) || Input::GetKeyUp(eKeyCode::RIGHT) || Input::GetKeyUp(eKeyCode::UP) 
+			|| Input::GetKeyUp(eKeyCode::DOWN) || Input::GetKeyUp(eKeyCode::C))
+		{
+			mPlayerState = ePlayerState::Idle;
+		}
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
-		if (Input::GetKey(eKeyCode::UP))
+		if (Input::GetKey(eKeyCode::C))
 		{
-			pos.y += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
+			mRb->SetGround(false);
+			pos.y += mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
+			pos.x += mPlayerInfo.LeftRight * mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::DOWN))
@@ -169,11 +193,23 @@ namespace jns
 			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
+	}
 
-		if (Input::GetKeyUp(eKeyCode::LEFT) || Input::GetKeyUp(eKeyCode::RIGHT) || Input::GetKeyUp(eKeyCode::UP) ||  Input::GetKeyUp(eKeyCode::DOWN))
+	void PlayerScript::Jump()
+	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 pos = tr->GetPosition();
+		
+		if (Input::GetKey(eKeyCode::C))
 		{
-			mPlayerState = ePlayerState::Idle;
+			mRb->SetGround(false);
+			pos.y += mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
+			pos.x += mPlayerInfo.LeftRight * mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
+			tr->SetPosition(pos);
 		}
+
+		if (mPlayerInfo.isGrounded == true)
+			mPlayerState = ePlayerState::Idle;
 	}
 
 	void PlayerScript::Prone()
@@ -243,6 +279,10 @@ namespace jns
 			if (mPrevPlayerState != mPlayerState)
 			at->PlayAnimation(L"CharactorCharWalk", true);
 			break;
+		case ePlayerState::Jump:
+			if (mPrevPlayerState != mPlayerState)
+				at->PlayAnimation(L"CharactorCharJump", true);
+			break;
 		case ePlayerState::Prone:
 			if (mPrevPlayerState != mPlayerState)
 				at->PlayAnimation(L"CharactorCharProne", true);
@@ -262,6 +302,17 @@ namespace jns
 		default:
 			break;
 		}
+	}
+
+	void PlayerScript::Clear()
+	{
+		mRb->SetGround(false);
+		mPlayerInfo.isGrounded = false;
+	}
+
+	void PlayerScript::CheckPlayerIsGrounded()
+	{
+		mPlayerInfo.isGrounded = mRb->GetGround();
 	}
 
 	void PlayerScript::CompleteAssasinHit1()

@@ -123,9 +123,6 @@
     <ClCompile Include="jnsItemResourcesScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
-    <ClCompile Include="jnsRutabysScene.cpp">
-      <Filter>Contents\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="InventoryBTN.cpp">
       <Filter>Contents\UI\InventoryBTN</Filter>
     </ClCompile>
@@ -134,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="jnsPortal.cpp">
       <Filter>Contents\Portal\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsRutabysScene.cpp">
+      <Filter>Contents\Scenes\RutabysScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

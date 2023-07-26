@@ -23,7 +23,7 @@ namespace jns
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk" , 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain2Hit", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain2Hit", 0.1f, Vector2(0.015f, 0.02f));
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharBuff", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharDead", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharHit", 0.1f);
@@ -36,14 +36,18 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
 		
-		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 200.0f, 1.0001f));
+		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));
 		
-		AddComponent<PlayerScript>();
 		Collider2D* col = AddComponent<Collider2D>();
 		col->SetSize(Vector2(0.5f, 0.8f));
-		//RigidBody* rb = AddComponent<RigidBody>();
-		//rb->SetMass(1.0f);
+		RigidBody* rb = AddComponent<RigidBody>();
+		rb->SetMass(1.0f);
+
+
+		// 구조상 스크립트를 맨 마지막에 까는게 좋다.
+
+		AddComponent<PlayerScript>();
 		GameObject::Initialize();
 	}
 

@@ -19,7 +19,11 @@ namespace jns
 
 		void SetGround(bool ground) { mbGround = ground; }
 		void SetMass(float mass) { mMass = mass; }
+		bool GetGround() { return mbGround; }
 
+		Vector3 GetVelocity() {	return mVelocity; }
+		void SetVelocity(Vector3 vel) { mVelocity = vel; }
+		void AddForce(Vector3 force);
 
 	private:
 		float mMass;
