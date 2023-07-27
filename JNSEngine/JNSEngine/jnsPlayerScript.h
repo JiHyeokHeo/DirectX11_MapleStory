@@ -6,6 +6,7 @@
 
 namespace jns
 {
+	class Animator;
 	class InventoryScript;
 	class PlayerScript : public Script
 	{
@@ -44,8 +45,9 @@ namespace jns
 
 		void CompleteAssasinHit1();
 		void CompleteAnimation();
+		void CompletePronStab();
+		
 		void AnimatorControl();
-	
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 
 		void Clear();
@@ -68,8 +70,10 @@ namespace jns
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
 		InventoryScript* mInventoryScript;
-
+		Animator* at;
 		Scene* mPreveScene;
 		Scene* mActveScene;
+		bool isAnimationDone;
+
 	};
 }

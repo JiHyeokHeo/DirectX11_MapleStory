@@ -31,7 +31,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharJump", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharLadder", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 0.1f, Vector2(0.0f, 0.15f));
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 0.2f, Vector2(0.0f, 0.15f));
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);

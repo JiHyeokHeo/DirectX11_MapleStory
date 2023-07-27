@@ -11,15 +11,17 @@ namespace jns
 {
 	void PlayerScript::Initialize()
 	{
+		isAnimationDone = true;
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerState = ePlayerState::Idle;
-		Animator* at = GetOwner()->GetComponent<Animator>();
+		at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
 		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
+		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);
 	}
 	void PlayerScript::Update()
 	{
@@ -36,34 +38,28 @@ namespace jns
 		{
 		case ePlayerState::Idle:
 			Idle();
-			AnimatorControl();
 			break;
 		case ePlayerState::Move:
 			Move();
-			AnimatorControl();
 			break;
 		case ePlayerState::Jump:
 			Jump();
-			AnimatorControl();
 ;		case ePlayerState::Prone:
 			Prone();
-			AnimatorControl();
 			break;
 		case ePlayerState::Attack:
 			Attack();
-			AnimatorControl();
 			break;
 		case ePlayerState::Hitted:
 			Hitted();
-			AnimatorControl();
 			break;
 		case ePlayerState::Die:
 			Die();
-			AnimatorControl();
 			break;
 		default:
 			break;
 		}
+		AnimatorControl();
 		mPrevPlayerState = mPlayerState;
 	}
 	void PlayerScript::LateUpdate()
@@ -268,40 +264,44 @@ namespace jns
 		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
 		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
 		//at->PlayAnimation(L"CharactorCharIdle", true);
-		Animator* at = GetOwner()->GetComponent<Animator>();
-		switch (mPlayerState)
+		
+		if (mPlayerState != mPrevPlayerState)
 		{
-		case ePlayerState::Idle:
-			if (mPrevPlayerState != mPlayerState)
-			at->PlayAnimation(L"CharactorCharIdle", true);
-			break;
-		case ePlayerState::Move:
-			if (mPrevPlayerState != mPlayerState)
-			at->PlayAnimation(L"CharactorCharWalk", true);
-			break;
-		case ePlayerState::Jump:
-			if (mPrevPlayerState != mPlayerState)
-				at->PlayAnimation(L"CharactorCharJump", true);
-			break;
-		case ePlayerState::Prone:
-			if (mPrevPlayerState != mPlayerState)
-				at->PlayAnimation(L"CharactorCharProne", true);
-			break;
-		case ePlayerState::Attack:
-			if (mPrevPlayerState != mPlayerState)
-			at->PlayAnimation(L"CharactorCharAssain1Hit", true);
-			break;
-		case ePlayerState::Hitted:
-			if (mPrevPlayerState != mPlayerState)
-			at->PlayAnimation(L"CharactorCharHit", true);
-			break;
-		case ePlayerState::Die:
-			if (mPrevPlayerState != mPlayerState)
-			at->PlayAnimation(L"CharactorCharDead", true);
-			break;
-		default:
-			break;
+			isAnimationDone = true;
+			switch (mPlayerState)
+			{
+			case ePlayerState::Idle:
+					at->PlayAnimation(L"CharactorCharIdle", true);
+				break;
+			case ePlayerState::Move:
+					at->PlayAnimation(L"CharactorCharWalk", true);
+				break;
+			case ePlayerState::Jump:
+					at->PlayAnimation(L"CharactorCharJump", true);
+				break;
+			case ePlayerState::Prone:
+					at->PlayAnimation(L"CharactorCharProne", true);
+				break;
+			case ePlayerState::Attack:
+					at->PlayAnimation(L"CharactorCharAssain1Hit", true);
+				break;
+			case ePlayerState::Hitted:
+					at->PlayAnimation(L"CharactorCharHit", true);
+				break;
+			case ePlayerState::Die:
+					at->PlayAnimation(L"CharactorCharDead", true);
+				break;
+			default:
+				break;
+			}
 		}
+
+		if (mPlayerState == ePlayerState::Prone && Input::GetKeyDown(eKeyCode::LCTRL) && isAnimationDone == true)
+		{
+			at->PlayAnimation(L"CharactorCharProneStab", true);
+			isAnimationDone = false;
+		}
+
 	}
 
 	void PlayerScript::Clear()
@@ -317,13 +317,15 @@ namespace jns
 
 	void PlayerScript::CompleteAssasinHit1()
 	{
-		Animator* at = GetOwner()->GetComponent<Animator>();
 		at->PlayAnimation(L"CharactorCharAssain2Hit", true);
 	}
 	void PlayerScript::CompleteAnimation()
 	{
-		Animator* at = GetOwner()->GetComponent<Animator>();
 		mPlayerState = ePlayerState::Idle;
 		at->PlayAnimation(L"CharactorCharIdle", true);
+	}
+	void PlayerScript::CompletePronStab()
+	{
+		isAnimationDone = true;
 	}
 }
