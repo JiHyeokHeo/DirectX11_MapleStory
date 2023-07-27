@@ -7,6 +7,9 @@
     <Filter Include="VS">
       <UniqueIdentifier>{86383fd5-1476-499a-b582-ac96f4657d36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CS">
+      <UniqueIdentifier>{c1bf95fe-1a08-4024-b5b2-68986ff42616}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="$(MSBuildThisFileDirectory)TriangleVS.hlsl">
@@ -50,6 +53,9 @@
     </FxCompile>
     <FxCompile Include="$(MSBuildThisFileDirectory)SpriteAnimationVS.hlsl">
       <Filter>VS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)PaintCS.hlsl">
+      <Filter>CS</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

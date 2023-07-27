@@ -45,6 +45,7 @@ namespace jns::enums
 		Material,
 		Mesh,
 		Animation,
+		ComputeShader,
 		Image,
 		End,
 	};

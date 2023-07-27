@@ -1,5 +1,6 @@
 #include "jnsRutabysScene.h"
 #include "CommonSceneInclude.h"
+#include "jnsComputeShader.h"
 
 namespace jns
 {
@@ -11,6 +12,8 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
+		//ComputeShader* cs = new ComputeShader();
+		//cs->Create(L"PaintCS.hlsl", "main");
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
 		
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);

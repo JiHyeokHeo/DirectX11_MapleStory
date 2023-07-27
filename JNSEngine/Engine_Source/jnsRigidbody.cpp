@@ -31,6 +31,8 @@ namespace jns
 
 		// 속도에 가속도를 더해준다.
 		mVelocity += mAccelation * Time::DeltaTime();
+
+
 		if (mbGround)
 		{
 			mVelocity = Vector3::Zero;
