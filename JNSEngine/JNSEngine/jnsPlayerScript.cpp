@@ -15,6 +15,8 @@ namespace jns
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 255.0f;
+		mPlayerInfo.mJumpCnt = 0;
+		mPlayerInfo.LeftRight = -1;
 		mPlayerState = ePlayerState::Idle;
 		at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
@@ -157,12 +159,19 @@ namespace jns
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
-		if (Input::GetKey(eKeyCode::C))
+		if (Input::GetKeyDown(eKeyCode::C))
 		{
+			if (mPlayerInfo.isGrounded == false)
+			{
+				mPlayerState = ePlayerState::Jump;
+				return;
+			}
+			
+			Vector3 velocity = mRb->GetVelocity();
+			velocity.y -= 300.0f;
+
+			mRb->SetVelocity(velocity);
 			mRb->SetGround(false);
-			pos.y += mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
-			pos.x += mPlayerInfo.LeftRight * mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
-			tr->SetPosition(pos);
 		}
 		if (Input::GetKey(eKeyCode::DOWN))
 		{
@@ -184,28 +193,58 @@ namespace jns
 			pos.z -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		if (Input::GetKey(eKeyCode::E))
+		if (Input::GetKeyDown(eKeyCode::E))
 		{
 			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 			tr->SetPosition(pos);
+		}
+		if (Input::GetKeyDown(eKeyCode::LCTRL))
+		{
+			mPlayerState = ePlayerState::Attack;
 		}
 	}
 
 	void PlayerScript::Jump()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector3 pos = tr->GetPosition();
-		
-		if (Input::GetKey(eKeyCode::C))
+		Vector3 pos = {};
+		if (checktime == 0)
 		{
-			mRb->SetGround(false);
-			pos.y += mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
-			pos.x += mPlayerInfo.LeftRight * mPlayerInfo.mMoveSpeed * 1.5f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			isDone = false;
+			checktime++;
+			pos = tr->GetPosition();
+		}
+		
+
+		Vector3 mJumpLerpPos = Vector3(pos.x, pos.y, pos.z);
+		Vector3 jumpDestination = Vector3(mPlayerInfo.LeftRight * 210.0f + mJumpLerpPos.x, pos.y + 50.0f, pos.z);
+		Vector3 finaldestination = { };
+		
+		if (i == 1000)
+		{
+			isDone = true;
+			i = 0;
+		}
+		else if(isDone == false)
+		{
+			i++;
+			finaldestination = Vector3::Lerp(mJumpLerpPos, jumpDestination, 0.001 * i * Time::DeltaTime());
+
+			tr->SetPosition(finaldestination);
+		}
+
+
+		if (Input::GetKeyDown(eKeyCode::LCTRL))
+		{
+			mPlayerState = ePlayerState::Attack;
 		}
 
 		if (mPlayerInfo.isGrounded == true)
+		{
+			checktime = 0;
 			mPlayerState = ePlayerState::Idle;
+		}
+	
 	}
 
 	void PlayerScript::Prone()
@@ -308,16 +347,27 @@ namespace jns
 	{
 		mRb->SetGround(false);
 		mPlayerInfo.isGrounded = false;
+		mPlayerInfo.mJumpTime = 0.0f;
 	}
 
 	void PlayerScript::CheckPlayerIsGrounded()
 	{
 		mPlayerInfo.isGrounded = mRb->GetGround();
+		
+		if (mPlayerInfo.isGrounded == false)
+		{
+			mPlayerInfo.mJumpTime += Time::DeltaTime();
+		}
+		else if(mPlayerState ==ePlayerState::Idle)
+		{
+			mPlayerInfo.mJumpTime = 0.0f;
+		}
 	}
 
 	void PlayerScript::CompleteAssasinHit1()
 	{
-		at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+		mPlayerState = ePlayerState::Idle;
+		//at->PlayAnimation(L"CharactorCharAssain2Hit", true);
 	}
 	void PlayerScript::CompleteAnimation()
 	{

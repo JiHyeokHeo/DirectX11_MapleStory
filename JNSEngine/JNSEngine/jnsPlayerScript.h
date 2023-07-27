@@ -52,9 +52,13 @@ namespace jns
 
 		void Clear();
 		void CheckPlayerIsGrounded();
+
+		
 	private:
 		struct PlayerInfo
 		{
+			int mJumpCnt;
+			float mJumpTime;
 			float mJumpForce;
 			bool isGrounded;
 			bool isPlayed;
@@ -74,6 +78,9 @@ namespace jns
 		Scene* mPreveScene;
 		Scene* mActveScene;
 		bool isAnimationDone;
-
+		eKeyCode mClicked;
+		int checktime;
+		int i = 0;
+		bool isDone;
 	};
 }

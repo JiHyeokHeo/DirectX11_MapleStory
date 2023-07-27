@@ -16,7 +16,7 @@ namespace jns
 		mLimitedVelocity.x = 200.0f;
 		mLimitedVelocity.y = 1000.0f;
 		mbGround = false;
-		mGravity = Vector3(0.0f, 800.0f ,0.0f);
+		mGravity = Vector3(0.0f, 700.0f ,0.0f);
 		mFriction = 100.0f;
 	}
 	RigidBody::~RigidBody()
@@ -44,6 +44,7 @@ namespace jns
 		{
 			mVelocity += mGravity * Time::DeltaTime();
 		}
+
 
 		// 중력가속도 최대 속도 제한
 		Vector3 gravity = mGravity;

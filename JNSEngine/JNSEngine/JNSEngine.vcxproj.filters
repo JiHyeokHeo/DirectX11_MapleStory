@@ -135,6 +135,12 @@
     <ClCompile Include="jnsRutabysScene.cpp">
       <Filter>Contents\Scenes\RutabysScene</Filter>
     </ClCompile>
+    <ClCompile Include="jnsSkillBase.cpp">
+      <Filter>Contents\Skill\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsAssainHit01.cpp">
+      <Filter>Contents\Skill\Skills\AssainAttack1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -284,6 +290,12 @@
     </ClInclude>
     <ClInclude Include="jnsPortal.h">
       <Filter>Contents\Portal\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsSkillBase.h">
+      <Filter>Contents\Skill\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsAssainHit01.h">
+      <Filter>Contents\Skill\Skills\AssainAttack1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -442,6 +454,21 @@
     </Filter>
     <Filter Include="Contents\Portal\Portal">
       <UniqueIdentifier>{e67f237e-4e94-4ae9-be6b-1381ba5db1ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill">
+      <UniqueIdentifier>{85ed6163-a303-477f-bdc6-6cf209b89e1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{7dfa59c7-3a2c-46fe-998e-1acbc073a344}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\Base">
+      <UniqueIdentifier>{437272f0-ad8a-407a-a804-b6dfb077716c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\Skills">
+      <UniqueIdentifier>{cb7c6f30-0144-4bee-94c5-a51204b8e440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\Skills\AssainAttack1">
+      <UniqueIdentifier>{87351d82-0329-47c1-b164-0e0f0d9aaa90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

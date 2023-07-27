@@ -157,6 +157,7 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="InventoryBTN.h" />
+    <ClInclude Include="jnsAssainHit01.h" />
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsBGInstance.h" />
     <ClInclude Include="jnsCameraObject.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="jnsShopSlotBack.h" />
     <ClInclude Include="jnsShopSlotBack2.h" />
     <ClInclude Include="jnsShopSlotBack3.h" />
+    <ClInclude Include="jnsSkillBase.h" />
     <ClInclude Include="jnsSkillExtentionSlot.h" />
     <ClInclude Include="jnsSkillQuickSlotBackUI.h" />
     <ClInclude Include="jnsSkillQuickSlotFront.h" />
@@ -207,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InventoryBTN.cpp" />
+    <ClCompile Include="jnsAssainHit01.cpp" />
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsBGInstance.cpp" />
     <ClCompile Include="jnsCameraObject.cpp" />
@@ -239,6 +242,7 @@
     <ClCompile Include="jnsShopSlotBack.cpp" />
     <ClCompile Include="jnsShopSlotBack2.cpp" />
     <ClCompile Include="jnsShopSlotBack3.cpp" />
+    <ClCompile Include="jnsSkillBase.cpp" />
     <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />

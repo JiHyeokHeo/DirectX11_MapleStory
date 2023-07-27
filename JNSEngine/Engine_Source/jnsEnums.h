@@ -26,6 +26,7 @@ namespace jns::enums
 		Item,
 		Player,
 		Monster,
+		Skill,
 		UI,
 		Camera,
 		Cursor,

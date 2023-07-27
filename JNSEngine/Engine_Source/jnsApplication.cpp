@@ -4,6 +4,7 @@
 #include "jnsRenderer.h"
 #include "jnsSceneManager.h"
 #include "jnsCollisionManager.h"
+#include "..\\JNSEngine\jnsSkillManager.h"
 
 namespace jns
 {
@@ -33,7 +34,6 @@ namespace jns
 	{
 		Time::Initialize();
 		Input::Initialize();
-		
 		renderer::Initialize();
 		SceneManager::Initialize();
 	}

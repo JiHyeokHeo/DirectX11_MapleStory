@@ -3,12 +3,10 @@
 #include "Editor_Window.h"
 
 #include "..\Engine_Source\jnsApplication.h"
-#include "..\Engine_Source\jnsApplication.h"
 #include "..\Engine_Source\jnsRenderer.h"
 #include "..\Engine_Source\jnsResources.h"
 #include "LoadScene.h"
 #include "guiEditor.h"
-
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
