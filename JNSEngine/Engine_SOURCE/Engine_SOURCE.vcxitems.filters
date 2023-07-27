@@ -208,6 +208,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsStructedBuffer.h">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComputeShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -306,6 +307,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsStructedBuffer.cpp">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

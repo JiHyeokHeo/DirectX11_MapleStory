@@ -23,6 +23,11 @@ namespace jns
 			End,
 		};
 
+		enum class PlayerDir
+		{
+			Left = -1,
+			Right = 1,
+		};
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -66,9 +71,10 @@ namespace jns
 			float mDeathTime;
 			float mHittedTime;
 			float mMoveSpeed;
-			int LeftRight;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
+			PlayerDir mDir;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
+			PlayerDir mPrevDir;
 		};
-
+		
 		RigidBody* mRb;
 		PlayerInfo mPlayerInfo;
 		ePlayerState mPlayerState;
@@ -82,5 +88,8 @@ namespace jns
 		int checktime;
 		int i = 0;
 		bool isDone;
+		bool isChangedDir;
+		bool wasStand = false;
+		Collider2D* cd;
 	};
 }

@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEnums.h" />
@@ -61,6 +62,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />

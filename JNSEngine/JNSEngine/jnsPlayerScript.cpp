@@ -16,10 +16,11 @@ namespace jns
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerInfo.mJumpCnt = 0;
-		mPlayerInfo.LeftRight = -1;
+		mPlayerInfo.mDir = PlayerDir::Left;
 		mPlayerState = ePlayerState::Idle;
 		at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
+        cd = GetOwner()->GetComponent<Collider2D>();
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
 		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
@@ -46,6 +47,7 @@ namespace jns
 			break;
 		case ePlayerState::Jump:
 			Jump();
+            break;
 ;		case ePlayerState::Prone:
 			Prone();
 			break;
@@ -63,6 +65,7 @@ namespace jns
 		}
 		AnimatorControl();
 		mPrevPlayerState = mPlayerState;
+        mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
 	}
 	void PlayerScript::LateUpdate()
 	{
@@ -117,9 +120,9 @@ namespace jns
     {
         if (Input::GetKeyDown(eKeyCode::C))
         {
+            wasStand = true;
             Vector3 velocity = mRb->GetVelocity();
             velocity.y -= 400.0f;
-
             mRb->SetVelocity(velocity);
             mRb->SetGround(false);
             mPlayerState = ePlayerState::Jump;
@@ -131,12 +134,12 @@ namespace jns
         }
         else if (Input::GetKey(eKeyCode::LEFT))
         {
-            mPlayerInfo.LeftRight = -1;
+            mPlayerInfo.mDir = PlayerDir::Left;
             mPlayerState = ePlayerState::Move;
         }
         else if (Input::GetKey(eKeyCode::RIGHT))
         {
-            mPlayerInfo.LeftRight = 1;
+            mPlayerInfo.mDir = PlayerDir::Right;
             mPlayerState = ePlayerState::Move;
         }
         else if (Input::GetKey(eKeyCode::LCTRL))
@@ -166,7 +169,7 @@ namespace jns
         if (Input::GetKeyDown(eKeyCode::C))
         {
             Vector3 velocity = mRb->GetVelocity();
-            velocity.x += 600.0f * -mPlayerInfo.LeftRight;
+            velocity.x += 600.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 400.0f;
 
             mRb->SetVelocity(velocity);
@@ -211,35 +214,61 @@ namespace jns
         Vector3 pos = {};
         if (Input::GetKey(eKeyCode::LEFT))
         {
-            mPlayerInfo.LeftRight = -1;
+            mPlayerInfo.mDir = PlayerDir::Left;
         }
 
         if (Input::GetKey(eKeyCode::RIGHT))
         {
-            mPlayerInfo.LeftRight = 1;
+            mPlayerInfo.mDir = PlayerDir::Right;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2)
+        if (mPlayerInfo.mPrevDir != mPlayerInfo.mDir && mPlayerInfo.isGrounded == false)
+        {
+            if (mPlayerInfo.mJumpCnt >= 3)
+            {
+                int a = 0;
+            }
+            else if(mPlayerInfo.mJumpCnt >= 1 && mPlayerInfo.mJumpCnt <= 2)
+            {
+				isChangedDir = true;
+            }
+        }
+
+        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 1 && wasStand == true)
         {
             Vector3 velocity = mRb->GetVelocity();
-            velocity.x += 600.0f * -mPlayerInfo.LeftRight;
-            velocity.y -= 70.0f;
+            velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
+            velocity.y -= 60.0f;
+
+            mRb->SetVelocity(velocity);
+            mRb->SetGround(false);
+            mPlayerInfo.mJumpCnt++;
+            wasStand = false;
+        }
+
+        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false)
+        {
+            Vector3 velocity = mRb->GetVelocity();
+            velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
+            velocity.y -= 260.0f;
 
             mRb->SetVelocity(velocity);
             mRb->SetGround(false);
             mPlayerInfo.mJumpCnt++;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 3 && mPlayerInfo.mJumpCnt > 2)
+        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt > 1 && isChangedDir == true)
         {
             Vector3 velocity = mRb->GetVelocity();
-            velocity.x += 600.0f * -mPlayerInfo.LeftRight;
-            velocity.y -= 70.0f;
+            velocity.x *= -1;
+            velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
+            velocity.y -= 260.0f;
 
             mRb->SetVelocity(velocity);
             mRb->SetGround(false);
             mPlayerInfo.mJumpCnt++;
         }
+
 
         if (Input::GetKeyDown(eKeyCode::LCTRL))
         {
@@ -248,6 +277,7 @@ namespace jns
 
         if (mPlayerInfo.isGrounded == true)
         {
+            isChangedDir = false;
             mPlayerInfo.mJumpCnt = 0;
             mPlayerState = ePlayerState::Idle;
         }
@@ -256,8 +286,12 @@ namespace jns
 
     void PlayerScript::Prone()
     {
+        cd->SetSize(Vector2(0.65f, 0.4f));
+        cd->SetCenter(Vector2(0.0f, -45.0f));
         if (Input::GetKeyUp(eKeyCode::DOWN))
         {
+            cd->SetSize(Vector2(0.5f, 0.8f));
+            cd->SetCenter(Vector2::Zero);
             mPlayerState = ePlayerState::Idle;
         }
     }
@@ -294,11 +328,11 @@ namespace jns
 
     void PlayerScript::AnimatorControl()
     {
-        if (mPlayerInfo.LeftRight == 1)
+        if (mPlayerInfo.mDir == PlayerDir::Right)
         {
             mPlayerInfo.isRight = true;
         }
-        else
+        else if(mPlayerInfo.mDir == PlayerDir::Left)
         {
             mPlayerInfo.isRight = false;
         }
