@@ -28,8 +28,10 @@ namespace jns
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
 		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 500.0f, 1.0f));
+
 		player->GetComponent<PlayerScript>()->SetInventoryScript(invenScript);
-		SetTarget(player);
+		CameraManager& CM = CameraManager::GetInstance();
+		CM.SetCameraFollowTarget(player);
 
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 4.0f));
 

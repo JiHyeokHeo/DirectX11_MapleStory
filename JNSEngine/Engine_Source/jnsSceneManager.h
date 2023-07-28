@@ -27,6 +27,7 @@ namespace jns
 
 			mScenes.insert(std::make_pair(name, scene));
 			mActiveScene = scene;
+			mActiveScene->SetName(name);
 			scene->Initialize();
 			return true;
 		}

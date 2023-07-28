@@ -5,6 +5,7 @@
 #include "jnsSceneManager.h"
 #include "jnsCollisionManager.h"
 #include "..\\JNSEngine\jnsSkillManager.h"
+#include "jnsCameraManager.h"
 
 namespace jns
 {

@@ -6,14 +6,17 @@
 #include "jnsSceneManager.h"
 #include "jnsCamera.h"
 #include "jnsCameraObject.h"
+#include "jnsCameraManager.h"
 
 namespace jns
 {
 	void CameraScript::Initialize()
 	{
+		mActiveScene = SceneManager::GetActiveScene();
+		mPrevScene = nullptr;
 		playerPrevPos = Vector3::Zero;
 		cameraPrevPos = Vector3::Zero;
-		setYCord = 200.0f;
+		setYCord = 130.0f;
 	}
 	void CameraScript::Update()
 	{
@@ -67,11 +70,44 @@ namespace jns
 	{
 		GameObject* mCamera = this->GetOwner();
 		CameraObject* mMainCamera = dynamic_cast<CameraObject*>(mCamera);
-		GameObject* checkTarget = mMainCamera->GetFollowTarget();
+		CameraManager& CM = CameraManager::GetInstance();
+		GameObject* checkTarget = CM.GetFollowTarget();
 		
 		if (checkTarget == nullptr)
 			return false;
 		
+		// 씬마다 카메라 한계치를 만들어줍시다.
+
+		if (mActiveScene != mPrevScene)
+		{
+			mActiveScene = SceneManager::GetActiveScene();
+			mCameraRightMaxMove.x = 0.0f;
+			mCameraRightMaxMove.y = 0.0f;
+			mCameraLeftMaxMove.x = 0.0f;
+			mCameraLeftMaxMove.y = 0.0f;
+			mPrevScene = mActiveScene;
+			cameraPrevPos = Vector3::Zero;
+		}
+
+		if (mActiveScene->GetName() == L"Rutabys")
+		{
+			mCameraRightMaxMove.x = 525.0f;
+			mCameraRightMaxMove.y = 1000.0f;
+			mCameraLeftMaxMove.x = -525.0f;
+			mCameraLeftMaxMove.y = 1000.0f;
+			setYCord = 130.0f;
+		}
+
+		if (mActiveScene->GetName() == L"RutabysMob")
+		{
+			mCameraRightMaxMove.x = 2525.0f;
+			mCameraRightMaxMove.y = 0.0f;
+			mCameraLeftMaxMove.x = -2525.0f;
+			mCameraLeftMaxMove.y = 0.0f;
+			setYCord = 180.0f;
+		}
+
+
 
 		// 플레이어 최신 위치를 불러온다.
 		Transform* followTR = checkTarget->GetComponent<Transform>();
@@ -86,10 +122,25 @@ namespace jns
 		// 카메라 z값은 다시 -10으로 바꿔준다. UI카메라와 혼동성을 깨뜨리면 안되기 때문에.
 		interpolatedCameraPos.z = -10.0f;
 
+		if (interpolatedCameraPos.x >= mCameraRightMaxMove.x)
+		{
+			interpolatedCameraPos.x = mCameraRightMaxMove.x;
+		}
+		else if (interpolatedCameraPos.y >= mCameraRightMaxMove.y)
+		{
+			interpolatedCameraPos.y = mCameraRightMaxMove.y;
+		}
+		else if (interpolatedCameraPos.x <= mCameraLeftMaxMove.x)
+		{
+			interpolatedCameraPos.x = mCameraLeftMaxMove.x;
+		}
+		else if (interpolatedCameraPos.y >= mCameraLeftMaxMove.y)
+		{
+			interpolatedCameraPos.y = mCameraLeftMaxMove.y;
+		}
+
 		// 카메라를 선형 보간 시킨 위치로 이동 시킨다.
 		cameratr->SetPosition(interpolatedCameraPos);
-
-
 		playerPrevPos = playerPos;
 		cameraPrevPos = interpolatedCameraPos;
 

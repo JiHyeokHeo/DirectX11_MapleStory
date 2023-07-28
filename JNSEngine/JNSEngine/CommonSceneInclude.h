@@ -1,5 +1,8 @@
 #pragma once
 
+// Singleton
+#include "jnsCameraManager.h"
+
 // Script Header
 #include "jnstestScript.h"
 #include "jnsExpBarMoveScript.h"	

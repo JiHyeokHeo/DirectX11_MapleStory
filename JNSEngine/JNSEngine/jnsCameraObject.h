@@ -30,7 +30,6 @@ namespace jns
 		void TurnOnLayer(eLayerType type);
 		void TurnOnAllLayer();
 		void TurnOffAllLayer();
-
 		eCameraType GetCameraType() { return mCameraType; }
 
 	private:

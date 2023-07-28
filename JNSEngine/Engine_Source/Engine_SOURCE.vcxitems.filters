@@ -209,6 +209,9 @@
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsComputeShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -308,6 +311,9 @@
       <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraManager.cpp">
+      <Filter>Scene\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

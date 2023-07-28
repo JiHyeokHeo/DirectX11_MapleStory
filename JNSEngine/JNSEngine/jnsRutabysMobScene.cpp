@@ -14,7 +14,7 @@ namespace jns
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob1);
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob2);
 		
-		object::Instantiate<Ground>(eLayerType::Ground, Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
+		object::Instantiate<Ground>(eLayerType::Ground, Vector3(0.0f, -300.0f, 4.0f), Vector3(5000.0f, 100.0f, 1.0f));
 
 		CreatePlayerUI();
 		PlayScene::Initialize();

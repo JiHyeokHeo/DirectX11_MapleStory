@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsScene.h"
 
 namespace jns
 {
@@ -19,5 +20,10 @@ namespace jns
 
 		Vector3 playerPrevPos;
 		Vector3 cameraPrevPos;
+		Scene* mActiveScene;
+		Scene* mPrevScene;
+
+		Vector3 mCameraRightMaxMove;
+		Vector3 mCameraLeftMaxMove;
 	};
 }
