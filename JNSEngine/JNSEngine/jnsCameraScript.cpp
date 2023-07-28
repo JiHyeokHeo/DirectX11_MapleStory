@@ -11,6 +11,8 @@ namespace jns
 {
 	void CameraScript::Initialize()
 	{
+		playerPrevPos = Vector3::Zero;
+		cameraPrevPos = Vector3::Zero;
 		setYCord = 200.0f;
 	}
 	void CameraScript::Update()
@@ -70,11 +72,28 @@ namespace jns
 		if (checkTarget == nullptr)
 			return false;
 		
+
+		// 플레이어 최신 위치를 불러온다.
 		Transform* followTR = checkTarget->GetComponent<Transform>();
-		pos = followTR->GetPosition();
+		Vector3 playerPos = followTR->GetPosition();
+		float followSpeed = 4.0f;
+
+		// 카메라 위치 선형 보간을 시킨다.
+		Vector3 targetCameraPos = playerPos + Vector3(0.0f, setYCord, -10.0f);
+		Vector3 interpolatedCameraPos = Vector3::Lerp(cameraPrevPos, targetCameraPos, followSpeed * Time::DeltaTime());
+		
+
+		// 카메라 z값은 다시 -10으로 바꿔준다. UI카메라와 혼동성을 깨뜨리면 안되기 때문에.
+		interpolatedCameraPos.z = -10.0f;
+
+		// 카메라를 선형 보간 시킨 위치로 이동 시킨다.
+		cameratr->SetPosition(interpolatedCameraPos);
 
 
-		cameratr->SetPosition(Vector3(pos.x, pos.y + setYCord, -10.0f));
+		playerPrevPos = playerPos;
+		cameraPrevPos = interpolatedCameraPos;
+
 		return true;
 	}
 }
+

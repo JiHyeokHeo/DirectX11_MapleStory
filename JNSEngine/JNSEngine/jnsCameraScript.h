@@ -17,5 +17,7 @@ namespace jns
 		Vector3 pos;
 		float setYCord;
 
+		Vector3 playerPrevPos;
+		Vector3 cameraPrevPos;
 	};
 }
