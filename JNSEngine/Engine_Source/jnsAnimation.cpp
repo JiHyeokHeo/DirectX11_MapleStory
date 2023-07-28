@@ -94,7 +94,7 @@ namespace jns
 		data.spriteSize = mSprites[mIndex].size;
 		data.spriteOffset = mSprites[mIndex].offset;
 		data.atlasSize = mSprites[mIndex].atlasSize;
-		data.animationType = 1;
+		data.animationType = mDirection;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		cb->SetData(&data);

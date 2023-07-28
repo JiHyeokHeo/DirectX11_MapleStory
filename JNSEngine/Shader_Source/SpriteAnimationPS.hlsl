@@ -27,7 +27,7 @@ float4 main(VSOut In) : SV_TARGET
     // -540 + 1200 
     color = albedoTexture.Sample(anisotropicSampler, In.UV);
     
-    if (type == 0)
+    if (animationType == 0)
     {
         float2 diff = (AtlasSize - SpriteSize) / 2.0f;
         float2 UV = (SpriteLeftTop - diff - SpriteOffset)
@@ -41,7 +41,7 @@ float4 main(VSOut In) : SV_TARGET
         color = atlasTexture.Sample(anisotropicSampler, UV);
     }
     
-    if (type == 1)
+    if (animationType == 1)
     {
         float2 diff = (AtlasSize - SpriteSize) / 2.0f;
         float2 UV = (SpriteLeftTop - diff - SpriteOffset) 

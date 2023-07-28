@@ -74,7 +74,9 @@ namespace jns
 	}
 	void PlayerScript::LateUpdate()
 	{
-		bindConstantBuffer();
+		//bindConstantBuffer();
+        bool t = at->GetActiveAnimation()->GetAniDirection();
+        at->GetActiveAnimation()->SetAniDirection(mPlayerInfo.isRight);
 	}
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)

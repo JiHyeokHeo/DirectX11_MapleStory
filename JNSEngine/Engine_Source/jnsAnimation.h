@@ -53,6 +53,9 @@ namespace jns
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }
+		void SetAniDirection(bool direction) { mDirection = direction; }
+		bool GetAniDirection() { return mDirection; }
+
 
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
@@ -61,6 +64,8 @@ namespace jns
 		int mIndex;
 		float mTime;
 		bool mbComplete;
+
+		bool mDirection;
 	};
 
 }

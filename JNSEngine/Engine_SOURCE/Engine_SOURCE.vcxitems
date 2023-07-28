@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayerManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsResources.h" />
@@ -59,6 +61,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp" />
@@ -75,6 +78,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayerManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsResources.cpp" />
