@@ -184,6 +184,7 @@
     <ClInclude Include="jnsPlayScene.h" />
     <ClInclude Include="jnsPortal.h" />
     <ClInclude Include="jnsPortalBase.h" />
+    <ClInclude Include="jnsPortalScript.h" />
     <ClInclude Include="jnsRutabysMobScene.h" />
     <ClInclude Include="jnsRutabysScene.h" />
     <ClInclude Include="jnsSelectScene.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="jnsPlayScene.cpp" />
     <ClCompile Include="jnsPortal.cpp" />
     <ClCompile Include="jnsPortalBase.cpp" />
+    <ClCompile Include="jnsPortalScript.cpp" />
     <ClCompile Include="jnsRutabysMobScene.cpp" />
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />

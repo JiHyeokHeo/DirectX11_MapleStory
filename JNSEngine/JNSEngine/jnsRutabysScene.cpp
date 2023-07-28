@@ -39,7 +39,7 @@ namespace jns
 		//object::InstantiateSkill<JumpSkill>(Vector3::Zero);
 		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 
-		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 4.0f));
+		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 0.0f));
 
 
 		{

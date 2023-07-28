@@ -79,6 +79,20 @@ namespace jns::graphics
         ScratchImage image;
         int idx = 0;
         std::filesystem::path fs(path);
+        size_t targetWidth = imageMaxWidth;
+        size_t targetHeight = imageMaxHeight;
+
+        //if (imageMaxWidth >= 500)
+        //{
+        //   targetWidth = imageMaxWidth / 5;
+        //   targetHeight = imageMaxHeight / 5;
+        //}
+        //else
+        //{
+        //    targetWidth = imageMaxWidth;
+        //    targetHeight = imageMaxHeight;
+        //}
+
 
         bool isMake = false;
         for (const auto& p : std::filesystem::recursive_directory_iterator(path))
@@ -104,31 +118,41 @@ namespace jns::graphics
 
             if (SUCCEEDED(hr))
             {
-                // Convert the image to a different format if needed (e.g., to DXGI_FORMAT_R8G8B8A8_UNORM)
-                ScratchImage convertedImage;
-                hr = Convert(image.GetImages(), image.GetImageCount(), image.GetMetadata(), DXGI_FORMAT_R8G8B8A8_UNORM, TEX_FILTER_DEFAULT, TEX_THRESHOLD_DEFAULT, convertedImage);
+                // 이미지 크기를 목표 크기로 조정
+                ScratchImage resizedImage;
+                hr = Resize(image.GetImages(), image.GetImageCount(), image.GetMetadata(), targetWidth, targetHeight, TEX_FILTER_DEFAULT, resizedImage);
                 if (FAILED(hr))
                 {
-                    // Handle the conversion error if necessary
+                    // 이미지 크기 조정 오류 처리 (필요한 경우)
                     return hr;
                 }
+
+                // 조정된 이미지를 원하는 형식으로 변환
+                ScratchImage convertedImage;
+                hr = Convert(resizedImage.GetImages(), resizedImage.GetImageCount(), resizedImage.GetMetadata(), DXGI_FORMAT_R8G8B8A8_UNORM, TEX_FILTER_DEFAULT, TEX_THRESHOLD_DEFAULT, convertedImage);
+                if (FAILED(hr))
+                {
+                    // 변환 오류 처리 (필요한 경우)
+                    return hr;
+                }
+
                 if (isMake == false)
                 {
-                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 2, 1, 1);
+                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, targetWidth * filecnt, targetHeight * 2, 1, 1);
                     isMake = true;
                 }
                 if (FAILED(hr))
                 {
-                    // Handle the atlas image initialization error if necessary
+                    // 아틀라스 이미지 초기화 오류 처리 (필요한 경우)
                     return hr;
                 }
 
-                // Copy the converted image data to the atlas image
+                // 조정된 이미지 데이터를 아틀라스 이미지로 복사
                 hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth) * idx, 0);
+                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (targetWidth)*idx, 0);
                 if (FAILED(hr))
                 {
-                    // Handle the copy rectangle error if necessary
+                    // 복사 오류 처리 (필요한 경우)
                     return hr;
                 }
             }

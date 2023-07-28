@@ -10,8 +10,6 @@ namespace jns
 	}
 	void JumpSkill::Initialize()
 	{
-		AddComponent<Collider2D>();
-
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 

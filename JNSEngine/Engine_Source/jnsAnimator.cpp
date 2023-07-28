@@ -77,7 +77,7 @@ namespace jns
 			, duration);
 
 		mAnimations.insert(std::make_pair(name, animation));
-		
+
 		Events* events = FindEvents(name);
 		if (events != nullptr)
 			return;
@@ -86,7 +86,7 @@ namespace jns
 		mEvents.insert(std::make_pair(name, events));
 
 	}
-	Animation* Animator::CreateAnimations(const std::wstring& path , int divideSize, float duration, Vector2 offset)
+	Animation* Animator::CreateAnimations(const std::wstring& path, int divideSize, float duration, Vector2 offset)
 	{
 		size_t maxwidth = 0;
 		size_t maxheight = 0;
@@ -102,7 +102,7 @@ namespace jns
 			const std::wstring ext = p.path().extension();
 
 			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
-			
+
 			if (maxwidth < tex->GetWidth())
 			{
 				maxwidth = tex->GetWidth();
@@ -111,7 +111,7 @@ namespace jns
 			{
 				maxheight = tex->GetHeight();
 			}
-			
+
 			textures.push_back(tex);
 
 			fileCount++;
@@ -119,7 +119,16 @@ namespace jns
 
 		std::wstring key = fs.parent_path().filename();
 		key += fs.filename();
-	
+
+
+		if (maxwidth >= 200)
+		{
+			int frontnum = 0;
+			frontnum = maxwidth / 100;
+			maxwidth /= frontnum;
+			maxheight /= frontnum;
+		}
+
 		mImageAtlas = std::make_shared<graphics::Texture>();
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
 		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, divideSize, offset, duration);

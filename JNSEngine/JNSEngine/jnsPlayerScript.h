@@ -47,8 +47,7 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 
-		void bindConstantBuffer();
-
+		void BindConstantBuffer();
 	public:
 		void Idle();
 		void Move();
@@ -62,6 +61,7 @@ namespace jns
 		void CompleteAnimation();
 		void CompletePronStab();
 		
+		void PlayerControl();
 		void AnimatorControl();
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 

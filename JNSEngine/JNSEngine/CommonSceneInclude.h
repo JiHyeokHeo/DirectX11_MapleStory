@@ -13,6 +13,8 @@
 #include "jnsItemResourcesScript.h"
 #include "jnsInventoryScript.h"
 #include "jnsGroundScript.h"
+#include "jnsPortalScript.h"
+
 
 // Player
 #include "jnsPlayer.h"

@@ -144,6 +144,9 @@
     <ClCompile Include="jnsJumpSkill.cpp">
       <Filter>Contents\Skill\Skills\Jump</Filter>
     </ClCompile>
+    <ClCompile Include="jnsPortalScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -302,6 +305,9 @@
     </ClInclude>
     <ClInclude Include="jnsJumpSkill.h">
       <Filter>Contents\Skill\Skills\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPortalScript.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

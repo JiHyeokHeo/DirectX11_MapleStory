@@ -165,6 +165,11 @@
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JNSEngine\JNSEngine.vcxproj">
+      <Project>{75e637f6-8e03-4459-b01b-0edc06f8761f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

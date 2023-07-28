@@ -21,12 +21,13 @@ namespace jns
 		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
-		mPlayerState = ePlayerState::Idle;
-		at = GetOwner()->GetComponent<Animator>();
+        mPlayerState = ePlayerState::Idle;
+        
+        at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
         cd = GetOwner()->GetComponent<Collider2D>();
         tr = GetOwner()->GetComponent<Transform>();
-		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
+
 		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
 		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);
@@ -34,48 +35,23 @@ namespace jns
 	void PlayerScript::Update()
 	{
 		mActveScene = SceneManager::GetActiveScene();
-		if (mPreveScene != mActveScene)
+		
+        if (mPreveScene != mActveScene)
 		{
 			mPreveScene = mActveScene;
 			Clear();
 		}
 
 		CheckPlayerIsGrounded();
-		
-		switch (mPlayerState)
-		{
-		case ePlayerState::Idle:
-			Idle();
-			break;
-		case ePlayerState::Move:
-			Move();
-			break;
-		case ePlayerState::Jump:
-			Jump();
-            break;
-;		case ePlayerState::Prone:
-			Prone();
-			break;
-		case ePlayerState::Attack:
-			Attack();
-			break;
-		case ePlayerState::Hitted:
-			Hitted();
-			break;
-		case ePlayerState::Die:
-			Die();
-			break;
-		default:
-			break;
-		}
+        PlayerControl();
 		AnimatorControl();
-		mPrevPlayerState = mPlayerState;
+        
+        mPrevPlayerState = mPlayerState;
         mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
 	}
 	void PlayerScript::LateUpdate()
 	{
-		//bindConstantBuffer();
-        bool t = at->GetActiveAnimation()->GetAniDirection();
+		//BindConstantBuffer();
         at->GetActiveAnimation()->SetAniDirection(mPlayerInfo.isRight);
 	}
 	
@@ -94,7 +70,7 @@ namespace jns
 	{
 	}
 
-	void PlayerScript::bindConstantBuffer()
+	void PlayerScript::BindConstantBuffer()
 	{
 		renderer::PlayerCB playerUICB = {};
 		int mHp = 40;
@@ -109,18 +85,6 @@ namespace jns
 		
 		cb->SetData(&playerUICB);
 		cb->Bind(eShaderStage::PS);
-
-
-		// 좌우 판정 + 애니메이터 작동 편하게 !
-
-		renderer::ObjectTypeMoveCB MoveCB = {};
-		MoveCB.mtype = mPlayerInfo.isRight;
-		MoveCB.mTime = Vector3::Zero;
-
-		ConstantBuffer* cb2 = renderer::constantBuffer[(UINT)eCBType::Move];
-
-		cb2->SetData(&MoveCB);
-		cb2->Bind(eShaderStage::PS);
 	}
 
     void PlayerScript::Idle()
@@ -346,6 +310,36 @@ namespace jns
         {
             mPlayerState = ePlayerState::Idle;
             mPlayerInfo.mDeathTime = 0.0f;
+        }
+    }
+
+    void PlayerScript::PlayerControl()
+    {
+        switch (mPlayerState)
+        {
+        case ePlayerState::Idle:
+            Idle();
+            break;
+        case ePlayerState::Move:
+            Move();
+            break;
+        case ePlayerState::Jump:
+            Jump();
+            break;
+        ;		case ePlayerState::Prone:
+            Prone();
+            break;
+        case ePlayerState::Attack:
+            Attack();
+            break;
+        case ePlayerState::Hitted:
+            Hitted();
+            break;
+        case ePlayerState::Die:
+            Die();
+            break;
+        default:
+            break;
         }
     }
 

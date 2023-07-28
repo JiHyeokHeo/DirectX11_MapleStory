@@ -91,6 +91,11 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"SpriteAnimationAlphaShader");
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -359,6 +364,11 @@ namespace renderer
 		 spriteAniShader->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
 		 jns::Resources::Insert(L"SpriteAnimationShader", spriteAniShader);
 
+		 std::shared_ptr<Shader> spriteAniAlphaShader = std::make_shared<Shader>();
+		 spriteAniAlphaShader->Create(eShaderStage::VS, L"SpriteAnimationAlphaVS.hlsl", "main");
+		 spriteAniAlphaShader->Create(eShaderStage::PS, L"SpriteAnimationAlphaPS.hlsl", "main");
+		 jns::Resources::Insert(L"SpriteAnimationAlphaShader", spriteAniAlphaShader);
+
 		 std::shared_ptr<Shader> gridShader = std::make_shared<Shader>();
 		 gridShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
 		 gridShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
@@ -407,7 +417,8 @@ namespace renderer
 			 = Resources::Find<Shader>(L"DebugShader");
 		 std::shared_ptr<Shader> spriteAniShader
 			 = Resources::Find<Shader>(L"SpriteAnimationShader");
-
+		 std::shared_ptr<Shader> spriteAniAlphaShader
+			 = Resources::Find<Shader>(L"SpriteAnimationAlphaShader");
 
 		 std::shared_ptr<Material> material = std::make_shared<Material>();
 		 material = std::make_shared<Material>();
@@ -419,6 +430,11 @@ namespace renderer
 		 material->SetShader(spriteAniShader);
 		 material->SetRenderingMode(eRenderingMode::Transparent);
 		 Resources::Insert(L"SpriteAnimaionMaterial", material);
+
+		 material = std::make_shared<Material>();
+		 material->SetShader(spriteAniAlphaShader);
+		 material->SetRenderingMode(eRenderingMode::Transparent);
+		 Resources::Insert(L"SpriteAnimaionAlphaMaterial", material);
 
 		 material = std::make_shared<Material>();
 		 material->SetShader(debugShader);
