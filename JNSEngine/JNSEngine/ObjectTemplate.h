@@ -69,6 +69,18 @@ namespace jns::object
 
 		return gameobj;
 	}
+	template<typename T>
+	T* InstantiateSkill(Vector3 mPos, Vector3 mScale = (Vector3::One), jns::enums::eLayerType type = eLayerType::Skill)
+	{
+		T* gameobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->GetComponent<Transform>()->SetScale(mScale);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
 
 	template<typename T>
 	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))

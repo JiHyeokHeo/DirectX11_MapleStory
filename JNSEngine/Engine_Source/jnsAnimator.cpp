@@ -56,6 +56,7 @@ namespace jns
 		, std::shared_ptr<graphics::Texture> atlas
 		, Vector2 leftTop, Vector2 size
 		, UINT columnLength
+		, int divideSize
 		, Vector2 offset
 		, float duration)
 	{
@@ -71,6 +72,7 @@ namespace jns
 			, leftTop
 			, size
 			, columnLength
+			, divideSize
 			, offset
 			, duration);
 
@@ -84,7 +86,7 @@ namespace jns
 		mEvents.insert(std::make_pair(name, events));
 
 	}
-	Animation* Animator::CreateAnimations(const std::wstring& path , float duration, Vector2 offset)
+	Animation* Animator::CreateAnimations(const std::wstring& path , int divideSize, float duration, Vector2 offset)
 	{
 		size_t maxwidth = 0;
 		size_t maxheight = 0;
@@ -120,7 +122,7 @@ namespace jns
 	
 		mImageAtlas = std::make_shared<graphics::Texture>();
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
-		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, offset, duration);
+		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, divideSize, offset, duration);
 
 
 		return nullptr;

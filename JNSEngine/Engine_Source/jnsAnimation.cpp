@@ -57,6 +57,7 @@ namespace jns
 		, Vector2 leftTop
 		, Vector2 size
 		, UINT columnLength
+		, int divideSize
 		, Vector2 offset
 		, float duration)
 	{
@@ -74,7 +75,7 @@ namespace jns
 			sprite.size.x = size.x / width;
 			sprite.size.y = size.y / height;
 			sprite.offset = offset;
-			sprite.atlasSize = Vector2(100.0f / width, 100.0f / height);
+			sprite.atlasSize = Vector2(divideSize / width, divideSize / height);
 			sprite.duration = duration;
 
 			mSprites.push_back(sprite);

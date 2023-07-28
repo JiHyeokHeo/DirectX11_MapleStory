@@ -42,10 +42,11 @@ namespace jns
 			, Vector2 leftTop
 			, Vector2 size
 			, UINT columnLength
+			, int divideSize
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.1f);
 
-		Animation* CreateAnimations(const std::wstring& path, float duration, Vector2 offset = Vector2::Zero);
+		Animation* CreateAnimations(const std::wstring& path, int divideSize, float duration, Vector2 offset = Vector2::Zero);
 		Events* FindEvents(const std::wstring& name);
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);

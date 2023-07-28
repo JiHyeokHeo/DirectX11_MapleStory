@@ -176,6 +176,7 @@
     <ClInclude Include="jnsInventoryScript.h" />
     <ClInclude Include="jnsItemResources.h" />
     <ClInclude Include="jnsItemResourcesScript.h" />
+    <ClInclude Include="jnsJumpSkill.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsMpBar.h" />
     <ClInclude Include="jnsPlayer.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="jnsInventoryScript.cpp" />
     <ClCompile Include="jnsItemResources.cpp" />
     <ClCompile Include="jnsItemResourcesScript.cpp" />
+    <ClCompile Include="jnsJumpSkill.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />

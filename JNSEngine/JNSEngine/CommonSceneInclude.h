@@ -2,6 +2,7 @@
 
 // Singleton
 #include "jnsCameraManager.h"
+#include "jnsPlayerManager.h"
 
 // Script Header
 #include "jnstestScript.h"
@@ -15,6 +16,10 @@
 
 // Player
 #include "jnsPlayer.h"
+
+// Skill
+#include "jnsJumpSkill.h"
+#include "jnsAssainHit01.h"
 
 // Camera
 #include "jnsCameraObject.h"

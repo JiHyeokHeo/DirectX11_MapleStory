@@ -86,7 +86,6 @@ namespace jns
 			mCameraLeftMaxMove.x = 0.0f;
 			mCameraLeftMaxMove.y = 0.0f;
 			mPrevScene = mActiveScene;
-			cameraPrevPos = Vector3::Zero;
 		}
 
 		if (mActiveScene->GetName() == L"Rutabys")
@@ -100,10 +99,10 @@ namespace jns
 
 		if (mActiveScene->GetName() == L"RutabysMob")
 		{
-			mCameraRightMaxMove.x = 2525.0f;
-			mCameraRightMaxMove.y = 0.0f;
-			mCameraLeftMaxMove.x = -2525.0f;
-			mCameraLeftMaxMove.y = 0.0f;
+			mCameraRightMaxMove.x = 1360.0f;
+			mCameraRightMaxMove.y = -10.0f;
+			mCameraLeftMaxMove.x = -1360.0f;
+			mCameraLeftMaxMove.y = -10.0f;
 			setYCord = 180.0f;
 		}
 
@@ -126,15 +125,15 @@ namespace jns
 		{
 			interpolatedCameraPos.x = mCameraRightMaxMove.x;
 		}
-		else if (interpolatedCameraPos.y >= mCameraRightMaxMove.y)
+		if (interpolatedCameraPos.y >= mCameraRightMaxMove.y)
 		{
 			interpolatedCameraPos.y = mCameraRightMaxMove.y;
 		}
-		else if (interpolatedCameraPos.x <= mCameraLeftMaxMove.x)
+		if (interpolatedCameraPos.x <= mCameraLeftMaxMove.x)
 		{
 			interpolatedCameraPos.x = mCameraLeftMaxMove.x;
 		}
-		else if (interpolatedCameraPos.y >= mCameraLeftMaxMove.y)
+		if (interpolatedCameraPos.y >= mCameraLeftMaxMove.y)
 		{
 			interpolatedCameraPos.y = mCameraLeftMaxMove.y;
 		}

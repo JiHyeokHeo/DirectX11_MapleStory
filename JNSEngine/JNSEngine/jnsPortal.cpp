@@ -19,7 +19,7 @@ namespace jns
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
 		Animator* at = AddComponent<Animator>();
-		at->CreateAnimations(L"..\\Resources\\Map\\Portal", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Map\\Portal", 200, 0.1f);
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
 		
 		at->PlayAnimation(L"MapPortal", true);

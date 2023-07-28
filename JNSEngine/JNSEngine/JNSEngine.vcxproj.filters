@@ -141,6 +141,9 @@
     <ClCompile Include="jnsAssainHit01.cpp">
       <Filter>Contents\Skill\Skills\AssainAttack1</Filter>
     </ClCompile>
+    <ClCompile Include="jnsJumpSkill.cpp">
+      <Filter>Contents\Skill\Skills\Jump</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="jnsAssainHit01.h">
       <Filter>Contents\Skill\Skills\AssainAttack1</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsJumpSkill.h">
+      <Filter>Contents\Skill\Skills\Jump</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -469,6 +475,9 @@
     </Filter>
     <Filter Include="Contents\Skill\Skills\AssainAttack1">
       <UniqueIdentifier>{87351d82-0329-47c1-b164-0e0f0d9aaa90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\Skills\Jump">
+      <UniqueIdentifier>{aa33a68a-3424-402b-98cf-3d7d4c3a6810}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

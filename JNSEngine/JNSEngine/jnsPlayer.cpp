@@ -21,20 +21,20 @@ namespace jns
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
 		Animator* at = AddComponent<Animator>();
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk" , 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain2Hit", 0.1f, Vector2(0.015f, 0.02f));
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharBuff", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharDead", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharHit", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharIdle", 0.3f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharJump", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharLadder", 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 0.1f, Vector2(0.0f, 0.15f));
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 0.2f, Vector2(0.0f, 0.15f));
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit",  100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain2Hit", 100, 0.1f, Vector2(0.015f, 0.02f));
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharBuff", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharDead", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharHit", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharIdle", 100, 0.3f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharJump", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharLadder", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 100, 0.1f, Vector2(0.0f, 0.15f));
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 100, 0.2f, Vector2(0.0f, 0.15f));
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 100, 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 100, 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 100, 0.1f);
 		
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));

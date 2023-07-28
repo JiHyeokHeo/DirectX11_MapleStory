@@ -16,11 +16,10 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 
-		at->CreateAnimations(L"..\\Resources\Rogue_Skill\Assaination\Normal_Assasination_First_Attack", 0.1f);
-		SetPosition(Vector3(405.0f, -339.0f, 4.3f));
-		SetScaleWithOriginalImageScale(Vector2(1.0f, 1.0f));
+		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  300, 0.1f);
 		
-		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , false);
+		tr->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
 		SkillBase::Initialize();
 	}
 	void AssainHit01::Update()

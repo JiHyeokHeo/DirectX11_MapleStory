@@ -23,7 +23,7 @@ namespace jns
 
 
 	private:
-		GameObject* mCameraFollowTarget;
+		GameObject* mCameraFollowTarget = nullptr;
 	};
 
 }

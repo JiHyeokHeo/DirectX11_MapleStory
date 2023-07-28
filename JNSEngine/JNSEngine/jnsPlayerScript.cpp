@@ -208,13 +208,14 @@ namespace jns
         }
         if (Input::GetKeyDown(KEY_SLOT(eKeyType::Attack)))
         {
+            object::InstantiateSkill<AssainHit01>(pos, Vector3(100.0f, 100.0f, 1.0f));
             mPlayerState = ePlayerState::Attack;
         }
     }
 
     void PlayerScript::Jump()
     {
-        Vector3 pos = {};
+        Vector3 pos = tr->GetPosition();
         if (Input::GetKey(eKeyCode::LEFT))
         {
             mPlayerInfo.mDir = PlayerDir::Left;
@@ -247,6 +248,7 @@ namespace jns
             mRb->SetGround(false);
             mPlayerInfo.mJumpCnt++;
             wasStand = false;
+            object::InstantiateSkill<JumpSkill>(pos, Vector3(100.0f, 100.0f, 1.0f));
         }
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false)

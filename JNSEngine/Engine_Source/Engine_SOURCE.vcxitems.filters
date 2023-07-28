@@ -212,6 +212,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayerManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -312,6 +315,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraManager.cpp">
+      <Filter>Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayerManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
