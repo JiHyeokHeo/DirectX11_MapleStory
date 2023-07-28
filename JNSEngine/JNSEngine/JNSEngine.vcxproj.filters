@@ -470,9 +470,6 @@
     <Filter Include="Contents\Skill">
       <UniqueIdentifier>{85ed6163-a303-477f-bdc6-6cf209b89e1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manager">
-      <UniqueIdentifier>{7dfa59c7-3a2c-46fe-998e-1acbc073a344}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Skill\Base">
       <UniqueIdentifier>{437272f0-ad8a-407a-a804-b6dfb077716c}</UniqueIdentifier>
     </Filter>

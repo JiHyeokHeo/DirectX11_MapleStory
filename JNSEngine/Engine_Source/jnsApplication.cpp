@@ -4,7 +4,7 @@
 #include "jnsRenderer.h"
 #include "jnsSceneManager.h"
 #include "jnsCollisionManager.h"
-#include "..\\JNSEngine\jnsSkillManager.h"
+#include "jnsSkillManager.h"
 #include "jnsCameraManager.h"
 
 namespace jns
@@ -37,6 +37,7 @@ namespace jns
 		Input::Initialize();
 		renderer::Initialize();
 		SceneManager::Initialize();
+		
 	}
 	void Application::Update()
 	{

@@ -1,4 +1,5 @@
 #include "jnsJumpSkill.h"
+#include "jnsSkillManager.h"
 
 namespace jns
 {
@@ -17,6 +18,9 @@ namespace jns
 		tr->SetScale(Vector3(177.0f, 100.0f, 1.0f));
 
 		at->PlayAnimation(L"Rogue_SkillflashJump", false);
+
+
+
 		SkillBase::Initialize();
 	}
 	void JumpSkill::Update()
