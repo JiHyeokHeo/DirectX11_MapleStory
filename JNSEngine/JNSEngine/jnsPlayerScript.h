@@ -23,6 +23,16 @@ namespace jns
 			End,
 		};
 
+		enum class eKeyType
+		{
+			Attack = (UINT)eKeyCode::LCTRL,
+			Jump = (UINT)eKeyCode::C,
+			Prone = (UINT)eKeyCode::DOWN,
+			MoveL = (UINT)eKeyCode::LEFT,
+			MoveR = (UINT)eKeyCode::RIGHT,
+
+		};
+
 		enum class PlayerDir
 		{
 			Left = -1,
@@ -74,7 +84,7 @@ namespace jns
 			PlayerDir mDir;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
 			PlayerDir mPrevDir;
 		};
-		
+		Transform* tr;
 		RigidBody* mRb;
 		PlayerInfo mPlayerInfo;
 		ePlayerState mPlayerState;

@@ -471,4 +471,7 @@
       <UniqueIdentifier>{87351d82-0329-47c1-b164-0e0f0d9aaa90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
 </Project>
