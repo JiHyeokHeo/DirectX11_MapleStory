@@ -30,7 +30,6 @@ namespace jns
 			Prone = (UINT)eKeyCode::DOWN,
 			MoveL = (UINT)eKeyCode::LEFT,
 			MoveR = (UINT)eKeyCode::RIGHT,
-
 		};
 
 		enum class PlayerDir
@@ -38,6 +37,7 @@ namespace jns
 			Left = -1,
 			Right = 1,
 		};
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -84,6 +84,7 @@ namespace jns
 			PlayerDir mDir;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
 			PlayerDir mPrevDir;
 		};
+
 		Transform* tr;
 		RigidBody* mRb;
 		PlayerInfo mPlayerInfo;

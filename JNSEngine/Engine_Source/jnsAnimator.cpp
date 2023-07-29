@@ -129,6 +129,8 @@ namespace jns
 			maxheight /= frontnum;
 		}
 
+		
+
 		mImageAtlas = std::make_shared<graphics::Texture>();
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
 		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, divideSize, offset, duration);

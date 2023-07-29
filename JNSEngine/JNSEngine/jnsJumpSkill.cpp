@@ -1,5 +1,6 @@
 #include "jnsJumpSkill.h"
 #include "jnsSkillManager.h"
+#include "jnsSkillManager.h"
 
 namespace jns
 {

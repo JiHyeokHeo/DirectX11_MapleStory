@@ -388,7 +388,7 @@ namespace jns
                 at->PlayAnimation(L"CharactorCharProne", true);
                 break;
             case ePlayerState::Attack:
-                at->PlayAnimation(L"CharactorCharAssain1Hit", true);
+                at->PlayAnimation(L"CharactorCharAssain2Hit", true);
                 break;
             case ePlayerState::Hitted:
                 at->PlayAnimation(L"CharactorCharHit", true);

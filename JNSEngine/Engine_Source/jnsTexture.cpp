@@ -120,7 +120,20 @@ namespace jns::graphics
             {
                 // 이미지 크기를 목표 크기로 조정
                 ScratchImage resizedImage;
-                hr = Resize(image.GetImages(), image.GetImageCount(), image.GetMetadata(), targetWidth, targetHeight, TEX_FILTER_DEFAULT, resizedImage);
+
+                size_t t_Width = {};
+                size_t t_Height= {};
+                t_Width = image.GetMetadata().width;
+                t_Height = image.GetMetadata().height;
+                if (t_Width >= 200)
+                {
+                    int frontnum = 0;
+                    frontnum = t_Width / 100;
+                    t_Width /= frontnum;
+                    t_Height /= frontnum;
+                }
+               
+                hr = Resize(image.GetImages(), image.GetImageCount(), image.GetMetadata(), t_Width, t_Height, TEX_FILTER_DEFAULT, resizedImage);
                 if (FAILED(hr))
                 {
                     // 이미지 크기 조정 오류 처리 (필요한 경우)
