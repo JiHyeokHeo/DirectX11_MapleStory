@@ -85,6 +85,7 @@ namespace jns
 		Vector2 mTextureSize;
 		Vector2 mSize;
 		Animator* at;
+		int mSkillDirection;
 	};
 }
 

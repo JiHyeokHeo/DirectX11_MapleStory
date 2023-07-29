@@ -28,6 +28,7 @@ namespace jns
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
 
+		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		// 플레이어 생성
 		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 2000.0f, 1.0f));
 		player->GetComponent<PlayerScript>()->SetInventoryScript(invenScript);
@@ -36,8 +37,7 @@ namespace jns
 		CM.SetCameraFollowTarget(player);
 		PM.SetPlayer(player);
 
-		//object::InstantiateSkill<JumpSkill>(Vector3::Zero);
-		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
+		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
 
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 0.0f));
 

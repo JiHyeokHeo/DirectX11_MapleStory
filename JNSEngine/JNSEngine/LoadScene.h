@@ -34,8 +34,8 @@ namespace jns
 		SceneManager::CreateScene<StartScene5>(L"StartScene5");
 		SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
 		SceneManager::CreateScene<RutabysMobScene>(L"RutabysMob");
-		SceneManager::CreateScene<LoginScene>(L"Login");
 		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
+		SceneManager::CreateScene<LoginScene>(L"Login");
 
 
 		//SceneManager::LoadScene(L"Login");

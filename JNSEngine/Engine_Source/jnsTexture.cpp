@@ -125,10 +125,10 @@ namespace jns::graphics
                 size_t t_Height= {};
                 t_Width = image.GetMetadata().width;
                 t_Height = image.GetMetadata().height;
-                if (t_Width >= 200)
+                if (t_Width >= 600)
                 {
                     int frontnum = 0;
-                    frontnum = t_Width / 100;
+                    frontnum = t_Width / 600;
                     t_Width /= frontnum;
                     t_Height /= frontnum;
                 }

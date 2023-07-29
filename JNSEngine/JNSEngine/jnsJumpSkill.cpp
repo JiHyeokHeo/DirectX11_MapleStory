@@ -1,6 +1,6 @@
 #include "jnsJumpSkill.h"
 #include "jnsSkillManager.h"
-#include "jnsSkillManager.h"
+#include "jnsSceneManager.h"
 
 namespace jns
 {
@@ -15,13 +15,12 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 
-		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\flashJump", 400, 0.1f);
-		tr->SetScale(Vector3(177.0f, 100.0f, 1.0f));
+		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\flashJump", 500, 0.1f);
+		tr->SetScale(Vector3(800.0f, 800.0f, 1.0f));
 
 		at->PlayAnimation(L"Rogue_SkillflashJump", false);
 
-
-
+		mSkillDirection = 1;
 		SkillBase::Initialize();
 	}
 	void JumpSkill::Update()
@@ -30,6 +29,7 @@ namespace jns
 	}
 	void JumpSkill::LateUpdate()
 	{
+		at->GetActiveAnimation()->SetAniDirection(mSkillDirection);
 		SkillBase::LateUpdate();
 	}
 	void JumpSkill::Render()

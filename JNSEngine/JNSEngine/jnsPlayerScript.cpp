@@ -27,7 +27,6 @@ namespace jns
 		mRb = GetOwner()->GetComponent<RigidBody>();
         cd = GetOwner()->GetComponent<Collider2D>();
         tr = GetOwner()->GetComponent<Transform>();
-
 		at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAnimation, this);
 		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);

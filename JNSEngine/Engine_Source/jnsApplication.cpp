@@ -36,6 +36,7 @@ namespace jns
 		Time::Initialize();
 		Input::Initialize();
 		renderer::Initialize();
+		SkillManager::Initialize();
 		SceneManager::Initialize();
 		
 	}

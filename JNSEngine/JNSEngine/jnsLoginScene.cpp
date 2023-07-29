@@ -26,6 +26,17 @@ namespace jns
 			tr->SetPosition(Vector3(0.0f, -20.0f, 4.8f));
 			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
 		}
+
+		{
+			GameObject* light = new GameObject();
+			light->SetName(L"Smile");
+			AddGameObject(eLayerType::Light, light);
+			Light* lightComp = light->AddComponent<Light>();
+			lightComp->SetType(eLightType::Directional);
+			lightComp->SetColor(Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+		}
+
+
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::Login);
 		PlayScene::Initialize();
 	}

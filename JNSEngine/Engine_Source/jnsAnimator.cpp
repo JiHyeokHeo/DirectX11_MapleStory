@@ -89,6 +89,7 @@ namespace jns
 	Animation* Animator::CreateAnimations(const std::wstring& path, int divideSize, float duration, Vector2 offset)
 	{
 		size_t maxwidth = 0;
+		size_t minwidth = 0;
 		size_t maxheight = 0;
 		UINT fileCount = 0;
 
@@ -107,6 +108,12 @@ namespace jns
 			{
 				maxwidth = tex->GetWidth();
 			}
+
+			if (minwidth > tex->GetWidth())
+			{
+				minwidth = tex->GetWidth();
+			}
+
 			if (maxheight < tex->GetHeight())
 			{
 				maxheight = tex->GetHeight();
@@ -121,10 +128,10 @@ namespace jns
 		key += fs.filename();
 
 
-		if (maxwidth >= 200)
+		if (maxwidth >= 600 || minwidth >= 600)
 		{
 			int frontnum = 0;
-			frontnum = maxwidth / 100;
+			frontnum = maxwidth / 600;
 			maxwidth /= frontnum;
 			maxheight /= frontnum;
 		}

@@ -11,15 +11,16 @@ namespace jns
 	}
 	void AssainHit01::Initialize()
 	{
-		AddComponent<Collider2D>();
+		Collider2D* cd = AddComponent<Collider2D>();
 
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 
-		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  300, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.1f);
 		
-		tr->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+		tr->SetScale(Vector3(300.0f, 300.0f, 1.0f));
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
+		cd->SetSize(Vector2(0.2f, 0.2f));
 		SkillBase::Initialize();
 	}
 	void AssainHit01::Update()
