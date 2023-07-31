@@ -1,25 +1,21 @@
 #pragma once
-#include "jnsSkillBase.h"
+#include "jnsMonsterBase.h"
 
 
 namespace jns
 {
-	class JumpSkill : public SkillBase
+	class BloodyQueen : public MonsterBase
 	{
 	public:
-		JumpSkill();
-		~JumpSkill();
+		BloodyQueen();
+		~BloodyQueen();
+
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
-		
-		void CompleteJump();
+
 	private:
-		bool isClicked;
-		bool mIsActivated;
-		bool isMaked;
 	};
-	
 }

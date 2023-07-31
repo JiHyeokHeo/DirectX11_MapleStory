@@ -70,8 +70,7 @@ namespace jns
 	{
 		GameObject* mCamera = this->GetOwner();
 		CameraObject* mMainCamera = dynamic_cast<CameraObject*>(mCamera);
-		CameraManager& CM = CameraManager::GetInstance();
-		GameObject* checkTarget = CM.GetFollowTarget();
+		GameObject* checkTarget = SceneManager::GetPlayer();
 		
 		if (checkTarget == nullptr)
 			return false;

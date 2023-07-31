@@ -48,6 +48,9 @@ namespace jns
 
 
 		void BindConstantBuffer();
+		eKeyCode GetPlayerClickButton() { return mClicked; }
+		PlayerDir GetPlayerDirection() { return mPlayerInfo.mPrevDir; }
+
 	public:
 		void Idle();
 		void Move();

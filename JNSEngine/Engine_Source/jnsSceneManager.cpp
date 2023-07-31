@@ -6,7 +6,7 @@ namespace jns
 {
 	Scene* SceneManager::mActiveScene = nullptr;
 	std::map<std::wstring, Scene*>  SceneManager::mScenes;
-
+	GameObject* SceneManager::mPlayer;
 	void SceneManager::Initialize()
 	{
 

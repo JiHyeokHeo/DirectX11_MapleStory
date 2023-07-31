@@ -28,17 +28,20 @@ namespace jns
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
 
-		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		// 플레이어 생성
-		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 2000.0f, 1.0f));
+		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 1.0f));
 		player->GetComponent<PlayerScript>()->SetInventoryScript(invenScript);
-		CameraManager& CM = CameraManager::GetInstance();
-		PlayerManager& PM = PlayerManager::GetInstance();
-		CM.SetCameraFollowTarget(player);
-		PM.SetPlayer(player);
+		SceneManager::SetPlayer(player);
+
+
+		// 플레이어 싹다 생성 후 스킬들 사전 생성
+
+
+		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
+		object::Instantiate<BloodyQueen>(eLayerType::Player, Vector3(150.0f, 200.0f, 1.0f));
+
 
 		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
-
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 0.0f));
 
 
@@ -48,7 +51,7 @@ namespace jns
 			AddGameObject(eLayerType::Light, light);
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
 		}
 
 		//{

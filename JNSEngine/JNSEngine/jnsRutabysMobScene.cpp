@@ -14,7 +14,6 @@ namespace jns
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob1);
 		GameObject* rutaMovingBG = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenMob2);
 		
-		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		object::Instantiate<Ground>(eLayerType::Ground, Vector3(0.0f, -300.0f, 4.0f), Vector3(5000.0f, 110.0f, 1.0f));
 
 		CreatePlayerUI();

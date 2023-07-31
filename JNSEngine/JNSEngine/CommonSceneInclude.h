@@ -19,6 +19,8 @@
 // Player
 #include "jnsPlayer.h"
 
+#include "jnsBloodyQueen.h"
+
 // Skill
 #include "jnsJumpSkill.h"
 #include "jnsAssainHit01.h"

@@ -128,13 +128,13 @@ namespace jns
 		key += fs.filename();
 
 
-		if (maxwidth >= 600 || minwidth >= 600)
-		{
-			int frontnum = 0;
-			frontnum = maxwidth / 600;
-			maxwidth /= frontnum;
-			maxheight /= frontnum;
-		}
+		//if (maxwidth >= 600 || minwidth >= 600)
+		//{
+		//	int frontnum = 0;
+		//	frontnum = maxwidth / 600;
+		//	maxwidth /= frontnum;
+		//	maxheight /= frontnum;
+		//}
 
 		
 

@@ -225,6 +225,7 @@ namespace jns
             mRb->SetVelocity(velocity);
             mRb->SetGround(false);
             mPlayerInfo.mJumpCnt++;
+            object::InstantiateSkill<JumpSkill>(pos, Vector3(100.0f, 100.0f, 1.0f));
         }
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true)
@@ -237,6 +238,7 @@ namespace jns
             mRb->SetVelocity(velocity);
             mRb->SetGround(false);
             mPlayerInfo.mJumpCnt++;
+            object::InstantiateSkill<JumpSkill>(pos, Vector3(100.0f, 100.0f, 1.0f));
         }
 
    /*     if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt > 1 && isChangedDir == true)
@@ -352,22 +354,6 @@ namespace jns
         {
             mPlayerInfo.isRight = false;
         }
-        //Animator* at = AddComponent<Animator>();
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain2Hit", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharBuff", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharDead", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharHit", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharIdle", 0.3f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharJump", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharLadder", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 0.1f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 0.2f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 0.2f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 0.2f);
-        //at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 0.1f);
-        //at->PlayAnimation(L"CharactorCharIdle", true);
 
         if (mPlayerState != mPrevPlayerState)
         {

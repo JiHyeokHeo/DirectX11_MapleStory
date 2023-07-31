@@ -1,19 +1,22 @@
 #pragma once
 #include "jnsGameObject.h"
-#include "jnsInput.h"
 #include "jnsMeshRenderer.h"
-#include "jnsTransform.h"
 #include "jnsResources.h"
 #include "jnsAnimator.h"
-#include "jnsPlayerScript.h"
 
 namespace jns
 {
-	class SkillBase : public GameObject
+	class MonsterBase : public GameObject	
 	{
 	public:
-		SkillBase();
-		~SkillBase();
+		MonsterBase();
+		~MonsterBase();
+
+		enum class MonsterDir
+		{
+			Left = -1,
+			Right = 1,
+		};
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -86,9 +89,7 @@ namespace jns
 		Vector2 mTextureSize;
 		Vector2 mSize;
 		Animator* at;
-		int mSkillDirection;
-		GameObject* mPlayer;
-		PlayerScript* mPlayerScript;
+		MonsterDir mMonsterDir;
 	};
-}
 
+}

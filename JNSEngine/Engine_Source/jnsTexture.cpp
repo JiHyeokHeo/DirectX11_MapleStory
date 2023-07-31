@@ -35,7 +35,7 @@ namespace jns::graphics
         }
         else // WIC (png, jpg, jpeg, bmp )
         {
-            if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+            if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, mImage)))
                 return S_FALSE;
         }
 
@@ -113,7 +113,7 @@ namespace jns::graphics
             }
             else
             {
-                hr = LoadFromWICFile(fullName.c_str(), WIC_FLAGS_NONE, nullptr, image);
+                hr = LoadFromWICFile(fullName.c_str(), WIC_FLAGS_IGNORE_SRGB, nullptr, image);
             }
 
             if (SUCCEEDED(hr))
@@ -125,13 +125,13 @@ namespace jns::graphics
                 size_t t_Height= {};
                 t_Width = image.GetMetadata().width;
                 t_Height = image.GetMetadata().height;
-                if (t_Width >= 600)
-                {
-                    int frontnum = 0;
-                    frontnum = t_Width / 600;
-                    t_Width /= frontnum;
-                    t_Height /= frontnum;
-                }
+                //if (t_Width >= 600)
+                //{
+                //    int frontnum = 0;
+                //    frontnum = t_Width / 600;
+                //    t_Width /= frontnum;
+                //    t_Height /= frontnum;
+                //}
                
                 hr = Resize(image.GetImages(), image.GetImageCount(), image.GetMetadata(), t_Width, t_Height, TEX_FILTER_DEFAULT, resizedImage);
                 if (FAILED(hr))

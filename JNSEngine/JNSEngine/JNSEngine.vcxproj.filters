@@ -147,6 +147,12 @@
     <ClCompile Include="jnsPortalScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsBloodyQueen.cpp">
+      <Filter>Contents\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsMonsterBase.cpp">
+      <Filter>Contents\Monster\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -308,6 +314,12 @@
     </ClInclude>
     <ClInclude Include="jnsPortalScript.h">
       <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBloodyQueen.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsMonsterBase.h">
+      <Filter>Contents\Monster\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -481,6 +493,12 @@
     </Filter>
     <Filter Include="Contents\Skill\Skills\Jump">
       <UniqueIdentifier>{aa33a68a-3424-402b-98cf-3d7d4c3a6810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Monster">
+      <UniqueIdentifier>{389a370d-ffbf-464a-b578-587a046b055e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Monster\Base">
+      <UniqueIdentifier>{bbd6b239-b9d7-4eda-85c0-9a2a32068533}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
