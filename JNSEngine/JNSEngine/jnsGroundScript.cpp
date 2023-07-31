@@ -40,7 +40,7 @@ namespace jns
 		if (mGround->GetGroundName() == L"RightGround")
 			CheckRightGround(other);
 		
-		if (mGround->GetGroundName() == L"Ladder" && Input::GetKeyDown(eKeyCode::UP))
+		if (mGround->GetGroundName() == L"Ladder" && Input::GetKey(eKeyCode::UP))
 			CheckLadder(other);
 	}
 	void GroundScript::OnCollisionExit(Collider2D* other)
@@ -51,6 +51,12 @@ namespace jns
 			if (player == nullptr)
 				return;
 
+			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+			rb->SetGround(false);
+		}
+
+		if (mGround->GetGroundName() == L"Ladder")
+		{
 			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
 			rb->SetGround(false);
 		}
@@ -149,7 +155,7 @@ namespace jns
 		if (player == nullptr)
 			return;
 
-
+		Transform* playerTr = player->GetComponent<Transform>();
 		RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
 		rb->SetGround(true);
 		Collider2D* playerCol = player->GetComponent<Collider2D>();
@@ -158,19 +164,8 @@ namespace jns
 		Collider2D* groundCol = this->GetOwner()->GetComponent<Collider2D>();
 		Vector3 groundPos = groundCol->GetPosition();
 
-		float fLen = fabs(playerPos.x - groundPos.x);
-		float fSize = (playerCol->GetScale().x / 2.0f) + (groundCol->GetScale().x / 2.0f);
-
-		if (fLen < fSize)
-		{
-			Transform* playerTr = player->GetComponent<Transform>();
-			Transform* grTr = this->GetOwner()->GetComponent<Transform>();
-
-			Vector3 playerPos = playerTr->GetPosition();
-			Vector3 grPos = grTr->GetPosition();
-
-			playerPos.x = grPos.x;
-			playerTr->SetPosition(playerPos);
-		}
+		playerPos.x = groundPos.x;
+		rb->SetVelocity(rb->GetVelocity() * -1);
+		playerTr->SetPosition(playerPos);
 	}
 }

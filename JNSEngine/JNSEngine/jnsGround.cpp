@@ -16,10 +16,10 @@ namespace jns
 	void Ground::Initialize()
 	{
 		SetName(L"Ground");
-		AddComponent<Collider2D>();
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"DebugMaterial"));
+		AddComponent<Collider2D>();
 		AddComponent<GroundScript>();
 	}
 	void Ground::Update()

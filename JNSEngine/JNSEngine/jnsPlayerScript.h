@@ -56,6 +56,7 @@ namespace jns
 	public:
 		void Idle();
 		void Move();
+		void Ladder();
 		void Jump();
 		void Prone();
 		void Attack();
@@ -113,7 +114,7 @@ namespace jns
 		bool isChangedDir;
 		bool wasStand = false;
 
-
+		bool isLadderMoving = false;
 		bool isLadderOn = false;
 	};
 }

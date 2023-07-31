@@ -25,10 +25,6 @@ namespace jns
 	}
 	void JumpSkill::Update()
 	{
-		if (this->GetState() == eState::Paused)
-		{
-			object::Destroy(this);
-		}
 		SkillBase::Update();
 	}
 	void JumpSkill::LateUpdate()
@@ -53,6 +49,10 @@ namespace jns
 	void JumpSkill::Render()
 	{
 		SkillBase::Render();
+		if (this->GetState() == eState::Paused)
+		{
+			object::Destroy(this);
+		}
 	}
 	void JumpSkill::CompleteJump()
 	{

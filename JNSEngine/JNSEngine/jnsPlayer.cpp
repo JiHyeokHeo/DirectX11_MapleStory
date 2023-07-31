@@ -34,6 +34,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProne", 100, 0.1f, Vector2(0.0f, 0.15f));
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharProneStab", 100, 0.2f, Vector2(0.0f, 0.15f));
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRope", 100, 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRopeIdle", 100, 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 100, 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 100, 0.1f);
 		

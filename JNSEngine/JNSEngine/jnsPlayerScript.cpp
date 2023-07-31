@@ -39,6 +39,7 @@ namespace jns
         if (Input::GetKeyDown(eKeyCode::O))
         {
             tr->SetPosition(Vector3(100.0f, 1000.0f, 1.0f));
+            mPlayerState = ePlayerState::Idle;
         }
 
         if (mPreveScene != mActveScene)
@@ -70,13 +71,14 @@ namespace jns
 			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
 		}
 
-        if (other->GetName() == L"Ground")
+        if (other->GetOwner()->GetName() == L"Ground")
         {
-            Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
-            if (ground->GetGroundName() == L"Ladder" && Input::GetKeyDown(eKeyCode::UP))
+            
+            Ground* ground = dynamic_cast<Ground*>(other->GetOwner()); 
+            if (ground->GetGroundName() == L"Ladder" && Input::GetKey(eKeyCode::UP))
             {
                 isLadderOn = true;
-                at->PlayAnimation(L"CharactorCharRope", true);
+                mPlayerState = ePlayerState::Ladder;
             }
         }
 	}
@@ -103,45 +105,42 @@ namespace jns
 
     void PlayerScript::Idle()
     {
-        if (isLadderOn == false)
-        {
-			if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
-			{
-				wasStand = true;
-				Vector3 velocity = mRb->GetVelocity();
-				velocity.y -= 450.0f;
-				mRb->SetVelocity(velocity);
-				mRb->SetGround(false);
-				mPlayerState = ePlayerState::Jump;
-				//mPlayerInfo.mJumpCnt++;
-			}
-			else if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
-			{
-				mPlayerState = ePlayerState::Prone;
-			}
-			else if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
-			{
-				mPlayerInfo.mDir = PlayerDir::Left;
-				mPlayerState = ePlayerState::Move;
-			}
-			else if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
-			{
-				mPlayerInfo.mDir = PlayerDir::Right;
-				mPlayerState = ePlayerState::Move;
-			}
-			else if (Input::GetKey(KEY_SLOT(eKeyType::Attack)))
-			{
-				mPlayerState = ePlayerState::Attack;
-			}
-			else if (Input::GetKey(eKeyCode::Y))
-			{
-				mPlayerState = ePlayerState::Die;
-			}
-			else if (Input::GetKey(eKeyCode::U))
-			{
-				mPlayerState = ePlayerState::Hitted;
-			}
-        }
+		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
+		{
+			wasStand = true;
+			Vector3 velocity = mRb->GetVelocity();
+			velocity.y -= 450.0f;
+			mRb->SetVelocity(velocity);
+			mRb->SetGround(false);
+			mPlayerState = ePlayerState::Jump;
+			//mPlayerInfo.mJumpCnt++;
+		}
+		else if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
+		{
+			mPlayerState = ePlayerState::Prone;
+		}
+		else if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+		{
+			mPlayerInfo.mDir = PlayerDir::Left;
+			mPlayerState = ePlayerState::Move;
+		}
+		else if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+		{
+			mPlayerInfo.mDir = PlayerDir::Right;
+			mPlayerState = ePlayerState::Move;
+		}
+		else if (Input::GetKey(KEY_SLOT(eKeyType::Attack)))
+		{
+			mPlayerState = ePlayerState::Attack;
+		}
+		else if (Input::GetKey(eKeyCode::Y))
+		{
+			mPlayerState = ePlayerState::Die;
+		}
+		else if (Input::GetKey(eKeyCode::U))
+		{
+			mPlayerState = ePlayerState::Hitted;
+		}
     }
 
     void PlayerScript::Move()
@@ -152,53 +151,93 @@ namespace jns
             mPlayerState = ePlayerState::Idle;
         }
 
-        if (isLadderOn == false)
-        {
-			Vector3 pos = tr->GetPosition();
-			if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
-			{
-				Vector3 velocity = mRb->GetVelocity();
-				velocity.x += 600.0f * -(int)mPlayerInfo.mDir;
-				velocity.y -= 450.0f;
+		Vector3 pos = tr->GetPosition();
+		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
+		{
+			Vector3 velocity = mRb->GetVelocity();
+			velocity.x += 600.0f * -(int)mPlayerInfo.mDir;
+			velocity.y -= 450.0f;
 
-				mRb->SetVelocity(velocity);
-				mRb->SetGround(false);
-				mPlayerState = ePlayerState::Jump;
-				mPlayerInfo.mJumpCnt++;
-			}
-			if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
-			{
-				//pos.y -= 255.0f * Time::DeltaTime();
-				//tr->SetPosition(pos);
-			}
-			if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
-			{
-				pos.x -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
-				tr->SetPosition(pos);
-			}
-			if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
-			{
-				pos.x += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
-				tr->SetPosition(pos);
-			}
-			if (Input::GetKey(eKeyCode::Q))
-			{
-				pos.z -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
-				tr->SetPosition(pos);
-			}
-			if (Input::GetKeyDown(eKeyCode::E))
-			{
-				pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
-				tr->SetPosition(pos);
-			}
-			if (Input::GetKeyDown(KEY_SLOT(eKeyType::Attack)))
-			{
-				object::InstantiateSkill<AssainHit01>(pos, Vector3(100.0f, 100.0f, 1.0f));
-				mPlayerState = ePlayerState::Attack;
-			}
+			mRb->SetVelocity(velocity);
+			mRb->SetGround(false);
+			mPlayerState = ePlayerState::Jump;
+			mPlayerInfo.mJumpCnt++;
+		}
+		if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
+		{
+			//pos.y -= 255.0f * Time::DeltaTime();
+			//tr->SetPosition(pos);
+		}
+		if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+		{
+			pos.x -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+		if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+		{
+			pos.x += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+		if (Input::GetKey(eKeyCode::Q))
+		{
+			pos.z -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+		if (Input::GetKeyDown(eKeyCode::E))
+		{
+			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Attack)))
+		{
+			object::InstantiateSkill<AssainHit01>(pos, Vector3(100.0f, 100.0f, 1.0f));
+			mPlayerState = ePlayerState::Attack;
+		}
+
+    }
+
+    void PlayerScript::Ladder()
+    {
+        Vector3 pos = tr->GetPosition();
+        mPlayerInfo.mJumpCnt = 0;
+        if (Input::GetKey(eKeyCode::UP))
+        {
+            isLadderMoving = true;
+            pos.y += 250.0f * Time::DeltaTime();
+            tr->SetPosition(pos);
+        }
+        else if (Input::GetKey(eKeyCode::DOWN))
+        {
+            isLadderMoving = true;
+            pos.y -= 250.0f * Time::DeltaTime();
+            tr->SetPosition(pos);
+        }
+        else
+        {
+            isLadderMoving = false;
         }
 
+        if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+        {
+            mPlayerInfo.mDir = PlayerDir::Left;
+        }
 
+        if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+        {
+            mPlayerInfo.mDir = PlayerDir::Right;
+        }
+
+        if (Input::GetKey(KEY_SLOT(eKeyType::Jump)))
+        {
+            wasStand = true;
+            Vector3 velocity = mRb->GetVelocity();
+            velocity.y -= 450.0f;
+            velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
+            mRb->SetVelocity(velocity);
+            mRb->SetGround(false);
+            mPlayerState = ePlayerState::Jump;
+            //mPlayerInfo.mJumpCnt++;
+        }
     }
 
     void PlayerScript::Jump()
@@ -251,7 +290,7 @@ namespace jns
             object::InstantiateSkill<JumpSkill>(pos, Vector3(100.0f, 100.0f, 1.0f));
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true)
+        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == false)
         {
             Vector3 velocity = mRb->GetVelocity();
             velocity.x *= -1;
@@ -263,6 +302,8 @@ namespace jns
             mPlayerInfo.mJumpCnt++;
             object::InstantiateSkill<JumpSkill>(pos, Vector3(100.0f, 100.0f, 1.0f));
         }
+
+  
 
    /*     if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt > 1 && isChangedDir == true)
         {
@@ -284,6 +325,7 @@ namespace jns
 
         if (mPlayerInfo.isGrounded == true)
         {
+            isLadderOn = false;
             isChangedDir = false;
             mPlayerInfo.mJumpCnt = 0;
             mPlayerState = ePlayerState::Idle;
@@ -347,10 +389,13 @@ namespace jns
         case ePlayerState::Move:
             Move();
             break;
+        case ePlayerState::Ladder:
+            Ladder();
+            break;
         case ePlayerState::Jump:
             Jump();
             break;
-        ;		case ePlayerState::Prone:
+        case ePlayerState::Prone:
             Prone();
             break;
         case ePlayerState::Attack:
@@ -418,6 +463,12 @@ namespace jns
             isAnimationDone = false;
         }
 
+        if (mPlayerState == ePlayerState::Ladder && isAnimationDone == true && isLadderMoving == true)
+        {
+            at->PlayAnimation(L"CharactorCharRope", true);
+            isAnimationDone = false;
+        }
+
     }
 
     void PlayerScript::Clear()
@@ -457,5 +508,14 @@ namespace jns
     }
     void PlayerScript::CompleteRope()
     {
+        if (isLadderMoving == false)
+        {
+            at->PlayAnimation(L"CharactorCharRopeIdle", false);
+            isAnimationDone = true;
+        }
+        else
+        {
+            at->PlayAnimation(L"CharactorCharRope", true);
+        }
     }
 }
