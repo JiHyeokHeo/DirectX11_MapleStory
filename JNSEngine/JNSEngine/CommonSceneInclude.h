@@ -14,7 +14,7 @@
 #include "jnsInventoryScript.h"
 #include "jnsGroundScript.h"
 #include "jnsPortalScript.h"
-
+#include "jnsLightScript.h"
 
 // Player
 #include "jnsPlayer.h"

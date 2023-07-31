@@ -178,6 +178,7 @@
     <ClInclude Include="jnsItemResources.h" />
     <ClInclude Include="jnsItemResourcesScript.h" />
     <ClInclude Include="jnsJumpSkill.h" />
+    <ClInclude Include="jnsLightScript.h" />
     <ClInclude Include="jnsLoginScene.h" />
     <ClInclude Include="jnsMonsterBase.h" />
     <ClInclude Include="jnsMpBar.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="jnsItemResources.cpp" />
     <ClCompile Include="jnsItemResourcesScript.cpp" />
     <ClCompile Include="jnsJumpSkill.cpp" />
+    <ClCompile Include="jnsLightScript.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
     <ClCompile Include="jnsMonsterBase.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />

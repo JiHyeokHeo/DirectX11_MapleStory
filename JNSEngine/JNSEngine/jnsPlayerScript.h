@@ -30,6 +30,7 @@ namespace jns
 			Prone = (UINT)eKeyCode::DOWN,
 			MoveL = (UINT)eKeyCode::LEFT,
 			MoveR = (UINT)eKeyCode::RIGHT,
+			Skill = (UINT)eKeyCode::F,
 		};
 
 		enum class PlayerDir

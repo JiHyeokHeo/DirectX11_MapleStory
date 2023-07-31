@@ -6,6 +6,12 @@ namespace jns
 	class PortalScript : public Script
 	{
 	public:
+		enum class ePortalEnter
+		{
+			RutabysMob,
+			Rutabys,
+			RutabysBoss,
+		};
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -16,7 +22,9 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-		
+		class Portal* mPortal;
+		ePortalEnter mEnter;
+		bool isEnter;
 	};
 
 }

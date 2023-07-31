@@ -153,6 +153,9 @@
     <ClCompile Include="jnsMonsterBase.cpp">
       <Filter>Contents\Monster\Base</Filter>
     </ClCompile>
+    <ClCompile Include="jnsLightScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -320,6 +323,9 @@
     </ClInclude>
     <ClInclude Include="jnsMonsterBase.h">
       <Filter>Contents\Monster\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsLightScript.h">
+      <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

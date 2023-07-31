@@ -20,16 +20,16 @@ namespace jns
 		
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 1000, 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttack", 1000, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 100, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 100, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQWalk", 100, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die1", 100, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die2", 100, 0.1f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die3", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQWalk", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die1", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die2", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die3", 100, 0.1f);
 
-		at->PlayAnimation(L"AttractionBloodyQueenATBQIdle", true);
+		at->PlayAnimation(L"AttractionBloodyQueenATBQAttack", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
-		GetComponent<Transform>()->SetScale(Vector3(550.0f, 550.0f, 1.0f));
+		GetComponent<Transform>()->SetScale(Vector3(800.0f, 800.0f, 1.0f));
 	}
 	void BloodyQueen::Update()
 	{

@@ -3,9 +3,10 @@
 
 namespace jns
 {
-	Portal::Portal(std::wstring name)
+	Portal::Portal(std::wstring name, Vector3 setpos)
 	{
 		mPortalName = name;
+		setPlayerPos = setpos;
 	}
 	Portal::~Portal()
 	{

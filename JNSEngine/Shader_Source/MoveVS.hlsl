@@ -10,6 +10,7 @@ struct VSIn
 struct VSOut
 {
     float4 Pos : SV_Position;
+    float3 WorldPos : POSITION;
     float4 Color : COLOR;
     float2 UV : TEXCOORD;
 };
@@ -26,6 +27,7 @@ VSOut main(VSIn In)
  
     
     Out.Pos = proj;
+    Out.WorldPos = world.xyz;
     Out.Color = In.Color;
     Out.UV = float2(In.UV.x * 0.5f, In.UV.y * 0.5f);
     

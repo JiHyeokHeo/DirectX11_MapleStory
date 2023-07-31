@@ -21,6 +21,7 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 
 		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
 
@@ -38,92 +39,12 @@ namespace jns
 
 
 		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
-		object::Instantiate<BloodyQueen>(eLayerType::Player, Vector3(150.0f, 200.0f, 1.0f));
+		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 
 
 		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
-		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-763.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f,-200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
 
-
-		{
-			GameObject* light = new GameObject();
-			light->SetName(L"Smile");
-			AddGameObject(eLayerType::Light, light);
-			Light* lightComp = light->AddComponent<Light>();
-			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-		}
-
-		//{
-		//	GameObject* light = new GameObject();
-		//	light->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Light, light);
-		//	Light* lightComp = light->AddComponent<Light>();
-		//	lightComp->SetType(eLightType::Point);
-		//	lightComp->SetColor(Vector4(0.0f, 0.0f, 1.0f, 1.0f));
-		//	lightComp->SetRadius(3.0f);
-		//}
-		//Player* player2 = object::Instantiate<Player>(eLayerType::Monster, Vector3(0.0f, 0.0f, 1.0001f));
-		//Transform* tr = player2->GetComponent<Transform>();
-		//tr->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
-		//player2->AddComponent<Collider2D>();
-
-		//GameObject* obj = object::InstantiateItem<ItemResources>(eLayerType::Item, jns::ItemResources::eItemType::PowerPotion);
-		//Transform* tr2 = obj->GetComponent<Transform>();
-		//tr2->SetPosition(Vector3(300.0f, 0.0f, 1.0001f));
-		
-		//ItemResources* testitem = new ItemResources(ItemResources::eItemType::PowerPotion);
-		//testitem->Initialize();
-		//AddGameObject(eLayerType::Item, testitem);
-		
-		//object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion);
-
-		//Collider2D* cd = player->AddComponent<Collider2D>();
-		//cd->SetCenter(Vector2(0.5f, 0.0f));
-
-		//cd = player->AddComponent<Collider2D>();
-		////cd->SetCenter(Vector2(0.f, 0.0f));
-
-		//std::vector<Collider2D*> comps 
-		//	= player->GetComponents<Collider2D>();
-
-		////Test for PS Binding ( uv 좌표 변경을 통해 이미지 무한 루프 wrap 개념(SamplerState) 
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
-		//	//player->AddComponent<testScript>();
-		//	//player->AddComponent<CameraScript>();
-		//}
-
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.5f, 0.0f, -1.0f));
-		//	player->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, 0.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
-		//	//player->AddComponent<testScript>();
-		//	//player->AddComponent<CameraScript>();
-		//}
-
-		//std::shared_ptr<Texture> atlas
-		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\Texture\\linkSprites.png");
-
-		//Animator* at = player->AddComponent<Animator>();
-		//at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
-
-		//at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk");
-		//at->PlayAnimation(L"CharactorCharWalk", true);
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));
@@ -174,11 +95,6 @@ namespace jns
 	void RutabysScene::OnEnter()
 	{
 		PlayScene::OnEnter();
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 	}
 	void RutabysScene::OnExit()
 	{

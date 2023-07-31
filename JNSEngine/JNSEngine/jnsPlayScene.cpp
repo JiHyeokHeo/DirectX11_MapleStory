@@ -11,6 +11,15 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
+		{
+			GameObject* light = new GameObject();
+			light->SetName(L"Smile");
+			AddGameObject(eLayerType::Light, light);
+			Light* lightComp = light->AddComponent<Light>();
+			lightComp->SetType(eLightType::Directional);
+			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+			light->AddComponent<LightScript>();
+		}
 		CreateMainCamera();
 		CreateUICamera();
 		//CreateEffectCamera();
@@ -35,6 +44,12 @@ namespace jns
 
 	void PlayScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
+		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 	}
 
 	void PlayScene::OnExit()

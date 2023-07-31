@@ -44,7 +44,6 @@ namespace jns
 		RigidBody* rb = AddComponent<RigidBody>();
 		rb->SetMass(1.0f);
 
-
 		// 구조상 스크립트를 맨 마지막에 까는게 좋다.
 
 		AddComponent<PlayerScript>();

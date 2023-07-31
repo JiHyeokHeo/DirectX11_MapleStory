@@ -21,7 +21,6 @@ namespace jns
 	void CameraScript::Update()
 	{
 		cameratr = GetOwner()->GetComponent<Transform>();
-		//comp = GetOwner()->;
 
 		if (FollowTarget())
 		{
