@@ -17,7 +17,7 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetGround(bool ground) { mbGround = ground; }
+		void SetGround(bool mGround) { mbGround = mGround; }
 		void SetMass(float mass) { mMass = mass; }
 		bool GetGround() { return mbGround; }
 

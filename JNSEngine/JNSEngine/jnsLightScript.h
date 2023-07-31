@@ -14,6 +14,7 @@ namespace jns
 		Scene* mPrevScene;
 		Scene* mActiveScene;
 		float mOpacity;
+		float mDarkTime;
 	};
 
 }

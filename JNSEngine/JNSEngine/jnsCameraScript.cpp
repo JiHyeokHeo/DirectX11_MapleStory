@@ -68,7 +68,6 @@ namespace jns
 	bool CameraScript::FollowTarget()
 	{
 		GameObject* mCamera = this->GetOwner();
-		CameraObject* mMainCamera = dynamic_cast<CameraObject*>(mCamera);
 		GameObject* checkTarget = SceneManager::GetPlayer();
 		
 		if (checkTarget == nullptr)
@@ -100,6 +99,15 @@ namespace jns
 			mCameraRightMaxMove.x = 1360.0f;
 			mCameraRightMaxMove.y = -10.0f;
 			mCameraLeftMaxMove.x = -1360.0f;
+			mCameraLeftMaxMove.y = -10.0f;
+			setYCord = 180.0f;
+		}
+
+		if (mActiveScene->GetName() == L"RutabysBoss")
+		{
+			mCameraRightMaxMove.x = 525.0f;
+			mCameraRightMaxMove.y = -10.0f;
+			mCameraLeftMaxMove.x = -525.0f;
 			mCameraLeftMaxMove.y = -10.0f;
 			setYCord = 180.0f;
 		}

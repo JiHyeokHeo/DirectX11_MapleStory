@@ -18,7 +18,7 @@ namespace jns
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
 			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-			light->AddComponent<LightScript>();
+			//light->AddComponent<LightScript>();
 		}
 		CreateMainCamera();
 		CreateUICamera();

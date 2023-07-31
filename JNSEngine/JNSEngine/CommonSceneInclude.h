@@ -15,6 +15,7 @@
 #include "jnsGroundScript.h"
 #include "jnsPortalScript.h"
 #include "jnsLightScript.h"
+#include "jnsPlayerMoveLimitScript.h"
 
 // Player
 #include "jnsPlayer.h"

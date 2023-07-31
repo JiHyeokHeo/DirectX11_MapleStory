@@ -15,6 +15,8 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		std::wstring GetGroundName() { return mGroundName; }
+
 	private:
 		std::wstring mGroundName;
 	};

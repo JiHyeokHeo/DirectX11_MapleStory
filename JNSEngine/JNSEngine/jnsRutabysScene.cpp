@@ -23,14 +23,23 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 
+#pragma region Ground
+		
+		// 땅바닥
 		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"Ladder", Vector3(446.0f, 0.0f, 4.0f), Vector3(20.0f, 430.0f, 1.0f));
+		
+#pragma endregion
+
 
 		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		
 
 		// 플레이어 생성
-		player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 1.0f));
+		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 1.0f));
 		player->GetComponent<PlayerScript>()->SetInventoryScript(invenScript);
 		SceneManager::SetPlayer(player);
 
@@ -38,12 +47,19 @@ namespace jns
 		// 플레이어 싹다 생성 후 스킬들 사전 생성
 
 
+
+		// 테스트 스킬
 		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
+		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
+		
+		
+		// 테스트 보스
 		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 
 
-		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
-		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f,-200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
+
+		// 포탈
+		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
 
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);

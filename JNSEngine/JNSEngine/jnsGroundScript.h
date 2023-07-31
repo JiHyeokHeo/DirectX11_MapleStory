@@ -18,8 +18,16 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
-	private:
+		void CheckDownGround(Collider2D* other);
+		void CheckLeftGround(Collider2D* other);
+		void CheckRightGround(Collider2D* other);
+		void CheckLadder(Collider2D* other);
 
+		bool GetIsLadder() { return isLadder; }
+	private:
+		class Ground* mGround;
+
+		bool isLadder;
 	};
 
 }

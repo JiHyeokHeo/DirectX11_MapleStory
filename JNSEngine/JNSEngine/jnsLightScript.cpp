@@ -6,27 +6,34 @@ namespace jns
 	void LightScript::Initialize()
 	{
 		mPrevScene = nullptr;
-		mOpacity = 1.0f;
+		mOpacity = 0.0f;
 	}
 	void LightScript::Update()
 	{
 		mActiveScene = SceneManager::GetActiveScene();
 
-
-		if (mOpacity < 1.0f)
+		if (mDarkTime <= 0.3f)
 		{
-			mOpacity += Time::DeltaTime() * 0.5f;
-		}
-		else
-		{
-			mOpacity = 1.0f;
+			mDarkTime += Time::DeltaTime();
 		}
 
-		if (mPrevScene != mActiveScene)
+		if (mDarkTime >= 0.3f)
 		{
-			mActiveScene = SceneManager::GetActiveScene();
-			mPrevScene = mActiveScene;
-			mOpacity = 0.0f;
+			if (mOpacity < 1.0f )
+			{
+				mOpacity += Time::DeltaTime();
+			}
+			else
+			{
+				mOpacity = 1.0f;
+			}
+
+			if (mPrevScene != mActiveScene)
+			{
+				mActiveScene = SceneManager::GetActiveScene();
+				mPrevScene = mActiveScene;
+				mOpacity = 0.0f;
+			}
 		}
 
 

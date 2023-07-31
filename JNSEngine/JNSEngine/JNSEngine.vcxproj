@@ -183,6 +183,7 @@
     <ClInclude Include="jnsMonsterBase.h" />
     <ClInclude Include="jnsMpBar.h" />
     <ClInclude Include="jnsPlayer.h" />
+    <ClInclude Include="jnsPlayerMoveLimitScript.h" />
     <ClInclude Include="jnsPlayerScript.h" />
     <ClInclude Include="jnsPlayScene.h" />
     <ClInclude Include="jnsPortal.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="jnsMonsterBase.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />
+    <ClCompile Include="jnsPlayerMoveLimitScript.cpp" />
     <ClCompile Include="jnsPlayerScript.cpp" />
     <ClCompile Include="jnsPlayScene.cpp" />
     <ClCompile Include="jnsPortal.cpp" />

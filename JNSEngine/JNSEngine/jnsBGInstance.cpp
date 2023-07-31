@@ -50,7 +50,7 @@ namespace jns
 				mr->SetMaterial(Resources::Find<Material>(L"RutabysBossBGMaterial"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 100.0f, 5.0f));
-				tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::CharactorSelect:
 				mr->SetMaterial(Resources::Find<Material>(L"SelectBGMaterial"));

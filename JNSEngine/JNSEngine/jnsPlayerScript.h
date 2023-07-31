@@ -15,6 +15,7 @@ namespace jns
 		{
 			Idle,
 			Move,
+			Ladder,
 			Jump,
 			Prone,
 			Attack,
@@ -64,6 +65,7 @@ namespace jns
 		void CompleteAssasinHit1();
 		void CompleteAnimation();
 		void CompletePronStab();
+		void CompleteRope();
 		
 		void PlayerControl();
 		void AnimatorControl();
@@ -91,20 +93,27 @@ namespace jns
 
 		Transform* tr;
 		RigidBody* mRb;
+		Animator* at;
+		Collider2D* cd;
+		
 		PlayerInfo mPlayerInfo;
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
+		eKeyCode mClicked;
+		
 		InventoryScript* mInventoryScript;
-		Animator* at;
+		
 		Scene* mPreveScene;
 		Scene* mActveScene;
-		bool isAnimationDone;
-		eKeyCode mClicked;
+		
 		int checktime;
-		int i = 0;
+		bool isAnimationDone;
+		
 		bool isDone;
 		bool isChangedDir;
 		bool wasStand = false;
-		Collider2D* cd;
+
+
+		bool isLadderOn = false;
 	};
 }

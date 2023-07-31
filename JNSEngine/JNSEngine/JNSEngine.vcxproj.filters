@@ -156,6 +156,9 @@
     <ClCompile Include="jnsLightScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsPlayerMoveLimitScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -325,6 +328,9 @@
       <Filter>Contents\Monster\Base</Filter>
     </ClInclude>
     <ClInclude Include="jnsLightScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayerMoveLimitScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
   </ItemGroup>
