@@ -6,9 +6,17 @@
 #include "jnsResources.h"
 #include "jnsAnimator.h"
 #include "jnsPlayerScript.h"
+#include "ObjectTemplate.h"
 
 namespace jns
 {
+	class SkillInterface
+	{
+		virtual void CompleteSkillAnimation() = 0;
+		virtual void StartSkillAnimation() = 0;
+	};
+
+
 	class SkillBase : public GameObject
 	{
 	public:
@@ -19,6 +27,28 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		
+
+		virtual void SetDirection() 
+		{
+			int mDir = (int)mPlayerScript->GetPlayerDirection();
+
+			if (at->GetActiveAnimation() != nullptr && isMaked == false)
+			{
+				if (mDir == -1)
+				{
+					at->GetActiveAnimation()->SetAniDirection(false);
+				}
+				else
+				{
+					at->GetActiveAnimation()->SetAniDirection(true);
+				}
+				isMaked = true;
+			}
+		}
+		
+	
 
 		virtual void SetMesh(const std::wstring& name)
 		{
@@ -89,6 +119,7 @@ namespace jns
 		int mSkillDirection;
 		GameObject* mPlayer;
 		PlayerScript* mPlayerScript;
-	};
+		bool isMaked;
+};
 }
 

@@ -70,9 +70,18 @@ namespace jns
 
 		// 테스트 스킬
 		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
-		object::InstantiateSkill<JumpSkill>(Vector3::Zero);
+		JumpSkill* jump1 = object::InstantiateSkill<JumpSkill>(Vector3::Zero);
+		jump1->SetSkillJumpNum(1);
+		JumpSkill* jump2 =  object::InstantiateSkill<JumpSkill>(Vector3::Zero);
+		jump2->SetSkillJumpNum(2);
 		
+		GameObject* obj1 = object::InstantiateSkill<AssainHit01>(Vector3::Zero);
+		GameObject* obj2 = object::InstantiateSkill<AssainHit02>(Vector3::Zero);
 		
+		SkillManager::AddSkill(L"Normal_Assain_First_Attack", obj1);
+		SkillManager::AddSkill(L"Normal_Assain_Second_Attack", obj2);
+
+
 		// 테스트 보스
 		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 

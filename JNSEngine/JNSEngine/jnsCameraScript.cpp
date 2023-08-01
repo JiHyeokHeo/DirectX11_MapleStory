@@ -88,9 +88,9 @@ namespace jns
 		if (mActiveScene->GetName() == L"Rutabys")
 		{
 			mCameraRightMaxMove.x = 525.0f;
-			mCameraRightMaxMove.y = 1000.0f;
+			mCameraRightMaxMove.y = 200.0f;
 			mCameraLeftMaxMove.x = -525.0f;
-			mCameraLeftMaxMove.y = 1000.0f;
+			mCameraLeftMaxMove.y = 200.0f;
 			setYCord = 130.0f;
 		}
 

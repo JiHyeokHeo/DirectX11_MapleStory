@@ -159,6 +159,9 @@
     <ClCompile Include="jnsPlayerMoveLimitScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
+    <ClCompile Include="jnsAssainHit02.cpp">
+      <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -332,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="jnsPlayerMoveLimitScript.h">
       <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsAssainHit02.h">
+      <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +517,9 @@
     </Filter>
     <Filter Include="Contents\Monster\Base">
       <UniqueIdentifier>{bbd6b239-b9d7-4eda-85c0-9a2a32068533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\Skills\AssainAttack2">
+      <UniqueIdentifier>{f8825422-d4ea-48fb-8679-10ba8f238fc5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

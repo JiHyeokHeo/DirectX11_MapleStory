@@ -63,11 +63,17 @@ namespace jns
 		void Hitted();
 		void Die();
 
+
+		// 애니메이션 이벤트를 통해 스킬 생성 타이밍 조절
 		void CompleteAssasinHit1();
+		void CompleteAssasinHit2();
 		void CompleteAnimation();
 		void CompletePronStab();
 		void CompleteRope();
-		
+		void InstantiateAssainHit1Skill();
+		void InstantiateAssainHit2Skill();
+		void InstantiateJumpSkill();
+
 		void PlayerControl();
 		void AnimatorControl();
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
@@ -75,6 +81,7 @@ namespace jns
 		void Clear();
 		void CheckPlayerIsGrounded();
 
+		void CheckIsAssainHitUsed();
 		
 	private:
 		struct PlayerInfo
@@ -92,12 +99,22 @@ namespace jns
 			PlayerDir mPrevDir;
 		};
 
+		struct PlayerStatus
+		{
+		};
+
+		struct PlayerSkillInfo
+		{
+			bool isAssainHit1Used;
+		};
+
 		Transform* tr;
 		RigidBody* mRb;
 		Animator* at;
 		Collider2D* cd;
 		
 		PlayerInfo mPlayerInfo;
+		PlayerSkillInfo mPlayerSkillInfo;
 		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
 		eKeyCode mClicked;

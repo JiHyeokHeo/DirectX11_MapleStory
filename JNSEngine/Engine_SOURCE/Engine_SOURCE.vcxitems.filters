@@ -216,6 +216,7 @@
       <Filter>Scene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsSkillManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPaintShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -322,6 +323,7 @@
       <Filter>Scene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsSkillManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPaintShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

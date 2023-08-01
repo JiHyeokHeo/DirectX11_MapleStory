@@ -18,7 +18,7 @@ namespace jns
 		SetMaterial(L"SpriteAnimaionMaterial");
 
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\flashJump", 500, 0.1f);
-		at->CompleteEvent(L"Rogue_SkillflashJump") = std::bind(&JumpSkill::CompleteJump, this);
+		at->CompleteEvent(L"Rogue_SkillflashJump") = std::bind(&JumpSkill::CompleteSkillAnimation, this);
 		at->PlayAnimation(L"Rogue_SkillflashJump", true);
 		tr->SetScale(Vector3(700.0f, 700.0f, 1.0f));
 		SkillBase::Initialize();
@@ -29,33 +29,19 @@ namespace jns
 	}
 	void JumpSkill::LateUpdate()
 	{
-		int mDir = (int)mPlayerScript->GetPlayerDirection();
-
-		if (at->GetActiveAnimation() != nullptr && isMaked == false)
-		{
-			if (mDir == -1)
-			{
-				at->GetActiveAnimation()->SetAniDirection(false);
-			}
-			else
-			{
-				at->GetActiveAnimation()->SetAniDirection(true);
-			}
-			isMaked = true;
-		}
-
+		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
 	}
 	void JumpSkill::Render()
 	{
 		SkillBase::Render();
-		if (this->GetState() == eState::Paused)
-		{
-			object::Destroy(this);
-		}
 	}
-	void JumpSkill::CompleteJump()
+	void JumpSkill::CompleteSkillAnimation()
 	{
 		this->SetState(eState::Paused);
 	}
+	void JumpSkill::StartSkillAnimation()
+	{
+	}
+
 }

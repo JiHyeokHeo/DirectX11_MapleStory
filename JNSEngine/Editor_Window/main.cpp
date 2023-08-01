@@ -7,6 +7,7 @@
 #include "..\Engine_Source\jnsResources.h"
 #include "LoadScene.h"
 #include "guiEditor.h"
+#include "..\Engine_SOURCE\jnsSkillManager.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
@@ -79,6 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     renderer::Release();
     jns::SceneManager::Release();
+    jns::SkillManager::Release();
     gui::Editor::Release();
 
     return (int) msg.wParam;

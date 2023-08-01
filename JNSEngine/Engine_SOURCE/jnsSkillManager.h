@@ -2,6 +2,7 @@
 #include "JNSEngine.h"
 #include "jnsMath.h"
 #include "jnsInput.h"
+#include "jnsGameObject.h"
 
 namespace jns
 {
@@ -18,14 +19,12 @@ namespace jns
 	{
 	public:
 		static void Initialize();
-		static void AddSkill(const std::string& key, const SkillData& skillData);
-		static void ActivateSkill(const std::string& key);
-		static bool IsSkillAvailable(const std::string& key);
-		static void UpdateCooldowns(float deltaTime);
-
+		static void AddSkill(const std::wstring& key, GameObject* skill);
+		static GameObject& FindSkill(const std::wstring& key);
+		static SkillData& FindSkillData(const std::wstring& key);
 		static void Release();
 	private:
-		static std::unordered_map<std::wstring, SkillData> skillMap;
-		static std::unordered_map<std::wstring, float> cooldownMap;
+		static std::unordered_map<std::wstring, GameObject*> mSkills;
+		static std::unordered_map<std::wstring, SkillData*> mSkillData;
 	};
 }

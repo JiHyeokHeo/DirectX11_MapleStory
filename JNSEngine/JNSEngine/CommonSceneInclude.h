@@ -1,5 +1,8 @@
 #pragma once
 
+// Static Manager
+#include "jnsSkillManager.h"
+
 // Singleton
 #include "jnsCameraManager.h"
 #include "jnsPlayerManager.h"
@@ -25,6 +28,7 @@
 // Skill
 #include "jnsJumpSkill.h"
 #include "jnsAssainHit01.h"
+#include "jnsAssainHit02.h"
 
 // Camera
 #include "jnsCameraObject.h"
