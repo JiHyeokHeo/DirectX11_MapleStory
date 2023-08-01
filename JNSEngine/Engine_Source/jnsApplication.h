@@ -22,8 +22,8 @@ namespace jns
 
 		void SetWindow(HWND hwnd, UINT width, UINT height);
 
-		UINT GetWidth() { return mWidth; }
-		UINT GetHeight() { return mHeight; }
+		UINT GetMetaDataWidth() { return mWidth; }
+		UINT GetMedtaDataHeight() { return mHeight; }
 		HWND GetHwnd() { return mHwnd; }
 
 	private:

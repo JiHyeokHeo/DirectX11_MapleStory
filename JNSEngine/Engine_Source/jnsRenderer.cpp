@@ -3,6 +3,7 @@
 #include "jnsResources.h"
 #include "jnsMaterial.h"
 #include "jnsStructedBuffer.h"
+#include "jnsPaintShader.h"
 
 namespace renderer
 {
@@ -388,6 +389,10 @@ namespace renderer
 		 playerUIShader->Create(eShaderStage::PS, L"PlayerUIPS.hlsl", "main");
 		 jns::Resources::Insert(L"PlayerUIShader", playerUIShader);
 
+		 std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
+		 paintShader->Create(L"PaintCS.hlsl", "main");
+		 jns::Resources::Insert(L"PaintShader", paintShader);
+
 		 //{
 			// std::shared_ptr<Texture> texture
 			//	 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
@@ -396,10 +401,18 @@ namespace renderer
 			// spriteMateiral->SetTexture(texture);
 			// Resources::Insert(L"RutabysMainMaterial", spriteMateiral);
 		 //}
-		
-
 
 	 }
+
+
+	 void LoadTexture()
+	 {
+		 //paint texture
+		 std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
+		 uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		 jns::Resources::Insert(L"PaintTexture", uavTexture);
+	 }
+
 
 	 void LoadMaterial()
 	 {
@@ -445,8 +458,10 @@ namespace renderer
 		 SET_MATERIAL(spriteMaterial, texture, spriteShader);
 		 INSERT_MATERIAL(L"SpriteMaterial", spriteMaterial);
 
-		 LOAD_TEXTURE(L"Smile", L"..\\Resources\\Texture\\Smile.png", texture1);
-		 SET_MATERIAL(spriteMaterial1, texture1, moveShader);
+
+		 //texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+		 texture = Resources::Find<Texture>(L"PaintTexture");
+		 SET_MATERIAL(spriteMaterial1, texture, spriteShader);
 		 //texture1->GetTextureSize();
 		 //spriteMaterial1->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"SpriteMaterial02", spriteMaterial1);
@@ -632,6 +647,7 @@ namespace renderer
 		 LoadBuffer();
 		 LoadShader();
 		 SetupState();
+		 LoadTexture();
 		 LoadMaterial();
 	 }
 

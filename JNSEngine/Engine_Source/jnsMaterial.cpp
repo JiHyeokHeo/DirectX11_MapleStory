@@ -24,7 +24,7 @@ namespace jns::graphics
 	void Material::Binds()
 	{
 		if (mTexture)
-			mTexture->BindShader(eShaderStage::PS, 0);
+			mTexture->BindShaderResource(eShaderStage::PS, 0);
 
 		if (mShader)
 			mShader->Binds();

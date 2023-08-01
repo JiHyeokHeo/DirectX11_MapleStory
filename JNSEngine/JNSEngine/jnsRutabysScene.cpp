@@ -1,6 +1,7 @@
 #include "jnsRutabysScene.h"
 #include "CommonSceneInclude.h"
 #include "jnsComputeShader.h"
+#include "jnsPaintShader.h"
 
 namespace jns
 {
@@ -12,6 +13,25 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
+		//std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		//std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
+		//paintShader->SetTarget(paintTexture);
+		//paintShader->OnExcute();
+
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Smile");
+		//	AddGameObject(eLayerType::Monster, player);
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(-200.0f, 100.0f, 1.0f));
+		//	player->GetComponent<Transform>()->SetScale(Vector3(500.0f, 500.0f, 1.0f));
+		//	Collider2D* cd = player->AddComponent<Collider2D>();
+		//	//cd->SetSize(Vector2(1.2f, 1.2f));
+		//	//player->AddComponent<PlayerScript>();
+		//}
+
 		//ComputeShader* cs = new ComputeShader();
 		//cs->Create(L"PaintCS.hlsl", "main");
 		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)

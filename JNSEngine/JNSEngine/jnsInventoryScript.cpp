@@ -22,7 +22,7 @@ namespace jns
 	}
 	void InventoryScript::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::LBUTTON) && mNowState == GameObject::eState::Active)
 		{
 			Vector3 mUIMousePos = Input::GetUIMousePos();
 			Transform* tr = GetOwner()->GetComponent<Transform>();

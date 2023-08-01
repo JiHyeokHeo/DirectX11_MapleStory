@@ -26,7 +26,10 @@ namespace jns::graphics
 		bool Create(UINT width, UINT height, DXGI_FORMAT format, UINT bindFlag);
 	
 		virtual HRESULT Load(const std::wstring& path) override;
-		void BindShader(eShaderStage stage, UINT startSlot);
+		void BindShaderResource(eShaderStage stage, UINT startSlot);
+		void BindUnorderedAccessViews(UINT slot);
+		void ClearUnorderedAccessViews(UINT slot);
+
 		void Clear();
 		
 		Vector2 GetTextureSize() 
@@ -37,8 +40,11 @@ namespace jns::graphics
 			return Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); 
 		}
 		
-		size_t GetWidth() { return mImage.GetMetadata().width; }
-		size_t GetHeight() { return mImage.GetMetadata().height; }
+		size_t GetMetaDataWidth() { return mImage.GetMetadata().width; }
+		size_t GetMedtaDataHeight() { return mImage.GetMetadata().height; }
+
+		size_t GetWidth() { return mWidth; }
+		size_t GetHeight() { return mHeight; }
 
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    GetRTV() { return  mRTV; }
 		void SetRTV(Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv) { mRTV = rtv; }
@@ -80,9 +86,10 @@ namespace jns::graphics
 		D3D11_TEXTURE2D_DESC mDesc;
 
 		ScratchImage atlasImage;
+		UINT mWidth;
+		UINT mHeight;
 
-		float mWidth;
-		float mHeight;
+
 		Vector2 mRatio;
 	};
 }

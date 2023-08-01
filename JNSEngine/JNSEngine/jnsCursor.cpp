@@ -48,8 +48,8 @@ namespace jns
 		mCursorEndPos = Vector3(800.0f, 450.0f, 0.0f);
 			
 		Viewport viewport;
-		viewport.width = application.GetWidth();
-		viewport.height = application.GetHeight();
+		viewport.width = application.GetMetaDataWidth();
+		viewport.height = application.GetMedtaDataHeight();
 		viewport.x = 0;
 		viewport.y = 0;
 		viewport.minDepth = 0.0f;

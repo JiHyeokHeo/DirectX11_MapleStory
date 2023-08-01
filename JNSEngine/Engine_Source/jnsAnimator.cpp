@@ -104,19 +104,19 @@ namespace jns
 
 			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
 
-			if (maxwidth < tex->GetWidth())
+			if (maxwidth < tex->GetMetaDataWidth())
 			{
-				maxwidth = tex->GetWidth();
+				maxwidth = tex->GetMetaDataWidth();
 			}
 
-			if (minwidth > tex->GetWidth())
+			if (minwidth > tex->GetMetaDataWidth())
 			{
-				minwidth = tex->GetWidth();
+				minwidth = tex->GetMetaDataWidth();
 			}
 
-			if (maxheight < tex->GetHeight())
+			if (maxheight < tex->GetMedtaDataHeight())
 			{
-				maxheight = tex->GetHeight();
+				maxheight = tex->GetMedtaDataHeight();
 			}
 
 			textures.push_back(tex);
