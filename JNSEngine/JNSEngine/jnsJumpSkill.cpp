@@ -8,6 +8,8 @@ namespace jns
 {
 	JumpSkill::JumpSkill()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	JumpSkill::~JumpSkill()
 	{

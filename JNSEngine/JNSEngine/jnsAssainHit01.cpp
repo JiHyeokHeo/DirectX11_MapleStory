@@ -4,7 +4,9 @@
 namespace jns
 {
 	AssainHit01::AssainHit01()
-	{
+	{	
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	AssainHit01::~AssainHit01()
 	{
@@ -15,7 +17,7 @@ namespace jns
 
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
-		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.05f);
 		at->CompleteEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::CompleteSkillAnimation, this);
 		at->StartEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::StartSkillAnimation, this);
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
@@ -34,11 +36,17 @@ namespace jns
 		mPos.z = 2.0f;
 		SetPosition(mPos);
 		
-		SkillBase::SetDirection();
+		if (isPlayPossible == true)
+		{
+			isPlayPossible = false;
+			at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack", true);
+		}
+
 		SkillBase::Update();
 	}
 	void AssainHit01::LateUpdate()
 	{
+		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
 	}
 	void AssainHit01::Render()
@@ -47,7 +55,7 @@ namespace jns
 	}
 	void AssainHit01::CompleteSkillAnimation()
 	{
-		
+		isRenderOn = false;
 	}
 	void AssainHit01::StartSkillAnimation()
 	{

@@ -6,7 +6,7 @@
 
 namespace jns
 {
-	using namespace jns::math;
+	using namespace math;
 	class Cursor : public GameObject
 	{
 	public:

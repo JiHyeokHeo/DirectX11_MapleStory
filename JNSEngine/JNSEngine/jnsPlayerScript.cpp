@@ -8,7 +8,6 @@
 #include "CommonSceneInclude.h"
 
 
-#define KEY_SLOT(name) (eKeyCode)name
 
 namespace jns
 {
@@ -537,13 +536,14 @@ namespace jns
         GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_First_Attack");
         AssainHit01* obj2 = dynamic_cast<AssainHit01*>(obj);
         obj2->SetSkillMode(true);
+        obj2->SetSkillPlay(true);
     }
     void PlayerScript::InstantiateAssainHit2Skill()
     {
-        Vector3 mPos = tr->GetPosition();
-        mPos.x += (int)mPlayerInfo.mDir * 130.0f;
-        mPos.y += 130.0f;
-        mPos.z = 0.0f;
+        GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_Second_Attack");
+        AssainHit02* obj2 = dynamic_cast<AssainHit02*>(obj);
+        obj2->SetSkillMode(true);
+        obj2->SetSkillPlay(true);
     }
     void PlayerScript::InstantiateJumpSkill()
     {

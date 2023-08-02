@@ -96,7 +96,7 @@ namespace jns
 			float mJumpTime;
 			float mJumpForce;
 			bool isGrounded;
-			bool isPlayed;
+			bool isPlayPossible;
 			bool isRight;
 			float mDeathTime;
 			float mHittedTime;

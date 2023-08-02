@@ -71,8 +71,7 @@ namespace jns
 		{
 			eLayerType layerType = dontDestroyObj->GetLayerType();
 
-			int cnt = mActiveScene->GetLayer(layerType).GetGameObjects().size();
-			if (dontDestroyObj->GetIsOnlyOne() == true && cnt == 0)
+			if (dontDestroyObj->GetIsOnlyOne() == true)
 			{
 				mActiveScene->AddGameObject(layerType, dontDestroyObj);
 			}

@@ -21,12 +21,19 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void SetSkillMode(bool isRender) 
+
+		virtual void SetSkillMode(bool isRender)
 		{
 			isRenderOn = isRender;
 		}
 
-		virtual void SetDirection() 
+
+		virtual void SetSkillPlay(bool isPlay)
+		{
+			isPlayPossible = isPlay;
+		}
+
+		virtual void SetDirection()
 		{
 			int mDir = (int)mPlayerScript->GetPlayerDirection();
 
@@ -43,7 +50,7 @@ namespace jns
 				isMaked = false;
 			}
 		}
-		
+
 		virtual void CompleteSkillAnimation() = 0;
 		virtual void StartSkillAnimation() = 0;
 
@@ -122,6 +129,7 @@ namespace jns
 		
 		bool isMaked;
 		bool isRenderOn;
+		bool isPlayPossible;
 };
-}
+
 
