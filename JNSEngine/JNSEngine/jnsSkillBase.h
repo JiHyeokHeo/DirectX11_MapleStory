@@ -1,12 +1,10 @@
 #pragma once
 #include "jnsGameObject.h"
-#include "jnsInput.h"
 #include "jnsMeshRenderer.h"
 #include "jnsTransform.h"
 #include "jnsResources.h"
 #include "jnsAnimator.h"
 #include "jnsPlayerScript.h"
-#include "ObjectTemplate.h"
 
 namespace jns
 {
@@ -21,12 +19,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-
 		virtual void SetSkillMode(bool isRender)
 		{
 			isRenderOn = isRender;
 		}
-
 
 		virtual void SetSkillPlay(bool isPlay)
 		{
@@ -37,7 +33,7 @@ namespace jns
 		{
 			int mDir = (int)mPlayerScript->GetPlayerDirection();
 
-			if (at->GetActiveAnimation() != nullptr && isMaked == true)
+			if (at->GetActiveAnimation() != nullptr)
 			{
 				if (mDir == -1)
 				{
@@ -50,6 +46,7 @@ namespace jns
 				isMaked = false;
 			}
 		}
+
 
 		virtual void CompleteSkillAnimation() = 0;
 		virtual void StartSkillAnimation() = 0;
@@ -117,19 +114,21 @@ namespace jns
 		Animator* at;
 		Transform* tr;
 		MeshRenderer* mr;
-		
+
 		Vector2 mTextureSize;
 		Vector2 mSize;
-		
+
 		eLayerType mType;
 
 
 		GameObject* mPlayer;
 		PlayerScript* mPlayerScript;
-		
+
 		bool isMaked;
 		bool isRenderOn;
 		bool isPlayPossible;
-};
+	};
+}
+
 
 

@@ -11,6 +11,7 @@ namespace jns
 		virtual void Update() override;
 
 		
+		Transform* GetCameraTransform() { return cameratr; }
 	private:
 		bool FollowTarget();
 		class Camera* comp;

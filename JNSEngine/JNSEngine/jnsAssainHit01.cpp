@@ -36,11 +36,6 @@ namespace jns
 		mPos.z = 2.0f;
 		SetPosition(mPos);
 		
-		if (isPlayPossible == true)
-		{
-			isPlayPossible = false;
-			at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack", true);
-		}
 
 		SkillBase::Update();
 	}
@@ -48,6 +43,11 @@ namespace jns
 	{
 		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
+		if (isPlayPossible == true)
+		{
+			isPlayPossible = false;
+			at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack", true);
+		}
 	}
 	void AssainHit01::Render()
 	{

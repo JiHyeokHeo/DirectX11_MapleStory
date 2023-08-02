@@ -25,6 +25,7 @@ namespace jns
 		void SetFollowTarget(GameObject* target) { mFollowTarget = target; }
 		GameObject* GetFollowTarget() { return mFollowTarget; }
 
+		Vector3 GetCameraPos() { return mCameraPos; }
 	public:
 		void TurnOffLayer(eLayerType type);
 		void TurnOnLayer(eLayerType type);

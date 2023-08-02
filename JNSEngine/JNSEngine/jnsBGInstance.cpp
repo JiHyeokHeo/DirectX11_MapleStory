@@ -107,22 +107,15 @@ namespace jns
 	}
 	void BGInstance::Update()
 	{
-		//if (mBGtype == eBGType::RutabysQueenMob2)
-		//{
-		//	Vector3 mPos = tr->GetPosition();
-		//	std::vector<Player*> mFindObjs = {};
-		//	mFindObjs = SceneManager::GetActiveScene()->FindObjectsOfType<Player>();
-
-		//	std::vector<Player*>::iterator iter
-		//		= mFindObjs.begin();
-
-		//	for (; iter == mFindObjs.end(); iter++)
-		//	{
-		//	}
-
-
-		//	tr->SetPosition(mPos);
-		//}
+		if (mBGtype == eBGType::RutabysQueenMob1)
+		{
+			Vector3 mPos = tr->GetPosition();
+			Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+			
+			mPos.x = mPlayerPos.x * 0.1f;
+			
+			tr->SetPosition(mPos);
+		}
 		BGBase::Update();
 	}
 	void BGInstance::LateUpdate()

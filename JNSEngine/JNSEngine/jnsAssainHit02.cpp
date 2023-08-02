@@ -29,19 +29,17 @@ namespace jns
 	{
 		SkillSetPos();
 
-
-		if (isPlayPossible == true)
-		{
-			isPlayPossible = false;
-			at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack", true);
-		}
-
 		SkillBase::Update();
 	}
 	void AssainHit02::LateUpdate()
 	{
 		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
+		if (isPlayPossible == true)
+		{
+			isPlayPossible = false;
+			at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack", true);
+		}
 	}
 	void AssainHit02::Render()
 	{
