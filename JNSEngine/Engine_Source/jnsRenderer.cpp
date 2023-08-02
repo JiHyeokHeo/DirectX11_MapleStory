@@ -97,6 +97,11 @@ namespace renderer
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"ParticleShader");
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
 #pragma endregion
 
 
@@ -393,6 +398,15 @@ namespace renderer
 		 paintShader->Create(L"PaintCS.hlsl", "main");
 		 jns::Resources::Insert(L"PaintShader", paintShader);
 
+		 std::shared_ptr<Shader> paritcleShader = std::make_shared<Shader>();
+		 paritcleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		 paritcleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
+		 paritcleShader->SetRSState(eRSType::SolidNone);
+		 paritcleShader->SetDSState(eDSType::NoWrite);
+		 paritcleShader->SetBSState(eBSType::AlphaBlend);
+
+		 jns::Resources::Insert(L"ParticleShader", paritcleShader);
+
 		 //{
 			// std::shared_ptr<Texture> texture
 			//	 = Resources::Load<Texture>(L"RutabysMain", L"..\\Resources\\Map\\Rutabys\\rutabys.png");
@@ -432,6 +446,8 @@ namespace renderer
 			 = Resources::Find<Shader>(L"SpriteAnimationShader");
 		 std::shared_ptr<Shader> spriteAniAlphaShader
 			 = Resources::Find<Shader>(L"SpriteAnimationAlphaShader");
+		 std::shared_ptr<Shader> particleShader
+			 = Resources::Find<Shader>(L"SpriteAnimationAlphaShader");
 
 		 std::shared_ptr<Material> material = std::make_shared<Material>();
 		 material = std::make_shared<Material>();
@@ -452,6 +468,14 @@ namespace renderer
 		 material = std::make_shared<Material>();
 		 material->SetShader(debugShader);
 		 Resources::Insert(L"DebugMaterial", material);
+
+		 particleShader
+			 = Resources::Find<Shader>(L"ParticleShader");
+		 material = std::make_shared<Material>();
+		 material->SetShader(particleShader);
+		 material->SetRenderingMode(eRenderingMode::Transparent);
+		 Resources::Insert(L"ParticleMaterial", material);
+
 
 #pragma region TestPlayer
 		 LOAD_TEXTURE(L"Link", L"..\\Resources\\Texture\\Link.png", texture);

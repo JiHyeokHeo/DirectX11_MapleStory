@@ -217,6 +217,7 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsSkillManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsPaintShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -324,6 +325,7 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsSkillManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsPaintShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

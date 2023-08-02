@@ -2,6 +2,7 @@
 #include "CommonSceneInclude.h"
 #include "jnsComputeShader.h"
 #include "jnsPaintShader.h"
+#include "jnsParticleSystem.h"
 
 namespace jns
 {
@@ -28,6 +29,18 @@ namespace jns
 		//	player->GetComponent<Transform>()->SetPosition(Vector3(-200.0f, 100.0f, 1.0f));
 		//	player->GetComponent<Transform>()->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		//	Collider2D* cd = player->AddComponent<Collider2D>();
+		//	//cd->SetSize(Vector2(1.2f, 1.2f));
+		//	//player->AddComponent<PlayerScript>();
+		//}
+
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Particle");
+		//	AddGameObject(eLayerType::Monster, player);
+		//	ParticleSystem* mr = player->AddComponent<ParticleSystem>();
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+		//	player->GetComponent<Transform>()->SetScale(Vector3(50.0f, 50.0f, 1.0f));
+		//	//Collider2D* cd = player->AddComponent<Collider2D>();
 		//	//cd->SetSize(Vector2(1.2f, 1.2f));
 		//	//player->AddComponent<PlayerScript>();
 		//}

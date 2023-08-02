@@ -19,7 +19,8 @@ namespace jns
 
 		void BindBuffer(); //Buffer 파이프라인에 묶어준다.
 		void Render();
-		
+		void RenderInstanced(UINT startIndexLocation);
+
 		UINT GetIndexCount() { return mIndexCount; }
 
 	private:

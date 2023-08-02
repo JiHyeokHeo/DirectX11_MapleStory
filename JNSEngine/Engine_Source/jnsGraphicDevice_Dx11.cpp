@@ -449,6 +449,12 @@ namespace jns::graphics
 		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
 	}
 
+	void GraphicDevice_Dx11::DrawIndexedInstanced(UINT IndexCountPerInstance, UINT InstanceCount
+		, UINT StartIndexLocation, INT BaseVertexLocation, UINT StartInstanceLocation)
+	{
+		mContext->DrawIndexedInstanced(IndexCountPerInstance, InstanceCount, StartIndexLocation, BaseVertexLocation, StartInstanceLocation);
+	}
+
 	void GraphicDevice_Dx11::ClearTarget()
 	{	
 		// render target clear
