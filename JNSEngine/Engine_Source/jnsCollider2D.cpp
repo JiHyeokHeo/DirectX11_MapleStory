@@ -53,7 +53,7 @@ namespace jns
 		mesh.position = pos;
 		mesh.scale = mScale;	
 		mesh.rotation = tr->GetRotation();
-		mesh.type = eColliderType::Rect;
+		mesh.type = mType;
 		mesh.layertype = mLayertype;
 		mesh.isCollide = isColliding;
 		

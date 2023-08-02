@@ -21,6 +21,7 @@ namespace jns::graphics
 		eRenderingMode GetRenderingMode() { return mMode; }
 
 		std::shared_ptr<Texture> GetTexture() { return mTexture; }
+		std::shared_ptr<Shader> GetShader() { return mShader; }
 		void Clear();
 
 	private:

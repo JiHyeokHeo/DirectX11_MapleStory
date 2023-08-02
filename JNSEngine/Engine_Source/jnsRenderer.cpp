@@ -82,6 +82,12 @@ namespace renderer
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
 
+		 shader = jns::Resources::Find<Shader>(L"DebugCircleShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
+
 		 shader = jns::Resources::Find<Shader>(L"PlayerUIShader");
 
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
@@ -388,6 +394,13 @@ namespace renderer
 		 //debugShader->SetDSState(eDSType::NoWrite);
 		 jns::Resources::Insert(L"DebugShader", debugShader);
 
+		 std::shared_ptr<Shader> debugCircleShader = std::make_shared<Shader>();
+		 debugCircleShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
+		 debugCircleShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
+		 debugCircleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		 debugCircleShader->SetRSState(eRSType::WireframeNone);
+		 //debugShader->SetDSState(eDSType::NoWrite);
+		 jns::Resources::Insert(L"DebugCircleShader", debugCircleShader);
 
 		 std::shared_ptr<Shader> playerUIShader = std::make_shared<Shader>();
 		 playerUIShader->Create(eShaderStage::VS, L"PlayerUIVS.hlsl", "main");
@@ -442,6 +455,8 @@ namespace renderer
 			 = Resources::Find<Shader>(L"PlayerUIShader");
 		 std::shared_ptr<Shader> debugShader
 			 = Resources::Find<Shader>(L"DebugShader");
+		 std::shared_ptr<Shader> debugCircleShader
+			 = Resources::Find<Shader>(L"DebugCircleShader");
 		 std::shared_ptr<Shader> spriteAniShader
 			 = Resources::Find<Shader>(L"SpriteAnimationShader");
 		 std::shared_ptr<Shader> spriteAniAlphaShader
@@ -468,6 +483,10 @@ namespace renderer
 		 material = std::make_shared<Material>();
 		 material->SetShader(debugShader);
 		 Resources::Insert(L"DebugMaterial", material);
+
+		 material = std::make_shared<Material>();
+		 material->SetShader(debugCircleShader);
+		 Resources::Insert(L"DebugCircleMaterial", material);
 
 		 particleShader
 			 = Resources::Find<Shader>(L"ParticleShader");

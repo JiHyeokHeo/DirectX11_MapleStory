@@ -23,14 +23,25 @@ namespace gui
 
 		std::shared_ptr<jns::Mesh> mesh
 			= jns::Resources::Find<jns::Mesh>(L"DebugRect");
+		std::shared_ptr<jns::Mesh> circlemesh
+			= jns::Resources::Find<jns::Mesh>(L"DebugCircle");
 		std::shared_ptr<jns::Material> material
 			= jns::Resources::Find<jns::Material>(L"DebugMaterial");
+		std::shared_ptr<jns::Material> material2
+			= jns::Resources::Find<jns::Material>(L"DebugCircleMaterial");
 
 		mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
+		mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
 		jns::MeshRenderer* mr
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<jns::MeshRenderer>();
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
+
+		
+		jns::MeshRenderer* mr2
+			= mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<jns::MeshRenderer>();
+		mr2->SetMaterial(material2);
+		mr2->SetMesh(circlemesh);
 
 		EditorObject* grid = new EditorObject();
 		grid->SetName(L"Grid");
