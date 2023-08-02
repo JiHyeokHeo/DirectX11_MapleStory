@@ -4,7 +4,7 @@
 
 namespace jns
 {
-	class AssainHit02 : public SkillBase, public SkillInterface
+	class AssainHit02 : public SkillBase
 	{
 	public:
 		AssainHit02();

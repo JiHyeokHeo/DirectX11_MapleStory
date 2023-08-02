@@ -4,7 +4,7 @@
 
 namespace jns
 {
-	class AssainHit01 : public SkillBase, public SkillInterface
+	class AssainHit01 : public SkillBase
 	{
 	public:
 		AssainHit01();
@@ -18,7 +18,6 @@ namespace jns
 		virtual void CompleteSkillAnimation() override;
 		virtual void StartSkillAnimation() override;
 	private:
-
 	};
 
 }

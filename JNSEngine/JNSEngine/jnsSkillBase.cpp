@@ -22,19 +22,19 @@ namespace jns
 	}
 	void SkillBase::Update()
 	{
-		if (this->GetState() == eState::Paused)
+		if (isRenderOn == false)
 			return;
 		GameObject::Update();
 	}
 	void SkillBase::LateUpdate()
 	{
-		if (this->GetState() == eState::Paused)
+		if (isRenderOn == false)
 			return;
 		GameObject::LateUpdate();
 	}
 	void SkillBase::Render()
 	{
-		if (this->GetState() == eState::Paused)
+		if (isRenderOn == false)
 			return;
 		GameObject::Render();
 	}

@@ -20,8 +20,8 @@ namespace jns
 	public:
 		static void Initialize();
 		static void AddSkill(const std::wstring& key, GameObject* skill);
-		static GameObject& FindSkill(const std::wstring& key);
-		static SkillData& FindSkillData(const std::wstring& key);
+		static GameObject* FindSkill(const std::wstring& key);
+		static SkillData* FindSkillData(const std::wstring& key);
 		static void Release();
 	private:
 		static std::unordered_map<std::wstring, GameObject*> mSkills;

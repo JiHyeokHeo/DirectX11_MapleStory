@@ -38,7 +38,7 @@ namespace jns
 	}
 	void AssainHit02::CompleteSkillAnimation()
 	{
-		this->SetState(eState::Paused);
+		isMaked = false;
 	}
 	void AssainHit02::StartSkillAnimation()
 	{

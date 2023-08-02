@@ -4,7 +4,7 @@
 
 namespace jns
 {
-	class JumpSkill : public SkillBase, public SkillInterface
+	class JumpSkill : public SkillBase
 	{
 	public:
 		JumpSkill();
@@ -18,6 +18,7 @@ namespace jns
 		virtual void CompleteSkillAnimation() override;
 		virtual void StartSkillAnimation() override;
 		
+
 		void SetSkillJumpNum(int num) { mSkillJumpNum = num; }
 		int GetSkillJumpNum() { return mSkillJumpNum; }
 	private: 

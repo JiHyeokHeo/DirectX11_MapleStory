@@ -69,7 +69,6 @@ namespace jns
 
 
 		// 테스트 스킬
-		object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		JumpSkill* jump1 = object::InstantiateSkill<JumpSkill>(Vector3::Zero);
 		jump1->SetSkillJumpNum(1);
 		JumpSkill* jump2 =  object::InstantiateSkill<JumpSkill>(Vector3::Zero);

@@ -17,6 +17,7 @@ namespace jns
 		SetMaterial(L"SpriteAnimaionMaterial");
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.1f);
 		at->CompleteEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::CompleteSkillAnimation, this);
+		at->StartEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::StartSkillAnimation, this);
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
 		tr->SetScale(Vector3(800.0f, 800.0f, 1.0f));
 
@@ -25,11 +26,19 @@ namespace jns
 	}
 	void AssainHit01::Update()
 	{
+		// 플레이어 위치정보 가져오기
+		Vector3 mPos = mPlayerScript->GetOwner()->GetComponent<Transform>()->GetPosition();
+		
+		int direction = (int)mPlayerScript->GetPlayerDirection();
+		mPos.x += direction * 230.0f;
+		mPos.z = 2.0f;
+		SetPosition(mPos);
+		
+		SkillBase::SetDirection();
 		SkillBase::Update();
 	}
 	void AssainHit01::LateUpdate()
 	{
-		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
 	}
 	void AssainHit01::Render()
@@ -38,7 +47,7 @@ namespace jns
 	}
 	void AssainHit01::CompleteSkillAnimation()
 	{
-		this->SetState(eState::Paused);
+		
 	}
 	void AssainHit01::StartSkillAnimation()
 	{

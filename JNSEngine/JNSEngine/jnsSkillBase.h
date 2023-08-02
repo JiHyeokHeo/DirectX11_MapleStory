@@ -10,13 +10,6 @@
 
 namespace jns
 {
-	class SkillInterface
-	{
-		virtual void CompleteSkillAnimation() = 0;
-		virtual void StartSkillAnimation() = 0;
-	};
-
-
 	class SkillBase : public GameObject
 	{
 	public:
@@ -28,13 +21,16 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		
+		virtual void SetSkillMode(bool isRender) 
+		{
+			isRenderOn = isRender;
+		}
 
 		virtual void SetDirection() 
 		{
 			int mDir = (int)mPlayerScript->GetPlayerDirection();
 
-			if (at->GetActiveAnimation() != nullptr && isMaked == false)
+			if (at->GetActiveAnimation() != nullptr && isMaked == true)
 			{
 				if (mDir == -1)
 				{
@@ -44,11 +40,12 @@ namespace jns
 				{
 					at->GetActiveAnimation()->SetAniDirection(true);
 				}
-				isMaked = true;
+				isMaked = false;
 			}
 		}
 		
-	
+		virtual void CompleteSkillAnimation() = 0;
+		virtual void StartSkillAnimation() = 0;
 
 		virtual void SetMesh(const std::wstring& name)
 		{
@@ -110,16 +107,21 @@ namespace jns
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
 	protected:
-		eLayerType mType;
-		MeshRenderer* mr;
+		Animator* at;
 		Transform* tr;
+		MeshRenderer* mr;
+		
 		Vector2 mTextureSize;
 		Vector2 mSize;
-		Animator* at;
-		int mSkillDirection;
+		
+		eLayerType mType;
+
+
 		GameObject* mPlayer;
 		PlayerScript* mPlayerScript;
+		
 		bool isMaked;
+		bool isRenderOn;
 };
 }
 

@@ -21,7 +21,6 @@ namespace jns
 		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
-        mPlayerState = ePlayerState::Idle;
         
         at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
@@ -38,7 +37,6 @@ namespace jns
 	void PlayerScript::Update()
 	{
 		mActveScene = SceneManager::GetActiveScene();
-		
         if (Input::GetKeyDown(eKeyCode::O))
         {
             tr->SetPosition(Vector3(100.0f, 1000.0f, 1.0f));
@@ -108,7 +106,7 @@ namespace jns
 
     void PlayerScript::Idle()
     {
-		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
+		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump))
 		{
 			wasStand = true;
 			Vector3 velocity = mRb->GetVelocity();
@@ -118,21 +116,21 @@ namespace jns
 			mPlayerState = ePlayerState::Jump;
 			//mPlayerInfo.mJumpCnt++;
 		}
-		else if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
+		else if (Input::GetKey((eKeyCode)mPlayerKeyType.Prone))
 		{
 			mPlayerState = ePlayerState::Prone;
 		}
-		else if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+		else if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveL))
 		{
 			mPlayerInfo.mDir = PlayerDir::Left;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+		else if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveR))
 		{
 			mPlayerInfo.mDir = PlayerDir::Right;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKey(KEY_SLOT(eKeyType::Attack)))
+		else if (Input::GetKey((eKeyCode)mPlayerKeyType.Attack))
 		{
 			mPlayerState = ePlayerState::Attack;
 		}
@@ -148,15 +146,15 @@ namespace jns
 
     void PlayerScript::Move()
     {
-        if (Input::GetKeyUp(KEY_SLOT(eKeyType::MoveL)) || Input::GetKeyUp(KEY_SLOT(eKeyType::MoveR))
-            || Input::GetKeyUp(KEY_SLOT(eKeyType::Prone)) || Input::GetKeyUp(KEY_SLOT(eKeyType::Jump)))
+        if (Input::GetKeyUp((eKeyCode)mPlayerKeyType.MoveL) || Input::GetKeyUp((eKeyCode)mPlayerKeyType.MoveR)
+            || Input::GetKeyUp((eKeyCode)mPlayerKeyType.Prone) || Input::GetKeyUp((eKeyCode)mPlayerKeyType.Jump))
         {
             mPlayerState = ePlayerState::Idle;
         }
 
 		Vector3 pos = tr->GetPosition();
 
-		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Jump)))
+		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump))
 		{
 			Vector3 velocity = mRb->GetVelocity();
 			velocity.x += 600.0f * -(int)mPlayerInfo.mDir;
@@ -167,16 +165,16 @@ namespace jns
 			mPlayerState = ePlayerState::Jump;
 			mPlayerInfo.mJumpCnt++;
 		}
-		if (Input::GetKey(KEY_SLOT(eKeyType::Prone)))
+		if (Input::GetKey((eKeyCode)mPlayerKeyType.Prone))
 		{
 			//pos.y -= 255.0f * Time::DeltaTime();
 			//tr->SetPosition(pos);
 		}
-		if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+		if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveL))
 		{
 			pos.x -= mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 		}
-		if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+		if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveR))
 		{
 			pos.x += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 		}
@@ -188,7 +186,7 @@ namespace jns
 		{
 			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 		}
-		if (Input::GetKeyDown(KEY_SLOT(eKeyType::Attack)))
+		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Attack))
 		{
 			mPlayerState = ePlayerState::Attack;
 		}
@@ -219,17 +217,17 @@ namespace jns
 
 
 
-        if (Input::GetKey(KEY_SLOT(eKeyType::MoveL)))
+        if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveL))
         {
             mPlayerInfo.mDir = PlayerDir::Left;
         }
 
-        if (Input::GetKey(KEY_SLOT(eKeyType::MoveR)))
+        if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveR))
         {
             mPlayerInfo.mDir = PlayerDir::Right;
         }
 
-        if (Input::GetKey(KEY_SLOT(eKeyType::Jump)))
+        if (Input::GetKey((eKeyCode)mPlayerKeyType.Jump))
         {
             mPlayerInfo.mJumpCnt++;
             Vector3 velocity = mRb->GetVelocity();
@@ -278,14 +276,12 @@ namespace jns
 
             // 점프 생성
             pos.x -= (int)mPlayerInfo.mDir * 100.0f;
-            object::InstantiateSkill<JumpSkill>(pos);
         }
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == true)
         {
             mPlayerInfo.mJumpCnt++;
             pos.x -= (int)mPlayerInfo.mDir * 100.0f;
-            object::InstantiateSkill<JumpSkill>(pos);
         }
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == true)
@@ -538,10 +534,9 @@ namespace jns
     }
     void PlayerScript::InstantiateAssainHit1Skill()
     {
-        Vector3 mPos = tr->GetPosition();
-        mPos.x += (int)mPlayerInfo.mDir * 230.0f;
-        mPos.z = 2.0f;
-        object::InstantiateSkill<AssainHit01>(mPos);
+        GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_First_Attack");
+        AssainHit01* obj2 = dynamic_cast<AssainHit01*>(obj);
+        obj2->SetSkillMode(true);
     }
     void PlayerScript::InstantiateAssainHit2Skill()
     {
@@ -549,13 +544,11 @@ namespace jns
         mPos.x += (int)mPlayerInfo.mDir * 130.0f;
         mPos.y += 130.0f;
         mPos.z = 0.0f;
-        object::InstantiateSkill<AssainHit02>(mPos);
     }
     void PlayerScript::InstantiateJumpSkill()
     {
         Vector3 mPos = tr->GetPosition();
         mPos.x -= (int)mPlayerInfo.mDir * 100.0f;
         mPos.z = 0.0f;
-        object::InstantiateSkill<JumpSkill>(mPos);
     }
 }

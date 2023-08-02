@@ -3,6 +3,7 @@
 #include "jnsInput.h"
 #include "jnsRigidbody.h"
 #include "jnsScene.h"
+#include "jnsSkillManager.h"
 
 namespace jns
 {
@@ -24,14 +25,15 @@ namespace jns
 			End,
 		};
 
-		enum class eKeyType
+		class eKeyType
 		{
-			Attack = (UINT)eKeyCode::LCTRL,
-			Jump = (UINT)eKeyCode::C,
-			Prone = (UINT)eKeyCode::DOWN,
-			MoveL = (UINT)eKeyCode::LEFT,
-			MoveR = (UINT)eKeyCode::RIGHT,
-			Skill = (UINT)eKeyCode::F,
+		public:
+			uint32_t Attack = static_cast<uint32_t>(eKeyCode::LCTRL);
+			uint32_t Jump = static_cast<uint32_t>(eKeyCode::C);
+			uint32_t Prone = static_cast<uint32_t>(eKeyCode::DOWN);
+			uint32_t MoveL = static_cast<uint32_t>(eKeyCode::LEFT);
+			uint32_t MoveR = static_cast<uint32_t>(eKeyCode::RIGHT);
+			uint32_t Skill = static_cast<uint32_t>(eKeyCode::F);
 		};
 
 		enum class PlayerDir
@@ -51,7 +53,8 @@ namespace jns
 
 		void BindConstantBuffer();
 		eKeyCode GetPlayerClickButton() { return mClicked; }
-		PlayerDir GetPlayerDirection() { return mPlayerInfo.mPrevDir; }
+		PlayerDir GetPlayerDirection() { return mPlayerInfo.mDir; }
+		eKeyType GetPlayerKeyType() { return mPlayerKeyType; }
 
 	public:
 		void Idle();
@@ -74,13 +77,16 @@ namespace jns
 		void InstantiateAssainHit2Skill();
 		void InstantiateJumpSkill();
 
+
+
 		void PlayerControl();
 		void AnimatorControl();
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 
+
+
 		void Clear();
 		void CheckPlayerIsGrounded();
-
 		void CheckIsAssainHitUsed();
 		
 	private:
@@ -107,6 +113,8 @@ namespace jns
 		{
 			bool isAssainHit1Used;
 		};
+
+		eKeyType mPlayerKeyType;
 
 		Transform* tr;
 		RigidBody* mRb;
