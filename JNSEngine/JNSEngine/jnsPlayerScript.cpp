@@ -36,6 +36,7 @@ namespace jns
 	void PlayerScript::Update()
 	{
 		mActveScene = SceneManager::GetActiveScene();
+        
         if (Input::GetKeyDown(eKeyCode::O))
         {
             tr->SetPosition(Vector3(100.0f, 1000.0f, 1.0f));
@@ -48,6 +49,7 @@ namespace jns
 			Clear();
 		}
 
+        CheckJumpCount();
 		CheckPlayerIsGrounded();
         PlayerControl();
 		AnimatorControl();
@@ -63,6 +65,14 @@ namespace jns
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
 	{
+        if (other->GetOwner()->GetName() == L"Ground")
+        {
+            Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
+            if (ground->GetGroundName() == L"DownGround")
+            {
+                mPlayerState = ePlayerState::Idle;
+            }
+        }
 	}
 	void PlayerScript::OnCollisionStay(Collider2D* other)
 	{
@@ -341,7 +351,6 @@ namespace jns
 
     void PlayerScript::Attack()
     {
-
     }
 
     void PlayerScript::Hitted()
@@ -419,7 +428,6 @@ namespace jns
 
         if (mPlayerState != mPrevPlayerState)
         {
-            isAnimationDone = true;
             switch (mPlayerState)
             {
             case ePlayerState::Idle:
@@ -490,11 +498,11 @@ namespace jns
     }
     void PlayerScript::CheckIsAssainHitUsed()
     {
-        if (mPlayerSkillInfo.isAssainHit1Used == false)
+        if (mPlayerSkillInfo.isAssainHit1Used == false )
         {
             at->PlayAnimation(L"CharactorCharAssain1Hit", true);
         }
-        else
+        else if(mPlayerSkillInfo.isAssainHit1Used == true )
         {
             at->PlayAnimation(L"CharactorCharAssain2Hit", true);
         }
@@ -503,7 +511,6 @@ namespace jns
     {
         mPlayerSkillInfo.isAssainHit1Used = true;
         mPlayerState = ePlayerState::Idle;
-        //at->PlayAnimation(L"CharactorCharAssain2Hit", true);
     }
     void PlayerScript::CompleteAssasinHit2()
     {
@@ -547,8 +554,31 @@ namespace jns
     }
     void PlayerScript::InstantiateJumpSkill()
     {
-        Vector3 mPos = tr->GetPosition();
-        mPos.x -= (int)mPlayerInfo.mDir * 100.0f;
-        mPos.z = 0.0f;
+
+                
+    }
+    void PlayerScript::CheckJumpCount()
+    {
+        if (mPlayerInfo.isGrounded == true)
+        {
+            isDone = false;
+        }
+
+        if (mPlayerInfo.mJumpCnt >= 1 && isDone == false)
+        {
+            isDone = true;
+            GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_01");
+            JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
+            obj2->SetSkillMode(true);
+            obj2->SetSkillPlay(true);
+        }
+        else if(mPlayerInfo.mJumpCnt >= 2 && isDone == false)
+        {
+            isDone = true;
+            GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_02");
+            JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
+            obj2->SetSkillMode(true);
+            obj2->SetSkillPlay(true);
+        }
     }
 }

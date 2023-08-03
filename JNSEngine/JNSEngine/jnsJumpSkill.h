@@ -27,6 +27,7 @@ namespace jns
 		bool isMaked;
 
 		int mSkillJumpNum;
+		bool isSetPos;
 	};
 	
 }

@@ -13,9 +13,10 @@ namespace jns
 	{
 		SetMesh(L"RectMesh");
 		SetMaterial(L"HpBarMaterial");
-
-		SetPosition(Vector3(0.0f, 0.0, 0.1f));
-		SetScaleWhenParentOn(Vector3(0.8f, 1.1f, 1.0f));
+		mr->GetMaterial()->SetRenderingMode(eRenderingMode::Opaque);
+		SetPosition(Vector3(0.05f, 0.0, 0.1f));
+		tr->SetScale(Vector3(0.85f, 0.1f, 1.0f));
+		//SetScaleWhenParentOn(Vector3(100.0f, 100.0f, 1.0f));
 		//SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 		
 		UIBase::Initialize();

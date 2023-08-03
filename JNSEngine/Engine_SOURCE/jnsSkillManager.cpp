@@ -9,6 +9,8 @@ namespace jns
 	{
 		mSkillData[L"Normal_Assain_First_Attack"] = new SkillData{ L"Normal_Assain_First_Attack", 50.0f, 0.5f, eKeyCode::LCTRL };
 		mSkillData[L"Normal_Assain_Second_Attack"] = new SkillData{ L"Normal_Assain_Second_Attack", 50.0f, 1.0f, eKeyCode::LCTRL };
+		mSkillData[L"Rogue_SkillflashJump_01"] = new SkillData{ L"Rogue_SkillflashJump_01", 50.0f, 1.0f, eKeyCode::C };
+		mSkillData[L"Rogue_SkillflashJump_02"] = new SkillData{ L"Rogue_SkillflashJump_02", 50.0f, 1.0f, eKeyCode::C };
 		
 	
 	}

@@ -58,7 +58,6 @@ namespace jns
 		if (mGround->GetGroundName() == L"Ladder")
 		{
 			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
-			rb->SetGround(false);
 		}
 	}
 

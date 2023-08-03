@@ -43,7 +43,6 @@ namespace jns
 				{
 					at->GetActiveAnimation()->SetAniDirection(true);
 				}
-				isMaked = false;
 			}
 		}
 
@@ -124,7 +123,6 @@ namespace jns
 		GameObject* mPlayer;
 		PlayerScript* mPlayerScript;
 
-		bool isMaked;
 		bool isRenderOn;
 		bool isPlayPossible;
 	};

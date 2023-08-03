@@ -77,6 +77,7 @@ namespace jns
 		void InstantiateAssainHit2Skill();
 		void InstantiateJumpSkill();
 
+		void CheckJumpCount();
 
 
 		void PlayerControl();
@@ -141,5 +142,7 @@ namespace jns
 
 		bool isLadderMoving = false;
 		bool isLadderOn = false;
+
+		int visitedAssainAttackTime = 0;
 	};
 }
