@@ -14,6 +14,8 @@ namespace jns
 	{
 		SetName(L"BloodyQueen");
 		
+		Collider2D* cd =  AddComponent<Collider2D>();
+		cd->SetSize(Vector2(0.5f, 0.7f));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
@@ -32,8 +34,18 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 700, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 700, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQIdle", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQNormalAttack", 750, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQWalk", 750, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQChangeType", 700, 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff1", 700, 0.15f, Vector2(-0.02f, -0.09f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff2", 700, 0.15f, Vector2(-0.02f, -0.09f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff3", 700, 0.15f, Vector2(-0.02f, -0.09f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQIdle", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQNormalAttack", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQWalk", 700, 0.15f);
 		
-		at->PlayAnimation(L"NormalBloodyQueenNBQDebuff", true);
+		at->PlayAnimation(L"ReflectBloodyQueenRFBQWalk", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(800.0f, 800.0f, 1.0f));
 	}
