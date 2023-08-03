@@ -33,7 +33,7 @@ namespace jns
 		
 		int direction = (int)mPlayerScript->GetPlayerDirection();
 		mPos.x += direction * 230.0f;
-		mPos.z = 2.0f;
+		mPos.z = 0.0f;
 		SetPosition(mPos);
 		
 

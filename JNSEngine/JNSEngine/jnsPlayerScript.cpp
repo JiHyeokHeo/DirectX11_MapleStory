@@ -29,6 +29,7 @@ namespace jns
         at->StartEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::InstantiateAssainHit2Skill, this);
         at->StartEvent(L"CharactorCharJump") = std::bind(&PlayerScript::InstantiateJumpSkill, this);
         at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
+        at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAssasinHit2, this);
 		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);
         at->CompleteEvent(L"CharactorCharRope") = std::bind(&PlayerScript::CompleteRope, this);
@@ -289,8 +290,10 @@ namespace jns
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == true)
         {
-            mPlayerInfo.mJumpCnt++;
             pos.x -= (int)mPlayerInfo.mDir * 100.0f;
+
+            ActiveJumpSkill();
+            mPlayerInfo.mJumpCnt++;
         }
 
         if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == true)
@@ -299,6 +302,8 @@ namespace jns
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 260.0f;
 
+            ActiveJumpSkill();
+
             mPlayerInfo.mJumpCnt++;
         }
 
@@ -306,6 +311,9 @@ namespace jns
         {
             velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 260.0f;
+
+
+            ActiveJumpSkill();
 
             mPlayerInfo.mJumpCnt++;
         }
@@ -316,6 +324,9 @@ namespace jns
             velocity.y = -40.0f;
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 260.0f;
+
+
+            ActiveJumpSkill();
 
             mPlayerInfo.mJumpCnt++;
         }
@@ -498,23 +509,22 @@ namespace jns
     }
     void PlayerScript::CheckIsAssainHitUsed()
     {
-        if (mPlayerSkillInfo.isAssainHit1Used == false )
+        if (mPlayerSkillInfo.isAssainHit1Used == false)
         {
             at->PlayAnimation(L"CharactorCharAssain1Hit", true);
         }
-        else if(mPlayerSkillInfo.isAssainHit1Used == true )
+        else if(mPlayerSkillInfo.isAssainHit1Used == true)
         {
             at->PlayAnimation(L"CharactorCharAssain2Hit", true);
         }
     }
+    
     void PlayerScript::CompleteAssasinHit1()
     {
-        mPlayerSkillInfo.isAssainHit1Used = true;
         mPlayerState = ePlayerState::Idle;
     }
     void PlayerScript::CompleteAssasinHit2()
     {
-        mPlayerSkillInfo.isAssainHit1Used = false;
         mPlayerState = ePlayerState::Idle;
     }
     void PlayerScript::CompleteAnimation()
@@ -540,6 +550,7 @@ namespace jns
     }
     void PlayerScript::InstantiateAssainHit1Skill()
     {
+        mPlayerSkillInfo.isAssainHit1Used = true;
         GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_First_Attack");
         AssainHit01* obj2 = dynamic_cast<AssainHit01*>(obj);
         obj2->SetSkillMode(true);
@@ -547,6 +558,7 @@ namespace jns
     }
     void PlayerScript::InstantiateAssainHit2Skill()
     {
+        mPlayerSkillInfo.isAssainHit1Used = false;
         GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_Second_Attack");
         AssainHit02* obj2 = dynamic_cast<AssainHit02*>(obj);
         obj2->SetSkillMode(true);
@@ -555,7 +567,7 @@ namespace jns
     void PlayerScript::InstantiateJumpSkill()
     {
 
-                
+
     }
     void PlayerScript::CheckJumpCount()
     {
@@ -564,21 +576,24 @@ namespace jns
             isDone = false;
         }
 
-        if (mPlayerInfo.mJumpCnt >= 1 && isDone == false)
+    }
+    void PlayerScript::ActiveJumpSkill()
+    {
+        if (mPlayerInfo.mJumpCnt == 1)
         {
-            isDone = true;
             GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_01");
             JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
             obj2->SetSkillMode(true);
             obj2->SetSkillPlay(true);
+            obj2->IsPosSet(true);
         }
-        else if(mPlayerInfo.mJumpCnt >= 2 && isDone == false)
+        else
         {
-            isDone = true;
             GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_02");
             JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
             obj2->SetSkillMode(true);
             obj2->SetSkillPlay(true);
+            obj2->IsPosSet(true);
         }
     }
 }

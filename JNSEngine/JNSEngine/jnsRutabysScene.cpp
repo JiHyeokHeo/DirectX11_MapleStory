@@ -94,7 +94,7 @@ namespace jns
 		SkillManager::AddSkill(L"Rogue_SkillflashJump_02", jump2);
 
 		// 테스트 보스
-		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
+//		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 
 
 

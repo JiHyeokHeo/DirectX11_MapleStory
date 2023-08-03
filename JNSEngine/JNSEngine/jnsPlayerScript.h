@@ -79,6 +79,7 @@ namespace jns
 
 		void CheckJumpCount();
 
+		void ActiveJumpSkill();
 
 		void PlayerControl();
 		void AnimatorControl();

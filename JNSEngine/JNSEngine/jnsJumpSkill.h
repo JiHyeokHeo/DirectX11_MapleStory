@@ -21,13 +21,15 @@ namespace jns
 
 		void SetSkillJumpNum(int num) { mSkillJumpNum = num; }
 		int GetSkillJumpNum() { return mSkillJumpNum; }
+
+		void IsPosSet(bool isSet) { isPosSet = isSet; }
 	private: 
 		bool isClicked;
 		bool mIsActivated;
 		bool isMaked;
 
 		int mSkillJumpNum;
-		bool isSetPos;
+		bool isPosSet;
 	};
 	
 }

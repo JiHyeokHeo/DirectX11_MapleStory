@@ -26,23 +26,24 @@ namespace jns
 	}
 	void JumpSkill::Update()
 	{
-		Vector3 mPos = mPlayerScript->GetOwner()->GetComponent<Transform>()->GetPosition();
-		int direction = (int)mPlayerScript->GetPlayerDirection();
-		if (isSetPos == false)
+		if (isPosSet == true)
 		{
+			Vector3 mPos = mPlayerScript->GetOwner()->GetComponent<Transform>()->GetPosition();
+			int direction = (int)mPlayerScript->GetPlayerDirection();
 			mPos.x -= direction * 100.0f;
 			mPos.z = 0.0f;
 			SetPosition(mPos);
 		}
+		
 
 		SkillBase::Update();
 	}
 	void JumpSkill::LateUpdate()
 	{
-		if (isSetPos == false)
+		if (isPosSet == true)
 		{
 			SkillBase::SetDirection();
-			isSetPos = true;
+			isPosSet = false;
 			at->PlayAnimation(L"Rogue_SkillflashJump", true);
 		}
 		SkillBase::LateUpdate();
@@ -54,7 +55,6 @@ namespace jns
 	void JumpSkill::CompleteSkillAnimation()
 	{
 		isRenderOn = false;
-		isSetPos = false;
 	}
 	void JumpSkill::StartSkillAnimation()
 	{

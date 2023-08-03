@@ -18,16 +18,22 @@ namespace jns
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
 		
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 1000, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttack", 1000, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 100, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 100, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQWalk", 100, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die1", 100, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die2", 100, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die3", 100, 0.1f);
-
-		at->PlayAnimation(L"AttractionBloodyQueenATBQAttack", true);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttack", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 700, 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQWalk", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die1", 700, 0.15f, Vector2(0.0f, 0.03f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die2", 700, 0.15f, Vector2(0.0f, 0.03f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die3", 700, 0.15f, Vector2(0.0f, 0.03f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenHitMotion", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress1", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress2", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 700, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 700, 0.15f);
+		
+		at->PlayAnimation(L"NormalBloodyQueenNBQDebuff", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(800.0f, 800.0f, 1.0f));
 	}
