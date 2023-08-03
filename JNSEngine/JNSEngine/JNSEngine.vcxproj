@@ -161,6 +161,7 @@
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsBGInstance.h" />
     <ClInclude Include="jnsBloodyQueen.h" />
+    <ClInclude Include="jnsBloodyQueenScript.h" />
     <ClInclude Include="jnsCameraObject.h" />
     <ClInclude Include="jnsCameraScript.h" />
     <ClInclude Include="jnsCenterStatus.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsBGInstance.cpp" />
     <ClCompile Include="jnsBloodyQueen.cpp" />
+    <ClCompile Include="jnsBloodyQueenScript.cpp" />
     <ClCompile Include="jnsCameraObject.cpp" />
     <ClCompile Include="jnsCameraScript.cpp" />
     <ClCompile Include="jnsCenterStatus.cpp" />

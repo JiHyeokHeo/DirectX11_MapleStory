@@ -162,6 +162,7 @@
     <ClCompile Include="jnsAssainHit02.cpp">
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClCompile>
+    <ClCompile Include="jnsBloodyQueenScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -339,6 +340,7 @@
     <ClInclude Include="jnsAssainHit02.h">
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClInclude>
+    <ClInclude Include="jnsBloodyQueenScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
