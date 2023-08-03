@@ -1,6 +1,7 @@
 #include "jnsMonsterBase.h"
 #include "jnsAnimator.h"
 
+
 namespace jns
 {
 	MonsterBase::MonsterBase()

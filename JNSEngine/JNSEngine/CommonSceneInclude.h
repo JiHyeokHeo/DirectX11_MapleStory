@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 // Static Manager
 #include "jnsSkillManager.h"
 
@@ -19,6 +21,7 @@
 #include "jnsPortalScript.h"
 #include "jnsLightScript.h"
 #include "jnsPlayerMoveLimitScript.h"
+#include "jnsBloodyQueenScript.h"
 
 // Player
 #include "jnsPlayer.h"
