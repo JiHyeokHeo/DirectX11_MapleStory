@@ -163,6 +163,9 @@
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClCompile>
     <ClCompile Include="jnsBloodyQueenScript.cpp" />
+    <ClCompile Include="jnsInvenBG.cpp">
+      <Filter>Contents\UI\Inventory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -341,6 +344,9 @@
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClInclude>
     <ClInclude Include="jnsBloodyQueenScript.h" />
+    <ClInclude Include="jnsInvenBG.h">
+      <Filter>Contents\UI\Inventory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

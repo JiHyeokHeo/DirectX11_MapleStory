@@ -13,8 +13,9 @@ namespace jns
 	}
 	void AssainHit01::Initialize()
 	{
+		isRenderOn = false;
 		Collider2D* cd = AddComponent<Collider2D>();
-
+		SetName(L"AssainHit01");
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.05f);

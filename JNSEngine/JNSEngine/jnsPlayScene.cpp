@@ -50,6 +50,8 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
+		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Player, true);
+		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Skill, true);
 	}
 
 	void PlayScene::OnExit()
@@ -125,8 +127,7 @@ namespace jns
 
 	void PlayScene::CreateInventory()
 	{
-		GameObject* mShopSlotBack02 = object::InstantiateNOmove<ShopSlotBack2>(eLayerType::UI);
-
+		GameObject* mShopSlotBack01 = object::InstantiateNOmove<ShopSlotBack2>(eLayerType::UI);
 
 	}
 

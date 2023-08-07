@@ -667,6 +667,10 @@ namespace renderer
 		 SET_MATERIAL(Inventory_UI_Material, Inventory_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"InventoryMaterial", Inventory_UI_Material);
 		 
+		 LOAD_TEXTURE(L"InventoryBG", L"..\\Resources\\UI\\Inventory\\Item.backgrnd3.png", Inventory_UI2_Texture);
+		 SET_MATERIAL(Inventory_UI2_Material, Inventory_UI2_Texture, spriteShader);
+		 INSERT_MATERIAL(L"InventoryBGMaterial", Inventory_UI2_Material);
+
 		 LOAD_TEXTURE(L"CharacSelectUI", L"..\\Resources\\UI\\Button\\CharSelect.adventure.0.png", CharacSelect_UI_Texture);
 		 SET_MATERIAL(CharacSelect_UI_Material, CharacSelect_UI_Texture, spriteShader);
 		 INSERT_MATERIAL(L"CharacSelectMaterial", CharacSelect_UI_Material);

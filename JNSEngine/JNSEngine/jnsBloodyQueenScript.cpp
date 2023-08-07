@@ -9,7 +9,8 @@ std::uniform_int_distribution<__int64> dist1(-1, 1);
 namespace jns
 {
 	void BloodyQueenScript::Initialize()
-	{//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 1500, 0.15f);
+	{
+		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 1500, 0.15f);
 		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttack", 1500, 0.15f);
 		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 1500, 0.2f);
 		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 1500, 0.15f);
@@ -42,14 +43,17 @@ namespace jns
 		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallowLoop", 1500, 0.15f, Vector2(0.025f, -0.010f));
 		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQWalk", 1500, 0.15f, Vector2(0.025f, -0.010f));
 		//at->PlayAnimation(L"NormalBloodyQueenNBQWalk", true);
-		mRandMakeTime = 0.0f;
-		mChangeType = 0.0f;
+		
+		InitData();
+
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
+
 		mMonsterState = eBloodyQueenState::Idle;
 		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
-
+		mBloodyQueenInfo.hp = 100;
+		
 		at->CompleteEvent(L"AttractionBloodyQueenATBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni1, this);
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni2, this);
@@ -60,6 +64,7 @@ namespace jns
 		srand(time(NULL));
 		MakeRandDir();
 		ChangeBossTypeRandom();
+		CheckChaseTime();
 		PlayerControl();
 		AnimatorControl();
 		mPrevMonsterState = mMonsterState;
@@ -74,13 +79,31 @@ namespace jns
 	}
 	void BloodyQueenScript::OnCollisionEnter(Collider2D* other)
 	{
-		
+		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
+		{
+			if (other->GetOwner()->GetName() == L"AssainHit01")
+			{
+				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+				mBloodyQueenInfo.hp -= mSkillDmg;
+				isChasing = true;
+			}
+			else if(other->GetOwner()->GetName() == L"AssainHit02")
+			{
+			}
+		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
 	{
 	}
 	void BloodyQueenScript::OnCollisionExit(Collider2D* other)
 	{
+	}
+	void BloodyQueenScript::InitData()
+	{
+		isChasing = false;
+		mRandMakeTime = 0.0f;
+		mChasingTime = 0.0f;
+		mChangeType = 0.0f;
 	}
 	void BloodyQueenScript::MakeRandDir()
 	{
@@ -98,6 +121,19 @@ namespace jns
 		{
 			mMonsterState = eBloodyQueenState::Change;
 			mChangeType = 0.0f;
+		}
+	}
+	void BloodyQueenScript::CheckChaseTime()
+	{
+		if (mChasingTime >= 8.0f)
+		{
+			isChasing = false;
+			mChasingTime = 0.0f;
+		}
+
+		if (isChasing)
+		{
+			mChasingTime += Time::DeltaTime();
 		}
 	}
 	void BloodyQueenScript::CompleteChangeTypeAni()
@@ -124,28 +160,51 @@ namespace jns
 	{
 		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change)
 		{
+			if(isChasing == false)
+				mMonsterState = eBloodyQueenState::Move;
+		}
+
+		if (isChasing == true)
+		{
 			mMonsterState = eBloodyQueenState::Move;
 		}
 	}
 	void BloodyQueenScript::Move()
 	{
 		Vector3 mMonsterPos = tr->GetPosition();
-
-		if (mRandDir == -1)
+		
+		if (isChasing == false)
 		{
-			mMonsterPos.x -= 25.0f * Time::DeltaTime();
-			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
-		}
-		else if(mRandDir == 1)
-		{
-			mMonsterPos.x += 25.0f * Time::DeltaTime();
-			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+			if (mRandDir == -1)
+			{
+				mMonsterPos.x -= 25.0f * Time::DeltaTime();
+				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+			}
+			else if (mRandDir == 1)
+			{
+				mMonsterPos.x += 25.0f * Time::DeltaTime();
+				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+			}
+			else
+			{
+				mMonsterState = eBloodyQueenState::Idle;
+			}
 		}
 		else
 		{
-			mMonsterState = eBloodyQueenState::Idle;
+			PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
+			PlayerScript::PlayerDir mPlayerDir = player->GetPlayerDirection();
+			if ((int)mPlayerDir == -1)
+			{
+				mMonsterPos.x += 25.0f * Time::DeltaTime();
+				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+			}
+			else if ((int)mPlayerDir == 1)
+			{
+				mMonsterPos.x -= 25.0f * Time::DeltaTime();
+				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+			}
 		}
-		
 		
 		
 		tr->SetPosition(mMonsterPos);
@@ -155,9 +214,17 @@ namespace jns
 	}
 	void BloodyQueenScript::Change()
 	{
+		mChangeTime += Time::DeltaTime();
+		if (mChangeTime >= 3.0f)
+		{
+			mMonsterState = eBloodyQueenState::Idle;
+			isChanging = false;
+		}
+
 		if (isChanging == true)
 			return;
 
+		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
 		mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;

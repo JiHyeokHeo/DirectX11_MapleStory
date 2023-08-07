@@ -63,6 +63,7 @@
 #include "jnsInventory.h"
 #include "jnsItemResources.h"
 #include "jnsGround.h"
+#include "jnsInvenBG.h"
 
 // Component
 #include "jnsTransform.h"

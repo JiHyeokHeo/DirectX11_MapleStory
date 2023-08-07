@@ -39,9 +39,11 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 	
-
+		void InitData();
 		void MakeRandDir();
 		void ChangeBossTypeRandom();
+		void CheckChaseTime();
+
 
 		void CompleteChangeTypeAni();
 		void CompleteChangeTypeAni1();
@@ -61,6 +63,8 @@ namespace jns
 	private:
 		struct BloodyQueenInfo
 		{
+			int hp;
+			
 			bool isRight;
 			float mHittedTime;
 			float mMoveSpeed;
@@ -84,6 +88,10 @@ namespace jns
 		float mRandMakeTime;
 
 		bool isChanging;
+		float mChangeTime;
+
+		bool isChasing;
+		float mChasingTime;
 	};
 
 
