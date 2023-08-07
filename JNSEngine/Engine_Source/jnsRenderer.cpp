@@ -88,7 +88,20 @@ namespace renderer
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
 
-		 shader = jns::Resources::Find<Shader>(L"PlayerUIShader");
+		 shader = jns::Resources::Find<Shader>(L"PlayerHPShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
+
+		 shader = jns::Resources::Find<Shader>(L"PlayerMPShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
+
+
+		 shader = jns::Resources::Find<Shader>(L"PlayerEXPShader");
 
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
@@ -403,9 +416,19 @@ namespace renderer
 		 jns::Resources::Insert(L"DebugCircleShader", debugCircleShader);
 
 		 std::shared_ptr<Shader> playerUIShader = std::make_shared<Shader>();
-		 playerUIShader->Create(eShaderStage::VS, L"PlayerUIVS.hlsl", "main");
-		 playerUIShader->Create(eShaderStage::PS, L"PlayerUIPS.hlsl", "main");
-		 jns::Resources::Insert(L"PlayerUIShader", playerUIShader);
+		 playerUIShader->Create(eShaderStage::VS, L"PlayerHPVS.hlsl", "main");
+		 playerUIShader->Create(eShaderStage::PS, L"PlayerHPPS.hlsl", "main");
+		 jns::Resources::Insert(L"PlayerHPShader", playerUIShader);
+
+		 playerUIShader = std::make_shared<Shader>();
+		 playerUIShader->Create(eShaderStage::VS, L"PlayerMPVS.hlsl", "main");
+		 playerUIShader->Create(eShaderStage::PS, L"PlayerMPPS.hlsl", "main");
+		 jns::Resources::Insert(L"PlayerMPShader", playerUIShader);
+
+		 playerUIShader = std::make_shared<Shader>();
+		 playerUIShader->Create(eShaderStage::VS, L"PlayerEXPVS.hlsl", "main");
+		 playerUIShader->Create(eShaderStage::PS, L"PlayerEXPPS.hlsl", "main");
+		 jns::Resources::Insert(L"PlayerEXPShader", playerUIShader);
 
 		 std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
 		 paintShader->Create(L"PaintCS.hlsl", "main");
@@ -451,8 +474,12 @@ namespace renderer
 			 = Resources::Find<Shader>(L"MoveShader");
 		 std::shared_ptr<Shader> gridShader
 			 = Resources::Find<Shader>(L"GridShader");
-		 std::shared_ptr<Shader> playerUIShader
-			 = Resources::Find<Shader>(L"PlayerUIShader");
+		 std::shared_ptr<Shader> playerHPShader
+			 = Resources::Find<Shader>(L"PlayerHPShader");
+		 std::shared_ptr<Shader> playerMPShader
+			 = Resources::Find<Shader>(L"PlayerMPShader");
+		 std::shared_ptr<Shader> playerEXPShader
+			 = Resources::Find<Shader>(L"PlayerEXPShader");
 		 std::shared_ptr<Shader> debugShader
 			 = Resources::Find<Shader>(L"DebugShader");
 		 std::shared_ptr<Shader> debugCircleShader
@@ -573,7 +600,7 @@ namespace renderer
 		 INSERT_MATERIAL(L"ExpBarUIMaterial", ExpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"ExpMaxBar", L"..\\Resources\\UI\\Status\\ExpMaxBar.png", ExpMaxBar_UI_Texture); // ³ë¶û
-		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, playerUIShader);
+		 SET_MATERIAL(ExpMaxBar_UI_Material, ExpMaxBar_UI_Texture, playerEXPShader);
 		 //ExpMaxBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"ExpMaxBarMaterial", ExpMaxBar_UI_Material);
 
@@ -593,12 +620,12 @@ namespace renderer
 		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
 
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
-		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, playerUIShader);
+		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, playerHPShader);
 		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
 
 		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\MpBar.png", MpBar_Texture);
-		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, playerUIShader);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, playerMPShader);
 		 //MpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"MpBarMaterial", MpBar_UI_Material);
 

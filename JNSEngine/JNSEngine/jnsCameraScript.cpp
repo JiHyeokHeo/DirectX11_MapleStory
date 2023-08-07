@@ -118,7 +118,6 @@ namespace jns
 		Transform* followTR = checkTarget->GetComponent<Transform>();
 		Vector3 playerPos = followTR->GetPosition();
 		float followSpeed = 4.0f;
-
 		// 카메라 위치 선형 보간을 시킨다.
 		Vector3 targetCameraPos = playerPos + Vector3(0.0f, setYCord, -10.0f);
 		Vector3 interpolatedCameraPos = Vector3::Lerp(cameraPrevPos, targetCameraPos, followSpeed * Time::DeltaTime());

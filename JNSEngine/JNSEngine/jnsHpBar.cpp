@@ -1,5 +1,6 @@
 #include "jnsHpBar.h"
 #include "CommonUIInclude.h"
+#include "CommonSceneInclude.h"
 
 namespace jns
 {
@@ -31,6 +32,19 @@ namespace jns
 	}
 	void HpBar::Render()
 	{
+		renderer::PlayerCB playerUICB = {};
+		int mHp = 20;
+		int mMp = 100;
+		int mExp = 100;
+
+		playerUICB.hp = mHp;
+		playerUICB.mp = mMp;
+		playerUICB.exp = mExp;
+		playerUICB.type = 0;
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
+
+		cb->SetData(&playerUICB);
+		cb->Bind(eShaderStage::PS);
 		UIBase::Render();
 	}
 }

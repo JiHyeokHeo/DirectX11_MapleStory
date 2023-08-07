@@ -36,10 +36,10 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)GridVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerUIPS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerHPPS.hlsl">
       <Filter>PS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerUIVS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerHPVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
     <FxCompile Include="$(MSBuildThisFileDirectory)DebugPS.hlsl">
@@ -67,6 +67,18 @@
       <Filter>PS</Filter>
     </FxCompile>
     <FxCompile Include="$(MSBuildThisFileDirectory)ParticleVS.hlsl">
+      <Filter>VS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerMPPS.hlsl">
+      <Filter>PS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerEXPPS.hlsl">
+      <Filter>PS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerMPVS.hlsl">
+      <Filter>VS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)PlayerEXPVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
   </ItemGroup>

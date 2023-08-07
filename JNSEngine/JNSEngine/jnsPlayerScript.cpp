@@ -29,7 +29,6 @@ namespace jns
         at->StartEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::InstantiateAssainHit2Skill, this);
         at->StartEvent(L"CharactorCharJump") = std::bind(&PlayerScript::InstantiateJumpSkill, this);
         at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
-        at->CompleteEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::CompleteAssasinHit1, this);
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAssasinHit2, this);
 		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);
         at->CompleteEvent(L"CharactorCharRope") = std::bind(&PlayerScript::CompleteRope, this);
@@ -60,7 +59,7 @@ namespace jns
 	}
 	void PlayerScript::LateUpdate()
 	{
-		BindConstantBuffer();
+		//BindConstantBuffer();
         at->GetActiveAnimation()->SetAniDirection(mPlayerInfo.isRight);
 	}
 	
@@ -107,7 +106,7 @@ namespace jns
 		playerUICB.hp = mHp;
 		playerUICB.mp = mMp;
 		playerUICB.exp = mExp;
-		playerUICB.type = 1;
+		playerUICB.type = -1;
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
 		
 		cb->SetData(&playerUICB);

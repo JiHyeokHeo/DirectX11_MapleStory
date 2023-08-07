@@ -43,7 +43,7 @@ namespace jns
 	{	
 		int a = 0;
 		Vector3 testPos = renderer::mainCamera->GetOwner()->GetComponent<Transform>()->GetPosition();
-		mCursorPos = Vector3(Input::GetMousePos().x - testPos.x, Input::GetMousePos().y + testPos.y, 0.0f); //ui용도로만 쓰라는건가?
+		mCursorPos = Vector3(Input::GetMousePos().x - testPos.x, Input::GetMousePos().y + testPos.y, 0.0f); 
 		mCursorWorldPos = Vector3(Input::GetMousePos().x, Input::GetMousePos().y, 0.0f);
 		mCursorEndPos = Vector3(800.0f, 450.0f, 0.0f);
 			

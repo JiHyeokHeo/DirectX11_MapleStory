@@ -41,6 +41,12 @@ namespace jns
 	
 
 		void MakeRandDir();
+		void ChangeBossTypeRandom();
+
+		void CompleteChangeTypeAni();
+		void CompleteChangeTypeAni1();
+		void CompleteChangeTypeAni2();
+		void CompleteChangeTypeAni3();
 	public:
 		void Idle();
 		void Move();
@@ -58,6 +64,7 @@ namespace jns
 			bool isRight;
 			float mHittedTime;
 			float mMoveSpeed;
+			eBloodyQueenType mBossPrevType;
 			eBloodyQueenType mBossType;
 			eBossStatus mBloodyQueenStatus;
 			MonsterBase::MonsterDir mDir;
@@ -66,7 +73,6 @@ namespace jns
 
 		BloodyQueenInfo mBloodyQueenInfo;
 		class Transform* tr;
-		class RigidBody* mRb;
 		class Animator* at;
 		class Collider2D* cd;
 		
@@ -74,7 +80,10 @@ namespace jns
 		eBloodyQueenState mPrevMonsterState = eBloodyQueenState::End;
 
 		int mRandDir;
+		float mChangeType;
 		float mRandMakeTime;
+
+		bool isChanging;
 	};
 
 
