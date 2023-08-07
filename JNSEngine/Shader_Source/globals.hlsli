@@ -44,6 +44,19 @@ cbuffer Animator : register(b5)
     float3 pad;
 }
 
+cbuffer ParticleSystem : register(b6)
+{
+    uint elementCount;
+    float elapsedTime;
+    int padd;
+    int padd2;
+}
+
+struct ParticleShared
+{
+    uint ActiveSharedCount;
+};
+
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);
 

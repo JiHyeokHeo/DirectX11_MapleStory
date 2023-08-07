@@ -4,6 +4,7 @@
 #include "jnsMaterial.h"
 #include "jnsStructedBuffer.h"
 #include "jnsPaintShader.h"
+#include "jnsParticleShader.h"
 
 namespace renderer
 {
@@ -246,6 +247,19 @@ namespace renderer
 		 std::vector<Vertex> vertexes = {};
 		 std::vector<UINT> indexes = {};
 
+		 // PointMesh
+		 Vertex v = {};
+		 v.pos = Vector3(0.0f, 0.0f, 0.0f);
+		 vertexes.push_back(v);
+		 indexes.push_back(0);
+		 std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		 mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		 mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		 Resources::Insert(L"PointMesh", mesh);
+
+		 vertexes.clear();
+		 indexes.clear();
+
 		 //RECT
 		 vertexes.resize(4);
 		 vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
@@ -265,7 +279,7 @@ namespace renderer
 		 vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		 // Vertex Buffer
-		 std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		 mesh = std::make_shared<Mesh>();
 		 Resources::Insert(L"RectMesh", mesh);
 
 		 mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
@@ -353,9 +367,13 @@ namespace renderer
 		 constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
 		 constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 		 
+		 //ParticleCB
+		 constantBuffer[(UINT)eCBType::Particle] = new ConstantBuffer(eCBType::Particle);
+		 constantBuffer[(UINT)eCBType::Particle]->Create(sizeof(ParticleCB));
+
 		 // light structed buffer
 		 lightsBuffer = new StructedBuffer();
-		 lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
+		 lightsBuffer->Create(sizeof(LightAttribute), 2, eViewType::SRV, nullptr, true);
 		 
 		 // 추가 상수 버퍼
 		 //colorConstanttBuffer = new jns::graphics::ConstantBuffer(eCBType::Color);
@@ -434,13 +452,18 @@ namespace renderer
 		 paintShader->Create(L"PaintCS.hlsl", "main");
 		 jns::Resources::Insert(L"PaintShader", paintShader);
 
+		 std::shared_ptr<ParticleShader> psSystemShader = std::make_shared<ParticleShader>();
+		 psSystemShader->Create(L"ParticleCS.hlsl", "main");
+		 jns::Resources::Insert(L"ParticleSystemShader", psSystemShader);
+
 		 std::shared_ptr<Shader> paritcleShader = std::make_shared<Shader>();
 		 paritcleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		 paritcleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
 		 paritcleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
 		 paritcleShader->SetRSState(eRSType::SolidNone);
 		 paritcleShader->SetDSState(eDSType::NoWrite);
 		 paritcleShader->SetBSState(eBSType::AlphaBlend);
-
+		 paritcleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 		 jns::Resources::Insert(L"ParticleShader", paritcleShader);
 
 		 //{
@@ -461,6 +484,9 @@ namespace renderer
 		 std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
 		 uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
 		 jns::Resources::Insert(L"PaintTexture", uavTexture);
+
+		 std::shared_ptr<Texture> particle = std::make_shared<Texture>();
+		 Resources::Load<Texture>(L"CartoonSmoke", L"..\\Resources\\Particle\\CartoonSmoke.png");
 	 }
 
 
@@ -520,6 +546,10 @@ namespace renderer
 		 material = std::make_shared<Material>();
 		 material->SetShader(particleShader);
 		 material->SetRenderingMode(eRenderingMode::Transparent);
+
+		 std::shared_ptr<Texture> particleTexx
+			 = Resources::Find<Texture>(L"CartoonSmoke");
+		 material->SetTexture(particleTexx);
 		 Resources::Insert(L"ParticleMaterial", material);
 
 
@@ -771,8 +801,8 @@ namespace renderer
 		 }
 
 		 lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
-		 lightsBuffer->Bind(eShaderStage::VS, 13);
-		 lightsBuffer->Bind(eShaderStage::PS, 13);
+		 lightsBuffer->BindSRV(eShaderStage::VS, 13);
+		 lightsBuffer->BindSRV(eShaderStage::PS, 13);
 	 }
 
 	

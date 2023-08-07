@@ -184,6 +184,13 @@ namespace jns::graphics
 
 		return true;
 	}
+	bool GraphicDevice_Dx11::CreateGeometryShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11GeometryShader** ppGeometryShader)
+	{
+		if (FAILED(mDevice->CreateGeometryShader(pShaderBytecode, BytecodeLength, nullptr, ppGeometryShader)))
+			return false;
+
+		return true;
+	}
 	bool GraphicDevice_Dx11::CreatePixelShader(const void* pPixelByteCode
 		, SIZE_T BytecodeLength
 		, ID3D11PixelShader** ppPixelShader)
@@ -296,6 +303,11 @@ namespace jns::graphics
 		mContext->OMSetBlendState(pBlendState, nullptr, 0xffffffff);
 	}
 
+	void GraphicDevice_Dx11::CopyResource(ID3D11Resource* pDstResource, ID3D11Resource* pSrcResource)
+	{
+		mContext->CopyResource(pDstResource, pSrcResource);
+	}
+
 	void GraphicDevice_Dx11::BindVertexBuffer(UINT StartSlot, ID3D11Buffer* const* ppVertexBuffers, const UINT* pStrides, const UINT* pOffsets)
 	{
 		mContext->IASetVertexBuffers(StartSlot, 1, ppVertexBuffers, pStrides, pOffsets);
@@ -309,6 +321,21 @@ namespace jns::graphics
 	void GraphicDevice_Dx11::BindVertexShader(ID3D11VertexShader* pVertexShader)
 	{
 		mContext->VSSetShader(pVertexShader, 0, 0);
+	}
+
+	void GraphicDevice_Dx11::BindHullShader(ID3D11HullShader* pHullShader)
+	{
+		mContext->HSSetShader(pHullShader, 0, 0);
+	}
+
+	void GraphicDevice_Dx11::BindDomainShader(ID3D11DomainShader* pDomainShader)
+	{
+		mContext->DSSetShader(pDomainShader, 0, 0);
+	}
+
+	void GraphicDevice_Dx11::BindGeometryShader(ID3D11GeometryShader* pGeometryShader)
+	{
+		mContext->GSSetShader(pGeometryShader, 0, 0);
 	}
 
 	void GraphicDevice_Dx11::BindPixelShader(ID3D11PixelShader* pPixelShader)

@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsMeshRenderer.h"
 #include "jnsStructedBuffer.h"
+#include "jnsParticleShader.h"
 
 namespace jns
 {
@@ -17,6 +18,10 @@ namespace jns
 
 	private:
 		graphics::StructedBuffer* mBuffer;
+		graphics::StructedBuffer* mSharedBuffer;
+
+		std::shared_ptr<ParticleShader> mCS;
+
 
 		UINT    mCount;
 		Vector4 mStartSize;
@@ -24,5 +29,8 @@ namespace jns
 		Vector4 mStartColor;
 		Vector4 mEndColor;
 		float   mLifeTime;
+		float	mFrequency;
+
+		float mTime;
 	};
 }

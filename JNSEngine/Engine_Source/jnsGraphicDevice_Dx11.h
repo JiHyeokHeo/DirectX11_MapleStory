@@ -17,6 +17,7 @@ namespace jns::graphics
 		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data);
 		bool CompileFromfile(const std::wstring& fileName, const std::string& funcName, const std::string& version, ID3DBlob** ppCode);
 		bool CreateVertexShader(const void* pShaderByteCode, SIZE_T BytecodeLength, ID3D11VertexShader** ppVertexShader);
+		bool CreateGeometryShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11GeometryShader** ppGeometryShader);
 		bool CreatePixelShader(const void* pPixelByteCode, SIZE_T BytecodeLength, ID3D11PixelShader** ppPixelShader);
 		bool CreateComputeShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11ComputeShader** ppComputeShader);
 		bool CreateSamplerState(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState);
@@ -34,6 +35,9 @@ namespace jns::graphics
 		void BindVertexBuffer(UINT StartSlot, ID3D11Buffer* const* ppVertexBuffers, const UINT* pStrides, const UINT* pOffsets);
 		void BindIndexBuffer(ID3D11Buffer* pIndexBuffer, DXGI_FORMAT Format, UINT Offset);
 		void BindVertexShader(ID3D11VertexShader* pVertexShader);
+		void BindHullShader(ID3D11HullShader* pHullShader);
+		void BindDomainShader(ID3D11DomainShader* pDomainShader);
+		void BindGeometryShader(ID3D11GeometryShader* pGeometryShader);
 		void BindPixelShader(ID3D11PixelShader* pPixelShader);
 		void BindComputeShader(ID3D11ComputeShader* pComputeShader);
 		void Dispatch(UINT ThreadGroupCountX, UINT ThreadGroupCountY, UINT ThreadGroupCountZ);
@@ -50,6 +54,7 @@ namespace jns::graphics
 		void BindRasterizeState(ID3D11RasterizerState* pRasterizerState);
 		void BindDepthStencilState(ID3D11DepthStencilState* pDepthStencilState);
 		void BindBlendState(ID3D11BlendState* pBlendState);
+		void CopyResource(ID3D11Resource* pDstResource, ID3D11Resource* pSrcResource);
 
 
 		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);

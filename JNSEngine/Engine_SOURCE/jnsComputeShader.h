@@ -7,6 +7,7 @@ namespace jns::graphics
 	class ComputeShader : public Resource
 	{
 	public:
+		ComputeShader(int x, int y, int z);
 		ComputeShader();
 		virtual ~ComputeShader();
 

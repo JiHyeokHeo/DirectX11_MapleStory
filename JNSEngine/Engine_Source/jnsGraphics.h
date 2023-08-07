@@ -17,7 +17,7 @@
 #define CBSLOT_MOVE			3
 #define CBSLOT_PLAYER		4
 #define CBSLOT_ANIMATION2D		5
-//#define CBSLOT_PARTICLE			1
+#define CBSLOT_PARTICLE			6
 
 namespace jns::graphics
 {
@@ -41,6 +41,7 @@ namespace jns::graphics
 		Move,
 		Player,
 		Animator,
+		Particle,
 		End,
 	};
 
@@ -86,9 +87,11 @@ namespace jns::graphics
 		End,
 	};
 
-	enum class eSRVType
+	enum class eViewType
 	{
 		None,
+		SRV,
+		UAV,
 		End,
 	};
 
@@ -143,5 +146,10 @@ namespace jns::graphics
 		float time;
 		float speed;
 		UINT active;
+	};
+
+	struct ParticleShared
+	{
+		UINT sharedActiveCount;
 	};
 }

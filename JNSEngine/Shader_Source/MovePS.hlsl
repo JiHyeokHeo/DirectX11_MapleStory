@@ -20,10 +20,10 @@ float4 main(VSOut In) : SV_TARGET
     float4 color = (float4) 0.0f;
     float2 uv = In.UV;
     
-    if (type == 1)
-        uv.x += mTime.x * 0.3f;
-    if (type == 2)
-        uv.x -= mTime.x * 0.3f;
+    //if (type == 1)
+    //    uv.x += mTime.x * 0.3f;
+    //if (type == 2)
+    //    uv.x -= mTime.x * 0.3f;
 
     //if(In.UV.x >= 0.5f)
     //{

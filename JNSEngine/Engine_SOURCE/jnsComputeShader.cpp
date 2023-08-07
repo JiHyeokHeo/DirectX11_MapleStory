@@ -3,6 +3,13 @@
 
 namespace jns::graphics
 {
+	ComputeShader::ComputeShader(int x, int y, int z)
+		: Resource(enums::eResourceType::ComputeShader)
+	{
+		mThreadGroupCountX = x;
+		mThreadGroupCountY = y;
+		mThreadGroupCountZ = z;
+	}
 	ComputeShader::ComputeShader()
 		: Resource(enums::eResourceType::ComputeShader)
 	{

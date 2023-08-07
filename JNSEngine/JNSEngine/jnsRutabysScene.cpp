@@ -14,10 +14,10 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
-		//std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
-		//std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
-		//paintShader->SetTarget(paintTexture);
-		//paintShader->OnExcute();
+		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
+		paintShader->SetTarget(paintTexture);
+		paintShader->OnExcute();
 
 		//{
 		//	GameObject* player = new GameObject();
@@ -33,17 +33,17 @@ namespace jns
 		//	//player->AddComponent<PlayerScript>();
 		//}
 
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Particle");
-		//	AddGameObject(eLayerType::Monster, player);
-		//	ParticleSystem* mr = player->AddComponent<ParticleSystem>();
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(50.0f, 50.0f, 1.0f));
-		//	//Collider2D* cd = player->AddComponent<Collider2D>();
-		//	//cd->SetSize(Vector2(1.2f, 1.2f));
-		//	//player->AddComponent<PlayerScript>();
-		//}
+		{
+			GameObject* player = new GameObject();
+			player->SetName(L"Particle");
+			AddGameObject(eLayerType::Monster, player);
+			ParticleSystem* mr = player->AddComponent<ParticleSystem>();
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(1500.0f, 1500.0f, 1.0f));
+			//Collider2D* cd = player->AddComponent<Collider2D>();
+			//cd->SetSize(Vector2(1.2f, 1.2f));
+			//player->AddComponent<PlayerScript>();
+		}
 
 		//ComputeShader* cs = new ComputeShader();
 		//cs->Create(L"PaintCS.hlsl", "main");
