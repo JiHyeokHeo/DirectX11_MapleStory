@@ -24,6 +24,8 @@ namespace jns
         at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
         cd = GetOwner()->GetComponent<Collider2D>();
+        cd->SetColNum(1);
+        this->SetColNum(1);
         tr = GetOwner()->GetComponent<Transform>();
         at->StartEvent(L"CharactorCharAssain1Hit") = std::bind(&PlayerScript::InstantiateAssainHit1Skill, this);
         at->StartEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::InstantiateAssainHit2Skill, this);
@@ -32,6 +34,7 @@ namespace jns
 		at->CompleteEvent(L"CharactorCharAssain2Hit") = std::bind(&PlayerScript::CompleteAssasinHit2, this);
 		at->CompleteEvent(L"CharactorCharProneStab") = std::bind(&PlayerScript::CompletePronStab, this);
         at->CompleteEvent(L"CharactorCharRope") = std::bind(&PlayerScript::CompleteRope, this);
+        at->PlayAnimation(L"CharactorCharIdle", true);
 	}
 	void PlayerScript::Update()
 	{
@@ -60,7 +63,7 @@ namespace jns
 	void PlayerScript::LateUpdate()
 	{
 		//BindConstantBuffer();
-        at->GetActiveAnimation()->SetAniDirection(mPlayerInfo.isRight);
+        at->GetActiveAnimation()->SetAniDirection((bool)mPlayerInfo.isRight);
 	}
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)

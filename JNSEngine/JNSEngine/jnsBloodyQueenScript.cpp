@@ -49,7 +49,8 @@ namespace jns
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
-
+		cd->SetColNum(3);
+		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
 		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 		mBloodyQueenInfo.hp = 100;

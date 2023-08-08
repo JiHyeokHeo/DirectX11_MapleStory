@@ -19,7 +19,9 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) {};
 		virtual void OnCollisionExit(Collider2D* other) {};
 
+		void SetColNum(int num) { mColliderNum = num; }
+		int GetColNum() { return mColliderNum; }
 	private:
-
+		int mColliderNum;
 	};
 }

@@ -37,6 +37,9 @@ namespace jns
 
 		void SetColliderOn(bool isOn) { isColliderON = isOn; }
 		bool GetColliderOn() { return isColliderON; }
+
+		void SetColNum(int num) { colNum = num; }
+		int GetColNum() { return colNum; }
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -52,5 +55,7 @@ namespace jns
 		bool isColliding;
 
 		bool isColliderON;
+
+		int colNum;
 	};
 }

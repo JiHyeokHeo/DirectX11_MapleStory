@@ -68,14 +68,15 @@ namespace jns
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
 		isColliding = true;
-		std::vector<Script*> scripts
+		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
 
 		for (Script* script : scripts)
 		{
+			if (script->GetColNum() != this->GetColNum())
+				continue;
 			script->OnCollisionEnter(other);
 		}
-
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{

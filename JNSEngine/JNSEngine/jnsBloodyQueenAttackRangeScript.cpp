@@ -6,6 +6,8 @@ namespace jns
 	void BloodyQueenAttackRangeScript::Initialize()
 	{
 		cd = GetOwner()->AddComponent<Collider2D>();
+		cd->SetColNum(1);
+		this->SetColNum(1);
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
 		cd->SetSize(Vector2(0.5f,0.5f));
 	}

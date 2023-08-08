@@ -6,6 +6,8 @@ namespace jns
 	void BloodyQueenAttackCol::Initialize()
 	{
 		cd = GetOwner()->AddComponent<Collider2D>();
+		cd->SetColNum(2);
+		this->SetColNum(2);
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
 	}
 	void BloodyQueenAttackCol::Update()
