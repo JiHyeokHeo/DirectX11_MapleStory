@@ -31,6 +31,12 @@ namespace jns
 		Vector2 GetCenter() { return mCenter; }
 		
 		Vector3 GetScale() { return mScale; }
+
+		void SetIsColliding(bool isCol) { isColliding = isCol; }
+		bool GetIsColliding() { return isColliding; }
+
+		void SetColliderOn(bool isOn) { isColliderON = isOn; }
+		bool GetColliderOn() { return isColliderON; }
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -44,5 +50,7 @@ namespace jns
 
 		Vector3 mScale;
 		bool isColliding;
+
+		bool isColliderON;
 	};
 }

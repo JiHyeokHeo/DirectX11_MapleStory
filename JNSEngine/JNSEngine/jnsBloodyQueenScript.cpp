@@ -81,22 +81,29 @@ namespace jns
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
+			mChangeTime = 0.0f;
 			if (other->GetOwner()->GetName() == L"AssainHit01")
 			{
 				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
 				mBloodyQueenInfo.hp -= mSkillDmg;
 				isChasing = true;
 			}
-			else if(other->GetOwner()->GetName() == L"AssainHit02")
+			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
+				int a = 0;
 			}
 		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
+		{
+		
+		}
 	}
 	void BloodyQueenScript::OnCollisionExit(Collider2D* other)
 	{
+		int a = 0;
 	}
 	void BloodyQueenScript::InitData()
 	{
@@ -158,9 +165,8 @@ namespace jns
 	}
 	void BloodyQueenScript::Idle()
 	{
-		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change)
+		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && isChasing == false)
 		{
-			if(isChasing == false)
 				mMonsterState = eBloodyQueenState::Move;
 		}
 
@@ -193,19 +199,18 @@ namespace jns
 		else
 		{
 			PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-			PlayerScript::PlayerDir mPlayerDir = player->GetPlayerDirection();
-			if ((int)mPlayerDir == -1)
+			Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
+			if (mPlayerPos.x >= mMonsterPos.x)
 			{
 				mMonsterPos.x += 25.0f * Time::DeltaTime();
-				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
-			}
-			else if ((int)mPlayerDir == 1)
-			{
-				mMonsterPos.x -= 25.0f * Time::DeltaTime();
 				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
+			else if (mPlayerPos.x <= mMonsterPos.x)
+			{
+				mMonsterPos.x -= 25.0f * Time::DeltaTime();
+				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+			}
 		}
-		
 		
 		tr->SetPosition(mMonsterPos);
 	}

@@ -97,6 +97,15 @@
     <Filter Include="Graphics\StructedBuffer">
       <UniqueIdentifier>{a6aed303-a288-4e0c-9acf-725e2ce29f10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Shader\CS">
+      <UniqueIdentifier>{4244262a-f2a7-46f6-85a4-4c88dc55f578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\RigidBody">
+      <UniqueIdentifier>{2ce87bca-9601-42a2-9eed-31810ee59f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\ParticleSystem">
+      <UniqueIdentifier>{74f794bf-735d-46f6-9cca-595645ee825e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -202,13 +211,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsLight.h">
       <Filter>GameObject\Component\Light</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRigidbody.h">
-      <Filter>GameObject\Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsStructedBuffer.h">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
@@ -216,8 +221,21 @@
       <Filter>Scene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsSkillManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPaintShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleSystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsPaintShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComputeShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRigidbody.h">
+      <Filter>GameObject\Component\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleSystem.h">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -310,13 +328,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsLight.cpp">
       <Filter>GameObject\Component\Light</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRigidbody.cpp">
-      <Filter>GameObject\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsStructedBuffer.cpp">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
@@ -324,8 +338,21 @@
       <Filter>Scene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsSkillManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPaintShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleSystem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsPaintShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRigidbody.cpp">
+      <Filter>GameObject\Component\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleSystem.cpp">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

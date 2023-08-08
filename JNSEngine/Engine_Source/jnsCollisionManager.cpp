@@ -6,6 +6,7 @@
 #include "jnsCollider2D.h"
 #include "jnsInput.h"
 
+
 namespace jns
 {
 	std::bitset<LAYER_MAX> CollisionManager::mMatrix[LAYER_MAX] = {};
@@ -49,9 +50,6 @@ namespace jns
 
 			if (leftCol == nullptr)
 				continue;
-			//if (leftObj->GetState()
-			//	!= GameObject::eState::Active)
-			//	continue;
 
 			for (GameObject* rightObj : rights)
 			{
@@ -60,9 +58,6 @@ namespace jns
 					continue;
 				if (leftObj == rightObj)
 					continue;
-				//if (rightObj->GetState()
-				//	!= GameObject::eState::Active)
-				//	continue;
 
 				ColliderCollision(leftCol, rightCol);
 			}
@@ -76,6 +71,7 @@ namespace jns
 		if (left->GetOwner()->GetLayerType() == eLayerType::Cursor ||
 			right->GetOwner()->GetLayerType() == eLayerType::Cursor)
 			isCursor = true;
+
 
 		// 두 충돌체의 ID bool값을 확인
 		ColliderID id = {};
@@ -162,6 +158,8 @@ namespace jns
 		if (left == nullptr || right == nullptr)
 			return false;
 
+		if (left->GetColliderOn() == false || right->GetColliderOn() == false)
+			return false;
 
 		const Vector3& leftColCenterPos = left->GetPosition();
 		const Vector3& righColCentertPos = right->GetPosition();

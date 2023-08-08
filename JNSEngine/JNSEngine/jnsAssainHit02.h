@@ -20,7 +20,7 @@ namespace jns
 
 		void SkillSetPos();
 	private:
-
+		class Collider2D* cd;
 	};
 
 }

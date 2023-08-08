@@ -41,6 +41,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsPaintShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsPlayerManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.h" />
@@ -82,6 +83,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMeshRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsPaintShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsPlayerManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsRayCollider2D.cpp" />

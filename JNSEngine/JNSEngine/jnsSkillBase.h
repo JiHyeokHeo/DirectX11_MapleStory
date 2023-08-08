@@ -19,6 +19,8 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		bool GetIsRenderOn() { return isRenderOn; }
+
 		virtual void SetSkillMode(bool isRender)
 		{
 			isRenderOn = isRender;

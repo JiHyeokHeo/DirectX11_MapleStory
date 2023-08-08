@@ -438,6 +438,7 @@ namespace jns
 
         if (mPlayerState != mPrevPlayerState)
         {
+            isAnimationDone = true;
             switch (mPlayerState)
             {
             case ePlayerState::Idle:

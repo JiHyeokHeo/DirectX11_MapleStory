@@ -14,7 +14,7 @@ namespace jns
 	void AssainHit02::Initialize()
 	{
 		isRenderOn = false;
-		Collider2D* cd = AddComponent<Collider2D>();
+		cd = AddComponent<Collider2D>();
 		SetName(L"AssainHit02");
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
@@ -30,12 +30,24 @@ namespace jns
 	{
 		SkillSetPos();
 
+		if (isRenderOn == false)
+		{
+			cd->SetSize(Vector2::Zero);
+			cd->SetColliderOn(false);
+		}
+		else
+		{
+			cd->SetSize(Vector2(0.6f, 0.7f));
+			cd->SetColliderOn(true);
+		}
+
 		SkillBase::Update();
 	}
 	void AssainHit02::LateUpdate()
 	{
 		SkillBase::SetDirection();
 		SkillBase::LateUpdate();
+
 		if (isPlayPossible == true)
 		{
 			isPlayPossible = false;

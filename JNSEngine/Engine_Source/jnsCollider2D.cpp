@@ -2,6 +2,7 @@
 #include "jnsGameObject.h"
 #include "jnsRenderer.h"
 #include "jnsInput.h"
+#include "jnsCollisionManager.h"
 
 namespace jns
 {
@@ -12,6 +13,7 @@ namespace jns
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
 		, isColliding(false)
+		, isColliderON(true)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;

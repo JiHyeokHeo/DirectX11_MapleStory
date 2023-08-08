@@ -20,14 +20,10 @@ namespace jns
 	}
 	void SkillBase::Update()
 	{
-		if (isRenderOn == false)
-			return;
 		GameObject::Update();
 	}
 	void SkillBase::LateUpdate()
 	{
-		if (isRenderOn == false)
-			return;
 		GameObject::LateUpdate();
 	}
 	void SkillBase::Render()
