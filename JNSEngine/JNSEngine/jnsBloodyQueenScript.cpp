@@ -58,6 +58,11 @@ namespace jns
 		at->CompleteEvent(L"NormalBloodyQueenNBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni1, this);
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni2, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni3, this);
+
+		at->CompleteEvent(L"AttractionBloodyQueenATBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"NormalBloodyQueenNBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"ReflectBloodyQueenRFBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 	}
 	void BloodyQueenScript::Update()
 	{
@@ -86,11 +91,13 @@ namespace jns
 			{
 				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
 				mBloodyQueenInfo.hp -= mSkillDmg;
-				isChasing = true;
+				mBloodyQueenInfo.isChasing = true;
 			}
 			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
-				int a = 0;
+				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				mBloodyQueenInfo.hp -= mSkillDmg;
+				mBloodyQueenInfo.isChasing = true;
 			}
 		}
 	}
@@ -107,7 +114,7 @@ namespace jns
 	}
 	void BloodyQueenScript::InitData()
 	{
-		isChasing = false;
+		mBloodyQueenInfo.isChasing = false;
 		mRandMakeTime = 0.0f;
 		mChasingTime = 0.0f;
 		mChangeType = 0.0f;
@@ -134,11 +141,11 @@ namespace jns
 	{
 		if (mChasingTime >= 8.0f)
 		{
-			isChasing = false;
+			mBloodyQueenInfo.isChasing = false;
 			mChasingTime = 0.0f;
 		}
 
-		if (isChasing)
+		if (mBloodyQueenInfo.isChasing)
 		{
 			mChasingTime += Time::DeltaTime();
 		}
@@ -163,14 +170,18 @@ namespace jns
 		mMonsterState = eBloodyQueenState::Idle;
 		isChanging = false;
 	}
+	void BloodyQueenScript::CompleteAttack()
+	{
+		mMonsterState = eBloodyQueenState::Idle;
+	}
 	void BloodyQueenScript::Idle()
 	{
-		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && isChasing == false)
+		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && mBloodyQueenInfo.isChasing == false)
 		{
-				mMonsterState = eBloodyQueenState::Move;
+			mMonsterState = eBloodyQueenState::Move;
 		}
 
-		if (isChasing == true)
+		if (mBloodyQueenInfo.isChasing == true)
 		{
 			mMonsterState = eBloodyQueenState::Move;
 		}
@@ -179,7 +190,7 @@ namespace jns
 	{
 		Vector3 mMonsterPos = tr->GetPosition();
 		
-		if (isChasing == false)
+		if (mBloodyQueenInfo.isChasing == false)
 		{
 			if (mRandDir == -1)
 			{
@@ -220,7 +231,7 @@ namespace jns
 	void BloodyQueenScript::Change()
 	{
 		mChangeTime += Time::DeltaTime();
-		if (mChangeTime >= 3.0f)
+		if (mChangeTime >= 1.0f)
 		{
 			mMonsterState = eBloodyQueenState::Idle;
 			isChanging = false;
@@ -232,7 +243,8 @@ namespace jns
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
-		mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
 	}
 	void BloodyQueenScript::Die()
 	{

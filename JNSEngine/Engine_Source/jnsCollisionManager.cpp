@@ -46,20 +46,28 @@ namespace jns
 
 		for (GameObject* leftObj : lefts)
 		{
-			Collider2D* leftCol = leftObj->GetComponent<Collider2D>();
+			std::vector<Collider2D*> leftCols = {};
+			leftCols = leftObj->GetComponents<Collider2D>();
 
-			if (leftCol == nullptr)
+			if (leftCols.capacity() == 0)
 				continue;
 
 			for (GameObject* rightObj : rights)
 			{
-				Collider2D* rightCol = rightObj->GetComponent<Collider2D>();
-				if (rightCol == nullptr)
+				std::vector<Collider2D*> rightCols = {};
+				rightCols = rightObj->GetComponents<Collider2D>();
+				if (rightCols.capacity() == 0)
 					continue;
 				if (leftObj == rightObj)
 					continue;
-
-				ColliderCollision(leftCol, rightCol);
+				
+				for (int i = 0; i < leftCols.capacity(); i++)
+				{
+					for (int j = 0; j < rightCols.capacity(); j++)
+					{
+						ColliderCollision(leftCols[i], rightCols[j]);
+					}
+				}
 			}
 		}
 

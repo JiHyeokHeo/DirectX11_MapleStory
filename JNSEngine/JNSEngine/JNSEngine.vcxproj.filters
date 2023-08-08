@@ -166,6 +166,10 @@
     <ClCompile Include="jnsInvenBG.cpp">
       <Filter>Contents\UI\Inventory</Filter>
     </ClCompile>
+    <ClCompile Include="jnsBloodyQueenAttackRangeScript.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsBloodyQueenAttackCol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -347,6 +351,10 @@
     <ClInclude Include="jnsInvenBG.h">
       <Filter>Contents\UI\Inventory</Filter>
     </ClInclude>
+    <ClInclude Include="jnsBloodyQueenAttackRangeScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBloodyQueenAttackCol.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

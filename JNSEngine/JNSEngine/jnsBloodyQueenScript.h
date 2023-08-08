@@ -15,9 +15,17 @@ namespace jns
 			Smile,
 		};
 
-		enum class eBossStatus
+		struct BloodyQueenInfo
 		{
-
+			int hp;
+			bool isRight;
+			float mHittedTime;
+			float mMoveSpeed;
+			eBloodyQueenType mBossPrevType;
+			eBloodyQueenType mBossType;
+			MonsterBase::MonsterDir mDir;
+			MonsterBase::MonsterDir mPrevDir;
+			bool isChasing;
 		};
 
 		enum class eBloodyQueenState
@@ -49,6 +57,8 @@ namespace jns
 		void CompleteChangeTypeAni1();
 		void CompleteChangeTypeAni2();
 		void CompleteChangeTypeAni3();
+
+		void CompleteAttack();
 	public:
 		void Idle();
 		void Move();
@@ -60,21 +70,10 @@ namespace jns
 		void AnimatorControl();
 
 		MonsterBase::MonsterDir GetMonsterDirection() { return mBloodyQueenInfo.mDir; }
+		BloodyQueenScript::BloodyQueenInfo GetBloodyQueenInfo() { return mBloodyQueenInfo; }
+		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
+		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
 	private:
-		struct BloodyQueenInfo
-		{
-			int hp;
-			
-			bool isRight;
-			float mHittedTime;
-			float mMoveSpeed;
-			eBloodyQueenType mBossPrevType;
-			eBloodyQueenType mBossType;
-			eBossStatus mBloodyQueenStatus;
-			MonsterBase::MonsterDir mDir;
-			MonsterBase::MonsterDir mPrevDir;
-		};
-
 		BloodyQueenInfo mBloodyQueenInfo;
 		class Transform* tr;
 		class Animator* at;
@@ -90,7 +89,6 @@ namespace jns
 		bool isChanging;
 		float mChangeTime;
 
-		bool isChasing;
 		float mChasingTime;
 	};
 
