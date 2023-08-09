@@ -37,7 +37,8 @@ namespace jns
 		SceneManager::CreateScene<LoginScene>(L"Login");
 		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
 
-
 		//SceneManager::LoadScene(L"Login");
 	}
+	
+
 }

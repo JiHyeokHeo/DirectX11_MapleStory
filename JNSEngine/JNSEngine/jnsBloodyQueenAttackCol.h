@@ -7,6 +7,11 @@ namespace jns
 	class BloodyQueenAttackCol : public Script
 	{
 	public:
+		struct BloodyQueenSkillDamage
+		{
+			int normalAttack = 30;
+
+		};
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -17,8 +22,11 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 	private:
 		class Collider2D* cd;
-		BloodyQueenScript* mBQScript;
 		bool isColPosSet;
+
+		float mColMakeTime;
+		BloodyQueenScript* mBQScript;
+		BloodyQueenSkillDamage mBQSkillDamage;
 	};
 }
 

@@ -13,14 +13,19 @@ namespace jns
 {
 	void PlayerScript::Initialize()
 	{
-        
+        // 플레이어 정보
 		isAnimationDone = true;
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 255.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
+        mPlayerInfo.hp = 100;
+        mPlayerInfo.mp = 100;
+        mPlayerInfo.exp = 0;
         
+
+        // 애니메이터
         at = GetOwner()->GetComponent<Animator>();
 		mRb = GetOwner()->GetComponent<RigidBody>();
         cd = GetOwner()->GetComponent<Collider2D>();

@@ -1,5 +1,6 @@
 #include "jnsUIBase.h"
-
+#include "jnsPlayer.h"
+#include "jnsSceneManager.h"
 
 namespace jns
 {
@@ -10,6 +11,7 @@ namespace jns
 	{
 		mr = AddComponent<MeshRenderer>();
 		tr = GetComponent<Transform>();
+	
 	}
 	UIBase::~UIBase()
 	{

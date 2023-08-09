@@ -1,6 +1,7 @@
 #include "jnsSceneManager.h"
 #include "..\\JNSEngine\jnsPlayer.h"
 #include "jnsCollisionManager.h"
+#include "..\\JNSEngine\ObjectTemplate.h"
 
 namespace jns
 {

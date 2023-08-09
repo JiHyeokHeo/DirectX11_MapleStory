@@ -33,9 +33,12 @@ namespace jns
 	void HpBar::Render()
 	{
 		renderer::PlayerCB playerUICB = {};
-		int mHp = 20;
-		int mMp = 100;
-		int mExp = 100;
+		int mPlayerHp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+		int mPlayerMp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().mp;
+		int mPlayerExp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().exp;
+		int mHp = mPlayerHp;
+		int mMp = mPlayerMp;
+		int mExp = mPlayerExp;
 
 		playerUICB.hp = mHp;
 		playerUICB.mp = mMp;

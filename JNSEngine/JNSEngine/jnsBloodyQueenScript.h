@@ -26,6 +26,7 @@ namespace jns
 			MonsterBase::MonsterDir mDir;
 			MonsterBase::MonsterDir mPrevDir;
 			bool isChasing;
+			float mSkillCoolDown;
 		};
 
 		enum class eBloodyQueenState
@@ -33,6 +34,7 @@ namespace jns
 			Idle,
 			Move,
 			Attack,
+			SpecialAttack,
 			Change,
 			Debuff,
 			Die,
@@ -51,8 +53,15 @@ namespace jns
 		void MakeRandDir();
 		void ChangeBossTypeRandom();
 		void CheckChaseTime();
+		void CheckSkillCoolDown();
+		void CheckBossHp();
 
 
+		void CompleteBressAni();
+		void CompleteBressAni1();
+		void CompleteBressAni2();
+		void CompleteDebuffAni();
+		void CompleteDebuffAni1();
 		void CompleteChangeTypeAni();
 		void CompleteChangeTypeAni1();
 		void CompleteChangeTypeAni2();
@@ -65,6 +74,9 @@ namespace jns
 		void Attack();
 		void Change();
 		void Die();
+		void SpecialAttack();
+
+		void PlaySpecialAttackAnimation(std::wstring animationname);
 
 		void PlayerControl();
 		void AnimatorControl();
@@ -72,6 +84,7 @@ namespace jns
 		MonsterBase::MonsterDir GetMonsterDirection() { return mBloodyQueenInfo.mDir; }
 		BloodyQueenScript::BloodyQueenInfo GetBloodyQueenInfo() { return mBloodyQueenInfo; }
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
+		void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
 		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
 	private:
 		BloodyQueenInfo mBloodyQueenInfo;
@@ -90,6 +103,10 @@ namespace jns
 		float mChangeTime;
 
 		float mChasingTime;
+		float mPatternPercentage;
+
+		bool mAnimatorPlaying = false;
+
 	};
 
 

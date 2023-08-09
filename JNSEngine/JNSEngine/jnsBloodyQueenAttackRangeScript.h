@@ -7,6 +7,8 @@ namespace jns
 	class BloodyQueenAttackRangeScript : public Script
 	{
 	public:
+
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -18,5 +20,6 @@ namespace jns
 	private:
 		class Collider2D* cd;
 		BloodyQueenScript* mBQScript;
+
 	};
 }

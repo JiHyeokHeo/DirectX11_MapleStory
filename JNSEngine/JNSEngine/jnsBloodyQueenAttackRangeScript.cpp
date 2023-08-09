@@ -29,7 +29,7 @@ namespace jns
 			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
-				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
+				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::SpecialAttack;
 				mBQScript->SetBloodyQueenState(mBQState);
 			}
 		}
@@ -41,7 +41,7 @@ namespace jns
 			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
-				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
+				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::SpecialAttack;
 				mBQScript->SetBloodyQueenState(mBQState);
 			}
 		}

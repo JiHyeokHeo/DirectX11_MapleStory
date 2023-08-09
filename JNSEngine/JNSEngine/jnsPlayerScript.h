@@ -42,6 +42,24 @@ namespace jns
 			Right = 1,
 		};
 
+		struct PlayerInfo
+		{
+			int hp;
+			int mp;
+			int exp;
+			int mJumpCnt;
+			float mJumpTime;
+			float mJumpForce;
+			bool isGrounded;
+			bool isPlayPossible;
+			bool isRight;
+			float mDeathTime;
+			float mHittedTime;
+			float mMoveSpeed;
+			PlayerDir mDir;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
+			PlayerDir mPrevDir;
+		};
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -85,27 +103,16 @@ namespace jns
 		void AnimatorControl();
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 
-
+		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
+		void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
+		void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
+		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
 
 		void Clear();
 		void CheckPlayerIsGrounded();
 		void CheckIsAssainHitUsed();
 		
 	private:
-		struct PlayerInfo
-		{
-			int mJumpCnt;
-			float mJumpTime;
-			float mJumpForce;
-			bool isGrounded;
-			bool isPlayPossible;
-			bool isRight;
-			float mDeathTime;
-			float mHittedTime;
-			float mMoveSpeed;
-			PlayerDir mDir;     // 왼쪽일때 -1 오른쪽일때 1값이 들어가도록
-			PlayerDir mPrevDir;
-		};
 
 		struct PlayerStatus
 		{

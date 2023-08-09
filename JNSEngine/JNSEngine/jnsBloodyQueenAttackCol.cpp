@@ -50,30 +50,35 @@ namespace jns
 		BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
 		if (mBQState == BloodyQueenScript::eBloodyQueenState::Attack)
 		{
+			mColMakeTime += Time::DeltaTime();
 			Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
-			cd->SetColliderOn(true);
 			
-			if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
+			if (mColMakeTime >= 1.0f)
 			{
-				cd->SetSize(Vector2(0.4f, 0.5f));
-				cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, 100.0f));
-			}
-			else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
-			{
-				cd->SetSize(Vector2(0.4f, 0.5f));
-				cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, 100.0f));
-			}
-			else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
-			{
-				cd->SetSize(Vector2(0.4f, 0.5f));
-				cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, 100.0f));
-			}
-			else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
-			{
-				cd->SetSize(Vector2(0.4f, 0.5f));
-				cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, 100.0f));
-			}
+				cd->SetColliderOn(true);
 
+				if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
+				{
+
+					cd->SetSize(Vector2(0.3f, 0.5f));
+					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+				}
+				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
+				{
+					cd->SetSize(Vector2(0.3f, 0.5f));
+					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+				}
+				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
+				{
+					cd->SetSize(Vector2(0.3f, 0.5f));
+					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+				}
+				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
+				{
+					cd->SetSize(Vector2(0.3f, 0.5f));
+					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+				}
+			}
 		}
 		else
 		{
@@ -86,6 +91,10 @@ namespace jns
 	}
 	void BloodyQueenAttackCol::OnCollisionEnter(Collider2D* other)
 	{
+		GameObject* mPlayer = SceneManager::GetPlayer();
+		int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+		mPlayerHp -= mBQSkillDamage.normalAttack;
+		mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 	}
 	void BloodyQueenAttackCol::OnCollisionStay(Collider2D* other)
 	{

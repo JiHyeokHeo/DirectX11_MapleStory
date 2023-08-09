@@ -6,6 +6,7 @@
 
 namespace jns
 {
+	class Player;
 	class UIBase : public GameObject
 	{
 	public:
@@ -76,6 +77,8 @@ namespace jns
 			mTextureSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
+
+
 
 	protected:
 		eLayerType mType;
