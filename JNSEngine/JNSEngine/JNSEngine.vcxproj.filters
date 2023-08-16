@@ -192,6 +192,9 @@
     <ClCompile Include="jnsMirrorScript.cpp">
       <Filter>Contents\Script\BossObjects\BloodyQueen</Filter>
     </ClCompile>
+    <ClCompile Include="jnsAssainSkillParticle.cpp">
+      <Filter>Contents\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -398,6 +401,9 @@
     </ClInclude>
     <ClInclude Include="jnsMirrorScript.h">
       <Filter>Contents\Script\BossObjects\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsAssainSkillParticle.h">
+      <Filter>Contents\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -631,6 +637,9 @@
     </Filter>
     <Filter Include="Contents\Script\BossObjects\BloodyQueen">
       <UniqueIdentifier>{f23b3df9-5ccf-4210-abef-59cee0ba1c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Particle">
+      <UniqueIdentifier>{9f2b5b1d-eac1-439e-a4aa-92252cfe3f65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

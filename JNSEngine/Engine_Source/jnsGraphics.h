@@ -18,6 +18,7 @@
 #define CBSLOT_PLAYER		4
 #define CBSLOT_ANIMATION2D		5
 #define CBSLOT_PARTICLE			6
+#define CBSLOT_NOISE			7
 
 namespace jns::graphics
 {
@@ -42,6 +43,7 @@ namespace jns::graphics
 		Player,
 		Animator,
 		Particle,
+		Noise,
 		End,
 	};
 

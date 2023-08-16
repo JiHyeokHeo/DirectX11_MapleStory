@@ -158,6 +158,7 @@
     <ClInclude Include="InventoryBTN.h" />
     <ClInclude Include="jnsAssainHit01.h" />
     <ClInclude Include="jnsAssainHit02.h" />
+    <ClInclude Include="jnsAssainSkillParticle.h" />
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsBGInstance.h" />
     <ClInclude Include="jnsBloodyQueen.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="InventoryBTN.cpp" />
     <ClCompile Include="jnsAssainHit01.cpp" />
     <ClCompile Include="jnsAssainHit02.cpp" />
+    <ClCompile Include="jnsAssainSkillParticle.cpp" />
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsBGInstance.cpp" />
     <ClCompile Include="jnsBloodyQueen.cpp" />

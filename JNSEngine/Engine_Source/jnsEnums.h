@@ -20,7 +20,7 @@ namespace jns::enums
 
 	enum class eLayerType
 	{
-		Grid,
+		Particle,
 		Ground,
 		BG,
 		Item,

@@ -4,6 +4,7 @@
 #include "jnsPaintShader.h"
 #include "jnsParticleSystem.h"
 #include "jnsDamageControl.h"
+#include "jnsAssainSkillParticle.h"
 
 namespace jns
 {
@@ -35,17 +36,18 @@ namespace jns
 		//	//player->AddComponent<PlayerScript>();
 		//}
 
-		{
-			GameObject* player = new GameObject();
-			player->SetName(L"Particle");
-			AddGameObject(eLayerType::Monster, player);
-			ParticleSystem* mr = player->AddComponent<ParticleSystem>();
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-			player->GetComponent<Transform>()->SetScale(Vector3(1500.0f, 1500.0f, 1.0f));
-			//Collider2D* cd = player->AddComponent<Collider2D>();
-			//cd->SetSize(Vector2(1.2f, 1.2f));
-			//player->AddComponent<PlayerScript>();
-		}
+		object::InstantiateParticle<AssainSkillParticle>(jns::enums::eLayerType::Particle);
+		//{
+		//	GameObject* player = new GameObject();
+		//	player->SetName(L"Particle");
+		//	AddGameObject(eLayerType::Monster, player);
+		//	ParticleSystem* mr = player->AddComponent<ParticleSystem>();
+		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+		//	player->GetComponent<Transform>()->SetScale(Vector3(1500.0f, 1500.0f, 1.0f));
+		//	//Collider2D* cd = player->AddComponent<Collider2D>();
+		//	//cd->SetSize(Vector2(1.2f, 1.2f));
+		//	//player->AddComponent<PlayerScript>();
+		//}
 
 		//ComputeShader* cs = new ComputeShader();
 		//cs->Create(L"PaintCS.hlsl", "main");

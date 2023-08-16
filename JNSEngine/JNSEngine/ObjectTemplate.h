@@ -13,6 +13,17 @@ namespace jns::object
 	//centerStatusMpUI->Initialize();
 
 	template<typename T>
+	T* InstantiateParticle(jns::enums::eLayerType type)
+	{
+		T* gameobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
 	T* InstantiateNOmove(jns::enums::eLayerType type)
 	{
 		T* gameobj = new T();
