@@ -36,7 +36,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress2", 1500, 0.10f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 1500, 0.10f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 1500, 0.10f, Vector2(-0.03f, -0.005f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 1500, 0.15f, Vector2(0.006f, -0.005f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 1500, 0.15f, Vector2(0.006f, -0.007f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQIdle", 1500, 0.15f, Vector2(0.0f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQChangeType", 1500, 0.15f, Vector2(0.0f, -0.010f));	
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQNormalAttack", 1500, 0.15f, Vector2(-0.01f, -0.03f));
@@ -75,8 +75,6 @@ namespace jns
 	}
 	void BloodyQueen::LateUpdate()
 	{
-
-
 		MonsterBase::LateUpdate();
 		BloodyQueen::SetDirection();
 	}

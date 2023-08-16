@@ -10,7 +10,7 @@ namespace jns
 	Animation::Animation()
 		: Resource(enums::eResourceType::Animation)
 		, mAtlas(nullptr)
-		, mAnimator(nullptr)
+		, ani(nullptr)
 		, mSprites{}
 		, mIndex(-1)
 		, mTime(0.0f)

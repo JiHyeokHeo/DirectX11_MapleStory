@@ -59,7 +59,7 @@ namespace jns
 
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
-		Animator* mAnimator;
+		Animator* ani;
 		std::vector<Sprite> mSprites;
 		int mIndex;
 		float mTime;

@@ -23,7 +23,7 @@ namespace jns
         mPlayerInfo.hp = 100;
         mPlayerInfo.mp = 100;
         mPlayerInfo.exp = 0;
-        
+        mPrevHp = mPlayerInfo.hp;
 
         // 애니메이터
         at = GetOwner()->GetComponent<Animator>();
@@ -51,22 +51,36 @@ namespace jns
             mPlayerState = ePlayerState::Idle;
         }
 
+        if (Input::GetKeyDown(eKeyCode::H))
+        {
+            mPlayerInfo.hp = 100;
+        }
+
         if (mPreveScene != mActveScene)
 		{
 			mPreveScene = mActveScene;
 			Clear();
 		}
 
-        CheckJumpCount();
+        //CheckJumpCount();
 		CheckPlayerIsGrounded();
         PlayerControl();
 		AnimatorControl();
         
         mPrevPlayerState = mPlayerState;
         mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
+        
 	}
 	void PlayerScript::LateUpdate()
 	{
+        if (mPlayerInfo.hp != mPrevHp)
+            checkInvisibleTime = true;
+
+        if (checkInvisibleTime)
+        {
+            CheckInvisibleTime();
+        }
+
 		//BindConstantBuffer();
         at->GetActiveAnimation()->SetAniDirection((bool)mPlayerInfo.isRight);
 	}
@@ -147,7 +161,7 @@ namespace jns
 			mPlayerInfo.mDir = PlayerDir::Right;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKey((eKeyCode)mPlayerKeyType.Attack))
+		else if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Attack))
 		{
 			mPlayerState = ePlayerState::Attack;
 		}
@@ -338,18 +352,18 @@ namespace jns
             mPlayerInfo.mJumpCnt++;
         }
 
-        if (Input::GetKeyDown(eKeyCode::LCTRL))
-        {
-            mPlayerState = ePlayerState::Attack;
-        }
-
 
         if (mPlayerInfo.isGrounded == true)
         {
             isLadderOn = false;
             isChangedDir = false;
             mPlayerInfo.mJumpCnt = 0;
-            mPlayerState = ePlayerState::Idle;
+            //mPlayerState = ePlayerState::Idle;
+        }
+
+        if (Input::GetKeyDown(eKeyCode::LCTRL))
+        {
+            mPlayerState = ePlayerState::Attack;
         }
 
         mRb->SetVelocity(velocity);
@@ -369,6 +383,7 @@ namespace jns
 
     void PlayerScript::Attack()
     {
+  
     }
 
     void PlayerScript::Hitted()
@@ -446,7 +461,6 @@ namespace jns
 
         if (mPlayerState != mPrevPlayerState)
         {
-            isAnimationDone = true;
             switch (mPlayerState)
             {
             case ePlayerState::Idle:
@@ -517,13 +531,25 @@ namespace jns
     }
     void PlayerScript::CheckIsAssainHitUsed()
     {
-        if (mPlayerSkillInfo.isAssainHit1Used == false)
+            if (mPlayerSkillInfo.isAssainHit1Used == false)
+            {
+                at->PlayAnimation(L"CharactorCharAssain1Hit", true);
+            }
+            else if (mPlayerSkillInfo.isAssainHit1Used == true)
+            {
+                at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+            }
+    }
+
+    void PlayerScript::CheckInvisibleTime()
+    {
+        mPlayerInfo.invisibilityTime += Time::DeltaTime();
+        
+        if (mPlayerInfo.invisibilityTime >= 1.0f)
         {
-            at->PlayAnimation(L"CharactorCharAssain1Hit", true);
-        }
-        else if(mPlayerSkillInfo.isAssainHit1Used == true)
-        {
-            at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+            mPlayerInfo.invisibilityTime = 0.0f;
+            checkInvisibleTime = false;
+            mPrevHp = mPlayerInfo.hp;
         }
     }
     
@@ -579,10 +605,10 @@ namespace jns
     }
     void PlayerScript::CheckJumpCount()
     {
-        if (mPlayerInfo.isGrounded == true)
+  /*      if (mPlayerInfo.isGrounded == true)
         {
             isDone = false;
-        }
+        }*/
 
     }
     void PlayerScript::ActiveJumpSkill()

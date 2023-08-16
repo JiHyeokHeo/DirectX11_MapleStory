@@ -148,7 +148,7 @@ namespace jns
 	void BloodyQueenScript::ChangeBossTypeRandom()
 	{
 		mChangeType += Time::DeltaTime();
-		if (mChangeType >= 15.0f)
+		if (mChangeType >= 15.0f && mAnimatorPlaying == false)
 		{
 			mMonsterState = eBloodyQueenState::Change;
 			mChangeType = 0.0f;
@@ -169,10 +169,6 @@ namespace jns
 	}
 	void BloodyQueenScript::CheckSkillCoolDown()
 	{
-		if (mBloodyQueenInfo.mSkillCoolDown >= 10.0f)
-		{
-			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
-		}
 		mBloodyQueenInfo.mSkillCoolDown += Time::DeltaTime();
 	}
 	void BloodyQueenScript::CheckBossHp()
@@ -222,6 +218,7 @@ namespace jns
 	}
 	void BloodyQueenScript::CompleteAttack()
 	{
+		mAnimatorPlaying = false;
 		mMonsterState = eBloodyQueenState::Idle;
 	}
 	void BloodyQueenScript::Idle()
@@ -234,6 +231,23 @@ namespace jns
 		if (mBloodyQueenInfo.isChasing == true)
 		{
 			mMonsterState = eBloodyQueenState::Move;
+		}
+
+		PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
+		Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
+		if (mPlayerPos.x >= mMonsterPos.x)
+		{
+			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+		}
+		else if (mPlayerPos.x <= mMonsterPos.x)
+		{
+			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+		}
+
+		if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown)
+		{
+			mMonsterState = eBloodyQueenState::SpecialAttack;
 		}
 	}
 	void BloodyQueenScript::Move()
@@ -280,7 +294,44 @@ namespace jns
 				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 		}
-		
+
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		if (mBloodyQueenInfo.isChasing == true)
+		{
+			if (abs(mMonsterPos.x - mPlayerPos.x) >= mBressMaxXCor && mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown && mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
+			{
+				if (mPlayerPos.x >= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+				}
+				else if (mPlayerPos.x <= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+				}
+				mMonsterState = eBloodyQueenState::SpecialAttack;
+			}
+		}
+		else
+		{
+			if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown && mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
+			{
+				if (mPlayerPos.x >= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+				}
+				else if (mPlayerPos.x <= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+				}
+				mMonsterState = eBloodyQueenState::SpecialAttack;
+			}
+		}
+
+		if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown)
+		{
+			mMonsterState = eBloodyQueenState::SpecialAttack;
+		}
+
 		tr->SetPosition(mMonsterPos);
 	}
 	void BloodyQueenScript::Attack()
@@ -289,20 +340,20 @@ namespace jns
 	void BloodyQueenScript::Change()
 	{
 		mChangeTime += Time::DeltaTime();
-		if (mChangeTime >= 1.5f)
+		if (mChangeTime >= 0.5f)
 		{
 			mMonsterState = eBloodyQueenState::Idle;
 			isChanging = false;
 		}
 
-		if (isChanging == true)
+		if (isChanging == false)
 			return;
 
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -310,7 +361,7 @@ namespace jns
 	}
 	void BloodyQueenScript::SpecialAttack()
 	{
-		if (mBloodyQueenInfo.mSkillCoolDown <= 5.0f)
+		if (mBloodyQueenInfo.mSkillCoolDown <= mBossMaxSkillCollDown)
 		{
 			if (mAnimatorPlaying == false)
 			{
@@ -321,6 +372,8 @@ namespace jns
 	}
 	void BloodyQueenScript::PlaySpecialAttackAnimation(std::wstring animationname)
 	{
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
 
 		std::wstring animationNameNormalBress = L"Bress1";
 		std::wstring animationNameNormalDebuff = L"Debuff";
@@ -331,17 +384,26 @@ namespace jns
 		std::wstring animationNameSmile = L"Swallow";
 		
 		mPatternPercentage = dist2(rng2);
+		
+		mAnimatorPlaying = true;
 
 		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
 		{
-		/*	if (mPatternPercentage <= 0.3)
+			if (abs(mMonsterPos.x - mPlayerPos.x) <= mBressMaxXCor)
 			{
 				animationname += animationNameNormalDebuff;
 				at->PlayAnimation(animationname, true);
-			}*/
-			
+			}
+			else if(abs(mMonsterPos.x - mPlayerPos.x) >= mBressMaxXCor)
 			{
-				mAnimatorPlaying = true;
+				if (mPlayerPos.x >= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+				}
+				else if (mPlayerPos.x <= mMonsterPos.x)
+				{
+					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+				}
 				animationname += animationNameNormalBress;
 				at->PlayAnimation(animationname, true);
 			}
@@ -362,6 +424,10 @@ namespace jns
 			at->PlayAnimation(animationname, true);
 		}
 
+		// 플레이 되면 무조건 쿨 줄이기
+		mUsingSkillName = animationname;
+		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		mAnimatorPlaying = true;
 	}
 	void BloodyQueenScript::PlayerControl()
 	{
@@ -390,39 +456,7 @@ namespace jns
 		}
 	}
 	void BloodyQueenScript::AnimatorControl()
-	{	//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQIdle", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttack", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQChangeType", 1500, 0.2f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQAttract", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\ATBQWalk", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die1", 1500, 0.15f, Vector2(0.0f, 0.03f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die2", 1500, 0.15f, Vector2(0.0f, 0.03f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenDie\\Die3", 1500, 0.15f, Vector2(0.0f, 0.03f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenHitMotion", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress1", 1500, 0.15f, Vector2(-0.03f, 0.0f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress2", 1500, 0.15f, Vector2(-0.03f, 0.0f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 1500, 0.15f, Vector2(-0.03f, 0.0f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 1500, 0.15f, Vector2(-0.03f, 0.0f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 1500, 0.15f, Vector2(0.006f, 0.0f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQIdle", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQNormalAttack", 1500, 0.15f, Vector2(-0.01f, -0.02f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQWalk", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQChangeType", 1500, 0.2f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff1", 1500, 0.15f, Vector2(-0.02f, -0.09f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff2", 1500, 0.15f, Vector2(-0.02f, -0.09f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff3", 1500, 0.15f, Vector2(-0.02f, -0.09f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQIdle", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQNormalAttack", 700, 0.15f, Vector2(-0.01f, -0.02f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQWalk", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQChangeType", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQIdle", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQNormalAttack", 1500, 0.15f);
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSummon", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallowEnd", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallowLoop", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQWalk", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		//at->PlayAnimation(L"NormalBloodyQueenNBQWalk", true);
+	{	
 		std::wstring name = {};
 
 		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
@@ -450,8 +484,10 @@ namespace jns
 		std::wstring animationNameATT = L"NormalAttack";
 		std::wstring animationNameCHANGE = L"ChangeType";
 
+		
 		if (mMonsterState != mPrevMonsterState || mBloodyQueenInfo.mDir != mBloodyQueenInfo.mPrevDir)
 		{
+			mAnimatorPlaying = true;
 			switch (mMonsterState)
 			{
 			case eBloodyQueenState::Idle:
@@ -465,6 +501,7 @@ namespace jns
 			case eBloodyQueenState::Attack:
 				name += animationNameATT;
 				at->PlayAnimation(name, true);
+				mUsingSkillName = animationNameATT;
 				break;
 			case eBloodyQueenState::SpecialAttack:
 				PlaySpecialAttackAnimation(name);
@@ -486,5 +523,6 @@ namespace jns
 				break;
 			}
 		}
+		
 	}
 }

@@ -169,6 +169,10 @@
     <ClInclude Include="jnsCenterStatus.h" />
     <ClInclude Include="jnsCharactorMakeScene.h" />
     <ClInclude Include="jnsCursor.h" />
+    <ClInclude Include="jnsDamageControl.h" />
+    <ClInclude Include="jnsDemonAttackRangeScript.h" />
+    <ClInclude Include="jnsDemonMonster.h" />
+    <ClInclude Include="jnsDemonMonsterScript.h" />
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
@@ -232,6 +236,10 @@
     <ClCompile Include="jnsCenterStatus.cpp" />
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="jnsCursor.cpp" />
+    <ClCompile Include="jnsDamageControl.cpp" />
+    <ClCompile Include="jnsDemonAttackRangeScript.cpp" />
+    <ClCompile Include="jnsDemonMonster.cpp" />
+    <ClCompile Include="jnsDemonMonsterScript.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />

@@ -3,6 +3,7 @@
 #include "jnsComputeShader.h"
 #include "jnsPaintShader.h"
 #include "jnsParticleSystem.h"
+#include "jnsDamageControl.h"
 
 namespace jns
 {
@@ -19,6 +20,7 @@ namespace jns
 		paintShader->SetTarget(paintTexture);
 		paintShader->OnExcute();
 
+		object::Instantiate<DamageControl>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
 		//{
 		//	GameObject* player = new GameObject();
 		//	player->SetName(L"Smile");

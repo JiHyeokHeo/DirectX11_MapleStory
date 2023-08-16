@@ -38,6 +38,8 @@ namespace jns
 	}
 	void GameObject::Update()
 	{
+		if (mState == eState::Paused)
+			return;
 		for (Component* comp : mComponents)
 		{
 			comp->Update();
@@ -50,6 +52,8 @@ namespace jns
 	}
 	void GameObject::LateUpdate()
 	{
+		if (mState == eState::Paused)
+			return;
 		for (Component* comp : mComponents)
 		{
 			comp->LateUpdate();

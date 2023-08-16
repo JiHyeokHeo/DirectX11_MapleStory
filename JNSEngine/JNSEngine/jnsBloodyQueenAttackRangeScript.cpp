@@ -15,6 +15,7 @@ namespace jns
 	{
 		Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
 		cd->SetPosition(mMonsterPos);
+	
 	}
 	void BloodyQueenAttackRangeScript::LateUpdate()
 	{
@@ -29,7 +30,7 @@ namespace jns
 			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
-				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::SpecialAttack;
+				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
 				mBQScript->SetBloodyQueenState(mBQState);
 			}
 		}
@@ -41,13 +42,13 @@ namespace jns
 			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
-				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::SpecialAttack;
+				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
 				mBQScript->SetBloodyQueenState(mBQState);
 			}
 		}
 	}
 	void BloodyQueenAttackRangeScript::OnCollisionExit(Collider2D* other)
 	{
-		
+
 	}
 }

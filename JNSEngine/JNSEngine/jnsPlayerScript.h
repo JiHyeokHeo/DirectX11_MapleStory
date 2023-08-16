@@ -44,6 +44,7 @@ namespace jns
 
 		struct PlayerInfo
 		{
+			float invisibilityTime;
 			int hp;
 			int mp;
 			int exp;
@@ -111,6 +112,7 @@ namespace jns
 		void Clear();
 		void CheckPlayerIsGrounded();
 		void CheckIsAssainHitUsed();
+		void CheckInvisibleTime();
 		
 	private:
 
@@ -151,6 +153,9 @@ namespace jns
 		bool isLadderMoving = false;
 		bool isLadderOn = false;
 
-		int visitedAssainAttackTime = 0;
+		//int visitedAssainAttackTime = 0;
+
+		int mPrevHp;
+		bool checkInvisibleTime;
 	};
 }

@@ -86,6 +86,8 @@ namespace jns
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
 		void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
 		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
+
+		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 	private:
 		BloodyQueenInfo mBloodyQueenInfo;
 		class Transform* tr;
@@ -107,6 +109,11 @@ namespace jns
 
 		bool mAnimatorPlaying = false;
 
+		float mBossMaxSkillCollDown = 10.0f;
+
+		float mBressMaxXCor = 800.0f;
+
+		std::wstring mUsingSkillName;
 	};
 
 

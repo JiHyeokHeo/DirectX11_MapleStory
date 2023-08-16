@@ -5,9 +5,6 @@
     <ClCompile Include="jnsBGBase.cpp">
       <Filter>Contents\BGclass\Base</Filter>
     </ClCompile>
-    <ClCompile Include="jnsCameraScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="jnsLoginScene.cpp">
       <Filter>Contents\Scenes\LoginScene</Filter>
     </ClCompile>
@@ -37,9 +34,6 @@
     </ClCompile>
     <ClCompile Include="jnsExpBar.cpp">
       <Filter>Contents\UI\ExpBarBase\ExpBar</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsExpBarMoveScript.cpp">
-      <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp">
       <Filter>Contents\UI\SkillQuickSlotBase\SkillQuickSlotBack</Filter>
@@ -75,9 +69,6 @@
     <ClCompile Include="jnsSmoke.cpp">
       <Filter>Effect\CloudEffect</Filter>
     </ClCompile>
-    <ClCompile Include="jnsPlayerScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="jnsPlayer.cpp">
       <Filter>Contents\Player</Filter>
     </ClCompile>
@@ -111,17 +102,8 @@
     <ClCompile Include="jnsRutabysMobScene.cpp">
       <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
     </ClCompile>
-    <ClCompile Include="jnsInventoryScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="jnsGround.cpp">
       <Filter>Contents\Ground</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsGroundScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsItemResourcesScript.cpp">
-      <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="InventoryBTN.cpp">
       <Filter>Contents\UI\InventoryBTN</Filter>
@@ -144,32 +126,66 @@
     <ClCompile Include="jnsJumpSkill.cpp">
       <Filter>Contents\Skill\Skills\Jump</Filter>
     </ClCompile>
-    <ClCompile Include="jnsPortalScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="jnsBloodyQueen.cpp">
       <Filter>Contents\Monster</Filter>
     </ClCompile>
     <ClCompile Include="jnsMonsterBase.cpp">
       <Filter>Contents\Monster\Base</Filter>
     </ClCompile>
-    <ClCompile Include="jnsLightScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="jnsPlayerMoveLimitScript.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="jnsAssainHit02.cpp">
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClCompile>
-    <ClCompile Include="jnsBloodyQueenScript.cpp" />
     <ClCompile Include="jnsInvenBG.cpp">
       <Filter>Contents\UI\Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="jnsBloodyQueenAttackRangeScript.cpp">
-      <Filter>Contents\Script</Filter>
+    <ClCompile Include="jnsDamageControl.cpp">
+      <Filter>Contents\Damage</Filter>
     </ClCompile>
-    <ClCompile Include="jnsBloodyQueenAttackCol.cpp" />
+    <ClCompile Include="jnsDemonMonster.cpp">
+      <Filter>Contents\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsBloodyQueenAttackCol.cpp">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsBloodyQueenAttackRangeScript.cpp">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsBloodyQueenScript.cpp">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsCameraScript.cpp">
+      <Filter>Contents\Script\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsDemonMonsterScript.cpp">
+      <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsGroundScript.cpp">
+      <Filter>Contents\Script\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsInventoryScript.cpp">
+      <Filter>Contents\Script\UI\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsExpBarMoveScript.cpp">
+      <Filter>Contents\Script\UI\Exp</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsItemResourcesScript.cpp">
+      <Filter>Contents\Script\UI\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsLightScript.cpp">
+      <Filter>Contents\Script\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPlayerMoveLimitScript.cpp">
+      <Filter>Contents\Script\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPlayerScript.cpp">
+      <Filter>Contents\Script\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsPortalScript.cpp">
+      <Filter>Contents\Script\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsDemonAttackRangeScript.cpp">
+      <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -178,9 +194,6 @@
     </ClInclude>
     <ClInclude Include="jnsBGBase.h">
       <Filter>Contents\BGclass\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsCameraScript.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="jnsLoginScene.h">
       <Filter>Contents\Scenes\LoginScene</Filter>
@@ -214,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="jnsExpBar.h">
       <Filter>Contents\UI\ExpBarBase\ExpBar</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsExpBarMoveScript.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="CommonUIInclude.h">
       <Filter>Contents\UI\Common_UI_Include</Filter>
@@ -260,9 +270,6 @@
     <ClInclude Include="jnsSmoke.h">
       <Filter>Effect\CloudEffect</Filter>
     </ClInclude>
-    <ClInclude Include="jnsPlayerScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
     <ClInclude Include="jnsPlayer.h">
       <Filter>Contents\Player</Filter>
     </ClInclude>
@@ -274,9 +281,6 @@
     </ClInclude>
     <ClInclude Include="jnsItemResources.h">
       <Filter>Contents\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsGridScrpt.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="jnsStartScene1.h">
       <Filter>Contents\Scenes\StoryLine\Start1Scene</Filter>
@@ -299,17 +303,8 @@
     <ClInclude Include="jnsRutabysMobScene.h">
       <Filter>Contents\Scenes\RutabysQueenMobScene</Filter>
     </ClInclude>
-    <ClInclude Include="jnsInventoryScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
     <ClInclude Include="jnsGround.h">
       <Filter>Contents\Ground</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsGroundScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsItemResourcesScript.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="InventoryBTN.h">
       <Filter>Contents\UI\InventoryBTN</Filter>
@@ -329,32 +324,69 @@
     <ClInclude Include="jnsJumpSkill.h">
       <Filter>Contents\Skill\Skills\Jump</Filter>
     </ClInclude>
-    <ClInclude Include="jnsPortalScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
     <ClInclude Include="jnsBloodyQueen.h">
       <Filter>Contents\Monster</Filter>
     </ClInclude>
     <ClInclude Include="jnsMonsterBase.h">
       <Filter>Contents\Monster\Base</Filter>
     </ClInclude>
-    <ClInclude Include="jnsLightScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsPlayerMoveLimitScript.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
     <ClInclude Include="jnsAssainHit02.h">
       <Filter>Contents\Skill\Skills\AssainAttack2</Filter>
     </ClInclude>
-    <ClInclude Include="jnsBloodyQueenScript.h" />
     <ClInclude Include="jnsInvenBG.h">
       <Filter>Contents\UI\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="jnsBloodyQueenAttackRangeScript.h">
-      <Filter>Contents\Script</Filter>
+    <ClInclude Include="jnsDamageControl.h">
+      <Filter>Contents\Damage</Filter>
     </ClInclude>
-    <ClInclude Include="jnsBloodyQueenAttackCol.h" />
+    <ClInclude Include="jnsDemonMonster.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBloodyQueenAttackCol.h">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBloodyQueenAttackRangeScript.h">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsBloodyQueenScript.h">
+      <Filter>Contents\Script\MonsterBase\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsCameraScript.h">
+      <Filter>Contents\Script\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsDemonMonsterScript.h">
+      <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsGroundScript.h">
+      <Filter>Contents\Script\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsInventoryScript.h">
+      <Filter>Contents\Script\UI\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsExpBarMoveScript.h">
+      <Filter>Contents\Script\UI\Exp</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsGridScrpt.h">
+      <Filter>Contents\Script\UI\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsItemResourcesScript.h">
+      <Filter>Contents\Script\UI\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsLightScript.h">
+      <Filter>Contents\Script\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayerScript.h">
+      <Filter>Contents\Script\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPlayerMoveLimitScript.h">
+      <Filter>Contents\Script\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsPortalScript.h">
+      <Filter>Contents\Script\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsDemonAttackRangeScript.h">
+      <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -536,6 +568,45 @@
     </Filter>
     <Filter Include="Contents\Skill\Skills\AssainAttack2">
       <UniqueIdentifier>{f8825422-d4ea-48fb-8679-10ba8f238fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Damage">
+      <UniqueIdentifier>{d388b3fc-30b6-4a7f-99e2-ab623492d56d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Camera">
+      <UniqueIdentifier>{bc50f33c-9f98-4a22-811d-57bee5834716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\MonsterBase">
+      <UniqueIdentifier>{5a866917-035a-4183-ae51-faf662b1a234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\MonsterBase\BloodyQueen">
+      <UniqueIdentifier>{23be6bf9-970a-4381-9238-5dc3d999b5ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\MonsterBase\DemonMonster">
+      <UniqueIdentifier>{40e64d12-c7b6-4824-a019-64b4aa033574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\UI">
+      <UniqueIdentifier>{a52c55e3-a843-4763-92f3-87274f56b0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Ground">
+      <UniqueIdentifier>{6cfcb427-19af-453d-9cba-3570449339ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\UI\Inventory">
+      <UniqueIdentifier>{891dec1f-00c8-4b6d-98fa-056617351927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\UI\Exp">
+      <UniqueIdentifier>{df925821-9e20-435e-96c6-448c789fcfe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\UI\Grid">
+      <UniqueIdentifier>{8d4b8653-9d85-4a26-b0f8-4a63c0657644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Light">
+      <UniqueIdentifier>{7c72bfa9-bb97-45aa-b454-7769b9b638f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Player">
+      <UniqueIdentifier>{e255f301-aeb1-4a48-84cc-17fe7f0e3dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Portal">
+      <UniqueIdentifier>{a80117dc-b5c1-4e4f-be96-377d4d912da8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
