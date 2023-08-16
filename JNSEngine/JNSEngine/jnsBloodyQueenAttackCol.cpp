@@ -120,13 +120,13 @@ namespace jns
 				}
 				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
 				{
-						cd->SetSize(Vector2(0.3f, 0.5f));
-						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+						//cd->SetSize(Vector2(0.3f, 0.5f));
+						//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
 				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
 				{
-						cd->SetSize(Vector2(0.3f, 0.5f));
-						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+						//cd->SetSize(Vector2(0.3f, 0.5f));
+						//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
 
 				if (mColMakeTime >= 2.5f && mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")

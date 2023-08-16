@@ -1,5 +1,6 @@
 #include "jnsRutabysBossScene.h"
 #include "CommonSceneInclude.h"
+#include "jnsMirror.h"
 
 namespace jns
 {
@@ -18,6 +19,7 @@ namespace jns
 		
 		// º¸½º
 		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -130.0f, 3.0f));
+		object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, 0.0f, 2.0f));
 		//player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		CreatePlayerUI();
 		PlayScene::Initialize();

@@ -62,10 +62,23 @@ namespace jns
 		void CompleteBressAni2();
 		void CompleteDebuffAni();
 		void CompleteDebuffAni1();
+		void CompleteNormalDebuffAni();
+		void CompleteDieAni1();
+		void CompleteDieAni2();
+		void CompleteDieAni3();
 		void CompleteChangeTypeAni();
 		void CompleteChangeTypeAni1();
 		void CompleteChangeTypeAni2();
 		void CompleteChangeTypeAni3();
+		void CompleteSummon();
+		void CompleteSummon1();
+		void CompleteReflect();
+		void CompleteReflect1();
+
+
+
+		void CompleteSwallow();
+		void CompleteSwallow1();
 
 		void CompleteAttack();
 	public:

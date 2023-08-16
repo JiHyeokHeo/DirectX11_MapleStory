@@ -86,6 +86,8 @@ namespace jns
 
 		for (Script* script : scripts)
 		{
+			if (script->GetColNum() != this->GetColNum())
+				continue;
 			script->OnCollisionStay(other);
 		}
 	}
@@ -96,6 +98,8 @@ namespace jns
 
 		for (Script* script : scripts)
 		{
+			if (script->GetColNum() != this->GetColNum())
+				continue;
 			script->OnCollisionExit(other);
 		}
 		isColliding = false;

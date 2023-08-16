@@ -394,12 +394,6 @@ namespace jns
         mPos.y += 160.0f * Time::DeltaTime();
         tr->SetPosition(Vector3(mPos.x, mPos.y, mPos.z));
         
-
-        if (mPlayerInfo.mHittedTime >= 0.5f)
-        {
-            mPlayerState = ePlayerState::Idle;
-            mPlayerInfo.mHittedTime = 0.0f;
-        }
     }
 
     void PlayerScript::Die()
@@ -605,11 +599,10 @@ namespace jns
     }
     void PlayerScript::CheckJumpCount()
     {
-  /*      if (mPlayerInfo.isGrounded == true)
+        if (mPlayerInfo.isGrounded == true)
         {
             isDone = false;
-        }*/
-
+        }
     }
     void PlayerScript::ActiveJumpSkill()
     {

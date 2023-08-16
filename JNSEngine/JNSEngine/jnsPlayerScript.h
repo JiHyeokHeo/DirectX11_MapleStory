@@ -74,6 +74,7 @@ namespace jns
 		eKeyCode GetPlayerClickButton() { return mClicked; }
 		PlayerDir GetPlayerDirection() { return mPlayerInfo.mDir; }
 		eKeyType GetPlayerKeyType() { return mPlayerKeyType; }
+		void SetPlayerState(ePlayerState state) { mPlayerState = state; }
 
 	public:
 		void Idle();

@@ -36,31 +36,33 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress2", 1500, 0.10f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 1500, 0.10f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 1500, 0.10f, Vector2(-0.03f, -0.005f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff", 1500, 0.15f, Vector2(0.006f, -0.007f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff1", 1500, 0.15f, Vector2(0.012f, -0.008f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff2", 1500, 0.15f, Vector2(0.012f, -0.008f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQIdle", 1500, 0.15f, Vector2(0.0f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQChangeType", 1500, 0.15f, Vector2(0.0f, -0.010f));	
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQNormalAttack", 1500, 0.15f, Vector2(-0.01f, -0.03f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQWalk", 1500, 0.15f, Vector2(0.020f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQChangeType", 1500, 0.2f, Vector2(0.0f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff1", 1500, 0.15f, Vector2(-0.02f, -0.09f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff2", 1500, 0.15f, Vector2(-0.02f, -0.09f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff3", 1500, 0.15f, Vector2(-0.02f, -0.09f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff1", 1500, 0.15f, Vector2(-0.0265f, -0.085f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff2", 1500, 0.15f, Vector2(-0.0303f, -0.085f)); 
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQDebuff3", 1500, 0.15f, Vector2(-0.0265f, -0.085f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQIdle", 1500, 0.15f, Vector2(0.0f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQNormalAttack", 1500, 0.15f, Vector2(-0.01f, -0.03f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQWalk", 1500, 0.15f, Vector2(0.020f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQReflect", 1500, 0.15f, Vector2(0.020f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQReflect1", 1500, 0.15f, Vector2(0.0f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQReflect2", 1500, 0.15f, Vector2(0.0f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\ReflectBloodyQueen\\RFBQReflect3", 1500, 0.15f, Vector2(0.0f, -0.010f));
 
 		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQChangeType", 1500, 0.15f, Vector2(0.0f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQIdle", 1500, 0.15f, Vector2(0.0f, -0.010f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQNormalAttack", 1500, 0.15f, Vector2(-0.01f, -0.03f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSummon", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow1", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow2", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow3", 1500, 0.15f, Vector2(0.025f, -0.010f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallowLoop", 1500, 0.15f, Vector2(0.025f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSummon1", 1500, 0.15f, Vector2(-0.024f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSummon2", 1500, 0.15f, Vector2(-0.024f, -0.010f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow1", 1500, 0.15f, Vector2(-0.025f, -0.065f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow2", 1500, 0.15f, Vector2(-0.025f, -0.065f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQSwallow3", 1500, 0.15f, Vector2(-0.025f, -0.065f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQWalk", 1500, 0.15f, Vector2(0.020f, -0.010f));
 		
-		at->PlayAnimation(L"ReflectBloodyQueenRFBQReflect", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(1700.0f, 1700.0f, 1.0f));
 

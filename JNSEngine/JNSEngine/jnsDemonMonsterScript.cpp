@@ -38,6 +38,20 @@ namespace jns
 	}
 	void DemonMonsterScript::OnCollisionEnter(Collider2D* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			GameObject* mPlayer = SceneManager::GetPlayer();
+			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
+
+			if (mPlayerInvTime <= 0.0f)
+			{
+				mPlayerHp -= 20.0f;
+				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+			}
+		}
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
 			mChangeTime = 0.0f;
@@ -57,6 +71,19 @@ namespace jns
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			GameObject* mPlayer = SceneManager::GetPlayer();
+			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
+
+			if (mPlayerInvTime <= 0.0f)
+			{
+				mPlayerHp -= 20.0f;
+				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+			}
+		}
 	}
 	void DemonMonsterScript::OnCollisionExit(Collider2D* other)
 	{

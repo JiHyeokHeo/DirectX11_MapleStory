@@ -76,7 +76,7 @@ namespace jns
 
 
 		// 플레이어 생성
-		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 1.0f));
+		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
 		SceneManager::SetPlayer(player);
 
 

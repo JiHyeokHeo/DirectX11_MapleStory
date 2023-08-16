@@ -54,7 +54,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		
@@ -67,16 +67,29 @@ namespace jns
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQDebuff1") = std::bind(&BloodyQueenScript::CompleteDebuffAni, this);
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQDebuff2") = std::bind(&BloodyQueenScript::CompleteDebuffAni1, this);
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQDebuff3") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"ReflectBloodyQueenRFBQReflect1") = std::bind(&BloodyQueenScript::CompleteReflect, this);
+		at->CompleteEvent(L"ReflectBloodyQueenRFBQReflect2") = std::bind(&BloodyQueenScript::CompleteReflect1, this);
+		at->CompleteEvent(L"ReflectBloodyQueenRFBQReflect3") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"ReflectBloodyQueenRFBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 
 		at->CompleteEvent(L"AttractionBloodyQueenATBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
-		at->CompleteEvent(L"NormalBloodyQueenNBQDebuff") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"NormalBloodyQueenNBQDebuff1") = std::bind(&BloodyQueenScript::CompleteNormalDebuffAni, this);
+		at->CompleteEvent(L"NormalBloodyQueenNBQDebuff2") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQBress1") = std::bind(&BloodyQueenScript::CompleteBressAni, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQBress2") = std::bind(&BloodyQueenScript::CompleteBressAni1, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQBress3") = std::bind(&BloodyQueenScript::CompleteBressAni2, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQBress4") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
-		at->CompleteEvent(L"ReflectBloodyQueenRFBQNormalAttack") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"BloodyQueenDieDie1") = std::bind(&BloodyQueenScript::CompleteDieAni1, this);
+		at->CompleteEvent(L"BloodyQueenDieDie2") = std::bind(&BloodyQueenScript::CompleteDieAni2, this);
+		at->CompleteEvent(L"BloodyQueenDieDie3") = std::bind(&BloodyQueenScript::CompleteDieAni3, this);
+
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon1") = std::bind(&BloodyQueenScript::CompleteSummon, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon2") = std::bind(&BloodyQueenScript::CompleteSummon1, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow1") = std::bind(&BloodyQueenScript::CompleteSwallow, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow2") = std::bind(&BloodyQueenScript::CompleteSwallow1, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow3") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 		
 	}
 	void BloodyQueenScript::Update()
@@ -193,11 +206,32 @@ namespace jns
 	}
 	void BloodyQueenScript::CompleteDebuffAni()
 	{
-		at->PlayAnimation(L"ReflectBloodyQueenRFBQDebff2", true);
+		at->PlayAnimation(L"ReflectBloodyQueenRFBQDebuff2", true);
 	}
 	void BloodyQueenScript::CompleteDebuffAni1()
 	{
-		at->PlayAnimation(L"ReflectBloodyQueenRFBQDebff3", true);
+		at->PlayAnimation(L"ReflectBloodyQueenRFBQDebuff3", true);
+	}
+
+	void BloodyQueenScript::CompleteNormalDebuffAni()
+	{
+		at->PlayAnimation(L"NormalBloodyQueenNBQDebuff2", true);
+	}
+	
+
+	void BloodyQueenScript::CompleteDieAni1()
+	{
+		at->PlayAnimation(L"BloodyQueenDieDie2", true);
+	}
+
+	void BloodyQueenScript::CompleteDieAni2()
+	{
+		at->PlayAnimation(L"BloodyQueenDieDie3", true);
+	}
+
+	void BloodyQueenScript::CompleteDieAni3()
+	{
+		GetOwner()->SetState(GameObject::eState::Paused);
 	}
 
 	void BloodyQueenScript::CompleteChangeTypeAni()
@@ -215,6 +249,30 @@ namespace jns
 	void BloodyQueenScript::CompleteChangeTypeAni3()
 	{
 		isChanging = false;
+	}
+	void BloodyQueenScript::CompleteSummon()
+	{
+		at->PlayAnimation(L"SmileBloodyQueenSMBQSummon2", true);
+	}
+	void BloodyQueenScript::CompleteSummon1()
+	{
+		at->PlayAnimation(L"SmileBloodyQueenSMBQSwallow1", true);
+	}
+	void BloodyQueenScript::CompleteReflect()
+	{
+		at->PlayAnimation(L"ReflectBloodyQueenRFBQReflect2", true);
+	}
+	void BloodyQueenScript::CompleteReflect1()
+	{
+		at->PlayAnimation(L"ReflectBloodyQueenRFBQReflect3", true);
+	}
+	void BloodyQueenScript::CompleteSwallow()
+	{
+		at->PlayAnimation(L"SmileBloodyQueenSMBQSwallow2", true);
+	}
+	void BloodyQueenScript::CompleteSwallow1()
+	{
+		at->PlayAnimation(L"SmileBloodyQueenSMBQSwallow3", true);
 	}
 	void BloodyQueenScript::CompleteAttack()
 	{
@@ -353,11 +411,11 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 	}
 	void BloodyQueenScript::Die()
 	{
-		GetOwner()->SetState(GameObject::eState::Paused);
+		
 	}
 	void BloodyQueenScript::SpecialAttack()
 	{
@@ -376,12 +434,12 @@ namespace jns
 		Vector3 mMonsterPos = tr->GetPosition();
 
 		std::wstring animationNameNormalBress = L"Bress1";
-		std::wstring animationNameNormalDebuff = L"Debuff";
-
+		std::wstring animationNameNormalDebuff = L"Debuff1";
 		std::wstring animationNameAttract = L"Attract";
 		std::wstring animationNameReflectDebuff = L"Debuff1";
-		std::wstring animationNameReflect= L"Reflect";
-		std::wstring animationNameSmile = L"Swallow";
+		std::wstring animationNameReflect= L"Reflect1";
+		std::wstring animationNameSmile = L"Swallow1";
+		std::wstring animationNameSmileSummon = L"Summon1";
 		
 		mPatternPercentage = dist2(rng2);
 		
@@ -415,12 +473,19 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 		{
-			animationname += animationNameReflectDebuff;
+			if (mPatternPercentage <= 0.5f)
+			{
+				animationname += animationNameReflectDebuff;
+			}
+			else
+			{
+				animationname += animationNameReflect;
+			}
 			at->PlayAnimation(animationname, true);
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
-			animationname += animationNameSmile;
+			animationname += animationNameSmileSummon;
 			at->PlayAnimation(animationname, true);
 		}
 
@@ -473,7 +538,7 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
-			name = L"AttractionBloodyQueenSMBQ";
+			name = L"\SmileBloodyQueenSMBQ";
 		}
 
 		// 상시 갱신
@@ -502,6 +567,9 @@ namespace jns
 				name += animationNameATT;
 				at->PlayAnimation(name, true);
 				mUsingSkillName = animationNameATT;
+				break;
+			case eBloodyQueenState::Die:
+				at->PlayAnimation(L"BloodyQueenDieDie1", true);
 				break;
 			case eBloodyQueenState::SpecialAttack:
 				PlaySpecialAttackAnimation(name);

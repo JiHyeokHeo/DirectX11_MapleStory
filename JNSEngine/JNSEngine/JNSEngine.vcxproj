@@ -188,6 +188,8 @@
     <ClInclude Include="jnsJumpSkill.h" />
     <ClInclude Include="jnsLightScript.h" />
     <ClInclude Include="jnsLoginScene.h" />
+    <ClInclude Include="jnsMirror.h" />
+    <ClInclude Include="jnsMirrorScript.h" />
     <ClInclude Include="jnsMonsterBase.h" />
     <ClInclude Include="jnsMpBar.h" />
     <ClInclude Include="jnsPlayer.h" />
@@ -256,6 +258,8 @@
     <ClCompile Include="jnsJumpSkill.cpp" />
     <ClCompile Include="jnsLightScript.cpp" />
     <ClCompile Include="jnsLoginScene.cpp" />
+    <ClCompile Include="jnsMirror.cpp" />
+    <ClCompile Include="jnsMirrorScript.cpp" />
     <ClCompile Include="jnsMonsterBase.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />

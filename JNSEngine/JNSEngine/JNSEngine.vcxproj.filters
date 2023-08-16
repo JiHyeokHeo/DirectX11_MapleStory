@@ -186,6 +186,12 @@
     <ClCompile Include="jnsDemonAttackRangeScript.cpp">
       <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
     </ClCompile>
+    <ClCompile Include="jnsMirror.cpp">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsMirrorScript.cpp">
+      <Filter>Contents\Script\BossObjects\BloodyQueen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -386,6 +392,12 @@
     </ClInclude>
     <ClInclude Include="jnsDemonAttackRangeScript.h">
       <Filter>Contents\Script\MonsterBase\DemonMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsMirror.h">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsMirrorScript.h">
+      <Filter>Contents\Script\BossObjects\BloodyQueen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -607,6 +619,18 @@
     </Filter>
     <Filter Include="Contents\Script\Portal">
       <UniqueIdentifier>{a80117dc-b5c1-4e4f-be96-377d4d912da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BossPatternObject">
+      <UniqueIdentifier>{795a8bc1-3d30-42eb-83ac-db7659906cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\BossPatternObject\BloodyQueen">
+      <UniqueIdentifier>{205cbff1-916c-4f30-9318-63c9946695e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\BossObjects">
+      <UniqueIdentifier>{f2787e30-9e81-4608-a930-bc4ff5132bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\BossObjects\BloodyQueen">
+      <UniqueIdentifier>{f23b3df9-5ccf-4210-abef-59cee0ba1c08}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

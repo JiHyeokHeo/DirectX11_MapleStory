@@ -54,7 +54,7 @@ namespace jns
 
 	void Player::Update()
 	{
-
+		this;
 		GameObject::Update();
 	}
 
