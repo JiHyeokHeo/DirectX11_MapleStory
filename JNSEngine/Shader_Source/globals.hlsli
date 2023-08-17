@@ -87,6 +87,15 @@ struct Particle
     float time;
     float speed;
     uint active;
+    
+    float4 startSize;
+    float4 endSize;
+    float4 startColor;
+    float4 endColor;
+    float lifeTime;
+    float frequency;
+    float elapsedTime;
+    int pad2;
 };
 
 StructuredBuffer<LightAttribute> lightsAttribute : register(t13);
@@ -103,6 +112,13 @@ static float GaussianFilter[5][5] =
     0.0133f, 0.0596f, 0.0983f, 0.0596f, 0.0133f,
     0.003f, 0.0133f, 0.0219f, 0.0133f, 0.003f,
 };
+
+float RandomTime(float elapsedTime, float frequency)
+{
+    float timeValue = sin(elapsedTime * frequency);
+
+    return frac(timeValue);
+}
 
 float4 GaussianBlur(float2 UV)
 {

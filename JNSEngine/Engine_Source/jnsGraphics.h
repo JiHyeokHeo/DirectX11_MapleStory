@@ -148,6 +148,15 @@ namespace jns::graphics
 		float time;
 		float speed;
 		UINT active;
+		
+		math::Vector4 startSize;
+		math::Vector4 endSize;
+		math::Vector4 startColor;
+		math::Vector4 endColor;
+		float lifeTime;
+		float frequency;
+		float elapsedTime;
+		int pad;
 	};
 
 	struct ParticleShared

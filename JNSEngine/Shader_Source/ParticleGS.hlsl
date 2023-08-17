@@ -10,7 +10,6 @@ struct GSOut
 {
     float4 Pos : SV_Position;
     float2 UV : TEXCOORD;
-    //uint Instance : SV_InstanceID;
 };
 
 [maxvertexcount(6)]
@@ -27,12 +26,14 @@ void main(point VSOut In[1], inout TriangleStream<GSOut> output)
     
     float3 viewPos = mul(float4(worldPos, 1.0f), ViewMatrix).xyz;
     
+    float3 startsize = particles[In[0].Instance].startSize.xyz;
+    
     float3 NewPos[4] =
     {
-        viewPos - float3(-0.5f, 0.5f, 0.f) * float3(10.2f, 10.2f, 1.f),
-        viewPos - float3(0.5f, 0.5f, 0.f) * float3(10.2f, 10.2f, 1.f),
-        viewPos - float3(0.5f, -0.5f, 0.f) * float3(10.2f, 10.2f, 1.f),
-        viewPos - float3(-0.5f, -0.5f, 0.f) * float3(10.2f, 10.2f, 1.f),
+        viewPos - float3(-0.5f, 0.5f, 0.f) * startsize,
+        viewPos - float3(0.5f, 0.5f, 0.f) * startsize,
+        viewPos - float3(0.5f, -0.5f, 0.f) * startsize,
+        viewPos - float3(-0.5f, -0.5f, 0.f) *startsize,
     };
     
     for (int i = 0; i < 4; ++i)
@@ -64,4 +65,5 @@ void main(point VSOut In[1], inout TriangleStream<GSOut> output)
     output.Append(Out[2]);
     output.Append(Out[3]);
     output.RestartStrip();
+    
 }

@@ -16,6 +16,20 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetStartSize(Vector2 size) { mStartSize = Vector4(size.x, size.y, 1.0f, 1.0f); }
+		
+		// 뭔가 선형 보간 해야 할꺼 같은데?
+		void SetEndSize(Vector2 size) { mEndSize = Vector4(size.x, size.y, 1.0f, 1.0f); }
+		
+		// 느낌이 예는 PS 쉐이더 건드려줘야할꺼 같고
+		void SetStartColor(Vector4 startcolor) { mStartColor = startcolor; }
+		void SetEndColor(Vector4 endcolor) { mEndColor = endcolor; }
+		void SetFrequency(float frequency) { mFrequency = frequency; }
+
+		void SetCount(UINT cnt) { mCount = cnt; }
+		void SetLifeTime(float settime) { mLifeTime = settime; }
+		
+
 	private:
 		graphics::StructedBuffer* mBuffer;
 		graphics::StructedBuffer* mSharedBuffer;

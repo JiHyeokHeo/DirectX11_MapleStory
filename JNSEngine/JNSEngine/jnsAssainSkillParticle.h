@@ -1,6 +1,6 @@
 #pragma once
 #include "jnsGameObject.h"
-
+#include "jnsParticleSystem.h"
 namespace jns
 {
 	class AssainSkillParticle : public GameObject
@@ -17,6 +17,10 @@ namespace jns
 
 
 	private:
+		ParticleSystem* ps;
+		int cnt = 0;
+		Vector4 color;
+		Vector2 size;
 	};
 
 }

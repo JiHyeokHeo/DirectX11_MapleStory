@@ -1,6 +1,7 @@
 #include "jnsAssainSkillParticle.h"
 #include "jnsParticleSystem.h"
 #include "jnsResources.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -13,7 +14,7 @@ namespace jns
 	void AssainSkillParticle::Initialize()
 	{
 		SetName(L"Particle");
-		ParticleSystem* ps = AddComponent<ParticleSystem>();
+		ps = AddComponent<ParticleSystem>();
 		std::shared_ptr<Material> material = Resources::Find<Material>(L"SkillParticleMaterial");
 		ps->SetMaterial(material);
 
@@ -24,10 +25,43 @@ namespace jns
 	}
 	void AssainSkillParticle::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::K))
+		{
+			cnt++;
+		}
+		else if (Input::GetKeyDown(eKeyCode::L))
+		{
+			cnt--;
+		}
+		else if (Input::GetKeyDown(eKeyCode::X))
+		{
+			color.x += 0.01f;
+		}
+		else if (Input::GetKeyDown(eKeyCode::C))
+		{
+			color.y += 0.01f;
+		}
+		else if (Input::GetKeyDown(eKeyCode::V))
+		{
+			color.z += 0.01f;
+		}
+		else if (Input::GetKeyDown(eKeyCode::B))
+		{
+			size.x += 0.1f;
+			size.y += 0.1f;
+		}
+		else if (Input::GetKeyDown(eKeyCode::N))
+		{
+			size.x -= 0.1f;
+			size.y -= 0.1f;
+		}
 		GameObject::Update();
 	}
 	void AssainSkillParticle::LateUpdate()
 	{
+		ps->SetCount(cnt);
+		ps->SetStartColor(color);
+		ps->SetStartSize(size);
 		GameObject::LateUpdate();
 	}
 	void AssainSkillParticle::Render()

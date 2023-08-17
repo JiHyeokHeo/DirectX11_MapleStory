@@ -48,18 +48,42 @@ void main(uint3 DTid : SV_DispatchThreadID)
                 , GaussianBlur(vUV + float2(0.3f, 0.f)).x
             );
             
-            ParticleBuffer[DTid.x].position.xyz = vRandom.xyz * 100.0f;
-            ParticleBuffer[DTid.x].position.x -= 0.65f;
-            ParticleBuffer[DTid.x].position.z = 0.0f;
-            ParticleBuffer[DTid.x].position.y -= 1.4f;
+            ParticleBuffer[DTid.x].position.xyz = vRandom.xyz;
+            //ParticleBuffer[DTid.x].position.x -= 100.65f;
+            //ParticleBuffer[DTid.x].position.y -= 100.4f;
+            //ParticleBuffer[DTid.x].position.z = 0.0f;
+           
+
         }
-        
+
     }
     else
     {
-        //ParticleBuffer[DTid.x].position 
-        //   += ParticleBuffer[DTid.x].direction * ParticleBuffer[DTid.x].speed * deltaTime;
+        float4 speedRandom = (float4) 0.f;
         
+        speedRandom = float4
+            (
+                  GaussianBlur(float2(0.f, 0.f)).x
+                , GaussianBlur(float2(0.1f, 0.f)).x
+                , GaussianBlur(float2(0.2f, 0.f)).x
+                , GaussianBlur(float2(0.3f, 0.f)).x
+            );
+            
+        ParticleBuffer[DTid.x].elapsedTime += deltaTime;
+        float randomInterval = RandomTime(0.0f, 1.0f);
+        
+        ParticleBuffer[DTid.x].lifeTime = RandomTime(ParticleBuffer[DTid.x].elapsedTime, ParticleBuffer[DTid.x].frequency);
+        ParticleBuffer[DTid.x].lifeTime *= 10.0f;
+        
+        //if (ParticleBuffer[DTid.x].elapsedTime >= randomInterval
+        //{
+        //    ParticleBuffer[DTid.x].active = 0;
+        //    ParticleBuffer[DTid.x].elapsedTime = 0.0f;
+        //}
+    
+        
+        ParticleBuffer[DTid.x].position 
+           -= ParticleBuffer[DTid.x].direction * ParticleBuffer[DTid.x].speed * speedRandom * deltaTime;
         // 시간을 체크해서 일정 시간(랜덤)이 지나면
         // active = 0;
     }

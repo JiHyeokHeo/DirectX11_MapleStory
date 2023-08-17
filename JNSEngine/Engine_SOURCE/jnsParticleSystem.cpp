@@ -5,30 +5,37 @@
 #include "jnsTransform.h"
 #include "jnsGameObject.h"
 #include "jnsTime.h"
+#include <random>
+
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_int_distribution<int> dis(1, 1000);
 
 namespace jns
 {
 	ParticleSystem::ParticleSystem()
-		: mCount(0)
+		: mCount(2)
 		, mStartSize(Vector4::One)
 		, mEndSize(Vector4::One)
 		, mStartColor(Vector4::Zero)
 		, mEndColor(Vector4::Zero)
-		, mLifeTime(0.0f)
+		, mLifeTime(1.0f)
 		, mTime(0.0f)
+		, mFrequency(0.5f)
 	{
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);
 
 		//std::shared_ptr<Material> material = Resources::Find<Material>(L"ParticleMaterial");
 		//SetMaterial(material);
-
+		mStartSize =  Vector4(5.0f, 5.0f, 1.0f, 1.0f);
+		mStartColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		mEndColor = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 		mCS = Resources::Find<ParticleShader>(L"ParticleSystemShader");
 
 		Particle particles[1000] = {};
 		for (size_t i = 0; i < 1000; i++)
 		{
-			Vector4 pos = Vector4::Zero;
 			//pos.x += rand() % 1000;
 			//pos.y += rand() % 600;
 
@@ -39,15 +46,28 @@ namespace jns
 			//if (sign == 0)
 			//	pos.y *= -1.0f;
 
-			particles[i].direction =
+	/*		particles[i].direction =
 				Vector4(cosf((float)i * (XM_2PI / (float)1000))
 					, sinf((float)i * (XM_2PI / 100.f))
-					, 0.0f, 1.0f);
+					, 0.0f, 1.0f);*/
+			int randomValue = dis(gen);
+			float coneAngle = math::DegreeToRadian(20.0f);  
+			float angle = ((float)randomValue / 1000.0f) * coneAngle;
+
+			particles[i].direction =
+				Vector4(cosf(angle), sinf(angle), 0.0f, 1.0f);
+			Vector4 pos = Vector4::Zero;
+
+			particles[i].direction.Normalize();
 
 			particles[i].position = pos;
-			particles[i].speed = 100.0f;
+			particles[i].speed = 200.0f;
 			particles[i].active = 0;
-
+			particles[i].lifeTime = mLifeTime;
+			particles[i].frequency = mFrequency;
+			particles[i].startSize = mStartSize;
+			particles[i].startColor= mStartColor;
+			particles[i].endColor = mEndColor;
 		}
 
 		mBuffer = new graphics::StructedBuffer();
@@ -72,7 +92,7 @@ namespace jns
 	}
 	void ParticleSystem::LateUpdate()
 	{
-		float AliveTime = 1.0f / 1.0f;
+		float AliveTime = 0.1f / 1.0f;
 		mTime += Time::DeltaTime();
 
 		if (mTime > AliveTime)
@@ -82,7 +102,7 @@ namespace jns
 			mTime = f - floor(f);
 
 			ParticleShared shareData = {};
-			shareData.sharedActiveCount = 2;
+			shareData.sharedActiveCount = mCount;
 			mSharedBuffer->SetData(&shareData, 1);
 		}
 		else

@@ -59,7 +59,7 @@ namespace renderer
 	{
 		UINT elementCount;
 		float elpasedTime;
-		float deltaTime;;
+		float deltaTime;
 		int padd2;
 	};
 

@@ -6,6 +6,7 @@ struct GSOut
 {
     float4 Pos : SV_Position;
     float2 UV : TEXCOORD;
+    uint Instance : SV_InstanceID;
 };
 
 float4 main(GSOut In) : SV_TARGET
@@ -16,6 +17,14 @@ float4 main(GSOut In) : SV_TARGET
     
     if (Out.a <= 0.0f)
         discard;
+    
+    float3 startcolor = particles[In.Instance.x].startColor.xyz;
+    float3 endcolor = particles[In.Instance.x].endColor.xyz;
+    
+    
+    Out.rgb = lerp(startcolor, endcolor, deltaTime);
+    
+    
     
     return Out;
 
