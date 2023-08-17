@@ -48,6 +48,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
                 , GaussianBlur(vUV + float2(0.3f, 0.f)).x
             );
             
+            ParticleBuffer[DTid.x].lifeTime = 3.0 + vRandom.x * 2.0f;
             ParticleBuffer[DTid.x].position.xyz = vRandom.xyz;
             //ParticleBuffer[DTid.x].position.x -= 100.65f;
             //ParticleBuffer[DTid.x].position.y -= 100.4f;
@@ -73,13 +74,11 @@ void main(uint3 DTid : SV_DispatchThreadID)
         float randomInterval = RandomTime(0.0f, 1.0f);
         
        
-        ParticleBuffer[DTid.x].lifeTime *= 10.0f;
-        randomInterval *= 10.0f;
-        //if (ParticleBuffer[DTid.x].elapsedTime >= randomInterval)
-        //{
-        //    ParticleBuffer[DTid.x].active = 0;
-        //    ParticleBuffer[DTid.x].elapsedTime = 0.0f;
-        //}
+        if (ParticleBuffer[DTid.x].elapsedTime >= ParticleBuffer[DTid.x].lifeTime)
+        {
+            ParticleBuffer[DTid.x].active = 0;
+            ParticleBuffer[DTid.x].elapsedTime = 0.0f;
+        }
     
         
         ParticleBuffer[DTid.x].position 

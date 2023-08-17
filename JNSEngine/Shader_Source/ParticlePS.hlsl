@@ -21,8 +21,8 @@ float4 main(GSOut In) : SV_TARGET
     float3 startcolor = particles[In.Instance.x].startColor.xyz;
     float3 endcolor = particles[In.Instance.x].endColor.xyz;
     
-    
-    Out.rgb = lerp(startcolor, endcolor, elapsedTime);
+    float colorchangetime = particles[In.Instance.x].elapsedTime / particles[In.Instance.x].lifeTime;
+    Out.rgb = lerp(startcolor, endcolor, colorchangetime);
     
     
     

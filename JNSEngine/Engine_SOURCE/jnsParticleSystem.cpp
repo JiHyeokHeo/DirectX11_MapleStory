@@ -20,7 +20,7 @@ namespace jns
 		, mEndSize(Vector4::One)
 		, mStartColor(Vector4::Zero)
 		, mEndColor(Vector4::Zero)
-		, mLifeTime(1.0f)
+		, mLifeTime(5.0f)
 		, mTime(0.0f)
 		, mFrequency(0.1f)
 		, mSpeed(300.0f)
