@@ -8,9 +8,10 @@
 #include <random>
 
 std::random_device rd;
-std::mt19937 gen(rd());
-std::uniform_int_distribution<int> dis(1, 1000);
 
+std::mt19937 gen(rd());
+
+std::uniform_int_distribution<int> dis(1, 1000);
 namespace jns
 {
 	ParticleSystem::ParticleSystem()
@@ -21,50 +22,37 @@ namespace jns
 		, mEndColor(Vector4::Zero)
 		, mLifeTime(1.0f)
 		, mTime(0.0f)
-		, mFrequency(0.5f)
+		, mFrequency(0.1f)
+		, mSpeed(300.0f)
 	{
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);
 
 		//std::shared_ptr<Material> material = Resources::Find<Material>(L"ParticleMaterial");
-		//SetMaterial(material);
+		//SetMaterial(material)
 		mStartSize =  Vector4(5.0f, 5.0f, 1.0f, 1.0f);
-		mStartColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		mStartColor = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
 		mEndColor = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 		mCS = Resources::Find<ParticleShader>(L"ParticleSystemShader");
 
 		Particle particles[1000] = {};
 		for (size_t i = 0; i < 1000; i++)
 		{
-			//pos.x += rand() % 1000;
-			//pos.y += rand() % 600;
+			Vector4 pos = Vector4::Zero;
 
-			//int sign = rand() % 2;
-			//if (sign == 0)
-			//	pos.x *= -1.0f;
-			//sign = rand() % 2;
-			//if (sign == 0)
-			//	pos.y *= -1.0f;
-
-	/*		particles[i].direction =
-				Vector4(cosf((float)i * (XM_2PI / (float)1000))
-					, sinf((float)i * (XM_2PI / 100.f))
-					, 0.0f, 1.0f);*/
-			int randomValue = dis(gen);
+			int randomValue = dis(gen);;
 			float coneAngle = math::DegreeToRadian(20.0f);  
 			float angle = ((float)randomValue / 1000.0f) * coneAngle;
 
 			particles[i].direction =
-				Vector4(cosf(angle), sinf(angle), 0.0f, 1.0f);
-			Vector4 pos = Vector4::Zero;
+			Vector4(cosf(angle), sinf(angle), 0.0f, 1.0f);
 
 			particles[i].direction.Normalize();
 
 			particles[i].position = pos;
-			particles[i].speed = 200.0f;
+			particles[i].speed = mSpeed;
 			particles[i].active = 0;
 			particles[i].lifeTime = mLifeTime;
-			particles[i].frequency = mFrequency;
 			particles[i].startSize = mStartSize;
 			particles[i].startColor= mStartColor;
 			particles[i].endColor = mEndColor;
@@ -83,6 +71,10 @@ namespace jns
 	}
 	ParticleSystem::~ParticleSystem()
 	{
+		delete mBuffer;
+		delete mSharedBuffer;
+		mBuffer = nullptr;
+		mSharedBuffer = nullptr;
 	}
 	void ParticleSystem::Initialize()
 	{
@@ -92,7 +84,7 @@ namespace jns
 	}
 	void ParticleSystem::LateUpdate()
 	{
-		float AliveTime = 0.1f / 1.0f;
+		float AliveTime = mFrequency / 1.0f;
 		mTime += Time::DeltaTime();
 
 		if (mTime > AliveTime)

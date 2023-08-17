@@ -10,6 +10,7 @@ struct GSOut
 {
     float4 Pos : SV_Position;
     float2 UV : TEXCOORD;
+    uint Instance : SV_InstanceID;
 };
 
 [maxvertexcount(6)]

@@ -22,7 +22,7 @@ float4 main(GSOut In) : SV_TARGET
     float3 endcolor = particles[In.Instance.x].endColor.xyz;
     
     
-    Out.rgb = lerp(startcolor, endcolor, deltaTime);
+    Out.rgb = lerp(startcolor, endcolor, elapsedTime);
     
     
     

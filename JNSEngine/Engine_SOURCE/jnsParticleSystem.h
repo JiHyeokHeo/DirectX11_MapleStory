@@ -29,6 +29,7 @@ namespace jns
 		void SetCount(UINT cnt) { mCount = cnt; }
 		void SetLifeTime(float settime) { mLifeTime = settime; }
 		
+		void SetSpeed(float speed) { mSpeed = speed; }
 
 	private:
 		graphics::StructedBuffer* mBuffer;
@@ -45,6 +46,7 @@ namespace jns
 		float   mLifeTime;
 		float	mFrequency;
 
+		float mSpeed;
 		float mTime;
 	};
 }

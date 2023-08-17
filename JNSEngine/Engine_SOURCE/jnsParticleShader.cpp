@@ -13,6 +13,8 @@ namespace jns::graphics
 
 	ParticleShader::~ParticleShader()
 	{
+	
+	
 	}
 
 	void ParticleShader::Binds()

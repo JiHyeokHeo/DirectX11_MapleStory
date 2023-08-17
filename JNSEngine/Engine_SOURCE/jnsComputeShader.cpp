@@ -20,7 +20,6 @@ namespace jns::graphics
 
 	ComputeShader::~ComputeShader()
 	{
-
 	}
 
 	bool ComputeShader::Create(const std::wstring& name, const std::string& methodName)

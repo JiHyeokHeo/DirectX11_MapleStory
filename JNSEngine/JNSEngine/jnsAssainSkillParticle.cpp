@@ -60,8 +60,6 @@ namespace jns
 	void AssainSkillParticle::LateUpdate()
 	{
 		ps->SetCount(cnt);
-		ps->SetStartColor(color);
-		ps->SetStartSize(size);
 		GameObject::LateUpdate();
 	}
 	void AssainSkillParticle::Render()
