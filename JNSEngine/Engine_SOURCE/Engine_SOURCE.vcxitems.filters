@@ -236,6 +236,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleShader.h">
       <Filter>Resource\Shader\CS</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioSource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsFmod.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -353,6 +357,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleShader.cpp">
       <Filter>Resource\Shader\CS</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioSource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsFmod.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

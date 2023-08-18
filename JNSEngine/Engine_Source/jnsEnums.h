@@ -15,6 +15,8 @@ namespace jns::enums
 		RigidBody,
 		Light,
 		Camera,
+		AudioListener,
+		AudioSource,
 		End,
 	};
 
@@ -47,6 +49,7 @@ namespace jns::enums
 		Animation,
 		ComputeShader,
 		Image,
+		AudioClip,
 		End,
 	};
 
