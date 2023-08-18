@@ -19,6 +19,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCameraManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsCollisionManager.h" />
@@ -28,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
@@ -64,6 +68,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCameraManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsCollisionManager.cpp" />
@@ -72,6 +79,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />
