@@ -6,6 +6,7 @@
 #include "jnsCollisionManager.h"
 #include "jnsSkillManager.h"
 #include "jnsCameraManager.h"
+#include "jnsFmod.h"
 
 namespace jns
 {
@@ -35,6 +36,8 @@ namespace jns
 	{
 		Time::Initialize();
 		Input::Initialize();
+		Fmod::Initialize();
+
 		renderer::Initialize();
 		SkillManager::Initialize();
 		SceneManager::Initialize();

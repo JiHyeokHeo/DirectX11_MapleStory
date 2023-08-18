@@ -14,7 +14,7 @@
 #else
 #pragma comment(lib, "..\\External\\Fmod\\Library\\Debug\\fmod_vc.lib")
 #pragma comment(lib, "..\\External\\Fmod\\Library\\Release\\fmodstudio_vc.lib")
-#endif
+#endif	
 
 namespace jns
 {

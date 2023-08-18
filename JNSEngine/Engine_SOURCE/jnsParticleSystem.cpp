@@ -116,6 +116,7 @@ namespace jns
 		mBuffer->BindSRV(eShaderStage::GS, 14);
 		mBuffer->BindSRV(eShaderStage::PS, 14);
 
+		GetMesh()->BindBuffer();
 		GetMaterial()->Binds();
 		GetMesh()->RenderInstanced(1000);
 

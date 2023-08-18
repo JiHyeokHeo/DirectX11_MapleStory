@@ -401,3 +401,4 @@ FodyWeavers.xsd
 
 !JNSEngine/External/DirectXTex/Lib/[Dd]ebug
 !JNSEngine/External/DirectXTex/Lib/[Rr]elease
+!JNSEngine/DLL

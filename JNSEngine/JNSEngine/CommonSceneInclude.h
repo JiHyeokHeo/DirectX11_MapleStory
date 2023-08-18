@@ -77,6 +77,8 @@
 #include "jnsAnimator.h"
 #include "jnsRigidbody.h"
 #include "jnsLight.h"
+#include "jnsAudioListener.h"
+#include "jnsAudioSource.h"
 
 // Resources
 #include "jnsResources.h"
