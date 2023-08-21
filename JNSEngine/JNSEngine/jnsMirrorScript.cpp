@@ -9,11 +9,11 @@ namespace jns
 		mHp = 100.0f;
 		isNotPlayed = true;
 		isDead = false;
-		mSummonMaxTime = 25.0f;
+		mSummonMaxTime = 5.0f;
 
 
 		at = GetOwner()->GetComponent<Animator>();
-		at->CompleteEvent(L"MirrorMirrorAttractSuccess") = std::bind(&MirrorScript::CompleteAni, this);
+		//at->CompleteEvent(L"MirrorMirrorAttractSuccess") = std::bind(&MirrorScript::CompleteAni, this);
 		at->CompleteEvent(L"MirrorMirrorBomb") = std::bind(&MirrorScript::CompleteAni, this);
 		at->CompleteEvent(L"MirrorMirrorSummon") = std::bind(&MirrorScript::CompleteSunmmon, this);
 		
@@ -28,6 +28,7 @@ namespace jns
 	}
 	void MirrorScript::LateUpdate()
 	{
+		// 체력 갱신
 		mPrevHp = mHp;
 	}
 	void MirrorScript::Render()
@@ -35,6 +36,17 @@ namespace jns
 	}
 	void MirrorScript::OnCollisionEnter(Collider2D* other)
 	{
+		if (other->GetOwner()->GetName() == L"Player")
+		{
+			PlayerScript * playerscript = other->GetOwner()->GetComponent<PlayerScript>();
+			
+			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Attracted)
+			{
+				playerscript->SetPlayerHp(0);
+				this->GetOwner()->SetState(GameObject::eState::Paused);
+			}
+		}
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
 			if (other->GetOwner()->GetName() == L"AssainHit01")
@@ -174,6 +186,30 @@ namespace jns
 
 	void MirrorScript::Attracted()
 	{
+		Transform* mirrorTr = this->GetOwner()->GetComponent<Transform>();
+		GameObject* player = SceneManager::GetPlayer();
+		PlayerScript* playerscript = player->GetComponent<PlayerScript>();
+		playerscript->SetPlayerState(jns::PlayerScript::ePlayerState::Attracted);
+		Transform* playertr = player->GetComponent<Transform>();
+
+		Vector3 playerPos = playertr->GetPosition();
+		Vector3 mirrorPos = mirrorTr->GetPosition();
+		
+		float moveSpeed = 100.0f;
+		
+		if (playerPos.x >= mirrorPos.y - 10.0f)
+		{
+			playerPos.x -= moveSpeed * Time::DeltaTime();
+			playertr->SetPosition(playerPos);
+			playerscript->SetPlayerDirection(jns::PlayerScript::PlayerDir::Left);
+		}
+		else if(playerPos.x <= mirrorPos.y + 10.0f)
+		{
+			playerPos.x += moveSpeed * Time::DeltaTime();
+			playertr->SetPosition(playerPos);
+			playerscript->SetPlayerDirection(jns::PlayerScript::PlayerDir::Right);
+		}
+
 	}
 
 }

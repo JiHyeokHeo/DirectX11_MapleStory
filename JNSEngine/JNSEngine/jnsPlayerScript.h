@@ -22,6 +22,7 @@ namespace jns
 			Attack,
 			Hitted,
 			Die,
+			Attracted,
 			End,
 		};
 
@@ -73,8 +74,10 @@ namespace jns
 		void BindConstantBuffer();
 		eKeyCode GetPlayerClickButton() { return mClicked; }
 		PlayerDir GetPlayerDirection() { return mPlayerInfo.mDir; }
+		void SetPlayerDirection(PlayerDir dir) { mPlayerInfo.mDir = dir; }
 		eKeyType GetPlayerKeyType() { return mPlayerKeyType; }
 		void SetPlayerState(ePlayerState state) { mPlayerState = state; }
+		ePlayerState GetPlayerState() { return mPlayerState; }
 
 	public:
 		void Idle();
@@ -85,7 +88,7 @@ namespace jns
 		void Attack();
 		void Hitted();
 		void Die();
-
+		void Attarct();
 
 		// 애니메이션 이벤트를 통해 스킬 생성 타이밍 조절
 		void CompleteAssasinHit1();
@@ -111,6 +114,8 @@ namespace jns
 		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
 
 		void Clear();
+		void GetNewPosition();
+		void CheckPlayerHp();
 		void CheckPlayerIsGrounded();
 		void CheckIsAssainHitUsed();
 		void CheckInvisibleTime();
@@ -154,9 +159,16 @@ namespace jns
 		bool isLadderMoving = false;
 		bool isLadderOn = false;
 
+		bool isTombInstantiate = false;
 		//int visitedAssainAttackTime = 0;
 
 		int mPrevHp;
 		bool checkInvisibleTime;
+		float angle = 0.0; 
+		bool isNotSetDeadPos = true;
+
+
+		float centerX;
+		float centerY;
 	};
 }

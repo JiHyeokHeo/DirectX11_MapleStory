@@ -53,6 +53,7 @@ namespace renderer
 		Vector2 spriteOffset;
 		Vector2 atlasSize;
 		UINT animationType;
+		float transparency = 1.0f;
 	};
 
 	CBUFFER(ParticleCB, CBSLOT_PARTICLE)

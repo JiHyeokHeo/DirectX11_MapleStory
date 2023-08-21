@@ -38,6 +38,9 @@ namespace jns
 	}
 	void DemonMonsterScript::OnCollisionEnter(Collider2D* other)
 	{
+		if (mMonsterState == eDemonState::Die)
+			return;
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
@@ -71,6 +74,8 @@ namespace jns
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)
 	{
+		if (mMonsterState == eDemonState::Die)
+			return;
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
@@ -251,7 +256,6 @@ namespace jns
 		if (mAttackColChangeTime >= 0.5f)
 		{
 			cd->SetSize(Vector2(0.6f, 0.5f));
-			mAttackColChangeTime = 0.0f;
 		}
 	}
 	void DemonMonsterScript::Hit()
@@ -269,6 +273,7 @@ namespace jns
 	{
 		cd->SetSize(Vector2(0.25f, 0.4f));
 		mMonsterState = eDemonState::Idle;
+		mAttackColChangeTime = 0.0f;
 	}
 	void DemonMonsterScript::CompleteDead()
 	{

@@ -5,6 +5,7 @@
 #include "jnsParticleSystem.h"
 #include "jnsDamageControl.h"
 #include "jnsAssainSkillParticle.h"
+#include "jnsTomb.h"
 
 namespace jns
 {
@@ -35,7 +36,7 @@ namespace jns
 		//	//cd->SetSize(Vector2(1.2f, 1.2f));
 		//	//player->AddComponent<PlayerScript>();
 		//}
-
+		object::Instantiate<Tomb>(jns::enums::eLayerType::Tomb, Vector3::Zero);
 		object::InstantiateParticle<AssainSkillParticle>(jns::enums::eLayerType::Particle);
 		//{
 		//	GameObject* player = new GameObject();
@@ -59,6 +60,7 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
+		CollisionManager::SetLayer(eLayerType::Tomb, eLayerType::Ground, true);
 
 #pragma region Ground
 		

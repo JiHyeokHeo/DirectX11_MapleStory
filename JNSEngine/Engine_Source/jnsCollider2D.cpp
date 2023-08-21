@@ -67,6 +67,9 @@ namespace jns
 	}
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
+		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
+			return;
+
 		isColliding = true;
 		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
@@ -80,6 +83,10 @@ namespace jns
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{
+		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
+			return;
+
+
 		isColliding = true;
 		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
@@ -93,6 +100,10 @@ namespace jns
 	}
 	void Collider2D::OnCollisionExit(Collider2D* other)
 	{
+		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
+			return;
+
+
 		const std::vector<Script*> scripts
 			= GetOwner()->GetComponents<Script>();
 

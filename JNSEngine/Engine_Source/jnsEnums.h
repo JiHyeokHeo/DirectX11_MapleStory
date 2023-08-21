@@ -35,6 +35,7 @@ namespace jns::enums
 		MapEffect,
 		Portal,
 		Light,
+		Tomb,
 		End = 16,
 	};
 

@@ -18,6 +18,8 @@ namespace jns
 	}
 	void MonsterBase::Update()
 	{
+		if (GetState() == eState::Paused)
+			return;
 		GameObject::Update();
 	}
 	void MonsterBase::LateUpdate()

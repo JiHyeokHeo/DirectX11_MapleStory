@@ -195,6 +195,8 @@
     <ClCompile Include="jnsAssainSkillParticle.cpp">
       <Filter>Contents\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="jnsTomb.cpp" />
+    <ClCompile Include="jnsTombScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -405,6 +407,8 @@
     <ClInclude Include="jnsAssainSkillParticle.h">
       <Filter>Contents\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="jnsTomb.h" />
+    <ClInclude Include="jnsTombScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

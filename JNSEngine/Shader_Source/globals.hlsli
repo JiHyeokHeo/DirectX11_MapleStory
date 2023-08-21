@@ -41,7 +41,8 @@ cbuffer Animator : register(b5)
     float2 SpriteOffset;
     float2 AtlasSize;
     uint animationType;
-    float3 pad;
+    float transparecny;
+    float2 pad;
 }
 
 cbuffer ParticleSystem : register(b6)

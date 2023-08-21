@@ -56,7 +56,7 @@ namespace jns
 		void SetAniDirection(bool direction) { mDirection = direction; }
 		bool GetAniDirection() { return mDirection; }
 
-
+		void SetTransparency(float transparecny) { mTransparency = transparecny; }
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
 		Animator* ani;
@@ -66,6 +66,7 @@ namespace jns
 		bool mbComplete;
 
 		bool mDirection;
+		float mTransparency;
 	};
 
 }

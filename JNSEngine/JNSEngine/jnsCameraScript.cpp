@@ -7,6 +7,7 @@
 #include "jnsCamera.h"
 #include "jnsCameraObject.h"
 #include "jnsCameraManager.h"
+#include "jnsPlayerScript.h"
 
 namespace jns
 {
@@ -112,8 +113,9 @@ namespace jns
 			setYCord = 180.0f;
 		}
 
-
-
+		PlayerScript* playerScript = checkTarget->GetComponent<PlayerScript>();
+		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die || playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
+			return false;
 		// 플레이어 최신 위치를 불러온다.
 		Transform* followTR = checkTarget->GetComponent<Transform>();
 		Vector3 playerPos = followTR->GetPosition();

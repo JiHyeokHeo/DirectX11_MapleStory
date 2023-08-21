@@ -20,7 +20,7 @@ namespace jns
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
-		AddComponent<AudioListener>();
+		//AddComponent<AudioListener>();
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk", 100, 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit",  100, 0.1f);
@@ -37,6 +37,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharRopeIdle", 100, 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharStab", 100, 0.2f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharSummon", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAttract", 100, 0.1f);
 		
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));

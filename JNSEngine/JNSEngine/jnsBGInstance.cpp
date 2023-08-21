@@ -19,9 +19,9 @@ namespace jns
 	{
 		mr = GetComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		AudioSource* as = AddComponent<AudioSource>();
-		as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\t.mp3"));
-		as->Play();
+		//AudioSource* as = AddComponent<AudioSource>();
+		//as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\t.mp3"));
+		//as->Play();
 		tr = GetComponent<Transform>();
 		switch(mBGtype)
 		{

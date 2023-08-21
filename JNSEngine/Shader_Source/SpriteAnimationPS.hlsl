@@ -62,6 +62,6 @@ float4 main(VSOut In) : SV_TARGET
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
-    color *= lightColor;
+    color *= lightColor * transparecny;
     return color;
 }

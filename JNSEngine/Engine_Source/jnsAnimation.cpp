@@ -15,6 +15,7 @@ namespace jns
 		, mIndex(-1)
 		, mTime(0.0f)
 		, mbComplete(false)
+		, mTransparency(1.0f)
 	{
 	}
 	Animation::~Animation()
@@ -95,6 +96,7 @@ namespace jns
 		data.spriteOffset = mSprites[mIndex].offset;
 		data.atlasSize = mSprites[mIndex].atlasSize;
 		data.animationType = mDirection;
+		data.transparency = mTransparency;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		cb->SetData(&data);

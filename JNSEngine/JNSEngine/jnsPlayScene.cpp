@@ -52,6 +52,7 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Player, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Skill, true);
+		CollisionManager::SetLayer(eLayerType::Ground, eLayerType::Tomb, true);
 	}
 
 	void PlayScene::OnExit()

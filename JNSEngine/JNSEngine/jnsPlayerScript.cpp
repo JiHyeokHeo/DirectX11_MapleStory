@@ -6,8 +6,7 @@
 #include "jnsConstantBuffer.h"
 #include "jnsRenderer.h"
 #include "CommonSceneInclude.h"
-
-
+#include "jnsTomb.h"
 
 namespace jns
 {
@@ -51,6 +50,13 @@ namespace jns
             mPlayerState = ePlayerState::Idle;
         }
 
+
+        if (Input::GetKeyDown(eKeyCode::U))
+        {
+            mPlayerState = ePlayerState::Die;
+            mPlayerInfo.hp = 0;
+        }
+
         if (Input::GetKeyDown(eKeyCode::H))
         {
             mPlayerInfo.hp = 100;
@@ -63,7 +69,9 @@ namespace jns
 		}
 
         //CheckJumpCount();
-		CheckPlayerIsGrounded();
+		
+        CheckPlayerHp();
+        CheckPlayerIsGrounded();
         PlayerControl();
 		AnimatorControl();
         
@@ -92,7 +100,10 @@ namespace jns
             Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
             if (ground->GetGroundName() == L"DownGround")
             {
-                mPlayerState = ePlayerState::Idle;
+                if (mPlayerState != ePlayerState::Die)
+                {
+                    mPlayerState = ePlayerState::Idle;
+                }
             }
         }
 	}
@@ -399,14 +410,34 @@ namespace jns
     void PlayerScript::Die()
     {
         mPlayerInfo.mDeathTime += Time::DeltaTime();
-
-
-
-        if (mPlayerInfo.mDeathTime >= 3.0f)
+            
+        if (angle >= 360.0f)
         {
-            mPlayerState = ePlayerState::Idle;
-            mPlayerInfo.mDeathTime = 0.0f;
+            angle = 0.0f;
         }
+        float radius = 10.0f;  // Radius of rotation
+      
+
+       if(isNotSetDeadPos)
+       {
+           centerX = tr->GetPosition().x; // X-coordinate of center
+           centerY = tr->GetPosition().y + 20.0f; // Y-coordinate of center
+           isNotSetDeadPos = false;
+       }
+       
+
+
+		float x = centerX + (radius * cos(DegreeToRadian(angle)));
+		float y = centerY + (radius * sin(DegreeToRadian(angle)));
+
+        angle -= 250.0 * Time::DeltaTime(); // Adjust the rotation speed as needed
+
+     
+        tr->SetPosition(Vector3(x, y, tr->GetPosition().z));
+    }
+
+    void PlayerScript::Attarct()
+    {
     }
 
     void PlayerScript::PlayerControl()
@@ -433,6 +464,9 @@ namespace jns
             break;
         case ePlayerState::Hitted:
             Hitted();
+            break;
+        case ePlayerState::Attracted:
+            Attarct();
             break;
         case ePlayerState::Die:
             Die();
@@ -475,11 +509,15 @@ namespace jns
             case ePlayerState::Attack:
                 CheckIsAssainHitUsed();
                 break;
+            case ePlayerState::Attracted:
+                at->PlayAnimation(L"CharactorCharAttract", true);
+                break;
             case ePlayerState::Hitted:
                 at->PlayAnimation(L"CharactorCharHit", true);
                 break;
             case ePlayerState::Die:
                 at->PlayAnimation(L"CharactorCharDead", true);
+                at->GetActiveAnimation()->SetTransparency(0.7f);
                 break;
             default:
                 break;
@@ -505,6 +543,23 @@ namespace jns
         mRb->SetGround(false);
         mPlayerInfo.isGrounded = false;
         mPlayerInfo.mJumpTime = 0.0f;
+    }
+
+    void PlayerScript::GetNewPosition()
+    {
+    }
+
+    void PlayerScript::CheckPlayerHp()
+    {
+        if (mPlayerInfo.hp <= 0)
+        {
+            Vector3 playerPos = tr->GetPosition();
+            mPlayerState = ePlayerState::Die;
+        }
+        else if(mPlayerInfo.hp > 0)
+        {
+            isNotSetDeadPos = true;
+        }
     }
 
     void PlayerScript::CheckPlayerIsGrounded()

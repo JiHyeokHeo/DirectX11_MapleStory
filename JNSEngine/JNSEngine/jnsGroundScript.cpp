@@ -1,5 +1,6 @@
 #include "jnsGroundScript.h"
 #include "CommonSceneInclude.h"
+#include "jnsTomb.h"
 
 namespace jns
 {
@@ -65,31 +66,64 @@ namespace jns
 
 	void GroundScript::CheckDownGround(Collider2D* other)
 	{
-		Player* player = dynamic_cast<Player*>(other->GetOwner());
-		if (player == nullptr)
-			return;
-
-		RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
-		rb->SetGround(true);
-		Collider2D* playerCol = player->GetComponent<Collider2D>();
-		Vector3 playerPos = playerCol->GetPosition();
-
-		Collider2D* groundCol = this->GetOwner()->GetComponent<Collider2D>();
-		Vector3 groundPos = groundCol->GetPosition();
-
-		float fLen = fabs(playerPos.y - groundPos.y);
-		float fSize = (playerCol->GetScale().y / 2.0f) + (groundCol->GetScale().y / 2.0f);
-
-		if (fLen < fSize)
+		if (other->GetOwner()->GetName() == L"Player")
 		{
-			Transform* playerTr = player->GetComponent<Transform>();
-			Transform* grTr = this->GetOwner()->GetComponent<Transform>();
+			Player* player = dynamic_cast<Player*>(other->GetOwner());
+			if (player == nullptr)
+				return;
 
-			Vector3 playerPos = playerTr->GetPosition();
-			Vector3 grPos = grTr->GetPosition();
+			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+			rb->SetGround(true);
+			Collider2D* playerCol = player->GetComponent<Collider2D>();
+			Vector3 playerPos = playerCol->GetPosition();
 
-			playerPos.y += (fSize - fLen) - 1.0f;
-			playerTr->SetPosition(playerPos);
+			Collider2D* groundCol = this->GetOwner()->GetComponent<Collider2D>();
+			Vector3 groundPos = groundCol->GetPosition();
+
+			float fLen = fabs(playerPos.y - groundPos.y);
+			float fSize = (playerCol->GetScale().y / 2.0f) + (groundCol->GetScale().y / 2.0f);
+
+			if (fLen < fSize)
+			{
+				Transform* playerTr = player->GetComponent<Transform>();
+				Transform* grTr = this->GetOwner()->GetComponent<Transform>();
+
+				Vector3 playerPos = playerTr->GetPosition();
+				Vector3 grPos = grTr->GetPosition();
+
+				playerPos.y += (fSize - fLen) - 1.0f;
+				playerTr->SetPosition(playerPos);
+			}
+		}
+
+		
+		if (other->GetOwner()->GetName() == L"Tomb")
+		{
+			Tomb* tomb = dynamic_cast<Tomb*>(other->GetOwner());
+			if (mGround->GetGroundName() == L"DownGround")
+			{
+				Collider2D* tombCol = tomb->GetComponent<Collider2D>();
+				Vector3 tombPos = tombCol->GetPosition();
+
+				Collider2D* groundCol = this->GetOwner()->GetComponent<Collider2D>();
+				Vector3 groundPos = groundCol->GetPosition();
+
+				float fLen = fabs(tombPos.y - groundPos.y);
+				float fSize = (tombCol->GetScale().y / 2.0f) + (groundCol->GetScale().y / 2.0f);
+
+				if (fLen < fSize)
+				{
+					Transform* tombTr = tomb->GetComponent<Transform>();
+					Transform* grTr = this->GetOwner()->GetComponent<Transform>();
+
+					Vector3 tombPos = tombTr->GetPosition();
+					Vector3 grPos = grTr->GetPosition();
+
+					tombPos.y += (fSize - fLen) - 1.0f;
+					tombTr->SetPosition(tombPos);
+					tomb->SetIsDone(true);
+				}
+			}
 		}
 	}
 	void GroundScript::CheckLeftGround(Collider2D* other)
