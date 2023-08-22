@@ -12,7 +12,7 @@ namespace jns
 	void CharactorMakeScene::Initialize()
 	{
 		//BG
-		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorMake);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorMake);
 
 		PlayScene::Initialize();
 	}

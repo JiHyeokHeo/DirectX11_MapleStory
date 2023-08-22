@@ -28,6 +28,7 @@ namespace jns
 		void SetTarget(GameObject* target) { followtarget = target; }
 		
 		CameraObject* mainCameraObj;
+		GameObject* mBGInstance;
 	private:
 		GameObject* followtarget;
 	};

@@ -28,9 +28,10 @@ namespace jns
 		static void SoundPlay(FMOD::Sound* sound, FMOD::Channel** channel);
 		static void Set3DListenerAttributes(const Vector3* pos, const Vector3* vel, const Vector3* forward, const Vector3* up);
 		static void Release();
+		static bool CreateChannel(const std::string& path, FMOD::ChannelGroup** chanel);
 
 	private:
 		static FMOD::Studio::System* mSystem;
-		static FMOD::System* mCoreSystem;
+		static FMOD::System* mCoreSystem; 
 	};
 }

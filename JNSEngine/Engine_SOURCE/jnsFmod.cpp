@@ -80,5 +80,13 @@ namespace jns
 		mSystem = nullptr;
 	}
 
+	bool Fmod::CreateChannel(const std::string& path, FMOD::ChannelGroup** chanel)
+	{
+		if (FMOD_OK != mCoreSystem->createChannelGroup(path.c_str(), chanel))
+			return false;
+
+		return true;
+	}
+
 
 }

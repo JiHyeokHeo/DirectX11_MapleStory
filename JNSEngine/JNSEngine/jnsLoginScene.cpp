@@ -27,7 +27,7 @@ namespace jns
 			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
 		}
 
-		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::Login);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::Login);
 		PlayScene::Initialize();
 	}
 	void LoginScene::Update()

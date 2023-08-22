@@ -2,6 +2,13 @@
 #include "jnsGameObject.h"
 #include "jnsCamera.h"
 
+enum class SceneType
+{
+	RutaMain,
+	RutaQueenMob,
+	RutaQueen,
+};
+
 namespace jns
 {
 	class CameraObject : public GameObject
@@ -38,6 +45,7 @@ namespace jns
 		eCameraType mCameraType;
 		Camera* mCameraComp;
 		GameObject* mFollowTarget;
+
 	};
 }
 

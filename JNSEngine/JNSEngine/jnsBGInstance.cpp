@@ -2,9 +2,11 @@
 #include "jnsResources.h"
 #include "jnsTransform.h"
 #include "CommonSceneInclude.h"
+#include "jnsScene.h"
 
 namespace jns
 {
+	bool BGInstance::isBGPlayed = false;
 	BGInstance::BGInstance()
 	{
 	}
@@ -18,10 +20,8 @@ namespace jns
 	void BGInstance::Initialize()
 	{
 		mr = GetComponent<MeshRenderer>();
+		as = AddComponent<AudioSource>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//AudioSource* as = AddComponent<AudioSource>();
-		//as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\t.mp3"));
-		//as->Play();
 		tr = GetComponent<Transform>();
 		switch(mBGtype)
 		{
@@ -48,11 +48,13 @@ namespace jns
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 100.0f, 5.0f));
 				tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"RutaBysMain"));
 				break;
 			case eBGType::RutabysQueenBoss:
 				mr->SetMaterial(Resources::Find<Material>(L"RutabysBossBGMaterial"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 100.0f, 5.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"QueenPalace"));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::CharactorSelect:
@@ -95,6 +97,7 @@ namespace jns
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabysqueen1Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"QueenPalace"));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::RutabysQueenMob2:
@@ -104,7 +107,6 @@ namespace jns
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 		}
-
 
 		BGBase::Initialize();
 	}
@@ -119,6 +121,65 @@ namespace jns
 			
 			tr->SetPosition(mPos);
 		}
+
+		if (mPrevScene != SceneManager::GetActiveScene())
+		{
+			isBGPlayed = false;
+			as->Stop();
+		}
+
+		if (isBGPlayed == false)
+		{
+			switch (mBGtype)
+			{
+			case jns::BGInstance::eBGType::Login:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::WorldSelect:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::CharactorSelect:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::CharactorMake:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::Start1:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::Start2:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::Start3:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::Start4:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::Start5:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysMain:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysQueenMob1:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysQueenMob2:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysQueenBoss:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::None:
+				break;
+			default:
+				break;
+			}
+			isBGPlayed = true;
+		}
+
+		mPrevScene = SceneManager::GetActiveScene();
 		BGBase::Update();
 	}
 	void BGInstance::LateUpdate()

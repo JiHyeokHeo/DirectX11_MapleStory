@@ -2,15 +2,19 @@
 #include "..\\JNSEngine\jnsPlayer.h"
 #include "jnsCollisionManager.h"
 #include "..\\JNSEngine\ObjectTemplate.h"
+#include "jnsResources.h"
 
 namespace jns
 {
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mPrevScene = nullptr;
 	std::map<std::wstring, Scene*>  SceneManager::mScenes;
 	GameObject* SceneManager::mPlayer;
 	void SceneManager::Initialize()
 	{
-
+		// 임시로 사운드 이쪽에서 로드
+		Resources::Load<AudioClip>(L"RutaBysMain", L"..\\Resources\\Sound\\YggdrasilPrayer.mp3");
+		Resources::Load<AudioClip>(L"QueenPalace", L"..\\Resources\\Sound\\QueenPalace.mp3");
 	}
 	void SceneManager::Update()
 	{
@@ -40,6 +44,7 @@ namespace jns
 
 	Scene* SceneManager::LoadScene(std::wstring name)
 	{
+		mPrevScene = mActiveScene;
 		std::map<std::wstring, Scene*>::iterator iter
 			= mScenes.find(name);
 		
@@ -49,6 +54,8 @@ namespace jns
 		if (mActiveScene == nullptr)
 			mActiveScene = iter->second;
 		
+
+
 		std::vector<GameObject*> dontDestroyObjects;
 		for (Layer& layer : mActiveScene->GetLayers())
 		{
@@ -62,7 +69,7 @@ namespace jns
 				}
 			}
 		}
-
+		
 		mActiveScene->OnExit();
 		CollisionManager::Clear();
 		mActiveScene = iter->second;

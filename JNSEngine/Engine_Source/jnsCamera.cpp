@@ -6,7 +6,7 @@
 #include "jnsScene.h" 
 #include "jnsSceneManager.h"
 #include "jnsMeshRenderer.h"
-
+#include "jnsAudioSource.h"
 extern jns::Application application;
 
 namespace jns
@@ -45,6 +45,7 @@ namespace jns
 	}
 	void Camera::Initialize()
 	{
+	
 		
 	}
 	void Camera::Update()

@@ -33,11 +33,13 @@ namespace jns
 		}
 
 		static Scene* GetActiveScene() { return mActiveScene; }
+		static Scene* GetPrevScene() { return mPrevScene; }
 		static Scene* LoadScene(std::wstring name);
 		static GameObject* GetPlayer() { return mPlayer; }
 		static void SetPlayer(GameObject* obj) { mPlayer = obj; }
 	private:
 		static Scene* mActiveScene;
+		static Scene* mPrevScene;
 		static std::map<std::wstring, Scene*> mScenes;
 		static GameObject* mPlayer;
 	};

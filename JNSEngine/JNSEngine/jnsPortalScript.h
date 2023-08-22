@@ -21,6 +21,7 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
+
 	private:
 		class Portal* mPortal;
 		ePortalEnter mEnter;

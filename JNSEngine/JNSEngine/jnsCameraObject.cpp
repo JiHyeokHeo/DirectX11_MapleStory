@@ -16,7 +16,9 @@ namespace jns
 	{
 	}
 	void CameraObject::Initialize()
-	{		
+	{
+		Resources::Load<AudioClip>(L"RutaBysMain", L"..\\Resources\\Sound\\YggdrasilPrayer.mp3");
+		Resources::Load<AudioClip>(L"QueenPalace", L"..\\Resources\\Sound\\QueenPalace.mp3");
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		mCameraComp = AddComponent<Camera>();
 		
@@ -33,6 +35,7 @@ namespace jns
 		default:
 			break;
 		}
+
 	}
 	void CameraObject::Update()
 	{

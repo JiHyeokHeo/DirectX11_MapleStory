@@ -11,7 +11,7 @@ namespace jns
 	}
 	void SelectScene::Initialize()
 	{
-		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorSelect);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorSelect);
 
 		{
 			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);

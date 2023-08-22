@@ -107,7 +107,7 @@ namespace jns
 
 		// Æ÷Å»
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
-
+		
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));
@@ -133,7 +133,7 @@ namespace jns
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1850.5f, -140.0f, 4.9f));
 	
 		// NoMove BackGround
-		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		//CreateInventory();
 		CreatePlayerUI();
 		PlayScene::Initialize();

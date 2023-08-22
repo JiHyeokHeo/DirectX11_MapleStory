@@ -31,7 +31,7 @@ namespace jns
 		Vector3 pos = tr->GetPosition();
 		Vector3 foward = tr->Foward();
 
-		mAudioClip->Set3DAttributes(pos, foward);
+		//mAudioClip->Set3DAttributes(pos, foward);
 	}
 
 	void AudioSource::Render()
@@ -40,14 +40,27 @@ namespace jns
 
 	void AudioSource::Play()
 	{
-		mAudioClip->Play();
+		if (mAudioClip != nullptr)
+			mAudioClip->Play();
 	}
 	void AudioSource::Stop()
 	{
-		mAudioClip->Stop();
+		if(mAudioClip != nullptr)
+			mAudioClip->Stop();
 	}
 	void AudioSource::SetLoop(bool loop)
 	{
-		mAudioClip->SetLoop(loop);
+		if (mAudioClip != nullptr)
+			mAudioClip->SetLoop(loop);
+	}
+	void AudioSource::SetVolume(float vol)
+	{
+		if (mAudioClip != nullptr)
+			mAudioClip->SetVolume(vol);
+	}
+	void AudioSource::SetMute(bool mute)
+	{
+		if (mAudioClip != nullptr)
+			mAudioClip->SetMute(mute);
 	}
 }
