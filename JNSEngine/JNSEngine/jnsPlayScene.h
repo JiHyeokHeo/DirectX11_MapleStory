@@ -29,6 +29,7 @@ namespace jns
 		
 		CameraObject* mainCameraObj;
 		GameObject* mBGInstance;
+		GameObject* mDirectionalLight;
 	private:
 		GameObject* followtarget;
 	};

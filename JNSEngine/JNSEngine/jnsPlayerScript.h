@@ -120,6 +120,8 @@ namespace jns
 		void CheckIsAssainHitUsed();
 		void CheckInvisibleTime();
 		
+		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
+		bool GetIsNormalHit() { return isNormalHit; }
 	private:
 
 		struct PlayerStatus
@@ -170,5 +172,7 @@ namespace jns
 
 		float centerX;
 		float centerY;
+
+		bool isNormalHit;
 	};
 }

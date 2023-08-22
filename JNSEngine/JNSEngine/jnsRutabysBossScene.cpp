@@ -1,7 +1,8 @@
 #include "jnsRutabysBossScene.h"
 #include "CommonSceneInclude.h"
 #include "jnsMirror.h"
-
+#include "jnsHeart.h"
+#include "jnsDarkPaper.h"
 namespace jns
 {
 	RutabysBossScene::RutabysBossScene()
@@ -17,6 +18,26 @@ namespace jns
 		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+
+		object::Instantiate<DarkPaper>(eLayerType::BG, Vector3::Zero);
 		// º¸½º
 		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -130.0f, 3.0f));
 		BloodyQueenScript* bqScript = obj->GetComponent<BloodyQueenScript>();

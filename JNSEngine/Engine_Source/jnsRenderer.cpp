@@ -54,7 +54,7 @@ namespace renderer
 		 arrLayout[2].SemanticIndex = 0;
 		 
 		 
-		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"halfShader");
+		 std::shared_ptr<Shader> shader = jns::Resources::Find<Shader>(L"DarkShader");
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
@@ -394,9 +394,9 @@ namespace renderer
 	 void LoadShader()
 	 {
 		 std::shared_ptr<Shader> halfshader = std::make_shared<Shader>();
-		 halfshader->Create(eShaderStage::VS, L"MoveVS.hlsl", "main");
-		 halfshader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
-		 jns::Resources::Insert(L"halfShader", halfshader);
+		 halfshader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		 halfshader->Create(eShaderStage::PS, L"DarkPS.hlsl", "main");
+		 jns::Resources::Insert(L"DarkShader", halfshader);
 
 		 std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
 		 spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
@@ -505,8 +505,8 @@ namespace renderer
 	 {
 		 std::shared_ptr<Shader> spriteShader
 			 = Resources::Find<Shader>(L"SpriteShader");
-		 std::shared_ptr<Shader> halfshader
-			 = Resources::Find<Shader>(L"halfShader");
+		 std::shared_ptr<Shader> darkShader
+			 = Resources::Find<Shader>(L"DarkShader");
 		 std::shared_ptr<Shader> moveShader
 			 = Resources::Find<Shader>(L"MoveShader");
 		 std::shared_ptr<Shader> gridShader
@@ -539,13 +539,25 @@ namespace renderer
 		 material->SetRenderingMode(eRenderingMode::Transparent);
 		 Resources::Insert(L"SpriteAnimaionMaterial", material);
 
+
+		 material = std::make_shared<Material>();
+		 material->SetShader(darkShader);
+		 material->SetRenderingMode(eRenderingMode::Transparent);
+		 Resources::Insert(L"DarkMaterial", material);
+
 		 material = std::make_shared<Material>();
 		 material->SetShader(spriteAniAlphaShader);
 		 material->SetRenderingMode(eRenderingMode::Transparent);
 		 Resources::Insert(L"SpriteAnimaionAlphaMaterial", material);
 
 		 material = std::make_shared<Material>();
+		 material->SetShader(spriteAniShader);
+		 material->SetRenderingMode(eRenderingMode::Opaque);
+		 Resources::Insert(L"SpriteAnimaionOpaqueMaterial", material);
+
+		 material = std::make_shared<Material>();
 		 material->SetShader(debugShader);
+		 material->SetRenderingMode(eRenderingMode::Transparent);
 		 Resources::Insert(L"DebugMaterial", material);
 
 		 material = std::make_shared<Material>();

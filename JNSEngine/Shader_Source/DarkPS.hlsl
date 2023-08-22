@@ -18,27 +18,32 @@ struct VSOut
 float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float4) 0.0f;
+    float2 uv = In.UV;
     
-    // -540 + 1200 
-    color = albedoTexture.Sample(anisotropicSampler, In.UV);
-    
-    //float4 lightColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
-    
-    //for (int i = 0; i < 2; i++)
+    //if (type == 1)
+    //    uv.x += mTime.x * 0.3f;
+    //if (type == 2)
+    //    uv.x -= mTime.x * 0.3f;
+
+    //if(In.UV.x >= 0.5f)
     //{
-    //    CalculateLight2D(lightColor, In.WorldPos, i);
+    //    discard;
     //}
-    
-    //color *= lightColor;
-    
+    //else
+    //{
+    //    color = albedoTexture.Sample(anisotropicSampler, uv);
+    //}
     float4 lightColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    
     for (int i = 0; i < 2; i++)
     {
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
-    //color *= lightColor;
+    
+    color = albedoTexture.Sample(anisotropicSampler, uv);
+ 
+    color *= lightColor;
+    
     return color;
-    
 }
-    

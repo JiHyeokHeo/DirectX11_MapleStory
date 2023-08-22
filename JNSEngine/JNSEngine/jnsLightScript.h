@@ -10,11 +10,13 @@ namespace jns
 		virtual void Initialize();
 		virtual void Update();
 
+		
 	private:
 		Scene* mPrevScene;
 		Scene* mActiveScene;
 		float mOpacity;
 		float mDarkTime;
+
 	};
 
 }

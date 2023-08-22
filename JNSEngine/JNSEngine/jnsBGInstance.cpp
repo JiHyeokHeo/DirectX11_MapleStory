@@ -107,7 +107,8 @@ namespace jns
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 		}
-
+		
+		mr->GetMaterial()->SetShader(Resources::Find<Shader>(L"DarkShader"));
 		BGBase::Initialize();
 	}
 	void BGInstance::Update()
@@ -177,6 +178,7 @@ namespace jns
 				break;
 			}
 			isBGPlayed = true;
+			as->SetMute(true);
 		}
 
 		mPrevScene = SceneManager::GetActiveScene();

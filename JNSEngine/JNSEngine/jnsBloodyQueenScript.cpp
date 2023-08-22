@@ -54,7 +54,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		
@@ -411,7 +411,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 	}
 	void BloodyQueenScript::Die()
 	{

@@ -27,7 +27,7 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)SpriteVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)MovePS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)DarkPS.hlsl">
       <Filter>PS</Filter>
     </FxCompile>
     <FxCompile Include="$(MSBuildThisFileDirectory)MoveVS.hlsl">
@@ -89,6 +89,9 @@
     </FxCompile>
     <FxCompile Include="$(MSBuildThisFileDirectory)ParticleCS.hlsl">
       <Filter>CS</Filter>
+    </FxCompile>
+    <FxCompile Include="$(MSBuildThisFileDirectory)MovePS.hlsl">
+      <Filter>PS</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

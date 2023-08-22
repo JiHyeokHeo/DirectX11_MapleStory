@@ -3,20 +3,18 @@
 
 namespace jns
 {
-	class Player : public GameObject 
+	class DarkPaper : public GameObject
 	{
 	public:
-		Player();
-		~Player();
-
+		DarkPaper();
+		~DarkPaper();
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+
 	private:
-		class Light* light;
 	};
 
 }
-

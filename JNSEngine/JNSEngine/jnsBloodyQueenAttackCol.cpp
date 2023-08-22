@@ -11,6 +11,7 @@ namespace jns
 		cd->SetColliderOn(false);
 		this->SetColNum(2);
 		mColMakeTime = 0.0f;
+		mBlackOutReturnTime = 0.0f;
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
 	}
 	void BloodyQueenAttackCol::Update()
@@ -51,6 +52,17 @@ namespace jns
 	{
 		BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
 		BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
+		if (isNomralAttackHit)
+		{
+			mBlackOutReturnTime += Time::DeltaTime();
+		}
+
+		if (mBlackOutReturnTime >= 1.0f)
+		{
+			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = false);
+			mBlackOutReturnTime = 0.0f;
+		}
+
 		if (mBQState == BloodyQueenScript::eBloodyQueenState::Attack)
 		{
 			mColMakeTime += Time::DeltaTime();
@@ -153,13 +165,15 @@ namespace jns
 		if (other->GetOwner()->GetName() == L"Player" )
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
-			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
+			int mPlayerHp = playerScript->GetPlayerInfo().hp;
 			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
 			
-			if (mPlayerInvTime <= 0.0f)
+			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
 			{
 				mPlayerHp -= mBQSkillDamage.normalAttack;
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
 			}
 		}
 	}

@@ -50,7 +50,7 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 	
 		void SetMirror(class Mirror* mirror) { mMirror = mirror; }
-
+		void SetHeart(class Heart* heart) { mHearts.push_back(heart); }
 
 
 		void InitData();
@@ -132,7 +132,7 @@ namespace jns
 		std::wstring mUsingSkillName;
 
 		class Mirror* mMirror;
-		class Heart* mHeart;
+		std::vector<Heart*> mHearts;
 	};
 
 

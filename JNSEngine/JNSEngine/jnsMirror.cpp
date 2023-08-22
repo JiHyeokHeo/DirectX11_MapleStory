@@ -25,7 +25,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorAttractSuccess", 500, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorBomb", 500, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorHit", 500, 0.15f);
-		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorIdle", 500, 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorIdle", 500, 0.15f, Vector2(-0.01f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Mirror\\MirrorSummon", 500, 0.15f);
 		at->PlayAnimation(L"MirrorMirrorSummon", true);
 		AddComponent<MirrorScript>();

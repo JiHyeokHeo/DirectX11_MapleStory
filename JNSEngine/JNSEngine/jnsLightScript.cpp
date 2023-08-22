@@ -36,6 +36,16 @@ namespace jns
 			}
 		}
 
+		if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
+			->GetIsNormalHit() == true)
+		{
+			mOpacity = 0.0f;
+		}
+		else
+		{
+			mOpacity = 1.0f;
+		}
+
 
 		this->GetOwner()->GetComponent<Light>()->SetColor(Vector4(0.8f * mOpacity, 0.8f * mOpacity, 0.8f * mOpacity, 1.0f));
 	}

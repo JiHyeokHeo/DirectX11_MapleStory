@@ -198,6 +198,7 @@
     <ClCompile Include="jnsTomb.cpp" />
     <ClCompile Include="jnsTombScript.cpp" />
     <ClCompile Include="jnsHeart.cpp" />
+    <ClCompile Include="jnsDarkPaper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -411,6 +412,7 @@
     <ClInclude Include="jnsTomb.h" />
     <ClInclude Include="jnsTombScript.h" />
     <ClInclude Include="jnsHeart.h" />
+    <ClInclude Include="jnsDarkPaper.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

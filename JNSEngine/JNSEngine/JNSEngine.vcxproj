@@ -177,6 +177,7 @@
     <ClInclude Include="jnsCharactorMakeScene.h" />
     <ClInclude Include="jnsCursor.h" />
     <ClInclude Include="jnsDamageControl.h" />
+    <ClInclude Include="jnsDarkPaper.h" />
     <ClInclude Include="jnsDemonAttackRangeScript.h" />
     <ClInclude Include="jnsDemonMonster.h" />
     <ClInclude Include="jnsDemonMonsterScript.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="jnsCharactorMakeScene.cpp" />
     <ClCompile Include="jnsCursor.cpp" />
     <ClCompile Include="jnsDamageControl.cpp" />
+    <ClCompile Include="jnsDarkPaper.cpp" />
     <ClCompile Include="jnsDemonAttackRangeScript.cpp" />
     <ClCompile Include="jnsDemonMonster.cpp" />
     <ClCompile Include="jnsDemonMonsterScript.cpp" />

@@ -23,10 +23,11 @@ namespace jns
 	private:
 		class Collider2D* cd;
 		bool isColPosSet;
-
+		float mBlackOutReturnTime;
 		float mColMakeTime;
 		BloodyQueenScript* mBQScript;
 		BloodyQueenSkillDamage mBQSkillDamage;
+		bool isNomralAttackHit;
 	};
 }
 

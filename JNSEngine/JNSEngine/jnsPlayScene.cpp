@@ -12,13 +12,13 @@ namespace jns
 	void PlayScene::Initialize()
 	{
 		{
-			GameObject* light = new GameObject();
-			light->SetName(L"Smile");
-			AddGameObject(eLayerType::Light, light);
-			Light* lightComp = light->AddComponent<Light>();
+			mDirectionalLight = new GameObject();
+			mDirectionalLight->SetName(L"Smile");
+			AddGameObject(eLayerType::Light, mDirectionalLight);
+			Light* lightComp = mDirectionalLight->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
 			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-			//light->AddComponent<LightScript>();
+			mDirectionalLight->AddComponent<LightScript>();
 		}
 		CreateMainCamera();
 		CreateUICamera();

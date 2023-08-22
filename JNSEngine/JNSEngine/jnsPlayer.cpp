@@ -21,6 +21,9 @@ namespace jns
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 		//AddComponent<AudioListener>();
+		light = AddComponent<Light>();
+		light->SetType(jns::enums::eLightType::Point);
+		light->SetRadius(100.0f);
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharWalk", 100, 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAssain1Hit",  100, 0.1f);
@@ -55,7 +58,15 @@ namespace jns
 
 	void Player::Update()
 	{
-		this;
+		if (GetComponent<PlayerScript>()
+			->GetIsNormalHit() == true)
+		{
+			light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+		}
+		else
+		{
+			light->SetColor(Vector4::Zero);
+		}
 		GameObject::Update();
 	}
 
