@@ -1,12 +1,16 @@
 #include "jnsMirror.h"
 #include "CommonSceneInclude.h"
 #include "jnsMirrorScript.h"
+#include <random>
+
+std::mt19937_64 rng4(3244);
+std::uniform_int_distribution<__int64> dist4(-800, 800);
 
 namespace jns
 {
 	void Mirror::Initialize()
 	{
-		//SetState(eState::Paused);
+		SetState(eState::Paused);
 		SetName(L"BloodyQueenMirror");
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		Animator * at = AddComponent<Animator>();
@@ -28,7 +32,18 @@ namespace jns
 	}
 	void Mirror::Update()
 	{
+		
+		if (GetState() == GameObject::eState::Paused)
+		{
+			if (mPrevState != GetState())
+				isNotSetting = true;
+
+			if (isNotSetting)
+				PositionAndReSetting();
+		}
+		mPrevState = GetState();
 		GameObject::Update();
+
 	}
 	void Mirror::LateUpdate()
 	{
@@ -37,5 +52,17 @@ namespace jns
 	void Mirror::Render()
 	{
 		GameObject::Render();
+	}
+	void Mirror::PositionAndReSetting()
+	{
+		float xCorRanCor = dist4(rng4);
+
+		Transform* mirrorTr = GetComponent<Transform>();
+		Vector3 mirrorPos = mirrorTr->GetPosition();
+
+		mirrorPos.x = xCorRanCor;
+		mirrorTr->SetPosition(mirrorPos);
+
+		isNotSetting = false;
 	}
 }

@@ -1,7 +1,7 @@
 #include "jnsBloodyQueenScript.h"
 #include "CommonSceneInclude.h"
 #include <random>
-
+#include "jnsMirror.h"
 std::mt19937_64 rng1(3244);
 std::uniform_int_distribution<__int64> dist1(-1, 1);
 
@@ -54,7 +54,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		
@@ -411,7 +411,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -468,6 +468,14 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
 		{
+			if (mPatternPercentage <= 0.3f)
+			{
+				mMirror->SetState(GameObject::eState::Active);
+			}
+			else
+			{
+
+			}
 			animationname += animationNameAttract;
 			at->PlayAnimation(animationname, true);
 		}

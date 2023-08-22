@@ -18,8 +18,10 @@ namespace jns
 		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		
 		// º¸½º
-		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -130.0f, 3.0f));
-		object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -250.0f, 2.0f));
+		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -130.0f, 3.0f));
+		BloodyQueenScript* bqScript = obj->GetComponent<BloodyQueenScript>();
+		Mirror* mirror = object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -300.0f, 2.0f));
+		bqScript->SetMirror(mirror);
 		//player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
 		CreatePlayerUI();
 		PlayScene::Initialize();

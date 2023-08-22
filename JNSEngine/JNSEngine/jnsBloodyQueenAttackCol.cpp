@@ -99,6 +99,7 @@ namespace jns
 				cd->SetColliderOn(true);
 				if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 				{
+					cd->SetColliderOn(false);
 					cd->SetSize(Vector2(0.3f, 0.5f));
 					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}

@@ -18,5 +18,6 @@ namespace jns
 
 		void SetDirection();
 	private:
+		
 	};
 }

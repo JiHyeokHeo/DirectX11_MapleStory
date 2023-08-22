@@ -438,6 +438,7 @@ namespace jns
 
     void PlayerScript::Attarct()
     {
+        
     }
 
     void PlayerScript::PlayerControl()
@@ -473,6 +474,11 @@ namespace jns
             break;
         default:
             break;
+        }
+
+        if (mPlayerInfo.hp <= 0)
+        {
+            mPlayerState = ePlayerState::Die;
         }
     }
 

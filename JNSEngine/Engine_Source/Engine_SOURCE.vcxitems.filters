@@ -106,6 +106,15 @@
     <Filter Include="GameObject\Component\ParticleSystem">
       <UniqueIdentifier>{74f794bf-735d-46f6-9cca-595645ee825e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Audio">
+      <UniqueIdentifier>{0eab9ba7-2365-419b-be83-d166b643d601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Audio">
+      <UniqueIdentifier>{55fc669d-b2b3-4020-8d3a-3c545b42e410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Audio\Listener">
+      <UniqueIdentifier>{121bac09-1ce4-4849-bd80-1568cb9b2f97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -236,10 +245,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsParticleShader.h">
       <Filter>Resource\Shader\CS</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioClip.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioListener.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioClip.h">
+      <Filter>Resource\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioSource.h">
+      <Filter>GameObject\Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioListener.h">
+      <Filter>GameObject\Component\Audio\Listener</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -357,10 +372,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsParticleShader.cpp">
       <Filter>Resource\Shader\CS</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioClip.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioListener.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioClip.cpp">
+      <Filter>Resource\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioSource.cpp">
+      <Filter>GameObject\Component\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioListener.cpp">
+      <Filter>GameObject\Component\Audio\Listener</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

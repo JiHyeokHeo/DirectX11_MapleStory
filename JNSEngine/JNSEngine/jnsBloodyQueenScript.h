@@ -49,6 +49,10 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 	
+		void SetMirror(class Mirror* mirror) { mMirror = mirror; }
+
+
+
 		void InitData();
 		void MakeRandDir();
 		void ChangeBossTypeRandom();
@@ -125,8 +129,10 @@ namespace jns
 		float mBossMaxSkillCollDown = 10.0f;
 
 		float mBressMaxXCor = 800.0f;
-
 		std::wstring mUsingSkillName;
+
+		class Mirror* mMirror;
+		class Heart* mHeart;
 	};
 
 

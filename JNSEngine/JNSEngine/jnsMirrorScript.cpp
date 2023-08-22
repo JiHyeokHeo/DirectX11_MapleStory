@@ -13,17 +13,24 @@ namespace jns
 
 
 		at = GetOwner()->GetComponent<Animator>();
-		//at->CompleteEvent(L"MirrorMirrorAttractSuccess") = std::bind(&MirrorScript::CompleteAni, this);
+		at->CompleteEvent(L"MirrorMirrorHit") = std::bind(&MirrorScript::CompleteSunmmon, this);
 		at->CompleteEvent(L"MirrorMirrorBomb") = std::bind(&MirrorScript::CompleteAni, this);
 		at->CompleteEvent(L"MirrorMirrorSummon") = std::bind(&MirrorScript::CompleteSunmmon, this);
 		
 	}
 	void MirrorScript::Update()
 	{
+		if (mSummonTime >= mSummonMaxTime + 20.0f)
+		{
+			mMirrorState = eMirrorState::Bombed;
+		}
+
 		CheckSummonTime();
 		CheckMirrorHp();
 		Activate();
 		PlayAnimation();
+
+		// 상태 갱신
 		mMirrorPrevState = mMirrorState;
 	}
 	void MirrorScript::LateUpdate()
@@ -43,7 +50,7 @@ namespace jns
 			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Attracted)
 			{
 				playerscript->SetPlayerHp(0);
-				this->GetOwner()->SetState(GameObject::eState::Paused);
+				mMirrorState = eMirrorState::Bombed;
 			}
 		}
 
@@ -130,7 +137,7 @@ namespace jns
 				at->PlayAnimation(L"MirrorMirrorHit", true);
 				break;
 			case eMirrorState::Attract:
-				at->PlayAnimation(L"MirrorMirrorAttractSuccess", true);
+				at->PlayAnimation(L"MirrorMirrorAttractSuccess", false);
 				break;
 			}
 		}
@@ -138,6 +145,9 @@ namespace jns
 	void MirrorScript::CompleteAni()
 	{
 		isNotPlayed = true;
+		mMirrorState = eMirrorState::Summon;
+		mHp = 100;
+		mSummonTime = 0.0f;
 		GetOwner()->SetState(GameObject::eState::Paused);
 	}
 
@@ -186,9 +196,15 @@ namespace jns
 
 	void MirrorScript::Attracted()
 	{
-		Transform* mirrorTr = this->GetOwner()->GetComponent<Transform>();
 		GameObject* player = SceneManager::GetPlayer();
 		PlayerScript* playerscript = player->GetComponent<PlayerScript>();
+
+		if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
+			return;
+
+
+
+		Transform* mirrorTr = this->GetOwner()->GetComponent<Transform>();
 		playerscript->SetPlayerState(jns::PlayerScript::ePlayerState::Attracted);
 		Transform* playertr = player->GetComponent<Transform>();
 
@@ -197,13 +213,13 @@ namespace jns
 		
 		float moveSpeed = 100.0f;
 		
-		if (playerPos.x >= mirrorPos.y - 10.0f)
+		if (playerPos.x >= mirrorPos.x - 10.0f)
 		{
 			playerPos.x -= moveSpeed * Time::DeltaTime();
 			playertr->SetPosition(playerPos);
 			playerscript->SetPlayerDirection(jns::PlayerScript::PlayerDir::Left);
 		}
-		else if(playerPos.x <= mirrorPos.y + 10.0f)
+		else if(playerPos.x <= mirrorPos.x + 10.0f)
 		{
 			playerPos.x += moveSpeed * Time::DeltaTime();
 			playertr->SetPosition(playerPos);

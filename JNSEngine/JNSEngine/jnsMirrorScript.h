@@ -32,7 +32,6 @@ namespace jns
 		void CompleteAni();
 		void CompleteSunmmon();
 
-
 		void Summon();
 		void Idle();
 		void Bombed();
@@ -55,5 +54,6 @@ namespace jns
 
 		float mPrevHp;
 
+		bool isNotSetting = true;
 	};
 }

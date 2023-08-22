@@ -197,6 +197,7 @@
     </ClCompile>
     <ClCompile Include="jnsTomb.cpp" />
     <ClCompile Include="jnsTombScript.cpp" />
+    <ClCompile Include="jnsHeart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -409,6 +410,7 @@
     </ClInclude>
     <ClInclude Include="jnsTomb.h" />
     <ClInclude Include="jnsTombScript.h" />
+    <ClInclude Include="jnsHeart.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
