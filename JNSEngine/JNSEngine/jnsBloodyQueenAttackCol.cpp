@@ -122,7 +122,7 @@ namespace jns
 						if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
 						{
 							cd->SetSize(Vector2(0.5f, 0.20f));
-							cd->SetCenter(Vector2(500.0f * (int)mBQInfo.mDir, -100.0f));
+							cd->SetCenter(Vector2(300.0f * (int)mBQInfo.mDir, -100.0f));
 
 						}
 						else
@@ -171,9 +171,13 @@ namespace jns
 			
 			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
 			{
-				mPlayerHp -= mBQSkillDamage.normalAttack;
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
-				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
+				if (mBQScript->GetUsingSkillName() == L"NormalAttack")
+				{
+					mPlayerHp -= mBQSkillDamage.normalAttack;
+					mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+					mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
+					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
+				}
 			}
 		}
 	}

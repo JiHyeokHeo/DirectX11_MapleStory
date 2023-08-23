@@ -188,6 +188,7 @@
     <ClInclude Include="jnsGround.h" />
     <ClInclude Include="jnsGroundScript.h" />
     <ClInclude Include="jnsHeart.h" />
+    <ClInclude Include="jnsHeartScript.h" />
     <ClInclude Include="jnsHpBar.h" />
     <ClInclude Include="jnsInvenBG.h" />
     <ClInclude Include="jnsInventory.h" />
@@ -263,6 +264,7 @@
     <ClCompile Include="jnsGround.cpp" />
     <ClCompile Include="jnsGroundScript.cpp" />
     <ClCompile Include="jnsHeart.cpp" />
+    <ClCompile Include="jnsHeartScript.cpp" />
     <ClCompile Include="jnsHpBar.cpp" />
     <ClCompile Include="jnsInvenBG.cpp" />
     <ClCompile Include="jnsInventory.cpp" />

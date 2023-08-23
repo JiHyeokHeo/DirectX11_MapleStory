@@ -43,7 +43,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Charactor\\CharAttract", 100, 0.1f);
 		
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
-		GetComponent<Transform>()->SetScale(Vector3(150.0f, 150.0f, 1.0f));
+		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
 		
 		Collider2D* col = AddComponent<Collider2D>();
 		col->SetSize(Vector2(0.5f, 0.8f));

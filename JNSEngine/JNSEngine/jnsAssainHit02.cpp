@@ -21,7 +21,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_Second_Attack", 500, 0.05f);
 		at->CompleteEvent(L"AssainationNormal_Assasination_Second_Attack") = std::bind(&AssainHit02::CompleteSkillAnimation, this);
 		at->PlayAnimation(L"AssainationNormal_Assasination_Second_Attack", true);
-		tr->SetScale(Vector3(600.0f, 600.0f, 1.0f));
+		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		cd->SetSize(Vector2(0.6f, 0.7f));
 		cd->SetCenter(Vector2(0.0f, 0.0f));
 		SkillBase::Initialize();

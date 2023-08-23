@@ -16,7 +16,7 @@ namespace jns
 		isAnimationDone = true;
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
-		mPlayerInfo.mMoveSpeed = 255.0f;
+		mPlayerInfo.mMoveSpeed = 200.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
         mPlayerInfo.hp = 100;
@@ -409,31 +409,34 @@ namespace jns
 
     void PlayerScript::Die()
     {
-        mPlayerInfo.mDeathTime += Time::DeltaTime();
-            
-        if (angle >= 360.0f)
+        if (mPlayerInfo.isGrounded == true)
         {
-            angle = 0.0f;
+			mPlayerInfo.mDeathTime += Time::DeltaTime();
+
+			if (angle >= 360.0f)
+			{
+				angle = 0.0f;
+			}
+			float radius = 10.0f; 
+
+
+			if (isNotSetDeadPos)
+			{
+				centerX = tr->GetPosition().x; 
+				centerY = tr->GetPosition().y + 20.0f; 
+				isNotSetDeadPos = false;
+			}
+
+
+
+			float x = centerX + (radius * cos(DegreeToRadian(angle)));
+			float y = centerY + (radius * sin(DegreeToRadian(angle)));
+
+			angle -= 250.0 * Time::DeltaTime();
+
+
+			tr->SetPosition(Vector3(x, y, tr->GetPosition().z));
         }
-        float radius = 10.0f;  // Radius of rotation
-      
-
-       if(isNotSetDeadPos)
-       {
-           centerX = tr->GetPosition().x; // X-coordinate of center
-           centerY = tr->GetPosition().y + 20.0f; // Y-coordinate of center
-           isNotSetDeadPos = false;
-       }
-       
-
-
-		float x = centerX + (radius * cos(DegreeToRadian(angle)));
-		float y = centerY + (radius * sin(DegreeToRadian(angle)));
-
-        angle -= 250.0 * Time::DeltaTime(); // Adjust the rotation speed as needed
-
-     
-        tr->SetPosition(Vector3(x, y, tr->GetPosition().z));
     }
 
     void PlayerScript::Attarct()

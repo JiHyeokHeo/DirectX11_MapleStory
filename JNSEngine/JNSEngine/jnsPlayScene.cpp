@@ -57,7 +57,8 @@ namespace jns
 
 	void PlayScene::OnExit()
 	{
-		mBGInstance->GetComponent<AudioSource>()->Stop();
+		if(mBGInstance != nullptr)
+			mBGInstance->GetComponent<AudioSource>()->Stop();
 	}
 
 	void PlayScene::CreateMainCamera()

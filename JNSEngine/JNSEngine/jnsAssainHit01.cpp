@@ -22,7 +22,7 @@ namespace jns
 		at->CompleteEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::CompleteSkillAnimation, this);
 		at->StartEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::StartSkillAnimation, this);
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
-		tr->SetScale(Vector3(800.0f, 800.0f, 1.0f));
+		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 
 		cd->SetSize(Vector2(0.5f, 0.3f));
 		SkillBase::Initialize();
@@ -33,7 +33,7 @@ namespace jns
 		Vector3 mPos = mPlayerScript->GetOwner()->GetComponent<Transform>()->GetPosition();
 		
 		int direction = (int)mPlayerScript->GetPlayerDirection();
-		mPos.x += direction * 230.0f;
+		mPos.x += direction * 130.0f;
 		mPos.z = 0.0f;
 		SetPosition(mPos);
 

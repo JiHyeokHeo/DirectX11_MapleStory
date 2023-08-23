@@ -26,7 +26,7 @@ namespace jns
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Effect\\DieEffect", 100, 0.05f);
 		tr->SetPosition(Vector3::Zero);
-		tr->SetScale(Vector3(150.0f, 150.0f, 1.0f));
+		tr->SetScale(Vector3(100.0f, 100.0f, 1.0f));
 		at->PlayAnimation(L"EffectDieEffect", false);
 		AddComponent<TombScript>();
 	}

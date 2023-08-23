@@ -21,7 +21,7 @@ namespace jns
 
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\flashJump", 500, 0.1f);
 		at->CompleteEvent(L"Rogue_SkillflashJump") = std::bind(&JumpSkill::CompleteSkillAnimation, this);
-		tr->SetScale(Vector3(700.0f, 700.0f, 1.0f));
+		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		SkillBase::Initialize();
 	}
 	void JumpSkill::Update()

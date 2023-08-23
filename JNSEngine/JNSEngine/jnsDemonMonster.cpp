@@ -27,7 +27,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Monster\\Demon\\dm_Idle", 250, 0.15f);
 
 		at->PlayAnimation(L"Demondm_Idle", true);
-		GetComponent<Transform>()->SetScale(Vector3(300.0f, 300.0f, 1.0f));
+		GetComponent<Transform>()->SetScale(Vector3(250.0f, 250.0f, 1.0f));
 
 		AddComponent<DemonMonsterScript>();
 		AddComponent<DemonAttackRangeScript>();

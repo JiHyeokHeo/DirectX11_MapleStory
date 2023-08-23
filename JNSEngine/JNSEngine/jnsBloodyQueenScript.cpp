@@ -202,7 +202,6 @@ namespace jns
 	void BloodyQueenScript::CompleteBressAni2()
 	{
 		at->PlayAnimation(L"NormalBloodyQueenNBQBress4", true);
-		mAnimatorPlaying = false;
 	}
 	void BloodyQueenScript::CompleteDebuffAni()
 	{
@@ -274,7 +273,7 @@ namespace jns
 	{
 		at->PlayAnimation(L"SmileBloodyQueenSMBQSwallow3", true);
 	}
-	void BloodyQueenScript::CompleteAttack()
+	void BloodyQueenScript::CompleteAttack()	
 	{
 		mAnimatorPlaying = false;
 		mMonsterState = eBloodyQueenState::Idle;

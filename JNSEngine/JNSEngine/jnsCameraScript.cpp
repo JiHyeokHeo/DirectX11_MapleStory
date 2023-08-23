@@ -92,7 +92,7 @@ namespace jns
 			mCameraRightMaxMove.y = 200.0f;
 			mCameraLeftMaxMove.x = -525.0f;
 			mCameraLeftMaxMove.y = 200.0f;
-			setYCord = 130.0f;
+			setYCord = 150.0f;
 		}
 
 		if (mActiveScene->GetName() == L"RutabysMob")
@@ -101,7 +101,7 @@ namespace jns
 			mCameraRightMaxMove.y = -10.0f;
 			mCameraLeftMaxMove.x = -1360.0f;
 			mCameraLeftMaxMove.y = -10.0f;
-			setYCord = 180.0f;
+			setYCord = 200.0f;
 		}
 
 		if (mActiveScene->GetName() == L"RutabysBoss")
@@ -110,11 +110,13 @@ namespace jns
 			mCameraRightMaxMove.y = -10.0f;
 			mCameraLeftMaxMove.x = -525.0f;
 			mCameraLeftMaxMove.y = -10.0f;
-			setYCord = 180.0f;
+			setYCord = 200.0f;
 		}
 
 		PlayerScript* playerScript = checkTarget->GetComponent<PlayerScript>();
-		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die || playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
+		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
+			return false;
+		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
 			return false;
 		// 플레이어 최신 위치를 불러온다.
 		Transform* followTR = checkTarget->GetComponent<Transform>();

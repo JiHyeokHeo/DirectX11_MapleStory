@@ -52,8 +52,11 @@ namespace jns
 			if (player == nullptr)
 				return;
 
-			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
-			rb->SetGround(false);
+			if (player->GetComponent<PlayerScript>()->GetPlayerState() != PlayerScript::ePlayerState::Die)
+			{
+				RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+				rb->SetGround(false);
+			}
 		}
 
 		if (mGround->GetGroundName() == L"Ladder")

@@ -18,28 +18,25 @@ namespace jns
 		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
-		object::Instantiate<Heart>(eLayerType::Monster, Vector3::Zero);
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-1400.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-1200.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-1000.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-800.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-600.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-400.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(-200.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(0.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(1400.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(1200.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(1000.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(800.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(600.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(400.0f, -350.0f, 0.5f));
+		object::Instantiate<Heart>(eLayerType::Monster, Vector3(200.0f, -350.0f, 0.5f));
 
 		object::Instantiate<DarkPaper>(eLayerType::BG, Vector3::Zero);
 		// º¸½º
-		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -130.0f, 3.0f));
+		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -160.0f, 3.0f));
 		BloodyQueenScript* bqScript = obj->GetComponent<BloodyQueenScript>();
 		Mirror* mirror = object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -300.0f, 2.0f));
 		bqScript->SetMirror(mirror);

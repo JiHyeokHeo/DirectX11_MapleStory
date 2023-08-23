@@ -34,8 +34,8 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\BloodyQueenHitMotion", 1500, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress1", 1500, 0.10f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress2", 1500, 0.10f, Vector2(-0.03f, -0.005f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 1500, 0.10f, Vector2(-0.03f, -0.005f));
-		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 1500, 0.10f, Vector2(-0.03f, -0.005f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress3", 1500, 0.14f, Vector2(-0.03f, -0.005f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQBress4", 1500, 0.14f, Vector2(-0.03f, -0.005f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff1", 1500, 0.15f, Vector2(0.012f, -0.008f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQDebuff2", 1500, 0.15f, Vector2(0.012f, -0.008f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQIdle", 1500, 0.15f, Vector2(0.0f, -0.010f));
@@ -64,7 +64,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\SmileBloodyQueen\\SMBQWalk", 1500, 0.15f, Vector2(0.020f, -0.010f));
 		
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
-		GetComponent<Transform>()->SetScale(Vector3(1700.0f, 1700.0f, 1.0f));
+		GetComponent<Transform>()->SetScale(Vector3(1500.0f, 1500.0f, 1.0f));
 
 		AddComponent<BloodyQueenScript>();
 		AddComponent<BloodyQueenAttackRangeScript>();
