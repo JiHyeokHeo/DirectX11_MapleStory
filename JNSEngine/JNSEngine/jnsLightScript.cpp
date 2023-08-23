@@ -14,7 +14,12 @@ namespace jns
 
 		if (mDarkTime <= 0.3f)
 		{
+			chageScene = true;
 			mDarkTime += Time::DeltaTime();
+			if (SceneManager::GetPrevScene() != SceneManager::GetActiveScene())
+			{
+				mOpacity = 0.0f;
+			}
 		}
 
 		if (mDarkTime >= 0.3f)
@@ -27,23 +32,19 @@ namespace jns
 			{
 				mOpacity = 1.0f;
 			}
+		}
 
-			if (mPrevScene != mActiveScene)
+		if (chageScene == false)
+		{
+			if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
+				->GetIsNormalHit() == true)
 			{
-				mActiveScene = SceneManager::GetActiveScene();
-				mPrevScene = mActiveScene;
 				mOpacity = 0.0f;
 			}
-		}
-
-		if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
-			->GetIsNormalHit() == true)
-		{
-			mOpacity = 0.0f;
-		}
-		else
-		{
-			mOpacity = 1.0f;
+			else
+			{
+				mOpacity = 1.0f;
+			}
 		}
 
 

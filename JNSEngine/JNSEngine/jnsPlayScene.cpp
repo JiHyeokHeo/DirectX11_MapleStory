@@ -11,15 +11,15 @@ namespace jns
 	}
 	void PlayScene::Initialize()
 	{
-		{
-			mDirectionalLight = new GameObject();
-			mDirectionalLight->SetName(L"Smile");
-			AddGameObject(eLayerType::Light, mDirectionalLight);
-			Light* lightComp = mDirectionalLight->AddComponent<Light>();
-			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-			mDirectionalLight->AddComponent<LightScript>();
-		}
+		
+		mDirectionalLight = new GameObject();
+		mDirectionalLight->SetName(L"Smile");
+		AddGameObject(eLayerType::Light, mDirectionalLight);
+		Light* lightComp = mDirectionalLight->AddComponent<Light>();
+		lightComp->SetType(eLightType::Directional);
+		lightComp->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+		mDirectionalLight->AddComponent<LightScript>();
+		
 		CreateMainCamera();
 		CreateUICamera();
 		//CreateEffectCamera();
@@ -59,6 +59,8 @@ namespace jns
 	{
 		if(mBGInstance != nullptr)
 			mBGInstance->GetComponent<AudioSource>()->Stop();
+
+		mDirectionalLight->GetComponent<LightScript>()->SetDarkTime(0.0f);
 	}
 
 	void PlayScene::CreateMainCamera()

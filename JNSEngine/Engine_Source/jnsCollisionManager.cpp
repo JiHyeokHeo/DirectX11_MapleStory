@@ -169,44 +169,113 @@ namespace jns
 		if (left->GetColliderOn() == false || right->GetColliderOn() == false)
 			return false;
 
-		const Vector3& leftColCenterPos = left->GetPosition();
-		const Vector3& righColCentertPos = right->GetPosition();
-
-		Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
-
-		Vector3 leftColR = left->GetOwner()->GetComponent<Transform>()->Right();
-		Vector3 leftColUp = left->GetOwner()->GetComponent<Transform>()->Up();
-		Vector3 rightColR = right->GetOwner()->GetComponent<Transform>()->Right();
-		Vector3 rightColUp = right->GetOwner()->GetComponent<Transform>()->Up();
-		
-
-		// 스케일 전환을 해줘도 문제없도록 Collider의 스케일을 가져오도록함
-		Vector3 leftColLocalScale = left->GetScale();
-		Vector3 rightColLocalScale = right->GetScale();
-		
-		// 단위 법선 벡터들을 넣어주고              
-		std::vector<Vector3> checkPos = {};
-		checkPos.push_back(leftColR);
-		checkPos.push_back(leftColUp);
-		checkPos.push_back(rightColR);
-		checkPos.push_back(rightColUp);
-
-		// 두 충돌체의 길이측정용 
-		leftColR *= leftColLocalScale.x / 2;
-		leftColUp *= leftColLocalScale.y / 2;
-		rightColR *= rightColLocalScale.x / 2;
-		rightColUp *= rightColLocalScale.y / 2;
-		
-		for (int i = 0; i < 4; i++)
+		if (left->GetType() == eColliderType::Rect && right->GetType() == eColliderType::Rect)
 		{
-			float colDistance = abs((checkPos[i].Dot(colPosDiff)));
+			const Vector3& leftColCenterPos = left->GetPosition();
+			const Vector3& righColCentertPos = right->GetPosition();
 
-			if (colDistance > abs(checkPos[i].Dot(leftColR))
-				+ abs(checkPos[i].Dot(leftColUp))
-				+ abs(checkPos[i].Dot(rightColR))
-				+ abs(checkPos[i].Dot(rightColUp)))
-				return false;
+			Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
+
+			Vector3 leftColR = left->GetOwner()->GetComponent<Transform>()->Right();
+			Vector3 leftColUp = left->GetOwner()->GetComponent<Transform>()->Up();
+			Vector3 rightColR = right->GetOwner()->GetComponent<Transform>()->Right();
+			Vector3 rightColUp = right->GetOwner()->GetComponent<Transform>()->Up();
+		
+
+			// 스케일 전환을 해줘도 문제없도록 Collider의 스케일을 가져오도록함
+			Vector3 leftColLocalScale = left->GetScale();
+			Vector3 rightColLocalScale = right->GetScale();
+		
+			// 단위 법선 벡터들을 넣어주고              
+			std::vector<Vector3> checkPos = {};
+			checkPos.push_back(leftColR);
+			checkPos.push_back(leftColUp);
+			checkPos.push_back(rightColR);
+			checkPos.push_back(rightColUp);
+
+			// 두 충돌체의 길이측정용 
+			leftColR *= leftColLocalScale.x / 2;
+			leftColUp *= leftColLocalScale.y / 2;
+			rightColR *= rightColLocalScale.x / 2;
+			rightColUp *= rightColLocalScale.y / 2;
+		
+			for (int i = 0; i < 4; i++)
+			{
+				float colDistance = abs((checkPos[i].Dot(colPosDiff)));
+
+				if (colDistance > abs(checkPos[i].Dot(leftColR))
+					+ abs(checkPos[i].Dot(leftColUp))
+					+ abs(checkPos[i].Dot(rightColR))
+					+ abs(checkPos[i].Dot(rightColUp)))
+					return false;
+			}
 		}
+		else if(left->GetType() == eColliderType::Line && right->GetType() == eColliderType::Rect)
+		{
+			// Line-rectangle collision handling
+			Vector3 lineStart = left->GetStartPoint(); // Assuming you have a way to get the start point of the line
+			Vector3 lineEnd = left->GetEndPoint();     // Assuming you have a way to get the end point of the line
+			Vector3 rectCenter = right->GetPosition();
+			Vector2 rectSize = right->GetSize();
+			Vector3 rectScale = right->GetScale();
+
+			// Scale the rectangle size by the collider's scale
+			rectSize.x *= rectScale.x;
+			rectSize.y *= rectScale.y;
+
+			// Calculate the corners of the rectangle
+			Vector3 rectCorners[4];
+			rectCorners[0] = rectCenter + Vector3(-rectSize.x / 2, rectSize.y / 2, 0.0f);
+			rectCorners[1] = rectCenter + Vector3(rectSize.x / 2, rectSize.y / 2, 0.0f);
+			rectCorners[2] = rectCenter + Vector3(-rectSize.x / 2, -rectSize.y / 2, 0.0f);
+			rectCorners[3] = rectCenter + Vector3(rectSize.x / 2, -rectSize.y / 2, 0.0f);
+
+			// Check for collision between the line and each edge of the rectangle
+			for (int i = 0; i < 4; ++i)
+			{
+				Vector3 rectEdge1 = rectCorners[i];
+				Vector3 rectEdge2 = rectCorners[(i + 1) % 4];
+
+				if (IntersectLineSegment(lineStart, lineEnd, rectEdge1, rectEdge2))
+				{
+					return true; // Collision detected
+				}
+			}
+
+		}
+		else if(left->GetType() == eColliderType::Rect && right->GetType() == eColliderType::Line)
+		{
+			// Rectangle-line collision handling
+			Vector3 lineStart = right->GetStartPoint(); // Assuming you have a way to get the start point of the line
+			Vector3 lineEnd = right->GetEndPoint();     // Assuming you have a way to get the end point of the line
+			Vector3 rectCenter = left->GetPosition();
+			Vector2 rectSize = left->GetSize();
+			Vector3 rectScale = left->GetScale();
+
+			// Scale the rectangle size by the collider's scale
+			rectSize.x *= rectScale.x;
+			rectSize.y *= rectScale.y;
+
+			// Calculate the corners of the rectangle
+			Vector3 rectCorners[4];
+			rectCorners[0] = rectCenter + Vector3(-rectSize.x / 2, rectSize.y / 2, 0.0f);
+			rectCorners[1] = rectCenter + Vector3(rectSize.x / 2, rectSize.y / 2, 0.0f);
+			rectCorners[2] = rectCenter + Vector3(-rectSize.x / 2, -rectSize.y / 2, 0.0f);
+			rectCorners[3] = rectCenter + Vector3(rectSize.x / 2, -rectSize.y / 2, 0.0f);
+
+			// Check for collision between the line and each edge of the rectangle
+			for (int i = 0; i < 4; ++i)
+			{
+				Vector3 rectEdge1 = rectCorners[i];
+				Vector3 rectEdge2 = rectCorners[(i + 1) % 4];
+
+				if (IntersectLineSegment(lineStart, lineEnd, rectEdge1, rectEdge2))
+				{
+					return true; // Collision detected
+				}
+			}
+		}
+
 
 
 		return true;
@@ -293,6 +362,29 @@ namespace jns
 	{
 		mMatrix->reset();
 		mCollisionMap.clear();
+	}
+
+	bool CollisionManager::IntersectLineSegment(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2)
+	{
+		Vector3 r = p2 - p1;
+		Vector3 s = q2 - q1;
+
+		float crossProduct = r.Cross(s).Length();
+
+		Vector3 qMinusP = q1 - p1;
+		float t = qMinusP.Cross(s).Length() / crossProduct;
+		float u = qMinusP.Cross(r).Length() / crossProduct;
+
+		if (crossProduct == 0 && qMinusP.Cross(r).Length() == 0) {
+			// Collinear, check if they overlap
+			if ((q1 - p1).Dot(r) >= 0 && (q1 - p2).Dot(r) <= 0)
+				return true;
+		}
+
+		if (crossProduct != 0 && t >= 0 && t <= 1 && u >= 0 && u <= 1)
+			return true;
+
+		return false;
 	}
 
 

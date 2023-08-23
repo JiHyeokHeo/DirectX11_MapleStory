@@ -138,8 +138,12 @@ namespace jns
 				}
 				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
 				{
-						//cd->SetSize(Vector2(0.3f, 0.5f));
-						//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
+					{
+						cd->SetSize(Vector2(0.2f, 0.5f));
+						cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, -100.0f));
+
+					}
 				}
 
 				if (mColMakeTime >= 2.5f && mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")

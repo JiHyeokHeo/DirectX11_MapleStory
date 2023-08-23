@@ -20,7 +20,6 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
@@ -40,7 +39,9 @@ namespace jns
 		bool isSummon = false;
 		class Transform* tr;
 		class Animator* at;
+		float heartMoveSpeed = 100.0f;
 
+		float heartStartPos = -375.0f;
 		int hp;
 	};
 

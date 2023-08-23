@@ -2,6 +2,8 @@
 #include "CommonSceneInclude.h"
 #include <random>
 #include "jnsMirror.h"
+#include "jnsHeart.h"
+#include "jnsHeartScript.h"
 std::mt19937_64 rng1(3244);
 std::uniform_int_distribution<__int64> dist1(-1, 1);
 
@@ -54,7 +56,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		
@@ -86,7 +88,7 @@ namespace jns
 		at->CompleteEvent(L"BloodyQueenDieDie3") = std::bind(&BloodyQueenScript::CompleteDieAni3, this);
 
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon1") = std::bind(&BloodyQueenScript::CompleteSummon, this);
-		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon2") = std::bind(&BloodyQueenScript::CompleteSummon1, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon2") = std::bind(&BloodyQueenScript::CompleteAttack, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow1") = std::bind(&BloodyQueenScript::CompleteSwallow, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow2") = std::bind(&BloodyQueenScript::CompleteSwallow1, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow3") = std::bind(&BloodyQueenScript::CompleteAttack, this);
@@ -410,21 +412,41 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 	}
 	void BloodyQueenScript::Die()
 	{
 		
 	}
 	void BloodyQueenScript::SpecialAttack()
-	{
-		if (mBloodyQueenInfo.mSkillCoolDown <= mBossMaxSkillCollDown)
+	{ 
 		{
 			if (mAnimatorPlaying == false)
 			{
 				mMonsterState = eBloodyQueenState::Attack;
 				return;
 			}
+		}
+
+		Vector3 mMonsterPos = tr->GetPosition();
+		Vector3 swallowOffSetPos = {};
+		swallowOffSetPos.x = 100.0f * (int)mBloodyQueenInfo.mDir;
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		int swallowDir = -99;
+		if (mPlayerPos.x >= mMonsterPos.x + swallowOffSetPos.x)
+		{
+			swallowDir = -1;
+		}
+		else if (mPlayerPos.x <= mMonsterPos.x + swallowOffSetPos.x)
+		{
+			swallowDir = 1;
+		}
+
+		if (mUsingSkillName == L"SmileBloodyQueenSMBQSwallow1")
+		{
+			float registPower = 150.0f;
+			mPlayerPos.x += registPower * swallowDir * Time::DeltaTime();
+			SceneManager::GetPlayer()->GetComponent<Transform>()->SetPosition(mPlayerPos);
 		}
 	}
 	void BloodyQueenScript::PlaySpecialAttackAnimation(std::wstring animationname)
@@ -473,7 +495,10 @@ namespace jns
 			}
 			else
 			{
-
+				for (int i =0; i< mHearts.size(); i++)
+				{
+					mHearts[i]->SetState(GameObject::eState::Active);
+				}
 			}
 			animationname += animationNameAttract;
 			at->PlayAnimation(animationname, true);
@@ -492,7 +517,14 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
-			animationname += animationNameSmileSummon;
+		/*	if (mPatternPercentage <= 0.5f)
+			{
+				animationname += animationNameSmileSummon;
+			}*/
+			
+			{
+				animationname += animationNameSmile;
+			}
 			at->PlayAnimation(animationname, true);
 		}
 

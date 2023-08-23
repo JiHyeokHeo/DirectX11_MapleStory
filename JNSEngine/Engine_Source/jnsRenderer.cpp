@@ -89,6 +89,13 @@ namespace renderer
 			 , shader->GetVSCode()
 			 , shader->GetInputLayoutAddressOf());
 
+		 shader = jns::Resources::Find<Shader>(L"DebugLineShader");
+
+		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			 , shader->GetVSCode()
+			 , shader->GetInputLayoutAddressOf());
+
+
 		 shader = jns::Resources::Find<Shader>(L"PlayerHPShader");
 
 		 jns::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
@@ -345,6 +352,26 @@ namespace renderer
 		 Resources::Insert(L"DebugCircle", circleDebug);
 		 circleDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
 		 circleDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+
+		 // Line
+		 vertexes.clear();
+		 indexes.clear();
+		 vertexes.resize(2);
+		 vertexes[0].pos = Vector3(-0.5f, 0.0f, 0.0f);
+		 vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		 vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		 vertexes[1].pos = Vector3(0.5f, 0.0f, 0.0f);
+		 vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		 vertexes[1].uv = Vector2(1.0f, 0.0f);
+		 indexes.push_back(0);
+		 indexes.push_back(1);
+
+		 std::shared_ptr<Mesh> lineDebug = std::make_shared<Mesh>();
+		 Resources::Insert(L"DebugLine", lineDebug);
+
+		 lineDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		 lineDebug->CreateIndexBuffer(indexes.data(), indexes.size());
 	 }
 
 	 void LoadBuffer()
@@ -439,6 +466,14 @@ namespace renderer
 		 //debugShader->SetDSState(eDSType::NoWrite);
 		 jns::Resources::Insert(L"DebugCircleShader", debugCircleShader);
 
+		 std::shared_ptr<Shader> debugLineShader = std::make_shared<Shader>();
+		 debugLineShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
+		 debugLineShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
+		 debugLineShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		 debugLineShader->SetRSState(eRSType::WireframeNone);
+		 //debugShader->SetDSState(eDSType::NoWrite);
+		 jns::Resources::Insert(L"DebugLineShader", debugLineShader);
+
 		 std::shared_ptr<Shader> playerUIShader = std::make_shared<Shader>();
 		 playerUIShader->Create(eShaderStage::VS, L"PlayerHPVS.hlsl", "main");
 		 playerUIShader->Create(eShaderStage::PS, L"PlayerHPPS.hlsl", "main");
@@ -521,6 +556,8 @@ namespace renderer
 			 = Resources::Find<Shader>(L"DebugShader");
 		 std::shared_ptr<Shader> debugCircleShader
 			 = Resources::Find<Shader>(L"DebugCircleShader");
+		 std::shared_ptr<Shader> debugLineShader
+			 = Resources::Find<Shader>(L"DebugLineShader");
 		 std::shared_ptr<Shader> spriteAniShader
 			 = Resources::Find<Shader>(L"SpriteAnimationShader");
 		 std::shared_ptr<Shader> spriteAniAlphaShader
@@ -563,6 +600,10 @@ namespace renderer
 		 material = std::make_shared<Material>();
 		 material->SetShader(debugCircleShader);
 		 Resources::Insert(L"DebugCircleMaterial", material);
+
+		 material = std::make_shared<Material>();
+		 material->SetShader(debugLineShader);
+		 Resources::Insert(L"DebugLineMaterial", material);
 
 		 particleShader
 			 = Resources::Find<Shader>(L"ParticleShader");

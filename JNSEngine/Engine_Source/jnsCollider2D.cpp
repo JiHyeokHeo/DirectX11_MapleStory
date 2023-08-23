@@ -14,6 +14,9 @@ namespace jns
 		, mCenter(Vector2::Zero)
 		, isColliding(false)
 		, isColliderON(true)
+		, mStart(Vector3::Zero)
+		, mEnd(Vector3::Zero)
+		, mType(enums::eColliderType::Rect)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;
@@ -60,6 +63,14 @@ namespace jns
 		mesh.isCollide = isColliding;
 		
 		renderer::PushDebugMeshAttribute(mesh);
+
+		if (mType == eColliderType::Line)
+		{
+			mStart = mPosition;
+			mEnd = mPosition;
+			mStart.x = mPosition.x - (mScale.x / 2);
+			mEnd.x = mPosition.x + (mScale.x / 2);
+		}
 	}
 
 	void Collider2D::Render()

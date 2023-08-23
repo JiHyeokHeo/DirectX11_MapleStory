@@ -60,6 +60,7 @@ namespace jns::enums
 		Circle,
 		Sphere,
 		Cube,
+		Line,
 		End,
 	};
 

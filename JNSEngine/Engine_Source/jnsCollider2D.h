@@ -21,6 +21,7 @@ namespace jns
 		void OnCollisionExit(Collider2D* other);
 
 		void SetType(eColliderType type) { mType = type; }
+		eColliderType GetType() { return mType; }
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetPosition(Vector3 position) { mPosition = position; }
 		void SetCenter(Vector2 center) { mCenter = center; }
@@ -40,6 +41,9 @@ namespace jns
 
 		void SetColNum(int num) { colNum = num; }
 		int GetColNum() { return colNum; }
+
+		Vector3 GetStartPoint() { return mStart; }
+		Vector3 GetEndPoint() { return mEnd; }
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -57,5 +61,7 @@ namespace jns
 		bool isColliderON;
 
 		int colNum;
+		Vector3 mStart;
+		Vector3 mEnd;
 	};
 }

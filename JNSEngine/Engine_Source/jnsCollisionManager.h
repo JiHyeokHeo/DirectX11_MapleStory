@@ -6,7 +6,7 @@ namespace jns
 {
 #define LAYER_MAX (UINT)eLayerType::End
 	using namespace enums;
-
+	using namespace math;
 	class Collider2D;
 	class CollisionManager
 	{
@@ -31,7 +31,7 @@ namespace jns
 
 		static void SetLayer(eLayerType left, eLayerType right, bool enable);
 		static void Clear();
-
+		static bool IntersectLineSegment(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2);
 	private:
 		static std::bitset<LAYER_MAX> mMatrix[LAYER_MAX];
 		static std::map<UINT64, bool> mCollisionMap;

@@ -173,6 +173,6 @@ namespace jns
 		float centerX;
 		float centerY;
 
-		bool isNormalHit;
+		bool isNormalHit = false;
 	};
 }

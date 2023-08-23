@@ -19,7 +19,7 @@ namespace jns
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"DebugMaterial"));
-		AddComponent<Collider2D>();
+		Collider2D* cd = AddComponent<Collider2D>();
 		AddComponent<GroundScript>();
 	}
 	void Ground::Update()

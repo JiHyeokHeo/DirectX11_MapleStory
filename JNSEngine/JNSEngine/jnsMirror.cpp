@@ -16,7 +16,7 @@ namespace jns
 		Animator * at = AddComponent<Animator>();
 		Collider2D* cd = AddComponent<Collider2D>();
 		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(600.0f, 600.0f, 1.0f));
+		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		
 		cd->SetSize(Vector2(0.25f, 0.25f));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));

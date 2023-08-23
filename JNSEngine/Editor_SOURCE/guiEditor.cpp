@@ -25,13 +25,18 @@ namespace gui
 			= jns::Resources::Find<jns::Mesh>(L"DebugRect");
 		std::shared_ptr<jns::Mesh> circlemesh
 			= jns::Resources::Find<jns::Mesh>(L"DebugCircle");
+		std::shared_ptr<jns::Mesh> linemesh
+			= jns::Resources::Find<jns::Mesh>(L"DebugLine");
 		std::shared_ptr<jns::Material> material
 			= jns::Resources::Find<jns::Material>(L"DebugMaterial");
 		std::shared_ptr<jns::Material> material2
 			= jns::Resources::Find<jns::Material>(L"DebugCircleMaterial");
+		std::shared_ptr<jns::Material> material3
+			= jns::Resources::Find<jns::Material>(L"DebugLineMaterial");
 
 		mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
 		mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
+		mDebugObjects[(UINT)eColliderType::Line] = new DebugObject();
 		jns::MeshRenderer* mr
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<jns::MeshRenderer>();
 		mr->SetMaterial(material);
@@ -42,6 +47,11 @@ namespace gui
 			= mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<jns::MeshRenderer>();
 		mr2->SetMaterial(material2);
 		mr2->SetMesh(circlemesh);
+
+		jns::MeshRenderer* mr3
+			= mDebugObjects[(UINT)eColliderType::Line]->AddComponent<jns::MeshRenderer>();
+		mr3->SetMaterial(material3);
+		mr3->SetMesh(linemesh);
 
 		EditorObject* grid = new EditorObject();
 		grid->SetName(L"Grid");

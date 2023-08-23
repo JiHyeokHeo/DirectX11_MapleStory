@@ -10,13 +10,14 @@ namespace jns
 		virtual void Initialize();
 		virtual void Update();
 
+		void SetDarkTime(float time) { mDarkTime = time; }
 		
 	private:
 		Scene* mPrevScene;
 		Scene* mActiveScene;
 		float mOpacity;
 		float mDarkTime;
-
+		bool chageScene = false;
 	};
 
 }
