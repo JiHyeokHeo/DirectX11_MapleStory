@@ -19,7 +19,6 @@ namespace jns
 		{
 			int hp;
 			bool isRight;
-			bool isReflectOn;
 			float mHittedTime;
 			float mMoveSpeed;
 			eBloodyQueenType mBossPrevType;
@@ -86,6 +85,8 @@ namespace jns
 		void CompleteSwallow1();
 
 		void CompleteAttack();
+
+		void ResetData();
 	public:
 		void Idle();
 		void Move();
@@ -107,6 +108,8 @@ namespace jns
 
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 	private:
+		class BloodyQueen* mBloodyQueen;
+
 		BloodyQueenInfo mBloodyQueenInfo;
 		class Transform* tr;
 		class Animator* at;

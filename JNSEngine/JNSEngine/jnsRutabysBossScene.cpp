@@ -21,18 +21,18 @@ namespace jns
 		
 		// 보스 이펙트 연동
 		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -160.0f, 3.0f));
-		BloodyQueenScript* bqScript = obj->GetComponent<BloodyQueenScript>();
+		mBQscript = obj->GetComponent<BloodyQueenScript>();
 		Mirror* mirror = object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -300.0f, 2.0f));
-		bqScript->SetMirror(mirror);
-		AttackReflection* atObj = object::Instantiate<AttackReflection>(eLayerType::MapEffect, Vector3::Zero);
+		mBQscript->SetMirror(mirror);
+		atObj = object::Instantiate<AttackReflection>(eLayerType::MapEffect, Vector3::Zero);
 		atObj->SetChaseObject(obj);
 		//
-
+		 
 		// 하트 세팅
 		for (int i = -7; i <= 7; i++)
 		{
 			Heart* heart = object::Instantiate<Heart>(eLayerType::Monster, Vector3(100*i, -375.0f, 0.5f));
-			bqScript->SetHeart(heart);
+			mBQscript->SetHeart(heart);
 		}
 
 		CreatePlayerUI();
@@ -61,6 +61,8 @@ namespace jns
 	}
 	void RutabysBossScene::OnExit()
 	{
+		mBQscript->ResetData();
+		atObj->ResetTime();
 		PlayScene::OnExit();
 	}
 }

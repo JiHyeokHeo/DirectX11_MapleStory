@@ -1,6 +1,9 @@
 #pragma once
 
 
+// Template
+#include "ObjectTemplate.h"
+#include "EffectTemplate.h"
 // Static Manager
 #include "jnsSkillManager.h"
 
@@ -92,10 +95,6 @@
 // Resources
 #include "jnsResources.h"
 #include "jnsMesh.h"
-
-
-// Instantiate Template
-#include "ObjectTemplate.h"
 
 // Effect
 #include "jnsSmoke.h"

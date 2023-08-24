@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CommonSceneInclude.h" />
+    <ClInclude Include="EffectTemplate.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="InventoryBTN.h" />
     <ClInclude Include="jnsAssainHit01.h" />

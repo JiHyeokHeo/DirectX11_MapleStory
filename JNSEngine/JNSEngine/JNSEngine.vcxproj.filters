@@ -427,6 +427,9 @@
     <ClInclude Include="jnsAttackReflection.h">
       <Filter>Effect</Filter>
     </ClInclude>
+    <ClInclude Include="EffectTemplate.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

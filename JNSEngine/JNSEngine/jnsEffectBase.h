@@ -23,5 +23,4 @@ namespace jns
 		GameObject* chaseObject;
 	private:
 	};
-
 }

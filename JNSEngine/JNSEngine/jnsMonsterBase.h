@@ -18,6 +18,11 @@ namespace jns
 			Right = 1,
 		};
 
+		enum class EffectType
+		{
+			Reflect,
+			None,
+		};
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -84,6 +89,11 @@ namespace jns
 			mTextureSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
+
+		void SetEffectType(EffectType type) { mEffectType = type; }
+		EffectType GetEffectType() { return mEffectType; }
+		void SetIsEffectOn(bool isOn) { isEffectOn = isOn; }
+		bool GetIsEffectOn() { return isEffectOn; }
 	protected:
 		eLayerType mType;
 		MeshRenderer* mr;
@@ -92,7 +102,7 @@ namespace jns
 		Vector2 mSize;
 		Animator* at;
 		MonsterDir mMonsterDir;
-
+		EffectType mEffectType;
 		bool isEffectOn;
 	};
 

@@ -18,36 +18,62 @@ namespace jns
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Effect\\AttackReflection", 100, 0.1f);
 		at->PlayAnimation(L"EffectAttackReflection", false);
-
+		reflectionOnTime = 0.0f;
 		GameObject::Initialize();
 	}
 	void AttackReflection::Update()
 	{
-		if (chaseObject != nullptr)
+		isEffectOn = effect::tem::GetMonsterEffectIsOn(chaseObject);
+
+		if (isEffectOn == true)
 		{
-			
-
-			Vector3 chaseObjPos = chaseObject->GetComponent<Transform>()->GetPosition();
-			Vector3 offSetPos = {};
-			if (chaseObject->GetName() == L"BloodyQueen")
+			if (chaseObject != nullptr)
 			{
-				offSetPos = Vector3(-15.0f, 280.0f, 0.0f);
-				chaseObjPos += offSetPos;
+				Vector3 chaseObjPos = chaseObject->GetComponent<Transform>()->GetPosition();
+				Vector3 offSetPos = {};
+				if (chaseObject->GetName() == L"BloodyQueen")
+				{
+					offSetPos = Vector3(-15.0f, 280.0f, 0.0f);
+					chaseObjPos += offSetPos;
+				}
+
+
+
+				MonsterBase::EffectType type = effect::tem::GetMonsterEffectState(chaseObject);
+
+
+				tr->SetPosition(chaseObjPos);
+
+				if (GetState() == GameObject::eState::Active)
+				{
+					reflectionOnTime += Time::DeltaTime();
+				}
+				if (reflectionOnTime >= 5.0f)
+				{
+					reflectionOnTime = 0.0f;	
+					effect::tem::SetMonsterEffectIsOn(chaseObject, false);
+				}
 			}
-
-
-			tr->SetPosition(chaseObjPos);
 		}
 
 
-		GameObject::Update();
+		
+		if (isEffectOn == true)
+			GameObject::Update();
 	}
 	void AttackReflection::LateUpdate()
 	{
-		GameObject::LateUpdate();
+		if (isEffectOn == true)
+			GameObject::LateUpdate();
 	}
 	void AttackReflection::Render()
 	{
-		GameObject::Render();
+		if(isEffectOn == true)
+			GameObject::Render();
+	}
+	void AttackReflection::ResetTime()
+	{
+		int a = 0;
+		reflectionOnTime = 0.0f;
 	}
 }

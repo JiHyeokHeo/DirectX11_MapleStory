@@ -56,11 +56,11 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
-		mBloodyQueenInfo.isReflectOn = true;
-		
+		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
+
 		at->CompleteEvent(L"AttractionBloodyQueenATBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni1, this);
 		at->CompleteEvent(L"ReflectBloodyQueenRFBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni2, this);
@@ -122,7 +122,7 @@ namespace jns
 		{
 			int mSkillDmg = 0.0f;
 			mChangeTime = 0.0f;
-			if (mBloodyQueenInfo.isReflectOn == true)
+			if (mBloodyQueen->GetIsEffectOn() == true)
 			{
 				PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 				int playerHp = playerScript->GetPlayerInfo().hp;
@@ -139,7 +139,7 @@ namespace jns
 				playerHp -= mSkillDmg;
 				playerScript->SetPlayerHp(playerHp);
 			}
-			else if (mBloodyQueenInfo.isReflectOn == false)
+			else if (mBloodyQueen->GetIsEffectOn() == false)
 			{
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
@@ -302,6 +302,18 @@ namespace jns
 		mAnimatorPlaying = false;
 		mMonsterState = eBloodyQueenState::Idle;
 	}
+	void BloodyQueenScript::ResetData()
+	{
+		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
+		{
+			GetOwner()->SetState(GameObject::eState::Active);
+		}
+		tr->SetPosition(Vector3(150.0f, -160.0f, 3.0f));
+		mMonsterState = eBloodyQueenState::Idle;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
+		mBloodyQueenInfo.hp = 100;
+		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+	}
 	void BloodyQueenScript::Idle()
 	{
 		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && mBloodyQueenInfo.isChasing == false)
@@ -434,7 +446,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -538,6 +550,8 @@ namespace jns
 			else
 			{
 				animationname += animationNameReflect;
+				mBloodyQueen->SetEffectType(MonsterBase::EffectType::Reflect);
+				mBloodyQueen->SetIsEffectOn(true);
 				
 			}
 			at->PlayAnimation(animationname, true);

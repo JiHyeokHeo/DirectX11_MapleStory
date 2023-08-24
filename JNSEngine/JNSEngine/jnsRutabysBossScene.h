@@ -19,6 +19,8 @@ namespace jns
 		virtual void OnExit() override;
 	private:
 		class Player* player;
+		class BloodyQueenScript* mBQscript;
+		class AttackReflection* atObj;
 	};
 }
 

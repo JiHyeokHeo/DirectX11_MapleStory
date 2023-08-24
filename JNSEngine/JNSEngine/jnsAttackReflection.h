@@ -14,7 +14,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void ResetTime();
 	private:
-		
+		float reflectionOnTime;
+		bool isEffectOn;
 	};
+
 }
