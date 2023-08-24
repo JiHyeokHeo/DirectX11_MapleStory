@@ -22,6 +22,15 @@
 #include "jnsPlayerMoveLimitScript.h"
 #include "jnsBloodyQueenScript.h"
 
+// Pattern
+#include "jnsMirror.h"
+#include "jnsHeart.h"
+#include "jnsDarkPaper.h"
+
+
+// Effect
+#include "jnsAttackReflection.h"
+
 // Player
 #include "jnsPlayer.h"
 

@@ -200,6 +200,12 @@
     <ClCompile Include="jnsHeart.cpp" />
     <ClCompile Include="jnsDarkPaper.cpp" />
     <ClCompile Include="jnsHeartScript.cpp" />
+    <ClCompile Include="jnsEffectBase.cpp">
+      <Filter>Effect\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsAttackReflection.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -415,6 +421,12 @@
     <ClInclude Include="jnsHeart.h" />
     <ClInclude Include="jnsDarkPaper.h" />
     <ClInclude Include="jnsHeartScript.h" />
+    <ClInclude Include="jnsEffectBase.h">
+      <Filter>Effect\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsAttackReflection.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -650,6 +662,9 @@
     </Filter>
     <Filter Include="Contents\Particle">
       <UniqueIdentifier>{9f2b5b1d-eac1-439e-a4aa-92252cfe3f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect\Base">
+      <UniqueIdentifier>{807c651c-d6ea-49fd-894f-ef992d70d2a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

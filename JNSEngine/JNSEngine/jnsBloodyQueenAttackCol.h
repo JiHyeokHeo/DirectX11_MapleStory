@@ -10,6 +10,7 @@ namespace jns
 		struct BloodyQueenSkillDamage
 		{
 			int normalAttack = 30;
+			int swallowAttack = 100;
 
 		};
 		virtual void Initialize() override;

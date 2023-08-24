@@ -19,6 +19,7 @@ namespace jns
 		{
 			int hp;
 			bool isRight;
+			bool isReflectOn;
 			float mHittedTime;
 			float mMoveSpeed;
 			eBloodyQueenType mBossPrevType;
@@ -92,7 +93,7 @@ namespace jns
 		void Change();
 		void Die();
 		void SpecialAttack();
-
+		void UpdatePatternPercentage();
 		void PlaySpecialAttackAnimation(std::wstring animationname);
 
 		void PlayerControl();

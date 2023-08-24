@@ -7,6 +7,7 @@ namespace jns
 {
 	BloodyQueen::BloodyQueen()
 	{
+		isEffectOn = false;
 	}
 	BloodyQueen::~BloodyQueen()
 	{

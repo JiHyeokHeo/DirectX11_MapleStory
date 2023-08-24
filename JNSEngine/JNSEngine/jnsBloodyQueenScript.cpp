@@ -59,6 +59,7 @@ namespace jns
 		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		mBloodyQueenInfo.isReflectOn = true;
 		
 		at->CompleteEvent(L"AttractionBloodyQueenATBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni, this);
 		at->CompleteEvent(L"NormalBloodyQueenNBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni1, this);
@@ -103,6 +104,7 @@ namespace jns
 		CheckSkillCoolDown();
 		CheckBossHp();
 		PlayerControl();
+		UpdatePatternPercentage();
 		AnimatorControl();
 		mPrevMonsterState = mMonsterState;
 		mBloodyQueenInfo.mPrevDir = mBloodyQueenInfo.mDir;
@@ -118,16 +120,36 @@ namespace jns
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
+			int mSkillDmg = 0.0f;
 			mChangeTime = 0.0f;
-			if (other->GetOwner()->GetName() == L"AssainHit01")
+			if (mBloodyQueenInfo.isReflectOn == true)
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
-				mBloodyQueenInfo.hp -= mSkillDmg;
-				mBloodyQueenInfo.isChasing = true;
+				PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
+				int playerHp = playerScript->GetPlayerInfo().hp;
+				
+				if (other->GetOwner()->GetName() == L"AssainHit01")
+				{
+					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+				}
+				else if (other->GetOwner()->GetName() == L"AssainHit02")
+				{
+					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				}
+
+				playerHp -= mSkillDmg;
+				playerScript->SetPlayerHp(playerHp);
 			}
-			else if (other->GetOwner()->GetName() == L"AssainHit02")
+			else if (mBloodyQueenInfo.isReflectOn == false)
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				if (other->GetOwner()->GetName() == L"AssainHit01")
+				{
+					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+				}
+				else if (other->GetOwner()->GetName() == L"AssainHit02")
+				{
+					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				}
+
 				mBloodyQueenInfo.hp -= mSkillDmg;
 				mBloodyQueenInfo.isChasing = true;
 			}
@@ -449,6 +471,10 @@ namespace jns
 			SceneManager::GetPlayer()->GetComponent<Transform>()->SetPosition(mPlayerPos);
 		}
 	}
+	void BloodyQueenScript::UpdatePatternPercentage()
+	{
+		mPatternPercentage = dist2(rng2);
+	}
 	void BloodyQueenScript::PlaySpecialAttackAnimation(std::wstring animationname)
 	{
 		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
@@ -462,7 +488,7 @@ namespace jns
 		std::wstring animationNameSmile = L"Swallow1";
 		std::wstring animationNameSmileSummon = L"Summon1";
 		
-		mPatternPercentage = dist2(rng2);
+		//mPatternPercentage = dist2(rng2);
 		
 		mAnimatorPlaying = true;
 
@@ -512,6 +538,7 @@ namespace jns
 			else
 			{
 				animationname += animationNameReflect;
+				
 			}
 			at->PlayAnimation(animationname, true);
 		}

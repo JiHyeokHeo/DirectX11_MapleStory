@@ -92,6 +92,8 @@ namespace jns
 		Vector2 mSize;
 		Animator* at;
 		MonsterDir mMonsterDir;
+
+		bool isEffectOn;
 	};
 
 }

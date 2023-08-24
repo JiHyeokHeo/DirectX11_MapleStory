@@ -165,6 +165,7 @@
     <ClInclude Include="jnsAssainHit01.h" />
     <ClInclude Include="jnsAssainHit02.h" />
     <ClInclude Include="jnsAssainSkillParticle.h" />
+    <ClInclude Include="jnsAttackReflection.h" />
     <ClInclude Include="jnsBGBase.h" />
     <ClInclude Include="jnsBGInstance.h" />
     <ClInclude Include="jnsBloodyQueen.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="jnsDemonAttackRangeScript.h" />
     <ClInclude Include="jnsDemonMonster.h" />
     <ClInclude Include="jnsDemonMonsterScript.h" />
+    <ClInclude Include="jnsEffectBase.h" />
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
@@ -240,6 +242,7 @@
     <ClCompile Include="jnsAssainHit01.cpp" />
     <ClCompile Include="jnsAssainHit02.cpp" />
     <ClCompile Include="jnsAssainSkillParticle.cpp" />
+    <ClCompile Include="jnsAttackReflection.cpp" />
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsBGInstance.cpp" />
     <ClCompile Include="jnsBloodyQueen.cpp" />
@@ -256,6 +259,7 @@
     <ClCompile Include="jnsDemonAttackRangeScript.cpp" />
     <ClCompile Include="jnsDemonMonster.cpp" />
     <ClCompile Include="jnsDemonMonsterScript.cpp" />
+    <ClCompile Include="jnsEffectBase.cpp" />
     <ClCompile Include="JNSEngine.cpp" />
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />

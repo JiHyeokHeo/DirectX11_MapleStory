@@ -12,7 +12,7 @@ namespace jns
 	}
 	void Heart::Initialize()
 	{
-		//SetState(eState::Paused);
+		SetState(eState::Paused);
 		SetName(L"BloodyQueenHeart");
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		Animator* at = AddComponent<Animator>();

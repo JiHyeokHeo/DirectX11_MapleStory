@@ -1,8 +1,6 @@
 #include "jnsRutabysBossScene.h"
 #include "CommonSceneInclude.h"
-#include "jnsMirror.h"
-#include "jnsHeart.h"
-#include "jnsDarkPaper.h"
+
 namespace jns
 {
 	RutabysBossScene::RutabysBossScene()
@@ -20,14 +18,17 @@ namespace jns
 		
 
 		object::Instantiate<DarkPaper>(eLayerType::BG, Vector3::Zero);
-		// 보스
+		
+		// 보스 이펙트 연동
 		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -160.0f, 3.0f));
 		BloodyQueenScript* bqScript = obj->GetComponent<BloodyQueenScript>();
 		Mirror* mirror = object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -300.0f, 2.0f));
 		bqScript->SetMirror(mirror);
-		//player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 0.0f, 1.0001f));
-		
-		// 하드 세팅
+		AttackReflection* atObj = object::Instantiate<AttackReflection>(eLayerType::MapEffect, Vector3::Zero);
+		atObj->SetChaseObject(obj);
+		//
+
+		// 하트 세팅
 		for (int i = -7; i <= 7; i++)
 		{
 			Heart* heart = object::Instantiate<Heart>(eLayerType::Monster, Vector3(100*i, -375.0f, 0.5f));
