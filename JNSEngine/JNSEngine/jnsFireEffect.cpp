@@ -16,16 +16,15 @@ namespace jns
 	}
 	void FireEffect::Initialize()
 	{
-		SetName(L"AttackReflecton");
+		SetName(L"FireEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
-		tr->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 
-		std::shared_ptr<Texture> atlas
-			= Resources::Load<Texture>(L"FireAtlas", L"..\\Resources\\Boss\\NormalBloodyQueen\\NBQFire\\fire.png");
+
 		Animator* at = AddComponent<Animator>();
-		at->Create(L"Fire", atlas, Vector2::Zero, Vector2(120.0f, 120.0f),19, 100.0f);
-		at->PlayAnimation(L"Fire", true);
+		at->CreateAnimations(L"..\\Resources\\Boss\\NormalBloodyQueen\\FireEffect\\Fire", 500, 0.025f);
+		at->PlayAnimation(L"FireEffectFire", true);
 		GameObject::Initialize();
 	}
 	void FireEffect::Update()

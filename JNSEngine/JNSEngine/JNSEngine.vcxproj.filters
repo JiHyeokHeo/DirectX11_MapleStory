@@ -212,6 +212,7 @@
     <ClCompile Include="jnsYellowPortal.cpp">
       <Filter>Contents\Portal\Portal</Filter>
     </ClCompile>
+    <ClCompile Include="jnsSwallowEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -442,6 +443,7 @@
     <ClInclude Include="jnsYellowPortal.h">
       <Filter>Contents\Portal\Portal</Filter>
     </ClInclude>
+    <ClInclude Include="jnsSwallowEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

@@ -229,6 +229,7 @@
     <ClInclude Include="jnsStartScene3.h" />
     <ClInclude Include="jnsStartScene4.h" />
     <ClInclude Include="jnsStartScene5.h" />
+    <ClInclude Include="jnsSwallowEffect.h" />
     <ClInclude Include="jnstestScript.h" />
     <ClInclude Include="jnsTomb.h" />
     <ClInclude Include="jnsTombScript.h" />
@@ -309,6 +310,7 @@
     <ClCompile Include="jnsStartScene3.cpp" />
     <ClCompile Include="jnsStartScene4.cpp" />
     <ClCompile Include="jnsStartScene5.cpp" />
+    <ClCompile Include="jnsSwallowEffect.cpp" />
     <ClCompile Include="jnstestScript.cpp" />
     <ClCompile Include="jnsTomb.cpp" />
     <ClCompile Include="jnsTombScript.cpp" />
