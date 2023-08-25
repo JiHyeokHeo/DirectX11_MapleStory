@@ -3,11 +3,11 @@
 
 namespace jns
 {
-	class Portal : public PortalBase
+	class YellowPortal : public PortalBase
 	{
 	public:
-		Portal(std::wstring name, Vector3 setpos);
-		~Portal();
+		YellowPortal(std::wstring name, Vector3 setpos, int dir);
+		~YellowPortal();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -15,6 +15,9 @@ namespace jns
 		virtual void Render();
 
 	private:
+		int mDir;
+		class Animator* at;
+		bool isSetDir;
 	};
 
 }

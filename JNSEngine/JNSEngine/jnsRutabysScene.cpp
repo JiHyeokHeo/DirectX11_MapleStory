@@ -6,6 +6,7 @@
 #include "jnsDamageControl.h"
 #include "jnsAssainSkillParticle.h"
 #include "jnsTomb.h"
+#include "jnsYellowPortal.h"
 
 namespace jns
 {
@@ -21,6 +22,11 @@ namespace jns
 		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
 		paintShader->SetTarget(paintTexture);
 		paintShader->OnExcute();
+		
+
+		//test
+		object::Instantiate<FireEffect>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
+
 
 		object::Instantiate<DamageControl>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
 		//{
@@ -107,7 +113,8 @@ namespace jns
 
 		// Æ÷Å»
 		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
-		
+		object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(-2400.0f, 200.0f, 1.0f), Vector3(-1000.0f, -190.0f, 0.0f), 1);
+		object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(2400.0f, 200.0f, 1.0f), Vector3(1000.0f, -190.0f, 0.0f), -1);
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));

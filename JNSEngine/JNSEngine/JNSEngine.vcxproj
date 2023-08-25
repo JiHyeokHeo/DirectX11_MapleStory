@@ -187,6 +187,7 @@
     <ClInclude Include="jnsExpBar.h" />
     <ClInclude Include="jnsExpBarMoveScript.h" />
     <ClInclude Include="jnsExpMaxBar.h" />
+    <ClInclude Include="jnsFireEffect.h" />
     <ClInclude Include="jnsGridScrpt.h" />
     <ClInclude Include="jnsGround.h" />
     <ClInclude Include="jnsGroundScript.h" />
@@ -233,6 +234,7 @@
     <ClInclude Include="jnsTombScript.h" />
     <ClInclude Include="jnsUIBase.h" />
     <ClInclude Include="jnsWorldSelectScene.h" />
+    <ClInclude Include="jnsYellowPortal.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="jnsRutabysBossScene.h" />
     <ClInclude Include="CommonUIInclude.h" />
@@ -265,6 +267,7 @@
     <ClCompile Include="jnsExpBar.cpp" />
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
+    <ClCompile Include="jnsFireEffect.cpp" />
     <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsGround.cpp" />
     <ClCompile Include="jnsGroundScript.cpp" />
@@ -312,6 +315,7 @@
     <ClCompile Include="jnsUIBase.cpp" />
     <ClCompile Include="jnsWorldSelectScene.cpp" />
     <ClCompile Include="jnsRutabysBossScene.cpp" />
+    <ClCompile Include="jnsYellowPortal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Update="C:\Users\tmdgu\OneDrive\Desktop\DNF_Git\DirectX_Team_Portfolio\YamYamEngine\Engine_SOURCE\jnsMath.inl">

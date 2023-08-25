@@ -30,14 +30,14 @@ namespace jns
 	}
 	void Portal::Update()
 	{
-		PortalBase::Update();
+		GameObject::Update();
 	}
 	void Portal::LateUpdate()
 	{
-		PortalBase::LateUpdate();
+		GameObject::LateUpdate();
 	}
 	void Portal::Render()
 	{
-		PortalBase::Render();
+		GameObject::Render();
 	}
 }

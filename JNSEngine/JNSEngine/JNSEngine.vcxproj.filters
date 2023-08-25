@@ -206,6 +206,12 @@
     <ClCompile Include="jnsAttackReflection.cpp">
       <Filter>Effect</Filter>
     </ClCompile>
+    <ClCompile Include="jnsFireEffect.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsYellowPortal.cpp">
+      <Filter>Contents\Portal\Portal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -429,6 +435,12 @@
     </ClInclude>
     <ClInclude Include="EffectTemplate.h">
       <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsFireEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsYellowPortal.h">
+      <Filter>Contents\Portal\Portal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

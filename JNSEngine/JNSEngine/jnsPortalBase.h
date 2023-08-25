@@ -77,13 +77,17 @@ namespace jns
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
 
+		std::wstring GetPortalName() { return mPortalName; }
+		Vector3 GetsetPlayerPos() { return setPlayerPos; }
+
 	protected:
 		eLayerType mType;
 		MeshRenderer* mr;
 		Transform* tr;
 		Vector2 mTextureSize;
 		Vector2 mSize;
-
+		std::wstring mPortalName;
+		Vector3 setPlayerPos;
 		
 	};
 }

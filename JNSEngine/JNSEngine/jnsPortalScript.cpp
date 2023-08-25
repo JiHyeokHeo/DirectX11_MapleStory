@@ -44,7 +44,7 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player")
 		{
-			mPortal = dynamic_cast<Portal*>(this->GetOwner());
+			mPortal = dynamic_cast<PortalBase*>(this->GetOwner());
 		}
 	}
 	void PortalScript::OnCollisionStay(Collider2D* other)

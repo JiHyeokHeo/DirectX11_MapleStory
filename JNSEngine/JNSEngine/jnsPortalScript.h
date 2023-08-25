@@ -23,7 +23,7 @@ namespace jns
 
 
 	private:
-		class Portal* mPortal;
+		class PortalBase* mPortal;
 		ePortalEnter mEnter;
 		bool isEnter;
 	};
