@@ -31,6 +31,7 @@ namespace jns
 			else
 			{
 				mOpacity = 1.0f;
+				chageScene = false;
 			}
 		}
 

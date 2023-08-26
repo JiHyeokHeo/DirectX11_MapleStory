@@ -38,43 +38,49 @@ namespace jns
 	}
 	void GameObject::Update()
 	{
-		if (mState == eState::Paused)
-			return;
 		for (Component* comp : mComponents)
 		{
+			if (mState == eState::Paused)
+				return;
 			comp->Update();
 		}
 
 		for (Script* script : mScripts)
 		{
+			if (mState == eState::Paused)
+				return;
 			script->Update();
 		}
 	}
 	void GameObject::LateUpdate()
 	{
-		if (mState == eState::Paused)
-			return;
 		for (Component* comp : mComponents)
 		{
+			if (mState == eState::Paused)
+				return;
 			comp->LateUpdate();
 		}
 
 		for (Script* script : mScripts)
 		{
+			if (mState == eState::Paused)
+				return;
 			script->LateUpdate();
 		}
 	}
 	void GameObject::Render()
 	{
-		if (mState == eState::Paused)
-			return;
 		for (Component* comp : mComponents)
 		{
+			if (mState == eState::Paused)
+				return;
 			comp->Render();
 		}
 
 		for (Script* script : mScripts)
 		{
+			if (mState == eState::Paused)
+				return;
 			script->Render();
 		}
 	}

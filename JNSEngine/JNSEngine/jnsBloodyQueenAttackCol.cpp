@@ -178,6 +178,7 @@ namespace jns
 				if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 				{
 					mPlayerHp -= mBQSkillDamage.normalAttack;
+					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
 				}
 
 				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
@@ -188,7 +189,6 @@ namespace jns
 
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
-				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
 			}
 		}
 	}

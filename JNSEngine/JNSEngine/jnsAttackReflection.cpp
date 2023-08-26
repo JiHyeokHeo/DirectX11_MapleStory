@@ -37,10 +37,7 @@ namespace jns
 					chaseObjPos += offSetPos;
 				}
 
-
-
 				MonsterBase::EffectType type = effect::tem::GetMonsterEffectState(chaseObject);
-
 
 				tr->SetPosition(chaseObjPos);
 

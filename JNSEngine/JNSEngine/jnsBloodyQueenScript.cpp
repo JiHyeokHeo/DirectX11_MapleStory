@@ -56,7 +56,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
@@ -111,6 +111,11 @@ namespace jns
 	}
 	void BloodyQueenScript::LateUpdate()
 	{
+		if (mMonsterState == eBloodyQueenState::SpecialAttack)
+		{
+			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		}
+
 	}
 	void BloodyQueenScript::Render()
 	{
@@ -185,7 +190,7 @@ namespace jns
 	void BloodyQueenScript::ChangeBossTypeRandom()
 	{
 		mChangeType += Time::DeltaTime();
-		if (mChangeType >= 15.0f && mAnimatorPlaying == false)
+		if (mChangeType >= 15.0f && (mMonsterState == eBloodyQueenState::Idle || mMonsterState == eBloodyQueenState::Move))
 		{
 			mMonsterState = eBloodyQueenState::Change;
 			mChangeType = 0.0f;
@@ -433,9 +438,11 @@ namespace jns
 	void BloodyQueenScript::Change()
 	{
 		mChangeTime += Time::DeltaTime();
+
 		if (mChangeTime >= 0.5f)
 		{
 			mMonsterState = eBloodyQueenState::Idle;
+			mChangeTime = 0.0f;
 			isChanging = false;
 		}
 
@@ -446,7 +453,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -454,33 +461,35 @@ namespace jns
 	}
 	void BloodyQueenScript::SpecialAttack()
 	{ 
-		{
+	/*	{
 			if (mAnimatorPlaying == false)
 			{
 				mMonsterState = eBloodyQueenState::Attack;
 				return;
 			}
-		}
+		}*/
+		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
+		{
+			Vector3 mMonsterPos = tr->GetPosition();
+			Vector3 swallowOffSetPos = {};
+			swallowOffSetPos.x = 100.0f * (int)mBloodyQueenInfo.mDir;
+			Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+			int swallowDir = -99;
+			if (mPlayerPos.x >= mMonsterPos.x + swallowOffSetPos.x)
+			{
+				swallowDir = -1;
+			}
+			else if (mPlayerPos.x <= mMonsterPos.x + swallowOffSetPos.x)
+			{
+				swallowDir = 1;
+			}
 
-		Vector3 mMonsterPos = tr->GetPosition();
-		Vector3 swallowOffSetPos = {};
-		swallowOffSetPos.x = 100.0f * (int)mBloodyQueenInfo.mDir;
-		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-		int swallowDir = -99;
-		if (mPlayerPos.x >= mMonsterPos.x + swallowOffSetPos.x)
-		{
-			swallowDir = -1;
-		}
-		else if (mPlayerPos.x <= mMonsterPos.x + swallowOffSetPos.x)
-		{
-			swallowDir = 1;
-		}
-
-		if (mUsingSkillName == L"SmileBloodyQueenSMBQSwallow1")
-		{
-			float registPower = 150.0f;
-			mPlayerPos.x += registPower * swallowDir * Time::DeltaTime();
-			SceneManager::GetPlayer()->GetComponent<Transform>()->SetPosition(mPlayerPos);
+			if (mUsingSkillName == L"SmileBloodyQueenSMBQSwallow1")
+			{
+				float registPower = 150.0f;
+				mPlayerPos.x += registPower * swallowDir * Time::DeltaTime();
+				SceneManager::GetPlayer()->GetComponent<Transform>()->SetPosition(mPlayerPos);
+			}
 		}
 	}
 	void BloodyQueenScript::UpdatePatternPercentage()
@@ -527,11 +536,11 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
 		{
-			if (mPatternPercentage <= 0.3f)
+	/*		if (mPatternPercentage <= 0.3f)
 			{
 				mMirror->SetState(GameObject::eState::Active);
 			}
-			else
+			else*/
 			{
 				for (int i =0; i< mHearts.size(); i++)
 				{
@@ -558,12 +567,11 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
-		/*	if (mPatternPercentage <= 0.5f)
+			if (mPatternPercentage <= 0.5f)
 			{
 				animationname += animationNameSmileSummon;
-			}*/
-			
-			{
+			}
+			else {
 				animationname += animationNameSmile;
 			}
 			at->PlayAnimation(animationname, true);

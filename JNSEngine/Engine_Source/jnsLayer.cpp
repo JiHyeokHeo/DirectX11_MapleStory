@@ -24,9 +24,9 @@ namespace jns
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			//if (gameObj->GetState()
-			//	!= GameObject::eState::Active)
-			//	continue;
+			if (gameObj->GetState()
+				== GameObject::eState::Paused)
+				continue;
 			gameObj->Update();
 		}
 	}
@@ -34,9 +34,9 @@ namespace jns
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			//if (gameObj->GetState()
-			//	!= GameObject::eState::Active)
-			//	continue;
+			if (gameObj->GetState()
+				== GameObject::eState::Paused)
+				continue;
 			gameObj->LateUpdate();
 		}
 	}
@@ -45,7 +45,7 @@ namespace jns
 		for (GameObject* gameObj : mGameObjects)
 		{
 			if (gameObj->GetState()
-				!= GameObject::eState::Active)
+				== GameObject::eState::Paused)
 				continue;
 			gameObj->Render();
 		}

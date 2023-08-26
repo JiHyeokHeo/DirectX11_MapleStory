@@ -138,7 +138,7 @@ namespace jns
 	void HeartScript::CompleteBomb()
 	{
 		Vector3 heartPos = tr->GetPosition();
-		tr->SetPosition(heartPos.x, heartStartPos, heartPos.y);
+		tr->SetPosition(heartPos.x, heartStartPos, heartPos.z);
 		heartState = eHeartState::Summon;
 		isSummon = false;
 		this->GetOwner()->SetState(GameObject::eState::Paused);
