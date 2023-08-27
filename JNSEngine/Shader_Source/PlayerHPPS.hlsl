@@ -34,7 +34,7 @@ float4 main(VSOut In) : SV_TARGET
         }
     }
     
-    //color = albedoTexture.Sample(anisotropicSampler, In.UV);
+    color = albedoTexture.Sample(anisotropicSampler, In.UV);
     
     float4 lightColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
     for (int i = 0; i < 2; i++)

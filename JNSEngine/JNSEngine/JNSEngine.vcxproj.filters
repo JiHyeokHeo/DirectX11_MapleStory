@@ -213,6 +213,9 @@
       <Filter>Contents\Portal\Portal</Filter>
     </ClCompile>
     <ClCompile Include="jnsSwallowEffect.cpp" />
+    <ClCompile Include="jnsDamageController.cpp" />
+    <ClCompile Include="jnsBossHp.cpp" />
+    <ClCompile Include="jnsBossHpBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -444,6 +447,9 @@
       <Filter>Contents\Portal\Portal</Filter>
     </ClInclude>
     <ClInclude Include="jnsSwallowEffect.h" />
+    <ClInclude Include="jnsDamageController.h" />
+    <ClInclude Include="jnsBossHp.h" />
+    <ClInclude Include="jnsBossHpBar.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

@@ -2,6 +2,8 @@
 #include "CommonSceneInclude.h"
 #include "jnsSwallowEffect.h"
 #include "jnsFireEffect.h"
+#include "jnsBossHp.h"
+#include "jnsBossHpBar.h"
 
 namespace jns
 {
@@ -38,6 +40,11 @@ namespace jns
 			Heart* heart = object::Instantiate<Heart>(eLayerType::Monster, Vector3(100*i, -375.0f, 0.5f));
 			mBQscript->SetHeart(heart);
 		}
+
+		// UI
+		object::Instantiate<BossHp>(eLayerType::UI, Vector3::Zero);
+		BossHpBar* bossHpBar = object::Instantiate<BossHpBar>(eLayerType::UI, Vector3::Zero);
+		bossHpBar->SetBossTarget(obj);
 
 		CreatePlayerUI();
 		PlayScene::Initialize();

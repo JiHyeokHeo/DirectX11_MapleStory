@@ -60,7 +60,7 @@ namespace jns
 		void CheckChaseTime();
 		void CheckSkillCoolDown();
 		void CheckBossHp();
-
+		void UpdateBossHp();
 
 		void CompleteBressAni();
 		void CompleteBressAni1();
