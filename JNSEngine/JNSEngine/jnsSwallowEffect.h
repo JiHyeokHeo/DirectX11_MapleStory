@@ -14,9 +14,11 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-
+		void SwallowComplete();
 
 	private:
+		bool isEffectOn;
+		bool isSet;
 	};
 
 }

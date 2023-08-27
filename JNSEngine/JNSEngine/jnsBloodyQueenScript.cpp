@@ -4,6 +4,7 @@
 #include "jnsMirror.h"
 #include "jnsHeart.h"
 #include "jnsHeartScript.h"
+#include "jnsSwallowEffect.h"
 std::mt19937_64 rng1(3244);
 std::uniform_int_distribution<__int64> dist1(-1, 1);
 
@@ -56,7 +57,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
@@ -89,7 +90,7 @@ namespace jns
 		at->CompleteEvent(L"BloodyQueenDieDie3") = std::bind(&BloodyQueenScript::CompleteDieAni3, this);
 
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon1") = std::bind(&BloodyQueenScript::CompleteSummon, this);
-		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon2") = std::bind(&BloodyQueenScript::CompleteAttack, this);
+		at->CompleteEvent(L"SmileBloodyQueenSMBQSummon2") = std::bind(&BloodyQueenScript::CompleteSmileSummon, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow1") = std::bind(&BloodyQueenScript::CompleteSwallow, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow2") = std::bind(&BloodyQueenScript::CompleteSwallow1, this);
 		at->CompleteEvent(L"SmileBloodyQueenSMBQSwallow3") = std::bind(&BloodyQueenScript::CompleteAttack, this);
@@ -307,6 +308,11 @@ namespace jns
 		mAnimatorPlaying = false;
 		mMonsterState = eBloodyQueenState::Idle;
 	}
+	void BloodyQueenScript::CompleteSmileSummon()
+	{
+		at->PlayAnimation(L"SmileBloodyQueenSMBQSwallow1", true);
+		mUsingSkillName = L"SmileBloodyQueenSMBQSwallow1";
+	}
 	void BloodyQueenScript::ResetData()
 	{
 		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
@@ -453,7 +459,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -567,13 +573,12 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
-			if (mPatternPercentage <= 0.5f)
+			if (mPatternPercentage <= 1.0f)
 			{
 				animationname += animationNameSmileSummon;
+				mSwallowEffect->SetState(GameObject::eState::Active);
 			}
-			else {
-				animationname += animationNameSmile;
-			}
+		
 			at->PlayAnimation(animationname, true);
 		}
 

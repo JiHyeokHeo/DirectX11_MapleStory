@@ -70,7 +70,6 @@ namespace jns
 	}
 	void AttackReflection::ResetTime()
 	{
-		int a = 0;
 		reflectionOnTime = 0.0f;
 	}
 }

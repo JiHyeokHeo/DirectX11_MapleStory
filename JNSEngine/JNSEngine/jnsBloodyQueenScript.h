@@ -50,6 +50,7 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 	
 		void SetMirror(class Mirror* mirror) { mMirror = mirror; }
+		void SetSwallow(class SwallowEffect* swallow) { mSwallowEffect = swallow; }
 		void SetHeart(class Heart* heart) { mHearts.push_back(heart); }
 
 
@@ -85,6 +86,7 @@ namespace jns
 		void CompleteSwallow1();
 
 		void CompleteAttack();
+		void CompleteSmileSummon();
 
 		void ResetData();
 	public:
@@ -137,6 +139,7 @@ namespace jns
 
 		class Mirror* mMirror;
 		std::vector<Heart*> mHearts;
+		class SwallowEffect* mSwallowEffect;
 	};
 
 

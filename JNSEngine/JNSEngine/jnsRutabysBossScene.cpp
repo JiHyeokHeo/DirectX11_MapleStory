@@ -1,5 +1,7 @@
 #include "jnsRutabysBossScene.h"
 #include "CommonSceneInclude.h"
+#include "jnsSwallowEffect.h"
+#include "jnsFireEffect.h"
 
 namespace jns
 {
@@ -27,7 +29,9 @@ namespace jns
 		atObj = object::Instantiate<AttackReflection>(eLayerType::MapEffect, Vector3::Zero);
 		atObj->SetChaseObject(obj);
 		//
-		 
+		object::Instantiate<FireEffect>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
+		SwallowEffect* swallowObj= object::Instantiate<SwallowEffect>(jns::enums::eLayerType::MapEffect, Vector3(0.0f, -390.0f, 2.0f));
+		mBQscript->SetSwallow(swallowObj);
 		// 하트 세팅
 		for (int i = -7; i <= 7; i++)
 		{

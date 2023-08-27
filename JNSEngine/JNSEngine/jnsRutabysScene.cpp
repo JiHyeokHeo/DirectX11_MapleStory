@@ -7,6 +7,7 @@
 #include "jnsAssainSkillParticle.h"
 #include "jnsTomb.h"
 #include "jnsYellowPortal.h"
+#include "jnsSwallowEffect.h"
 
 namespace jns
 {
@@ -25,7 +26,6 @@ namespace jns
 		
 
 		//test
-		object::Instantiate<FireEffect>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
 
 
 		object::Instantiate<DamageControl>(jns::enums::eLayerType::MapEffect, Vector3::Zero);

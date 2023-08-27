@@ -1,6 +1,6 @@
 #pragma once
 
-#include "jnsFireEffect.h"
+
 // Template
 #include "ObjectTemplate.h"
 #include "EffectTemplate.h"
