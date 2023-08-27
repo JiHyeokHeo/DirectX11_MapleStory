@@ -60,13 +60,13 @@ namespace jns
 			mChangeTime = 0.0f;
 			if (other->GetOwner()->GetName() == L"AssainHit01")
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
 				mDemonInfo.hp -= mSkillDmg;
 				mDemonInfo.isChasing = true;
 			}
 			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
 				mDemonInfo.hp -= mSkillDmg;
 				mDemonInfo.isChasing = true;
 			}

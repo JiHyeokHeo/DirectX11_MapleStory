@@ -37,11 +37,6 @@ namespace jns
 		return mSkillData[key];
 	}
 
-	int SkillManager::FindSkillDamage(const std::wstring& key)
-	{
-		return mSkillData[key]->damage;
-	}
-
 	void SkillManager::Release()
 	{
 		for (auto& mDatas : mSkillData)

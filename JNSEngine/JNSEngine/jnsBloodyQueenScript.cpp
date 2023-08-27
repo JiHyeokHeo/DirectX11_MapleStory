@@ -137,11 +137,11 @@ namespace jns
 				
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
 				}
 				else if (other->GetOwner()->GetName() == L"AssainHit02")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
 				}
 
 				playerHp -= mSkillDmg;
@@ -151,11 +151,11 @@ namespace jns
 			{
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
 				}
 				else if (other->GetOwner()->GetName() == L"AssainHit02")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
 				}
 
 				mBloodyQueenInfo.hp -= mSkillDmg;

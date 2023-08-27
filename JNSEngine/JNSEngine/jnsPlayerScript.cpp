@@ -82,7 +82,10 @@ namespace jns
 	void PlayerScript::LateUpdate()
 	{
         if (mPlayerInfo.hp != mPrevHp)
+        {
             checkInvisibleTime = true;
+            isHpLerp = true;
+        }
 
         if (checkInvisibleTime)
         {
@@ -128,6 +131,10 @@ namespace jns
 	void PlayerScript::OnCollisionExit(Collider2D* other)
 	{
 	}
+
+    void PlayerScript::HpLerp()
+    {
+    }
 
 	void PlayerScript::BindConstantBuffer()
 	{
