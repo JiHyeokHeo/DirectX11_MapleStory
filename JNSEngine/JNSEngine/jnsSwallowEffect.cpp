@@ -11,7 +11,7 @@ namespace jns
 	}
 	void SwallowEffect::Initialize()
 	{
-		SetState(GameObject::eState::Active);
+		SetState(GameObject::eState::Paused);
 		SetName(L"SwallowEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));

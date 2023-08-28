@@ -195,11 +195,6 @@
     <ClCompile Include="jnsAssainSkillParticle.cpp">
       <Filter>Contents\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="jnsTomb.cpp" />
-    <ClCompile Include="jnsTombScript.cpp" />
-    <ClCompile Include="jnsHeart.cpp" />
-    <ClCompile Include="jnsDarkPaper.cpp" />
-    <ClCompile Include="jnsHeartScript.cpp" />
     <ClCompile Include="jnsEffectBase.cpp">
       <Filter>Effect\Base</Filter>
     </ClCompile>
@@ -212,7 +207,24 @@
     <ClCompile Include="jnsYellowPortal.cpp">
       <Filter>Contents\Portal\Portal</Filter>
     </ClCompile>
-    <ClCompile Include="jnsSwallowEffect.cpp" />
+    <ClCompile Include="jnsHeart.cpp">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsSwallowEffect.cpp">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsHeartScript.cpp">
+      <Filter>Contents\Script\BossObjects\BloodyQueen</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsDarkPaper.cpp">
+      <Filter>Contents\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsTombScript.cpp">
+      <Filter>Contents\Script\Tomb</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsTomb.cpp">
+      <Filter>Contents\Player\Tomb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -423,11 +435,6 @@
     <ClInclude Include="jnsAssainSkillParticle.h">
       <Filter>Contents\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="jnsTomb.h" />
-    <ClInclude Include="jnsTombScript.h" />
-    <ClInclude Include="jnsHeart.h" />
-    <ClInclude Include="jnsDarkPaper.h" />
-    <ClInclude Include="jnsHeartScript.h" />
     <ClInclude Include="jnsEffectBase.h">
       <Filter>Effect\Base</Filter>
     </ClInclude>
@@ -443,7 +450,27 @@
     <ClInclude Include="jnsYellowPortal.h">
       <Filter>Contents\Portal\Portal</Filter>
     </ClInclude>
-    <ClInclude Include="jnsSwallowEffect.h" />
+    <ClInclude Include="jnsHeart.h">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsSwallowEffect.h">
+      <Filter>Contents\BossPatternObject\BloodyQueen</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsHeartScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsDarkPaper.h">
+      <Filter>Contents\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsTombScript.h">
+      <Filter>Contents\Script\Tomb</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsTomb.h">
+      <Filter>Contents\Player\Tomb</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageDisplay.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -682,6 +709,12 @@
     </Filter>
     <Filter Include="Effect\Base">
       <UniqueIdentifier>{807c651c-d6ea-49fd-894f-ef992d70d2a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Script\Tomb">
+      <UniqueIdentifier>{eb89af0b-4c11-40b5-af5c-b8075d7fe450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Player\Tomb">
+      <UniqueIdentifier>{26baab63-4484-49d6-ab4c-b1ebf55228df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

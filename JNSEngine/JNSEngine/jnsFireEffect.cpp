@@ -16,6 +16,7 @@ namespace jns
 	}
 	void FireEffect::Initialize()
 	{
+		SetState(GameObject::eState::Paused);
 		SetName(L"FireEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));

@@ -24,10 +24,15 @@ namespace jns
 		virtual void Render() override;
 
 		void SetSkillDamage(int dmg) { setSkillDamage = dmg; }
+
 	private:
 		class Animator* ani;
 		int setSkillDamage;
 		DamageType mType;
+		Transform* tr;
+		std::map<int, std::wstring> digitAnimations;
+
+		float xCorOffSet;
 	};
 
 }

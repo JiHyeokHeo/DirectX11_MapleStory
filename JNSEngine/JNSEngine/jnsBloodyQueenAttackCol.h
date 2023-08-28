@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsScript.h"
 #include "jnsBloodyQueenScript.h"
+#include "DamageDisplay.h"
 
 namespace jns
 {
@@ -29,6 +30,8 @@ namespace jns
 		BloodyQueenScript* mBQScript;
 		BloodyQueenSkillDamage mBQSkillDamage;
 		bool isNomralAttackHit;
+
+		DamageDisplay damageDisplay;
 	};
 }
 

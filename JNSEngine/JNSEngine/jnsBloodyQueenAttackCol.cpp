@@ -172,23 +172,25 @@ namespace jns
 			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
 			int mPlayerHp = playerScript->GetPlayerInfo().hp;
 			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
-			
+			int dmg = -99;
 			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
 			{
 				if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 				{
 					mPlayerHp -= mBQSkillDamage.normalAttack;
+					dmg = mBQSkillDamage.normalAttack;
 					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
 				}
 
 				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
 				{
 					mPlayerHp -= mBQSkillDamage.swallowAttack;
+					dmg = mBQSkillDamage.swallowAttack;
 				}
-
-
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
+				Vector3 playerPos = mPlayer->GetComponent<Transform>()->GetPosition();
+				damageDisplay.DisplayDamage(dmg, playerPos);
 			}
 		}
 	}
