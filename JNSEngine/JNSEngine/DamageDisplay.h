@@ -23,7 +23,7 @@ namespace jns
 			strLength = damageStr.size();
 
 			int remain = strLength % 2;
-			if (remain == 1)
+			if (remain == 0)
 			{
 				xOffset = 0.0f;
 			}

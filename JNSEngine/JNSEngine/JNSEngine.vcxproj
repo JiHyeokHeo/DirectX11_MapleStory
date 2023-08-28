@@ -161,6 +161,9 @@
   <ItemGroup>
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="DamageDisplay.h" />
+    <ClInclude Include="jnsGenesisWeapon.h" />
+    <ClInclude Include="jnsWeaponManager.h" />
+    <ClInclude Include="jnsWeaponObject.h" />
     <ClInclude Include="OverAllData.h" />
     <ClInclude Include="EffectTemplate.h" />
     <ClInclude Include="framework.h" />
@@ -245,6 +248,7 @@
     <ClInclude Include="jnsRutabysBossScene.h" />
     <ClInclude Include="CommonUIInclude.h" />
     <ClInclude Include="ObjectTemplate.h" />
+    <ClInclude Include="jnsWeaponBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InventoryBTN.cpp" />
@@ -277,6 +281,7 @@
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
     <ClCompile Include="jnsFireEffect.cpp" />
+    <ClCompile Include="jnsGenesisWeapon.cpp" />
     <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsGround.cpp" />
     <ClCompile Include="jnsGroundScript.cpp" />
@@ -323,9 +328,12 @@
     <ClCompile Include="jnsTomb.cpp" />
     <ClCompile Include="jnsTombScript.cpp" />
     <ClCompile Include="jnsUIBase.cpp" />
+    <ClCompile Include="jnsWeaponManager.cpp" />
+    <ClCompile Include="jnsWeaponObject.cpp" />
     <ClCompile Include="jnsWorldSelectScene.cpp" />
     <ClCompile Include="jnsRutabysBossScene.cpp" />
     <ClCompile Include="jnsYellowPortal.cpp" />
+    <ClCompile Include="jnsWeaponBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Update="C:\Users\tmdgu\OneDrive\Desktop\DNF_Git\DirectX_Team_Portfolio\YamYamEngine\Engine_SOURCE\jnsMath.inl">

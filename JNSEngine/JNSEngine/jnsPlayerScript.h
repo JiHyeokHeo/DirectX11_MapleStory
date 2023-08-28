@@ -178,5 +178,6 @@ namespace jns
 		bool isNormalHit = false;
 		bool isHpLerp = false;
 		int destinationHp;
+
 	};
 }

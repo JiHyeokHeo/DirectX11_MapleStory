@@ -236,6 +236,14 @@
     <ClCompile Include="jnsGridScrpt.cpp">
       <Filter>Contents\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="jnsWeaponBase.cpp">
+      <Filter>Contents\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsWeaponObject.cpp">
+      <Filter>Contents\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsWeaponManager.cpp" />
+    <ClCompile Include="jnsGenesisWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -494,6 +502,14 @@
     <ClInclude Include="OverAllData.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="jnsWeaponBase.h">
+      <Filter>Contents\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsWeaponObject.h">
+      <Filter>Contents\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsWeaponManager.h" />
+    <ClInclude Include="jnsGenesisWeapon.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -567,6 +583,9 @@
     </Filter>
     <Filter Include="Contents\UI\UIBase">
       <UniqueIdentifier>{5530f8b2-1911-40c9-9e1e-a9aedaa95e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Weapons">
+      <UniqueIdentifier>{2302e9b8-fbe3-46e7-b8a0-d7a4cd0985b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

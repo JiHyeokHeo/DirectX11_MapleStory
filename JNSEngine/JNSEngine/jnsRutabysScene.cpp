@@ -8,6 +8,9 @@
 #include "jnsTomb.h"
 #include "jnsYellowPortal.h"
 #include "jnsSwallowEffect.h"
+#include "jnsWeaponObject.h"
+#include "jnsGenesisWeapon.h"
+#include "jnsWeaponManager.h"
 
 namespace jns
 {
@@ -19,16 +22,12 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
-		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
-		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
-		paintShader->SetTarget(paintTexture);
-		paintShader->OnExcute();
+		//std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		//std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
+		//paintShader->SetTarget(paintTexture);
+		//paintShader->OnExcute();
 		
 
-		//test
-
-
-		object::Instantiate<DamageControl>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
 		//{
 		//	GameObject* player = new GameObject();
 		//	player->SetName(L"Smile");
@@ -87,9 +86,12 @@ namespace jns
 
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
+		PlayerScript* playerScript = player->GetComponent<PlayerScript>();
 		SceneManager::SetPlayer(player);
-
-
+		WeaponObject* weapon = object::Instantiate<WeaponObject>(eLayerType::MapEffect, Vector3::Zero);
+		WeaponManager::AddWeapon(L"Genesis_Thief_Weapon", object::Instantiate<GenesisWeapon>(eLayerType::MapEffect, Vector3::Zero));
+		weapon->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
+		weapon->SetPlayerScript(playerScript);
 		// 플레이어 싹다 생성 후 스킬들 사전 생성
 
 
@@ -139,6 +141,7 @@ namespace jns
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1600.0f, -120.0f, 4.9f));
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(1850.5f, -140.0f, 4.9f));
 	
+
 		// NoMove BackGround
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		//CreateInventory();

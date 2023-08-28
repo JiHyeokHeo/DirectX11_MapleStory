@@ -57,6 +57,10 @@ namespace jns
 		bool GetAniDirection() { return mDirection; }
 
 		void SetTransparency(float transparecny) { mTransparency = transparecny; }
+
+		void SetAnimationName(std::wstring name) { animationName = name; }
+		std::wstring GetAnimationName() { return animationName; }
+		
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
 		Animator* ani;
@@ -67,6 +71,8 @@ namespace jns
 
 		bool mDirection;
 		float mTransparency;
+
+		std::wstring animationName;
 	};
 
 }

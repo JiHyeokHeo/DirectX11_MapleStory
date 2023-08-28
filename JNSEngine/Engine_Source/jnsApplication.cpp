@@ -7,6 +7,7 @@
 #include "jnsSkillManager.h"
 #include "jnsCameraManager.h"
 #include "jnsFmod.h"
+#include "..\\JNSEngine\jnsWeaponManager.h"
 
 namespace jns
 {
@@ -40,6 +41,7 @@ namespace jns
 
 		renderer::Initialize();
 		SkillManager::Initialize();
+		WeaponManager::Initialize();
 		SceneManager::Initialize();
 		
 	}

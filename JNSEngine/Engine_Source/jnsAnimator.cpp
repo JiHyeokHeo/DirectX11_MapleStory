@@ -182,6 +182,7 @@ namespace jns
 		if (animation)
 		{
 			mActiveAnimation = animation;
+			mActiveAnimation->SetAnimationName(name);
 		}
 
 		events = FindEvents(mActiveAnimation->GetKey());

@@ -8,6 +8,8 @@
 #include "LoadScene.h"
 #include "guiEditor.h"
 #include "..\Engine_SOURCE\jnsSkillManager.h"
+#include "jnsWeaponManager.h"
+
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
@@ -81,6 +83,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     renderer::Release();
     jns::SceneManager::Release();
     jns::SkillManager::Release();
+    jns::WeaponManager::Release();
     gui::Editor::Release();
 
     return (int) msg.wParam;
