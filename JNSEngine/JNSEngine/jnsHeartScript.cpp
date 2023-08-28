@@ -37,7 +37,7 @@ namespace jns
 	{
 	}
 	void HeartScript::OnCollisionEnter(Collider2D* other)
-	{
+	{	
 		if (other->GetOwner()->GetName() == L"Player")
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
@@ -57,12 +57,12 @@ namespace jns
 		{
 			if (other->GetOwner()->GetName() == L"AssainHit01")
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
 				hp -= mSkillDmg;
 			}
 			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
-				int mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
 				hp -= mSkillDmg;
 			}
 		}

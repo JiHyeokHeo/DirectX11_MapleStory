@@ -726,6 +726,16 @@ namespace renderer
 		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"HpBarMaterial", HpBar_UI_Material);
 
+		 LOAD_TEXTURE(L"BossHpBar", L"..\\Resources\\UI\\BossHp\\boss_energebar.png", BossHpBar_UI_Texture);
+		 SET_MATERIAL(BossHpBar_UI_Material, BossHpBar_UI_Texture, playerHPShader);
+		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"BossHpBarMaterial", BossHpBar_UI_Material);
+
+		 LOAD_TEXTURE(L"BossRedHpBar", L"..\\Resources\\UI\\BossHp\\bossHP.png", BossRedHpBar_UI_Texture);
+		 SET_MATERIAL(BossRedHpBar_UI_Material, BossRedHpBar_UI_Texture, playerHPShader);
+		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"BossHpBarRedMaterial", BossRedHpBar_UI_Material);
+
 		 LOAD_TEXTURE(L"MpBar", L"..\\Resources\\UI\\Status\\MpBar.png", MpBar_Texture);
 		 SET_MATERIAL(MpBar_UI_Material, MpBar_Texture, playerMPShader);
 		 //MpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);

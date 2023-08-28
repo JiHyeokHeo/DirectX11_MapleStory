@@ -70,6 +70,8 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
+		void HpLerp();
+
 
 		void BindConstantBuffer();
 		eKeyCode GetPlayerClickButton() { return mClicked; }
@@ -174,5 +176,7 @@ namespace jns
 		float centerY;
 
 		bool isNormalHit = false;
+		bool isHpLerp = false;
+		int destinationHp;
 	};
 }

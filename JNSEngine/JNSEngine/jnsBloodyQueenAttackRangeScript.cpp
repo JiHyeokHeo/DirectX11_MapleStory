@@ -17,12 +17,6 @@ namespace jns
 		cd->SetPosition(mMonsterPos);
 	
 	}
-	void BloodyQueenAttackRangeScript::LateUpdate()
-	{
-	}
-	void BloodyQueenAttackRangeScript::Render()
-	{
-	}
 	void BloodyQueenAttackRangeScript::OnCollisionEnter(Collider2D* other)
 	{
 		if (other->GetOwner()->GetName() == L"Player")

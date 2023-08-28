@@ -107,6 +107,8 @@ namespace jns
 		PlayerControl();
 		UpdatePatternPercentage();
 		AnimatorControl();
+
+		// 위치 갱신
 		mPrevMonsterState = mMonsterState;
 		mBloodyQueenInfo.mPrevDir = mBloodyQueenInfo.mDir;
 	}
@@ -116,7 +118,7 @@ namespace jns
 		{
 			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		}
-
+		UpdateBossHp();
 	}
 	void BloodyQueenScript::Render()
 	{
@@ -135,11 +137,11 @@ namespace jns
 				
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
 				}
 				else if (other->GetOwner()->GetName() == L"AssainHit02")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
 				}
 
 				playerHp -= mSkillDmg;
@@ -149,11 +151,11 @@ namespace jns
 			{
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_First_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
 				}
 				else if (other->GetOwner()->GetName() == L"AssainHit02")
 				{
-					mSkillDmg = SkillManager::FindSkillDamage(L"Normal_Assain_Second_Attack");
+					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
 				}
 
 				mBloodyQueenInfo.hp -= mSkillDmg;
@@ -220,6 +222,11 @@ namespace jns
 		{
 			mMonsterState = eBloodyQueenState::Die;
 		}
+	}
+	void BloodyQueenScript::UpdateBossHp()
+	{
+		MonsterBase* monsterbase = dynamic_cast<MonsterBase*>(GetOwner());
+		monsterbase->SetMonsterStatusHp(mBloodyQueenInfo.hp);
 	}
 	void BloodyQueenScript::CompleteBressAni()
 	{

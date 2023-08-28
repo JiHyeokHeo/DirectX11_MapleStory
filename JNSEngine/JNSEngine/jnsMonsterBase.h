@@ -24,6 +24,12 @@ namespace jns
 			None,
 		};
 
+		struct MonsterStatus
+		{
+			int hp;
+
+		};
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -94,6 +100,9 @@ namespace jns
 		EffectType GetEffectType() { return mEffectType; }
 		void SetIsEffectOn(bool isOn) { isEffectOn = isOn; }
 		bool GetIsEffectOn() { return isEffectOn; }
+
+		MonsterStatus GetMonsterStatus() { return monsterStatus; }
+		void SetMonsterStatusHp(int hp) { monsterStatus.hp = hp; }
 	protected:
 		eLayerType mType;
 		MeshRenderer* mr;
@@ -104,6 +113,7 @@ namespace jns
 		MonsterDir mMonsterDir;
 		EffectType mEffectType;
 		bool isEffectOn;
+		MonsterStatus monsterStatus;
 	};
 
 }
