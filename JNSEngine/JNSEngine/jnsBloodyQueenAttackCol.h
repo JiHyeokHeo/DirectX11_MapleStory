@@ -32,6 +32,8 @@ namespace jns
 		bool isNomralAttackHit;
 
 		DamageDisplay damageDisplay;
+
+		
 	};
 }
 

@@ -39,27 +39,27 @@ namespace jns
             ani->CreateAnimations(animationPath + i.second, 100, 0.1f, Vector2::Zero);
         }
 
+        std::map<int, std::wstring>::iterator iter
+            = digitAnimations.find(digit);
+
+        std::wstring animationName = L"NormalDamageSkin" + iter->second;
+        ani->PlayAnimation(animationName, false);
+
         GameObject::Initialize();
     }
 
     void DamageControl::Update()
     {
-        setSkillDamage = 1250;
-        int numDigits = static_cast<int>(std::log10(setSkillDamage)) + 1;
+        renderTime += Time::DeltaTime();
+        Vector3 damagePos = tr->GetPosition();
+        damagePos.y += 40.0f * Time::DeltaTime();
 
-        int divisor = static_cast<int>(std::pow(10, numDigits - 1));
-        while (divisor > 0)
-        {
-            int digit = setSkillDamage / divisor;
-            setSkillDamage %= divisor;
-            divisor /= 10;
-            std::map<int, std::wstring>::iterator iter 
-                = digitAnimations.find(digit);
-            
-            std::wstring animationName = L"NormalDamageSkin" + iter->second;
-            ani->PlayAnimation(animationName, false);
-        }
+        tr->SetPosition(damagePos);
 
+
+        if (renderTime >= 1.0f)
+            SetState(GameObject::eState::Dead);
+        
         GameObject::Update();
     }
 

@@ -24,6 +24,7 @@ namespace jns
 		virtual void Render() override;
 
 		void SetSkillDamage(int dmg) { setSkillDamage = dmg; }
+		void SetDamageDigit(int digit) { this->digit = digit; }
 
 	private:
 		class Animator* ani;
@@ -31,8 +32,10 @@ namespace jns
 		DamageType mType;
 		Transform* tr;
 		std::map<int, std::wstring> digitAnimations;
-
 		float xCorOffSet;
+
+		int digit;
+		float renderTime;
 	};
 
 }

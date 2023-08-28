@@ -190,7 +190,7 @@ namespace jns
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
 				Vector3 playerPos = mPlayer->GetComponent<Transform>()->GetPosition();
-				damageDisplay.DisplayDamage(dmg, playerPos);
+				damageDisplay.DisplayDamage(dmg, playerPos, Vector2(0.0f, 50.0f));
 			}
 		}
 	}

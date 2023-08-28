@@ -161,6 +161,8 @@ namespace jns
 				mBloodyQueenInfo.hp -= mSkillDmg;
 				mBloodyQueenInfo.isChasing = true;
 			}
+
+			damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
 		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)

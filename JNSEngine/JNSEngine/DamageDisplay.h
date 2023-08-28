@@ -9,29 +9,48 @@ namespace jns
 	class DamageDisplay
 	{
 	public:
-		void DisplayDamage(int damage, const Vector3& position)
+		void DisplayDamage(int damage, const Vector3& position, const Vector2& offsetYCord = Vector2::Zero)
 		{
 			std::string damageStr = std::to_string(damage);
-			CreateDamageControls(damageStr, position);
+			CreateDamageControls(damageStr, position, offsetYCord);
 		}
 
 	private:
-		void CreateDamageControls(const std::string& damageStr, const Vector3& position)
+		void CreateDamageControls(const std::string& damageStr, const Vector3& position, const Vector2& offsetYCord)
 		{
 			float xOffset = 0.0f;
+			int strLength = -99;
+			strLength = damageStr.size();
+
+			int remain = strLength % 2;
+			if (remain == 1)
+			{
+				xOffset = 0.0f;
+			}
+			else
+			{
+				int cnt = strLength / 2;
+				
+				while (cnt < 0)
+				{
+					xOffset -= 35.0f;
+				}
+			}
+
 			for (char digitChar : damageStr)
 			{
 				int digit = digitChar - '0';
 				DamageControl* digitControl = new DamageControl();
-				digitControl->Initialize();
 				Scene* scene = SceneManager::GetActiveScene();
 				scene->AddGameObject(eLayerType::MapEffect, digitControl);
-				//digitControl->SetDamageDigit(digit);
+				digitControl->SetDamageDigit(digit);
 
 				Transform* digitTransform = digitControl->GetComponent<Transform>();
-				digitTransform->SetPosition(Vector3(position.x + xOffset, position.y, position.z));
+				digitTransform->SetPosition(Vector3(position.x + xOffset + offsetYCord.x, position.y + offsetYCord.y, 1.0f));
+				
+				xOffset += 35.0f;
 
-				xOffset += 10.0f;
+				digitControl->Initialize();
 			}
 		}
 	};
