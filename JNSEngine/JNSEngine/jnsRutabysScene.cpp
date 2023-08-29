@@ -80,13 +80,13 @@ namespace jns
 		// 인벤토리
 		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
 		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
-		InventoryScript* invenScript = minven->GetComponent<InventoryScript>();
 		minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
 
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
 		PlayerScript* playerScript = player->GetComponent<PlayerScript>();
+		playerScript->SetInventoryScript(minvenBG->GetComponent<InventoryScript>());
 		SceneManager::SetPlayer(player);
 		WeaponObject* weapon = object::Instantiate<WeaponObject>(eLayerType::MapEffect, Vector3::Zero);
 		WeaponManager::AddWeapon(L"Genesis_Thief_Weapon", object::Instantiate<GenesisWeapon>(eLayerType::MapEffect, Vector3::Zero));

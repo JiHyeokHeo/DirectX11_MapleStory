@@ -174,14 +174,17 @@ namespace jns
 			return;
 		}
 
-		if (mHp <= 50.0f)
+		if (mMirrorState != eMirrorState::Attract)
 		{
-			mMirrorState = eMirrorState::Hit;
-			return;
-		}
-		else
-		{
-			mMirrorState = eMirrorState::Idle;
+			if (mHp <= 50.0f)
+			{
+				mMirrorState = eMirrorState::Hit;
+				return;
+			}
+			else
+			{
+				mMirrorState = eMirrorState::Idle;
+			}
 		}
 
 	}

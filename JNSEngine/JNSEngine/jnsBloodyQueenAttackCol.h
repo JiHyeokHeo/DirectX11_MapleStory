@@ -11,8 +11,8 @@ namespace jns
 		struct BloodyQueenSkillDamage
 		{
 			int normalAttack = 30;
-			int swallowAttack = 100;
-
+			int swallowAttack = 1250;
+			int bressAttack = 10000;
 		};
 		virtual void Initialize() override;
 		virtual void Update() override;

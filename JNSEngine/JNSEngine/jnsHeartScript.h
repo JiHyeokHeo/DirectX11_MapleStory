@@ -39,6 +39,7 @@ namespace jns
 		bool isSummon = false;
 		class Transform* tr;
 		class Animator* at;
+		class Collider2D* cd;
 		float heartMoveSpeed = 100.0f;
 
 		float heartStartPos = -375.0f;

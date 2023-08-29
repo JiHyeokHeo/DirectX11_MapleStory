@@ -12,7 +12,6 @@ namespace jns
 	}
 	void Inventory::Initialize()
 	{
-
 		SetMesh(L"RectMesh");
 		SetMaterial(L"InventoryMaterial");
 
@@ -26,7 +25,6 @@ namespace jns
 	}
 	void Inventory::Update()
 	{
-		
 		UIBase::Update();
 	}
 	void Inventory::LateUpdate()

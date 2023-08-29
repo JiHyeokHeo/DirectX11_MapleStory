@@ -48,7 +48,7 @@ namespace jns
 				Transform* digitTransform = digitControl->GetComponent<Transform>();
 				digitTransform->SetPosition(Vector3(position.x + xOffset + offsetYCord.x, position.y + offsetYCord.y, 1.0f));
 				
-				xOffset += 35.0f;
+				xOffset += 30.0f;
 
 				digitControl->Initialize();
 			}

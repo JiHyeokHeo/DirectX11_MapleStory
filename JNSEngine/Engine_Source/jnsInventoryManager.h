@@ -10,22 +10,15 @@ namespace jns
     class InventoryManager
     {
     public:
-        static InventoryManager& GetInstance()
-        {
-            static InventoryManager instance;
-            return instance;
-        }
-
-        void AddItem(const std::string& itemName, int quantity);
-        void RemoveItem(const std::string& itemName, int quantity);
-        void ClearInventory();
-        bool HasItem(const std::string& itemName, int quantity);
-        bool CanAddItem(const std::string& itemName, int quantity);
-        bool FindSlotForItem(const std::string& itemName, int quantity, Vector3& position);
-
+        static void AddItem(const std::string& itemName, int quantity);
+        static void RemoveItem(const std::string& itemName, int quantity);
+        static void ClearInventory();
+        static bool HasItem(const std::string& itemName, int quantity);
+        static bool CanAddItem(const std::string& itemName, int quantity);
+        static bool FindSlotForItem(const std::string& itemName, int quantity, Vector3& position);
 
     private:
-        std::map<std::string, ItemResources*> mInventory;
+        static std::map<std::string, ItemResources*> mInventory;
 
         InventoryManager() {}
         ~InventoryManager() {}

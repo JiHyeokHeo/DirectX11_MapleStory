@@ -15,9 +15,8 @@ namespace jns
 	}
 	void ItemResourcesScript::Update()
 	{
-		//ItemMove();
-		//ItemSetPos();
-		this;
+	/*	ItemMove();
+		ItemSetPos();*/
 	}
 	void ItemResourcesScript::LateUpdate()
 	{

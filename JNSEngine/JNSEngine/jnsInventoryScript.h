@@ -29,7 +29,5 @@ namespace jns
 		//void CheckItem(ItemResources* item);
 	private:
 		std::map<std::wstring, ItemInfo> mInventory;
-		jns::GameObject::eState mPrevState;
-		jns::GameObject::eState mNowState;
 	};
 }

@@ -162,6 +162,7 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="DamageDisplay.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
+    <ClInclude Include="jnsSkillSlotScript.h" />
     <ClInclude Include="jnsWeaponManager.h" />
     <ClInclude Include="jnsWeaponObject.h" />
     <ClInclude Include="OverAllData.h" />
@@ -317,6 +318,7 @@
     <ClCompile Include="jnsSkillExtentionSlot.cpp" />
     <ClCompile Include="jnsSkillQuickSlotBackUI.cpp" />
     <ClCompile Include="jnsSkillQuickSlotFront.cpp" />
+    <ClCompile Include="jnsSkillSlotScript.cpp" />
     <ClCompile Include="jnsSmoke.cpp" />
     <ClCompile Include="jnsStartScene1.cpp" />
     <ClCompile Include="jnsStartScene2.cpp" />

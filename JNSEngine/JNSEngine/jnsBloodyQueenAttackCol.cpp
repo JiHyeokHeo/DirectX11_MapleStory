@@ -117,7 +117,7 @@ namespace jns
 				}
 				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
 				{
-					if (mColMakeTime >= 1.5f)
+					if (mColMakeTime >= 1.8f)
 					{
 						if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
 						{
@@ -186,6 +186,12 @@ namespace jns
 				{
 					mPlayerHp -= mBQSkillDamage.swallowAttack;
 					dmg = mBQSkillDamage.swallowAttack;
+				}
+
+				if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
+				{
+					mPlayerHp -= mBQSkillDamage.bressAttack;
+					dmg = mBQSkillDamage.bressAttack;
 				}
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);

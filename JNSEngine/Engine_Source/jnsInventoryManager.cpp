@@ -2,6 +2,7 @@
 
 namespace jns
 {
+	std::map<std::string, ItemResources*> InventoryManager::mInventory;
 	void InventoryManager::AddItem(const std::string& itemName, int quantity)
 	{
 		if (quantity < 0)

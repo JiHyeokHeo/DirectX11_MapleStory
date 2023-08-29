@@ -244,6 +244,7 @@
     </ClCompile>
     <ClCompile Include="jnsWeaponManager.cpp" />
     <ClCompile Include="jnsGenesisWeapon.cpp" />
+    <ClCompile Include="jnsSkillSlotScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -510,6 +511,7 @@
     </ClInclude>
     <ClInclude Include="jnsWeaponManager.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
+    <ClInclude Include="jnsSkillSlotScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

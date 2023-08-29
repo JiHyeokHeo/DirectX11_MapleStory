@@ -71,7 +71,7 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 		void HpLerp();
-
+		void OpenInventory();
 
 		void BindConstantBuffer();
 		eKeyCode GetPlayerClickButton() { return mClicked; }

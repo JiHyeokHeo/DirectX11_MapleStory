@@ -46,7 +46,7 @@ namespace jns
         
         if (Input::GetKeyDown(eKeyCode::O))
         {
-            tr->SetPosition(Vector3(100.0f, 1000.0f, 1.0f));
+            tr->SetPosition(Vector3(100.0f, 300.0f, 1.0f));
             mPlayerState = ePlayerState::Idle;
         }
 
@@ -60,6 +60,7 @@ namespace jns
         if (Input::GetKeyDown(eKeyCode::H))
         {
             mPlayerInfo.hp = 100;
+            mRb->SetGround(false);
         }
 
         if (mPreveScene != mActveScene)
@@ -69,7 +70,7 @@ namespace jns
 		}
 
         //CheckJumpCount();
-		
+        OpenInventory();
         CheckPlayerHp();
         CheckPlayerIsGrounded();
         PlayerControl();
@@ -134,6 +135,11 @@ namespace jns
 
     void PlayerScript::HpLerp()
     {
+    }
+
+    void PlayerScript::OpenInventory()
+    {
+
     }
 
 	void PlayerScript::BindConstantBuffer()

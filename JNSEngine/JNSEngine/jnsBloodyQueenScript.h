@@ -135,7 +135,7 @@ namespace jns
 
 		float mBossMaxSkillCollDown = 10.0f;
 
-		float mBressMaxXCor = 800.0f;
+		float mBressMaxXCor = 100.0f;
 		std::wstring mUsingSkillName;
 
 		class Mirror* mMirror;

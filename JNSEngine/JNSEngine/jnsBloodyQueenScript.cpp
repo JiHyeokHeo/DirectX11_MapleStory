@@ -57,7 +57,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 		mBloodyQueenInfo.hp = 100;
 		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
 		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
@@ -146,9 +146,11 @@ namespace jns
 
 				playerHp -= mSkillDmg;
 				playerScript->SetPlayerHp(playerHp);
+				damageDisplay.DisplayDamage(mSkillDmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
 			}
 			else if (mBloodyQueen->GetIsEffectOn() == false)
 			{
+				PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 				if (other->GetOwner()->GetName() == L"AssainHit01")
 				{
 					mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
@@ -160,9 +162,9 @@ namespace jns
 
 				mBloodyQueenInfo.hp -= mSkillDmg;
 				mBloodyQueenInfo.isChasing = true;
+				damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
 			}
 
-			damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
 		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
@@ -195,7 +197,7 @@ namespace jns
 	void BloodyQueenScript::ChangeBossTypeRandom()
 	{
 		mChangeType += Time::DeltaTime();
-		if (mChangeType >= 15.0f && (mMonsterState == eBloodyQueenState::Idle || mMonsterState == eBloodyQueenState::Move))
+		if (mChangeType >= 10.0f && (mMonsterState == eBloodyQueenState::Idle || mMonsterState == eBloodyQueenState::Move))
 		{
 			mMonsterState = eBloodyQueenState::Change;
 			mChangeType = 0.0f;
@@ -468,7 +470,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Smile;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -551,11 +553,11 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
 		{
-	/*		if (mPatternPercentage <= 0.3f)
+			if (mPatternPercentage <= 0.3f)
 			{
 				mMirror->SetState(GameObject::eState::Active);
 			}
-			else*/
+			else
 			{
 				for (int i =0; i< mHearts.size(); i++)
 				{
@@ -567,11 +569,11 @@ namespace jns
 		}
 		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 		{
-			if (mPatternPercentage <= 0.5f)
+	/*		if (mPatternPercentage <= 0.5f)
 			{
 				animationname += animationNameReflectDebuff;
-			}
-			else
+			}*/
+			
 			{
 				animationname += animationNameReflect;
 				mBloodyQueen->SetEffectType(MonsterBase::EffectType::Reflect);

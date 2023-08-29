@@ -16,13 +16,11 @@ namespace jns
 	}
 	void InventoryScript::Initialize()
 	{
-		GetOwner()->SetState(GameObject::eState::Paused);
-		mNowState = GameObject::eState::Paused;
-		mPrevState = GameObject::eState::Active;
+		//GetOwner()->SetState(GameObject::eState::Paused);
 	}
 	void InventoryScript::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::LBUTTON) && mNowState == GameObject::eState::Active)
+		if (Input::GetKeyDown(eKeyCode::LBUTTON) && GetOwner()->GetState() == GameObject::eState::Active)
 		{
 			Vector3 mUIMousePos = Input::GetUIMousePos();
 			Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -51,30 +49,15 @@ namespace jns
 				return;
 			
 			Vector3 mItemSetPos = Vector3((xidx) * (INVENTORY_SIZE)+(12.5f * xidx) + (INVENTORY_SIZE / 2), (yidx) * (INVENTORY_SIZE)+(12.5f * yidx) + (INVENTORY_SIZE / 2), mPos.z);
-			Vector3 mItemFinalPos = Vector3(mItemSetPos.x + mLeftTop.x, mLeftTop.y - mItemSetPos.y, mItemSetPos.z);
+			Vector3 mItemFinalPos = Vector3(mItemSetPos.x + mLeftTop.x, mLeftTop.y - mItemSetPos.y, 3.5f);
 
+			object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mItemFinalPos);
 			ItemInfo info = {};
 			info.mItemCnt = 0;
 			info.mItemFinalPos = mItemFinalPos;
 			info.isPicked = true;
 			
 			mInventory.insert(std::make_pair(L"PowerPotion", info));
-		}
-		
-		if (Input::GetKeyDown(eKeyCode::I) && mPrevState != mNowState)
-		{
-			if (mNowState == GameObject::eState::Active)
-			{
-				GetOwner()->SetState(GameObject::eState::Paused);
-				mNowState = GameObject::eState::Paused;
-				mPrevState = GameObject::eState::Active; 
-			}
-			else if (mNowState == GameObject::eState::Paused)
-			{
-				GetOwner()->SetState(GameObject::eState::Active);
-				mNowState = GameObject::eState::Active;
-				mPrevState = GameObject::eState::Paused; 
-			}
 		}
 		
 	}

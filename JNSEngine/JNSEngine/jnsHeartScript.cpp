@@ -9,6 +9,8 @@ namespace jns
 {
 	void HeartScript::Initialize()
 	{
+		cd = GetOwner()->GetComponent<Collider2D>();
+		cd->SetColliderOn(false);
 		heartState = eHeartState::Summon;
 		hp = 80;
 		at = GetOwner()->GetComponent<Animator>();
@@ -134,6 +136,7 @@ namespace jns
 	void HeartScript::CompleteSummon()
 	{
 		heartState = HeartScript::eHeartState::Move;
+		cd->SetColliderOn(true);
 	}
 	void HeartScript::CompleteBomb()
 	{
@@ -142,5 +145,6 @@ namespace jns
 		heartState = eHeartState::Summon;
 		isSummon = false;
 		this->GetOwner()->SetState(GameObject::eState::Paused);
+		cd->SetColliderOn(false);
 	}
 }

@@ -62,7 +62,7 @@ namespace jns
 			}
 			else if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain2Hit")
 			{
-				weaponAnimator->PlayAnimation(weaponFrontName + L"swingO2", false);
+				weaponAnimator->PlayAnimation(weaponFrontName + L"swingO2", false);	
 			}
 		}
 		

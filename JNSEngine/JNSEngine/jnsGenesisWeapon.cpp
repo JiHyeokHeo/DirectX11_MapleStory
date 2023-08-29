@@ -5,6 +5,8 @@ namespace jns
 {
 	GenesisWeapon::GenesisWeapon()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	GenesisWeapon::~GenesisWeapon()
 	{
