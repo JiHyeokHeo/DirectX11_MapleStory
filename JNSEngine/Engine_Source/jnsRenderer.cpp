@@ -721,6 +721,17 @@ namespace renderer
 		 //SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
 		 INSERT_MATERIAL(L"SkillSlotExtensionMaterial", SkillSlotExtension_UI_Material);
 
+		 LOAD_TEXTURE(L"SkillSlotBG", L"..\\Resources\\UI\\SkillUI\\SkillUI.png", SkillUI_Texture);
+		 SET_MATERIAL(SkillUI_Material, SkillUI_Texture, spriteShader);
+		 //SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 INSERT_MATERIAL(L"SkillSlotBGMaterial", SkillUI_Material);
+
+		 LOAD_TEXTURE(L"SkillBoxBG", L"..\\Resources\\UI\\SkillUI\\SkillBox.png", SkillBox_Texture);
+		 SET_MATERIAL(SkillBox_Material, SkillBox_Texture, spriteShader);
+		 //SkillSlotExtension_UI_Material->SetRenderingMode(eRenderingMode::CutOut);
+		 INSERT_MATERIAL(L"SkillBoxMaterial", SkillBox_Material);
+
+
 		 LOAD_TEXTURE(L"HpBar", L"..\\Resources\\UI\\Status\\HpBar.png", HpBar_UI_Texture);
 		 SET_MATERIAL(HpBar_UI_Material, HpBar_UI_Texture, playerHPShader);
 		 //HpBar_UI_Material->SetRenderingMode(eRenderingMode::Transparent);

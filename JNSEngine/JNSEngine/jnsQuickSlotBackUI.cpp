@@ -1,15 +1,16 @@
-#include "jnsSkillQuickSlotBackUI.h"
+#include "jnsQuickSlotBackUI.h"
 #include "CommonUIInclude.h"
+#include "jnsQuickSlotScript.h"
 
 namespace jns
 {
-	SkillQuickSlotBackUI::SkillQuickSlotBackUI()
+	QuickSlotUI::QuickSlotUI()
 	{
 	}
-	SkillQuickSlotBackUI::~SkillQuickSlotBackUI()
+	QuickSlotUI::~QuickSlotUI()
 	{
 	}
-	void SkillQuickSlotBackUI::Initialize()
+	void QuickSlotUI::Initialize()
 	{
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SkillQuickSlotBackMaterial");
@@ -17,17 +18,18 @@ namespace jns
 		SetPosition(Vector3(405.0f, -339.0f, 4.3f));
 		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 		
+		AddComponent<QuickSlotScript>();
 		UIBase::Initialize();
 	}
-	void SkillQuickSlotBackUI::Update()
+	void QuickSlotUI::Update()
 	{
 		UIBase::Update();
 	}
-	void SkillQuickSlotBackUI::LateUpdate()
+	void QuickSlotUI::LateUpdate()
 	{
 		UIBase::LateUpdate();
 	}
-	void SkillQuickSlotBackUI::Render()
+	void QuickSlotUI::Render()
 	{
 		UIBase::Render();
 	}

@@ -161,10 +161,10 @@
     <ClCompile Include="jnsShopSlotBack3.cpp">
       <Filter>Contents\UI</Filter>
     </ClCompile>
-    <ClCompile Include="jnsSkillQuickSlotBackUI.cpp">
+    <ClCompile Include="jnsQuickSlotBackUI.cpp">
       <Filter>Contents\UI</Filter>
     </ClCompile>
-    <ClCompile Include="jnsSkillQuickSlotFront.cpp">
+    <ClCompile Include="jnsQuickSlotFront.cpp">
       <Filter>Contents\UI</Filter>
     </ClCompile>
     <ClCompile Include="jnsRutabysScene.cpp">
@@ -224,7 +224,7 @@
     <ClCompile Include="jnsSwallowEffect.cpp">
       <Filter>Contents\Monster\Boss\BloodyQueen</Filter>
     </ClCompile>
-    <ClCompile Include="jnsSkillExtentionSlot.cpp">
+    <ClCompile Include="jnsQuickExtentionSlot.cpp">
       <Filter>Contents\UI</Filter>
     </ClCompile>
     <ClCompile Include="jnsWorldSelectScene.cpp">
@@ -244,7 +244,11 @@
     </ClCompile>
     <ClCompile Include="jnsWeaponManager.cpp" />
     <ClCompile Include="jnsGenesisWeapon.cpp" />
-    <ClCompile Include="jnsSkillSlotScript.cpp" />
+    <ClCompile Include="jnsQuickSlotScript.cpp" />
+    <ClCompile Include="jnsSkillUIBG.cpp" />
+    <ClCompile Include="jnsSkillBox.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -419,10 +423,10 @@
     <ClInclude Include="jnsShopSlotBack3.h">
       <Filter>Contents\UI</Filter>
     </ClInclude>
-    <ClInclude Include="jnsSkillQuickSlotFront.h">
+    <ClInclude Include="jnsQuickSlotFront.h">
       <Filter>Contents\UI</Filter>
     </ClInclude>
-    <ClInclude Include="jnsSkillQuickSlotBackUI.h">
+    <ClInclude Include="jnsQuickSlotBackUI.h">
       <Filter>Contents\UI</Filter>
     </ClInclude>
     <ClInclude Include="jnsRutabysScene.h">
@@ -482,7 +486,7 @@
     <ClInclude Include="jnsSwallowEffect.h">
       <Filter>Contents\Monster\Boss\BloodyQueen</Filter>
     </ClInclude>
-    <ClInclude Include="jnsSkillExtentionSlot.h">
+    <ClInclude Include="jnsQuickExtentionSlot.h">
       <Filter>Contents\UI</Filter>
     </ClInclude>
     <ClInclude Include="jnsWorldSelectScene.h">
@@ -511,7 +515,11 @@
     </ClInclude>
     <ClInclude Include="jnsWeaponManager.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
-    <ClInclude Include="jnsSkillSlotScript.h" />
+    <ClInclude Include="jnsQuickSlotScript.h" />
+    <ClInclude Include="jnsSkillUIBG.h" />
+    <ClInclude Include="jnsSkillBox.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

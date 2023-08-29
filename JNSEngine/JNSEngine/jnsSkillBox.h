@@ -3,20 +3,22 @@
 
 namespace jns
 {
-	class SkillQuickSlotFront : public UIBase
+	class SkillBox : public UIBase
 	{
 	public:
-		SkillQuickSlotFront();
-		virtual ~SkillQuickSlotFront();
+		SkillBox();
+		~SkillBox();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetSkillUIBG(class SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
 	private:
-
+		static int GlobalIdx;
+		class SkillUIBG* skillBGUI;
+		int mIdx;
 	};
 }
-
 

@@ -106,9 +106,9 @@ namespace jns
 		object::InstantiateNOmove<ExpMaxBar>(eLayerType::UI);
 
 		// Slot
-		GameObject* mSkillSlotBack= object::InstantiateNOmove<SkillQuickSlotBackUI>(eLayerType::UI);
-		GameObject* mSkillSlotFront = object::InstantiateNOmove<SkillQuickSlotFront>(eLayerType::UI);
-		GameObject* mSkillExtensionSlot = object::InstantiateNOmove<SkillExtentionSlot>(eLayerType::UI);
+		GameObject* mSkillSlotBack= object::InstantiateNOmove<QuickSlotUI>(eLayerType::UI);
+		GameObject* mSkillSlotFront = object::InstantiateNOmove<QuickSlotFront>(eLayerType::UI);
+		GameObject* mSkillExtensionSlot = object::InstantiateNOmove<QuickExtentionSlot>(eLayerType::UI);
 		mSkillSlotFront->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
 		mSkillExtensionSlot->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
 

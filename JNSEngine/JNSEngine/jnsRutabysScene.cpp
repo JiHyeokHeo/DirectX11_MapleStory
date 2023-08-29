@@ -82,7 +82,16 @@ namespace jns
 		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
 		minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
-
+		// 스킬창
+		SkillUIBG* skillUIBG = object::InstantiateNOmove<SkillUIBG>(eLayerType::UI);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
 		PlayerScript* playerScript = player->GetComponent<PlayerScript>();
@@ -93,7 +102,6 @@ namespace jns
 		weapon->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
 		weapon->SetPlayerScript(playerScript);
 		// 플레이어 싹다 생성 후 스킬들 사전 생성
-
 
 
 		// 테스트 스킬

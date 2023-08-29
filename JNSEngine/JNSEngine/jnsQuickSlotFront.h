@@ -3,11 +3,11 @@
 
 namespace jns
 {
-	class SkillExtentionSlot : public UIBase
+	class QuickSlotFront : public UIBase
 	{
 	public:
-		SkillExtentionSlot();
-		virtual ~SkillExtentionSlot();
+		QuickSlotFront();
+		virtual ~QuickSlotFront();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

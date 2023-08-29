@@ -1,15 +1,15 @@
-#include "jnsSkillQuickSlotFront.h"
+#include "jnsQuickSlotFront.h"
 #include "CommonUIInclude.h"
 
 namespace jns
 {
-	SkillQuickSlotFront::SkillQuickSlotFront()
+	QuickSlotFront::QuickSlotFront()
 	{
 	}
-	SkillQuickSlotFront::~SkillQuickSlotFront()
+	QuickSlotFront::~QuickSlotFront()
 	{
 	}
-	void SkillQuickSlotFront::Initialize()
+	void QuickSlotFront::Initialize()
 	{
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SkillQuickSlotFrontMaterial");
@@ -19,15 +19,15 @@ namespace jns
 	
 		UIBase::Initialize();
 	}
-	void SkillQuickSlotFront::Update()
+	void QuickSlotFront::Update()
 	{
 		UIBase::Update();
 	}
-	void SkillQuickSlotFront::LateUpdate()
+	void QuickSlotFront::LateUpdate()
 	{
 		UIBase::LateUpdate();
 	}
-	void SkillQuickSlotFront::Render()
+	void QuickSlotFront::Render()
 	{
 		UIBase::Render();
 	}

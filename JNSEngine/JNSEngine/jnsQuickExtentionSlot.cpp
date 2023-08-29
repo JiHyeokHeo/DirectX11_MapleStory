@@ -1,15 +1,15 @@
-#include "jnsSkillExtentionSlot.h"
+#include "jnsQuickExtentionSlot.h"
 #include "CommonUIInclude.h"
 
 namespace jns
 {
-	SkillExtentionSlot::SkillExtentionSlot()
+	QuickExtentionSlot::QuickExtentionSlot()
 	{
 	}
-	SkillExtentionSlot::~SkillExtentionSlot()
+	QuickExtentionSlot::~QuickExtentionSlot()
 	{
 	}
-	void SkillExtentionSlot::Initialize()
+	void QuickExtentionSlot::Initialize()
 	{
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SkillSlotExtensionMaterial");
@@ -19,15 +19,15 @@ namespace jns
 
 		UIBase::Initialize();
 	}
-	void SkillExtentionSlot::Update()
+	void QuickExtentionSlot::Update()
 	{
 		UIBase::Update();
 	}
-	void SkillExtentionSlot::LateUpdate()
+	void QuickExtentionSlot::LateUpdate()
 	{
 		UIBase::LateUpdate();
 	}
-	void SkillExtentionSlot::Render()
+	void QuickExtentionSlot::Render()
 	{
 		UIBase::Render();
 	}

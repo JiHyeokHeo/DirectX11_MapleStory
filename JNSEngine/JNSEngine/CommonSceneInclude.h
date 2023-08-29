@@ -61,12 +61,12 @@
 // UI
 #include "jnsExpBar.h"
 #include "jnsExpMaxBar.h"
-#include "jnsSkillQuickSlotBackUI.h"
+#include "jnsQuickSlotBackUI.h"
 #include "jnsCenterStatus.h"
 #include "jnsHpBar.h"
 #include "jnsMpBar.h"
-#include "jnsSkillQuickSlotFront.h"
-#include "jnsSkillExtentionSlot.h"
+#include "jnsQuickSlotFront.h"
+#include "jnsQuickExtentionSlot.h"
 #include "jnsCursor.h"
 #include "jnsShopSlotBack.h"
 #include "jnsShopSlotBack2.h"
@@ -75,6 +75,8 @@
 #include "jnsItemResources.h"
 #include "jnsGround.h"
 #include "jnsInvenBG.h"
+#include "jnsSkillUIBG.h"
+#include "jnsSkillBox.h"
 
 // Component
 #include "jnsTransform.h"

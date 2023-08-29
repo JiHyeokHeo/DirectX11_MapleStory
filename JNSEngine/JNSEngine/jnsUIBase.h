@@ -13,10 +13,10 @@ namespace jns
 		UIBase();
 		~UIBase();
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void LateUpdate();
-		virtual void Render();
+		virtual void Initialize() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void Render() override;
 
 		virtual void SetMesh(const std::wstring& name)
 		{
