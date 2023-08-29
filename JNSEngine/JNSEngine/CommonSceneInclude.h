@@ -77,6 +77,7 @@
 #include "jnsInvenBG.h"
 #include "jnsSkillUIBG.h"
 #include "jnsSkillBox.h"
+#include "jnsSkillUIBTN.h"
 
 // Component
 #include "jnsTransform.h"

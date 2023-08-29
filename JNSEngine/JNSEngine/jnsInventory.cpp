@@ -6,6 +6,8 @@ namespace jns
 {
 	Inventory::Inventory()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	Inventory::~Inventory()
 	{

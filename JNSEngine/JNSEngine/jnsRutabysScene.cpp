@@ -92,6 +92,13 @@ namespace jns
 		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
 		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
 		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		
+		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::One)->SetSkillUIBG(skillUIBG);
+		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Two)->SetSkillUIBG(skillUIBG);
+		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Three)->SetSkillUIBG(skillUIBG);
+		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Four)->SetSkillUIBG(skillUIBG);
+		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Five)->SetSkillUIBG(skillUIBG);
+
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
 		PlayerScript* playerScript = player->GetComponent<PlayerScript>();

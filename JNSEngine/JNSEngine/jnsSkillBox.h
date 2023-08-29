@@ -3,6 +3,7 @@
 
 namespace jns
 {
+	class SkillUIBG;
 	class SkillBox : public UIBase
 	{
 	public:
@@ -14,10 +15,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetSkillUIBG(class SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
+		void SetSkillUIBG(SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
 	private:
 		static int GlobalIdx;
-		class SkillUIBG* skillBGUI;
+		SkillUIBG* skillBGUI;
 		int mIdx;
 	};
 }

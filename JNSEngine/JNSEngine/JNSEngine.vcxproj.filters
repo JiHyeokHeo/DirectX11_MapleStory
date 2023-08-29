@@ -249,6 +249,8 @@
     <ClCompile Include="jnsSkillBox.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="jnsSkillResources.cpp" />
+    <ClCompile Include="jnsSkillUIBTN.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -520,6 +522,8 @@
     <ClInclude Include="jnsSkillBox.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="jnsSkillResources.h" />
+    <ClInclude Include="jnsSkillUIBTN.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

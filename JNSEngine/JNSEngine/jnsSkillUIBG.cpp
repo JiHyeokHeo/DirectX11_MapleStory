@@ -4,6 +4,8 @@ namespace jns
 {
 	SkillUIBG::SkillUIBG()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	SkillUIBG::~SkillUIBG()
 	{

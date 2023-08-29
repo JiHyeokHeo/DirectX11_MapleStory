@@ -4,6 +4,7 @@
 #include "jnsSceneManager.h"
 #include "jnsItemResources.h"
 #include "jnsBGInstance.h"
+#include "jnsSkillUIBTN.h"
 
 namespace jns::object
 {
@@ -64,6 +65,17 @@ namespace jns::object
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
+	T* InstantiateSkillBTN(jns::enums::eLayerType type, SkillUIBTN::eSkillUIBTN type2)
+	{
+		T* gameobj = new T(type2);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
 		gameobj->Initialize();
 
 		return gameobj;

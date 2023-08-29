@@ -6,6 +6,8 @@ namespace jns
 	int SkillBox::GlobalIdx = 0;
 	SkillBox::SkillBox()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 		GlobalIdx++;
 		mIdx = GlobalIdx;
 	}

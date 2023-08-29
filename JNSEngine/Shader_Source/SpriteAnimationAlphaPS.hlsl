@@ -62,8 +62,8 @@ float4 main(VSOut In) : SV_TARGET
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
-    color *= lightColor;
-    color.a *= 0.5f;
+    //color *= lightColor;
+    //color.a *= 0.5f;
     
     if (color.a <= 0.0f)
         discard;

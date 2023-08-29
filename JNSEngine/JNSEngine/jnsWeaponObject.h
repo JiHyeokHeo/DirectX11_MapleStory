@@ -18,7 +18,7 @@ namespace jns
 
 		WeaponObject();
 		~WeaponObject();
-
+				
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;

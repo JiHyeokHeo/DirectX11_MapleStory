@@ -5,6 +5,8 @@ namespace jns
 {
 	InventoryBG::InventoryBG()
 	{
+		SetState(GameObject::eState::DontDestroy);
+		SetIsOnlyOne(true);
 	}
 	InventoryBG::~InventoryBG()
 	{
