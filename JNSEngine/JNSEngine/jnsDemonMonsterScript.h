@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsScript.h"
 #include "jnsMonsterBase.h"
+#include "DamageDisplay.h"
 
 namespace jns
 {
@@ -83,7 +84,9 @@ namespace jns
 		eDemonState mPrevMonsterState;
 
 		DemonInfo mDemonInfo;
+		DamageDisplay damageDisplay;
 
+		float dmg;
 	};
 }
 

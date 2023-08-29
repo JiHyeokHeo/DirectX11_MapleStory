@@ -59,12 +59,12 @@ namespace jns
 			if (other->GetOwner()->GetName() == L"AssainHit01")
 			{
 				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
-				mHp -= mSkillDmg;
+				mHp -= mSkillDmg * 10;
 			}
 			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
 				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
-				mHp -= mSkillDmg;
+				mHp -= mSkillDmg * 10;
 			}
 		}
 	}

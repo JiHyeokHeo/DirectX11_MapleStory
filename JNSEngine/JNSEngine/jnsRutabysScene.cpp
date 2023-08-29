@@ -78,31 +78,31 @@ namespace jns
 #pragma endregion
 
 		// 인벤토리
-		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
-		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
-		minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
+		//Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		//InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
+		//minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
 		// 스킬창
-		SkillUIBG* skillUIBG = object::InstantiateNOmove<SkillUIBG>(eLayerType::UI);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
-		
-		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::One)->SetSkillUIBG(skillUIBG);
-		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Two)->SetSkillUIBG(skillUIBG);
-		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Three)->SetSkillUIBG(skillUIBG);
-		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Four)->SetSkillUIBG(skillUIBG);
-		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Five)->SetSkillUIBG(skillUIBG);
+		//SkillUIBG* skillUIBG = object::InstantiateNOmove<SkillUIBG>(eLayerType::UI);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
+		//
+		//object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::One)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Two)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Three)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Four)->SetSkillUIBG(skillUIBG);
+		//object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Five)->SetSkillUIBG(skillUIBG);
 
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
 		PlayerScript* playerScript = player->GetComponent<PlayerScript>();
-		playerScript->SetInventoryScript(minvenBG->GetComponent<InventoryScript>());
+		//playerScript->SetInventoryScript(minvenBG->GetComponent<InventoryScript>());
 		SceneManager::SetPlayer(player);
 		WeaponObject* weapon = object::Instantiate<WeaponObject>(eLayerType::MapEffect, Vector3::Zero);
 		WeaponManager::AddWeapon(L"Genesis_Thief_Weapon", object::Instantiate<GenesisWeapon>(eLayerType::MapEffect, Vector3::Zero));

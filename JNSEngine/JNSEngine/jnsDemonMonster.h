@@ -1,7 +1,6 @@
 #pragma once
 #include "jnsMonsterBase.h"
 
-
 namespace jns
 {
 	class DemonMonster : public MonsterBase

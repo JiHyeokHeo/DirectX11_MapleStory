@@ -41,6 +41,7 @@ namespace jns
 		if (mMonsterState == eDemonState::Die)
 			return;
 
+		int dmg = -99;
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
@@ -50,8 +51,10 @@ namespace jns
 			if (mPlayerInvTime <= 0.0f)
 			{
 				mPlayerHp -= 20.0f;
+				dmg = 20;
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+				damageDisplay.DisplayDamage(dmg, mPlayer->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
 			}
 		}
 
@@ -61,15 +64,18 @@ namespace jns
 			if (other->GetOwner()->GetName() == L"AssainHit01")
 			{
 				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
-				mDemonInfo.hp -= mSkillDmg;
+				mDemonInfo.hp -= mSkillDmg * 10;
 				mDemonInfo.isChasing = true;
+				dmg = mSkillDmg * 10;
 			}
 			else if (other->GetOwner()->GetName() == L"AssainHit02")
 			{
 				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
-				mDemonInfo.hp -= mSkillDmg;
+				mDemonInfo.hp -= mSkillDmg * 10;
 				mDemonInfo.isChasing = true;
+				dmg = mSkillDmg * 10;
 			}
+			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
 		}
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)
