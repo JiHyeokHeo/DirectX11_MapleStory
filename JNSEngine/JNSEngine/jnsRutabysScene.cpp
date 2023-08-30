@@ -22,43 +22,7 @@ namespace jns
 	}
 	void RutabysScene::Initialize()
 	{
-		//std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
-		//std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexture");
-		//paintShader->SetTarget(paintTexture);
-		//paintShader->OnExcute();
-		
 
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Smile");
-		//	AddGameObject(eLayerType::Monster, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(-200.0f, 100.0f, 1.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(500.0f, 500.0f, 1.0f));
-		//	Collider2D* cd = player->AddComponent<Collider2D>();
-		//	//cd->SetSize(Vector2(1.2f, 1.2f));
-		//	//player->AddComponent<PlayerScript>();
-		//}
-		object::Instantiate<Tomb>(jns::enums::eLayerType::Tomb, Vector3::Zero);
-		object::InstantiateParticle<AssainSkillParticle>(jns::enums::eLayerType::Particle);
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Particle");
-		//	AddGameObject(eLayerType::Monster, player);
-		//	ParticleSystem* mr = player->AddComponent<ParticleSystem>();
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(1500.0f, 1500.0f, 1.0f));
-		//	//Collider2D* cd = player->AddComponent<Collider2D>();
-		//	//cd->SetSize(Vector2(1.2f, 1.2f));
-		//	//player->AddComponent<PlayerScript>();
-		//}
-
-		//ComputeShader* cs = new ComputeShader();
-		//cs->Create(L"PaintCS.hlsl", "main");
-		//Test for VSBinding ( uv 좌표 변경을 통해 이미지 출력 사이즈 조절)
-		
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
 		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
@@ -66,6 +30,13 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Tomb, eLayerType::Ground, true);
+
+		object::Instantiate<Tomb>(jns::enums::eLayerType::Tomb, Vector3::Zero);
+		
+		//연습용 파티클
+		//object::InstantiateParticle<AssainSkillParticle>(jns::enums::eLayerType::Particle);
+
+	
 
 #pragma region Ground
 		
@@ -111,17 +82,14 @@ namespace jns
 		// 플레이어 싹다 생성 후 스킬들 사전 생성
 
 
-		// 테스트 스킬
+		// 테스트 스킬 
 		JumpSkill* jump1 = object::InstantiateSkill<JumpSkill>(Vector3::Zero);
+		jump1->SetName(L"Rogue_SkillflashJump_01");
 		JumpSkill* jump2 =  object::InstantiateSkill<JumpSkill>(Vector3::Zero);
-		
+		jump2->SetName(L"Rogue_SkillflashJump_02");
 		GameObject* obj1 = object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		GameObject* obj2 = object::InstantiateSkill<AssainHit02>(Vector3::Zero);
 		
-		SkillManager::AddSkill(L"Normal_Assain_First_Attack", obj1);
-		SkillManager::AddSkill(L"Normal_Assain_Second_Attack", obj2);
-		SkillManager::AddSkill(L"Rogue_SkillflashJump_01", jump1);
-		SkillManager::AddSkill(L"Rogue_SkillflashJump_02", jump2);
 
 		// 테스트 보스
 //		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));

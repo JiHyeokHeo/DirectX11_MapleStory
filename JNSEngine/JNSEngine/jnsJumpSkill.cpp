@@ -6,8 +6,10 @@
 
 namespace jns
 {
+	int JumpSkill::jumpMakeCnt = 0;
 	JumpSkill::JumpSkill()
 	{
+		jumpMakeCnt++;
 		SetState(GameObject::eState::DontDestroy);
 		SetIsOnlyOne(true);
 	}
@@ -16,6 +18,9 @@ namespace jns
 	}
 	void JumpSkill::Initialize()
 	{
+		std::wstring cnt = {};
+		cnt = std::to_wstring(jumpMakeCnt);
+		SetName(L"Rogue_SkillflashJump_0" + cnt);
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 

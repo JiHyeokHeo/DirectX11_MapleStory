@@ -16,6 +16,7 @@ namespace jns
 	{
 		mPlayer = jns::SceneManager::GetPlayer();
 		mPlayerScript = mPlayer->GetComponent<PlayerScript>();
+		
 		GameObject::Initialize();
 	}
 	void SkillBase::Update()

@@ -15,7 +15,7 @@ namespace jns
 	{
 		isRenderOn = false;
 		cd = AddComponent<Collider2D>();
-		SetName(L"AssainHit01");
+		SetName(L"Normal_Assain_First_Attack");
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
 		at->CreateAnimations(L"..\\Resources\\Rogue_Skill\\Assaination\\Normal_Assasination_First_Attack",  500, 0.05f);
@@ -23,7 +23,9 @@ namespace jns
 		at->StartEvent(L"AssainationNormal_Assasination_First_Attack") = std::bind(&AssainHit01::StartSkillAnimation, this);
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
 		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
-
+		
+		// 스킬 콜라이더 번호 저장
+		mSkillColID = cd->GetColliderID();
 		cd->SetSize(Vector2(0.5f, 0.3f));
 		SkillBase::Initialize();
 	}

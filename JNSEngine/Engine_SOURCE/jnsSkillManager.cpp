@@ -7,6 +7,8 @@ namespace jns
 	std::unordered_map<std::wstring, SkillData*> SkillManager::mSkillData;
 	void SkillManager::Initialize()
 	{
+		// 만약 추후에 파싱을 하게 된다면 이름이든 이런식으로 연결해서 정보를 생성할수 있을듯 싶다. // 아직 할 계획은 없지만 추후에 여력 있으면 해볼 예정
+		
 		mSkillData[L"Normal_Assain_First_Attack"] = new SkillData{ L"Normal_Assain_First_Attack", 5, 0.5f, eKeyCode::LCTRL };
 		mSkillData[L"Normal_Assain_Second_Attack"] = new SkillData{ L"Normal_Assain_Second_Attack", 5, 1.0f, eKeyCode::LCTRL };
 		mSkillData[L"Rogue_SkillflashJump_01"] = new SkillData{ L"Rogue_SkillflashJump_01", 0, 1.0f, eKeyCode::C };
@@ -34,7 +36,12 @@ namespace jns
 
 	SkillData* SkillManager::FindSkillData(const std::wstring& key)
 	{
-		return mSkillData[key];
+		std::unordered_map<std::wstring, SkillData*>::iterator iter
+			= mSkillData.find(key);
+		if (iter != mSkillData.end()) 
+			return iter->second;
+		
+		return nullptr;
 	}
 
 	void SkillManager::Release()

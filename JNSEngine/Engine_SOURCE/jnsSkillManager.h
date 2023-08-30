@@ -44,7 +44,6 @@ namespace jns
 		static GameObject* FindSkill(const std::wstring& key);
 
 		static SkillData* FindSkillData(const std::wstring& key);
-		
 		static void Release();
 	private:
 		// 생성자 자체를 막기

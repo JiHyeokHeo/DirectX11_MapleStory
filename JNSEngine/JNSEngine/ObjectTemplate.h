@@ -5,6 +5,7 @@
 #include "jnsItemResources.h"
 #include "jnsBGInstance.h"
 #include "jnsSkillUIBTN.h"
+#include "jnsSkillManager.h"
 
 namespace jns::object
 {
@@ -115,6 +116,7 @@ namespace jns::object
 		gameobj->GetComponent<Transform>()->SetScale(mScale);
 		gameobj->Initialize();
 
+		SkillManager::AddSkill(gameobj->GetName(), gameobj);
 		return gameobj;
 	}
 

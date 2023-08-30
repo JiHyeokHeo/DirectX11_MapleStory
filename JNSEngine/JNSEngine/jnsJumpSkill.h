@@ -30,6 +30,7 @@ namespace jns
 
 		int mSkillJumpNum;
 		bool isPosSet;
+		static int jumpMakeCnt;
 	};
 	
 }

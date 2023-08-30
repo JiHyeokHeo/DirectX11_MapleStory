@@ -111,6 +111,11 @@ namespace jns
 			mTextureSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
+
+		// 전반적인 같은 정보를 공유하는 친구
+
+		UINT GetSkillColID() { return mSkillColID; }
+
 	protected:
 		Animator* at;
 		Transform* tr;
@@ -121,12 +126,13 @@ namespace jns
 
 		eLayerType mType;
 
-
 		GameObject* mPlayer;
 		PlayerScript* mPlayerScript;
 
 		bool isRenderOn;
 		bool isPlayPossible;
+
+		UINT mSkillColID;
 	};
 }
 
