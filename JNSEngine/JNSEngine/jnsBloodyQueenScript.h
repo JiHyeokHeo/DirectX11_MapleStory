@@ -2,6 +2,7 @@
 #include "jnsScript.h"
 #include "jnsMonsterBase.h"
 #include "DamageDisplay.h"
+#include "DamageInterface.h"
 
 namespace jns
 {
@@ -54,7 +55,7 @@ namespace jns
 		void SetSwallow(class SwallowEffect* swallow) { mSwallowEffect = swallow; }
 		void SetHeart(class Heart* heart) { mHearts.push_back(heart); }
 
-
+	private:
 		void InitData();
 		void MakeRandDir();
 		void ChangeBossTypeRandom();
@@ -81,16 +82,12 @@ namespace jns
 		void CompleteReflect();
 		void CompleteReflect1();
 
-
-
 		void CompleteSwallow();
 		void CompleteSwallow1();
 
 		void CompleteAttack();
 		void CompleteSmileSummon();
 
-		void ResetData();
-	public:
 		void Idle();
 		void Move();
 		void Attack();
@@ -103,13 +100,15 @@ namespace jns
 		void PlayerControl();
 		void AnimatorControl();
 
+	public:
+		void ResetData();
 		MonsterBase::MonsterDir GetMonsterDirection() { return mBloodyQueenInfo.mDir; }
 		BloodyQueenScript::BloodyQueenInfo GetBloodyQueenInfo() { return mBloodyQueenInfo; }
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
 		void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
 		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
-
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
+
 	private:
 		class BloodyQueen* mBloodyQueen;
 

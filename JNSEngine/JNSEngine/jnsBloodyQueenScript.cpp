@@ -128,7 +128,6 @@ namespace jns
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			
 			SkillData* skillData = SkillManager::FindSkillData(other->GetOwner()->GetName());
 
 			if (skillData != nullptr) {
@@ -141,51 +140,14 @@ namespace jns
 					playerHp -= mSkillDmg;
 					playerScript->SetPlayerHp(playerHp);
 				}
-				else {
+				else 
+				{
 					mBloodyQueenInfo.hp -= mSkillDmg;
 					mBloodyQueenInfo.isChasing = true;
 				}
-
 				damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
 			}
 		}
-			//int mSkillDmg = 0.0f;
-			//mChangeTime = 0.0f;
-			//if (mBloodyQueen->GetIsEffectOn() == true)
-			//{
-			//	PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-			//	int playerHp = playerScript->GetPlayerInfo().hp;
-			//	
-			//	if (other->GetOwner()->GetName() == L"AssainHit01")
-			//	{
-			//		mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
-			//	}
-			//	else if (other->GetOwner()->GetName() == L"AssainHit02")
-			//	{
-			//		mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
-			//	}
-
-			//	playerHp -= mSkillDmg;
-			//	playerScript->SetPlayerHp(playerHp);
-			//	damageDisplay.DisplayDamage(mSkillDmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
-			//}
-			//else if (mBloodyQueen->GetIsEffectOn() == false)
-			//{
-			//	PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-			//	if (other->GetOwner()->GetName() == L"AssainHit01")
-			//	{
-			//		mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
-			//	}
-			//	else if (other->GetOwner()->GetName() == L"AssainHit02")
-			//	{
-			//		mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
-			//	}
-
-			//	mBloodyQueenInfo.hp -= mSkillDmg;
-			//	mBloodyQueenInfo.isChasing = true;
-			//	damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
-			//}
-
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
 	{
@@ -198,6 +160,7 @@ namespace jns
 	{
 		int a = 0;
 	}
+	
 	void BloodyQueenScript::InitData()
 	{
 		mBloodyQueenInfo.isChasing = false;

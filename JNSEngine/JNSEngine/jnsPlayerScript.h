@@ -70,18 +70,24 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
-		void HpLerp();
-		void OpenInventory();
-
-		void BindConstantBuffer();
 		eKeyCode GetPlayerClickButton() { return mClicked; }
 		PlayerDir GetPlayerDirection() { return mPlayerInfo.mDir; }
 		void SetPlayerDirection(PlayerDir dir) { mPlayerInfo.mDir = dir; }
 		eKeyType GetPlayerKeyType() { return mPlayerKeyType; }
 		void SetPlayerState(ePlayerState state) { mPlayerState = state; }
 		ePlayerState GetPlayerState() { return mPlayerState; }
+		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
+		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
+		//void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
+		//void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
+		//void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
+		//void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
+		//bool GetIsNormalHit() { return isNormalHit; }
 
-	public:
+	private:
+		void HpLerp();
+		void OpenInventory();
+		void BindConstantBuffer();
 		void Idle();
 		void Move();
 		void Ladder();
@@ -105,15 +111,8 @@ namespace jns
 		void CheckJumpCount();
 
 		void ActiveJumpSkill();
-
 		void PlayerControl();
 		void AnimatorControl();
-		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
-
-		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
-		void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
-		void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
-		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
 
 		void Clear();
 		void GetNewPosition();
@@ -121,9 +120,6 @@ namespace jns
 		void CheckPlayerIsGrounded();
 		void CheckIsAssainHitUsed();
 		void CheckInvisibleTime();
-		
-		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
-		bool GetIsNormalHit() { return isNormalHit; }
 	private:
 
 		struct PlayerStatus
@@ -178,6 +174,5 @@ namespace jns
 		bool isNormalHit = false;
 		bool isHpLerp = false;
 		int destinationHp;
-
 	};
 }

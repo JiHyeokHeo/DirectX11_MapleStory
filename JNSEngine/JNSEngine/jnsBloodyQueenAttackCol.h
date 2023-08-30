@@ -2,6 +2,7 @@
 #include "jnsScript.h"
 #include "jnsBloodyQueenScript.h"
 #include "DamageDisplay.h"
+#include "DamageInterface.h"
 
 namespace jns
 {
@@ -22,6 +23,7 @@ namespace jns
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
+
 	private:
 		class Collider2D* cd;
 		bool isColPosSet;

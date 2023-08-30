@@ -524,6 +524,9 @@
     </ClInclude>
     <ClInclude Include="jnsSkillResources.h" />
     <ClInclude Include="jnsSkillUIBTN.h" />
+    <ClInclude Include="DamageInterface.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

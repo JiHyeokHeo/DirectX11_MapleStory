@@ -27,6 +27,6 @@ namespace jns
 		float GetAngle() { return mAttribute.angle; }
 
 	private:
-		LightAttribute mAttribute;
+		LightAttribute mAttribute;	
 	};
 }

@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="DamageDisplay.h" />
+    <ClInclude Include="DamageInterface.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsSkillBox.h" />
