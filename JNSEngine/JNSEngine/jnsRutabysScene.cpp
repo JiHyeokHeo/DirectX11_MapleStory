@@ -97,9 +97,9 @@ namespace jns
 
 
 		// Æ÷Å»
-		object::InstantiatePortal<Portal>(L"RutaMob", Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
-		object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(-2400.0f, 200.0f, 1.0f), Vector3(-1000.0f, -190.0f, 0.0f), 1);
-		object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(2400.0f, 200.0f, 1.0f), Vector3(1000.0f, -190.0f, 0.0f), -1);
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
+		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(-2400.0f, 200.0f, 1.0f), Vector3(-1000.0f, -190.0f, 0.0f), 1);
+		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(2400.0f, 200.0f, 1.0f), Vector3(1000.0f, -190.0f, 0.0f), -1);
 
 		////object::InstantiateUIandBG<RutabysMain>(eLayerType::BG);
 		object::Instantiate<Smoke>(eLayerType::MapEffect, Vector3(0.0f,   -141.0f, 4.9f));
@@ -139,10 +139,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"RutabysMob");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"RutabysMob");
+		//}
 	}
 	void RutabysScene::Render()
 	{

@@ -3,6 +3,7 @@
 #include "jnsMeshRenderer.h"
 #include "jnsTransform.h"
 #include "jnsResources.h"
+#include "jnsSceneManager.h"
 
 namespace jns
 {
@@ -77,8 +78,8 @@ namespace jns
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
 
-		std::wstring GetPortalName() { return mPortalName; }
-		Vector3 GetsetPlayerPos() { return setPlayerPos; }
+		jns::enums::eSceneType GetDestinationSceneType() { return destinationSceneType; }
+		Vector3 GetDestinationPlayerPos() { return setPlayerPos; }
 
 	protected:
 		eLayerType mType;
@@ -86,7 +87,7 @@ namespace jns
 		Transform* tr;
 		Vector2 mTextureSize;
 		Vector2 mSize;
-		std::wstring mPortalName;
+		jns::enums::eSceneType destinationSceneType;
 		Vector3 setPlayerPos;
 		
 	};

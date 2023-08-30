@@ -22,10 +22,10 @@ namespace jns
 	void StartScene2::LateUpdate()
 	{
 		PlayScene::LateUpdate();
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"StartScene3");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"StartScene3");
+		//}
 	}
 	void StartScene2::Render()
 	{

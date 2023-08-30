@@ -3,9 +3,9 @@
 
 namespace jns
 {
-	Portal::Portal(std::wstring name, Vector3 setpos)
+	Portal::Portal(jns::enums::eSceneType type, Vector3 setpos)
 	{
-		mPortalName = name;
+		destinationSceneType = type;
 		setPlayerPos = setpos;
 	}
 	Portal::~Portal()

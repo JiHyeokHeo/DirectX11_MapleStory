@@ -40,10 +40,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"Select");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"Select");
+		//}
 	}
 	void WorldSelectScene::Render()
 	{

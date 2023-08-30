@@ -3,9 +3,9 @@
 
 namespace jns
 {
-	YellowPortal::YellowPortal(std::wstring name, Vector3 setpos, int dir)
+	YellowPortal::YellowPortal(jns::enums::eSceneType type, Vector3 setpos, int dir)
 	{
-		mPortalName = name;
+		destinationSceneType = type;
 		setPlayerPos = setpos;
 		mDir = dir;
 	}

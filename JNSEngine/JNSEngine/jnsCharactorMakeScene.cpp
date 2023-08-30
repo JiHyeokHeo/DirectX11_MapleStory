@@ -24,10 +24,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"Rutabys");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"Rutabys");
+		//}
 	}
 	void CharactorMakeScene::Render()
 	{

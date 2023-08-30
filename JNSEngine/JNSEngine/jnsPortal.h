@@ -6,7 +6,7 @@ namespace jns
 	class Portal : public PortalBase
 	{
 	public:
-		Portal(std::wstring name, Vector3 setpos);
+		Portal(jns::enums::eSceneType type, Vector3 setpos);
 		~Portal();
 
 		virtual void Initialize();

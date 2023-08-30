@@ -20,6 +20,17 @@ namespace jns::enums
 		End,
 	};
 
+	enum class eSceneType
+	{
+		Login,
+		Select,
+		CharactorMake,
+		StartScene1,
+		RutabysMain,
+		RutabysMob,
+		RutabysBoss,
+	};
+
 	enum class eLayerType
 	{
 		Particle,

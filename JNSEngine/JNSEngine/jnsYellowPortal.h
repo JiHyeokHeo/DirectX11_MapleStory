@@ -6,7 +6,7 @@ namespace jns
 	class YellowPortal : public PortalBase
 	{
 	public:
-		YellowPortal(std::wstring name, Vector3 setpos, int dir);
+		YellowPortal(jns::enums::eSceneType destionationType, Vector3 setpos, int dir);
 		~YellowPortal();
 
 		virtual void Initialize();

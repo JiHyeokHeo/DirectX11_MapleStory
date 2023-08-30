@@ -60,9 +60,9 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* InstantiatePortal(std::wstring portalName, Vector3 setPos, Vector3 mPos, jns::enums::eLayerType type = eLayerType::Portal)
+	T* InstantiatePortal(jns::enums::eSceneType destiationSceneType, Vector3 setPos, Vector3 mPos, jns::enums::eLayerType type = eLayerType::Portal)
 	{
-		T* gameobj = new T(portalName, setPos);
+		T* gameobj = new T(destiationSceneType, setPos);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);
@@ -83,9 +83,9 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* InstantiateDirPortal(std::wstring portalName, Vector3 setPos, Vector3 mPos, int dir = 0, jns::enums::eLayerType type = eLayerType::Portal)
+	T* InstantiateDirPortal(jns::enums::eSceneType destiationSceneType, Vector3 setPos, Vector3 mPos, int dir = 0, jns::enums::eLayerType type = eLayerType::Portal)
 	{
-		T* gameobj = new T(portalName, setPos, dir);
+		T* gameobj = new T(destiationSceneType, setPos, dir);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);

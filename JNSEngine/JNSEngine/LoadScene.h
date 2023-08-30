@@ -24,18 +24,18 @@ namespace jns
 {
 	void IntializeScenes()
 	{
-		SceneManager::CreateScene<SelectScene>(L"Select");
-		SceneManager::CreateScene<CharactorMakeScene>(L"CharactorMake");
-		SceneManager::CreateScene<RutabysBossScene>(L"RutabysBoss");
-		SceneManager::CreateScene<StartScene1>(L"StartScene1");
-		SceneManager::CreateScene<StartScene2>(L"StartScene2");
+		SceneManager::CreateScene<SelectScene>(jns::enums::eSceneType::Select);
+		SceneManager::CreateScene<CharactorMakeScene>(jns::enums::eSceneType::CharactorMake);
+		SceneManager::CreateScene<RutabysBossScene>(jns::enums::eSceneType::RutabysBoss);
+		SceneManager::CreateScene<StartScene1>(jns::enums::eSceneType::StartScene1);
+		/*SceneManager::CreateScene<StartScene2>(L"StartScene2");
 		SceneManager::CreateScene<StartScene3>(L"StartScene3");
 		SceneManager::CreateScene<StartScene4>(L"StartScene4");
-		SceneManager::CreateScene<StartScene5>(L"StartScene5");
-		SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
-		SceneManager::CreateScene<RutabysMobScene>(L"RutabysMob");
-		SceneManager::CreateScene<LoginScene>(L"Login");
-		SceneManager::CreateScene<RutabysScene>(L"Rutabys");
+		SceneManager::CreateScene<StartScene5>(L"StartScene5");*/
+		//SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
+		SceneManager::CreateScene<RutabysMobScene>(jns::enums::eSceneType::RutabysMob);
+		//SceneManager::CreateScene<LoginScene>(L"Login");
+		SceneManager::CreateScene<RutabysScene>(jns::enums::eSceneType::RutabysMain);
 
 		//SceneManager::LoadScene(L"Login");
 	}

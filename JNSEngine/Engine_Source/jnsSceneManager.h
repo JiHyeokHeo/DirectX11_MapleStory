@@ -3,6 +3,17 @@
 
 namespace jns
 {
+	enum class eSceneType
+	{
+		Login,
+		Select,
+		CharactorMake,
+		StartScene1,
+		RutabysMain,
+		RutabysMob,
+		RutabysBoss,
+	};
+
 	class Player;
 	class SceneManager
 	{
@@ -15,32 +26,32 @@ namespace jns
 		static void Release();
 
 		template<typename T>
-		static bool CreateScene(std::wstring name)
+		static bool CreateScene(jns::enums::eSceneType type)
 		{
 			T* scene = new T();
 
-			std::map < std::wstring, Scene*>::iterator iter
-				= mScenes.find(name);
+			std::map <jns::enums::eSceneType, Scene*>::iterator iter
+				= mScenes.find(type);
 
 			if (iter != mScenes.end())
 				return false;
 
-			mScenes.insert(std::make_pair(name, scene));
+			mScenes.insert(std::make_pair(type, scene));
 			mActiveScene = scene;
-			mActiveScene->SetName(name);
+			mActiveScene->SetSceneType(type);
 			scene->Initialize();
 			return true;
 		}
 
 		static Scene* GetActiveScene() { return mActiveScene; }
 		static Scene* GetPrevScene() { return mPrevScene; }
-		static Scene* LoadScene(std::wstring name);
+		static Scene* LoadScene(jns::enums::eSceneType type);
 		static GameObject* GetPlayer() { return mPlayer; }
 		static void SetPlayer(GameObject* obj) { mPlayer = obj; }
 	private:
 		static Scene* mActiveScene;
 		static Scene* mPrevScene;
-		static std::map<std::wstring, Scene*> mScenes;
+		static std::map<jns::enums::eSceneType, Scene*> mScenes;
 		static GameObject* mPlayer;
 	};
 }

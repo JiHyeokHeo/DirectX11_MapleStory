@@ -57,10 +57,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"Login");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"Login");
+		//}
 	}
 	void RutabysBossScene::Render()
 	{

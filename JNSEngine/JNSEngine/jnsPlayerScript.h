@@ -78,11 +78,11 @@ namespace jns
 		ePlayerState GetPlayerState() { return mPlayerState; }
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
-		//void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
-		//void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
-		//void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
-		//void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
-		//bool GetIsNormalHit() { return isNormalHit; }
+		void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
+		void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
+		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
+		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
+		bool GetIsNormalHit() { return isNormalHit; }
 
 	private:
 		void HpLerp();

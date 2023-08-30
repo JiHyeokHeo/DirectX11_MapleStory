@@ -16,23 +16,9 @@ namespace jns
 	{
 		if (isEnter == true)
 		{
-			Vector3 mSetPos = mPortal->GetsetPlayerPos();
+			Vector3 mSetPos = mPortal->GetDestinationPlayerPos();
 			SceneManager::GetPlayer()->GetComponent<Transform>()->SetPosition(mSetPos);
-			switch (mEnter)
-			{
-			case ePortalEnter::Rutabys:
-				SceneManager::LoadScene(L"Rutabys");
-				break;
-			case ePortalEnter::RutabysMob:
-				SceneManager::LoadScene(L"RutabysMob");
-				break;
-			case ePortalEnter::RutabysBoss:
-				SceneManager::LoadScene(L"RutabysBoss");
-				break;
-			default:
-				break;
-			}
-
+			SceneManager::LoadScene(mEnter);
 			isEnter = false;
 		}
 	}
@@ -51,17 +37,17 @@ namespace jns
 	{
 		if (Input::GetKeyDown(eKeyCode::UP))
 		{
-			if (other->GetOwner()->GetName() == L"Player" && mPortal->GetPortalName() == L"RutaMob")
+			if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysMob)
 			{
-				mEnter = ePortalEnter::RutabysMob;
+				mEnter = mPortal->GetDestinationSceneType();
 			}
-			else if(other->GetOwner()->GetName() == L"Player" && mPortal->GetPortalName() == L"RutaScene")
+			else if(other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysMain)
 			{
-				mEnter = ePortalEnter::Rutabys;
+				mEnter = mPortal->GetDestinationSceneType();
 			}
-			else if (other->GetOwner()->GetName() == L"Player" && mPortal->GetPortalName() == L"RutaBoss")
+			else if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysBoss)
 			{
-				mEnter = ePortalEnter::RutabysBoss;
+				mEnter = mPortal->GetDestinationSceneType();
 			}
 
 			isEnter = true;

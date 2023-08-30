@@ -2,6 +2,7 @@
 #include "jnsEntity.h"
 #include "jnsLayer.h"
 
+
 namespace jns
 {
 	class Scene : public Entity
@@ -44,7 +45,10 @@ namespace jns
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 		std::vector<Layer>& GetLayers() { return mLayers; }
+		void SetSceneType(jns::enums::eSceneType type) { mSceneType = type; }
+		jns::enums::eSceneType GetSceneType() { return mSceneType; }
 	private:
 		std::vector<Layer> mLayers;
+		jns::enums::eSceneType mSceneType;
 	};
 }	

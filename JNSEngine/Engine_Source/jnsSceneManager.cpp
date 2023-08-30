@@ -8,7 +8,7 @@ namespace jns
 {
 	Scene* SceneManager::mActiveScene = nullptr;
 	Scene* SceneManager::mPrevScene = nullptr;
-	std::map<std::wstring, Scene*>  SceneManager::mScenes;
+	std::map<jns::enums::eSceneType, Scene*>  SceneManager::mScenes;
 	GameObject* SceneManager::mPlayer;
 	void SceneManager::Initialize()
 	{
@@ -42,11 +42,11 @@ namespace jns
 		}
 	}
 
-	Scene* SceneManager::LoadScene(std::wstring name)
+	Scene* SceneManager::LoadScene(jns::enums::eSceneType type)
 	{
 		mPrevScene = mActiveScene;
-		std::map<std::wstring, Scene*>::iterator iter
-			= mScenes.find(name);
+		std::map<jns::enums::eSceneType, Scene*>::iterator iter
+			= mScenes.find(type);
 		
 		if (iter == mScenes.end())
 			return nullptr;

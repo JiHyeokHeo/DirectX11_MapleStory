@@ -86,7 +86,7 @@ namespace jns
 			mPrevScene = mActiveScene;
 		}
 
-		if (mActiveScene->GetName() == L"Rutabys")
+		if (mActiveScene->GetSceneType() == jns::enums::eSceneType::RutabysMain)
 		{
 			mCameraRightMaxMove.x = 525.0f;
 			mCameraRightMaxMove.y = 200.0f;
@@ -95,7 +95,7 @@ namespace jns
 			setYCord = 150.0f;
 		}
 
-		if (mActiveScene->GetName() == L"RutabysMob")
+		if (mActiveScene->GetSceneType() == jns::enums::eSceneType::RutabysMob)
 		{
 			mCameraRightMaxMove.x = 1360.0f;
 			mCameraRightMaxMove.y = -10.0f;
@@ -104,7 +104,7 @@ namespace jns
 			setYCord = 200.0f;
 		}
 
-		if (mActiveScene->GetName() == L"RutabysBoss")
+		if (mActiveScene->GetSceneType() == jns::enums::eSceneType::RutabysBoss)
 		{
 			mCameraRightMaxMove.x = 525.0f;
 			mCameraRightMaxMove.y = -10.0f;

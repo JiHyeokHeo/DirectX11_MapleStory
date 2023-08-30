@@ -91,10 +91,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"StartScene1");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"StartScene1");
+		//}
 	}
 	void SelectScene::Render()
 	{

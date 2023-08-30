@@ -37,8 +37,8 @@ namespace jns
 		object::Instantiate<DemonMonster>(eLayerType::Monster, Vector3(1800.0f, -180.0f, 2.0f));
 
 		// 이름 // 캐릭터 놓일 위치 // 생성 위치
-		object::InstantiatePortal<Portal>(L"RutaScene", Vector3(-00.0f, -200.0f, 1.0f), Vector3(-1800.0f, -190.0f, 0.0f));
-		object::InstantiatePortal<Portal>(L"RutaBoss", Vector3(00.0f, -200.0f, 1.0f), Vector3(1300.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMain, Vector3(-00.0f, -200.0f, 1.0f), Vector3(-1800.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysBoss, Vector3(00.0f, -200.0f, 1.0f), Vector3(1300.0f, -190.0f, 0.0f));
 
 		CreatePlayerUI();
 		PlayScene::Initialize();
@@ -50,10 +50,10 @@ namespace jns
 	void RutabysMobScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(L"RutabysBoss");
-		}
+		//if (Input::GetKeyDown(eKeyCode::P))
+		//{
+		//	SceneManager::LoadScene(L"RutabysBoss");
+		//}
 	}
 	void RutabysMobScene::Render()
 	{

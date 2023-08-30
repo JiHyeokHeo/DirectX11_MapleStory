@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsSceneManager.h"
 
 namespace jns
 {
@@ -24,7 +25,8 @@ namespace jns
 
 	private:
 		class PortalBase* mPortal;
-		ePortalEnter mEnter;
+
+		jns::enums::eSceneType mEnter;
 		bool isEnter;
 	};
 
