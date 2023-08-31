@@ -58,15 +58,6 @@ namespace jns
 
 	void Player::Update()
 	{
-		if (GetComponent<PlayerScript>()
-			->GetIsNormalHit() == true)
-		{
-			light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-		}
-		else
-		{
-			light->SetColor(Vector4::Zero);
-		}
 		GameObject::Update();
 	}
 

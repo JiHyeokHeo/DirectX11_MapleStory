@@ -12,6 +12,14 @@ namespace jns
 		MonsterBase();
 		~MonsterBase();
 
+		enum class eMonsterState
+		{
+			Move,
+			Attack,
+			Die,
+			None,
+		};
+
 		enum class MonsterDir
 		{
 			Left = -1,
@@ -27,7 +35,7 @@ namespace jns
 		struct MonsterStatus
 		{
 			int hp;
-
+			int dmg;
 		};
 
 		virtual void Initialize() override;
@@ -103,6 +111,8 @@ namespace jns
 
 		MonsterStatus GetMonsterStatus() { return monsterStatus; }
 		void SetMonsterStatusHp(int hp) { monsterStatus.hp = hp; }
+
+
 	protected:
 		eLayerType mType;
 		MeshRenderer* mr;
@@ -114,6 +124,8 @@ namespace jns
 		EffectType mEffectType;
 		bool isEffectOn;
 		MonsterStatus monsterStatus;
+
+		eMonsterState monsterState;
 	};
 
 }

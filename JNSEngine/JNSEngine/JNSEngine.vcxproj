@@ -162,6 +162,7 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="DamageDisplay.h" />
     <ClInclude Include="DamageInterface.h" />
+    <ClInclude Include="jnsFireEffectScript.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsSkillBox.h" />
@@ -255,6 +256,7 @@
     <ClInclude Include="CommonUIInclude.h" />
     <ClInclude Include="ObjectTemplate.h" />
     <ClInclude Include="jnsWeaponBase.h" />
+    <ClInclude Include="SkillDamageControll.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InventoryBTN.cpp" />
@@ -287,6 +289,7 @@
     <ClCompile Include="jnsExpBarMoveScript.cpp" />
     <ClCompile Include="jnsExpMaxBar.cpp" />
     <ClCompile Include="jnsFireEffect.cpp" />
+    <ClCompile Include="jnsFireEffectScript.cpp" />
     <ClCompile Include="jnsGenesisWeapon.cpp" />
     <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsGround.cpp" />

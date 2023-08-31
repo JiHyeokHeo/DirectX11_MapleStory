@@ -251,6 +251,7 @@
     </ClCompile>
     <ClCompile Include="jnsSkillResources.cpp" />
     <ClCompile Include="jnsSkillUIBTN.cpp" />
+    <ClCompile Include="jnsFireEffectScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -527,6 +528,10 @@
     <ClInclude Include="DamageInterface.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="SkillDamageControll.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsFireEffectScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

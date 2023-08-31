@@ -97,7 +97,7 @@ namespace jns
 		void Hitted();
 		void Die();
 		void Attarct();
-
+		void TurnOnLightWhenIHit();
 		// 애니메이션 이벤트를 통해 스킬 생성 타이밍 조절
 		void CompleteAssasinHit1();
 		void CompleteAssasinHit2();
@@ -121,6 +121,8 @@ namespace jns
 		void CheckIsAssainHitUsed();
 		void CheckInvisibleTime();
 	private:
+		GameObject* monster;
+
 
 		struct PlayerStatus
 		{
@@ -140,7 +142,7 @@ namespace jns
 		
 		PlayerInfo mPlayerInfo;
 		PlayerSkillInfo mPlayerSkillInfo;
-		ePlayerState mPlayerState;
+		ePlayerState mPlayerState = ePlayerState::Idle;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
 		eKeyCode mClicked;
 		

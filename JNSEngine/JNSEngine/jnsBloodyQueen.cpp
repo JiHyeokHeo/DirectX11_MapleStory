@@ -79,24 +79,9 @@ namespace jns
 	void BloodyQueen::LateUpdate()
 	{
 		MonsterBase::LateUpdate();
-		BloodyQueen::SetDirection();
 	}
 	void BloodyQueen::Render()
 	{
 		MonsterBase::Render();
-	}
-
-
-	void BloodyQueen::SetDirection()
-	{
-		MonsterBase::MonsterDir mMonsterDir = GetComponent<BloodyQueenScript>()->GetMonsterDirection();
-		if ((int)mMonsterDir == -1)
-		{
-			at->GetActiveAnimation()->SetAniDirection(false);
-		}
-		else if((int)mMonsterDir == 1)
-		{
-			at->GetActiveAnimation()->SetAniDirection(true);
-		}
 	}
 }

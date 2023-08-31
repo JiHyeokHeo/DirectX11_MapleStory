@@ -4,7 +4,9 @@
 namespace jns
 {
 	AssainHit01::AssainHit01()
+		: SkillBase(eSkillType::AssainHit01)
 	{	
+		
 		SetState(GameObject::eState::DontDestroy);
 		SetIsOnlyOne(true);
 	}
@@ -24,8 +26,6 @@ namespace jns
 		at->PlayAnimation(L"AssainationNormal_Assasination_First_Attack" , true);
 		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		
-		// 스킬 콜라이더 번호 저장
-		mSkillColID = cd->GetColliderID();
 		cd->SetSize(Vector2(0.5f, 0.3f));
 		SkillBase::Initialize();
 	}

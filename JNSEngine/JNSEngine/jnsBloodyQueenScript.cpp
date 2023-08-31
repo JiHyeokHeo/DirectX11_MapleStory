@@ -114,11 +114,9 @@ namespace jns
 	}
 	void BloodyQueenScript::LateUpdate()
 	{
-		if (mMonsterState == eBloodyQueenState::SpecialAttack)
-		{
-			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
-		}
+		UpdateSpecialSkillCoolTime();
 		UpdateBossHp();
+		SetAniDir();
 	}
 	void BloodyQueenScript::Render()
 	{
@@ -214,6 +212,24 @@ namespace jns
 	{
 		MonsterBase* monsterbase = dynamic_cast<MonsterBase*>(GetOwner());
 		monsterbase->SetMonsterStatusHp(mBloodyQueenInfo.hp);
+	}
+	void BloodyQueenScript::SetAniDir()
+	{
+		if ((int)mBloodyQueenInfo.mDir == -1)
+		{
+			at->GetActiveAnimation()->SetAniDirection(false);
+		}
+		else if ((int)mBloodyQueenInfo.mDir == 1)
+		{
+			at->GetActiveAnimation()->SetAniDirection(true);
+		}
+	}
+	void BloodyQueenScript::UpdateSpecialSkillCoolTime()
+	{
+		if (mMonsterState == eBloodyQueenState::SpecialAttack)
+		{
+			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		}
 	}
 	void BloodyQueenScript::CompleteBressAni()
 	{

@@ -16,42 +16,12 @@ namespace jns
 	}
 	void BloodyQueenAttackCol::Update()
 	{
-		//BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
-		//BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
-		//
-		//if (mBQState == BloodyQueenScript::eBloodyQueenState::Attack)
-		//{
-		//	Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
-		//	cd->SetColliderOn(true);
-		//	if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
-		//	{
-		//		mMonsterPos.x += (int)mBQInfo.mDir * 100.0f;
-		//	}
-		//	else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
-		//	{
-		//		mMonsterPos.x += (int)mBQInfo.mDir * 100.0f;
-		//	}
-		//	else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
-		//	{
-		//		mMonsterPos.x += (int)mBQInfo.mDir * 100.0f;
-		//	}
-		//	else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
-		//	{
-		//		mMonsterPos.x += (int)mBQInfo.mDir * 100.0f;
-		//	}
-		//	cd->SetPosition(mMonsterPos);
-		//}
-		//else
-		//{
-		//	cd->SetColliderOn(false);
-		//}
-
-
 	}
 	void BloodyQueenAttackCol::LateUpdate()
 	{
 		BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
 		BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
+
 		if (isNomralAttackHit)
 		{
 			mBlackOutReturnTime += Time::DeltaTime();
@@ -59,7 +29,7 @@ namespace jns
 
 		if (mBlackOutReturnTime >= 1.0f)
 		{
-			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = false);
+			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(false);
 			mBlackOutReturnTime = 0.0f;
 		}
 
@@ -179,7 +149,7 @@ namespace jns
 				{
 					mPlayerHp -= mBQSkillDamage.normalAttack;
 					dmg = mBQSkillDamage.normalAttack;
-					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(isNomralAttackHit = true);
+					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 				}
 
 				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")

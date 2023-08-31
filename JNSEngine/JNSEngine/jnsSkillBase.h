@@ -11,7 +11,16 @@ namespace jns
 	class SkillBase : public GameObject
 	{
 	public:
-		SkillBase();
+		enum class eSkillType
+		{
+			AssainHit01,
+			AssainHit02,
+			Jump,
+			None,
+		};
+
+
+		SkillBase(eSkillType type);
 		~SkillBase();
 
 		virtual void Initialize() override;
@@ -112,10 +121,8 @@ namespace jns
 			tr->SetScale(Vector3(mTextureSize.x * scale.x, mTextureSize.y * scale.y, 1.0f));
 		}
 
-		// 전반적인 같은 정보를 공유하는 친구
-
-		UINT GetSkillColID() { return mSkillColID; }
-
+		eSkillType GetSkillType() { return mSkillType; }
+		
 	protected:
 		Animator* at;
 		Transform* tr;
@@ -132,7 +139,7 @@ namespace jns
 		bool isRenderOn;
 		bool isPlayPossible;
 
-		UINT mSkillColID;
+		eSkillType mSkillType;
 	};
 }
 

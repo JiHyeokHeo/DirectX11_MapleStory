@@ -13,6 +13,8 @@ namespace jns
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
+		at->CompleteEvent(L"Demondm_attack") = std::bind(&DemonMonsterScript::CompleteAttack, this);
+		at->CompleteEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::CompleteDead, this);
 		cd->SetColNum(1);
 		this->SetColNum(1);
 	}
@@ -26,9 +28,6 @@ namespace jns
 		AnimatorControl();
 		mPrevMonsterState = mMonsterState;
 		mDemonInfo.mPrevDir = mDemonInfo.mDir;
-
-		at->CompleteEvent(L"Demondm_attack") = std::bind(&DemonMonsterScript::CompleteAttack, this);
-		at->CompleteEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::CompleteDead, this);
 	}
 	void DemonMonsterScript::LateUpdate()
 	{
@@ -42,39 +41,42 @@ namespace jns
 			return;
 
 		int dmg = -99;
-		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
-		{
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
-			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
 
-			if (mPlayerInvTime <= 0.0f)
-			{
-				mPlayerHp -= 20.0f;
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player) {
+			GameObject* mPlayer = SceneManager::GetPlayer();
+			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
+			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
+
+			if (playerInfo.invisibilityTime <= 0.0f) {
+				int playerHp = playerInfo.hp;
+				playerHp -= 20;
 				dmg = 20;
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
-				damageDisplay.DisplayDamage(dmg, mPlayer->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+
+				playerScript->SetPlayerHp(playerHp);
+				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+
+				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
 			}
 		}
 
-		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
-		{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) {
+			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 			mChangeTime = 0.0f;
-			if (other->GetOwner()->GetName() == L"AssainHit01")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
-				mDemonInfo.hp -= mSkillDmg * 10;
-				mDemonInfo.isChasing = true;
-				dmg = mSkillDmg * 10;
+
+			SkillBase::eSkillType skillType = skillbase->GetSkillType();
+			int skillDmg = 0;
+
+			if (skillType == SkillBase::eSkillType::AssainHit01) {
+				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
 			}
-			else if (other->GetOwner()->GetName() == L"AssainHit02")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
-				mDemonInfo.hp -= mSkillDmg * 10;
-				mDemonInfo.isChasing = true;
-				dmg = mSkillDmg * 10;
+			else if (skillType == SkillBase::eSkillType::AssainHit02) {
+				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
 			}
+
+			mDemonInfo.hp -= skillDmg * 10;
+			mDemonInfo.isChasing = true;
+			dmg = skillDmg * 10;
+
 			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
 		}
 	}

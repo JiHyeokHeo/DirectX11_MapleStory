@@ -4,6 +4,7 @@
 namespace jns
 {
 	AssainHit02::AssainHit02()
+		: SkillBase(eSkillType::AssainHit01)
 	{
 		SetState(GameObject::eState::DontDestroy);
 		SetIsOnlyOne(true);
@@ -13,7 +14,6 @@ namespace jns
 	}
 	void AssainHit02::Initialize()
 	{
-		isRenderOn = false;
 		cd = AddComponent<Collider2D>();
 		SetName(L"Normal_Assain_Second_Attack");
 		SetMesh(L"RectMesh");

@@ -8,6 +8,7 @@ namespace jns
 {
 	int JumpSkill::jumpMakeCnt = 0;
 	JumpSkill::JumpSkill()
+		: SkillBase(eSkillType::Jump)
 	{
 		jumpMakeCnt++;
 		SetState(GameObject::eState::DontDestroy);

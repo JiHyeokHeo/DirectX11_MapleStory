@@ -3,7 +3,13 @@
 
 namespace jns
 {
-	SkillBase::SkillBase()
+	SkillBase::SkillBase(eSkillType type)
+		: mSkillType(type)
+		, mType(eLayerType::Skill)
+		, isRenderOn(false)
+		, isPlayPossible(true)
+		, mPlayer(nullptr)
+		, mPlayerScript(nullptr)
 	{
 		mr = AddComponent<MeshRenderer>();
 		at = AddComponent<Animator>();

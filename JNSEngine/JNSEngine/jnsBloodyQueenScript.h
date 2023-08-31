@@ -63,6 +63,8 @@ namespace jns
 		void CheckSkillCoolDown();
 		void CheckBossHp();
 		void UpdateBossHp();
+		void SetAniDir();
+		void UpdateSpecialSkillCoolTime();
 
 		void CompleteBressAni();
 		void CompleteBressAni1();
@@ -102,10 +104,9 @@ namespace jns
 
 	public:
 		void ResetData();
-		MonsterBase::MonsterDir GetMonsterDirection() { return mBloodyQueenInfo.mDir; }
 		BloodyQueenScript::BloodyQueenInfo GetBloodyQueenInfo() { return mBloodyQueenInfo; }
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
-		void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
+		//void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
 		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 
@@ -120,7 +121,7 @@ namespace jns
 		eBloodyQueenState mMonsterState;
 		eBloodyQueenState mPrevMonsterState = eBloodyQueenState::End;
 
-		int mRandDir;
+		int mRandDir = -1;
 		float mChangeType;
 		float mRandMakeTime;
 

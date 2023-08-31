@@ -69,6 +69,7 @@ namespace jns
 			Clear();
 		}
 
+      
         //CheckJumpCount();
         OpenInventory();
         CheckPlayerHp();
@@ -76,6 +77,12 @@ namespace jns
         PlayerControl();
 		AnimatorControl();
         
+        if (isNormalHit)
+        {
+            Light* light = GetOwner()->GetComponent<Light>();
+            light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+        }
+      
         mPrevPlayerState = mPlayerState;
         mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
         
@@ -99,7 +106,7 @@ namespace jns
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
 	{
-        if (other->GetOwner()->GetName() == L"Ground")
+        if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
         {
             Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
             if (ground->GetGroundName() == L"DownGround")
@@ -118,7 +125,7 @@ namespace jns
 			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
 		}
 
-        if (other->GetOwner()->GetName() == L"Ground")
+        if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
         {
             
             Ground* ground = dynamic_cast<Ground*>(other->GetOwner()); 
@@ -422,8 +429,8 @@ namespace jns
 
     void PlayerScript::Die()
     {
-        if (mPlayerInfo.isGrounded == true)
-        {
+     /*   if (mPlayerInfo.isGrounded == true)
+        {*/
 			mPlayerInfo.mDeathTime += Time::DeltaTime();
 
 			if (angle >= 360.0f)
@@ -449,12 +456,26 @@ namespace jns
 
 
 			tr->SetPosition(Vector3(x, y, tr->GetPosition().z));
-        }
+        //}
     }
 
     void PlayerScript::Attarct()
     {
         
+    }
+
+    void PlayerScript::TurnOnLightWhenIHit()
+    {
+        if (isNormalHit)
+        {
+            Light* light = GetOwner()->GetComponent<Light>();
+            light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+        }
+        else
+        {
+            Light* light = GetOwner()->GetComponent<Light>();
+            light->SetColor(Vector4::Zero);
+        }
     }
 
     void PlayerScript::PlayerControl()

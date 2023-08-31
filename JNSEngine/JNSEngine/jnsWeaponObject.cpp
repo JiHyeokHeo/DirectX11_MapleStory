@@ -30,23 +30,13 @@ namespace jns
 			weaponFrontName += i;
 		}
 
-		//	Idle,
-		//	Move,
-		//	Ladder,
-		//	Jump,
-		//	Prone,
-		//	Attack,
-		//	Hitted,
-		//	Die,
-		//	Attracted,
-		//	End,
-
 		Animator* weaponAnimator = weapon->GetComponent<Animator>();
 		int mDir = (int)playerScript->GetPlayerDirection();
 		Vector3 parentPos= tr->GetParent()->GetPosition();
 		parentPos.x -= mDir * 15.0f;
 		parentPos.y -= 30.0f;
-		if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Idle)
+		auto type = playerScript->GetPlayerState();
+		if (type == PlayerScript::ePlayerState::Idle)
 		{
 			weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", true);
 		}
@@ -67,11 +57,11 @@ namespace jns
 		}
 		
 		weapon->GetComponent<Transform>()->SetPosition(parentPos);
+
 		GameObject::Update();
 	}
 	void WeaponObject::LateUpdate()
 	{
-
 		// аб©Л а╤а╓
 		int mDir = (int)playerScript->GetPlayerDirection();
 		Animator* weaponAnimator = weapon->GetComponent<Animator>();
