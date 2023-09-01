@@ -135,7 +135,14 @@ namespace jns
 		mCutOutGameObjects.clear();
 		mTransparentGameObjects.clear();
 
-		Scene* scene = SceneManager::GetActiveScene();
+		if (SceneManager::isLoading == false)
+		{
+			scene = SceneManager::GetActiveScene();
+		}
+		else
+		{
+			scene = SceneManager::GetLoadingScene();
+		}
 		
 		//alpha sorting
 		for (size_t i = 0; i < (UINT)eLayerType::End; i++)

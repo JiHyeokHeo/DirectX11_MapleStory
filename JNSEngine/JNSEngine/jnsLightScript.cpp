@@ -37,14 +37,17 @@ namespace jns
 
 		if (chageScene == false)
 		{
-			if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
-				->GetIsNormalHit() == true)
+			if (SceneManager::GetPlayer() != nullptr)
 			{
-				mOpacity = 0.0f;
-			}
-			else
-			{
-				mOpacity = 1.0f;
+				if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
+					->GetIsNormalHit() == true)
+				{
+					mOpacity = 0.0f;
+				}
+				else
+				{
+					mOpacity = 1.0f;
+				}
 			}
 		}
 

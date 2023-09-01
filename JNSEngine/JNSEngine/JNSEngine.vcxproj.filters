@@ -252,6 +252,7 @@
     <ClCompile Include="jnsSkillResources.cpp" />
     <ClCompile Include="jnsSkillUIBTN.cpp" />
     <ClCompile Include="jnsFireEffectScript.cpp" />
+    <ClCompile Include="jnsLoadingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -532,6 +533,7 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="jnsFireEffectScript.h" />
+    <ClInclude Include="jnsLoadingScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

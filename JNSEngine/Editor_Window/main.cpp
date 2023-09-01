@@ -5,12 +5,12 @@
 #include "..\Engine_Source\jnsApplication.h"
 #include "..\Engine_Source\jnsRenderer.h"
 #include "..\Engine_Source\jnsResources.h"
+#include "..\Engine_SOURCE\jnsFmod.h"
+#include "..\Engine_SOURCE\jnsSkillManager.h"
+#include "..\\Engine_SOURCE\\jnsSceneManager.h"
 #include "LoadScene.h"
 #include "guiEditor.h"
-#include "..\Engine_SOURCE\jnsSkillManager.h"
 #include "jnsWeaponManager.h"
-
-
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
 #else
@@ -55,6 +55,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
+    std::thread loadingThread([&]() {
+        jns::InitializeScenes();
+    jns::SceneManager::isLoading = false;
+        });
+    loadingThread.detach();
+
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
     MSG msg;
 
@@ -73,15 +79,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
+           
             // 여기서 게임 로직이 돌아가야한다.
             application.Run();
             gui::Editor::Run();
             application.Present();
         }
     }
-
+    
     renderer::Release();
     jns::SceneManager::Release();
+    jns::Fmod::Release();
     jns::SkillManager::Release();
     jns::WeaponManager::Release();
     gui::Editor::Release();
@@ -137,7 +145,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
-   jns::IntializeScenes();
+   jns::InitializeLoadingScene();
+   jns::SceneManager::isLoading = true;
    gui::Editor::Initialize();
 
    return TRUE;

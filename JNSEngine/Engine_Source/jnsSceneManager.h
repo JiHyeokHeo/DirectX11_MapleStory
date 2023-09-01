@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsScene.h"
 
+
 namespace jns
 {
 	enum class eSceneType
@@ -17,6 +18,10 @@ namespace jns
 	class Player;
 	class SceneManager
 	{
+	public:
+		static bool isLoading;
+		static bool check;
+
 	public:
 		static void Initialize();
 		static void Update();
@@ -37,21 +42,31 @@ namespace jns
 				return false;
 
 			mScenes.insert(std::make_pair(type, scene));
+			
 			mActiveScene = scene;
 			mActiveScene->SetSceneType(type);
+			
+			if (mLoadingScene == nullptr)
+			{
+				mLoadingScene = scene;
+			}
+
 			scene->Initialize();
 			return true;
 		}
 
 		static Scene* GetActiveScene() { return mActiveScene; }
+		static Scene* GetLoadingScene() { return mLoadingScene; }
 		static Scene* GetPrevScene() { return mPrevScene; }
 		static Scene* LoadScene(jns::enums::eSceneType type);
 		static GameObject* GetPlayer() { return mPlayer; }
 		static void SetPlayer(GameObject* obj) { mPlayer = obj; }
 	private:
 		static Scene* mActiveScene;
+		static Scene* mLoadingScene;
 		static Scene* mPrevScene;
 		static std::map<jns::enums::eSceneType, Scene*> mScenes;
 		static GameObject* mPlayer;
+		
 	};
 }

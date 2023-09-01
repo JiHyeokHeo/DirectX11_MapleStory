@@ -43,13 +43,11 @@ namespace jns
 		SkillManager::Initialize();
 		WeaponManager::Initialize();
 		SceneManager::Initialize();
-		
 	}
 	void Application::Update()
 	{
 		Time::Update();
 		Input::Update();
-
 		CollisionManager::Update();
 		SceneManager::Update();
 	}

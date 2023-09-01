@@ -6,7 +6,9 @@
 
 namespace jns
 {
+	bool SceneManager::isLoading = false;
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mLoadingScene = nullptr;
 	Scene* SceneManager::mPrevScene = nullptr;
 	std::map<jns::enums::eSceneType, Scene*>  SceneManager::mScenes;
 	GameObject* SceneManager::mPlayer;
@@ -18,19 +20,31 @@ namespace jns
 	}
 	void SceneManager::Update()
 	{
-		mActiveScene->Update();
+		if (isLoading == false)
+			mActiveScene->Update();
+		else
+			mLoadingScene->Update();
 	}
 	void SceneManager::LateUpdate()
 	{
+		if (isLoading == false)
 		mActiveScene->LateUpdate();
+		else
+		mLoadingScene->LateUpdate();
 	}
 	void SceneManager::Render()
 	{
-		mActiveScene->Render();
+		//if (isLoading == false)
+		//mActiveScene->Render();
+		//else
+		mLoadingScene->Render();
 	}
 	void SceneManager::Destroy()
 	{
+		if (isLoading == false)
 		mActiveScene->Destroy();
+		else
+		mLoadingScene->Destroy();
 	}
 
 	void SceneManager::Release()
