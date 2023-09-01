@@ -18,9 +18,6 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void MouseBTNClick();
-		virtual void MouseBTNClickOff();
-
 		virtual void SetMesh(const std::wstring& name)
 		{
 			std::shared_ptr<Mesh> mMesh = Resources::Find<Mesh>(name);

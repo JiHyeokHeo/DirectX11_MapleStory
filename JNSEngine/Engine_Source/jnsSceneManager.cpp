@@ -12,7 +12,6 @@ namespace jns
 	GameObject* SceneManager::mPlayer;
 	void SceneManager::Initialize()
 	{
-		//mActiveScene = mScenes[jns::enums::eSceneType::LoadingScene];
 		// 임시로 사운드 이쪽에서 로드
 		Resources::Load<AudioClip>(L"RutaBysMain", L"..\\Resources\\Sound\\YggdrasilPrayer.mp3");
 		Resources::Load<AudioClip>(L"QueenPalace", L"..\\Resources\\Sound\\QueenPalace.mp3");

@@ -19,8 +19,6 @@
 
 jns::Application application;
 
-bool isLoadComplete = false;
-
 #define MAX_LOADSTRING 100
 
 
@@ -28,7 +26,6 @@ bool isLoadComplete = false;
 HINSTANCE hInst;                                                          // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                           // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
-
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                                       MyRegisterClass(HINSTANCE hInstance);
@@ -58,11 +55,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    std::thread loadingThread([&]() {
-        jns::InitializeScenes(); 
-    isLoadComplete = true;
-        });
-
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
     MSG msg;
 
@@ -81,18 +73,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            if (isLoadComplete)
-            {
-                if(loadingThread.joinable())
-                    loadingThread.detach();
-                application.Run();
-                gui::Editor::Run();
-                application.Present();
-            }
-            else
-            {
-                int x = 0;
-            }
+            // 여기서 게임 로직이 돌아가야한다.
+            application.Run();
+            gui::Editor::Run();
+            application.Present();
         }
     }
 
@@ -152,9 +136,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-
    application.Initialize();
-   jns::InitializeLoadingScene();
+   jns::IntializeScenes();
    gui::Editor::Initialize();
 
    return TRUE;

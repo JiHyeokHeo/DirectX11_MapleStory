@@ -22,7 +22,6 @@ namespace jns::enums
 
 	enum class eSceneType
 	{
-		LoadingScene,
 		Login,
 		Select,
 		CharactorMake,

@@ -26,8 +26,6 @@ namespace jns
 		UINT GetMedtaDataHeight() { return mHeight; }
 		HWND GetHwnd() { return mHwnd; }
 
-		void ResourcesLoadThread();
-
 	private:
 		bool mbInitialize = false;
 		std::unique_ptr<jns::graphics::GraphicDevice_Dx11> graphicDevice;
@@ -35,8 +33,6 @@ namespace jns
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
-
-		bool isCreate = false;
-		// 로딩 프로세스
+		
 	};
 }

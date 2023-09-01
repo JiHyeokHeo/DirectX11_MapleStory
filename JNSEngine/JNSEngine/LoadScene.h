@@ -13,7 +13,6 @@
 #include "jnsStartScene3.h"
 #include "jnsStartScene4.h"
 #include "jnsStartScene5.h"
-#include "jnsLoadingScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
@@ -23,7 +22,7 @@
 
 namespace jns
 {
-	void InitializeScenes()
+	void IntializeScenes()
 	{
 		SceneManager::CreateScene<SelectScene>(jns::enums::eSceneType::Select);
 		SceneManager::CreateScene<CharactorMakeScene>(jns::enums::eSceneType::CharactorMake);
@@ -41,9 +40,5 @@ namespace jns
 		//SceneManager::LoadScene(L"Login");
 	}
 	
-	void InitializeLoadingScene()
-	{
-		SceneManager::CreateScene<LoadingScene>(jns::enums::eSceneType::LoadingScene);
-	}
 
 }

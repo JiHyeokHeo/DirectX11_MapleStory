@@ -8,13 +8,6 @@
 #include "jnsCameraManager.h"
 #include "jnsFmod.h"
 #include "..\\JNSEngine\jnsWeaponManager.h"
-//#include "..\\JNSEngine\LoadScene.h"
-#include "..\\Editor_SOURCE\\guiEditor.h"
-#include "jnsSceneManager.h"
-#include "..\\JNSEngine\jnsLoadingScene.h"
-
-std::atomic<int> loadingProgress(0);
-bool loadingThreadFinished = false;
 
 namespace jns
 {
@@ -100,18 +93,6 @@ namespace jns
 		SetWindowPos(mHwnd, nullptr, 0, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
 		ShowWindow(mHwnd, true);
 		UpdateWindow(mHwnd);
-	}
-
-	void Application::ResourcesLoadThread()
-	{
-		if (isCreate)
-			return;
-		loadingProgress = 10;  
-		loadingProgress = 50;  
-		SceneManager::CreateScene<LoadingScene>(jns::enums::eSceneType::LoadingScene);
-		loadingProgress = 80;  
-		loadingProgress = 100;
-		isCreate = true;
 	}
 
 }

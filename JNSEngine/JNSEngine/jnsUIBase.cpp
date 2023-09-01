@@ -32,10 +32,4 @@ namespace jns
 	{
 		GameObject::Render();
 	}
-	void UIBase::MouseBTNClick()
-	{
-	}
-	void UIBase::MouseBTNClickOff()
-	{
-	}
 }
