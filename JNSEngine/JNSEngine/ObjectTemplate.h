@@ -6,6 +6,7 @@
 #include "jnsBGInstance.h"
 #include "jnsSkillUIBTN.h"
 #include "jnsSkillManager.h"
+#include "jnsSkillResources.h"
 
 namespace jns::object
 {
@@ -126,6 +127,20 @@ namespace jns::object
 		T* gameobj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
+		gameobj->GetComponent<Transform>()->SetScale(mScale);
+		gameobj->GetComponent<Transform>()->SetRotation(mRotation);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
+	T* InstantiateSkillUIType(SkillResources::eSkillType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
+	{
+		T* gameobj = new T(type);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(eLayerType::UI, gameobj);
 		gameobj->GetComponent<Transform>()->SetScale(mScale);
 		gameobj->GetComponent<Transform>()->SetRotation(mRotation);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);
