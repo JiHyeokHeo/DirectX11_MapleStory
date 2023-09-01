@@ -38,7 +38,7 @@ namespace jns
 
 			mScenes.insert(std::make_pair(type, scene));
 			mActiveScene = scene;
-			mActiveScene->SetSceneType(type);
+			scene->SetSceneType(type);
 			scene->Initialize();
 			return true;
 		}

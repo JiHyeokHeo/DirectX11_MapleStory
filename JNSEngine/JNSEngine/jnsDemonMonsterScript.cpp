@@ -43,8 +43,8 @@ namespace jns
 		int dmg = -99;
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player) {
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
+			Player* player = dynamic_cast<Player*>(other->GetOwner());
+			PlayerScript* playerScript = player->GetComponent<PlayerScript>();
 			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
 
 			if (playerInfo.invisibilityTime <= 0.0f) {
@@ -96,6 +96,7 @@ namespace jns
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
 			}
+			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
 		}
 	}
 	void DemonMonsterScript::OnCollisionExit(Collider2D* other)

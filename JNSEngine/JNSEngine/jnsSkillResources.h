@@ -1,11 +1,11 @@
 #pragma once
-#include "jnsGameObject.h"
+#include "jnsUIBase.h"
 #include "jnsAnimator.h"
 #include "jnsMeshRenderer.h"
 
 namespace jns
 {
-	class SkillResources : public GameObject
+	class SkillResources : public UIBase
 	{
 	public:
 		enum class eSkillType
@@ -14,8 +14,7 @@ namespace jns
 			End,
 		};
 
-
-		SkillResources();
+		SkillResources(eSkillType type);
 		~SkillResources();
 
 		virtual void Initialize() override;
@@ -23,13 +22,17 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		virtual void MouseBTNClick() override;
+		virtual void MouseBTNClickOff() override;
+
 		void SetAssainSkill();
 
 	private:
+		SkillResources();
 		eSkillType mSkillType;
 		bool isMovePossible;
-		MeshRenderer* mr;
 		Animator* at;
+		
 	};
 
 }

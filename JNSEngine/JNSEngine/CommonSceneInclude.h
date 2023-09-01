@@ -1,5 +1,7 @@
 #pragma once
 
+
+#include "jnsSkillResources.h"
 #include "DamageDisplay.h"
 // Template
 #include "ObjectTemplate.h"
