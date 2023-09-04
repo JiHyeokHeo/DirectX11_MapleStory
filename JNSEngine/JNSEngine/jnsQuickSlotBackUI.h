@@ -14,8 +14,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-	private:
+		void SetIndexNum(int y, int x, bool set) { indexNum[y][x] = set; }
 		
+	private:
+		std::vector<std::vector<bool>> indexNum;
 	};
 }
 

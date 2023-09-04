@@ -6,6 +6,11 @@ namespace jns
 {
 	QuickSlotUI::QuickSlotUI()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
+		int row = 2;
+		int col = 16;
+		indexNum.assign(col, std::vector<bool>(row, false));
 	}
 	QuickSlotUI::~QuickSlotUI()
 	{
@@ -23,6 +28,7 @@ namespace jns
 	}
 	void QuickSlotUI::Update()
 	{
+
 		UIBase::Update();
 	}
 	void QuickSlotUI::LateUpdate()

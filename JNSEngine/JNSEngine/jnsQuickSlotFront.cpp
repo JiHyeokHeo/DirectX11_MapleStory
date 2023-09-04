@@ -5,6 +5,8 @@ namespace jns
 {
 	QuickSlotFront::QuickSlotFront()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	QuickSlotFront::~QuickSlotFront()
 	{

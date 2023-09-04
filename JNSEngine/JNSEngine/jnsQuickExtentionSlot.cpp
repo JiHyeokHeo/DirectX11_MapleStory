@@ -5,6 +5,8 @@ namespace jns
 {
 	QuickExtentionSlot::QuickExtentionSlot()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	QuickExtentionSlot::~QuickExtentionSlot()
 	{

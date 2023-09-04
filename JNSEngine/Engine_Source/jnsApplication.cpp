@@ -61,8 +61,8 @@ namespace jns
 
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
-		//SceneManager::Render();
 		renderer::Render();
+		//SceneManager::Render();
 		//graphicDevice->Draw();
 
 	}

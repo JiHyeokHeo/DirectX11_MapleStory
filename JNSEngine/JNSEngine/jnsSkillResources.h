@@ -2,6 +2,8 @@
 #include "jnsUIBase.h"
 #include "jnsAnimator.h"
 #include "jnsMeshRenderer.h"
+#include "jnsSkillUIBG.h"
+#include "jnsQuickSlotBackUI.h"
 
 namespace jns
 {
@@ -25,14 +27,26 @@ namespace jns
 		virtual void MouseBTNClick() override;
 		virtual void MouseBTNClickOff() override;
 
+		void ClickOnQuickSlot();
+		void ClickOffQuickSlot();
+
 		void SetAssainSkill();
+		void SetThisIsIcon(bool isicon) { isItIcon = isicon; }
+		void SetQuickSlotUI(QuickSlotUI* skillquickslot) { skillQuickSlot = skillquickslot; }
+		void SetSkillUIBG(SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
+		void SetIsMoveAble(bool ismove) { isMovePossible = ismove; }
+		void SetIsPicked(bool ispick) { isPicked = ispick; }
 
 	private:
-		SkillResources();
+		SkillUIBG* skillBGUI;
+		QuickSlotUI* skillQuickSlot;
 		eSkillType mSkillType;
-		bool isMovePossible;
+	
 		Animator* at;
-
+		static bool isPicked;
+		bool isMovePossible;
+		bool isItIcon;
+		bool isRender;
 	};
 
 }

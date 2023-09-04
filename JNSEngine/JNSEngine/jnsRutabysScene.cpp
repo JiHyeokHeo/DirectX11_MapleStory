@@ -53,6 +53,13 @@ namespace jns
 		//InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
 		//minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
+		// 퀵슬롯
+		QuickSlotUI* mSkillSlotBack = object::InstantiateNOmove<QuickSlotUI>(eLayerType::UI);
+		QuickSlotFront* mSkillSlotFront = object::InstantiateNOmove<QuickSlotFront>(eLayerType::UI);
+		QuickExtentionSlot* mSkillExtensionSlot = object::InstantiateNOmove<QuickExtentionSlot>(eLayerType::UI);
+		mSkillSlotFront->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
+		mSkillExtensionSlot->GetComponent<Transform>()->SetParent(mSkillSlotBack->GetComponent<Transform>());
+
 		// 스킬창
 		SkillUIBG* skillUIBG = object::InstantiateNOmove<SkillUIBG>(eLayerType::UI);
 		object::InstantiateNOmove<SkillBox>(eLayerType::UI)->SetSkillUIBG(skillUIBG);
@@ -70,7 +77,9 @@ namespace jns
 		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Four)->SetSkillUIBG(skillUIBG);
 		object::InstantiateSkillBTN<SkillUIBTN>(eLayerType::UI, SkillUIBTN::eSkillUIBTN::Five)->SetSkillUIBG(skillUIBG);
 
-		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, Vector3::Zero);
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
+		
 
 
 		// 플레이어 생성
@@ -130,6 +139,8 @@ namespace jns
 
 		// NoMove BackGround
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
+		
+		
 		//CreateInventory();
 		CreatePlayerUI();
 		PlayScene::Initialize();

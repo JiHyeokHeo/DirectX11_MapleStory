@@ -83,7 +83,6 @@ namespace jns
 		}
 
 
-
 	protected:
 		eLayerType mType;
 		MeshRenderer* mr;

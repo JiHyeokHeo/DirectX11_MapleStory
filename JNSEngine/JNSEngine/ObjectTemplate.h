@@ -7,6 +7,7 @@
 #include "jnsSkillUIBTN.h"
 #include "jnsSkillManager.h"
 #include "jnsSkillResources.h"
+#include "jnsQuickSlotFront.h"
 
 namespace jns::object
 {
@@ -136,9 +137,12 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* InstantiateSkillUIType(SkillResources::eSkillType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
+	T* InstantiateSkillUIType(SkillResources::eSkillType type, QuickSlotUI* slot, SkillUIBG* bg, Vector3 mPos, bool isItIcon, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
 	{
 		T* gameobj = new T(type);
+		gameobj->SkillResources::SetSkillUIBG(bg);
+		gameobj->SkillResources::SetThisIsIcon(isItIcon);
+		gameobj->SkillResources::SetQuickSlotUI(slot);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, gameobj);
 		gameobj->GetComponent<Transform>()->SetScale(mScale);

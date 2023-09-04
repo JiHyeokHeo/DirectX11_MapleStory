@@ -49,6 +49,7 @@ namespace jns
 		for (auto& mDatas : mSkillData)
 		{
 			delete mDatas.second;
+			mDatas.second = nullptr;
 		}
 		mSkillData.clear();
 	}
