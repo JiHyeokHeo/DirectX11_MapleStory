@@ -1,5 +1,5 @@
 #include "jnsSkillManager.h"
-
+#include "..\\JNSEngine\\jnsSkillResources.h"
 
 namespace jns
 {

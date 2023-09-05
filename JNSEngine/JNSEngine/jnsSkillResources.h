@@ -13,6 +13,8 @@ namespace jns
 		enum class eSkillType
 		{
 			Assain,
+			MesoExplosionRed,
+
 			End,
 		};
 
@@ -31,19 +33,21 @@ namespace jns
 		void ClickOffQuickSlot();
 
 		void SetAssainSkill();
+		void SetExplosionRedSkill();
 		void SetThisIsIcon(bool isicon) { isItIcon = isicon; }
 		void SetQuickSlotUI(QuickSlotUI* skillquickslot) { skillQuickSlot = skillquickslot; }
 		void SetSkillUIBG(SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
 		void SetIsMoveAble(bool ismove) { isMovePossible = ismove; }
 		void SetIsPicked(bool ispick) { isPicked = ispick; }
 
+		void AddSkillResource();
 	private:
 		SkillUIBG* skillBGUI;
 		QuickSlotUI* skillQuickSlot;
 		eSkillType mSkillType;
 	
 		Animator* at;
-		static bool isPicked;
+		bool isPicked;
 		bool isMovePossible;
 		bool isItIcon;
 		bool isRender;

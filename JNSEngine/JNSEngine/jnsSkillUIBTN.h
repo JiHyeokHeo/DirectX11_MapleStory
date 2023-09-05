@@ -26,6 +26,9 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+		virtual void MouseBTNClick() override;
+		virtual void MouseBTNClickOff() override;
+
 
 		void SetSkillUIBG(SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
 
@@ -46,6 +49,8 @@ namespace jns
 			};
 			return enumToString[value];
 		}
+
+		static int GetPushedSkillBTNNumber() { return pushedBtnNumber; }
 	private:
 		eSkillUIBTN mSkillBTNType;
 		SkillUIBG* skillBGUI;
@@ -54,6 +59,9 @@ namespace jns
 		std::wstring disable = L"_disable";
 		std::wstring able = L"_able";
 		int skillBtnNumber;
+		static int pushedBtnNumber;
+
+		bool isChanged = false;
 	};
 
 }

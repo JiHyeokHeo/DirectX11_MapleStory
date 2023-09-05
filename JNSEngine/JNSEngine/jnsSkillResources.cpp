@@ -4,7 +4,6 @@ constexpr auto SKILLICON_SIZE = 30.0f;
 
 namespace jns
 {
-	bool SkillResources::isPicked = false;
 	SkillResources::SkillResources(eSkillType type)
 		: at(nullptr)
 		, mSkillType(type)
@@ -26,21 +25,27 @@ namespace jns
 		{
 		case eSkillType::Assain:
 			SetAssainSkill();
+		case eSkillType::MesoExplosionRed:
+			SetExplosionRedSkill();
 			break;
-		}
-
-		if (mSkillType == eSkillType::Assain)
-		{
-			at->PlayAnimation(L"Assain_able", true);
 		}
 
 		Vector3 skillUIPos = skillBGUI->GetComponent<Transform>()->GetPosition();
 
-		if (isItIcon)
+		switch (mSkillType)
 		{
+		case eSkillType::Assain:
 			skillUIPos.x -= 130.0f;
 			skillUIPos.y += 70.0f;
 			tr->SetPosition(skillUIPos);
+			at->PlayAnimation(L"Assain_able", true);
+			break;
+		case eSkillType::MesoExplosionRed:
+			skillUIPos.x += 15.0f;
+			skillUIPos.y += 70.0f;
+			tr->SetPosition(skillUIPos);
+			at->PlayAnimation(L"MesoExplosionRed_able", true);
+			break;
 		}
 
 		if (isItIcon == false)
@@ -60,88 +65,50 @@ namespace jns
 		{
 			Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
 			Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
-			Vector2 leftTop = {};
-			Vector2 rightBottom = {};
-			leftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
-			leftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
-			rightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
-			rightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
+			Vector2 quickslotleftTop = {};
+			Vector2 quickslotrightBottom = {};
+			quickslotleftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
+			quickslotleftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
+			quickslotrightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
+			quickslotrightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
 
-			if (mousePos.x >= leftTop.x && mousePos.x <= rightBottom.x && mousePos.y <= leftTop.y && mousePos.y >= rightBottom.y)
+			if (mousePos.x >= quickslotleftTop.x && mousePos.x <= quickslotrightBottom.x && mousePos.y <= quickslotleftTop.y && mousePos.y >= quickslotrightBottom.y)
 			{
 				isOnTarget = true;
 			}
 
-			if (isOnTarget)
+			if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
 			{
-				if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false)
-				{
-					isMovePossible = true;
-				}
+				isMovePossible = true;
+				isPicked = true;
 			}
-			else
+			else if(Input::GetKeyDown(eKeyCode::LBUTTON) && isItIcon == false && isPicked == true)
 			{
-				if (Input::GetKeyDown(eKeyCode::LBUTTON))
+				if (isOnTarget)
 				{
-					isPicked = true;
+					Vector2 checkPos = Vector2(mousePos.x - quickslotleftTop.x, quickslotleftTop.y - mousePos.y);
+					int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
+					int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
+					Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx)
+						+ (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
+					Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + quickslotleftTop.x, -1.5f + quickslotleftTop.y - itemSetPos.y, 3.5f);
+					tr->SetPosition(itemFinalPos);
+					isMovePossible = false;
+					isPicked = false;
+					isOnTarget = false;
+					AddSkillResource();
 				}
 			}
 		}
-		
+
 		if (isPicked)
 		{
 			isRender = true;
 			isMovePossible = true;
 		}
 
-		if (mousePos.x >= mLeftTop.x && mousePos.x <= mRightBottom.x 
-			&& mousePos.y <= mLeftTop.y && mousePos.y >= mRightBottom.y)
-		{
-			if (isMovePossible == true && isItIcon == false && isPicked == true)
-			{
-				if (Input::GetKeyDown(eKeyCode::LBUTTON))
-				{
-					Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
-					Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
-					Vector2 leftTop = {};
-					Vector2 rightBottom = {};
-					leftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
-					leftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
-					rightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
-					rightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
-
-					if (mousePos.x >= leftTop.x && mousePos.x <= rightBottom.x && mousePos.y <= leftTop.y && mousePos.y >= rightBottom.y)
-					{
-						isOnTarget = true;
-					}
-					else
-					{
-						isMovePossible = false;
-						isRender = false;
-						isPicked = false;
-					}
-
-					if (isOnTarget)
-					{
-						Vector2 checkPos = Vector2(mousePos.x - leftTop.x, leftTop.y - mousePos.y);
-						int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
-						int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
-						Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx) 
-							+ (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
-						Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + leftTop.x, -1.5f + leftTop.y - itemSetPos.y, 3.5f);
-						//skillQuickSlot->SetIndexNum(yidx, xidx, true);
-						tr->SetPosition(itemFinalPos);
-						isMovePossible = false;
-						isPicked = false;
-						isOnTarget = false;	
-					}
-				}
-			}
-		}
-
 		if (isMovePossible == true && isItIcon == false)
 		{
-			isPicked = true;
 			MouseBTNClick();
 		}
 	
@@ -150,6 +117,23 @@ namespace jns
 	}
 	void SkillResources::LateUpdate()
 	{
+		if (isRender == false)
+		{
+			Vector3 skillUIPos = skillBGUI->GetComponent<Transform>()->GetPosition();
+			switch (mSkillType)
+			{
+			case eSkillType::Assain:
+				skillUIPos.x -= 130.0f;
+				skillUIPos.y += 70.0f;
+				tr->SetPosition(skillUIPos);
+				break;
+			case eSkillType::MesoExplosionRed:
+				skillUIPos.x += 15.0f;
+				skillUIPos.y += 70.0f;
+				tr->SetPosition(skillUIPos);
+				break;
+			}
+		}
 		UIBase::LateUpdate();
 	}
 	void SkillResources::Render()
@@ -177,5 +161,28 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\Assain\\_disable", 100, 0.1f);
 
 		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+	}
+	void SkillResources::SetExplosionRedSkill()
+	{
+		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\MesoExplosionRed\\_able", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\MesoExplosionRed\\_disable", 100, 0.1f);
+
+		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
+	}
+	void SkillResources::AddSkillResource()
+	{
+		switch (mSkillType)
+		{
+		case jns::SkillResources::eSkillType::Assain:
+			//SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState()
+			//SkillManager::FindSkillData(L"Normal_Assain_Second_Attack");
+			break;
+		case jns::SkillResources::eSkillType::MesoExplosionRed:
+			break;
+		case jns::SkillResources::eSkillType::End:
+			break;
+		default:
+			break;
+		}
 	}
 }

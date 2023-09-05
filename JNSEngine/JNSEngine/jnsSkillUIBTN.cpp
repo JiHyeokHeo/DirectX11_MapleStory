@@ -1,8 +1,12 @@
 #include "jnsSkillUIBTN.h"
 #include "CommonSceneInclude.h"
 
+constexpr auto SKILLBTN_XSIZE = 25.0f;
+constexpr auto SKILLBTN_YSIZE = 15.0f;
+
 namespace jns
 {
+	int SkillUIBTN::pushedBtnNumber = -99;
 	SkillUIBTN::SkillUIBTN()
 	{
 	}
@@ -48,7 +52,7 @@ namespace jns
 		std::wstring animationName = eSkillUIBTNToString(mSkillBTNType);
 		skillBtnNumber = (int)mSkillBTNType + 1;
 		
-		animationName += able;
+		animationName += disable;
 		at->PlayAnimation(animationName, false);
 	}
 	void SkillUIBTN::Update()
@@ -67,6 +71,39 @@ namespace jns
 			tr->SetPosition(btnPos);
 		}
 
+		Vector3 mSkillBtnPos = tr->GetPosition();
+		Vector2 mLeftTop = Vector2(mSkillBtnPos.x - (SKILLBTN_XSIZE / 2), mSkillBtnPos.y + (SKILLBTN_YSIZE / 2));
+		Vector2 mRightBottom = Vector2(mSkillBtnPos.x + (SKILLBTN_XSIZE / 2), mSkillBtnPos.y - (SKILLBTN_YSIZE / 2));
+		Vector3 mousePos = Input::GetUIMousePos();
+
+		if (mousePos.x >= mLeftTop.x && mousePos.x <= mRightBottom.x
+			&& mousePos.y <= mLeftTop.y && mousePos.y >= mRightBottom.y)
+		{
+			if (Input::GetKeyDown(eKeyCode::LBUTTON))
+			{
+				std::wstring animationName = eSkillUIBTNToString(mSkillBTNType);
+				skillBtnNumber = (int)mSkillBTNType + 1;
+				pushedBtnNumber = skillBtnNumber;
+				animationName += able;
+				at->PlayAnimation(animationName, false);
+				isChanged = true;
+			}
+		}
+		
+		// 숫자가 바뀌면 disable 애니메이션 작동 
+
+		if (skillBtnNumber != pushedBtnNumber)
+		{
+			if (isChanged)
+			{
+				std::wstring animationName = eSkillUIBTNToString(mSkillBTNType);
+				skillBtnNumber = (int)mSkillBTNType + 1;
+				animationName += disable;
+				at->PlayAnimation(animationName, false);
+				isChanged = false;
+			}
+		}
+
 		GameObject::Update();
 	}
 	void SkillUIBTN::LateUpdate()
@@ -76,6 +113,12 @@ namespace jns
 	void SkillUIBTN::Render()
 	{
 		GameObject::Render();
+	}
+	void SkillUIBTN::MouseBTNClick()
+	{
+	}
+	void SkillUIBTN::MouseBTNClickOff()
+	{
 	}
 	void SkillUIBTN::MakeOne()
 	{

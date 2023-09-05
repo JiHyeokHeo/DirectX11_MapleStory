@@ -79,7 +79,8 @@ namespace jns
 
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
-		
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::MesoExplosionRed, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::MesoExplosionRed, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
 		//wchar_t szFloat[50] = L"BIN";
 		//FontWrapper::DrawFont(szFloat, 10.f, 30.f, 20, FONT_RGBA(255, 0, 255, 255));
 
