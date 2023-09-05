@@ -10,6 +10,7 @@
 #include "..\\Engine_SOURCE\\jnsSceneManager.h"
 #include "LoadScene.h"
 #include "guiEditor.h"
+#include "..\Engine_SOURCE\jnsFontWrapper.h"
 #include "jnsWeaponManager.h"
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
@@ -92,6 +93,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     renderer::Release();
     jns::SceneManager::Release();
     jns::Fmod::Release();
+    jns::FontWrapper::Release();
     jns::SkillManager::Release();
     jns::WeaponManager::Release();
     gui::Editor::Release();

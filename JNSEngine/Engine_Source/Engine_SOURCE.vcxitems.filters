@@ -255,6 +255,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsAudioListener.h">
       <Filter>GameObject\Component\Audio\Listener</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsFontWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
@@ -382,6 +383,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsAudioListener.cpp">
       <Filter>GameObject\Component\Audio\Listener</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsFontWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">

@@ -7,6 +7,7 @@
 #include "jnsSkillManager.h"
 #include "jnsCameraManager.h"
 #include "jnsFmod.h"
+#include "jnsFontWrapper.h"
 #include "..\\JNSEngine\jnsWeaponManager.h"
 
 namespace jns
@@ -38,6 +39,7 @@ namespace jns
 		Time::Initialize();
 		Input::Initialize();
 		Fmod::Initialize();
+		FontWrapper::Initialize();
 
 		renderer::Initialize();
 		SkillManager::Initialize();
@@ -57,10 +59,10 @@ namespace jns
 	}
 	void Application::Render()
 	{
-		Time::Render();
 
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
+		Time::Render();
 		renderer::Render();
 		//SceneManager::Render();
 		//graphicDevice->Draw();

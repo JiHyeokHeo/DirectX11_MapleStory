@@ -60,6 +60,7 @@ namespace jns
 
 		bool isColliderON;
 
+		// 1번(물체 충돌체) 2번(공격 콜라이더) 3번(충돌 감지 센서)
 		int colNum;
 		Vector3 mStart;
 		Vector3 mEnd;

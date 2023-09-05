@@ -36,6 +36,8 @@ namespace jns
 		{
 			int hp;
 			int dmg;
+			std::wstring usingSkillName;
+			int skilldmg;
 		};
 
 		virtual void Initialize() override;
@@ -124,7 +126,6 @@ namespace jns
 		EffectType mEffectType;
 		bool isEffectOn;
 		MonsterStatus monsterStatus;
-
 		eMonsterState monsterState;
 	};
 

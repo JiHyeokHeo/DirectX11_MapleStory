@@ -1,25 +1,30 @@
 #pragma once
 #include "JNSEngine.h"
 #include "jnsGameObject.h"
-#include <queue>
+#include "jnsCollider2D.h"
+#include "jnsMonsterBase.h"
 
 namespace jns
 {
 	class DamageController
 	{
 	public:
-		static void SetTarget(GameObject* target) { targets.push(target); }
-		static GameObject* GetTarget() 
-		{
-			GameObject* target = targets.front();
-			targets.pop();
+		static void HitPlayer(Collider2D* targetcol, MonsterBase* monster) 
+		{ 
+			if (targetcol->GetColNum() == 1)
+			{
+				monster->GetMonsterStatus();
+			}
+		}
 
-			return target; 
+		static void HitMonster(Collider2D* targetcol, MonsterBase* skillbase)
+		{
+
 		}
 
 
 	private:
-		static std::queue<GameObject*> targets;
+		MonsterBase* monster;
 	};
 
 

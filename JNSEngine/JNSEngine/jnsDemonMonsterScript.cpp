@@ -60,7 +60,7 @@ namespace jns
 		}
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) {
-			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
+				SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 			mChangeTime = 0.0f;
 
 			SkillBase::eSkillType skillType = skillbase->GetSkillType();

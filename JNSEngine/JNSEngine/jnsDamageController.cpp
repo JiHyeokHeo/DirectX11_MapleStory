@@ -2,7 +2,7 @@
 
 namespace jns
 {
-	std::queue<GameObject*> DamageController::targets;
+	
 
 
 
