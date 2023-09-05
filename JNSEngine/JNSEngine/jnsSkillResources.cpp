@@ -84,16 +84,29 @@ namespace jns
 					rightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
 					rightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
 
-					Vector2 checkPos = Vector2(mousePos.x - leftTop.x, leftTop.y - mousePos.y);
+					if (mousePos.x >= leftTop.x && mousePos.x <= rightBottom.x && mousePos.y <= leftTop.y && mousePos.y >= rightBottom.y)
+					{
+						isOnTarget = true;
+					}
+					else
+					{
+						isRender = false;
+						isPicked = false;
+					}
 
-					int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
-					int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
-					Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx) + (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
-					Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x  + leftTop.x, - 1.5f + leftTop.y - itemSetPos.y, 3.5f);
-					//skillQuickSlot->SetIndexNum(yidx, xidx, true);
-					tr->SetPosition(itemFinalPos);
-					//isMovePossible = false;
-					isPicked = false;
+					if (isOnTarget)
+					{
+						Vector2 checkPos = Vector2(mousePos.x - leftTop.x, leftTop.y - mousePos.y);
+						int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
+						int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
+						Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx) + (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
+						Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + leftTop.x, -1.5f + leftTop.y - itemSetPos.y, 3.5f);
+						//skillQuickSlot->SetIndexNum(yidx, xidx, true);
+						tr->SetPosition(itemFinalPos);
+						//isMovePossible = false;
+						isPicked = false;
+						isOnTarget = false;
+					}
 				}
 			}
 		}

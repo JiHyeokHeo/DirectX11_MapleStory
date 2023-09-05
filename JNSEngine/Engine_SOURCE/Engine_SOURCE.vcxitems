@@ -32,6 +32,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)jnsFontWrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h" />
@@ -80,6 +81,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)jnsFontWrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp" />

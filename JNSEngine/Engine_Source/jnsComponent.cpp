@@ -1,4 +1,4 @@
-#include "jnsComponent.h"
+	#include "jnsComponent.h"
 
 
 namespace jns

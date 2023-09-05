@@ -47,6 +47,7 @@ namespace jns
 		bool isMovePossible;
 		bool isItIcon;
 		bool isRender;
+		bool isOnTarget;
 	};
 
 }

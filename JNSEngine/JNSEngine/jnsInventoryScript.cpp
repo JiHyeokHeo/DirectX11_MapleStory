@@ -16,7 +16,7 @@ namespace jns
 	}
 	void InventoryScript::Initialize()
 	{
-		//GetOwner()->SetState(GameObject::eState::Paused);
+		GetOwner()->SetState(GameObject::eState::Active);
 	}
 	void InventoryScript::Update()
 	{

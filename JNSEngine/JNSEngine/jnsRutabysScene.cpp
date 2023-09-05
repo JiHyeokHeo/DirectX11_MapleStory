@@ -48,10 +48,10 @@ namespace jns
 		
 #pragma endregion
 
-		// 인벤토리
-		//Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
-		//InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
-		//minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
+		 //인벤토리
+		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
+		minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
 		// 퀵슬롯
 		QuickSlotUI* mSkillSlotBack = object::InstantiateNOmove<QuickSlotUI>(eLayerType::UI);
@@ -80,7 +80,8 @@ namespace jns
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
 		
-
+		//wchar_t szFloat[50] = L"BIN";
+		//FontWrapper::DrawFont(szFloat, 10.f, 30.f, 20, FONT_RGBA(255, 0, 255, 255));
 
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
