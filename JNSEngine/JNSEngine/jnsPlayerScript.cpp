@@ -140,6 +140,14 @@ namespace jns
 	{
 	}
 
+    void PlayerScript::CheckAttackSkills()
+    {
+        if (Input::GetKeyDown(SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillKeyState()))
+        {
+            mPlayerState = ePlayerState::Attack;
+        }
+    }
+
     void PlayerScript::HpLerp()
     {
     }
@@ -192,18 +200,8 @@ namespace jns
 			mPlayerInfo.mDir = PlayerDir::Right;
 			mPlayerState = ePlayerState::Move;
 		}
-		else if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Attack))
-		{
-			mPlayerState = ePlayerState::Attack;
-		}
-		else if (Input::GetKey(eKeyCode::Y))
-		{
-			mPlayerState = ePlayerState::Die;
-		}
-		else if (Input::GetKey(eKeyCode::U))
-		{
-			mPlayerState = ePlayerState::Hitted;
-		}
+
+        CheckAttackSkills();
     }
 
     void PlayerScript::Move()
@@ -248,10 +246,9 @@ namespace jns
 		{
 			pos.z += mPlayerInfo.mMoveSpeed * Time::DeltaTime();
 		}
-		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Attack))
-		{
-			mPlayerState = ePlayerState::Attack;
-		}
+        
+
+        CheckAttackSkills();
 
 		tr->SetPosition(pos);
     }
@@ -414,6 +411,10 @@ namespace jns
 
     void PlayerScript::Attack()
     {
+        if (Input::GetKeyDown(eKeyCode::D))
+        {
+            
+        }
   
     }
 
@@ -623,14 +624,14 @@ namespace jns
     }
     void PlayerScript::CheckIsAssainHitUsed()
     {
-            if (mPlayerSkillInfo.isAssainHit1Used == false)
-            {
-                at->PlayAnimation(L"CharactorCharAssain1Hit", true);
-            }
-            else if (mPlayerSkillInfo.isAssainHit1Used == true)
-            {
-                at->PlayAnimation(L"CharactorCharAssain2Hit", true);
-            }
+		if (mPlayerSkillInfo.isAssainHit1Used == false)
+		{
+			at->PlayAnimation(L"CharactorCharAssain1Hit", true);
+		}
+		else if (mPlayerSkillInfo.isAssainHit1Used == true)
+		{
+			at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+		}
     }
 
     void PlayerScript::CheckInvisibleTime()

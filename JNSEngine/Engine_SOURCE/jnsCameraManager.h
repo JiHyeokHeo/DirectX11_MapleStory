@@ -12,9 +12,9 @@ namespace jns
 		CameraManager& operator=(const CameraManager& ref) {}
 
 	public:
-		static CameraManager& GetInstance()
+		static CameraManager*& GetInstance()
 		{
-			static CameraManager instance;
+			static CameraManager* instance;
 			return instance;
 		}
 

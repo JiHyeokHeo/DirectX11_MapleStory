@@ -84,7 +84,9 @@ namespace jns
 		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
 		bool GetIsNormalHit() { return isNormalHit; }
 
+
 	private:
+		void CheckAttackSkills();
 		void HpLerp();
 		void OpenInventory();
 		void BindConstantBuffer();

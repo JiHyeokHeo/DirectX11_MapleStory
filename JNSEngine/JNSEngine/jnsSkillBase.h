@@ -15,6 +15,7 @@ namespace jns
 		{
 			AssainHit01,
 			AssainHit02,
+			BloodyMeso,
 			Jump,
 			None,
 		};
@@ -27,6 +28,9 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		virtual void CompleteSkillAnimation() = 0;
+		virtual void StartSkillAnimation() = 0;
 
 		bool GetIsRenderOn() { return isRenderOn; }
 
@@ -57,9 +61,6 @@ namespace jns
 			}
 		}
 
-
-		virtual void CompleteSkillAnimation() = 0;
-		virtual void StartSkillAnimation() = 0;
 
 		virtual void SetMesh(const std::wstring& name)
 		{

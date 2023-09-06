@@ -253,6 +253,8 @@
     <ClCompile Include="jnsSkillUIBTN.cpp" />
     <ClCompile Include="jnsFireEffectScript.cpp" />
     <ClCompile Include="jnsLoadingScene.cpp" />
+    <ClCompile Include="jnsBloodyMeso.cpp" />
+    <ClCompile Include="jnsMesoObjectPooling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -534,6 +536,8 @@
     </ClInclude>
     <ClInclude Include="jnsFireEffectScript.h" />
     <ClInclude Include="jnsLoadingScene.h" />
+    <ClInclude Include="jnsBloodyMeso.h" />
+    <ClInclude Include="jnsMesoObjectPooling.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

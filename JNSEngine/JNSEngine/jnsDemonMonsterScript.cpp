@@ -78,6 +78,7 @@ namespace jns
 			dmg = skillDmg * 10;
 
 			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
+			
 		}
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)

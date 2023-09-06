@@ -174,8 +174,8 @@ namespace jns
 		switch (mSkillType)
 		{
 		case jns::SkillResources::eSkillType::Assain:
-			//SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState()
-			//SkillManager::FindSkillData(L"Normal_Assain_Second_Attack");
+			SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState(eKeyCode::B);
+			SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->SetSkillKeyState(eKeyCode::B);
 			break;
 		case jns::SkillResources::eSkillType::MesoExplosionRed:
 			break;

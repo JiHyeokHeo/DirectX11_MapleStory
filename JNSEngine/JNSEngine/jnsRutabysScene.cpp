@@ -11,6 +11,8 @@
 #include "jnsWeaponObject.h"
 #include "jnsGenesisWeapon.h"
 #include "jnsWeaponManager.h"
+#include "jnsBloodyMeso.h"
+#include "jnsMesoObjectPooling.h"
 
 namespace jns
 {
@@ -103,10 +105,11 @@ namespace jns
 		jump2->SetName(L"Rogue_SkillflashJump_02");
 		GameObject* obj1 = object::InstantiateSkill<AssainHit01>(Vector3::Zero);
 		GameObject* obj2 = object::InstantiateSkill<AssainHit02>(Vector3::Zero);
-		
-
+		//object::InstantiateSkill<BloodyMeso> (Vector3::Zero);
+		std::unique_ptr<jns::MesoPooling::MesoObjectPooling> mesoPooling = std::make_unique<jns::MesoPooling::MesoObjectPooling>();
+		MesoPooling::MesoObjectPooling::GetInstance() = mesoPooling.get();
 		// 테스트 보스
-//		object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
+		//object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 
 
 
