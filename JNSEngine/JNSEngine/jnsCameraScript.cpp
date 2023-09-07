@@ -34,36 +34,36 @@ namespace jns
 
 		
 
-		if (Input::GetKey(eKeyCode::W))
-		{
-			pos.y += 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::S))
-		{
-			pos.y -= 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::A))
-		{
-			pos.x -= 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::D))
-		{
-			pos.x += 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Q))
-		{
-			pos.z -= 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::E))
-		{
-			pos.z += 255.0f * Time::DeltaTime();
-			cameratr->SetPosition(pos);
-		}
+		//if (Input::GetKey(eKeyCode::W))
+		//{
+		//	pos.y += 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
+		//else if (Input::GetKey(eKeyCode::S))
+		//{
+		//	pos.y -= 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
+		//else if (Input::GetKey(eKeyCode::A))
+		//{
+		//	pos.x -= 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
+		//else if (Input::GetKey(eKeyCode::D))
+		//{
+		//	pos.x += 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
+		//else if (Input::GetKey(eKeyCode::Q))
+		//{
+		//	pos.z -= 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
+		//else if (Input::GetKey(eKeyCode::E))
+		//{
+		//	pos.z += 255.0f * Time::DeltaTime();
+		//	cameratr->SetPosition(pos);
+		//}
 	}
 
 	bool CameraScript::FollowTarget()

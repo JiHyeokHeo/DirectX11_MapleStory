@@ -1,4 +1,5 @@
 #include "jnsSkillUIBG.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -21,6 +22,17 @@ namespace jns
 	}
 	void SkillUIBG::Update()
 	{
+	/*	if (Input::GetKeyDown(eKeyCode::K))
+		{
+			if (isRender == false)
+			{
+				isRender = true;
+			}
+			else
+			{
+				isRender = false;
+			}
+		}*/
 		UIBase::Update();
 	}
 	void SkillUIBG::LateUpdate()
@@ -29,6 +41,7 @@ namespace jns
 	}
 	void SkillUIBG::Render()
 	{
+		//if(isRender == true)
 		UIBase::Render();
 	}
 }

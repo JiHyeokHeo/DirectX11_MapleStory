@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsUIBase.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -14,10 +15,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetIndexNum(int y, int x, bool set) { indexNum[y][x] = set; }
-		
+		void SetIndexNum(int y, int x, eKeyCode code) { indexNum[y][x] = code; }
+		eKeyCode GetIndexKeyCode(int xidx, int yidx) { return indexNum[xidx][yidx]; }
 	private:
-		std::vector<std::vector<bool>> indexNum;
+		std::vector<std::vector<eKeyCode>> indexNum;
 	};
 }
 

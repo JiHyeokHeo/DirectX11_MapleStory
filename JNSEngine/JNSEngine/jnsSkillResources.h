@@ -14,7 +14,7 @@ namespace jns
 		{
 			Assain,
 			MesoExplosionRed,
-
+			JumpSkill,
 			End,
 		};
 
@@ -34,13 +34,14 @@ namespace jns
 
 		void SetAssainSkill();
 		void SetExplosionRedSkill();
+		void SetJumpSkill();
 		void SetThisIsIcon(bool isicon) { isItIcon = isicon; }
 		void SetQuickSlotUI(QuickSlotUI* skillquickslot) { skillQuickSlot = skillquickslot; }
 		void SetSkillUIBG(SkillUIBG* skillbgui) { skillBGUI = skillbgui; }
 		void SetIsMoveAble(bool ismove) { isMovePossible = ismove; }
 		void SetIsPicked(bool ispick) { isPicked = ispick; }
 
-		void AddSkillResource();
+		void AddSkillResource(int xidx, int yidx);
 	private:
 		SkillUIBG* skillBGUI;
 		QuickSlotUI* skillQuickSlot;

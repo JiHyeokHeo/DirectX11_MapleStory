@@ -23,6 +23,17 @@ namespace jns
 	}
 	void SkillUIBTN::Initialize()
 	{
+		//if (Input::GetKeyDown(eKeyCode::K))
+		//{
+		//	if (isRender == false)
+		//	{
+		//		isRender = true;
+		//	}
+		//	else
+		//	{
+		//		isRender = false;
+		//	}
+		//}
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionAlphaMaterial"));
 		at = AddComponent<Animator>();

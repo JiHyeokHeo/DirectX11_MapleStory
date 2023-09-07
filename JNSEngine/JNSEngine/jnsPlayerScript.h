@@ -29,12 +29,12 @@ namespace jns
 		class eKeyType
 		{
 		public:
-			uint32_t Attack = static_cast<uint32_t>(eKeyCode::LCTRL);
-			uint32_t Jump = static_cast<uint32_t>(eKeyCode::C);
-			uint32_t Prone = static_cast<uint32_t>(eKeyCode::DOWN);
-			uint32_t MoveL = static_cast<uint32_t>(eKeyCode::LEFT);
-			uint32_t MoveR = static_cast<uint32_t>(eKeyCode::RIGHT);
-			uint32_t Skill = static_cast<uint32_t>(eKeyCode::F);
+			eKeyCode Attack = eKeyCode::LCTRL;
+			eKeyCode Jump = eKeyCode::C;
+			eKeyCode Prone = eKeyCode::DOWN;
+			eKeyCode MoveL = eKeyCode::LEFT;
+			eKeyCode MoveR = eKeyCode::RIGHT;
+			eKeyCode Skill = eKeyCode::F;
 		};
 
 		enum class PlayerDir

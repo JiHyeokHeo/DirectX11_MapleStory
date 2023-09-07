@@ -13,6 +13,7 @@ namespace jns
 		LEFT, UP, RIGHT, DOWN,
 		LBUTTON, RBUTTON,
 		LSHIFT, RSHIFT, LALT,
+		NONE,
 		END,
 	};
 

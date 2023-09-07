@@ -51,6 +51,7 @@ namespace jns
 		}
 
 		static int GetPushedSkillBTNNumber() { return pushedBtnNumber; }
+		
 	private:
 		eSkillUIBTN mSkillBTNType;
 		SkillUIBG* skillBGUI;
@@ -62,6 +63,7 @@ namespace jns
 		static int pushedBtnNumber;
 
 		bool isChanged = false;
+		//bool isRender = false;
 	};
 
 }

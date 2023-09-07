@@ -69,7 +69,7 @@ namespace jns
 			Clear();
 		}
 
-      
+        mPlayerKeyType.Jump = SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->GetSkillKeyState();
         //CheckJumpCount();
         OpenInventory();
         CheckPlayerHp();
@@ -389,10 +389,7 @@ namespace jns
             //mPlayerState = ePlayerState::Idle;
         }
 
-        if (Input::GetKeyDown(eKeyCode::LCTRL))
-        {
-            mPlayerState = ePlayerState::Attack;
-        }
+        CheckAttackSkills();
 
         mRb->SetVelocity(velocity);
     }

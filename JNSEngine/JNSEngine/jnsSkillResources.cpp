@@ -21,14 +21,22 @@ namespace jns
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 		at = AddComponent<Animator>();
+
+
 		switch (mSkillType)
 		{
 		case eSkillType::Assain:
 			SetAssainSkill();
+			break;
 		case eSkillType::MesoExplosionRed:
 			SetExplosionRedSkill();
 			break;
+		case eSkillType::JumpSkill:
+			SetJumpSkill();
+			break;
 		}
+
+		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
 
 		Vector3 skillUIPos = skillBGUI->GetComponent<Transform>()->GetPosition();
 
@@ -55,6 +63,21 @@ namespace jns
 	}
 	void SkillResources::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::K))
+		{
+			if (isItIcon == true)
+			{
+				if (isRender == false)
+				{
+					isRender = true;
+				}
+				else
+				{
+					isRender = false;
+				}
+			}
+		}
+
 		Vector3 mSkillResourcesPos = tr->GetPosition();
 		Vector2 mLeftTop = Vector2(mSkillResourcesPos.x - SKILLICON_SIZE, mSkillResourcesPos.y + SKILLICON_SIZE);
 		Vector2 mRightBottom = Vector2(mSkillResourcesPos.x + SKILLICON_SIZE, mSkillResourcesPos.y - SKILLICON_SIZE);
@@ -96,7 +119,7 @@ namespace jns
 					isMovePossible = false;
 					isPicked = false;
 					isOnTarget = false;
-					AddSkillResource();
+					AddSkillResource(xidx, yidx);
 				}
 			}
 		}
@@ -117,6 +140,7 @@ namespace jns
 	}
 	void SkillResources::LateUpdate()
 	{
+		// 스킬 리소스 위치해놓기
 		if (isRender == false)
 		{
 			Vector3 skillUIPos = skillBGUI->GetComponent<Transform>()->GetPosition();
@@ -159,25 +183,32 @@ namespace jns
 	{
 		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\Assain\\_able", 100, 0.1f);
 		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\Assain\\_disable", 100, 0.1f);
-
-		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
 	}
 	void SkillResources::SetExplosionRedSkill()
 	{
 		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\MesoExplosionRed\\_able", 100, 0.1f);
 		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\MesoExplosionRed\\_disable", 100, 0.1f);
-
-		GetComponent<Transform>()->SetScale(Vector3(100.0f, 100.0f, 1.0f));
 	}
-	void SkillResources::AddSkillResource()
+	void SkillResources::SetJumpSkill()
 	{
+		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\\TripleJump\\_able", 100, 0.1f);
+		at->CreateAnimations(L"..\\Resources\\UI\\SkillUI\\\TripleJump\\_disable", 100, 0.1f);
+	}
+	void SkillResources::AddSkillResource(int xidx, int yidx)
+	{
+		eKeyCode setKeyCode = skillQuickSlot->GetIndexKeyCode(yidx, xidx);
 		switch (mSkillType)
 		{
 		case jns::SkillResources::eSkillType::Assain:
-			SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState(eKeyCode::B);
-			SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->SetSkillKeyState(eKeyCode::B);
+			SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->SetSkillKeyState(setKeyCode);
 			break;
 		case jns::SkillResources::eSkillType::MesoExplosionRed:
+			SkillManager::FindSkillData(L"BloodyMeso")->SetSkillKeyState(setKeyCode);
+			break;
+		case jns::SkillResources::eSkillType::JumpSkill:
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_02")->SetSkillKeyState(setKeyCode);
 			break;
 		case jns::SkillResources::eSkillType::End:
 			break;
