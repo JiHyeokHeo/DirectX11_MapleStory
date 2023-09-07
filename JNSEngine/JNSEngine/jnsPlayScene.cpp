@@ -77,13 +77,13 @@ namespace jns
 
 	void PlayScene::CreateUICamera()
 	{
-		CameraObject* uiCamera = new CameraObject(CameraObject::eCameraType::UICamera);
-		uiCamera->Initialize();
-		AddGameObject(eLayerType::Camera, uiCamera);
-		uiCamera->TurnOffAllLayer();
-		uiCamera->TurnOnLayer(eLayerType::UI);
-		uiCamera->TurnOnLayer(eLayerType::Cursor);
-		uiCamera->TurnOnLayer(eLayerType::Item);
+		uiCameraObj = new CameraObject(CameraObject::eCameraType::UICamera);
+		uiCameraObj->Initialize();
+		AddGameObject(eLayerType::Camera, uiCameraObj);
+		uiCameraObj->TurnOffAllLayer();
+		uiCameraObj->TurnOnLayer(eLayerType::UI);
+		uiCameraObj->TurnOnLayer(eLayerType::Cursor);
+		uiCameraObj->TurnOnLayer(eLayerType::Item);
 	
 	}
 
@@ -122,10 +122,11 @@ namespace jns
 
 	void PlayScene::CreateCursor()
 	{
-		GameObject* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
-		Collider2D * mCol = mCursor->AddComponent<Collider2D>();
-		mCol->Initialize();
-		mCol->SetSize(Vector2(1.0f, 1.0f));
+		Cursor* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
+		//Collider2D * mCol = mCursor->AddComponent<Collider2D>();
+		mCursor->SetUICameraToCursor(uiCameraObj);
+		//mCol->Initialize();
+		//mCol->SetSize(Vector2(1.0f, 1.0f));
 		
 	}
 

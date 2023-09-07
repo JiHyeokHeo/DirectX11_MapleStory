@@ -1,6 +1,6 @@
 #pragma once
-#include "jnsGameObject.h"
-#include "jnsCamera.h"
+#include "..\\Engine_SOURCE\jnsGameObject.h"
+
 
 enum class SceneType
 {
@@ -18,6 +18,7 @@ namespace jns
 		{
 			MainCamera,
 			UICamera,
+			MapCamera,
 			None,
 		};
 		CameraObject();
@@ -43,7 +44,7 @@ namespace jns
 	private:
 		Vector3 mCameraPos;
 		eCameraType mCameraType;
-		Camera* mCameraComp;
+		class Camera* mCameraComp;
 		GameObject* mFollowTarget;
 
 	};

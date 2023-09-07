@@ -38,6 +38,9 @@ namespace jns
 				renderer::UICamera = mCameraComp;
 			}
 			break;
+		case eCameraType::MapCamera:
+			renderer::cameras.push_back(mCameraComp);
+			break;
 		default:
 			break;
 		}

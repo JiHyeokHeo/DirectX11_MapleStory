@@ -145,6 +145,20 @@ namespace jns
 		// NoMove BackGround
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		
+
+		// 미니맵 카메라
+		CameraObject* minimapCameraObj= new CameraObject(CameraObject::eCameraType::MapCamera);
+		minimapCameraObj->Initialize();
+		//minimapCameraObj->SetFollowTarget(followtarget);
+		AddGameObject(eLayerType::UI, minimapCameraObj);
+		minimapCameraObj->TurnOffAllLayer();
+		minimapCameraObj->TurnOnLayer(eLayerType::BG);
+		minimapCameraObj->TurnOnLayer(eLayerType::Player);
+		minimapCameraObj->TurnOnLayer(eLayerType::Monster);
+		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
+		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
+
+		//minimapCameraObj->
 		
 		//CreateInventory();
 		CreatePlayerUI();

@@ -28,9 +28,10 @@ namespace jns
 		void SetTarget(GameObject* target) { followtarget = target; }
 		
 		CameraObject* mainCameraObj;
+		CameraObject* uiCameraObj;
 		GameObject* mBGInstance;
 		GameObject* mDirectionalLight;
-	private:
 		GameObject* followtarget;
+	private:
 	};
 }

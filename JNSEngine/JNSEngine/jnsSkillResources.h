@@ -55,8 +55,6 @@ namespace jns
 		bool isIconRender;
 		bool isOnTarget;
 		int skillLearnNum;
-
-		bool isSkillKeyPress;
 	};
 
 }

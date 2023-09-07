@@ -47,6 +47,7 @@ namespace jns
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
 
+		void SetSize(float size) { mSize = size; }
 		float GetSize() { return mSize; }
 		Matrix& GetViewMatrix() { return mView; }
 		Matrix& GetProjectionMatrix() { return mProjection; }
