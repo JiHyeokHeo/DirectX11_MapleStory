@@ -1,6 +1,6 @@
 #include "jnsSkillBox.h"
 #include "jnsSkillUIBG.h"
-
+#include "jnsInput.h"
 namespace jns
 {
 	int SkillBox::GlobalIdx = 0;
@@ -23,6 +23,18 @@ namespace jns
 	}
 	void SkillBox::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::K))
+		{
+			if (isRender == false)
+			{
+				isRender = true;
+			}
+			else
+			{
+				isRender = false;
+			}
+			
+		}
 		Vector3 parentPos = skillBGUI->GetComponent<Transform>()->GetPosition();
 		float mYstartCor = parentPos.y - 90.0f;
 		if (mIdx >= 1 && mIdx <= 4)
@@ -49,6 +61,7 @@ namespace jns
 	}
 	void SkillBox::Render()
 	{
+		if(isRender)
 		GameObject::Render();
 	}
 }

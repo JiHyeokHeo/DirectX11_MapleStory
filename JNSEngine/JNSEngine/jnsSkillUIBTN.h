@@ -63,7 +63,7 @@ namespace jns
 		static int pushedBtnNumber;
 
 		bool isChanged = false;
-		//bool isRender = false;
+		bool isRender = false;
 	};
 
 }

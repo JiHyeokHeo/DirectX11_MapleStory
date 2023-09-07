@@ -52,7 +52,11 @@ namespace jns
 		bool isMovePossible;
 		bool isItIcon;
 		bool isRender;
+		bool isIconRender;
 		bool isOnTarget;
+		int skillLearnNum;
+
+		bool isSkillKeyPress;
 	};
 
 }

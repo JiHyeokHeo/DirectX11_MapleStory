@@ -20,6 +20,7 @@ namespace jns
 		static int GlobalIdx;
 		SkillUIBG* skillBGUI;
 		int mIdx;
+		bool isRender = false;
 	};
 }
 

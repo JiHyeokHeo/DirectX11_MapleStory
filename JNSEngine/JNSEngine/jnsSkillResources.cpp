@@ -27,12 +27,15 @@ namespace jns
 		{
 		case eSkillType::Assain:
 			SetAssainSkill();
+			skillLearnNum = 4;
 			break;
 		case eSkillType::MesoExplosionRed:
 			SetExplosionRedSkill();
+			skillLearnNum = 4;
 			break;
 		case eSkillType::JumpSkill:
 			SetJumpSkill();
+			skillLearnNum = 1;
 			break;
 		}
 
@@ -54,12 +57,17 @@ namespace jns
 			tr->SetPosition(skillUIPos);
 			at->PlayAnimation(L"MesoExplosionRed_able", true);
 			break;
+		case eSkillType::JumpSkill:
+			skillUIPos.x -= 130.0f;
+			skillUIPos.y += 70.0f;
+			tr->SetPosition(skillUIPos);
+			at->PlayAnimation(L"TripleJump_able", true);
+			break;
 		}
 
-		if (isItIcon == false)
-		{
-			isRender = false;
-		}
+		
+		isRender = false;
+		
 	}
 	void SkillResources::Update()
 	{
@@ -70,11 +78,25 @@ namespace jns
 				if (isRender == false)
 				{
 					isRender = true;
+					isIconRender = true;
 				}
 				else
 				{
 					isRender = false;
+					isIconRender = false;
 				}
+			}
+		}
+
+		if (isRender == true)
+		{
+			if (SkillUIBTN::GetPushedSkillBTNNumber() != skillLearnNum && isItIcon == true)
+			{
+				isIconRender = false;
+			}
+			else if(SkillUIBTN::GetPushedSkillBTNNumber() == skillLearnNum && isItIcon == true)
+			{
+				isIconRender = true;
 			}
 		}
 
@@ -99,6 +121,10 @@ namespace jns
 			{
 				isOnTarget = true;
 			}
+			else
+			{
+				isOnTarget = false;
+			}
 
 			if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
 			{
@@ -120,6 +146,11 @@ namespace jns
 					isPicked = false;
 					isOnTarget = false;
 					AddSkillResource(xidx, yidx);
+				}
+				else
+				{
+					isRender = false;
+					isPicked = false;
 				}
 			}
 		}
@@ -162,7 +193,7 @@ namespace jns
 	}
 	void SkillResources::Render()
 	{
-		if(isRender == true)
+		if((isRender == true && isItIcon == false) || (isIconRender == true && isItIcon == true))
 		UIBase::Render();
 	}
 	void SkillResources::MouseBTNClick()
@@ -196,7 +227,16 @@ namespace jns
 	}
 	void SkillResources::AddSkillResource(int xidx, int yidx)
 	{
-		eKeyCode setKeyCode = skillQuickSlot->GetIndexKeyCode(yidx, xidx);
+		eKeyCode setKeyCode = {};
+		if (xidx < 0 || yidx < 0)
+		{
+			setKeyCode = eKeyCode::NONE;
+		}
+		else
+		{
+			setKeyCode = skillQuickSlot->GetIndexKeyCode(yidx, xidx);
+		}
+
 		switch (mSkillType)
 		{
 		case jns::SkillResources::eSkillType::Assain:

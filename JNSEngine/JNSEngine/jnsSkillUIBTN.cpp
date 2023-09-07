@@ -23,17 +23,7 @@ namespace jns
 	}
 	void SkillUIBTN::Initialize()
 	{
-		//if (Input::GetKeyDown(eKeyCode::K))
-		//{
-		//	if (isRender == false)
-		//	{
-		//		isRender = true;
-		//	}
-		//	else
-		//	{
-		//		isRender = false;
-		//	}
-		//}
+
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionAlphaMaterial"));
 		at = AddComponent<Animator>();
@@ -68,6 +58,17 @@ namespace jns
 	}
 	void SkillUIBTN::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::K))
+		{
+			if (isRender == false)
+			{
+				isRender = true;
+			}
+			else
+			{
+				isRender = false;
+			}
+		}
 		Vector3 parentPos = skillBGUI->GetComponent<Transform>()->GetPosition();
 		float mYstartCor = parentPos.y + 145.0f;
 		float mXstartCor = parentPos.x - 140.0f;
@@ -123,6 +124,7 @@ namespace jns
 	}
 	void SkillUIBTN::Render()
 	{
+		if(isRender == true)
 		GameObject::Render();
 	}
 	void SkillUIBTN::MouseBTNClick()

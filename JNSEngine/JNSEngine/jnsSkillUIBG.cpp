@@ -22,7 +22,7 @@ namespace jns
 	}
 	void SkillUIBG::Update()
 	{
-	/*	if (Input::GetKeyDown(eKeyCode::K))
+		if (Input::GetKeyDown(eKeyCode::K))
 		{
 			if (isRender == false)
 			{
@@ -32,7 +32,7 @@ namespace jns
 			{
 				isRender = false;
 			}
-		}*/
+		}
 		UIBase::Update();
 	}
 	void SkillUIBG::LateUpdate()
@@ -41,7 +41,7 @@ namespace jns
 	}
 	void SkillUIBG::Render()
 	{
-		//if(isRender == true)
+		if(isRender == true)
 		UIBase::Render();
 	}
 }
