@@ -40,6 +40,7 @@ namespace jns
 
 		if (playerScript->GetPlayerState() != playerScript->GetPlayerPrevState())
 		{
+			weapon->GetComponent<Transform>()->SetRotation(Vector3::Zero);
 			weapon->GetComponent<Transform>()->SetPosition(parentPos);
 			if (type == PlayerScript::ePlayerState::Idle)
 			{
@@ -76,9 +77,10 @@ namespace jns
 		}
 		else if (type == PlayerScript::ePlayerState::Jump)
 		{
-			parentPos.x += mDir * 2.0f;
-			float angle = DegreeToRadian(30.0f);
-			weapon->GetComponent<Transform>()->SetRotation(Vector3(angle, angle, 1.0f));
+			parentPos.x += mDir * 22.0f;
+			parentPos.y += 32.0f;
+			float angle = DegreeToRadian(120.0f * mDir);
+			weapon->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, angle));
 		}
 		weapon->GetComponent<Transform>()->SetPosition(parentPos);
 

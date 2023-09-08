@@ -27,7 +27,6 @@ namespace jns
 				{
 					if (mMatrix[column][row] == true)
 					{
-						std::unique_lock<std::mutex> lock(mtx);
 						LayerCollision((eLayerType)column, (eLayerType)row);
 					}
 				}
@@ -40,6 +39,7 @@ namespace jns
 	}
 	void CollisionManager::LayerCollision(eLayerType left, eLayerType right)
 	{
+		std::unique_lock<std::mutex> lock(mtx);
 		Scene* activeScene = SceneManager::GetActiveScene();
 
 		const std::vector<GameObject*>& lefts
