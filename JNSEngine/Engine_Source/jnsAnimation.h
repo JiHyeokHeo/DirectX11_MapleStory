@@ -60,6 +60,8 @@ namespace jns
 
 		void SetAnimationName(std::wstring name) { animationName = name; }
 		std::wstring GetAnimationName() { return animationName; }
+
+		int GetAnimationIndex() { return mIndex; }
 		
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;

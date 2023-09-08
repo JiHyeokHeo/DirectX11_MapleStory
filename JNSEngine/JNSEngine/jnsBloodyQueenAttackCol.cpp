@@ -22,7 +22,7 @@ namespace jns
 		BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
 		BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
 
-		if (isNomralAttackHit)
+		if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetIsNormalHit() == true)
 		{
 			mBlackOutReturnTime += Time::DeltaTime();
 		}
@@ -149,7 +149,6 @@ namespace jns
 				{
 					mPlayerHp -= mBQSkillDamage.normalAttack;
 					dmg = mBQSkillDamage.normalAttack;
-					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 				}
 
 				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
@@ -163,7 +162,9 @@ namespace jns
 					mPlayerHp -= mBQSkillDamage.bressAttack;
 					dmg = mBQSkillDamage.bressAttack;
 				}
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+
+				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
+				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
 				Vector3 playerPos = mPlayer->GetComponent<Transform>()->GetPosition();
 				damageDisplay.DisplayDamage(dmg, playerPos, Vector2(0.0f, 50.0f));

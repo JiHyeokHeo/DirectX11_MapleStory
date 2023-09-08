@@ -24,6 +24,7 @@ namespace jns
 		CreateUICamera();
 		//CreateEffectCamera();
 		//CreateGridCamera();
+		
 		CreateCursor();
 	}
 

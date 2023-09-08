@@ -5,6 +5,7 @@
 #include "jnsHeart.h"
 #include "jnsHeartScript.h"
 #include "jnsSwallowEffect.h"
+#include "jnsFireEffect.h"
 std::mt19937_64 rng1(3244);
 std::uniform_int_distribution<__int64> dist1(-1, 1);
 
@@ -134,9 +135,7 @@ namespace jns
 				if (mBloodyQueen->GetIsEffectOn())
 				{
 					PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-					int playerHp = playerScript->GetPlayerInfo().hp;
-					playerHp -= mSkillDmg;
-					playerScript->SetPlayerHp(playerHp);
+					playerScript->PlayerDamaged(mSkillDmg);
 				}
 				else 
 				{
@@ -533,6 +532,7 @@ namespace jns
 		{
 			if (abs(mMonsterPos.x - mPlayerPos.x) <= mBressMaxXCor)
 			{
+				mFireEffect->SetState(GameObject::eState::Active);
 				animationname += animationNameNormalDebuff;
 				at->PlayAnimation(animationname, true);
 			}

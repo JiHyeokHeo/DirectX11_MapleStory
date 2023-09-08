@@ -15,8 +15,11 @@ namespace jns
 		virtual void Render() override;
 
 
-
 	private:
+		bool isRenderOn;
+		float mBurningTime;
+		float mLastBurningTime;
+		int burningDamage = 10.0f;
 	};
 
 }

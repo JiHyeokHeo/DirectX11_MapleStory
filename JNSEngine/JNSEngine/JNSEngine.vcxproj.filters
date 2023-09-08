@@ -255,6 +255,7 @@
     <ClCompile Include="jnsLoadingScene.cpp" />
     <ClCompile Include="jnsBloodyMeso.cpp" />
     <ClCompile Include="jnsMesoObjectPooling.cpp" />
+    <ClCompile Include="jnsDemonAttackCol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -538,6 +539,7 @@
     <ClInclude Include="jnsLoadingScene.h" />
     <ClInclude Include="jnsBloodyMeso.h" />
     <ClInclude Include="jnsMesoObjectPooling.h" />
+    <ClInclude Include="jnsDemonAttackCol.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

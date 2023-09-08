@@ -27,13 +27,14 @@ namespace jns
 		GameObject* obj = object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -160.0f, 3.0f));
 		mBQscript = obj->GetComponent<BloodyQueenScript>();
 		Mirror* mirror = object::Instantiate<Mirror>(eLayerType::Monster, Vector3(-150.0f, -300.0f, 2.0f));
-		mBQscript->SetMirror(mirror);
 		atObj = object::Instantiate<AttackReflection>(eLayerType::MapEffect, Vector3::Zero);
 		atObj->SetChaseObject(obj);
-		//
-		object::Instantiate<FireEffect>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
+		FireEffect* fireObj = object::Instantiate<FireEffect>(jns::enums::eLayerType::MapEffect, Vector3::Zero);
 		SwallowEffect* swallowObj= object::Instantiate<SwallowEffect>(jns::enums::eLayerType::MapEffect, Vector3(0.0f, -390.0f, 2.0f));
+		//
+		mBQscript->SetMirror(mirror);
 		mBQscript->SetSwallow(swallowObj);
+		mBQscript->SetFireEffect(fireObj);
 		// 하트 세팅
 		for (int i = -7; i <= 7; i++)
 		{

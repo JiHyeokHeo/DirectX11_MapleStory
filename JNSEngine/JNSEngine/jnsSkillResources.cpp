@@ -106,51 +106,55 @@ namespace jns
 		Vector3 mousePos = Input::GetUIMousePos();
 
 		if (mousePos.x >= mLeftTop.x && mousePos.x <= mRightBottom.x 
-			&& mousePos.y <= mLeftTop.y && mousePos.y >= mRightBottom.y)
+			&& mousePos.y <= mLeftTop.y && mousePos.y >= mRightBottom.y
+			)
 		{
-			Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
-			Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
-			Vector2 quickslotleftTop = {};
-			Vector2 quickslotrightBottom = {};
-			quickslotleftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
-			quickslotleftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
-			quickslotrightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
-			quickslotrightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
+			if (SkillUIBTN::GetPushedSkillBTNNumber() == skillLearnNum)
+			{
+				Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
+				Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
+				Vector2 quickslotleftTop = {};
+				Vector2 quickslotrightBottom = {};
+				quickslotleftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
+				quickslotleftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
+				quickslotrightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
+				quickslotrightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
 
-			if (mousePos.x >= quickslotleftTop.x && mousePos.x <= quickslotrightBottom.x && mousePos.y <= quickslotleftTop.y && mousePos.y >= quickslotrightBottom.y)
-			{
-				isOnTarget = true;
-			}
-			else
-			{
-				isOnTarget = false;
-			}
-
-			if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
-			{
-				isMovePossible = true;
-				isPicked = true;
-			}
-			else if(Input::GetKeyDown(eKeyCode::LBUTTON) && isItIcon == false && isPicked == true)
-			{
-				if (isOnTarget)
+				if (mousePos.x >= quickslotleftTop.x && mousePos.x <= quickslotrightBottom.x && mousePos.y <= quickslotleftTop.y && mousePos.y >= quickslotrightBottom.y)
 				{
-					Vector2 checkPos = Vector2(mousePos.x - quickslotleftTop.x, quickslotleftTop.y - mousePos.y);
-					int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
-					int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
-					Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx)
-						+ (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
-					Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + quickslotleftTop.x, -1.5f + quickslotleftTop.y - itemSetPos.y, 3.5f);
-					tr->SetPosition(itemFinalPos);
-					isMovePossible = false;
-					isPicked = false;
-					isOnTarget = false;
-					AddSkillResource(xidx, yidx);
+					isOnTarget = true;
 				}
 				else
 				{
-					isRender = false;
-					isPicked = false;
+					isOnTarget = false;
+				}
+
+				if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
+				{
+					isMovePossible = true;
+					isPicked = true;
+				}
+				else if (Input::GetKeyDown(eKeyCode::LBUTTON) && isItIcon == false && isPicked == true)
+				{
+					if (isOnTarget)
+					{
+						Vector2 checkPos = Vector2(mousePos.x - quickslotleftTop.x, quickslotleftTop.y - mousePos.y);
+						int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
+						int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
+						Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx)
+							+ (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
+						Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + quickslotleftTop.x, -1.5f + quickslotleftTop.y - itemSetPos.y, 3.5f);
+						tr->SetPosition(itemFinalPos);
+						isMovePossible = false;
+						isPicked = false;
+						isOnTarget = false;
+						AddSkillResource(xidx, yidx);
+					}
+					else
+					{
+						isRender = false;
+						isPicked = false;
+					}
 				}
 			}
 		}
@@ -249,6 +253,7 @@ namespace jns
 		case jns::SkillResources::eSkillType::JumpSkill:
 			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillKeyState(setKeyCode);
 			SkillManager::FindSkillData(L"Rogue_SkillflashJump_02")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillLearn(true);
 			break;
 		case jns::SkillResources::eSkillType::End:
 			break;

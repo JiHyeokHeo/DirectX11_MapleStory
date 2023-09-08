@@ -6,6 +6,8 @@
 #include "jnsCollider2D.h"
 #include "jnsInput.h"
 
+#include <mutex>
+std::mutex mtx;
 
 namespace jns
 {
@@ -25,6 +27,7 @@ namespace jns
 				{
 					if (mMatrix[column][row] == true)
 					{
+						std::unique_lock<std::mutex> lock(mtx);
 						LayerCollision((eLayerType)column, (eLayerType)row);
 					}
 				}
@@ -43,6 +46,9 @@ namespace jns
 			= activeScene->GetLayer(left).GetGameObjects();
 		const std::vector<GameObject*>& rights
 			= activeScene->GetLayer(right).GetGameObjects();
+
+		if (lefts.size() == 0  || rights.size() == 0)
+			return;
 
 		for (GameObject* leftObj : lefts)
 		{

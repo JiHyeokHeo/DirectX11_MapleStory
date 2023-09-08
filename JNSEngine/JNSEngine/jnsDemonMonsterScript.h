@@ -60,7 +60,7 @@ namespace jns
 		MonsterBase::MonsterDir GetMonsterDirection() { return mDemonInfo.mDir; }
 		DemonInfo GetDemonInfo() { return mDemonInfo; }
 		void SetDemonState(eDemonState state) { mMonsterState = state; }
-
+		eDemonState GetDemonState() { return mMonsterState; }
 
 		void CompleteAttack();
 		void CompleteDead();

@@ -2,6 +2,7 @@
 #include "CommonSceneInclude.h"
 #include "jnsDemonMonsterScript.h"
 #include "jnsDemonAttackRangeScript.h"
+#include "jnsDemonAttackCol.h"
 
 namespace jns
 {
@@ -31,6 +32,7 @@ namespace jns
 
 		AddComponent<DemonMonsterScript>();
 		AddComponent<DemonAttackRangeScript>();
+		AddComponent<DemonAttackCol>();
 	}
 	void DemonMonster::Update()
 	{

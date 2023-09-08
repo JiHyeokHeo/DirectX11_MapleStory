@@ -48,11 +48,9 @@ namespace jns
 			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
 
 			if (playerInfo.invisibilityTime <= 0.0f) {
-				int playerHp = playerInfo.hp;
-				playerHp -= 20;
 				dmg = 20;
 
-				playerScript->SetPlayerHp(playerHp);
+				playerScript->PlayerDamaged(dmg);
 				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
 
 				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
@@ -94,7 +92,7 @@ namespace jns
 			if (mPlayerInvTime <= 0.0f)
 			{
 				mPlayerHp -= 20.0f;
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerHp(mPlayerHp);
+				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(mPlayerHp);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
 			}
 		}
@@ -260,12 +258,12 @@ namespace jns
 	}
 	void DemonMonsterScript::Attack()
 	{
-		mAttackColChangeTime += Time::DeltaTime();
+//		mAttackColChangeTime += Time::DeltaTime();
 
-		if (mAttackColChangeTime >= 0.5f)
-		{
-			cd->SetSize(Vector2(0.6f, 0.5f));
-		}
+		//if (mAttackColChangeTime >= 0.5f)
+		//{
+		//	cd->SetSize(Vector2(0.6f, 0.5f));
+		//}
 	}
 	void DemonMonsterScript::Hit()
 	{
@@ -280,9 +278,7 @@ namespace jns
 	}
 	void DemonMonsterScript::CompleteAttack()
 	{
-		cd->SetSize(Vector2(0.25f, 0.4f));
 		mMonsterState = eDemonState::Idle;
-		mAttackColChangeTime = 0.0f;
 	}
 	void DemonMonsterScript::CompleteDead()
 	{

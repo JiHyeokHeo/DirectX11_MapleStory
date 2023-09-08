@@ -10,10 +10,12 @@
 
 namespace jns
 {
+    int PlayerScript::playerDir = 0;
 	void PlayerScript::Initialize()
 	{
         // 플레이어 정보
 		isAnimationDone = true;
+        mPlayerState = ePlayerState::Idle;
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 200.0f;
@@ -69,7 +71,11 @@ namespace jns
 			Clear();
 		}
 
-        mPlayerKeyType.Jump = SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->GetSkillKeyState();
+        if(SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->GetSkillLearn())
+        {
+            mPlayerKeyType.Jump = mPlayerKeyType.NormalJump;
+        }
+
         //CheckJumpCount();
         OpenInventory();
         CheckPlayerHp();
@@ -83,8 +89,8 @@ namespace jns
             light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
         }
       
-        mPrevPlayerState = mPlayerState;
-        mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
+        //mPrevPlayerState = mPlayerState;
+        //mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
         
 	}
 	void PlayerScript::LateUpdate()
@@ -102,6 +108,9 @@ namespace jns
 
 		//BindConstantBuffer();
         at->GetActiveAnimation()->SetAniDirection((bool)mPlayerInfo.isRight);
+        mPrevPlayerState = mPlayerState;
+        mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
+        playerDir = (int)mPlayerInfo.mDir;
 	}
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
@@ -140,6 +149,11 @@ namespace jns
 	{
 	}
 
+    void PlayerScript::PlayerDamaged(int dmg)
+    {
+        mPlayerInfo.hp -= dmg;
+    }
+
     void PlayerScript::CheckAttackSkills()
     {
         if (Input::GetKeyDown(SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillKeyState()))
@@ -176,7 +190,7 @@ namespace jns
 
     void PlayerScript::Idle()
     {
-		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump))
+		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.NormalJump))
 		{
 			wasStand = true;
 			Vector3 velocity = mRb->GetVelocity();
@@ -214,7 +228,7 @@ namespace jns
 
 		Vector3 pos = tr->GetPosition();
 
-		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump))
+		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.NormalJump))
 		{
 			Vector3 velocity = mRb->GetVelocity();
 			velocity.x += 600.0f * -(int)mPlayerInfo.mDir;
@@ -306,6 +320,10 @@ namespace jns
         Vector3 pos = tr->GetPosition();
         Vector3 velocity = mRb->GetVelocity();
 
+        if (SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->GetSkillKeyState() == eKeyCode::NONE)
+            return;
+
+
         if (Input::GetKey(eKeyCode::LEFT))
         {
             mPlayerInfo.mDir = PlayerDir::Left;
@@ -325,7 +343,7 @@ namespace jns
             }
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 1 && wasStand == true)
+        if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 1 && wasStand == true)
         {
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 60.0f;
@@ -337,7 +355,7 @@ namespace jns
             pos.x -= (int)mPlayerInfo.mDir * 100.0f;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == true)
+        if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == true)
         {
             pos.x -= (int)mPlayerInfo.mDir * 100.0f;
 
@@ -345,7 +363,7 @@ namespace jns
             mPlayerInfo.mJumpCnt++;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == true)
+        if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == true)
         {
             velocity.x = 0.0f;
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
@@ -356,7 +374,7 @@ namespace jns
             mPlayerInfo.mJumpCnt++;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == false)
+        if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == false)
         {
             velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
             velocity.y -= 260.0f;
@@ -367,7 +385,7 @@ namespace jns
             mPlayerInfo.mJumpCnt++;
         }
 
-        if (Input::GetKeyDown(eKeyCode::C) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == false)
+        if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == false)
         {
             velocity.x = 0.0f;
             velocity.y = -40.0f;

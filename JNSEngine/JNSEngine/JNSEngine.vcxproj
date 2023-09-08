@@ -163,6 +163,7 @@
     <ClInclude Include="DamageDisplay.h" />
     <ClInclude Include="DamageInterface.h" />
     <ClInclude Include="jnsBloodyMeso.h" />
+    <ClInclude Include="jnsDemonAttackCol.h" />
     <ClInclude Include="jnsFireEffectScript.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
     <ClInclude Include="jnsLoadingScene.h" />
@@ -284,6 +285,7 @@
     <ClCompile Include="jnsDamageControl.cpp" />
     <ClCompile Include="jnsDamageController.cpp" />
     <ClCompile Include="jnsDarkPaper.cpp" />
+    <ClCompile Include="jnsDemonAttackCol.cpp" />
     <ClCompile Include="jnsDemonAttackRangeScript.cpp" />
     <ClCompile Include="jnsDemonMonster.cpp" />
     <ClCompile Include="jnsDemonMonsterScript.cpp" />

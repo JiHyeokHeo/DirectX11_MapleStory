@@ -14,6 +14,7 @@ namespace jns
 	}
 	void WeaponObject::Initialize()
 	{
+		
 		tr = GetComponent<Transform>();
 	}
 	void WeaponObject::Update()
@@ -29,33 +30,56 @@ namespace jns
 				break;
 			weaponFrontName += i;
 		}
-
+		playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 		Animator* weaponAnimator = weapon->GetComponent<Animator>();
-		int mDir = (int)playerScript->GetPlayerDirection();
+		int mDir = PlayerScript::GetStaticPlayerDir();
 		Vector3 parentPos= tr->GetParent()->GetPosition();
-		parentPos.x -= mDir * 15.0f;
-		parentPos.y -= 30.0f;
-		auto type = playerScript->GetPlayerState();
-		if (type == PlayerScript::ePlayerState::Idle)
+		parentPos.x -= mDir * 11.0f;
+		parentPos.y -= 33.0f;
+		PlayerScript::ePlayerState type = playerScript->GetPlayerState();
+
+		if (playerScript->GetPlayerState() != playerScript->GetPlayerPrevState())
 		{
-			weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", true);
-		}
-		else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Move)
-		{
-			weaponAnimator->PlayAnimation(weaponFrontName + L"walk1", true);
-		}
-		else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Attack)
-		{
-			if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain1Hit")
+			weapon->GetComponent<Transform>()->SetPosition(parentPos);
+			if (type == PlayerScript::ePlayerState::Idle)
 			{
-				weaponAnimator->PlayAnimation(weaponFrontName + L"swingO1", false);
+				weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", true);
 			}
-			else if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain2Hit")
+			else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Move)
 			{
-				weaponAnimator->PlayAnimation(weaponFrontName + L"swingO2", false);	
+				weaponAnimator->PlayAnimation(weaponFrontName + L"walk1", true);
+			}
+			else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Attack)
+			{
+				if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain1Hit")
+				{
+					weaponAnimator->PlayAnimation(weaponFrontName + L"swingO1", false);
+				}
+				else if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain2Hit")
+				{
+					weaponAnimator->PlayAnimation(weaponFrontName + L"swingO2", false);
+				}
+			}
+			else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Prone)
+			{
+				weaponAnimator->PlayAnimation(weaponFrontName + L"proneIdle", false);
+			}
+			else if (type == PlayerScript::ePlayerState::Jump)
+			{
+				weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", false);
 			}
 		}
-		
+		if (type == PlayerScript::ePlayerState::Prone)
+		{
+			parentPos.y -= 10.0f;
+			parentPos.x += mDir* 30.0f;
+		}
+		else if (type == PlayerScript::ePlayerState::Jump)
+		{
+			parentPos.x += mDir * 2.0f;
+			float angle = DegreeToRadian(30.0f);
+			weapon->GetComponent<Transform>()->SetRotation(Vector3(angle, angle, 1.0f));
+		}
 		weapon->GetComponent<Transform>()->SetPosition(parentPos);
 
 		GameObject::Update();

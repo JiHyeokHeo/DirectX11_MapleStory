@@ -12,24 +12,25 @@ namespace jns
 	class PlayerScript : public Script
 	{
 	public:
-		enum class ePlayerState
-		{
-			Idle,
-			Move,
-			Ladder,
-			Jump,
-			Prone,
-			Attack,
-			Hitted,
-			Die,
-			Attracted,
-			End,
-		};
+			enum class ePlayerState
+			{
+				Idle = 0,
+				Move,
+				Ladder,
+				Jump,
+				Prone,
+				Attack,
+				Hitted,
+				Die,
+				Attracted,
+				End,
+			};
 
 		class eKeyType
 		{
 		public:
 			eKeyCode Attack = eKeyCode::LCTRL;
+			eKeyCode NormalJump = eKeyCode::C;
 			eKeyCode Jump = eKeyCode::C;
 			eKeyCode Prone = eKeyCode::DOWN;
 			eKeyCode MoveL = eKeyCode::LEFT;
@@ -76,15 +77,18 @@ namespace jns
 		eKeyType GetPlayerKeyType() { return mPlayerKeyType; }
 		void SetPlayerState(ePlayerState state) { mPlayerState = state; }
 		ePlayerState GetPlayerState() { return mPlayerState; }
+		ePlayerState GetPlayerPrevState() { return mPrevPlayerState; }
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
-		void SetPlayerHp(int hp) { mPlayerInfo.hp = hp; }
-		void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
+
+		
+		void PlayerDamaged(int dmg);
+		/*void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
 		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
-		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
+		*/void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
 		bool GetIsNormalHit() { return isNormalHit; }
 
-
+		static int GetStaticPlayerDir() { return playerDir; }
 	private:
 		void CheckAttackSkills();
 		void HpLerp();
@@ -123,9 +127,7 @@ namespace jns
 		void CheckIsAssainHitUsed();
 		void CheckInvisibleTime();
 	private:
-		GameObject* monster;
-
-
+		static int playerDir;
 		struct PlayerStatus
 		{
 		};
@@ -144,7 +146,7 @@ namespace jns
 		
 		PlayerInfo mPlayerInfo;
 		PlayerSkillInfo mPlayerSkillInfo;
-		ePlayerState mPlayerState = ePlayerState::Idle;
+		ePlayerState mPlayerState;
 		ePlayerState mPrevPlayerState = ePlayerState::End;
 		eKeyCode mClicked;
 		

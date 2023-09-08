@@ -16,7 +16,8 @@ namespace jns
 	}
 	void FireEffect::Initialize()
 	{
-		SetState(GameObject::eState::Paused);
+		mBurningTime = 0.0f;
+		SetState(GameObject::eState::Active);
 		SetName(L"FireEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
@@ -30,6 +31,28 @@ namespace jns
 	}
 	void FireEffect::Update()
 	{
+		if (GetState() == GameObject::eState::Active)
+		{
+			mBurningTime += Time::DeltaTime();
+			Vector3 playerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+			playerPos.y -= 100.0f;
+			tr->SetPosition(playerPos);
+		}
+
+		if (mBurningTime - mLastBurningTime >= 1.0f)
+		{
+			GameObject* obj = SceneManager::GetPlayer();
+			Player* player = dynamic_cast<Player*>(obj);
+			player->GetComponent<PlayerScript>()->PlayerDamaged(burningDamage);
+			mLastBurningTime = mBurningTime;
+		}
+
+		if (mBurningTime >= 3.0f)
+		{
+			mBurningTime = 0.0f;	
+			SetState(GameObject::eState::Paused);
+		}
+
 		EffectBase::Update();
 	}
 	void FireEffect::LateUpdate()

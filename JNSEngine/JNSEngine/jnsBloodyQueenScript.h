@@ -54,6 +54,7 @@ namespace jns
 		void SetMirror(class Mirror* mirror) { mMirror = mirror; }
 		void SetSwallow(class SwallowEffect* swallow) { mSwallowEffect = swallow; }
 		void SetHeart(class Heart* heart) { mHearts.push_back(heart); }
+		void SetFireEffect(class FireEffect* fire) { mFireEffect = fire; }
 
 	private:
 		void InitData();
@@ -141,7 +142,7 @@ namespace jns
 		class Mirror* mMirror;
 		std::vector<Heart*> mHearts;
 		class SwallowEffect* mSwallowEffect;
-
+		class FireEffect* mFireEffect;
 		DamageDisplay damageDisplay;
 	};
 

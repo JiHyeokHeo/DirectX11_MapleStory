@@ -15,6 +15,7 @@ namespace jns
 			, damage(dmg)
 			, cooldown(cool)
 			, keystate(keyState)
+			, isLearn(false)
 		{};
 		~SkillData() {};
 
@@ -23,15 +24,19 @@ namespace jns
 		int GetSkillDamage() { return damage; }
 		int GetSkillCoolDown() { return cooldown; }
 		eKeyCode GetSkillKeyState() { return keystate; }
+		bool GetSkillLearn() { return isLearn; }
 
 		void SetSkillName(std::wstring skillname) { skillName = skillname; }
 		void SetSkillDamage(int dmg) { damage = dmg; }
 		void SetSkillCoolDown(float skillcool) { cooldown = skillcool; }
 		void SetSkillKeyState(eKeyCode keyset) { keystate = keyset; }
+		void SetSkillLearn(bool islearn) { isLearn = islearn; }
+
 
 	private:
 		std::wstring skillName = L" ";
 		int damage = 0;
+		bool isLearn = false;
 		float cooldown = 0.0f;
 		eKeyCode keystate = eKeyCode::END;
 	};

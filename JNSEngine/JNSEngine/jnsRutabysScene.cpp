@@ -83,6 +83,8 @@ namespace jns
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::Assain, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::MesoExplosionRed, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::MesoExplosionRed, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::JumpSkill, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
+		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::JumpSkill, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
 		//wchar_t szFloat[50] = L"BIN";
 		//FontWrapper::DrawFont(szFloat, 10.f, 30.f, 20, FONT_RGBA(255, 0, 255, 255));
 
@@ -94,7 +96,7 @@ namespace jns
 		WeaponObject* weapon = object::Instantiate<WeaponObject>(eLayerType::MapEffect, Vector3::Zero);
 		WeaponManager::AddWeapon(L"Genesis_Thief_Weapon", object::Instantiate<GenesisWeapon>(eLayerType::MapEffect, Vector3::Zero));
 		weapon->GetComponent<Transform>()->SetParent(player->GetComponent<Transform>());
-		weapon->SetPlayerScript(playerScript);
+		//weapon->SetPlayerScript(playerScript);
 		// 플레이어 싹다 생성 후 스킬들 사전 생성
 
 

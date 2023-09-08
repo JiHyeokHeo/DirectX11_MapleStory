@@ -6,8 +6,8 @@ namespace jns
 	void DemonAttackRangeScript::Initialize()
 	{
 		cd = GetOwner()->AddComponent<Collider2D>();
-		cd->SetColNum(2);
-		this->SetColNum(2);
+		cd->SetColNum(3);
+		this->SetColNum(3);
 		mDMScript = GetOwner()->GetComponent<DemonMonsterScript>();
 		cd->SetSize(Vector2(1.0f, 1.0f));
 	}

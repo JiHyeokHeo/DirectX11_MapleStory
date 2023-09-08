@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsWeaponBase.h"
+#include "jnsPlayerScript.h"
 
 namespace jns
 {
@@ -24,11 +25,9 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetPlayerScript(class PlayerScript* script) { playerScript = script; }
-
 	private:
 		GameObject* weapon;
-		class PlayerScript* playerScript;
+		PlayerScript* playerScript;
 		Transform* tr;
 		
 	};

@@ -49,7 +49,7 @@ namespace jns
 			
 			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Attracted)
 			{
-				playerscript->SetPlayerHp(0);
+				playerscript->PlayerDamaged(0);
 				mMirrorState = eMirrorState::Bombed;
 			}
 		}
