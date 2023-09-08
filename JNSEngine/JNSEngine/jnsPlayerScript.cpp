@@ -85,8 +85,17 @@ namespace jns
         
         if (isNormalHit)
         {
+            mBlackTime += Time::DeltaTime();
             Light* light = GetOwner()->GetComponent<Light>();
             light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+        }
+
+        if (mBlackTime >= 1.0f)
+        {
+            mBlackTime = 0.0f;
+            isNormalHit = false;
+            Light* light = GetOwner()->GetComponent<Light>();
+            light->SetColor(Vector4(0.0f, 0.0f, 0.0f, 1.0f));
         }
       
         //mPrevPlayerState = mPlayerState;

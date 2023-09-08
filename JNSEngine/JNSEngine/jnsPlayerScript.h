@@ -177,6 +177,8 @@ namespace jns
 		float centerX;
 		float centerY;
 
+
+		float mBlackTime = 0.0f;
 		bool isNormalHit = false;
 		bool isHpLerp = false;
 		int destinationHp;

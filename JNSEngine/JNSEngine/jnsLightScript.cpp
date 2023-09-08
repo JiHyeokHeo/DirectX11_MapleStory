@@ -39,6 +39,8 @@ namespace jns
 		{
 			if (SceneManager::GetPlayer() != nullptr)
 			{
+				bool t = SceneManager::GetPlayer()->GetComponent<PlayerScript>()
+					->GetIsNormalHit();
 				if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
 					->GetIsNormalHit() == true)
 				{

@@ -3,7 +3,8 @@
 #include "jnsMeshRenderer.h"
 #include "jnsResources.h"
 #include "jnsAnimation.h"
-
+#include "jnsSceneManager.h"
+#include "jnsPlayerScript.h"
 
 namespace jns
 {
@@ -32,6 +33,7 @@ namespace jns
 	}
 	void WeaponBase::Render()
 	{
+		//if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerState() != PlayerScript::ePlayerState::Die)
 		GameObject::Render();
 	}
 }

@@ -46,9 +46,9 @@ namespace jns
 	void PlayScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
+		//CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
+		//CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
+		//CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Player, true);

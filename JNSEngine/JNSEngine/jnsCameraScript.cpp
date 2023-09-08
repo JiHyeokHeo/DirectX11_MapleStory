@@ -114,8 +114,8 @@ namespace jns
 		}
 
 		PlayerScript* playerScript = checkTarget->GetComponent<PlayerScript>();
-		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
-			return false;
+		//if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
+		//	return false;
 		if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
 			return false;
 		// 플레이어 최신 위치를 불러온다.

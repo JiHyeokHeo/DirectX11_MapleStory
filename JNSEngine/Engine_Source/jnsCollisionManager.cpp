@@ -81,10 +81,10 @@ namespace jns
 	}
 	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right)
 	{	
-		bool isCursor = false;
-		if (left->GetOwner()->GetLayerType() == eLayerType::Cursor ||
-			right->GetOwner()->GetLayerType() == eLayerType::Cursor)
-			isCursor = true;
+		//bool isCursor = false;
+		//if (left->GetOwner()->GetLayerType() == eLayerType::Cursor ||
+		//	right->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		//	isCursor = true;
 
 
 		// 두 충돌체의 ID bool값을 확인
@@ -102,69 +102,38 @@ namespace jns
 			iter = mCollisionMap.find(id.id);
 		}
 
-		if (isCursor == false)
+		
+		if (Intersect(left, right))
 		{
-			if (Intersect(left, right))
+			// 충돌
+			if (iter->second == false)
 			{
-				// 충돌
-				if (iter->second == false)
-				{
-					// 최초충돌
-					left->OnCollisionEnter(right);
-					right->OnCollisionEnter(left);
-				}
-				else
-				{
-					// 충돌 중
-					left->OnCollisionStay(right);
-					right->OnCollisionStay(left);
-				}
-				iter->second = true;
+				// 최초충돌
+				left->OnCollisionEnter(right);
+				right->OnCollisionEnter(left);
 			}
 			else
 			{
-				// 충돌 X
-				if (iter->second == true)
-				{
-					// 충돌하고 있다가 나갈떄
-					left->OnCollisionExit(right);
-					right->OnCollisionExit(left);
-				}
-				iter->second = false;
+				// 충돌 중
+				left->OnCollisionStay(right);
+				right->OnCollisionStay(left);
 			}
+			iter->second = true;
 		}
+		else
+		{
+			// 충돌 X
+			if (iter->second == true)
+			{
+				// 충돌하고 있다가 나갈떄
+				left->OnCollisionExit(right);
+				right->OnCollisionExit(left);
+			}
+			iter->second = false;
+		}
+		
 
-		if (isCursor == true)
-		{
-			if (IntersectForMouse(left, right))
-			{
-				// 충돌
-				if (iter->second == false)
-				{
-					// 최초충돌
-					left->OnCollisionEnter(right);
-					right->OnCollisionEnter(left);
-				}
-				else
-				{
-					// 충돌 중
-					left->OnCollisionStay(right);
-					right->OnCollisionStay(left);
-				}
-				iter->second = true;
-			}
-			else
-			{
-				// 충돌 X
-				if (iter->second == true)
-				{
-					// 충돌하고 있다가 나갈떄
-					left->OnCollisionExit(right);
-					right->OnCollisionExit(left);
-				}
-				iter->second = false;
-			}
-		}
+
 	
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
@@ -218,25 +187,21 @@ namespace jns
 		}
 		else if(left->GetType() == eColliderType::Line && right->GetType() == eColliderType::Rect)
 		{
-			// Line-rectangle collision handling
-			Vector3 lineStart = left->GetStartPoint(); // Assuming you have a way to get the start point of the line
-			Vector3 lineEnd = left->GetEndPoint();     // Assuming you have a way to get the end point of the line
+			Vector3 lineStart = left->GetStartPoint(); 
+			Vector3 lineEnd = left->GetEndPoint();     
 			Vector3 rectCenter = right->GetPosition();
 			Vector2 rectSize = right->GetSize();
 			Vector3 rectScale = right->GetScale();
 
-			// Scale the rectangle size by the collider's scale
 			rectSize.x *= rectScale.x;
 			rectSize.y *= rectScale.y;
 
-			// Calculate the corners of the rectangle
 			Vector3 rectCorners[4];
 			rectCorners[0] = rectCenter + Vector3(-rectSize.x / 2, rectSize.y / 2, 0.0f);
 			rectCorners[1] = rectCenter + Vector3(rectSize.x / 2, rectSize.y / 2, 0.0f);
 			rectCorners[2] = rectCenter + Vector3(-rectSize.x / 2, -rectSize.y / 2, 0.0f);
 			rectCorners[3] = rectCenter + Vector3(rectSize.x / 2, -rectSize.y / 2, 0.0f);
 
-			// Check for collision between the line and each edge of the rectangle
 			for (int i = 0; i < 4; ++i)
 			{
 				Vector3 rectEdge1 = rectCorners[i];
@@ -251,25 +216,21 @@ namespace jns
 		}
 		else if(left->GetType() == eColliderType::Rect && right->GetType() == eColliderType::Line)
 		{
-			// Rectangle-line collision handling
-			Vector3 lineStart = right->GetStartPoint(); // Assuming you have a way to get the start point of the line
-			Vector3 lineEnd = right->GetEndPoint();     // Assuming you have a way to get the end point of the line
+			Vector3 lineStart = right->GetStartPoint(); 
+			Vector3 lineEnd = right->GetEndPoint();     
 			Vector3 rectCenter = left->GetPosition();
 			Vector2 rectSize = left->GetSize();
 			Vector3 rectScale = left->GetScale();
 
-			// Scale the rectangle size by the collider's scale
 			rectSize.x *= rectScale.x;
 			rectSize.y *= rectScale.y;
 
-			// Calculate the corners of the rectangle
 			Vector3 rectCorners[4];
 			rectCorners[0] = rectCenter + Vector3(-rectSize.x / 2, rectSize.y / 2, 0.0f);
 			rectCorners[1] = rectCenter + Vector3(rectSize.x / 2, rectSize.y / 2, 0.0f);
 			rectCorners[2] = rectCenter + Vector3(-rectSize.x / 2, -rectSize.y / 2, 0.0f);
 			rectCorners[3] = rectCenter + Vector3(rectSize.x / 2, -rectSize.y / 2, 0.0f);
 
-			// Check for collision between the line and each edge of the rectangle
 			for (int i = 0; i < 4; ++i)
 			{
 				Vector3 rectEdge1 = rectCorners[i];
@@ -277,7 +238,7 @@ namespace jns
 
 				if (IntersectLineSegment(lineStart, lineEnd, rectEdge1, rectEdge2))
 				{
-					return true; // Collision detected
+					return true; 
 				}
 			}
 		}
@@ -293,16 +254,16 @@ namespace jns
 
 		Vector3 leftColCenterPos = {};
 		Vector3 righColCentertPos = {};
-		if (left->GetOwner()->GetLayerType() == eLayerType::Cursor)
-		{
-			leftColCenterPos = Input::GetUIMousePos();
-			righColCentertPos = right->GetPosition();
-		}
-		else if (right->GetOwner()->GetLayerType() == eLayerType::Cursor)
-		{
-			leftColCenterPos = left->GetPosition();
-			righColCentertPos = Input::GetUIMousePos();
-		}
+		//if (left->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		//{
+		//	leftColCenterPos = Input::GetUIMousePos();
+		//	righColCentertPos = right->GetPosition();
+		//}
+		//else if (right->GetOwner()->GetLayerType() == eLayerType::Cursor)
+		//{
+		//	leftColCenterPos = left->GetPosition();
+		//	righColCentertPos = Input::GetUIMousePos();
+		//}
 	
 		Vector3 colPosDiff = leftColCenterPos - righColCentertPos;
 		Vector3 leftColR = left->GetOwner()->GetComponent<Transform>()->Right();

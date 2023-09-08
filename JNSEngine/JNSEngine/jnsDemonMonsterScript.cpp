@@ -83,18 +83,23 @@ namespace jns
 	{
 		if (mMonsterState == eDemonState::Die)
 			return;
+		int dmg = -99;
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
 			GameObject* mPlayer = SceneManager::GetPlayer();
+			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
+			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
 			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
 			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
 
 			if (mPlayerInvTime <= 0.0f)
 			{
-				mPlayerHp -= 20.0f;
-				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(mPlayerHp);
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+				dmg = 20.0f;
+				playerScript->PlayerDamaged(dmg);
+				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+				damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
 			}
+
 		}
 	}
 	void DemonMonsterScript::OnCollisionExit(Collider2D* other)

@@ -32,6 +32,7 @@ namespace jns
 	}
 	void GenesisWeapon::Render()
 	{
+		if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerState() != PlayerScript::ePlayerState::Die)
 		WeaponBase::Render();
 	}
 }

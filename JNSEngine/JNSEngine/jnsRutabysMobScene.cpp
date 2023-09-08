@@ -50,10 +50,10 @@ namespace jns
 	void RutabysMobScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
-		//if (Input::GetKeyDown(eKeyCode::P))
-		//{
-		//	SceneManager::LoadScene(L"RutabysBoss");
-		//}
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysBoss);
+		}
 	}
 	void RutabysMobScene::Render()
 	{

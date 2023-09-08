@@ -26,9 +26,6 @@ namespace jns
 	{
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
-		CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Cursor, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Tomb, eLayerType::Ground, true);
@@ -174,10 +171,10 @@ namespace jns
 	{
 		PlayScene::LateUpdate();
 
-		//if (Input::GetKeyDown(eKeyCode::P))
-		//{
-		//	SceneManager::LoadScene(L"RutabysMob");
-		//}
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysMob);
+		}
 	}
 	void RutabysScene::Render()
 	{

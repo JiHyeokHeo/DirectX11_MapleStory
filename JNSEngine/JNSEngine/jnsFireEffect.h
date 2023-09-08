@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsEffectBase.h"
+#include "DamageDisplay.h"
 
 namespace jns
 {
@@ -20,6 +21,7 @@ namespace jns
 		float mBurningTime;
 		float mLastBurningTime;
 		int burningDamage = 10.0f;
+		DamageDisplay dmgDisplay;
 	};
 
 }

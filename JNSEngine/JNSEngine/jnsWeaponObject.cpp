@@ -108,6 +108,7 @@ namespace jns
 	}
 	void WeaponObject::Render()
 	{
+		if(playerScript->GetPlayerState() != PlayerScript::ePlayerState::Die)
 		GameObject::Render();
 	}
 }

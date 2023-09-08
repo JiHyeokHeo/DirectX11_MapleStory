@@ -35,16 +35,18 @@ namespace jns
 		{
 			mBurningTime += Time::DeltaTime();
 			Vector3 playerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-			playerPos.y -= 100.0f;
+			playerPos.y -= 20.0f;
 			tr->SetPosition(playerPos);
 		}
-
+		
 		if (mBurningTime - mLastBurningTime >= 1.0f)
 		{
 			GameObject* obj = SceneManager::GetPlayer();
 			Player* player = dynamic_cast<Player*>(obj);
-			player->GetComponent<PlayerScript>()->PlayerDamaged(burningDamage);
+			PlayerScript* playerScript = player->GetComponent<PlayerScript>(); 
 			mLastBurningTime = mBurningTime;
+			playerScript->PlayerDamaged(burningDamage);
+			//dmgDisplay.DisplayDamage(burningDamage, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
 		}
 
 		if (mBurningTime >= 3.0f)

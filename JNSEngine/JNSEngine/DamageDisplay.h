@@ -9,14 +9,14 @@ namespace jns
 	class DamageDisplay
 	{
 	public:
-		void DisplayDamage(int damage, const Vector3& position, const Vector2& offsetYCord = Vector2::Zero)
+		static void DisplayDamage(int damage, const Vector3& position, const Vector2& offsetYCord = Vector2::Zero)
 		{
 			std::string damageStr = std::to_string(damage);
 			CreateDamageControls(damageStr, position, offsetYCord);
 		}
 
 	private:
-		void CreateDamageControls(const std::string& damageStr, const Vector3& position, const Vector2& offsetYCord)
+		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, const Vector2& offsetYCord)
 		{
 			float xOffset = 0.0f;
 			int strLength = -99;
