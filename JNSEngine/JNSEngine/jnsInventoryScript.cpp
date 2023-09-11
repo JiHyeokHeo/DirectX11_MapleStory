@@ -16,11 +16,10 @@ namespace jns
 	}
 	void InventoryScript::Initialize()
 	{
-		GetOwner()->SetState(GameObject::eState::Active);
 	}
 	void InventoryScript::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::LBUTTON) && GetOwner()->GetState() == GameObject::eState::Active)
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Vector3 mUIMousePos = Input::GetUIMousePos();
 			Transform* tr = GetOwner()->GetComponent<Transform>();

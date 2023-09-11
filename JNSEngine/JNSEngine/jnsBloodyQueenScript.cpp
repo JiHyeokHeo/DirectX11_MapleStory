@@ -467,8 +467,8 @@ namespace jns
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
-		mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		//mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{

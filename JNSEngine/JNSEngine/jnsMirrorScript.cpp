@@ -49,7 +49,7 @@ namespace jns
 			
 			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Attracted)
 			{
-				playerscript->PlayerDamaged(0);
+				playerscript->PlayerDamaged(100);
 				mMirrorState = eMirrorState::Bombed;
 			}
 		}
@@ -125,7 +125,7 @@ namespace jns
 			switch (mMirrorState)
 			{
 			case eMirrorState::Summon:
-				at->PlayAnimation(L"MirrorMirrorAttractSuccess", true);
+				at->PlayAnimation(L"MirrorMirrorSummon", true);
 				break;
 			case eMirrorState::Idle:
 				at->PlayAnimation(L"MirrorMirrorIdle", true);
@@ -170,6 +170,15 @@ namespace jns
 
 		if (mSummonTime >= mSummonMaxTime)
 		{
+			GameObject* player = SceneManager::GetPlayer();
+			PlayerScript* playerscript = player->GetComponent<PlayerScript>();
+
+			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
+				return;
+
+			Transform* mirrorTr = this->GetOwner()->GetComponent<Transform>();
+			playerscript->SetPlayerState(jns::PlayerScript::ePlayerState::Attracted);
+
 			mMirrorState = eMirrorState::Attract;
 			return;
 		}
@@ -205,10 +214,7 @@ namespace jns
 		if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
 			return;
 
-
-
 		Transform* mirrorTr = this->GetOwner()->GetComponent<Transform>();
-		playerscript->SetPlayerState(jns::PlayerScript::ePlayerState::Attracted);
 		Transform* playertr = player->GetComponent<Transform>();
 
 		Vector3 playerPos = playertr->GetPosition();

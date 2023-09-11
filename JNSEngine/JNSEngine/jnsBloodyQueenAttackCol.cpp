@@ -71,8 +71,6 @@ namespace jns
 				if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 				{
 					cd->SetColliderOn(false);
-					cd->SetSize(Vector2(0.3f, 0.5f));
-					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
 				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
 				{
@@ -109,6 +107,7 @@ namespace jns
 				{
 					mColMakeTime = 0.0f;
 					cd->SetSize(Vector2::Zero);
+					cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, -100.0f));
 					cd->SetColliderOn(false);
 				}
 			}
@@ -137,6 +136,7 @@ namespace jns
 				if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 				{
 					dmg = mBQSkillDamage.normalAttack;
+					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 				}
 
 				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
@@ -149,7 +149,6 @@ namespace jns
 					dmg = mBQSkillDamage.bressAttack;
 				}
 
-				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(dmg);
 				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
 				Vector3 playerPos = mPlayer->GetComponent<Transform>()->GetPosition();

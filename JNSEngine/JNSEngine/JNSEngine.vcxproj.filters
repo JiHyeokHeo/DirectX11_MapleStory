@@ -240,19 +240,25 @@
       <Filter>Contents\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="jnsWeaponManager.cpp" />
-    <ClCompile Include="jnsGenesisWeapon.cpp" />
     <ClCompile Include="jnsQuickSlotScript.cpp" />
     <ClCompile Include="jnsSkillUIBG.cpp" />
     <ClCompile Include="jnsSkillBox.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="jnsSkillResources.cpp" />
     <ClCompile Include="jnsSkillUIBTN.cpp" />
     <ClCompile Include="jnsFireEffectScript.cpp" />
     <ClCompile Include="jnsLoadingScene.cpp" />
     <ClCompile Include="jnsBloodyMeso.cpp" />
     <ClCompile Include="jnsMesoObjectPooling.cpp" />
-    <ClCompile Include="jnsDemonAttackCol.cpp" />
+    <ClCompile Include="jnsSkillResources.cpp">
+      <Filter>Contents\Skill\SkillResources</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsGenesisWeapon.cpp">
+      <Filter>Contents\Weapons\Type</Filter>
+    </ClCompile>
+    <ClCompile Include="jnsDemonAttackCol.cpp">
+      <Filter>Contents\Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -515,13 +521,11 @@
       <Filter>Contents\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="jnsWeaponManager.h" />
-    <ClInclude Include="jnsGenesisWeapon.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsSkillUIBG.h" />
     <ClInclude Include="jnsSkillBox.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="jnsSkillResources.h" />
     <ClInclude Include="jnsSkillUIBTN.h" />
     <ClInclude Include="DamageInterface.h">
       <Filter>Contents</Filter>
@@ -533,7 +537,15 @@
     <ClInclude Include="jnsLoadingScene.h" />
     <ClInclude Include="jnsBloodyMeso.h" />
     <ClInclude Include="jnsMesoObjectPooling.h" />
-    <ClInclude Include="jnsDemonAttackCol.h" />
+    <ClInclude Include="jnsSkillResources.h">
+      <Filter>Contents\Skill\SkillResources</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsGenesisWeapon.h">
+      <Filter>Contents\Weapons\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="jnsDemonAttackCol.h">
+      <Filter>Contents\Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -610,6 +622,12 @@
     </Filter>
     <Filter Include="Contents\Weapons">
       <UniqueIdentifier>{2302e9b8-fbe3-46e7-b8a0-d7a4cd0985b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Weapons\Type">
+      <UniqueIdentifier>{e256064c-b476-4cf5-8bb4-3553e7488dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Skill\SkillResources">
+      <UniqueIdentifier>{65afc8bf-efb4-4b67-a4d3-de3b5afae676}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

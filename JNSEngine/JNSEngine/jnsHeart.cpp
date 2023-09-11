@@ -22,7 +22,7 @@ namespace jns
 		//tr->SetPosition(Vector3(-150.0f, -320.0f, -0.5f));
 		cd->SetSize(Vector2(0.25f, 0.25f));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionOpaqueMaterial"));
+		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Heart\\HeartAttack", 200, 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Boss\\AttractionBloodyQueen\\Heart\\HeartNormal", 200, 0.15f);

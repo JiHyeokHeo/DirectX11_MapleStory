@@ -82,25 +82,11 @@ namespace jns
         CheckPlayerIsGrounded();
         PlayerControl();
 		AnimatorControl();
-        
-        if (isNormalHit)
-        {
-            mBlackTime += Time::DeltaTime();
-            Light* light = GetOwner()->GetComponent<Light>();
-            light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-        }
-
-        if (mBlackTime >= 1.0f)
-        {
-            mBlackTime = 0.0f;
-            isNormalHit = false;
-            Light* light = GetOwner()->GetComponent<Light>();
-            light->SetColor(Vector4(0.0f, 0.0f, 0.0f, 1.0f));
-        }
+        TurnOnLightWhenIHit();
       
-        //mPrevPlayerState = mPlayerState;
-        //mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
-        
+        mPrevPlayerState = mPlayerState;
+        mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
+        playerDir = (int)mPlayerInfo.mDir;
 	}
 	void PlayerScript::LateUpdate()
 	{
@@ -117,9 +103,9 @@ namespace jns
 
 		//BindConstantBuffer();
         at->GetActiveAnimation()->SetAniDirection((bool)mPlayerInfo.isRight);
-        mPrevPlayerState = mPlayerState;
+        /*mPrevPlayerState = mPlayerState;
         mPlayerInfo.mPrevDir = mPlayerInfo.mDir;
-        playerDir = (int)mPlayerInfo.mDir;
+        playerDir = (int)mPlayerInfo.mDir;*/
 	}
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
@@ -160,6 +146,7 @@ namespace jns
 
     void PlayerScript::PlayerDamaged(int dmg)
     {
+        // 여기서 데미지 연산 공식 들어가야한다
         mPlayerInfo.hp -= dmg;
     }
 
@@ -491,8 +478,14 @@ namespace jns
 
     void PlayerScript::TurnOnLightWhenIHit()
     {
+        if (mBlackTime >= 1.0f)
+        {
+            isNormalHit = false;
+        }
+
         if (isNormalHit)
         {
+            mBlackTime += Time::DeltaTime();
             Light* light = GetOwner()->GetComponent<Light>();
             light->SetColor(Vector4(0.8f, 0.8f, 0.8f, 1.0f));
         }

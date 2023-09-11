@@ -5,6 +5,7 @@ namespace jns
 {
 	ShopSlotBack2::ShopSlotBack2()
 	{
+
 	}
 	ShopSlotBack2::~ShopSlotBack2()
 	{

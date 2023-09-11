@@ -29,6 +29,8 @@ namespace jns
 		GameObject* weapon;
 		PlayerScript* playerScript;
 		Transform* tr;
-		
+		PlayerScript::ePlayerState playerChangeState;
+		GameObject* equipweapon;
+		std::wstring weaponFrontName;
 	};
 }

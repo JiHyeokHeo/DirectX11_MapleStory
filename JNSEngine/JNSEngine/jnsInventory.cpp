@@ -17,7 +17,7 @@ namespace jns
 		SetMesh(L"RectMesh");
 		SetMaterial(L"InventoryMaterial");
 
-		SetPosition(Vector3(-250.0f, 100.0f, 4.5f));
+		SetPosition(Vector3(-250.0f, 100.0f, 2.5f));
 		SetScaleWithOriginalImageScale(Vector2(1.0f,1.0f));
 
 		AddComponent<InventoryScript>();

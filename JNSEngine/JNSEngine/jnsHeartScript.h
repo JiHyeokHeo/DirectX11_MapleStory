@@ -44,6 +44,8 @@ namespace jns
 
 		float heartStartPos = -375.0f;
 		int hp;
+
+		int dmg = 30.0f;
 	};
 
 }

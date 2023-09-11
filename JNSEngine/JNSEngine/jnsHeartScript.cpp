@@ -49,8 +49,7 @@ namespace jns
 
 			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
 			{
-				mPlayerHp -= 30.0f;
-				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(mPlayerHp);
+				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(dmg);
 				heartState = eHeartState::Bomb;
 			}
 		}

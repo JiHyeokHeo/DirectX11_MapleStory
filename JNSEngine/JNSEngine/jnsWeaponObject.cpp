@@ -2,6 +2,8 @@
 #include "CommonSceneInclude.h"
 #include "jnsWeaponManager.h"
 
+
+// 이 친구는 정확하게 빈 상자의 WeaponObject이다. WeaponBox라고 명칭하는게 좋음.
 namespace jns
 {
 	WeaponObject::WeaponObject()
@@ -23,22 +25,30 @@ namespace jns
 		weapon = WeaponManager::FindWeapon(L"Genesis_Thief_Weapon");
 		
 		std::wstring weaponName = WeaponManager::FindWeaponData(L"Genesis_Thief_Weapon")->GetWeaponName();
-		std::wstring weaponFrontName = {};
-		for (const wchar_t& i : weaponName)
+		Animator* weaponAnimator = weapon->GetComponent<Animator>();
+		
+		if (equipweapon == nullptr || equipweapon != weapon)
 		{
-			if (i == L'_')
-				break;
-			weaponFrontName += i;
+			weaponFrontName.clear();
+			for (const wchar_t& i : weaponName)
+			{
+				if (i == L'_')
+				{
+					weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", true);
+					equipweapon = weapon;
+					break;
+				}
+				weaponFrontName += i;
+			}
 		}
 		playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-		Animator* weaponAnimator = weapon->GetComponent<Animator>();
 		int mDir = PlayerScript::GetStaticPlayerDir();
 		Vector3 parentPos= tr->GetParent()->GetPosition();
 		parentPos.x -= mDir * 11.0f;
 		parentPos.y -= 33.0f;
 		PlayerScript::ePlayerState type = playerScript->GetPlayerState();
-
-		if (playerScript->GetPlayerState() != playerScript->GetPlayerPrevState())
+		
+		if (playerChangeState != type)
 		{
 			weapon->GetComponent<Transform>()->SetRotation(Vector3::Zero);
 			weapon->GetComponent<Transform>()->SetPosition(parentPos);
@@ -97,6 +107,7 @@ namespace jns
 		}
 		weapon->GetComponent<Transform>()->SetPosition(parentPos);
 
+		playerChangeState = type;
 		GameObject::Update();
 	}
 	void WeaponObject::LateUpdate()
