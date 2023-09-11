@@ -168,6 +168,7 @@
     <ClInclude Include="jnsGenesisWeapon.h" />
     <ClInclude Include="jnsLoadingScene.h" />
     <ClInclude Include="jnsMesoObjectPooling.h" />
+    <ClInclude Include="jnsMonsterCommonInfo.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsSkillBox.h" />
     <ClInclude Include="jnsSkillResources.h" />
@@ -314,6 +315,7 @@
     <ClCompile Include="jnsMirror.cpp" />
     <ClCompile Include="jnsMirrorScript.cpp" />
     <ClCompile Include="jnsMonsterBase.cpp" />
+    <ClCompile Include="jnsMonsterCommonInfo.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />
     <ClCompile Include="jnsPlayerMoveLimitScript.cpp" />

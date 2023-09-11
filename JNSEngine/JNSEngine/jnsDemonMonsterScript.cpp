@@ -27,7 +27,7 @@ namespace jns
 		MonsterControl();
 		AnimatorControl();
 		mPrevMonsterState = mMonsterState;
-		mDemonInfo.mPrevDir = mDemonInfo.mDir;
+		monsterCommonInfo.mPrevDir = monsterCommonInfo.mDir;
 	}
 	void DemonMonsterScript::LateUpdate()
 	{
@@ -53,7 +53,7 @@ namespace jns
 				playerScript->PlayerDamaged(dmg);
 				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
 
-				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f), 3);
 			}
 		}
 
@@ -64,15 +64,16 @@ namespace jns
 			SkillBase::eSkillType skillType = skillbase->GetSkillType();
 			int skillDmg = 0;
 
-			if (skillType == SkillBase::eSkillType::AssainHit01) {
+			if (skillType == SkillBase::eSkillType::AssainHit01) 
+			{
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
 			}
 			else if (skillType == SkillBase::eSkillType::AssainHit02) {
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
 			}
 
-			mDemonInfo.hp -= skillDmg * 10;
-			mDemonInfo.isChasing = true;
+			monsterCommonInfo.hp -= skillDmg * 10;
+			monsterCommonInfo.isChasing = true;
 			dmg = skillDmg * 10;
 
 			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
@@ -121,11 +122,11 @@ namespace jns
 	{
 		if (mChasingTime >= 8.0f)
 		{
-			mDemonInfo.isChasing = false;
+			monsterCommonInfo.isChasing = false;
 			mChasingTime = 0.0f;
 		}
 
-		if (mDemonInfo.isChasing)
+		if (monsterCommonInfo.isChasing)
 		{
 			mChasingTime += Time::DeltaTime();
 		}
@@ -135,7 +136,7 @@ namespace jns
 	}
 	void DemonMonsterScript::CheckMonsterHp()
 	{
-		if (mDemonInfo.hp <= 0)
+		if (monsterCommonInfo.hp <= 0)
 		{
 			mMonsterState = eDemonState::Die;
 		}
@@ -165,7 +166,7 @@ namespace jns
 	}
 	void DemonMonsterScript::AnimatorControl()
 	{
-		if (mMonsterState != mPrevMonsterState || mDemonInfo.mDir != mDemonInfo.mPrevDir)
+		if (mMonsterState != mPrevMonsterState || monsterCommonInfo.mDir != monsterCommonInfo.mPrevDir)
 		{
 			mAnimatorPlaying = true;
 			switch (mMonsterState)
@@ -192,12 +193,12 @@ namespace jns
 	}
 	void DemonMonsterScript::Idle()
 	{
-		if (mRandDir != 0 && mDemonInfo.isChasing == false)
+		if (mRandDir != 0 && monsterCommonInfo.isChasing == false)
 		{
 			mMonsterState = eDemonState::Move;
 		}
 
-		if (mDemonInfo.isChasing == true)
+		if (monsterCommonInfo.isChasing == true)
 		{
 			mMonsterState = eDemonState::Move;
 		}
@@ -207,11 +208,11 @@ namespace jns
 		Vector3 mMonsterPos = tr->GetPosition();
 		if (mPlayerPos.x >= mMonsterPos.x)
 		{
-			mDemonInfo.mDir = MonsterBase::MonsterDir::Right;
+			monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 		}
 		else if (mPlayerPos.x <= mMonsterPos.x)
 		{
-			mDemonInfo.mDir = MonsterBase::MonsterDir::Left;
+			monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 		}
 	}
 	void DemonMonsterScript::Move()
@@ -226,17 +227,17 @@ namespace jns
 			mRandDir = 1;
 		}
 
-		if (mDemonInfo.isChasing == false)
+		if (monsterCommonInfo.isChasing == false)
 		{
 			if (mRandDir == -1)
 			{
 				mMonsterPos.x -= 50.0f * Time::DeltaTime();
-				mDemonInfo.mDir = MonsterBase::MonsterDir::Left;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 			else if (mRandDir == 1)
 			{
 				mMonsterPos.x += 50.0f * Time::DeltaTime();
-				mDemonInfo.mDir = MonsterBase::MonsterDir::Right;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else
 			{
@@ -250,12 +251,12 @@ namespace jns
 			if (mPlayerPos.x >= mMonsterPos.x)
 			{
 				mMonsterPos.x += 50.0f * Time::DeltaTime();
-				mDemonInfo.mDir = MonsterBase::MonsterDir::Right;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else if (mPlayerPos.x <= mMonsterPos.x)
 			{
 				mMonsterPos.x -= 50.0f * Time::DeltaTime();
-				mDemonInfo.mDir = MonsterBase::MonsterDir::Left;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 		}
 
@@ -278,8 +279,8 @@ namespace jns
 	}
 	void DemonMonsterScript::InitData()
 	{
-		mDemonInfo.hp = 100;
-		mDemonInfo.isChasing = false;
+		monsterCommonInfo.hp = 100;
+		monsterCommonInfo.isChasing = false;
 	}
 	void DemonMonsterScript::CompleteAttack()
 	{

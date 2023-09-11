@@ -259,6 +259,7 @@
     <ClCompile Include="jnsDemonAttackCol.cpp">
       <Filter>Contents\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="jnsMonsterCommonInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -546,6 +547,7 @@
     <ClInclude Include="jnsDemonAttackCol.h">
       <Filter>Contents\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="jnsMonsterCommonInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

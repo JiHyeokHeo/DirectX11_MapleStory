@@ -13,6 +13,7 @@ namespace jns
 
     void DamageControl::Initialize()
     {
+        renderDelayTime = 0.0f;
         tr = GetComponent<Transform>();
         MeshRenderer* mr = AddComponent<MeshRenderer>();
         mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
@@ -43,22 +44,30 @@ namespace jns
             = digitAnimations.find(digit);
 
         std::wstring animationName = L"NormalDamageSkin" + iter->second;
+        digitname = iter->second;
         ani->PlayAnimation(animationName, false);
-
         GameObject::Initialize();
     }
 
     void DamageControl::Update()
     {
-        renderTime += Time::DeltaTime();
-        Vector3 damagePos = tr->GetPosition();
-        damagePos.y += 40.0f * Time::DeltaTime();
+        renderDelayTime += Time::DeltaTime();
+        if (renderDelayTime >= renderDelayMaxTime)
+        {
+            renderTime += Time::DeltaTime();
+            Vector3 damagePos = tr->GetPosition();
+            damagePos.y += 40.0f * Time::DeltaTime();
+            tr->SetPosition(damagePos);
+            transparecny -= 0.4f * Time::DeltaTime();;
+            ani->PlayAnimation(digitname, false);
+            ani->GetActiveAnimation()->SetTransparency(transparecny);
+        }
 
-        tr->SetPosition(damagePos);
 
-
-        if (renderTime >= 1.0f)
+        if (renderTime >= 1.5f)
+        {
             SetState(GameObject::eState::Dead);
+        }
         
         GameObject::Update();
     }
@@ -70,6 +79,9 @@ namespace jns
 
     void DamageControl::Render()
     {
-        GameObject::Render();
+        if (renderDelayTime >= renderDelayMaxTime)
+        {
+            GameObject::Render();
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace jns
 			}
 			else if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Prone)
 			{
-				weaponAnimator->PlayAnimation(weaponFrontName + L"proneIdle", false);
+				weaponAnimator->PlayAnimation(weaponFrontName + L"proneIdle", false);	
 			}
 			else if (type == PlayerScript::ePlayerState::Jump)
 			{

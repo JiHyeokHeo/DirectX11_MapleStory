@@ -1,5 +1,6 @@
 #include "jnsDemonAttackRangeScript.h"
 #include "CommonSceneInclude.h"
+#include "jnsMonsterCommonInfo.h"
 
 namespace jns
 {
@@ -24,7 +25,7 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player")
 		{
-			DemonMonsterScript::DemonInfo mDemonInfo = mDMScript->GetDemonInfo();
+			MonsterCommonInfo mDemonInfo = mDMScript->GetMonsterCommonInfo();
 			if (mDemonInfo.isChasing == true)
 			{
 				DemonMonsterScript::eDemonState mDMState = DemonMonsterScript::eDemonState::Attack;
@@ -36,7 +37,7 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player")
 		{
-			DemonMonsterScript::DemonInfo mDemonInfo = mDMScript->GetDemonInfo();
+			MonsterCommonInfo mDemonInfo = mDMScript->GetMonsterCommonInfo();
 			if (mDemonInfo.isChasing == true)
 			{
 				DemonMonsterScript::eDemonState mDMState = DemonMonsterScript::eDemonState::Attack;

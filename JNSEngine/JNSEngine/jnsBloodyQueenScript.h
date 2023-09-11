@@ -3,10 +3,11 @@
 #include "jnsMonsterBase.h"
 #include "DamageDisplay.h"
 #include "DamageInterface.h"
+#include "jnsMonsterCommonInfo.h"	
 
 namespace jns
 {
-	class BloodyQueenScript : public Script
+	class BloodyQueenScript : public Script, public MonsterCommonInfo
 	{
 	public:
 		enum class eBloodyQueenType

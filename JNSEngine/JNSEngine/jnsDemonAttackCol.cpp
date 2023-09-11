@@ -21,7 +21,7 @@ namespace jns
 			if (aniIdx >= 6 && aniIdx <= 8)
 			{
 				cd->SetSize(Vector2(0.5f, 0.5f));;
-				int dir = (int)mDMScript->GetDemonInfo().mDir;
+				int dir = (int)mDMScript->GetMonsterCommonInfo().mDir;
 				cd->SetColliderOn(true);
 				cd->SetCenter(Vector2(10.0f * dir , 0.0f));
 			}

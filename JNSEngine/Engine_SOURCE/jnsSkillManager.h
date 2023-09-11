@@ -10,10 +10,11 @@ namespace jns
 	{
 	public:
 		SkillData() {};
-		SkillData(std::wstring skillname, int dmg, float cool, eKeyCode keyState)
+		SkillData(std::wstring skillname, int dmg, float cool, int dmgcnt, eKeyCode keyState)
 			: skillName(skillname)
 			, damage(dmg)
 			, cooldown(cool)
+			, damagecnt(dmgcnt)
 			, keystate(keyState)
 			, isLearn(false)
 		{};
@@ -22,6 +23,7 @@ namespace jns
 	public:
 		std::wstring GetSkillName() { return skillName; }
 		int GetSkillDamage() { return damage; }
+		int GetSkillDamageCnt() { return damagecnt; }
 		int GetSkillCoolDown() { return cooldown; }
 		eKeyCode GetSkillKeyState() { return keystate; }
 		bool GetSkillLearn() { return isLearn; }
@@ -36,6 +38,7 @@ namespace jns
 	private:
 		std::wstring skillName = L" ";
 		int damage = 0;
+		int damagecnt = 1;
 		bool isLearn = false;
 		float cooldown = 0.0f;
 		eKeyCode keystate = eKeyCode::END;

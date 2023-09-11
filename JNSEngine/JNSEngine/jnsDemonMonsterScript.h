@@ -2,6 +2,8 @@
 #include "jnsScript.h"
 #include "jnsMonsterBase.h"
 #include "DamageDisplay.h"
+#include "jnsMonsterCommonInfo.h"
+
 
 namespace jns
 {
@@ -17,19 +19,12 @@ namespace jns
 			Die,
 			End,
 		};
-
-		struct DemonInfo
-		{
-			int hp;
-			bool isRight;
-			float mHittedTime;
-			float mMoveSpeed;
-			eDemonState mBossPrevType;
-			eDemonState mBossType;
-			MonsterBase::MonsterDir mDir;
-			MonsterBase::MonsterDir mPrevDir;
-			bool isChasing;
-		};
+		
+		//struct DemonInfo
+		//{
+		//	eDemonState mBossPrevType;
+		//	eDemonState mBossType;
+		//};
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -56,9 +51,8 @@ namespace jns
 
 		void InitData();
 
-
-		MonsterBase::MonsterDir GetMonsterDirection() { return mDemonInfo.mDir; }
-		DemonInfo GetDemonInfo() { return mDemonInfo; }
+		MonsterBase::MonsterDir GetMonsterDirection() { return monsterCommonInfo.mDir; }
+		MonsterCommonInfo GetMonsterCommonInfo() { return monsterCommonInfo; }
 		void SetDemonState(eDemonState state) { mMonsterState = state; }
 		eDemonState GetDemonState() { return mMonsterState; }
 
@@ -83,7 +77,7 @@ namespace jns
 		eDemonState mMonsterState;
 		eDemonState mPrevMonsterState;
 
-		DemonInfo mDemonInfo;
+		MonsterCommonInfo monsterCommonInfo;
 		DamageDisplay damageDisplay;
 
 		float dmg;

@@ -25,6 +25,7 @@ namespace jns
 
 		void SetSkillDamage(int dmg) { setSkillDamage = dmg; }
 		void SetDamageDigit(int digit) { this->digit = digit; }
+		void SetDelayRenderTime(float time) { renderDelayMaxTime = time; }
 
 	private:
 		class Animator* ani;
@@ -34,8 +35,12 @@ namespace jns
 		std::map<int, std::wstring> digitAnimations;
 		float xCorOffSet;
 
+		float transparecny = 1.0f;
+		std::wstring digitname = {};
 		int digit;
 		float renderTime;
+		float renderDelayTime;
+		float renderDelayMaxTime = 0.0f;
 	};
 
 }
