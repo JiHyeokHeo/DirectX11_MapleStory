@@ -101,9 +101,6 @@
     <ClCompile Include="jnsDamageControl.cpp">
       <Filter>Manager\Damage</Filter>
     </ClCompile>
-    <ClCompile Include="jnsDamageController.cpp">
-      <Filter>Manager\Damage</Filter>
-    </ClCompile>
     <ClCompile Include="jnsDarkPaper.cpp">
       <Filter>Contents\UI</Filter>
     </ClCompile>
@@ -368,9 +365,6 @@
       <Filter>Contents\Cursor</Filter>
     </ClInclude>
     <ClInclude Include="jnsDamageControl.h">
-      <Filter>Manager\Damage</Filter>
-    </ClInclude>
-    <ClInclude Include="jnsDamageController.h">
       <Filter>Manager\Damage</Filter>
     </ClInclude>
     <ClInclude Include="DamageDisplay.h">

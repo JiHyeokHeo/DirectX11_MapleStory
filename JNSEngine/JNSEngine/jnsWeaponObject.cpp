@@ -82,6 +82,19 @@ namespace jns
 			float angle = DegreeToRadian(120.0f * mDir);
 			weapon->GetComponent<Transform>()->SetRotation(Vector3(0.0f, 0.0f, angle));
 		}
+		else if (type == PlayerScript::ePlayerState::Attack)
+		{
+			if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain1Hit")
+			{
+				parentPos.x -= mDir * 10.0f;
+				parentPos.y += 32.0f;
+			}
+			else if (playerScript->GetOwner()->GetComponent<Animator>()->GetActiveAnimation()->GetAnimationName() == L"CharactorCharAssain2Hit")
+			{
+				parentPos.x += mDir * 15.0f;
+				parentPos.y += 25.0f;
+			}
+		}
 		weapon->GetComponent<Transform>()->SetPosition(parentPos);
 
 		GameObject::Update();

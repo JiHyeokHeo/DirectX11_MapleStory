@@ -42,6 +42,7 @@ namespace jns
 		void SetIsPicked(bool ispick) { isPicked = ispick; }
 
 		void AddSkillResource(int xidx, int yidx);
+		void DeleteSkillResource();
 	private:
 		SkillUIBG* skillBGUI;
 		QuickSlotUI* skillQuickSlot;

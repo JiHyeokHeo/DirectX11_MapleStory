@@ -72,7 +72,6 @@ void main(uint3 DTid : SV_DispatchThreadID)
             
         ParticleBuffer[DTid.x].elapsedTime += deltaTime;
         float randomInterval = RandomTime(0.0f, 1.0f);
-        
        
         if (ParticleBuffer[DTid.x].elapsedTime >= ParticleBuffer[DTid.x].lifeTime)
         {
@@ -80,7 +79,6 @@ void main(uint3 DTid : SV_DispatchThreadID)
             ParticleBuffer[DTid.x].elapsedTime = 0.0f;
         }
     
-        
         ParticleBuffer[DTid.x].position 
            -= ParticleBuffer[DTid.x].direction * ParticleBuffer[DTid.x].speed * speedRandom.x * deltaTime;
         // 시간을 체크해서 일정 시간(랜덤)이 지나면

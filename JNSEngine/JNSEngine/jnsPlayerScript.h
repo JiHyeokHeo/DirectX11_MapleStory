@@ -12,19 +12,19 @@ namespace jns
 	class PlayerScript : public Script
 	{
 	public:
-			enum class ePlayerState
-			{
-				Idle = 0,
-				Move,
-				Ladder,
-				Jump,
-				Prone,
-				Attack,
-				Hitted,
-				Die,
-				Attracted,
-				End,
-			};
+		enum class ePlayerState
+		{
+			Idle = 0,
+			Move,
+			Ladder,
+			Jump,
+			Prone,
+			Attack,
+			Hitted,
+			Die,
+			Attracted,
+			End,
+		};
 
 		class eKeyType
 		{
@@ -83,9 +83,8 @@ namespace jns
 
 		
 		void PlayerDamaged(int dmg);
-		/*void SetPlayerMp(int mp) { mPlayerInfo.mp = mp; }
-		void SetPlayerExp(int exp) { mPlayerInfo.exp = exp; }
-		*/void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
+
+		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
 		bool GetIsNormalHit() { return isNormalHit; }
 
 		static int GetStaticPlayerDir() { return playerDir; }
@@ -128,9 +127,6 @@ namespace jns
 		void CheckInvisibleTime();
 	private:
 		static int playerDir;
-		struct PlayerStatus
-		{
-		};
 
 		struct PlayerSkillInfo
 		{
@@ -166,21 +162,19 @@ namespace jns
 		bool isLadderOn = false;
 
 		bool isTombInstantiate = false;
-		//int visitedAssainAttackTime = 0;
 
-		int mPrevHp;
+		float angle = 0.0;  
 		bool checkInvisibleTime;
-		float angle = 0.0; 
 		bool isNotSetDeadPos = true;
-
 
 		float centerX;
 		float centerY;
 
-
 		float mBlackTime = 0.0f;
 		bool isNormalHit = false;
-		bool isHpLerp = false;
+
 		int destinationHp;
+		int mPrevHp;
+		bool isHpLerp = false;
 	};
 }

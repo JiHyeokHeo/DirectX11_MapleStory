@@ -37,12 +37,6 @@ namespace jns
 			cd->SetSize(Vector2::Zero);
 		}
 	}
-	void DemonAttackCol::LateUpdate()
-	{
-	}
-	void DemonAttackCol::Render()
-	{
-	}
 	void DemonAttackCol::OnCollisionEnter(Collider2D* other)
 	{
 		int dmg = -99;

@@ -109,25 +109,26 @@ namespace jns
 			&& mousePos.y <= mLeftTop.y && mousePos.y >= mRightBottom.y
 			)
 		{
+			Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
+			Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
+			Vector2 quickslotleftTop = {};
+			Vector2 quickslotrightBottom = {};
+			quickslotleftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
+			quickslotleftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
+			quickslotrightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
+			quickslotrightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
+
+			if (mousePos.x >= quickslotleftTop.x && mousePos.x <= quickslotrightBottom.x && mousePos.y <= quickslotleftTop.y && mousePos.y >= quickslotrightBottom.y)
+			{
+				isOnTarget = true;
+			}
+			else
+			{
+				isOnTarget = false;
+			}
+
 			if (SkillUIBTN::GetPushedSkillBTNNumber() == skillLearnNum)
 			{
-				Vector3 quickSlotPos = skillQuickSlot->GetComponent<Transform>()->GetPosition();
-				Vector3 quickSlotSize = skillQuickSlot->GetComponent<Transform>()->GetScale();
-				Vector2 quickslotleftTop = {};
-				Vector2 quickslotrightBottom = {};
-				quickslotleftTop.x = quickSlotPos.x - (quickSlotSize.x / 2);
-				quickslotleftTop.y = quickSlotPos.y + (quickSlotSize.y / 2);
-				quickslotrightBottom.x = quickSlotPos.x + (quickSlotSize.x / 2);
-				quickslotrightBottom.y = quickSlotPos.y - (quickSlotSize.y / 2);
-
-				if (mousePos.x >= quickslotleftTop.x && mousePos.x <= quickslotrightBottom.x && mousePos.y <= quickslotleftTop.y && mousePos.y >= quickslotrightBottom.y)
-				{
-					isOnTarget = true;
-				}
-				else
-				{
-					isOnTarget = false;
-				}
 
 				if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
 				{
@@ -154,6 +155,44 @@ namespace jns
 					{
 						isRender = false;
 						isPicked = false;
+						DeleteSkillResource();
+					}
+				}
+			}
+			else
+			{
+				if (isOnTarget)
+				{
+					if (Input::GetKeyDown(eKeyCode::LBUTTON) && isPicked == false && isItIcon == false)
+					{
+						isMovePossible = true;
+						isPicked = true;
+					}
+					else if (Input::GetKeyDown(eKeyCode::LBUTTON) && isItIcon == false && isPicked == true)
+					{
+						if (isOnTarget)
+						{
+							Vector2 checkPos = Vector2(mousePos.x - quickslotleftTop.x, quickslotleftTop.y - mousePos.y);
+							int xidx = checkPos.x / (SKILLICON_SIZE + 5.0f);
+							int yidx = checkPos.y / (SKILLICON_SIZE + 5.0f);
+							Vector2 itemSetPos = Vector2((xidx * (SKILLICON_SIZE + 2.5f)) + (2.5f * xidx)
+								+ (SKILLICON_SIZE / 2), (yidx * (SKILLICON_SIZE + 2.5f)) + (1.5f * yidx) + (SKILLICON_SIZE / 2));
+							Vector3 itemFinalPos = Vector3(1.5f + itemSetPos.x + quickslotleftTop.x, -1.5f + quickslotleftTop.y - itemSetPos.y, 3.5f);
+							tr->SetPosition(itemFinalPos);
+							isMovePossible = false;
+							isPicked = false;
+							isOnTarget = false;
+							AddSkillResource(xidx, yidx);
+						}
+					}
+				}
+				else
+				{
+					if (Input::GetKeyDown(eKeyCode::LBUTTON) && isItIcon == false && isPicked == true)
+					{
+						isRender = false;
+						isPicked = false;
+						DeleteSkillResource();
 					}
 				}
 			}
@@ -188,6 +227,11 @@ namespace jns
 				break;
 			case eSkillType::MesoExplosionRed:
 				skillUIPos.x += 15.0f;
+				skillUIPos.y += 70.0f;
+				tr->SetPosition(skillUIPos);
+				break;
+			case eSkillType::JumpSkill:
+				skillUIPos.x -= 130.0f;
 				skillUIPos.y += 70.0f;
 				tr->SetPosition(skillUIPos);
 				break;
@@ -254,6 +298,31 @@ namespace jns
 			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillKeyState(setKeyCode);
 			SkillManager::FindSkillData(L"Rogue_SkillflashJump_02")->SetSkillKeyState(setKeyCode);
 			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillLearn(true);
+			break;
+		case jns::SkillResources::eSkillType::End:
+			break;
+		default:
+			break;
+		}
+	}
+	void SkillResources::DeleteSkillResource()
+	{
+		eKeyCode setKeyCode = {};
+		setKeyCode = eKeyCode::NONE;
+
+		switch (mSkillType)
+		{
+		case jns::SkillResources::eSkillType::Assain:
+			SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->SetSkillKeyState(setKeyCode);
+			break;
+		case jns::SkillResources::eSkillType::MesoExplosionRed:
+			SkillManager::FindSkillData(L"BloodyMeso")->SetSkillKeyState(setKeyCode);
+			break;
+		case jns::SkillResources::eSkillType::JumpSkill:
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_02")->SetSkillKeyState(setKeyCode);
+			SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->SetSkillLearn(false);
 			break;
 		case jns::SkillResources::eSkillType::End:
 			break;
