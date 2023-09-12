@@ -469,7 +469,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		bloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 	}
 	void BloodyQueenScript::Die()
 	{

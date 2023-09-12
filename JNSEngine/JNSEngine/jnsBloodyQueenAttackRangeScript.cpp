@@ -22,7 +22,9 @@ namespace jns
 		if (other->GetOwner()->GetName() == L"Player")
 		{
 			MonsterCommonInfo mBloodyQuuenInfo = mBQScript->GetMonsterCommonInfo();
-			if (mBloodyQuuenInfo.isChasing == true)
+			BloodyQueenScript::eBloodyQueenState state = mBQScript->GetBloodyQueenState();
+			if (mBloodyQuuenInfo.isChasing == true && state != BloodyQueenScript::eBloodyQueenState::SpecialAttack 
+				&& state != BloodyQueenScript::eBloodyQueenState::Attack && state != BloodyQueenScript::eBloodyQueenState::Change)
 			{
 				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
 				mBQScript->SetBloodyQueenState(mBQState);
@@ -34,7 +36,9 @@ namespace jns
 		if (other->GetOwner()->GetName() == L"Player")
 		{
 			MonsterCommonInfo mBloodyQuuenInfo = mBQScript->GetMonsterCommonInfo();
-			if (mBloodyQuuenInfo.isChasing == true)
+			BloodyQueenScript::eBloodyQueenState state = mBQScript->GetBloodyQueenState();
+			if (mBloodyQuuenInfo.isChasing == true && state != BloodyQueenScript::eBloodyQueenState::SpecialAttack
+				&& state != BloodyQueenScript::eBloodyQueenState::Attack && state != BloodyQueenScript::eBloodyQueenState::Change)
 			{
 				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
 				mBQScript->SetBloodyQueenState(mBQState);

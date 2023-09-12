@@ -25,6 +25,9 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
+
+		void AttackNormal();
+
 		class Collider2D* cd;
 		bool isColPosSet;
 		float mBlackOutReturnTime;
