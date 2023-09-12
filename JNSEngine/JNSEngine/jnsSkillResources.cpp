@@ -18,6 +18,9 @@ namespace jns
 	}
 	void SkillResources::Initialize()
 	{
+		//Light* light = AddComponent<Light>();
+		//light->SetType(eLightType::Spot);
+		
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 		at = AddComponent<Animator>();
@@ -59,7 +62,7 @@ namespace jns
 			break;
 		case eSkillType::JumpSkill:
 			skillUIPos.x -= 130.0f;
-			skillUIPos.y += 70.0f;
+			skillUIPos.y += 70.0f;	
 			tr->SetPosition(skillUIPos);
 			at->PlayAnimation(L"TripleJump_able", true);
 			break;
@@ -71,6 +74,24 @@ namespace jns
 	}
 	void SkillResources::Update()
 	{
+		if (SceneManager::GetActiveScene() != playeScene)
+		{
+			opacity = 0.0f;
+		}
+
+		if (SceneManager::GetActiveScene() != SceneManager::GetPrevScene())
+		{
+			playeScene = SceneManager::GetActiveScene();
+			if (opacity >= 0.0f && opacity <= 1.0f)
+			{
+				opacity += Time::DeltaTime();
+			}
+	
+			at->GetActiveAnimation()->SetTransparency(opacity);
+			std::wstring aniname = at->GetActiveAnimation()->GetAnimationName();
+			at->PlayAnimation(aniname, false);
+		}
+
 		if (Input::GetKeyDown(eKeyCode::K))
 		{
 			if (isItIcon == true)

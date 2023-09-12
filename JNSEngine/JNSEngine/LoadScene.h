@@ -44,6 +44,7 @@ namespace jns
 	
 	void InitializeLoadingScene()
 	{
+
 		SceneManager::CreateScene<LoadingScene>(jns::enums::eSceneType::Loading);
 
 	}

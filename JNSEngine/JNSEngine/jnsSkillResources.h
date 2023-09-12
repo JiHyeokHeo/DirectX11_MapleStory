@@ -56,6 +56,10 @@ namespace jns
 		bool isIconRender;
 		bool isOnTarget;
 		int skillLearnNum;
+
+		float opacity = 1.0f;
+		bool isChangeSceneDone;
+		class Scene* playeScene;
 	};
 
 }
