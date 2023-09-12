@@ -6,6 +6,8 @@ namespace jns
 {
 	ExpMaxBar::ExpMaxBar()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	ExpMaxBar::~ExpMaxBar()
 	{

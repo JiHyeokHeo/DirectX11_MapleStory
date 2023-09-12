@@ -40,7 +40,6 @@ namespace jns
 		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMain, Vector3(-00.0f, -200.0f, 1.0f), Vector3(-1800.0f, -190.0f, 0.0f));
 		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysBoss, Vector3(00.0f, -200.0f, 1.0f), Vector3(1300.0f, -190.0f, 0.0f));
 
-		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
 	void RutabysMobScene::Update()

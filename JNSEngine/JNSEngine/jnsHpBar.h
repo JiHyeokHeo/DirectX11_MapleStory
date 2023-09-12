@@ -16,6 +16,8 @@ namespace jns
 
 		
 	private:
+		Vector3 playerPrevHp;
+		Vector3 interpolatedHp;
 	};
 }
 

@@ -5,6 +5,8 @@ namespace jns
 {
 	ExpBar::ExpBar()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	ExpBar::~ExpBar()
 	{

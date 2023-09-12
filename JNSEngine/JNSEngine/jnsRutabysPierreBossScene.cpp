@@ -21,7 +21,6 @@ namespace jns
 		BossHpBar* bossHpBar = object::Instantiate<BossHpBar>(eLayerType::UI, Vector3::Zero);
 		// 피에르랑 연결 시켜야함
 		//bossHpBar->SetBossTarget(obj);
-		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
 	void RutabysPierreBossScene::Update()

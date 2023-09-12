@@ -40,7 +40,7 @@ namespace jns
 		Vector3 bossHp = { (float)mBossHp, 0.0, 0.0 };
 		
 
-		interpolatedHp = Vector3::Lerp(bossPrevHp, bossHp, Time::DeltaTime());
+		interpolatedHp = Vector3::Lerp(bossPrevHp, bossHp, Time::DeltaTime() * 10.0f);
 		
 
 		playerUICB.hp = interpolatedHp.x;

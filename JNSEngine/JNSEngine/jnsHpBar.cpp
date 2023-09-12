@@ -6,6 +6,8 @@ namespace jns
 {
 	HpBar::HpBar()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	HpBar::~HpBar()
 	{
@@ -34,9 +36,17 @@ namespace jns
 	{
 		renderer::PlayerCB playerUICB = {};
 		int mPlayerHp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
+		int mPlayerMaxHp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().maxhp;
 		int mPlayerMp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().mp;
 		int mPlayerExp = SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().exp;
-		int mHp = mPlayerHp;
+
+		Vector3 playermaxHp = { (float)mPlayerMaxHp, 0.0, 0.0 };
+		Vector3 playerHp = { (float)mPlayerHp, 0.0, 0.0 };
+
+
+		interpolatedHp = Vector3::Lerp(playerPrevHp, playerHp, Time::DeltaTime() * 10.0f);
+
+		int mHp = interpolatedHp.x;
 		int mMp = mPlayerMp;
 		int mExp = mPlayerExp;
 
@@ -44,10 +54,14 @@ namespace jns
 		playerUICB.mp = mMp;
 		playerUICB.exp = mExp;
 		playerUICB.type = 0;
+		playerUICB.maxhp = mPlayerMaxHp;
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
 
 		cb->SetData(&playerUICB);
 		cb->Bind(eShaderStage::PS);
+
+		playerPrevHp = interpolatedHp;
+
 		UIBase::Render();
 	}
 }

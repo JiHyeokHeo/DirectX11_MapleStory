@@ -47,6 +47,7 @@ namespace jns
 		struct PlayerInfo
 		{
 			float invisibilityTime;
+			int maxhp;
 			int hp;
 			int mp;
 			int exp;

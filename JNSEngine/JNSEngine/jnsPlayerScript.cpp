@@ -21,7 +21,8 @@ namespace jns
 		mPlayerInfo.mMoveSpeed = 200.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
-        mPlayerInfo.hp = 100;
+        mPlayerInfo.maxhp = 300.0f;
+        mPlayerInfo.hp = mPlayerInfo.maxhp;
         mPlayerInfo.mp = 100;
         mPlayerInfo.exp = 0;
         mPrevHp = mPlayerInfo.hp;

@@ -12,7 +12,6 @@ namespace jns
 	void StartScene3::Initialize()
 	{
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::Start3);
-		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
 	void StartScene3::Update()

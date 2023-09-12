@@ -5,6 +5,8 @@ namespace jns
 {
 	CenterStatus::CenterStatus()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	CenterStatus::~CenterStatus()
 	{

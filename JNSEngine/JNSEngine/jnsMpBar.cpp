@@ -6,6 +6,8 @@ namespace jns
 {
 	MpBar::MpBar()
 	{
+		SetIsOnlyOne(true);
+		SetState(eState::DontDestroy);
 	}
 	MpBar::~MpBar()
 	{
