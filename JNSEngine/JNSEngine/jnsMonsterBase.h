@@ -35,6 +35,7 @@ namespace jns
 		struct MonsterStatus
 		{
 			int hp;
+			int maxhp;
 			int dmg;
 			std::wstring usingSkillName;
 			int skilldmg;
@@ -113,6 +114,7 @@ namespace jns
 
 		MonsterStatus GetMonsterStatus() { return monsterStatus; }
 		void SetMonsterStatusHp(int hp) { monsterStatus.hp = hp; }
+		void SetMonsterStatusMaxHp(int maxhp) { monsterStatus.maxhp = maxhp; }
 
 
 	protected:

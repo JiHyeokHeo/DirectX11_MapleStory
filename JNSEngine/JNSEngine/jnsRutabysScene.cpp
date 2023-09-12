@@ -49,10 +49,11 @@ namespace jns
 		
 #pragma endregion
 
-		 //¿Œ∫•≈‰∏Æ
-		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
-		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
-		minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
+		// ¿”Ω√∑Œ ¿·±≈µ“
+		// //¿Œ∫•≈‰∏Æ
+		//Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		//InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
+		//minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
 
 		// ƒ¸ΩΩ∑‘
 		QuickSlotUI* mSkillSlotBack = object::InstantiateNOmove<QuickSlotUI>(eLayerType::UI);

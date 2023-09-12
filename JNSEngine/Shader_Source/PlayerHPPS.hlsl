@@ -23,7 +23,7 @@ float4 main(VSOut In) : SV_TARGET
     
     if (barType == 0) // hp bar
     {
-        float uvPos = ((float) hp) / 100.0f;
+        float uvPos = ((float) hp) / (float) maxhp;
         if (In.UV.x >= uvPos)
         {
             discard;

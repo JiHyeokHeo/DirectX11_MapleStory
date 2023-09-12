@@ -15,6 +15,7 @@
 #include "jnsStartScene5.h"
 #include "jnsLoadingScene.h"
 #include "jnsRutabysPierreMobScene.h"
+#include "jnsRutabysPierreBossScene.h"
 //#ifdef _DEBUG
 //#pragma comment(lib, "..\\x64\\Debug\\JNSEngine.lib")
 //#else
@@ -35,11 +36,12 @@ namespace jns
 		SceneManager::CreateScene<StartScene5>(L"StartScene5");*/
 		//SceneManager::CreateScene<WorldSelectScene>(L"WorldSelect");
 		SceneManager::CreateScene<RutabysMobScene>(jns::enums::eSceneType::RutabysMob);
-		SceneManager::CreateScene<RutabysPierreMobScene>(jns::enums::eSceneType::RutabysPierreMob);
 		//SceneManager::CreateScene<LoginScene>(L"Login");
+		SceneManager::CreateScene<RutabysPierreMobScene>(jns::enums::eSceneType::RutabysPierreMob);
+		SceneManager::CreateScene<RutabysPierreBossScene>(jns::enums::eSceneType::RutabysPierreBoss);
 		SceneManager::CreateScene<RutabysScene>(jns::enums::eSceneType::RutabysMain);
 
-		//SceneManager::LoadScene(L"Login");
+		SceneManager::LoadScene(jns::enums::eSceneType::RutabysMain);
 	}
 	
 	void InitializeLoadingScene()

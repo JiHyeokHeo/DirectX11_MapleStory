@@ -59,7 +59,8 @@ namespace jns
 		this->SetColNum(1);
 		mMonsterState = eBloodyQueenState::Idle;
 		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
-		monsterCommonInfo.hp = 100;
+		monsterCommonInfo.maxhp = 1000;
+		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
 		monsterCommonInfo.skillCoolDown = 0.0f;
 		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
 
@@ -127,23 +128,7 @@ namespace jns
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			SkillData* skillData = SkillManager::FindSkillData(other->GetOwner()->GetName());
-
-			if (skillData != nullptr) {
-				int mSkillDmg = skillData->GetSkillDamage();
-
-				if (mBloodyQueen->GetIsEffectOn())
-				{
-					PlayerScript* playerScript = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
-					playerScript->PlayerDamaged(mSkillDmg);
-				}
-				else 
-				{
-					monsterCommonInfo.hp -= mSkillDmg;
-					monsterCommonInfo.isChasing = true;
-				}
-				damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
-			}
+			DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr);
 		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
@@ -209,8 +194,10 @@ namespace jns
 	}
 	void BloodyQueenScript::UpdateBossHp()
 	{
+		// 상시로 몬스터 베이스로 체력 정보를 넘겨준다.
 		MonsterBase* monsterbase = dynamic_cast<MonsterBase*>(GetOwner());
 		monsterbase->SetMonsterStatusHp(monsterCommonInfo.hp);
+		monsterbase->SetMonsterStatusMaxHp(monsterCommonInfo.maxhp);
 	}
 	void BloodyQueenScript::SetAniDir()
 	{

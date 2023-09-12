@@ -701,6 +701,10 @@ namespace renderer
 		 SET_MATERIAL(Rutabyspierre2_BG_Material, Rutabyspierre2_BG_Texture, spriteShader);
 		 Rutabyspierre2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"Rutabypierre2Material", Rutabyspierre2_BG_Material);
+
+		 LOAD_TEXTURE(L"Rutabypierre3", L"..\\Resources\\Map\\Rutabys\\rutabys_pierre_boss.png", Rutabyspierre3_BG_Texture);
+		 SET_MATERIAL(Rutabyspierre3_BG_Material, Rutabyspierre3_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Rutabypierre3Material", Rutabyspierre3_BG_Material);
 #pragma endregion
 
 #pragma region UI

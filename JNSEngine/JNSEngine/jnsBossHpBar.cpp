@@ -30,18 +30,30 @@ namespace jns
 	}
 	void BossHpBar::Render()
 	{
+		if (bossTarget == nullptr)
+			return;
 		renderer::PlayerCB playerUICB = {};	
 		MonsterBase* monsterBase = dynamic_cast<MonsterBase*>(bossTarget);
 		int mBossHp = monsterBase->GetMonsterStatus().hp;
+		int mBossmaxHp = monsterBase->GetMonsterStatus().maxhp;
+		Vector3 bossmaxHp = { (float)mBossmaxHp, 0.0, 0.0 };
+		Vector3 bossHp = { (float)mBossHp, 0.0, 0.0 };
+		
 
-		playerUICB.hp = mBossHp;
+		interpolatedHp = Vector3::Lerp(bossPrevHp, bossHp, Time::DeltaTime());
+		
+
+		playerUICB.hp = interpolatedHp.x;
 		playerUICB.mp = 0;
 		playerUICB.exp = 0;
 		playerUICB.type = 0;
+		playerUICB.maxhp = mBossmaxHp;
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Player];
 
 		cb->SetData(&playerUICB);
 		cb->Bind(eShaderStage::PS);
+		
+		bossPrevHp = interpolatedHp;
 		GameObject::Render();
 	}
 }

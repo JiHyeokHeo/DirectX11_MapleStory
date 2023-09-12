@@ -6,8 +6,7 @@
 #include "jnsCollider2D.h"
 #include "jnsInput.h"
 
-#include <mutex>
-std::mutex mtx;
+
 
 namespace jns
 {
@@ -19,6 +18,9 @@ namespace jns
 	}
 	void CollisionManager::Update()
 	{
+		if (SceneManager::isLoading == true)
+			return;
+
 		if (isStart == true)
 		{
 			for (UINT column = 0; column < (UINT)eLayerType::End; column++)
@@ -27,7 +29,6 @@ namespace jns
 				{
 					if (mMatrix[column][row] == true)
 					{
-						std::unique_lock<std::mutex> lock(mtx);
 						LayerCollision((eLayerType)column, (eLayerType)row);
 					}
 				}
@@ -80,13 +81,13 @@ namespace jns
 
 	}
 	void CollisionManager::ColliderCollision(Collider2D* left, Collider2D* right)
-	{	
+	{
 		//bool isCursor = false;
 		//if (left->GetOwner()->GetLayerType() == eLayerType::Cursor ||
 		//	right->GetOwner()->GetLayerType() == eLayerType::Cursor)
 		//	isCursor = true;
 
-
+			
 		// 두 충돌체의 ID bool값을 확인
 		ColliderID id = {};
 		id.left = left->GetColliderID();

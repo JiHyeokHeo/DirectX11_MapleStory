@@ -44,6 +44,7 @@ namespace renderer
 		int mp;
 		int exp;
 		int type;
+		int maxhp;
 	};
 
 	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)

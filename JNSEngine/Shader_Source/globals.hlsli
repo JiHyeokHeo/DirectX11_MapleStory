@@ -32,6 +32,7 @@ cbuffer PlayerUI : register(b4)
     int mp;
     int exp;
     int barType;
+    int maxhp;
 }
 
 cbuffer Animator : register(b5)

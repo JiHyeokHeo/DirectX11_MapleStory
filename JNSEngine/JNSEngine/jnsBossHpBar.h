@@ -19,6 +19,8 @@ namespace jns
 
 	private:
 		GameObject* bossTarget;
+		Vector3 bossPrevHp;
+		Vector3 interpolatedHp;
 	};
 
 }

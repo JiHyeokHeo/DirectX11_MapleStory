@@ -6,6 +6,7 @@ namespace jns
 {
 	struct MonsterCommonInfo
 	{
+		int maxhp;
 		int hp;
 		float skillCoolDown;
 		int dmg;

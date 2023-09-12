@@ -19,7 +19,8 @@
 #endif
 
 jns::Application application;
-
+#include <mutex>
+std::mutex mtx;
 #define MAX_LOADSTRING 100
 
 bool isLoadComplete = false;
@@ -59,6 +60,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     std::thread loadingThread([&]() {
         jns::InitializeScenes();
     isLoadComplete = true;
+    std::unique_lock<std::mutex> lock(mtx);
     });
     loadingThread.detach();
 

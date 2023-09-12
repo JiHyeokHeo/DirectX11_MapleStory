@@ -95,7 +95,7 @@ namespace jns
 			}
 
 			// 추후에 연산 추가합시다~ 방어력 + 알파
-			info.hp -= skillDmg;
+			info.hp -= skillDmg * 10;
 			info.isChasing = true;
 			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), Vector2(0.0f, 50.0f), skillCnt);
 		}
