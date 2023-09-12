@@ -80,7 +80,7 @@ namespace jns
 		MonsterCommonInfo monsterCommonInfo;
 		DamageDisplay damageDisplay;
 
-		float dmg;
+		
 	};
 }
 

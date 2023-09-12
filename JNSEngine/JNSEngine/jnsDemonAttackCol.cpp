@@ -39,21 +39,10 @@ namespace jns
 	}
 	void DemonAttackCol::OnCollisionEnter(Collider2D* other)
 	{
-		int dmg = -99;
-
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
-			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
-
-			if (playerInfo.invisibilityTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die) 
-			{
-				dmg = 20;
-				playerScript->PlayerDamaged(dmg);
-				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
-				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
-			}
+			MonsterCommonInfo monsterinfo= mDMScript->GetMonsterCommonInfo();
+			DamageDisplay::DamageToPlayer(monsterinfo, other);
 		}
 	}
 	void DemonAttackCol::OnCollisionStay(Collider2D* other)

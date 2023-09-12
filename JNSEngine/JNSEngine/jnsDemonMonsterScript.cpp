@@ -16,6 +16,7 @@ namespace jns
 		at->CompleteEvent(L"Demondm_attack") = std::bind(&DemonMonsterScript::CompleteAttack, this);
 		at->CompleteEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::CompleteDead, this);
 		cd->SetColNum(1);
+		monsterCommonInfo.dmg = 20.0f;
 		this->SetColNum(1);
 	}
 	void DemonMonsterScript::Update()
@@ -40,21 +41,9 @@ namespace jns
 		if (mMonsterState == eDemonState::Die)
 			return;
 
-		int dmg = -99;
-
-		if (other->GetOwner()->GetLayerType() == eLayerType::Player) {
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
-			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
-
-			if (playerInfo.invisibilityTime <= 0.0f) {
-				dmg = 20;
-
-				playerScript->PlayerDamaged(dmg);
-				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
-
-				damageDisplay.DisplayDamage(dmg, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f), 3);
-			}
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player) 
+		{
+			DamageDisplay::DamageToPlayer(monsterCommonInfo, other);
 		}
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) 
@@ -67,23 +56,10 @@ namespace jns
 	{
 		if (mMonsterState == eDemonState::Die)
 			return;
-		int dmg = -99;
+		
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
-			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
-			int mPlayerHp = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().hp;
-			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
-
-			if (mPlayerInvTime <= 0.0f)
-			{
-				dmg = 20.0f;
-				playerScript->PlayerDamaged(dmg);
-				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
-				damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
-			}
-
+			DamageDisplay::DamageToPlayer(monsterCommonInfo, other);
 		}
 	}
 	void DemonMonsterScript::OnCollisionExit(Collider2D* other)

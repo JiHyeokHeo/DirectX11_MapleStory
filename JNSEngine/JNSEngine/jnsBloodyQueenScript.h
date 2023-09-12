@@ -98,7 +98,7 @@ namespace jns
 
 	public:
 		void ResetData();
-		MonsterCommonInfo GetBloodyQueenInfo() { return monsterCommonInfo; }
+		MonsterCommonInfo GetMonsterCommonInfo() { return monsterCommonInfo; }
 		BloodyQueenInfo GetBloodyQueenTypeInfo() { return bloodyQueenInfo; }
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
 		//void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }

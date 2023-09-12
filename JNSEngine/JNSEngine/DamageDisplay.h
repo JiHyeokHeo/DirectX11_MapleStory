@@ -7,6 +7,7 @@
 #include "jnsMonsterCommonInfo.h"
 #include "jnsSkillBase.h"
 #include "jnsTransform.h"
+#include "jnsPlayerScript.h"
 
 namespace jns
 {
@@ -24,9 +25,9 @@ namespace jns
 			SkillDamage(info, other, tr);
 		}
 
-		static void DamageToPlayer(int damage, Collider2D* other)
+		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, bool isskilldmg = false)
 		{
-			PlayerDamage(damage, other);
+			PlayerDamage(monsterinfo, other, isskilldmg);
 		}
 	private:
 		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, int damagecnt, const Vector2& offsetYCord)
@@ -82,22 +83,47 @@ namespace jns
 
 			SkillBase::eSkillType skillType = skillbase->GetSkillType();
 			int skillDmg = 0;
-
+			int skillCnt = 0;
 			if (skillType == SkillBase::eSkillType::AssainHit01)
 			{
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
+				skillCnt = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamageCnt();
 			}
 			else if (skillType == SkillBase::eSkillType::AssainHit02) {
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
+				skillCnt = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamageCnt();
 			}
 
 			// 추후에 연산 추가합시다~ 방어력 + 알파
-			info.hp -= skillDmg * 100;
-			DamageDisplay::DisplayDamage(skillDmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
+			info.hp -= skillDmg;
+			info.isChasing = true;
+			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), Vector2(0.0f, 50.0f), skillCnt);
 		}
 
-		static void PlayerDamage(int damage, Collider2D* other)
+		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, bool isskilldmg)
 		{
+			PlayerScript* playerScript = other->GetOwner()->GetComponent<PlayerScript>();
+			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
+
+			if (playerScript->GetPlayerState() == PlayerScript::ePlayerState::Die)
+				return;
+
+			
+			if (playerInfo.invisibilityTime <= 0.0f) 
+			{
+				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
+				
+				if (isskilldmg)
+				{
+					playerScript->PlayerDamaged(monsterinfo.skilldmg);
+					DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+				}
+				else
+				{
+					playerScript->PlayerDamaged(monsterinfo.dmg);
+					DamageDisplay::DisplayDamage(monsterinfo.dmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+				}
+			}
 
 		}
 	};

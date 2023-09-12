@@ -33,6 +33,7 @@ namespace jns
 		BloodyQueenSkillDamage mBQSkillDamage;
 		bool isNomralAttackHit;
 
+		class Animator* at;
 		DamageDisplay damageDisplay;
 	};
 }

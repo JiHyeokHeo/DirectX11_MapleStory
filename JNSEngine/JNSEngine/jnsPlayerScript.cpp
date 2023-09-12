@@ -674,7 +674,8 @@ namespace jns
                 break;
             case ePlayerState::Die:
                 at->PlayAnimation(L"CharactorCharDead", true);
-                at->GetActiveAnimation()->SetTransparency(0.7f);
+                // 죽을 시 투명도 조절
+                at->GetActiveAnimation()->SetTransparency(0.3f);
                 break;
             default:
                 break;

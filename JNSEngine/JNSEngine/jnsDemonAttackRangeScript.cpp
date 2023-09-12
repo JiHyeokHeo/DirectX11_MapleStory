@@ -12,15 +12,6 @@ namespace jns
 		mDMScript = GetOwner()->GetComponent<DemonMonsterScript>();
 		cd->SetSize(Vector2(1.0f, 1.0f));
 	}
-	void DemonAttackRangeScript::Update()
-	{
-	}
-	void DemonAttackRangeScript::LateUpdate()
-	{
-	}
-	void DemonAttackRangeScript::Render()
-	{
-	}
 	void DemonAttackRangeScript::OnCollisionEnter(Collider2D* other)
 	{
 		if (other->GetOwner()->GetName() == L"Player")

@@ -13,6 +13,7 @@ namespace jns
 		mColMakeTime = 0.0f;
 		mBlackOutReturnTime = 0.0f;
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
+		at = mBQScript->GetOwner()->GetComponent<Animator>();
 	}
 	void BloodyQueenAttackCol::Update()
 	{
@@ -21,103 +22,126 @@ namespace jns
 	{
 		BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
 		BloodyQueenScript::BloodyQueenInfo mBQTypeInfo = mBQScript->GetBloodyQueenTypeInfo();
-		MonsterCommonInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
+		MonsterCommonInfo mBQInfo = mBQScript->GetMonsterCommonInfo();
 
 		if (mBQState == BloodyQueenScript::eBloodyQueenState::Attack)
 		{
-			mColMakeTime += Time::DeltaTime();
 			Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
 
-			if (mColMakeTime >= 0.8f && mBQScript->GetUsingSkillName() == L"NormalAttack")
+			if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 			{
-				cd->SetColliderOn(true);
-
+				int idx = at->GetActiveAnimation()->GetAnimationIndex();
 				if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 				{
-					cd->SetSize(Vector2(0.3f, 0.5f));
-					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					if (idx >= 4 && idx <= 6)
+					{
+						cd->SetColliderOn(true);
+						cd->SetSize(Vector2(0.3f, 0.5f));
+						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					}
+					else
+					{
+						cd->SetSize(Vector2::Zero);
+						cd->SetColliderOn(false);
+					}
+
 				}
 				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
 				{
-					cd->SetSize(Vector2(0.3f, 0.5f));
-					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					if (idx >= 5 && idx <= 7)
+					{
+						cd->SetColliderOn(true);
+						cd->SetSize(Vector2(0.3f, 0.5f));
+						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					}
+					else
+					{
+						cd->SetSize(Vector2::Zero);
+						cd->SetColliderOn(false);
+					}
 				}
 				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
 				{
-					cd->SetSize(Vector2(0.3f, 0.5f));
-					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					if (idx >= 4 && idx <= 6)
+					{
+						cd->SetColliderOn(true);
+						cd->SetSize(Vector2(0.3f, 0.5f));
+						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					}
+					else
+					{
+						cd->SetSize(Vector2::Zero);
+						cd->SetColliderOn(false);
+					}
 				}
 				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
 				{
-					cd->SetSize(Vector2(0.3f, 0.5f));
-					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					if (idx >= 4 && idx <= 6)
+					{
+						cd->SetColliderOn(true);
+						cd->SetSize(Vector2(0.3f, 0.5f));
+						cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					}
+					else
+					{
+						cd->SetSize(Vector2::Zero);
+						cd->SetColliderOn(false);
+					}
 				}
 			}
 
-			if (mColMakeTime >= 1.6f && mBQScript->GetUsingSkillName() == L"NormalAttack")
-			{
-				mColMakeTime = 0.0f;
-				cd->SetSize(Vector2::Zero);
-				cd->SetColliderOn(false);
-			}
 		}
 		else if (mBQState == BloodyQueenScript::eBloodyQueenState::SpecialAttack)
 		{
-			mColMakeTime += Time::DeltaTime();
 			Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
 
-			if (mColMakeTime >= 0.8f)
+			if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 			{
-				cd->SetColliderOn(true);
-				if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
+				cd->SetColliderOn(false);
+			}
+			else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
+			{
+				if (at->GetActiveAnimation()->GetAnimationName() == L"NormalBloodyQueenNBQBress3")
+				{
+					cd->SetColliderOn(true);
+					cd->SetSize(Vector2(0.5f, 0.20f));
+					cd->SetCenter(Vector2(300.0f * (int)mBQInfo.mDir, -100.0f));
+
+				}
+				else
 				{
 					cd->SetColliderOn(false);
 				}
-				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
-				{
-					if (mColMakeTime >= 1.8f)
-					{
-						if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
-						{
-							cd->SetSize(Vector2(0.5f, 0.20f));
-							cd->SetCenter(Vector2(300.0f * (int)mBQInfo.mDir, -100.0f));
 
-						}
-						else
-						{
-							cd->SetColliderOn(false);
-						}
-					}
-				}
-				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
+			}
+			else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
+			{
+				//cd->SetSize(Vector2(0.3f, 0.5f));
+				//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+			}
+			else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
+			{
+				if (at->GetActiveAnimation()->GetAnimationName() == L"NormalBloodyQueenNBQBress2")
 				{
-						//cd->SetSize(Vector2(0.3f, 0.5f));
-						//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
+					cd->SetColliderOn(true);
+					cd->SetSize(Vector2(0.2f, 0.5f));
+					cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, -100.0f));
 				}
-				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
+				else if (at->GetActiveAnimation()->GetAnimationName() == L"NormalBloodyQueenNBQBress3")
 				{
-					if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
+					int idx = at->GetActiveAnimation()->GetAnimationIndex();
+					if (idx >= 0 && idx <= 3)
 					{
 						cd->SetSize(Vector2(0.2f, 0.5f));
 						cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, -100.0f));
-
 					}
 				}
-
-				if (mColMakeTime >= 2.5f && mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
+				else
 				{
-					mColMakeTime = 0.0f;
-					cd->SetSize(Vector2::Zero);
-					cd->SetCenter(Vector2(100.0f * (int)mBQInfo.mDir, -100.0f));
 					cd->SetColliderOn(false);
+					cd->SetSize(Vector2::Zero);
 				}
 			}
-		}
-		else
-		{
-			mColMakeTime = 0.0f;
-			cd->SetSize(Vector2::Zero);
-			cd->SetColliderOn(false);
 		}
 	}
 	void BloodyQueenAttackCol::Render()
@@ -127,34 +151,26 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player" )
 		{
-			GameObject* mPlayer = SceneManager::GetPlayer();
-			PlayerScript* playerScript = mPlayer->GetComponent<PlayerScript>();
-			int mPlayerHp = playerScript->GetPlayerInfo().hp;
-			float mPlayerInvTime = mPlayer->GetComponent<PlayerScript>()->GetPlayerInfo().invisibilityTime;
-			int dmg = -99;
-			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
+			MonsterCommonInfo monsterinfo = mBQScript->GetMonsterCommonInfo();
+			
+			if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 			{
-				if (mBQScript->GetUsingSkillName() == L"NormalAttack")
-				{
-					dmg = mBQSkillDamage.normalAttack;
-					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
-				}
-
-				if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
-				{
-					dmg = mBQSkillDamage.swallowAttack;
-				}
-
-				if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
-				{
-					dmg = mBQSkillDamage.bressAttack;
-				}
-
-				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(dmg);
-				mPlayer->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::Hitted);
-				Vector3 playerPos = mPlayer->GetComponent<Transform>()->GetPosition();
-				damageDisplay.DisplayDamage(dmg, playerPos, Vector2(0.0f, 50.0f));
+				monsterinfo.skilldmg = mBQSkillDamage.normalAttack;
+				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 			}
+
+			if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
+			{
+				monsterinfo.skilldmg = mBQSkillDamage.swallowAttack;
+			}
+
+			if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
+			{
+				monsterinfo.skilldmg = mBQSkillDamage.bressAttack;
+			}
+
+			DamageDisplay::DamageToPlayer(monsterinfo, other, true);
+			
 		}
 	}
 	void BloodyQueenAttackCol::OnCollisionStay(Collider2D* other)
