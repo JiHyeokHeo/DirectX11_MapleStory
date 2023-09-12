@@ -26,20 +26,25 @@ namespace jns
 		SetMaterial(L"SpriteAnimaionAlphaMaterial");
 		at = AddComponent<Animator>();
 		at->CreateAnimations(L"..\\Resources\\Map\\YellowPortal", 200, 0.1f);
-		at->CreateAnimations(L"..\\Resources\\Map\\GardenPortal", 200, 0.1f);	
+		at->CreateAnimations(L"..\\Resources\\Map\\GardenPortal", 500, 0.1f);	
 		//at->CompleteEvent(L"CharactorCharWalk") = std::bind(&PlayerScript::Complete, this);
 
 
+		Collider2D* cd = AddComponent<Collider2D>();
 		if (isBossPortal)
 		{
+			tr->SetScale(Vector3(500.0f, 500.0f, 50.0f));
+			cd->SetCenter(Vector2(0.0f, -50.0f));
+			cd->SetSize(Vector2(0.1f, 0.15f));
 			at->PlayAnimation(L"MapGardenPortal", true);
 		}
 		else
 		{
+			tr->SetScale(Vector3(180.0f, 180.0f, 100.0f));
+			cd->SetSize(Vector2(0.4f, 0.6f));
 			at->PlayAnimation(L"MapYellowPortal", true);
 		}
-		tr->SetScale(Vector3(180.0f, 180.0f, 100.0f));
-		Collider2D* cd = AddComponent<Collider2D>();
+		//tr->SetScale(Vector3(180.0f, 180.0f, 100.0f));
 		cd->SetSize(Vector2(0.4f, 0.6f));
 
 		AddComponent<PortalScript>();

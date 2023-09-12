@@ -21,6 +21,7 @@ namespace jns
 		void CheckDownGround(Collider2D* other);
 		void CheckLeftGround(Collider2D* other);
 		void CheckRightGround(Collider2D* other);
+		void CheckDownJumpGround(Collider2D* other);
 		void CheckLadder(Collider2D* other);
 
 		bool GetIsLadder() { return isLadder; }

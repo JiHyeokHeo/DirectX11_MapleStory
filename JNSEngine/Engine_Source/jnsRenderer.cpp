@@ -699,7 +699,7 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"Rutabypierre2", L"..\\Resources\\Map\\Rutabys\\rutabys_pierre2.png", Rutabyspierre2_BG_Texture);
 		 SET_MATERIAL(Rutabyspierre2_BG_Material, Rutabyspierre2_BG_Texture, spriteShader);
-		 Rutabysqueen2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 Rutabyspierre2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"Rutabypierre2Material", Rutabyspierre2_BG_Material);
 #pragma endregion
 

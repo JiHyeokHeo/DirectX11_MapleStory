@@ -117,12 +117,12 @@ namespace jns
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
+				break;
 			case eBGType::RutabysPierreBoss:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabysqueen2Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
-				break;
 				break;
 		}
 		

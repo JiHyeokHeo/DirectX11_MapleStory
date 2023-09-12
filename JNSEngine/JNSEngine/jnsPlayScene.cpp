@@ -126,6 +126,7 @@ namespace jns
 		Cursor* mCursor = object::InstantiateNOmove<Cursor>(eLayerType::Cursor);
 		//Collider2D * mCol = mCursor->AddComponent<Collider2D>();
 		mCursor->SetUICameraToCursor(uiCameraObj);
+		mCursor->SetMainCameraToCursor(mainCameraObj);
 		//mCol->Initialize();
 		//mCol->SetSize(Vector2(1.0f, 1.0f));
 		

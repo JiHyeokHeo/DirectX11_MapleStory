@@ -19,6 +19,7 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 
+		void SetMainCameraToCursor(CameraObject* obj) { mainCamera = obj; }
 		void SetUICameraToCursor(CameraObject* obj) { uiCamera = obj; }
 		static __forceinline Vector3 GetCursorPos() { return mCursorPos; }
 		static __forceinline Vector3 GetCursorWorldPos() { return mCursorWorldPos; }
@@ -27,6 +28,7 @@ namespace jns
 		Transform* tr;
 		Vector2 mTextureRatio;
 		CameraObject* uiCamera;
+		CameraObject* mainCamera;
 		static Vector3 mCursorPos;
 		static Vector3 mCursorEndPos;
 		static Vector3 mCursorWorldPos;

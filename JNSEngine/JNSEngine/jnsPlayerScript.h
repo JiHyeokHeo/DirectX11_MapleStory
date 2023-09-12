@@ -176,5 +176,7 @@ namespace jns
 		int destinationHp;
 		int mPrevHp;
 		bool isHpLerp = false;
+
+		bool isDownGround = true;
 	};
 }

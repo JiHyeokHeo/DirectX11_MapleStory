@@ -12,7 +12,7 @@ namespace jns
 	}
 	void LoadingScene::Initialize()
 	{
-		GameObject* rutaMovingBG = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreMob2);
+		//GameObject* rutaMovingBG = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreMob2);
 		PlayScene::Initialize();
 	}
 	void LoadingScene::Update()

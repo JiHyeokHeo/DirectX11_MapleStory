@@ -110,6 +110,8 @@ namespace jns
 	
 	void PlayerScript::OnCollisionEnter(Collider2D* other)
 	{
+
+        // ¶¥¹Ù´Ú °ü·Ã ÄÚµå
         if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
         {
             Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
@@ -117,7 +119,30 @@ namespace jns
             {
                 if (mPlayerState != ePlayerState::Die)
                 {
+                    isDownGround = true;
                     mPlayerState = ePlayerState::Idle;
+                }
+            }
+
+            if (ground->GetGroundName() == L"DownJumpGround")
+            {
+                if (mPlayerState != ePlayerState::Die)
+                {
+                    Collider2D* playerCol = GetOwner()->GetComponent<Collider2D>();
+                    Vector3 playerPos = playerCol->GetPosition();
+
+                    Collider2D* groundCol = other->GetOwner()->GetComponent<Collider2D>();
+                    Vector3 groundPos = groundCol->GetPosition();
+
+                    if (mPlayerState == ePlayerState::Ladder)
+                    {
+                        float size = groundCol->GetSize().x / 2;
+                        if (playerPos.x >= groundPos.x + size || playerPos.x <= groundPos.x - size)
+                        {
+                            if (playerPos.y >= groundPos.y)
+                               mPlayerState = ePlayerState::Idle;
+                        }
+                    }
                 }
             }
         }
@@ -129,19 +154,84 @@ namespace jns
 			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
 		}
 
+
+        // ¶¥¹Ù´Ú °ü·Ã ÄÚµå
         if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
         {
-            
             Ground* ground = dynamic_cast<Ground*>(other->GetOwner()); 
-            if (ground->GetGroundName() == L"Ladder" && Input::GetKey(eKeyCode::UP))
+            if (ground->GetGroundName() == L"Ladder" )
             {
-                isLadderOn = true;
-                mPlayerState = ePlayerState::Ladder;
+                if (Input::GetKey(eKeyCode::UP))
+                {
+                    isLadderOn = true;
+                    mPlayerState = ePlayerState::Ladder;
+                }
+                else if (Input::GetKey(eKeyCode::DOWN) && isDownGround == false)
+                {
+                    isLadderOn = true;
+                    mPlayerState = ePlayerState::Ladder;
+                }
+            }
+        }
+
+        if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
+        {
+            Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
+            if (ground->GetGroundName() == L"DownJumpGround")
+            {
+                Collider2D* playerCol = GetOwner()->GetComponent<Collider2D>();
+                Vector3 playerPos = playerCol->GetPosition();
+
+                Collider2D* groundCol = other->GetOwner()->GetComponent<Collider2D>();
+                Vector3 groundPos = groundCol->GetPosition();
+
+                if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerState == ePlayerState::Prone)
+                {
+                    float size = groundCol->GetSize().x / 2;
+                    if (playerPos.x >= groundPos.x + size || playerPos.x <= groundPos.x - size)
+                    {
+                        if (playerPos.y >= groundPos.y)
+                            mRb->SetGround(false);
+                    }
+                }
+
+                if (mPlayerState == ePlayerState::Ladder)
+                {
+                    float size = groundCol->GetSize().x / 2;
+                    if (playerPos.x >= groundPos.x + size || playerPos.x <= groundPos.x - size)
+                    {
+                        if (playerPos.y >= groundPos.y)
+                            mPlayerState = ePlayerState::Idle;
+                    }
+                }
             }
         }
 	}
 	void PlayerScript::OnCollisionExit(Collider2D* other)
 	{
+
+        // ¶¥¹Ù´Ú °ü·Ã ÄÚµå
+        if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
+        {
+            Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
+            if (ground->GetGroundName() == L"Ladder" && mPlayerState != ePlayerState::Jump)
+            {
+                isLadderOn = false;
+                mPlayerState = ePlayerState::Idle;
+            }
+        }
+
+        if (other->GetOwner()->GetLayerType() == eLayerType::Ground)
+        {
+            Ground* ground = dynamic_cast<Ground*>(other->GetOwner());
+            if (ground->GetGroundName() == L"DownGround")
+            {
+                if (mPlayerState != ePlayerState::Die)
+                {
+                    isDownGround = false;
+                }
+            }
+        }
 	}
 
     void PlayerScript::PlayerDamaged(int dmg)
@@ -186,6 +276,7 @@ namespace jns
 
     void PlayerScript::Idle()
     {
+
 		if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.NormalJump))
 		{
 			wasStand = true;
@@ -290,12 +381,10 @@ namespace jns
         {
             mPlayerInfo.mDir = PlayerDir::Left;
         }
-
         if (Input::GetKey((eKeyCode)mPlayerKeyType.MoveR))
         {
             mPlayerInfo.mDir = PlayerDir::Right;
         }
-
         if (Input::GetKey((eKeyCode)mPlayerKeyType.Jump))
         {
             mPlayerInfo.mJumpCnt++;
@@ -315,6 +404,14 @@ namespace jns
     {
         Vector3 pos = tr->GetPosition();
         Vector3 velocity = mRb->GetVelocity();
+
+        if (mPlayerInfo.isGrounded == true)
+        {
+            isLadderOn = false;
+            isChangedDir = false;
+            mPlayerInfo.mJumpCnt = 0;
+            mPlayerState = ePlayerState::Idle;
+        }
 
         if (SkillManager::FindSkillData(L"Rogue_SkillflashJump_01")->GetSkillKeyState() == eKeyCode::NONE)
             return;
@@ -394,13 +491,7 @@ namespace jns
         }
 
 
-        if (mPlayerInfo.isGrounded == true)
-        {
-            isLadderOn = false;
-            isChangedDir = false;
-            mPlayerInfo.mJumpCnt = 0;
-            //mPlayerState = ePlayerState::Idle;
-        }
+ 
 
         CheckAttackSkills();
 
@@ -417,6 +508,8 @@ namespace jns
             cd->SetCenter(Vector2::Zero);
             mPlayerState = ePlayerState::Idle;
         }
+        
+   
     }
 
     void PlayerScript::Attack()

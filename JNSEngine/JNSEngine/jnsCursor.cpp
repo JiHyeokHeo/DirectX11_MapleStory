@@ -58,7 +58,7 @@ namespace jns
 		mCursorPos = viewport.Unproject(mCursorPos, uiCamera->GetComponent<Camera>()->GetProjectionMatrix(), uiCamera->GetComponent<Camera>()->GetViewMatrix(), Matrix::Identity);
 		mCursorPos.z = MOUSEZPOS;
 
-		mCursorWorldPos = viewport.Unproject(mCursorWorldPos, uiCamera->GetComponent<Camera>()->GetProjectionMatrix(), uiCamera->GetComponent<Camera>()->GetViewMatrix(), Matrix::Identity);
+		mCursorWorldPos = viewport.Unproject(mCursorWorldPos, mainCamera->GetComponent<Camera>()->GetProjectionMatrix(), mainCamera->GetComponent<Camera>()->GetViewMatrix(), Matrix::Identity);
 		mCursorWorldPos.z = MOUSEZPOS;
 		// 추후 UI좌표를 사용하기 위해!
 		mCursorEndPos = viewport.Unproject(mCursorEndPos, uiCamera->GetComponent<Camera>()->GetProjectionMatrix(), uiCamera->GetComponent<Camera>()->GetViewMatrix(), Matrix::Identity);

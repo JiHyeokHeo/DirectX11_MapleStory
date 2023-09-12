@@ -41,6 +41,8 @@ namespace jns
 		
 		// ¶¥¹Ù´Ú
 		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -300.0f, 4.0f), Vector3(2500.0f, 100.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"DownJumpGround", Vector3(0.0f, -210.0f, 4.0f), Vector3(100.0f, 30.0f, 1.0f));
+		object::InstantiateGroundCollider<Ground>(L"DownJumpGround", Vector3(440.0f, 200.0f, 4.0f), Vector3(450.0f, 30.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"Ladder", Vector3(446.0f, 0.0f, 4.0f), Vector3(20.0f, 430.0f, 1.0f));
@@ -113,8 +115,8 @@ namespace jns
 
 
 		// Æ÷Å»
-		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
-		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysPierreMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-563.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-735.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysPierreMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-260.0f, -190.0f, 0.0f));
 		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(-2400.0f, 200.0f, 1.0f), Vector3(-1000.0f, -190.0f, 0.0f), 1);
 		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(2400.0f, 200.0f, 1.0f), Vector3(1000.0f, -190.0f, 0.0f), -1);
 
