@@ -35,7 +35,7 @@ namespace jns
 		std::map<int, std::wstring> digitAnimations;
 		float xCorOffSet;
 
-		float transparecny = 1.0f;
+		float transparecny = 0.0f;
 		std::wstring digitname = {};
 		int digit;
 		float renderTime;

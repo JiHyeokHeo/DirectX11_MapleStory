@@ -4,6 +4,9 @@
 #include "jnsDamageControl.h"
 #include "jnsSceneManager.h"
 #include <random>
+#include "jnsMonsterCommonInfo.h"
+#include "jnsSkillBase.h"
+#include "jnsTransform.h"
 
 namespace jns
 {
@@ -16,14 +19,14 @@ namespace jns
 			CreateDamageControls(damageStr, position, damagecnt, offsetYCord);
 		}
 
-		static void DamageToMonsterWithSkill(int damage, Collider2D* other)
+		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr)
 		{
-
+			SkillDamage(info, other, tr);
 		}
 
-		static void DamageToPlayer(int damage)
+		static void DamageToPlayer(int damage, Collider2D* other)
 		{
-
+			PlayerDamage(damage, other);
 		}
 	private:
 		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, int damagecnt, const Vector2& offsetYCord)
@@ -71,6 +74,31 @@ namespace jns
 				xOffset = t;
 				yOffset += 40.0f;
 			}
+		}
+
+		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Transform* tr)
+		{
+			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
+
+			SkillBase::eSkillType skillType = skillbase->GetSkillType();
+			int skillDmg = 0;
+
+			if (skillType == SkillBase::eSkillType::AssainHit01)
+			{
+				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
+			}
+			else if (skillType == SkillBase::eSkillType::AssainHit02) {
+				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
+			}
+
+			// 추후에 연산 추가합시다~ 방어력 + 알파
+			info.hp -= skillDmg * 100;
+			DamageDisplay::DisplayDamage(skillDmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
+		}
+
+		static void PlayerDamage(int damage, Collider2D* other)
+		{
+
 		}
 	};
 }

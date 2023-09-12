@@ -58,7 +58,7 @@ namespace jns
             Vector3 damagePos = tr->GetPosition();
             damagePos.y += 40.0f * Time::DeltaTime();
             tr->SetPosition(damagePos);
-            transparecny -= 0.4f * Time::DeltaTime();;
+            transparecny += 0.4f * Time::DeltaTime();;
             ani->PlayAnimation(digitname, false);
             ani->GetActiveAnimation()->SetTransparency(transparecny);
         }

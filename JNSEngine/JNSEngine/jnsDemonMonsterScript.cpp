@@ -59,26 +59,8 @@ namespace jns
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) 
 		{
-			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
-
-			SkillBase::eSkillType skillType = skillbase->GetSkillType();
-			int skillDmg = 0;
-
-			if (skillType == SkillBase::eSkillType::AssainHit01) 
-			{
-				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
-			}
-			else if (skillType == SkillBase::eSkillType::AssainHit02) {
-				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
-			}
-
-			//////////////////// 여기고쳐야함
-			//DamageDisplay::DamageToMonsterWithSkill(other);
-			monsterCommonInfo.hp -= skillDmg * 10;
-			monsterCommonInfo.isChasing = true;
-			dmg = skillDmg * 10;
-
-			DamageDisplay::DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
+			// 알아서 데미지까지 다 뜨도록 했습니다.
+			DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr);
 		}
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)
