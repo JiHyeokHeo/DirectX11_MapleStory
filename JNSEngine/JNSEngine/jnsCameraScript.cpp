@@ -113,6 +113,24 @@ namespace jns
 			setYCord = 200.0f;
 		}
 
+		if (mActiveScene->GetSceneType() == jns::enums::eSceneType::RutabysPierreMob)
+		{
+			mCameraRightMaxMove.x = 1360.0f;
+			mCameraRightMaxMove.y = -10.0f;
+			mCameraLeftMaxMove.x = -1360.0f;
+			mCameraLeftMaxMove.y = -10.0f;
+			setYCord = 200.0f;
+		}
+
+		if (mActiveScene->GetSceneType() == jns::enums::eSceneType::RutabysPierreBoss)
+		{
+			mCameraRightMaxMove.x = 525.0f;
+			mCameraRightMaxMove.y = -10.0f;
+			mCameraLeftMaxMove.x = -525.0f;
+			mCameraLeftMaxMove.y = -10.0f;
+			setYCord = 200.0f;
+		}
+
 		PlayerScript* playerScript = checkTarget->GetComponent<PlayerScript>();
 		//if (playerScript->GetPlayerState() == jns::PlayerScript::ePlayerState::Hitted)
 		//	return false;

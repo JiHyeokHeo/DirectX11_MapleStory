@@ -1,6 +1,7 @@
 #pragma once
 #include "jnsBGBase.h"
 #include "jnsAudioClip.h"
+#include "jnsAudioSource.h"
 
 namespace jns
 {
@@ -22,6 +23,9 @@ namespace jns
 			RutabysQueenMob1,
 			RutabysQueenMob2,
 			RutabysQueenBoss,
+			RutabysPierreMob1,
+			RutabysPierreMob2,
+			RutabysPierreBoss,
 			None,
 		};
 
@@ -37,7 +41,7 @@ namespace jns
 
 	private:
 		eBGType mBGtype;
-		class AudioSource* as;
+		AudioSource* as;
 		static bool isBGPlayed;
 		class Scene* mPrevScene;
 	};

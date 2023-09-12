@@ -49,7 +49,10 @@ namespace jns
 			{
 				mEnter = mPortal->GetDestinationSceneType();
 			}
-
+			else if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysPierreMob)
+			{
+				mEnter = mPortal->GetDestinationSceneType();
+			}
 			isEnter = true;
 		}
 	}

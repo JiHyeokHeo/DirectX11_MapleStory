@@ -114,6 +114,7 @@ namespace jns
 
 		// Æ÷Å»
 		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-763.0f, -190.0f, 0.0f));
+		object::InstantiatePortal<Portal>(jns::enums::eSceneType::RutabysPierreMob, Vector3(-1800.0f, 200.0f, 1.0f), Vector3(-563.0f, -190.0f, 0.0f));
 		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(-2400.0f, 200.0f, 1.0f), Vector3(-1000.0f, -190.0f, 0.0f), 1);
 		//object::InstantiateDirPortal<YellowPortal>(L"RutaMob", Vector3(2400.0f, 200.0f, 1.0f), Vector3(1000.0f, -190.0f, 0.0f), -1);
 

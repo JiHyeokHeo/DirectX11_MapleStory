@@ -260,6 +260,8 @@
       <Filter>Contents\Scripts</Filter>
     </ClCompile>
     <ClCompile Include="jnsMonsterCommonInfo.cpp" />
+    <ClCompile Include="jnsRutabysPierreMobScene.cpp" />
+    <ClCompile Include="jnsRutabysPierreBossScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -548,6 +550,8 @@
       <Filter>Contents\Scripts</Filter>
     </ClInclude>
     <ClInclude Include="jnsMonsterCommonInfo.h" />
+    <ClInclude Include="jnsRutabysPierreMobScene.h" />
+    <ClInclude Include="jnsRutabysPierreBossScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

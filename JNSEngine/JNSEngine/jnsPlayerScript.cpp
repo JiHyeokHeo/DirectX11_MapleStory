@@ -342,18 +342,18 @@ namespace jns
         if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 1 && wasStand == true)
         {
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
-            velocity.y -= 60.0f;
+            velocity.y -= 180.0f;
 
             mPlayerInfo.mJumpCnt++;
             wasStand = false;
 
             // 점프 생성
-            pos.x -= (int)mPlayerInfo.mDir * 100.0f;
+            //pos.x -= (int)mPlayerInfo.mDir * 100.0f;
         }
 
         if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == true)
         {
-            pos.x -= (int)mPlayerInfo.mDir * 100.0f;
+            //pos.x -= (int)mPlayerInfo.mDir * 100.0f;
 
             ActiveJumpSkill();
             mPlayerInfo.mJumpCnt++;
@@ -363,7 +363,7 @@ namespace jns
         {
             velocity.x = 0.0f;
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
-            velocity.y -= 260.0f;
+            velocity.y -= 180.0f;
 
             ActiveJumpSkill();
 
@@ -372,8 +372,8 @@ namespace jns
 
         if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == false && isLadderOn == false)
         {
-            velocity.x += 300.0f * -(int)mPlayerInfo.mDir;
-            velocity.y -= 260.0f;
+            velocity.x += 200.0f * -(int)mPlayerInfo.mDir;
+            velocity.y -= 180.0f;
 
 
             ActiveJumpSkill();
@@ -384,9 +384,8 @@ namespace jns
         if (Input::GetKeyDown((eKeyCode)mPlayerKeyType.Jump) && mPlayerInfo.mJumpCnt <= 2 && mPlayerInfo.mJumpCnt >= 1 && isChangedDir == true && isLadderOn == false)
         {
             velocity.x = 0.0f;
-            velocity.y = -40.0f;
             velocity.x += 700.0f * -(int)mPlayerInfo.mDir;
-            velocity.y -= 260.0f;
+            velocity.y -= 180.0f;
 
 
             ActiveJumpSkill();

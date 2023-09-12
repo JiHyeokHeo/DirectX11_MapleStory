@@ -106,6 +106,24 @@ namespace jns
 				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
+			case eBGType::RutabysPierreMob1:
+				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre1Material"));
+				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
+				break;
+			case eBGType::RutabysPierreMob2:
+				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre2Material"));
+				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
+			case eBGType::RutabysPierreBoss:
+				mr->SetMaterial(Resources::Find<Material>(L"Rutabysqueen2Material"));
+				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
+				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
+				break;
+				break;
 		}
 		
 		mr->GetMaterial()->SetShader(Resources::Find<Shader>(L"DarkShader"));
@@ -113,11 +131,10 @@ namespace jns
 	}
 	void BGInstance::Update()
 	{
-		if (mBGtype == eBGType::RutabysQueenMob1)
+		if (mBGtype == eBGType::RutabysQueenMob1 || mBGtype == eBGType::RutabysPierreMob1)
 		{
 			Vector3 mPos = tr->GetPosition();
 			Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-			
 			mPos.x = mPlayerPos.x * 0.1f;
 			
 			tr->SetPosition(mPos);

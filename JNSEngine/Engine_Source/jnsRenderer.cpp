@@ -686,13 +686,21 @@ namespace renderer
 
 		 LOAD_TEXTURE(L"Rutabysqueen1", L"..\\Resources\\Map\\Rutabys\\rutabys_queen1.png", Rutabysqueen1_BG_Texture);
 		 SET_MATERIAL(Rutabysqueen1_BG_Material, Rutabysqueen1_BG_Texture, spriteShader);
-
 		 INSERT_MATERIAL(L"Rutabysqueen1Material", Rutabysqueen1_BG_Material);
 
 		 LOAD_TEXTURE(L"Rutabysqueen2", L"..\\Resources\\Map\\Rutabys\\rutabys_queen2.png", Rutabysqueen2_BG_Texture);
 		 SET_MATERIAL(Rutabysqueen2_BG_Material, Rutabysqueen2_BG_Texture, spriteShader);
 		 Rutabysqueen2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
 		 INSERT_MATERIAL(L"Rutabysqueen2Material", Rutabysqueen2_BG_Material);
+
+		 LOAD_TEXTURE(L"Rutabypierre1", L"..\\Resources\\Map\\Rutabys\\rutabys_pierre1.png", Rutabyspierre1_BG_Texture);
+		 SET_MATERIAL(Rutabyspierre1_BG_Material, Rutabyspierre1_BG_Texture, spriteShader);
+		 INSERT_MATERIAL(L"Rutabypierre1Material", Rutabyspierre1_BG_Material);
+
+		 LOAD_TEXTURE(L"Rutabypierre2", L"..\\Resources\\Map\\Rutabys\\rutabys_pierre2.png", Rutabyspierre2_BG_Texture);
+		 SET_MATERIAL(Rutabyspierre2_BG_Material, Rutabyspierre2_BG_Texture, spriteShader);
+		 Rutabysqueen2_BG_Material->SetRenderingMode(eRenderingMode::Transparent);
+		 INSERT_MATERIAL(L"Rutabypierre2Material", Rutabyspierre2_BG_Material);
 #pragma endregion
 
 #pragma region UI

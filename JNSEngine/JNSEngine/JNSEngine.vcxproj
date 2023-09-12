@@ -170,6 +170,8 @@
     <ClInclude Include="jnsMesoObjectPooling.h" />
     <ClInclude Include="jnsMonsterCommonInfo.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
+    <ClInclude Include="jnsRutabysPierreBossScene.h" />
+    <ClInclude Include="jnsRutabysPierreMobScene.h" />
     <ClInclude Include="jnsSkillBox.h" />
     <ClInclude Include="jnsSkillResources.h" />
     <ClInclude Include="jnsSkillUIBG.h" />
@@ -325,6 +327,8 @@
     <ClCompile Include="jnsPortalBase.cpp" />
     <ClCompile Include="jnsPortalScript.cpp" />
     <ClCompile Include="jnsRutabysMobScene.cpp" />
+    <ClCompile Include="jnsRutabysPierreBossScene.cpp" />
+    <ClCompile Include="jnsRutabysPierreMobScene.cpp" />
     <ClCompile Include="jnsRutabysScene.cpp" />
     <ClCompile Include="jnsSelectScene.cpp" />
     <ClCompile Include="jnsShopSlotBack.cpp" />

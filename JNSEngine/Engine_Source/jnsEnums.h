@@ -30,6 +30,8 @@ namespace jns::enums
 		RutabysMain,
 		RutabysMob,
 		RutabysBoss,
+		RutabysPierreMob,
+		RutabysPierreBoss,
 	};
 
 	enum class eLayerType

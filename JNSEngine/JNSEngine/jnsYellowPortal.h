@@ -18,6 +18,7 @@ namespace jns
 		int mDir;
 		class Animator* at;
 		bool isSetDir;
+		bool isBossPortal;
 	};
 
 }
