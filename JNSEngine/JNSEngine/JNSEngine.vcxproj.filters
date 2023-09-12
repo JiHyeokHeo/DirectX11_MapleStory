@@ -262,6 +262,7 @@
     <ClCompile Include="jnsMonsterCommonInfo.cpp" />
     <ClCompile Include="jnsRutabysPierreMobScene.cpp" />
     <ClCompile Include="jnsRutabysPierreBossScene.cpp" />
+    <ClCompile Include="jnsBGobject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -552,6 +553,7 @@
     <ClInclude Include="jnsMonsterCommonInfo.h" />
     <ClInclude Include="jnsRutabysPierreMobScene.h" />
     <ClInclude Include="jnsRutabysPierreBossScene.h" />
+    <ClInclude Include="jnsBGobject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -8,6 +8,7 @@
 #include "jnsSkillManager.h"
 #include "jnsSkillResources.h"
 #include "jnsQuickSlotFront.h"
+#include "jnsBGobject.h"
 
 namespace jns::object
 {
@@ -46,6 +47,18 @@ namespace jns::object
 		scene->AddGameObject(type, gameobj);
 		gameobj->Initialize();
 
+		return gameobj;
+	}
+
+	template<typename T>
+	T* InstantiateAniObjects(jns::enums::eLayerType type, BGobject::eBGObjectType type2, Vector3 setPos)
+	{
+		T* gameobj = new T();
+		gameobj->BGobject::SetBGObjectType(type2);
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->Initialize();
+		gameobj->GetComponent<Transform>()->SetPosition(setPos);
 		return gameobj;
 	}
 

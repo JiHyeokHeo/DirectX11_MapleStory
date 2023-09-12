@@ -37,6 +37,10 @@
 // Player
 #include "jnsPlayer.h"
 
+// AniObjects
+#include "jnsBGobject.h"
+
+// Boss
 #include "jnsBloodyQueen.h"
 
 // Skill
