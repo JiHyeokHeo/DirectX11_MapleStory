@@ -57,9 +57,9 @@ namespace jns
 			}
 		}
 
-		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) {
-				SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
-			mChangeTime = 0.0f;
+		if (other->GetOwner()->GetLayerType() == eLayerType::Skill) 
+		{
+			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 
 			SkillBase::eSkillType skillType = skillbase->GetSkillType();
 			int skillDmg = 0;
@@ -72,12 +72,13 @@ namespace jns
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
 			}
 
+			//////////////////// 여기고쳐야함
+			//DamageDisplay::DamageToMonsterWithSkill(other);
 			monsterCommonInfo.hp -= skillDmg * 10;
 			monsterCommonInfo.isChasing = true;
 			dmg = skillDmg * 10;
 
-			damageDisplay.DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
-			
+			DamageDisplay::DisplayDamage(dmg, tr->GetPosition(), Vector2(0.0f, 50.0f));
 		}
 	}
 	void DemonMonsterScript::OnCollisionStay(Collider2D* other)

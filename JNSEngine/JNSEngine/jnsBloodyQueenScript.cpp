@@ -58,9 +58,9 @@ namespace jns
 		cd->SetColNum(1);
 		this->SetColNum(1);
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
-		mBloodyQueenInfo.hp = 100;
-		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		monsterCommonInfo.hp = 100;
+		monsterCommonInfo.skillCoolDown = 0.0f;
 		mBloodyQueen = dynamic_cast<BloodyQueen*>(GetOwner());
 
 		at->CompleteEvent(L"AttractionBloodyQueenATBQChangeType") = std::bind(&BloodyQueenScript::CompleteChangeTypeAni, this);
@@ -111,7 +111,7 @@ namespace jns
 
 		// 위치 갱신
 		mPrevMonsterState = mMonsterState;
-		mBloodyQueenInfo.mPrevDir = mBloodyQueenInfo.mDir;
+		monsterCommonInfo.mPrevDir = monsterCommonInfo.mDir;
 	}
 	void BloodyQueenScript::LateUpdate()
 	{
@@ -139,8 +139,8 @@ namespace jns
 				}
 				else 
 				{
-					mBloodyQueenInfo.hp -= mSkillDmg;
-					mBloodyQueenInfo.isChasing = true;
+					monsterCommonInfo.hp -= mSkillDmg;
+					monsterCommonInfo.isChasing = true;
 				}
 				damageDisplay.DisplayDamage(mSkillDmg, tr->GetPosition(), Vector2(-25.0f, 250.0f));
 			}
@@ -160,7 +160,7 @@ namespace jns
 	
 	void BloodyQueenScript::InitData()
 	{
-		mBloodyQueenInfo.isChasing = false;
+		monsterCommonInfo.isChasing = false;
 		mRandMakeTime = 0.0f;
 		mChasingTime = 0.0f;
 		mChangeType = 0.0f;
@@ -187,22 +187,22 @@ namespace jns
 	{
 		if (mChasingTime >= 8.0f)
 		{
-			mBloodyQueenInfo.isChasing = false;
+			monsterCommonInfo.isChasing = false;
 			mChasingTime = 0.0f;
 		}
 
-		if (mBloodyQueenInfo.isChasing)
+		if (monsterCommonInfo.isChasing)
 		{
 			mChasingTime += Time::DeltaTime();
 		}
 	}
 	void BloodyQueenScript::CheckSkillCoolDown()
 	{
-		mBloodyQueenInfo.mSkillCoolDown += Time::DeltaTime();
+		monsterCommonInfo.skillCoolDown += Time::DeltaTime();
 	}
 	void BloodyQueenScript::CheckBossHp()
 	{
-		if (mBloodyQueenInfo.hp <= 0)
+		if (monsterCommonInfo.hp <= 0)
 		{
 			mMonsterState = eBloodyQueenState::Die;
 		}
@@ -210,15 +210,15 @@ namespace jns
 	void BloodyQueenScript::UpdateBossHp()
 	{
 		MonsterBase* monsterbase = dynamic_cast<MonsterBase*>(GetOwner());
-		monsterbase->SetMonsterStatusHp(mBloodyQueenInfo.hp);
+		monsterbase->SetMonsterStatusHp(monsterCommonInfo.hp);
 	}
 	void BloodyQueenScript::SetAniDir()
 	{
-		if ((int)mBloodyQueenInfo.mDir == -1)
+		if ((int)monsterCommonInfo.mDir == -1)
 		{
 			at->GetActiveAnimation()->SetAniDirection(false);
 		}
-		else if ((int)mBloodyQueenInfo.mDir == 1)
+		else if ((int)monsterCommonInfo.mDir == 1)
 		{
 			at->GetActiveAnimation()->SetAniDirection(true);
 		}
@@ -227,7 +227,7 @@ namespace jns
 	{
 		if (mMonsterState == eBloodyQueenState::SpecialAttack)
 		{
-			mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+			monsterCommonInfo.skillCoolDown = 0.0f;
 		}
 	}
 	void BloodyQueenScript::CompleteBressAni()
@@ -330,18 +330,18 @@ namespace jns
 		}
 		tr->SetPosition(Vector3(150.0f, -160.0f, 3.0f));
 		mMonsterState = eBloodyQueenState::Idle;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
-		mBloodyQueenInfo.hp = 100;
-		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
+		monsterCommonInfo.hp = 100;
+		monsterCommonInfo.skillCoolDown = 0.0f;
 	}
 	void BloodyQueenScript::Idle()
 	{
-		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && mBloodyQueenInfo.isChasing == false)
+		if (mRandDir != 0 && mPrevMonsterState != eBloodyQueenState::Change && monsterCommonInfo.isChasing == false)
 		{
 			mMonsterState = eBloodyQueenState::Move;
 		}
 
-		if (mBloodyQueenInfo.isChasing == true)
+		if (monsterCommonInfo.isChasing == true)
 		{
 			mMonsterState = eBloodyQueenState::Move;
 		}
@@ -351,14 +351,14 @@ namespace jns
 		Vector3 mMonsterPos = tr->GetPosition();
 		if (mPlayerPos.x >= mMonsterPos.x)
 		{
-			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+			monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 		}
 		else if (mPlayerPos.x <= mMonsterPos.x)
 		{
-			mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+			monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 		}
 
-		if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown)
+		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
 		{
 			mMonsterState = eBloodyQueenState::SpecialAttack;
 		}
@@ -375,17 +375,17 @@ namespace jns
 			mRandDir = 1;
 		}
 
-		if (mBloodyQueenInfo.isChasing == false)
+		if (monsterCommonInfo.isChasing == false)
 		{
 			if (mRandDir == -1)
 			{
 				mMonsterPos.x -= 25.0f * Time::DeltaTime();
-				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 			else if (mRandDir == 1)
 			{
 				mMonsterPos.x += 25.0f * Time::DeltaTime();
-				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else
 			{
@@ -399,51 +399,52 @@ namespace jns
 			if (mPlayerPos.x >= mMonsterPos.x)
 			{
 				mMonsterPos.x += 25.0f * Time::DeltaTime();
-				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else if (mPlayerPos.x <= mMonsterPos.x)
 			{
 				mMonsterPos.x -= 25.0f * Time::DeltaTime();
-				mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 		}
 
 		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-		if (mBloodyQueenInfo.isChasing == true)
+		if (monsterCommonInfo.isChasing == true)
 		{
-			if (abs(mMonsterPos.x - mPlayerPos.x) >= mBressMaxXCor && mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown && mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
+			if (abs(mMonsterPos.x - mPlayerPos.x) >= mBressMaxXCor && monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown && bloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
 			{
 				if (mPlayerPos.x >= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
 				else if (mPlayerPos.x <= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 				}
+				mMonsterState = eBloodyQueenState::SpecialAttack;
+			}
+
+			if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+			{
 				mMonsterState = eBloodyQueenState::SpecialAttack;
 			}
 		}
 		else
 		{
-			if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown && mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
+			if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown && bloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 			{
 				if (mPlayerPos.x >= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
 				else if (mPlayerPos.x <= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 				}
 				mMonsterState = eBloodyQueenState::SpecialAttack;
 			}
 		}
 
-		if (mBloodyQueenInfo.mSkillCoolDown >= mBossMaxSkillCollDown)
-		{
-			mMonsterState = eBloodyQueenState::SpecialAttack;
-		}
 
 		tr->SetPosition(mMonsterPos);
 	}
@@ -468,7 +469,7 @@ namespace jns
 		int typeNum = rand();
 		typeNum %= 4;
 		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		mBloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -483,11 +484,11 @@ namespace jns
 				return;
 			}
 		}*/
-		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
+		if (bloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
 			Vector3 mMonsterPos = tr->GetPosition();
 			Vector3 swallowOffSetPos = {};
-			swallowOffSetPos.x = 100.0f * (int)mBloodyQueenInfo.mDir;
+			swallowOffSetPos.x = 100.0f * (int)monsterCommonInfo.mDir;
 			Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
 			int swallowDir = -99;
 			if (mPlayerPos.x >= mMonsterPos.x + swallowOffSetPos.x)
@@ -528,7 +529,7 @@ namespace jns
 		
 		mAnimatorPlaying = true;
 
-		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
+		if (bloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
 		{
 			if (abs(mMonsterPos.x - mPlayerPos.x) <= mBressMaxXCor)
 			{
@@ -540,17 +541,17 @@ namespace jns
 			{
 				if (mPlayerPos.x >= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Right;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
 				else if (mPlayerPos.x <= mMonsterPos.x)
 				{
-					mBloodyQueenInfo.mDir = MonsterBase::MonsterDir::Left;
+					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 				}
 				animationname += animationNameNormalBress;
 				at->PlayAnimation(animationname, true);
 			}
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
 		{
 			if (mPatternPercentage <= 0.3f)
 			{
@@ -566,7 +567,7 @@ namespace jns
 			animationname += animationNameAttract;
 			at->PlayAnimation(animationname, true);
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 		{
 	/*		if (mPatternPercentage <= 0.5f)
 			{
@@ -581,7 +582,7 @@ namespace jns
 			}
 			at->PlayAnimation(animationname, true);
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
 			if (mPatternPercentage <= 1.0f)
 			{
@@ -594,7 +595,7 @@ namespace jns
 
 		// 플레이 되면 무조건 쿨 줄이기
 		mUsingSkillName = animationname;
-		mBloodyQueenInfo.mSkillCoolDown = 0.0f;
+		monsterCommonInfo.skillCoolDown = 0.0f;
 		mAnimatorPlaying = true;
 	}
 	void BloodyQueenScript::PlayerControl()
@@ -627,25 +628,25 @@ namespace jns
 	{	
 		std::wstring name = {};
 
-		if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
+		if (bloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
 		{
 			name = L"NormalBloodyQueenNBQ";
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Attract)
 		{
 			name = L"AttractionBloodyQueenATBQ";
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 		{
 			name = L"ReflectBloodyQueenRFBQ";
 		}
-		else if (mBloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
+		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Smile)
 		{
 			name = L"\SmileBloodyQueenSMBQ";
 		}
 
 		// 상시 갱신
-		mBloodyQueenInfo.mBossPrevType = mBloodyQueenInfo.mBossType;
+		bloodyQueenInfo.mBossPrevType = bloodyQueenInfo.mBossType;
 
 		std::wstring animationNameIDLE = L"Idle";
 		std::wstring animationNameWALK = L"Walk";
@@ -653,7 +654,7 @@ namespace jns
 		std::wstring animationNameCHANGE = L"ChangeType";
 
 		
-		if (mMonsterState != mPrevMonsterState || mBloodyQueenInfo.mDir != mBloodyQueenInfo.mPrevDir)
+		if (mMonsterState != mPrevMonsterState || monsterCommonInfo.mDir != monsterCommonInfo.mPrevDir)
 		{
 			mAnimatorPlaying = true;
 			switch (mMonsterState)

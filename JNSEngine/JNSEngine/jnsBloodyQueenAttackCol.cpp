@@ -20,7 +20,8 @@ namespace jns
 	void BloodyQueenAttackCol::LateUpdate()
 	{
 		BloodyQueenScript::eBloodyQueenState mBQState = mBQScript->GetBloodyQueenState();
-		BloodyQueenScript::BloodyQueenInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
+		BloodyQueenScript::BloodyQueenInfo mBQTypeInfo = mBQScript->GetBloodyQueenTypeInfo();
+		MonsterCommonInfo mBQInfo = mBQScript->GetBloodyQueenInfo();
 
 		if (mBQState == BloodyQueenScript::eBloodyQueenState::Attack)
 		{
@@ -31,22 +32,22 @@ namespace jns
 			{
 				cd->SetColliderOn(true);
 
-				if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
+				if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 				{
 					cd->SetSize(Vector2(0.3f, 0.5f));
 					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
 				{
 					cd->SetSize(Vector2(0.3f, 0.5f));
 					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
 				{
 					cd->SetSize(Vector2(0.3f, 0.5f));
 					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
 				{
 					cd->SetSize(Vector2(0.3f, 0.5f));
 					cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
@@ -68,11 +69,11 @@ namespace jns
 			if (mColMakeTime >= 0.8f)
 			{
 				cd->SetColliderOn(true);
-				if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
+				if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Attract)
 				{
 					cd->SetColliderOn(false);
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Normal)
 				{
 					if (mColMakeTime >= 1.8f)
 					{
@@ -88,12 +89,12 @@ namespace jns
 						}
 					}
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Reflect)
 				{
 						//cd->SetSize(Vector2(0.3f, 0.5f));
 						//cd->SetCenter(Vector2(60.0f * (int)mBQInfo.mDir, 100.0f));
 				}
-				else if (mBQInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
+				else if (mBQTypeInfo.mBossType == BloodyQueenScript::eBloodyQueenType::Smile)
 				{
 					if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
 					{

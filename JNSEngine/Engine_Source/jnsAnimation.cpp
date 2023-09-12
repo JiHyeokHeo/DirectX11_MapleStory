@@ -15,7 +15,7 @@ namespace jns
 		, mIndex(-1)
 		, mTime(0.0f)
 		, mbComplete(false)
-		, mTransparency(1.0f)
+		, mTransparency(0.0f)
 	{
 	}
 	Animation::~Animation()

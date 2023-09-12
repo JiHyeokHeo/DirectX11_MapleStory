@@ -558,14 +558,14 @@ namespace jns
 
 			angle -= 250.0 * Time::DeltaTime();
 
-
 			tr->SetPosition(Vector3(x, y, tr->GetPosition().z));
+            
         //}
     }
 
     void PlayerScript::Attarct()
     {
-        
+        isAttarcted = true;
     }
 
     void PlayerScript::TurnOnLightWhenIHit()
@@ -583,6 +583,7 @@ namespace jns
         }
         else
         {
+            mBlackTime = 0.0f;
             Light* light = GetOwner()->GetComponent<Light>();
             light->SetColor(Vector4::Zero);
         }
@@ -590,6 +591,9 @@ namespace jns
 
     void PlayerScript::PlayerControl()
     {
+        if (isAttarcted)
+            mPlayerState = ePlayerState::Attracted;
+
         switch (mPlayerState)
         {
         case ePlayerState::Idle:
@@ -706,6 +710,7 @@ namespace jns
     {
         if (mPlayerInfo.hp <= 0)
         {
+            isAttarcted = false;
             Vector3 playerPos = tr->GetPosition();
             mPlayerState = ePlayerState::Die;
         }

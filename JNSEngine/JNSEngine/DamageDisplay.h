@@ -16,6 +16,15 @@ namespace jns
 			CreateDamageControls(damageStr, position, damagecnt, offsetYCord);
 		}
 
+		static void DamageToMonsterWithSkill(int damage, Collider2D* other)
+		{
+
+		}
+
+		static void DamageToPlayer(int damage)
+		{
+
+		}
 	private:
 		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, int damagecnt, const Vector2& offsetYCord)
 		{

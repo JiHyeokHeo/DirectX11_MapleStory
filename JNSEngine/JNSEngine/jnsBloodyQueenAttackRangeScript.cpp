@@ -21,7 +21,7 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player")
 		{
-			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
+			MonsterCommonInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
 				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;
@@ -33,7 +33,7 @@ namespace jns
 	{
 		if (other->GetOwner()->GetName() == L"Player")
 		{
-			BloodyQueenScript::BloodyQueenInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
+			MonsterCommonInfo mBloodyQuuenInfo = mBQScript->GetBloodyQueenInfo();
 			if (mBloodyQuuenInfo.isChasing == true)
 			{
 				BloodyQueenScript::eBloodyQueenState mBQState = BloodyQueenScript::eBloodyQueenState::Attack;

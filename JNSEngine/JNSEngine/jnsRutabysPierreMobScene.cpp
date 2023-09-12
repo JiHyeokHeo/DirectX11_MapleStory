@@ -26,7 +26,7 @@ namespace jns
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::westGardenArtifect2, Vector3(-1300, -50.0f, 3.0f));
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::westGardenArtifect3, Vector3(1000, 10.0f, 3.0f));
 
-
+		CreatePlayerUI();
 		PlayScene::Initialize();
 	}
 	void RutabysPierreMobScene::Update()

@@ -3,6 +3,7 @@
 
 namespace jns
 {
+	float LightScript::mOpacity = 1.0f;
 	void LightScript::Initialize()
 	{
 		mPrevScene = nullptr;

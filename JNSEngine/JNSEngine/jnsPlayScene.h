@@ -32,6 +32,8 @@ namespace jns
 		GameObject* mBGInstance;
 		GameObject* mDirectionalLight;
 		GameObject* followtarget;
+		
+		
 	private:
 	};
 }

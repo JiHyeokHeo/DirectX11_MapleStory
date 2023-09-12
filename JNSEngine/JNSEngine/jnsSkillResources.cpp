@@ -74,20 +74,16 @@ namespace jns
 	}
 	void SkillResources::Update()
 	{
-		if (SceneManager::GetActiveScene() != playeScene)
-		{
-			opacity = 0.0f;
-		}
-
 		if (SceneManager::GetActiveScene() != SceneManager::GetPrevScene())
 		{
 			playeScene = SceneManager::GetActiveScene();
-			if (opacity >= 0.0f && opacity <= 1.0f)
-			{
-				opacity += Time::DeltaTime();
-			}
-	
-			at->GetActiveAnimation()->SetTransparency(opacity);
+			
+			float opacity = LightScript::GetOpacity();
+			float one = 1.0f;
+			one -= opacity;
+			one *= 0.8f;
+			
+			at->GetActiveAnimation()->SetTransparency(-one);
 			std::wstring aniname = at->GetActiveAnimation()->GetAnimationName();
 			at->PlayAnimation(aniname, false);
 		}

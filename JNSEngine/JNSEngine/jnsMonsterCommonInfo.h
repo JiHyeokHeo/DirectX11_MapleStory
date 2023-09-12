@@ -7,7 +7,7 @@ namespace jns
 	struct MonsterCommonInfo
 	{
 		int hp;
-		int skillCoolDown;
+		float skillCoolDown;
 		int dmg;
 		int skilldmg;
 

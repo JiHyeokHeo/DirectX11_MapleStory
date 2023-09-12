@@ -178,5 +178,6 @@ namespace jns
 		bool isHpLerp = false;
 
 		bool isDownGround = true;
+		bool isAttarcted = false;
 	};
 }

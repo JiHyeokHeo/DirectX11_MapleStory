@@ -7,7 +7,7 @@
 
 namespace jns
 {
-	class BloodyQueenScript : public Script, public MonsterCommonInfo
+	class BloodyQueenScript : public Script
 	{
 	public:
 		enum class eBloodyQueenType
@@ -20,16 +20,8 @@ namespace jns
 
 		struct BloodyQueenInfo
 		{
-			int hp;
-			bool isRight;
-			float mHittedTime;
-			float mMoveSpeed;
 			eBloodyQueenType mBossPrevType;
 			eBloodyQueenType mBossType;
-			MonsterBase::MonsterDir mDir;
-			MonsterBase::MonsterDir mPrevDir;
-			bool isChasing;
-			float mSkillCoolDown;
 		};
 
 		enum class eBloodyQueenState
@@ -106,7 +98,8 @@ namespace jns
 
 	public:
 		void ResetData();
-		BloodyQueenScript::BloodyQueenInfo GetBloodyQueenInfo() { return mBloodyQueenInfo; }
+		MonsterCommonInfo GetBloodyQueenInfo() { return monsterCommonInfo; }
+		BloodyQueenInfo GetBloodyQueenTypeInfo() { return bloodyQueenInfo; }
 		eBloodyQueenState GetBloodyQueenState() { return mMonsterState; }
 		//void SetBloodyQueenisChasing(bool isChase) { mBloodyQueenInfo.isChasing = isChase; }
 		void SetBloodyQueenState(eBloodyQueenState state) { mMonsterState = state; }
@@ -114,12 +107,12 @@ namespace jns
 
 	private:
 		class BloodyQueen* mBloodyQueen;
-
-		BloodyQueenInfo mBloodyQueenInfo;
+		MonsterCommonInfo monsterCommonInfo;
+		BloodyQueenInfo bloodyQueenInfo;
 		class Transform* tr;
 		class Animator* at;
 		class Collider2D* cd;
-		
+
 		eBloodyQueenState mMonsterState;
 		eBloodyQueenState mPrevMonsterState = eBloodyQueenState::End;
 
