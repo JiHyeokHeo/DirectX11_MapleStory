@@ -14,7 +14,11 @@ namespace jns
 			westGardenArtifect1,
 			westGardenArtifect2,
 			westGardenArtifect3,
-
+			pierreArtficiality1,
+			pierreArtficiality2,
+			pierreArtficiality3,
+			pierreArtficiality4,
+			None,
 		};
 
 		virtual void Initialize() override;

@@ -36,9 +36,32 @@ namespace jns
 			at->PlayAnimation(L"AniObjectswestArtficiality3", true);
 			tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 			break;
+		case jns::BGobject::eBGObjectType::pierreArtficiality1:
+			at->CreateAnimations(L"..\\Resources\\Map\\Rutabys\\AniObjects\\pierreArtficiality1", 500, 0.1f);
+			at->PlayAnimation(L"AniObjectspierreArtficiality1", true);
+			tr->SetScale(Vector3(650.0f, 650.0f, 1.0f));
+			break;
+		case jns::BGobject::eBGObjectType::pierreArtficiality2:
+			at->CreateAnimations(L"..\\Resources\\Map\\Rutabys\\AniObjects\\pierreArtficiality2", 500, 0.1f);
+			at->PlayAnimation(L"AniObjectspierreArtficiality2", true);
+			tr->SetScale(Vector3(650.0f, 650.0f, 1.0f));
+			break;
+		case jns::BGobject::eBGObjectType::pierreArtficiality3:
+			at->CreateAnimations(L"..\\Resources\\Map\\Rutabys\\AniObjects\\pierreArtficiality3", 500, 0.1f);
+			at->PlayAnimation(L"AniObjectspierreArtficiality3", true);
+			tr->SetScale(Vector3(650.0f, 650.0f, 1.0f));
+			break;
+		case jns::BGobject::eBGObjectType::pierreArtficiality4:
+			at->CreateAnimations(L"..\\Resources\\Map\\Rutabys\\AniObjects\\pierreArtficiality4", 500, 0.1f);
+			at->PlayAnimation(L"AniObjectspierreArtficiality4", true);
+			tr->SetScale(Vector3(650.0f, 650.0f, 1.0f));
+			break;
+		case jns::BGobject::eBGObjectType::None:
+			break;
 		default:
 			break;
 		}
+
 		GameObject::Initialize();
 	}
 	void BGobject::Update()
