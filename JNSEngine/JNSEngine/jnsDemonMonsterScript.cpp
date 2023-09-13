@@ -249,4 +249,7 @@ namespace jns
 	{
 		GetOwner()->SetState(GameObject::eState::Paused);
 	}
+	void DemonMonsterScript::ResetData()
+	{
+	}
 }

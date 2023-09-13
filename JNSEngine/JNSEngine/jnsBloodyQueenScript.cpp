@@ -128,7 +128,15 @@ namespace jns
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr);
+			if (mBloodyQueen->GetIsEffectOn()== false)
+			{
+				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr, Vector2(-25.0f, 250.0f));
+			}
+			else
+			{
+				Transform* playertr = SceneManager::GetPlayer()->GetComponent<Transform>();
+				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, playertr, Vector2(0.0f,50.0f), true);
+			}
 		}
 	}
 	void BloodyQueenScript::OnCollisionStay(Collider2D* other)
@@ -317,8 +325,8 @@ namespace jns
 		}
 		tr->SetPosition(Vector3(150.0f, -160.0f, 3.0f));
 		mMonsterState = eBloodyQueenState::Idle;
-		bloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
-		monsterCommonInfo.hp = 100;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
 		monsterCommonInfo.skillCoolDown = 0.0f;
 	}
 	void BloodyQueenScript::Idle()
@@ -455,8 +463,8 @@ namespace jns
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
-		//mBloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		//bloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -518,7 +526,7 @@ namespace jns
 
 		if (bloodyQueenInfo.mBossType == eBloodyQueenType::Normal)
 		{
-			if (abs(mMonsterPos.x - mPlayerPos.x) <= mBressMaxXCor)
+			if (mPatternPercentage <= 0.3f)
 			{
 				mFireEffect->SetState(GameObject::eState::Active);
 				animationname += animationNameNormalDebuff;
@@ -556,11 +564,6 @@ namespace jns
 		}
 		else if (bloodyQueenInfo.mBossType == eBloodyQueenType::Reflect)
 		{
-	/*		if (mPatternPercentage <= 0.5f)
-			{
-				animationname += animationNameReflectDebuff;
-			}*/
-			
 			{
 				animationname += animationNameReflect;
 				mBloodyQueen->SetEffectType(MonsterBase::EffectType::Reflect);

@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsScript.h"
+#include "jnsMonsterCommonInfo.h"
 
 namespace jns
 {
@@ -41,7 +42,7 @@ namespace jns
 		eMirrorState mMirrorState;
 		eMirrorState mMirrorPrevState;
 		
-		
+		MonsterCommonInfo monsterinfo = {};
 		class Animator* at;
 
 		float mSummonTime;

@@ -12,7 +12,7 @@ namespace jns
 		cd = GetOwner()->GetComponent<Collider2D>();
 		cd->SetColliderOn(false);
 		heartState = eHeartState::Summon;
-		hp = 80;
+		monsterinfo.hp = 80;
 		at = GetOwner()->GetComponent<Animator>();
 		at->CompleteEvent(L"HeartHeartSummon") = std::bind(&HeartScript::CompleteSummon, this);
 		at->CompleteEvent(L"HeartHeartAttack") = std::bind(&HeartScript::CompleteBomb, this);
@@ -49,23 +49,17 @@ namespace jns
 
 			if (mPlayerInvTime <= 0.0f && playerScript->GetPlayerState() != jns::PlayerScript::ePlayerState::Die)
 			{
-				mPlayer->GetComponent<PlayerScript>()->PlayerDamaged(dmg);
+				int maxhp = playerScript->GetPlayerInfo().maxhp;
+				// 최대체력 10프로
+				monsterinfo.skilldmg = maxhp / 10;
+				DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f,50.0f), true);
 				heartState = eHeartState::Bomb;
 			}
 		}
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			if (other->GetOwner()->GetName() == L"AssainHit01")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
-				hp -= mSkillDmg;
-			}
-			else if (other->GetOwner()->GetName() == L"AssainHit02")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
-				hp -= mSkillDmg;
-			}
+			DamageDisplay::DamageToMonsterWithSkill(monsterinfo, other, GetOwner()->GetComponent<Transform>());
 		}
 	}
 	void HeartScript::OnCollisionStay(Collider2D* other)
@@ -76,7 +70,7 @@ namespace jns
 	}
 	void HeartScript::Fsm()
 	{
-		if (hp <= 0)
+		if (monsterinfo.hp <= 0)
 			heartState = eHeartState::Bomb;
 		
 

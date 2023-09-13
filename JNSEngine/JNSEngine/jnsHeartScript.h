@@ -1,6 +1,6 @@
 #pragma once
 #include "jnsScript.h"
-
+#include "jnsMonsterCommonInfo.h"
 
 namespace jns
 {
@@ -35,7 +35,7 @@ namespace jns
 		eHeartState heartState;
 		eHeartState prevheartState = eHeartState::End;
 		float destinationYcor = 50.0f;
-
+		MonsterCommonInfo monsterinfo = {};
 		bool isSummon = false;
 		class Transform* tr;
 		class Animator* at;

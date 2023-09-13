@@ -96,24 +96,26 @@ namespace jns
 		if (other->GetOwner()->GetName() == L"Player" )
 		{
 			MonsterCommonInfo monsterinfo = mBQScript->GetMonsterCommonInfo();
-			
+			PlayerScript* player = other->GetOwner()->GetComponent<PlayerScript>();
+			int maxhp = player->GetPlayerInfo().maxhp;
 			if (mBQScript->GetUsingSkillName() == L"NormalAttack")
 			{
-				monsterinfo.skilldmg = mBQSkillDamage.normalAttack;
+				int maxhp = player->GetPlayerInfo().maxhp;
+				monsterinfo.skilldmg = maxhp / 10;
 				SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsNormalHit(true);
 			}
 
 			if (mBQScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
 			{
-				monsterinfo.skilldmg = mBQSkillDamage.swallowAttack;
+				monsterinfo.skilldmg = maxhp / 1;
 			}
 
 			if (mBQScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
 			{
-				monsterinfo.skilldmg = mBQSkillDamage.bressAttack;
+				monsterinfo.skilldmg = maxhp / 1;
 			}
-
-			DamageDisplay::DamageToPlayer(monsterinfo, other, true);
+			// 몬스터 스킬 데미지는 이런식으로 주기
+			DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
 			
 		}
 	}

@@ -53,16 +53,9 @@ namespace jns
             mPlayerState = ePlayerState::Idle;
         }
 
-
-        if (Input::GetKeyDown(eKeyCode::U))
-        {
-            mPlayerState = ePlayerState::Die;
-            mPlayerInfo.hp = 0;
-        }
-
         if (Input::GetKeyDown(eKeyCode::H))
         {
-            mPlayerInfo.hp = 100;
+            mPlayerInfo.hp = mPlayerInfo.maxhp;
             mRb->SetGround(false);
         }
 

@@ -6,7 +6,7 @@ namespace jns
 {
 	void MirrorScript::Initialize()
 	{
-		mHp = 100.0f;
+		monsterinfo.hp = 100.0f;
 		isNotPlayed = true;
 		isDead = false;
 		mSummonMaxTime = 5.0f;
@@ -36,7 +36,7 @@ namespace jns
 	void MirrorScript::LateUpdate()
 	{
 		// 체력 갱신
-		mPrevHp = mHp;
+		mPrevHp = monsterinfo.hp;
 	}
 	void MirrorScript::Render()
 	{
@@ -49,23 +49,17 @@ namespace jns
 			
 			if (playerscript->GetPlayerState() == jns::PlayerScript::ePlayerState::Attracted)
 			{
-				playerscript->PlayerDamaged(100);
+				int maxhp = playerscript->GetPlayerInfo().maxhp;
+				// 최대체력 100프로
+				monsterinfo.skilldmg = maxhp / 1;
+				DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
 				mMirrorState = eMirrorState::Bombed;
 			}
 		}
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			if (other->GetOwner()->GetName() == L"AssainHit01")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();;
-				mHp -= mSkillDmg * 10;
-			}
-			else if (other->GetOwner()->GetName() == L"AssainHit02")
-			{
-				int mSkillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();;
-				mHp -= mSkillDmg * 10;
-			}
+			DamageDisplay::DamageToMonsterWithSkill(monsterinfo, other, GetOwner()->GetComponent<Transform>());
 		}
 	}
 	void MirrorScript::OnCollisionStay(Collider2D* other)
@@ -89,7 +83,7 @@ namespace jns
 	}
 	void MirrorScript::CheckMirrorHp()
 	{
-		if (mHp <= 0.0f)
+		if (monsterinfo.hp <= 0.0f)
 		{
 			mMirrorState = eMirrorState::Bombed;
 		}

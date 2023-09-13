@@ -39,25 +39,30 @@ namespace jns
 			GameObject* obj = SceneManager::GetPlayer();
 			Player* player = dynamic_cast<Player*>(obj);
 			PlayerScript* playerScript = player->GetComponent<PlayerScript>(); 
+			Collider2D* cd = playerScript->GetOwner()->GetComponent<Collider2D>();
 			mLastBurningTime = mBurningTime;
-			playerScript->PlayerDamaged(burningDamage);
-			//dmgDisplay.DisplayDamage(burningDamage, playerScript->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+			MonsterCommonInfo monsterinfo = {};
+			int maxhp = playerScript->GetPlayerInfo().maxhp;
+			// 최대체력 10프로
+			monsterinfo.skilldmg = maxhp / 10;
+			DamageDisplay::DamageToPlayer(monsterinfo, cd, Vector2(0.0f, 50.0f), false, true);
 		}
 
-		if (mBurningTime >= 3.0f)
+		if (mBurningTime >= 6.0f)
 		{
 			mBurningTime = 0.0f;	
+			mLastBurningTime = mBurningTime;
 			SetState(GameObject::eState::Paused);
 		}
 
-		EffectBase::Update();
+		GameObject::Update();
 	}
 	void FireEffect::LateUpdate()
 	{
-		EffectBase::LateUpdate();
+		GameObject::LateUpdate();
 	}
 	void FireEffect::Render()
 	{
-		EffectBase::Render();
+		GameObject::Render();
 	}
 }

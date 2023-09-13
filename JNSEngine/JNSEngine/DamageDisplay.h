@@ -20,14 +20,14 @@ namespace jns
 			CreateDamageControls(damageStr, position, damagecnt, offsetYCord);
 		}
 
-		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr)
+		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isreflect = false)
 		{
-			SkillDamage(info, other, tr);
+			SkillDamage(info, other, damageoffset, tr, isreflect);
 		}
 
-		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, bool isskilldmg = false)
+		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isskilldmg = false, bool isreflect = false)
 		{
-			PlayerDamage(monsterinfo, other, isskilldmg);
+			PlayerDamage(monsterinfo, other, damageoffset, isreflect,  isskilldmg);
 		}
 	private:
 		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, int damagecnt, const Vector2& offsetYCord)
@@ -59,7 +59,7 @@ namespace jns
 					int digit = digitChar - '0';
 					DamageControl* digitControl = new DamageControl();
 					Scene* scene = SceneManager::GetActiveScene();
-					scene->AddGameObject(eLayerType::MapEffect, digitControl);
+					scene->AddGameObject(eLayerType::Particle, digitControl);
 					digitControl->SetDamageDigit(digit);
 
 					Transform* digitTransform = digitControl->GetComponent<Transform>();
@@ -77,7 +77,7 @@ namespace jns
 			}
 		}
 
-		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Transform* tr)
+		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Vector2 damageoffset, Transform* tr, bool isreflect)
 		{
 			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 
@@ -94,13 +94,21 @@ namespace jns
 				skillCnt = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamageCnt();
 			}
 
-			// 추후에 연산 추가합시다~ 방어력 + 알파
-			info.hp -= skillDmg * 10;
-			info.isChasing = true;
-			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), Vector2(0.0f, 50.0f), skillCnt);
+			if (isreflect == false)
+			{
+				// 추후에 연산 추가합시다~ 방어력 + 알파
+				info.hp -= skillDmg;
+				info.isChasing = true;
+			}
+			else
+			{
+				PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
+				player->PlayerDamaged(skillDmg);
+			}
+			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
 		}
 
-		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, bool isskilldmg)
+		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset, bool isreflect, bool isskilldmg)
 		{
 			PlayerScript* playerScript = other->GetOwner()->GetComponent<PlayerScript>();
 			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
@@ -113,15 +121,22 @@ namespace jns
 			{
 				playerScript->SetPlayerState(PlayerScript::ePlayerState::Hitted);
 				
-				if (isskilldmg)
+				if (isreflect == false)
 				{
-					playerScript->PlayerDamaged(monsterinfo.skilldmg);
-					DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+					if (isskilldmg)
+					{
+						playerScript->PlayerDamaged(monsterinfo.skilldmg);
+						DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
+					}
+					else
+					{
+						playerScript->PlayerDamaged(monsterinfo.dmg);
+						DamageDisplay::DisplayDamage(monsterinfo.dmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
+					}
 				}
 				else
 				{
-					playerScript->PlayerDamaged(monsterinfo.dmg);
-					DamageDisplay::DisplayDamage(monsterinfo.dmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), Vector2(0.0f, 50.0f));
+					DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
 				}
 			}
 

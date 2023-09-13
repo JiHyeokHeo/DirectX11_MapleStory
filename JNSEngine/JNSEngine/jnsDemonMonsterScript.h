@@ -60,6 +60,9 @@ namespace jns
 		void CompleteDead();
 
 	private:
+		void ResetData();
+
+	private:
 		class Collider2D* cd;
 		class Animator* at;
 		class Transform* tr;
