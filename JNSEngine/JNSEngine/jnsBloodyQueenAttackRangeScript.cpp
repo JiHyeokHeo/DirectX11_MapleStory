@@ -9,7 +9,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
-		cd->SetSize(Vector2(0.5f,0.5f));
+		cd->SetSize(Vector2(0.37f,0.5f));
 	}
 	void BloodyQueenAttackRangeScript::Update()
 	{

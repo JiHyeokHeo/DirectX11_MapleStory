@@ -138,6 +138,8 @@ namespace jns
 		class SwallowEffect* mSwallowEffect;
 		class FireEffect* mFireEffect;
 		DamageDisplay damageDisplay;
+
+		float changeLimitTime = 20.0f;
 	};
 
 

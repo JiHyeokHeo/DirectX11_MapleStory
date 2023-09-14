@@ -80,6 +80,8 @@ namespace jns
 				weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", false);
 			}
 		}
+
+		// 오프셋 변경
 		if (type == PlayerScript::ePlayerState::Prone)
 		{
 			parentPos.y -= 10.0f;

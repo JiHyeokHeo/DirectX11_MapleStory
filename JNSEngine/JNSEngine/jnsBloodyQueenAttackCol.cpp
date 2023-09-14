@@ -47,8 +47,8 @@ namespace jns
 				if (at->GetActiveAnimation()->GetAnimationName() == L"NormalBloodyQueenNBQBress3")
 				{
 					cd->SetColliderOn(true);
-					cd->SetSize(Vector2(0.5f, 0.20f));
-					cd->SetCenter(Vector2(300.0f * (int)mBQInfo.mDir, -100.0f));
+					cd->SetSize(Vector2(0.4f, 0.20f));
+					cd->SetCenter(Vector2(400.0f * (int)mBQInfo.mDir, -100.0f));
 
 				}
 				else

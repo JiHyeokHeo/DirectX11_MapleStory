@@ -45,7 +45,7 @@ namespace jns
 			int maxhp = playerScript->GetPlayerInfo().maxhp;
 			// 최대체력 10프로
 			monsterinfo.skilldmg = maxhp / 10;
-			DamageDisplay::DamageToPlayer(monsterinfo, cd, Vector2(0.0f, 50.0f), false, true);
+			DamageDisplay::DamageToPlayer(monsterinfo, cd, Vector2(0.0f, 50.0f), true);
 		}
 
 		if (mBurningTime >= 6.0f)

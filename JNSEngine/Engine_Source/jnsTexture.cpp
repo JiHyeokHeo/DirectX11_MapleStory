@@ -166,7 +166,7 @@ namespace jns::graphics
 
                 if (isMake == false)
                 {
-                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, targetWidth * filecnt, targetHeight * 2, 1, 1);
+                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, targetWidth * filecnt, targetHeight * 1.0, 1, 1);
                     isMake = true;
                 }
                 if (FAILED(hr))

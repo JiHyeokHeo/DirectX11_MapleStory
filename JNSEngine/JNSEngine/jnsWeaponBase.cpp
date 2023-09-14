@@ -33,7 +33,7 @@ namespace jns
 	}
 	void WeaponBase::Render()
 	{
-		//if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerState() != PlayerScript::ePlayerState::Die)
+		if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerState() != PlayerScript::ePlayerState::Die)
 		GameObject::Render();
 	}
 }

@@ -10,7 +10,7 @@ std::mt19937_64 rng1(3244);
 std::uniform_int_distribution<__int64> dist1(-1, 1);
 
 std::mt19937_64 rng2(3245);
-std::uniform_int_distribution<long long> dist2(0, 1);
+std::uniform_real_distribution<float> dist2(0.0, 1.0);
 
 namespace jns
 {
@@ -170,7 +170,7 @@ namespace jns
 	void BloodyQueenScript::ChangeBossTypeRandom()
 	{
 		mChangeType += Time::DeltaTime();
-		if (mChangeType >= 10.0f && (mMonsterState == eBloodyQueenState::Idle || mMonsterState == eBloodyQueenState::Move))
+		if (mChangeType >= changeLimitTime && (mMonsterState == eBloodyQueenState::Idle || mMonsterState == eBloodyQueenState::Move))
 		{
 			mMonsterState = eBloodyQueenState::Change;
 			mChangeType = 0.0f;
@@ -463,8 +463,8 @@ namespace jns
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
-		bloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		//bloodyQueenInfo.mBossType = eBloodyQueenType::Attract;
+		//bloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 	}
 	void BloodyQueenScript::Die()
 	{
