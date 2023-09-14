@@ -20,10 +20,22 @@ namespace jns
 		// x 마이너스는 왼쪽으로 y 양수가 밑으로
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\attack1", 1000, 0.15f, Vector2(-0.013f, 0.115f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\attack2", 1000, 0.15f, Vector2(-0.015f, 0.050f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\move", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\die1", 1000, 0.15f, Vector2(0.027f, 0.040f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\transform", 1000, 0.15f, Vector2(0.0125f, -0.02f));
 		
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\move", 1000, 0.15f, Vector2(0.009f, 0.01f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\die1", 1000, 0.15f, Vector2(0.027f, 0.040f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\transform", 1000, 0.15f, Vector2(-0.0035f, -0.019f));
+
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\attack1", 1000, 0.15f, Vector2(-0.013f, 0.115f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\attack2", 1000, 0.15f, Vector2(-0.015f, 0.050f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\move", 1000, 0.15f, Vector2(0.009f, 0.01f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\die1", 1000, 0.15f, Vector2(0.027f, 0.040f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\transform", 1000, 0.15f, Vector2(-0.0035f, -0.019f));
 
 		at->PlayAnimation(L"NormalPierredie1", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
@@ -35,11 +47,11 @@ namespace jns
 	{
 		if (Input::GetKeyDown(eKeyCode::Z))
 		{
-			at->PlayAnimation(L"NormalPierreattack1", true);
+			at->PlayAnimation(L"RedPierreattack1", true);
 		}
 		else if (Input::GetKeyDown(eKeyCode::X))
 		{
-			at->PlayAnimation(L"NormalPierredie1", true);
+			at->PlayAnimation(L"NormalPierreattack1", true);
 		}
 		GameObject::Update();
 	}
