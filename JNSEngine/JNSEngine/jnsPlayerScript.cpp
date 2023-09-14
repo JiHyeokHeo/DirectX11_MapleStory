@@ -494,8 +494,8 @@ namespace jns
 
     void PlayerScript::Prone()
     {
-        cd->SetSize(Vector2(0.65f, 0.4f));
-        cd->SetCenter(Vector2(0.0f, -45.0f));
+        cd->SetSize(Vector2(0.65f, 0.5f));
+        cd->SetCenter(Vector2(0.0f, -25.0f));
         if (Input::GetKeyUp(eKeyCode::DOWN))
         {
             cd->SetSize(Vector2(0.5f, 0.8f));
