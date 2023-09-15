@@ -1,5 +1,6 @@
 #include "jnsPierreBoss.h"
 #include "CommonSceneInclude.h"
+#include "jnsPierreBossScript.h"
 
 namespace jns
 {
@@ -42,19 +43,19 @@ namespace jns
 		GetComponent<Transform>()->SetScale(Vector3(1000.0f, 1000.0f, 1.0f));
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, -370.0f, 3.0f));
 
-		//AddComponent<
+		AddComponent<PierreBossScript>();
 		GameObject::Initialize();
 	}
 	void PierreBoss::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::Z))
-		{
-			at->PlayAnimation(L"RedPierreattack1", true);
-		}
-		else if (Input::GetKeyDown(eKeyCode::X))
-		{
-			at->PlayAnimation(L"NormalPierreattack1", true);
-		}
+		//if (Input::GetKeyDown(eKeyCode::Z))
+		//{
+		//	at->PlayAnimation(L"RedPierreattack1", true);
+		//}
+		//else if (Input::GetKeyDown(eKeyCode::X))
+		//{
+		//	at->PlayAnimation(L"NormalPierreattack1", true);
+		//}
 		GameObject::Update();
 	}
 	void PierreBoss::LateUpdate()

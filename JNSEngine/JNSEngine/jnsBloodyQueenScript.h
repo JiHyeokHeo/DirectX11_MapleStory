@@ -93,7 +93,7 @@ namespace jns
 		void UpdatePatternPercentage();
 		void PlaySpecialAttackAnimation(std::wstring animationname);
 
-		void PlayerControl();
+		void MonsterControl();
 		void AnimatorControl();
 
 	public:

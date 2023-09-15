@@ -63,6 +63,8 @@ namespace jns
 		void MonsterControl();
 		void AnimatorControl();
 
+
+		void PlaySpecialAttackAnimation(std::wstring animationname);
 	public:
 		void ResetData();
 		MonsterCommonInfo GetMonsterCommonInfo() { return monsterCommonInfo; }
@@ -86,8 +88,11 @@ namespace jns
 		float mChangeType;
 		float mRandMakeTime;
 
+		bool isFirstChange = false;
 		bool isChanging;
 		float mChangeTime;
+
+		float mBossMaxSkillCollDown = 10.0f;
 
 		float mChasingTime;
 		std::wstring mUsingSkillName;

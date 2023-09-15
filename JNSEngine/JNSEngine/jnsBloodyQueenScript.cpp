@@ -106,7 +106,7 @@ namespace jns
 		CheckChaseTime();
 		CheckSkillCoolDown();
 		CheckBossHp();
-		PlayerControl();
+		MonsterControl();
 		UpdatePatternPercentage();
 		AnimatorControl();
 
@@ -588,7 +588,7 @@ namespace jns
 		monsterCommonInfo.skillCoolDown = 0.0f;
 		mAnimatorPlaying = true;
 	}
-	void BloodyQueenScript::PlayerControl()
+	void BloodyQueenScript::MonsterControl()
 	{
 		switch (mMonsterState)
 		{
