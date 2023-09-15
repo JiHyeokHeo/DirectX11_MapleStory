@@ -265,6 +265,7 @@
     <ClCompile Include="jnsBGobject.cpp" />
     <ClCompile Include="jnsPierreBoss.cpp" />
     <ClCompile Include="jnsPierreBossScript.cpp" />
+    <ClCompile Include="jnsPierreScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -558,6 +559,7 @@
     <ClInclude Include="jnsBGobject.h" />
     <ClInclude Include="jnsPierreBoss.h" />
     <ClInclude Include="jnsPierreBossScript.h" />
+    <ClInclude Include="jnsPierreScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

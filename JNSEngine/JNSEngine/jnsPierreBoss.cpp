@@ -41,6 +41,8 @@ namespace jns
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));
 		GetComponent<Transform>()->SetScale(Vector3(1000.0f, 1000.0f, 1.0f));
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, -370.0f, 3.0f));
+
+		//AddComponent<
 		GameObject::Initialize();
 	}
 	void PierreBoss::Update()
