@@ -116,30 +116,27 @@ namespace jns
 		eBloodyQueenState mMonsterState;
 		eBloodyQueenState mPrevMonsterState = eBloodyQueenState::End;
 
+		// 데이터 부분
 		int mRandDir = -1;
-		float mChangeType;
-		float mRandMakeTime;
-
-		bool isChanging;
-		float mChangeTime;
-
-		float mChasingTime;
-		float mPatternPercentage;
-
+		float mChangeType = 0.0f;
+		float mRandMakeTime = 0.0f;
+		bool isChanging = false;
+		float mChangeTime = 0.0f;
+		float mChasingTime = 0.0f;
+		float mPatternPercentage = 0.0f;
 		bool mAnimatorPlaying = false;
 
-		float mBossMaxSkillCollDown = 10.0f;
 
-		float mBressMaxXCor = 100.0f;
 		std::wstring mUsingSkillName;
-
 		class Mirror* mMirror;
 		std::vector<Heart*> mHearts;
 		class SwallowEffect* mSwallowEffect;
 		class FireEffect* mFireEffect;
 		DamageDisplay damageDisplay;
-
 		float changeLimitTime = 20.0f;
+		float mBossMaxSkillCollDown = 10.0f;
+		float mBressMaxXCor = 100.0f;
+
 	};
 
 

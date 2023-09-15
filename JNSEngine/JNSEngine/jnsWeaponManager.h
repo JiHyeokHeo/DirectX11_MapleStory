@@ -28,11 +28,11 @@ namespace jns
 		static void Initialize();
 		static void AddWeapon(const std::wstring& key, GameObject* weapon);
 		static GameObject* FindWeapon(const std::wstring& key);
-		static WeaponData* FindWeaponData(const std::wstring& key);
+		static std::shared_ptr<WeaponData>FindWeaponData(const std::wstring& key);
 		static void Release();
 
 	private:
 		static std::unordered_map<std::wstring, GameObject*> mWeapons;
-		static std::unordered_map<std::wstring, WeaponData*> mWeaponData;
+		static std::unordered_map<std::wstring, std::shared_ptr<WeaponData>> mWeaponData;
 	};
 	}

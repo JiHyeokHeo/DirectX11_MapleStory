@@ -3,10 +3,12 @@
 #include "jnsBossHp.h"
 #include "jnsBossHpBar.h"
 #include "jnsPierreBoss.h"
+#include "jnsPierreScript.h"
 
 namespace jns
 {
 	RutabysPierreBossScene::RutabysPierreBossScene()
+		:mPrscript(nullptr)
 	{
 	}
 	RutabysPierreBossScene::~RutabysPierreBossScene()
@@ -16,7 +18,7 @@ namespace jns
 	{
 		// º¸½º
 		GameObject* obj = object::Instantiate<PierreBoss>(eLayerType::Monster, Vector3(150.0f, -160.0f, 3.0f));
-
+		mPrscript = obj->GetComponent<PierreScript>();
 
 		// ¶¥¹Ù´Ú ¹è°æ
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreBoss);
@@ -57,6 +59,7 @@ namespace jns
 	}
 	void RutabysPierreBossScene::OnExit()
 	{
+		mPrscript->ResetData();
 		PlayScene::OnExit();
 	}
 }

@@ -49,10 +49,15 @@ namespace jns
 		void MakeRandDir();
 		void CheckChaseTime();
 		void CheckBossHp();
-	
+		void CheckBossType();
 		void UpdateBossHp();
 		void SetAniDir();
 
+		void CompleteAttack();
+		void CompleteDie();
+		void CompleteChange();
+		void CompleteSkill1();
+		void CompleteskillAfter1();
 
 		void Idle();
 		void Move();
@@ -63,7 +68,6 @@ namespace jns
 
 		void MonsterControl();
 		void AnimatorControl();
-
 
 		void PlaySpecialAttackAnimation(std::wstring animationname);
 	public:
@@ -86,17 +90,24 @@ namespace jns
 		ePierreState mPrevMonsterState = ePierreState::End;
 
 		int mRandDir = -1;
-		float mChangeType;
-		float mRandMakeTime;
 
+		// 데이터 관련 부분
+		float mChangeType = 0.0f;
+		float mRandMakeTime = 0.0f;
+		float mStandTime = 0.0f;
+		bool checkStandTime = false;
+		int usednormalAttackCnt = 0;
 		bool isFirstChange = false;
-		bool isChanging;
-		float mChangeTime;
+		float mChangeTime = 0.0f;
+		bool isChanging = false;
+		bool isChanged = false;
+		bool mAnimatorPlaying = false;
 
 		float mBossMaxSkillCollDown = 10.0f;
 
 		float mChasingTime;
 		std::wstring mUsingSkillName;
+
 	};
 
 }

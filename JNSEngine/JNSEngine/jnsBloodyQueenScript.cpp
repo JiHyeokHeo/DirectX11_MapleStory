@@ -328,6 +328,14 @@ namespace jns
 		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
 		monsterCommonInfo.skillCoolDown = 0.0f;
+		mRandDir = -1;
+		mChangeType = 0.0f;
+		mRandMakeTime = 0.0f;
+		isChanging = false;
+		mChangeTime = 0.0f;
+		mChasingTime = 0.0f;
+		mPatternPercentage = 0.0f;
+		mAnimatorPlaying = false;
 	}
 	void BloodyQueenScript::Idle()
 	{
@@ -396,7 +404,7 @@ namespace jns
 				mMonsterPos.x += 25.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
-			else if (mPlayerPos.x <= mMonsterPos.x)
+			else if (mPlayerPos.x < mMonsterPos.x)
 			{
 				mMonsterPos.x -= 25.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
@@ -412,7 +420,7 @@ namespace jns
 				{
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
-				else if (mPlayerPos.x <= mMonsterPos.x)
+				else if (mPlayerPos.x < mMonsterPos.x)
 				{
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 				}
@@ -432,7 +440,7 @@ namespace jns
 				{
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
-				else if (mPlayerPos.x <= mMonsterPos.x)
+				else if (mPlayerPos.x < mMonsterPos.x)
 				{
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 				}
@@ -450,7 +458,7 @@ namespace jns
 	{
 		mChangeTime += Time::DeltaTime();
 
-		if (mChangeTime >= 0.5f)
+		if (mChangeTime >= 0.8f)
 		{
 			mMonsterState = eBloodyQueenState::Idle;
 			mChangeTime = 0.0f;
@@ -463,8 +471,8 @@ namespace jns
 		mChangeTime = 0;
 		int typeNum = rand();
 		typeNum %= 4;
-		//bloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
-		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		bloodyQueenInfo.mBossType = (eBloodyQueenType)typeNum;
+		//bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
 	}
 	void BloodyQueenScript::Die()
 	{
@@ -668,14 +676,6 @@ namespace jns
 			case eBloodyQueenState::SpecialAttack:
 				PlaySpecialAttackAnimation(name);
 				break;
-			default:
-				break;
-			}
-		}
-		if (mMonsterState != mPrevMonsterState)
-		{
-			switch (mMonsterState)
-			{
 			case eBloodyQueenState::Change:
 				name += animationNameCHANGE;
 				at->PlayAnimation(name, true);
@@ -685,6 +685,19 @@ namespace jns
 				break;
 			}
 		}
+		//if (mMonsterState != mPrevMonsterState)
+		//{
+		//	switch (mMonsterState)
+		//	{
+		//	case eBloodyQueenState::Change:
+		//		name += animationNameCHANGE;
+		//		at->PlayAnimation(name, true);
+		//		isChanging = true;
+		//		break;
+		//	default:
+		//		break;
+		//	}
+		//}
 		
 	}
 }

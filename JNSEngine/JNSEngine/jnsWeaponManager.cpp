@@ -4,10 +4,10 @@
 namespace jns
 {
 	std::unordered_map<std::wstring, GameObject*> WeaponManager::mWeapons;
-	std::unordered_map<std::wstring, WeaponData*> WeaponManager::mWeaponData;
+	std::unordered_map<std::wstring, std::shared_ptr<WeaponData>> WeaponManager::mWeaponData;
 	void WeaponManager::Initialize()
 	{
-		mWeaponData[L"Genesis_Thief_Weapon"] = new WeaponData{ L"Genesis_Thief_Weapon", 10 };
+		mWeaponData[L"Genesis_Thief_Weapon"] = std::make_shared<WeaponData>( L"Genesis_Thief_Weapon", 10);
 
 
 	}
@@ -29,18 +29,18 @@ namespace jns
 		return nullptr;
 	}
 
-	WeaponData* WeaponManager::FindWeaponData(const std::wstring& key)
+	std::shared_ptr<WeaponData> WeaponManager::FindWeaponData(const std::wstring& key)
 	{
 		return mWeaponData[key];
 	}
 
 	void WeaponManager::Release()
 	{
-		for (auto& mDatas : mWeaponData)
-		{
-			delete mDatas.second;
-		}
-		mWeaponData.clear();
+		//for (auto& mDatas : mWeaponData)
+		//{
+		//	delete mDatas.second;
+		//}
+		//mWeaponData.clear();
 	}
 
 }

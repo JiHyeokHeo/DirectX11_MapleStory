@@ -51,7 +51,7 @@ namespace jns
 		static void AddSkill(const std::wstring& key, GameObject* skill);
 		static GameObject* FindSkill(const std::wstring& key);
 
-		static SkillData* FindSkillData(const std::wstring& key);
+		static std::shared_ptr<SkillData> FindSkillData(const std::wstring& key);
 		static void Release();
 	private:
 		// 생성자 자체를 막기
@@ -62,6 +62,6 @@ namespace jns
 
 
 		static std::unordered_map<std::wstring, GameObject*> mSkills;
-		static std::unordered_map<std::wstring, SkillData*> mSkillData;
+		static std::unordered_map<std::wstring, std::shared_ptr<SkillData>> mSkillData;
 	};
 }
