@@ -1,14 +1,23 @@
 #include "jnsPierreScript.h"
 #include "CommonSceneInclude.h"
-
+#include "jnsPierreBoss.h"
 // 블러디퀸 좌우 움직임 
-extern std::mt19937_64 rng1(3244);
-extern std::uniform_int_distribution<__int64> dist1(-1, 1);
+extern std::mt19937_64 rng1;
+extern std::uniform_int_distribution<__int64> dist1;
 
 namespace jns
 {
 	void PierreScript::Initialize()
 	{
+		at = GetOwner()->GetComponent<Animator>();
+		cd = GetOwner()->GetComponent<Collider2D>();
+		tr = GetOwner()->GetComponent<Transform>();
+		mMonsterState = ePierreState::Idle;
+		pierreInfo.mBossType = ePierreType::Normal;
+		monsterCommonInfo.maxhp = 1000;
+		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
+		monsterCommonInfo.skillCoolDown = 0.0f;
+		//mPierre = dynamic_cast<PierreBoss*>(GetOwner());
 	}
 	void PierreScript::Update()
 	{
@@ -33,6 +42,10 @@ namespace jns
 	}
 	void PierreScript::OnCollisionEnter(Collider2D* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
+		{
+			DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr, Vector2(-25.0f, 120.0f));
+		}
 	}
 	void PierreScript::OnCollisionStay(Collider2D* other)
 	{
@@ -72,11 +85,12 @@ namespace jns
 			mMonsterState = ePierreState::Die;
 		}
 
-		int hpratio = {};
 
-		hpratio = monsterCommonInfo.hp / monsterCommonInfo.maxhp;
+		// 보스체력을 보면서 체인지 타입
+		float hpratio = {};
+		hpratio = (float)monsterCommonInfo.hp / monsterCommonInfo.maxhp;
 
-		if (hpratio <= 0.7)
+		if (hpratio <= 0.7 && mMonsterState != ePierreState::Die)
 		{
 			mMonsterState = ePierreState::Change;
 		}
@@ -144,12 +158,12 @@ namespace jns
 		{
 			if (mRandDir == -1)
 			{
-				mMonsterPos.x -= 25.0f * Time::DeltaTime();
+				mMonsterPos.x -= 155.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 			else if (mRandDir == 1)
 			{
-				mMonsterPos.x += 25.0f * Time::DeltaTime();
+				mMonsterPos.x += 155.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else
@@ -163,28 +177,28 @@ namespace jns
 			Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
 			if (mPlayerPos.x >= mMonsterPos.x)
 			{
-				mMonsterPos.x += 25.0f * Time::DeltaTime();
+				mMonsterPos.x += 155.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
 			else if (mPlayerPos.x <= mMonsterPos.x)
 			{
-				mMonsterPos.x -= 25.0f * Time::DeltaTime();
+				mMonsterPos.x -= 155.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 			}
 		}
 
-		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-		if (monsterCommonInfo.isChasing == true)
-		{
-			if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
-			{
-				mMonsterState = ePierreState::SpecialAttack;
-			}
-		}
-		else
-		{
-			mMonsterState = ePierreState::SpecialAttack;
-		}
+		//Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		//if (monsterCommonInfo.isChasing == true)
+		//{
+		//	if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		//	{
+		//		mMonsterState = ePierreState::SpecialAttack;
+		//	}
+		//}
+		//else
+		//{
+		//	mMonsterState = ePierreState::SpecialAttack;
+		//}
 
 
 		tr->SetPosition(mMonsterPos);
@@ -209,9 +223,9 @@ namespace jns
 			return;
 
 		// 체력에 비례해서 변경되게 해주자
-		int hpratio = {};
+		float hpratio = {};
 
-		hpratio = monsterCommonInfo.hp / monsterCommonInfo.maxhp;
+		hpratio = (float)monsterCommonInfo.hp / monsterCommonInfo.maxhp;
 		
 		if (hpratio <= 0.7)
 		{

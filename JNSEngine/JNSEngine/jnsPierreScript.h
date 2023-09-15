@@ -43,12 +43,13 @@ namespace jns
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
-		
+	
 	private:
 		void InitData();
 		void MakeRandDir();
 		void CheckChaseTime();
 		void CheckBossHp();
+	
 		void UpdateBossHp();
 		void SetAniDir();
 
@@ -74,7 +75,7 @@ namespace jns
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 
 	private:
-		class PierreBoss* mPierre;
+		//class PierreBoss* mPierre;
 		MonsterCommonInfo monsterCommonInfo;
 		PierreInfo pierreInfo;
 		class Transform* tr;

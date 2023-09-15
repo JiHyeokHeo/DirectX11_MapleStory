@@ -30,7 +30,7 @@ namespace jns
 		object::Instantiate<BossHp>(eLayerType::UI, Vector3::Zero);
 		BossHpBar* bossHpBar = object::Instantiate<BossHpBar>(eLayerType::UI, Vector3::Zero);
 		// 피에르랑 연결 시켜야함
-		//bossHpBar->SetBossTarget(obj);
+		bossHpBar->SetBossTarget(obj);
 
 		// 배경 애니메이션
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::pierreArtficiality1, Vector3(-950.0f, -20.0f, 3.0f));

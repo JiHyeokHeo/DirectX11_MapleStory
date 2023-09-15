@@ -97,7 +97,7 @@ namespace jns
 			if (isreflect == false)
 			{
 				// 추후에 연산 추가합시다~ 방어력 + 알파
-				info.hp -= skillDmg;
+				info.hp -= skillDmg * 50;
 				info.isChasing = true;
 			}
 			else

@@ -1,6 +1,6 @@
 #include "jnsPierreBoss.h"
 #include "CommonSceneInclude.h"
-#include "jnsPierreBossScript.h"
+#include "jnsPierreScript.h"
 
 namespace jns
 {
@@ -26,7 +26,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\transform", 1000, 0.15f, Vector2(0.0125f, -0.02f));
 		
-		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\move", 1000, 0.15f, Vector2(0.009f, 0.01f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\attack1", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\die1", 1000, 0.15f, Vector2(0.027f, 0.040f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\transform", 1000, 0.15f, Vector2(-0.0035f, -0.019f));
@@ -43,7 +43,7 @@ namespace jns
 		GetComponent<Transform>()->SetScale(Vector3(1000.0f, 1000.0f, 1.0f));
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, -370.0f, 3.0f));
 
-		AddComponent<PierreBossScript>();
+		AddComponent<PierreScript>();
 		GameObject::Initialize();
 	}
 	void PierreBoss::Update()

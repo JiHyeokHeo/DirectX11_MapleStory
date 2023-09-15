@@ -171,7 +171,6 @@
     <ClInclude Include="jnsMesoObjectPooling.h" />
     <ClInclude Include="jnsMonsterCommonInfo.h" />
     <ClInclude Include="jnsPierreBoss.h" />
-    <ClInclude Include="jnsPierreBossScript.h" />
     <ClInclude Include="jnsPierreScript.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsRutabysPierreBossScene.h" />
@@ -325,7 +324,6 @@
     <ClCompile Include="jnsMonsterCommonInfo.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
     <ClCompile Include="jnsPierreBoss.cpp" />
-    <ClCompile Include="jnsPierreBossScript.cpp" />
     <ClCompile Include="jnsPierreScript.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />
     <ClCompile Include="jnsPlayerMoveLimitScript.cpp" />
