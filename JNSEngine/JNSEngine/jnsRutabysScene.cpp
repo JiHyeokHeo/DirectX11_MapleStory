@@ -109,9 +109,10 @@ namespace jns
 		GameObject* obj2 = object::InstantiateSkill<AssainHit02>(Vector3::Zero);
 		//object::InstantiateSkill<BloodyMeso> (Vector3::Zero);
 
-		std::unique_ptr<jns::MesoPooling::MesoObjectPooling> mesoPooling = std::make_unique<jns::MesoPooling::MesoObjectPooling>();
-		MesoPooling::MesoObjectPooling::GetInstance() = mesoPooling.get();
-		MesoPooling::MesoObjectPooling::GetInstance()->CreateMesoObject();
+		// 테스트 스킬 09월 18일 잠금 ----------- 추후 풀어서 작업 해야함
+		//std::unique_ptr<jns::MesoPooling::MesoObjectPooling> mesoPooling = std::make_unique<jns::MesoPooling::MesoObjectPooling>();
+		//MesoPooling::MesoObjectPooling::GetInstance() = mesoPooling.get();
+		//MesoPooling::MesoObjectPooling::GetInstance()->CreateMesoObject();
 		// 테스트 보스
 		//object::Instantiate<BloodyQueen>(eLayerType::Monster, Vector3(150.0f, -50.0f, 1.0f));
 
@@ -151,23 +152,24 @@ namespace jns
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		
 
+
+		//minimapCameraObj->
+		
+		//CreateInventory();
+		CreatePlayerUI();
+
+		PlayScene::Initialize();
 		// 미니맵 카메라
 		CameraObject* minimapCameraObj= new CameraObject(CameraObject::eCameraType::MapCamera);
 		minimapCameraObj->Initialize();
 		//minimapCameraObj->SetFollowTarget(followtarget);
-		AddGameObject(eLayerType::UI, minimapCameraObj);
+		AddGameObject(eLayerType::Camera, minimapCameraObj);
 		minimapCameraObj->TurnOffAllLayer();
 		minimapCameraObj->TurnOnLayer(eLayerType::BG);
 		minimapCameraObj->TurnOnLayer(eLayerType::Player);
 		minimapCameraObj->TurnOnLayer(eLayerType::Monster);
 		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
 		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
-
-		//minimapCameraObj->
-		
-		//CreateInventory();
-		CreatePlayerUI();
-		PlayScene::Initialize();
 	}
 	void RutabysScene::Update()
 	{

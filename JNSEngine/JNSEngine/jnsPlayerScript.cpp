@@ -185,7 +185,10 @@ namespace jns
                     if (playerPos.x >= groundPos.x + size || playerPos.x <= groundPos.x - size)
                     {
                         if (playerPos.y >= groundPos.y)
+                        {
                             mRb->SetGround(false);
+                            mPlayerState = ePlayerState::Jump;
+                        }
                     }
                 }
 
@@ -638,8 +641,16 @@ namespace jns
             mPlayerInfo.isRight = false;
         }
 
+        
+
         if (mPlayerState != mPrevPlayerState)
         {
+            if (mPrevPlayerState == ePlayerState::Prone)
+            {
+                cd->SetSize(Vector2(0.5f, 0.8f));
+                cd->SetCenter(Vector2::Zero);
+            }
+
             switch (mPlayerState)
             {
             case ePlayerState::Idle:

@@ -106,6 +106,8 @@ namespace jns
 			{
 				// 리플렉트 상태이면 플레이어 데미지 적용
 				PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
+				// 즉사
+				skillDmg *= 1000.0f;
 				player->PlayerDamaged(skillDmg);
 			}
 

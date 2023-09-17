@@ -103,25 +103,25 @@ namespace jns
 			case eBGType::RutabysQueenMob2:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabysqueen2Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
-				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::RutabysPierreMob1:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre1Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
-				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::RutabysPierreMob2:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre2Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
-				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::RutabysPierreBoss:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre3Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
-				tr->SetPosition(Vector3(0.0f, 0.0f, 4.9f));
+				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 		}
