@@ -52,7 +52,7 @@ namespace jns
 
 		mMonsterState = ePierreState::Idle;
 		pierreInfo.mBossType = ePierreType::Normal;
-		monsterCommonInfo.maxhp = 1000;
+		monsterCommonInfo.maxhp = 100;
 		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
 		monsterCommonInfo.skillCoolDown = 0.0f;
 		

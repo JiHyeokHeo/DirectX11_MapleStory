@@ -73,9 +73,9 @@ namespace jns
 	public:
 		void ResetData();
 		MonsterCommonInfo GetMonsterCommonInfo() { return monsterCommonInfo; }
-		PierreInfo GetBloodyQueenTypeInfo() { return pierreInfo; }
-		ePierreState GetBloodyQueenState() { return mMonsterState; }
-		void SetBloodyQueenState(ePierreState state) { mMonsterState = state; }
+		PierreInfo GetPierreTypeInfo() { return pierreInfo; }
+		ePierreState GetPierreState() { return mMonsterState; }
+		void SetPierreState(ePierreState state) { mMonsterState = state; }
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 
 	private:

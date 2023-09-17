@@ -185,6 +185,12 @@ namespace jns
 					+ abs(checkPos[i].Dot(rightColUp)))
 					return false;
 			}
+
+			Vector3 collisionPoint = CalculateIntersectionPoint(leftColCenterPos, righColCentertPos,
+				leftColLocalScale, rightColLocalScale);
+			left->SetColHitPos(collisionPoint);
+			right->SetColHitPos(collisionPoint);
+			
 		}
 		else if(left->GetType() == eColliderType::Line && right->GetType() == eColliderType::Rect)
 		{
@@ -210,7 +216,7 @@ namespace jns
 
 				if (IntersectLineSegment(lineStart, lineEnd, rectEdge1, rectEdge2))
 				{
-					return true; // Collision detected
+					return true; 
 				}
 			}
 
@@ -243,8 +249,6 @@ namespace jns
 				}
 			}
 		}
-
-
 
 		return true;
 	}
@@ -344,7 +348,6 @@ namespace jns
 		float u = qMinusP.Cross(r).Length() / crossProduct;
 
 		if (crossProduct == 0 && qMinusP.Cross(r).Length() == 0) {
-			// Collinear, check if they overlap
 			if ((q1 - p1).Dot(r) >= 0 && (q1 - p2).Dot(r) <= 0)
 				return true;
 		}
@@ -353,6 +356,46 @@ namespace jns
 			return true;
 
 		return false;
+	}
+
+	Vector3 CollisionManager::CalculateIntersectionPoint(const Vector3& leftCenter, const Vector3& rightCenter, const Vector3& leftSize, const Vector3& rightSize)
+	{
+		Vector3 halfExtentsLeft = leftSize * 0.5f;
+		Vector3 halfExtentsRight = rightSize * 0.5f;
+
+		float deltaX = fabs(leftCenter.x - rightCenter.x);
+		float deltaY = fabs(leftCenter.y - rightCenter.y);
+		//float deltaZ = fabs(leftCenter.z - rightCenter.z);
+
+		float overlapX = halfExtentsLeft.x + halfExtentsRight.x - deltaX;
+		float overlapY = halfExtentsLeft.y + halfExtentsRight.y - deltaY;
+		//float overlapZ = halfExtentsLeft.z + halfExtentsRight.z - deltaZ;
+
+		if (overlapX >= 0 && overlapY >= 0) {
+			float minOverlap = 0.0f;
+			if (overlapX > overlapY)
+			{
+				minOverlap = overlapY;
+			
+			}
+			else
+			{
+				minOverlap = overlapX;
+				
+			}
+
+			if (minOverlap == overlapX) {
+				return Vector3(leftCenter.x < rightCenter.x ? leftCenter.x + halfExtentsLeft.x : leftCenter.x - halfExtentsLeft.x,
+					rightCenter.y, rightCenter.z);
+			}
+			else if (minOverlap == overlapY) {
+				return Vector3(rightCenter.x,
+					leftCenter.y < rightCenter.y ? leftCenter.y + halfExtentsLeft.y : leftCenter.y - halfExtentsLeft.y,
+					rightCenter.z);
+			}
+		}
+
+		return Vector3(-1, -1, -1);
 	}
 
 

@@ -265,6 +265,8 @@
     <ClCompile Include="jnsBGobject.cpp" />
     <ClCompile Include="jnsPierreBoss.cpp" />
     <ClCompile Include="jnsPierreScript.cpp" />
+    <ClCompile Include="jnsPierreAttackRangeScript.cpp" />
+    <ClCompile Include="jnsSkillEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -558,6 +560,8 @@
     <ClInclude Include="jnsBGobject.h" />
     <ClInclude Include="jnsPierreBoss.h" />
     <ClInclude Include="jnsPierreScript.h" />
+    <ClInclude Include="jnsPierreAttackRangeScript.h" />
+    <ClInclude Include="jnsSkillEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -124,8 +124,8 @@ namespace jns
 			fileCount++;
 		}
 
-		std::wstring key = fs.parent_path().filename();
-		key += fs.filename();
+		animationkey = fs.parent_path().filename();
+		animationkey += fs.filename();
 
 
 		//if (maxwidth >= 600 || minwidth >= 600)
@@ -140,7 +140,7 @@ namespace jns
 
 		mImageAtlas = std::make_shared<graphics::Texture>();
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
-		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, divideSize, offset, duration);
+		Create(animationkey, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, divideSize, offset, duration);
 
 
 		return nullptr;

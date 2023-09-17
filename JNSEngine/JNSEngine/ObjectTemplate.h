@@ -9,6 +9,7 @@
 #include "jnsSkillResources.h"
 #include "jnsQuickSlotFront.h"
 #include "jnsBGobject.h"
+#include "jnsSkillBase.h"
 
 namespace jns::object
 {
@@ -139,6 +140,20 @@ namespace jns::object
 	T* Instantiate(jns::enums::eLayerType type, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
 	{
 		T* gameobj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameobj);
+		gameobj->GetComponent<Transform>()->SetScale(mScale);
+		gameobj->GetComponent<Transform>()->SetRotation(mRotation);
+		gameobj->GetComponent<Transform>()->SetPosition(mPos);
+		gameobj->Initialize();
+
+		return gameobj;
+	}
+
+	template<typename T>
+	T* SkillHitEffect(jns::enums::eLayerType type, SkillBase::eSkillType type2, Vector3 mPos, Vector3 mScale = (Vector3::One), Vector3 mRotation = (Vector3::Zero))
+	{
+		T* gameobj = new T(type2);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetScale(mScale);

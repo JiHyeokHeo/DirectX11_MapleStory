@@ -39,6 +39,19 @@ namespace jns
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::pierreArtficiality2, Vector3(-380.0f, -220.0f, 3.0f));
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::pierreArtficiality3, Vector3(350.0f, -220.0f, 3.0f));
 		object::InstantiateAniObjects<BGobject>(jns::enums::eLayerType::BG, BGobject::eBGObjectType::pierreArtficiality4, Vector3(970.0f, -20.0f, 3.0f));
+
+		// 미니맵 카메라
+		CameraObject* minimapCameraObj = new CameraObject(CameraObject::eCameraType::MapCamera);
+		minimapCameraObj->Initialize();
+		//minimapCameraObj->SetFollowTarget(followtarget);
+		AddGameObject(eLayerType::UI, minimapCameraObj);
+		minimapCameraObj->TurnOffAllLayer();
+		minimapCameraObj->TurnOnLayer(eLayerType::BG);
+		minimapCameraObj->TurnOnLayer(eLayerType::Player);
+		minimapCameraObj->TurnOnLayer(eLayerType::Monster);
+		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
+		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
+
 		PlayScene::Initialize();
 	}
 	void RutabysPierreBossScene::Update()

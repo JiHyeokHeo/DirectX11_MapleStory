@@ -8,6 +8,8 @@
 #include "jnsSkillBase.h"
 #include "jnsTransform.h"
 #include "jnsPlayerScript.h"
+#include "jnsSkillEffect.h"
+#include "ObjectTemplate.h"
 
 namespace jns
 {
@@ -97,13 +99,23 @@ namespace jns
 			if (isreflect == false)
 			{
 				// 추후에 연산 추가합시다~ 방어력 + 알파
-				info.hp -= skillDmg * 50;
+				info.hp -= skillDmg;
 				info.isChasing = true;
 			}
 			else
 			{
+				// 리플렉트 상태이면 플레이어 데미지 적용
 				PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
 				player->PlayerDamaged(skillDmg);
+			}
+
+			srand(time(NULL));
+			float t = rand() % 20;
+			Vector3 position = other->GetHitColPos();
+			position.x += t;
+			for (int i = 0; i < skillCnt; i++)
+			{
+				object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
 			}
 			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
 		}

@@ -32,6 +32,9 @@ namespace jns
 		static void SetLayer(eLayerType left, eLayerType right, bool enable);
 		static void Clear();
 		static bool IntersectLineSegment(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2);
+		static Vector3 CalculateIntersectionPoint(const Vector3& leftCenter, const Vector3& rightCenter,
+			const Vector3& leftSize, const Vector3& rightSize);
+
 	private:
 		static std::bitset<LAYER_MAX> mMatrix[LAYER_MAX];
 		static std::map<UINT64, bool> mCollisionMap;

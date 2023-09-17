@@ -59,6 +59,8 @@ namespace jns
 
 		Animation* GetActiveAnimation() { return mActiveAnimation; }
 
+		std::wstring GetAnimationKey() { return animationkey; }
+
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
@@ -66,7 +68,7 @@ namespace jns
 		std::shared_ptr<graphics::Texture> mImageAtlas;
 		bool mbLoop;
 		bool mDirection;
-
+		std::wstring animationkey;
 	};
 }
 

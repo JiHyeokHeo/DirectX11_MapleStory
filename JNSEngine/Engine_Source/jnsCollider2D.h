@@ -44,6 +44,9 @@ namespace jns
 
 		Vector3 GetStartPoint() { return mStart; }
 		Vector3 GetEndPoint() { return mEnd; }
+
+		Vector3 GetHitColPos() { return mColHitPos; }
+		void SetColHitPos(Vector3 colpos) { mColHitPos = colpos; }
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -64,5 +67,7 @@ namespace jns
 		int colNum;
 		Vector3 mStart;
 		Vector3 mEnd;
+
+		Vector3 mColHitPos;
 	};
 }

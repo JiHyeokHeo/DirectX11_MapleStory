@@ -170,12 +170,14 @@
     <ClInclude Include="jnsLoadingScene.h" />
     <ClInclude Include="jnsMesoObjectPooling.h" />
     <ClInclude Include="jnsMonsterCommonInfo.h" />
+    <ClInclude Include="jnsPierreAttackRangeScript.h" />
     <ClInclude Include="jnsPierreBoss.h" />
     <ClInclude Include="jnsPierreScript.h" />
     <ClInclude Include="jnsQuickSlotScript.h" />
     <ClInclude Include="jnsRutabysPierreBossScene.h" />
     <ClInclude Include="jnsRutabysPierreMobScene.h" />
     <ClInclude Include="jnsSkillBox.h" />
+    <ClInclude Include="jnsSkillEffect.h" />
     <ClInclude Include="jnsSkillResources.h" />
     <ClInclude Include="jnsSkillUIBG.h" />
     <ClInclude Include="jnsSkillUIBTN.h" />
@@ -323,6 +325,7 @@
     <ClCompile Include="jnsMonsterBase.cpp" />
     <ClCompile Include="jnsMonsterCommonInfo.cpp" />
     <ClCompile Include="jnsMpBar.cpp" />
+    <ClCompile Include="jnsPierreAttackRangeScript.cpp" />
     <ClCompile Include="jnsPierreBoss.cpp" />
     <ClCompile Include="jnsPierreScript.cpp" />
     <ClCompile Include="jnsPlayer.cpp" />
@@ -346,6 +349,7 @@
     <ClCompile Include="jnsQuickSlotFront.cpp" />
     <ClCompile Include="jnsQuickSlotScript.cpp" />
     <ClCompile Include="jnsSkillBox.cpp" />
+    <ClCompile Include="jnsSkillEffect.cpp" />
     <ClCompile Include="jnsSkillResources.cpp" />
     <ClCompile Include="jnsSkillUIBG.cpp" />
     <ClCompile Include="jnsSkillUIBTN.cpp" />
