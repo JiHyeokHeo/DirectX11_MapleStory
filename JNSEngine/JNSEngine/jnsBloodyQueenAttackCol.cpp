@@ -82,6 +82,11 @@ namespace jns
 				}
 			}
 		}
+		else
+		{
+			cd->SetSize(Vector2::Zero);
+			cd->SetColliderOn(false);
+		}
 	}
 	void BloodyQueenAttackCol::OnCollisionEnter(Collider2D* other)
 	{

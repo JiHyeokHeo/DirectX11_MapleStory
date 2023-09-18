@@ -88,6 +88,10 @@ namespace jns
 		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
 		bool GetIsNormalHit() { return isNormalHit; }
 
+		void SetBossIsLeft(bool isLeft) { isBossIsLeft = isLeft; }
+
+		void SetIsPushedHit(bool ispushhit) { isPushedHit = ispushhit; }
+
 		static int GetStaticPlayerDir() { return playerDir; }
 	private:
 		void CheckAttackSkills();
@@ -173,6 +177,12 @@ namespace jns
 
 		float mBlackTime = 0.0f;
 		bool isNormalHit = false;
+		
+		
+		bool isPushedHit = false;
+		bool isBossIsLeft = true;
+
+
 
 		int destinationHp;
 		int mPrevHp;

@@ -11,7 +11,7 @@ namespace jns
 		cd->SetColNum(3);
 		this->SetColNum(3);
 		mPrScript = GetOwner()->GetComponent<PierreScript>();
-		cd->SetSize(Vector2(0.45f, 0.5f));
+		cd->SetSize(Vector2(0.40f, 0.5f));
 	}
 	void PierreAttackRangeScript::Update()
 	{

@@ -8,7 +8,7 @@ namespace jns
 {
 	RigidBody::RigidBody()
 		:Component(eComponentType::RigidBody)
-		, mMass(0.0f)
+		, mMass(1.0f)
 		, mForce(Vector3::Zero)
 		, mAccelation(Vector3::Zero)
 		, mVelocity(Vector3::Zero)
@@ -30,8 +30,7 @@ namespace jns
 		mAccelation = mForce / mMass;
 
 		// 속도에 가속도를 더해준다.
-		mVelocity += mAccelation * Time::DeltaTime();
-
+		//mVelocity += mAccelation * Time::DeltaTime();
 
 		if (mbGround)
 		{
@@ -48,7 +47,7 @@ namespace jns
 			mVelocity += mGravity * Time::DeltaTime();
 		}
 
-
+		mVelocity += mAccelation * Time::DeltaTime();
 		// 중력가속도 최대 속도 제한
 		Vector3 gravity = mGravity;
 		gravity.Normalize();

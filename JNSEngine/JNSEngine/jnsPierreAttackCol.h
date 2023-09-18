@@ -6,6 +6,7 @@ namespace jns
 {
 	class PierreAttackColScirpt : public Script
 	{
+	public:
 		struct PierreSkillDamage
 		{
 			int normalAttack = 30;

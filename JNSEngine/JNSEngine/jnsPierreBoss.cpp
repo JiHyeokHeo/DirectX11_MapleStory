@@ -2,6 +2,7 @@
 #include "CommonSceneInclude.h"
 #include "jnsPierreScript.h"
 #include "jnsPierreAttackRangeScript.h"
+#include "jnsPierreAttackCol.h"
 
 namespace jns
 {
@@ -48,6 +49,7 @@ namespace jns
 
 		AddComponent<PierreScript>();
 		AddComponent<PierreAttackRangeScript>();
+		AddComponent<PierreAttackColScirpt>();
 		GameObject::Initialize();
 	}
 	void PierreBoss::Update()

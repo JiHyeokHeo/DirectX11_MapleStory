@@ -274,12 +274,12 @@ namespace jns
 		{
 			PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 			Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
-			if (mPlayerPos.x >= mMonsterPos.x)
+			if (mPlayerPos.x - 50.0f > mMonsterPos.x)
 			{
 				mMonsterPos.x += 100.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 			}
-			else if (mPlayerPos.x < mMonsterPos.x)
+			else if (mPlayerPos.x + 50.0f <= mMonsterPos.x)
 			{
 				mMonsterPos.x -= 100.0f * Time::DeltaTime();
 				monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
@@ -308,12 +308,12 @@ namespace jns
 			{
 				PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 				Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
-				if (mPlayerPos.x > mMonsterPos.x)
+				if (mPlayerPos.x - 50.0f > mMonsterPos.x)
 				{
 					mMonsterPos.x += 100.0f * Time::DeltaTime();
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Right;
 				}
-				else if (mPlayerPos.x <= mMonsterPos.x)
+				else if (mPlayerPos.x + 50.0f <= mMonsterPos.x)
 				{
 					mMonsterPos.x -= 100.0f * Time::DeltaTime();
 					monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
@@ -461,19 +461,21 @@ namespace jns
 					{
 						usednormalAttackCnt++;
 						name += animationNameATT;
+						mUsingSkillName = animationNameATT;
 					}
 					else
 					{
 						usednormalAttackCnt = 0;
 						name += animationNameATT2;
+						mUsingSkillName = animationNameATT2;
 					}
 				}
 				else
 				{
 					name += animationNameATT;
+					mUsingSkillName = animationNameATT;
 				}
 				at->PlayAnimation(name, true);
-				mUsingSkillName = animationNameATT;
 				break;
 			case ePierreState::Die:
 				name += animationNameDIE;
