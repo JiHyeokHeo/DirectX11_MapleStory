@@ -39,10 +39,12 @@ namespace jns
 		at->CompleteEvent(L"NormalPierreattack2") = std::bind(&PierreScript::CompleteAttack, this);
 		at->CompleteEvent(L"NormalPierredie1") = std::bind(&PierreScript::CompleteDie, this);
 		at->CompleteEvent(L"NormalPierretransform") = std::bind(&PierreScript::CompleteChange, this);
+		at->CompleteEvent(L"NormalPierretransform2") = std::bind(&PierreScript::CompleteChange2, this);
 
 		at->CompleteEvent(L"RedPierreattack1") = std::bind(&PierreScript::CompleteAttack, this);
 		at->CompleteEvent(L"RedPierredie1") = std::bind(&PierreScript::CompleteDie, this);
 		at->CompleteEvent(L"RedPierretransform") = std::bind(&PierreScript::CompleteChange, this);
+		at->CompleteEvent(L"RedPierretransform2") = std::bind(&PierreScript::CompleteChange2, this);
 		at->CompleteEvent(L"RedPierreskill1") = std::bind(&PierreScript::CompleteSkill1, this);
 		at->CompleteEvent(L"RedPierreskillAfter1") = std::bind(&PierreScript::CompleteskillAfter1, this);
 		at->CompleteEvent(L"RedPierreattack2") = std::bind(&PierreScript::CompleteAttack, this);
@@ -50,6 +52,7 @@ namespace jns
 		//at->CompleteEvent(L"BluePierretransform") = std::bind(&PierreScript::CompleteAttack, this);
 		at->CompleteEvent(L"BluePierredie1") = std::bind(&PierreScript::CompleteDie, this);
 		at->CompleteEvent(L"BluePierretransform") = std::bind(&PierreScript::CompleteChange, this);
+		at->CompleteEvent(L"BluePierretransform2") = std::bind(&PierreScript::CompleteChange2, this);
 
 
 		mMonsterState = ePierreState::Idle;
@@ -65,6 +68,8 @@ namespace jns
 		srand(time(NULL));
 		MakeRandDir();
 		CheckChaseTime();
+		CheckSkillCoolDown();
+		UseTransformSkill();
 		CheckBossHp();
 		CheckBossType();
 		MonsterControl();
@@ -199,16 +204,48 @@ namespace jns
 	}
 	void PierreScript::CompleteChange()
 	{
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
+		mMonsterPos.x = mPlayerPos.x;
+		tr->SetPosition(mMonsterPos);
+		std::wstring ani = L"transform2";
+		name += ani;
+		at->PlayAnimation(name, true);
+	}
+	void PierreScript::CompleteChange2()
+	{
 		mMonsterState = ePierreState::Idle;
 		isChanging = false;
 	}
 	void PierreScript::CompleteSkill1()
 	{
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
+		mMonsterPos.x = mPlayerPos.x;
+		tr->SetPosition(mMonsterPos);
 		at->PlayAnimation(L"RedPierreskillAfter1", true);
 	}
 	void PierreScript::CompleteskillAfter1()
 	{
 		at->PlayAnimation(L"RedPierreattack2", true);
+	}
+	void PierreScript::UseTransformSkill()
+	{
+		Vector3 mMonsterPos = tr->GetOwner()->GetComponent<Transform>()->GetPosition();
+		PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
+		Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
+		
+		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		{
+			if (mPlayerPos.x - 250.0f < mMonsterPos.x)
+			{
+				mMonsterState = ePierreState::SpecialAttack;
+			}
+			else if(mPlayerPos.x + 250.0f > mMonsterPos.x)
+			{
+				mMonsterState = ePierreState::SpecialAttack;
+			}
+		}
 	}
 	void PierreScript::Idle()
 	{
@@ -253,10 +290,10 @@ namespace jns
 			monsterCommonInfo.mDir = MonsterBase::MonsterDir::Left;
 		}
 
-		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
-		{
-			mMonsterState = ePierreState::SpecialAttack;
-		}
+		//if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		//{
+		//	mMonsterState = ePierreState::SpecialAttack;
+		//}
 	}
 	void PierreScript::Move()
 	{
@@ -321,7 +358,10 @@ namespace jns
 			}
 		}
 
-
+	/*	if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		{
+			mMonsterState = ePierreState::SpecialAttack;
+		}*/
 
 		tr->SetPosition(mMonsterPos);
 	}
@@ -407,8 +447,6 @@ namespace jns
 	}
 	void PierreScript::AnimatorControl()
 	{
-		std::wstring name = {};
-
 		if (pierreInfo.mBossType == ePierreType::Normal)
 		{
 			name = L"NormalPierre";
@@ -507,8 +545,43 @@ namespace jns
 		//	}
 		//}
 	}
+	void PierreScript::CheckSkillCoolDown()
+	{
+		monsterCommonInfo.skillCoolDown += Time::DeltaTime();
+	}
 	void PierreScript::PlaySpecialAttackAnimation(std::wstring animationname)
 	{
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
+		
+		std::wstring animationNameTransform = L"transform";
+		std::wstring animationNameSkill1 = L"skill1";
+
+		//mPatternPercentage = dist2(rng2);
+
+		mAnimatorPlaying = true;
+
+		if (pierreInfo.mBossType == ePierreType::Normal)
+		{
+			animationname += animationNameTransform;
+			at->PlayAnimation(animationname, true);
+		}
+		else if (pierreInfo.mBossType == ePierreType::Blue)
+		{
+			animationname += animationNameTransform;
+			at->PlayAnimation(animationname, true);
+		}
+		else if (pierreInfo.mBossType == ePierreType::Red)
+		{
+	
+			animationname += animationNameSkill1;
+			at->PlayAnimation(animationname, true);
+		}
+
+		// 플레이 되면 무조건 쿨 줄이기
+		mUsingSkillName = animationname;
+		monsterCommonInfo.skillCoolDown = 0.0f;
+		mAnimatorPlaying = true;
 	}
 	void PierreScript::ResetData()
 	{

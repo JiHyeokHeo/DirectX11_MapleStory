@@ -48,19 +48,20 @@ namespace jns
 		bossHpBar->SetBossTarget(obj);
 
 		// 미니맵 카메라
+
+		CreatePlayerUI();
+		PlayScene::Initialize();
+		// 미니맵 카메라
 		CameraObject* minimapCameraObj = new CameraObject(CameraObject::eCameraType::MapCamera);
 		minimapCameraObj->Initialize();
 		//minimapCameraObj->SetFollowTarget(followtarget);
-		AddGameObject(eLayerType::UI, minimapCameraObj);
+		AddGameObject(eLayerType::Camera, minimapCameraObj);
 		minimapCameraObj->TurnOffAllLayer();
 		minimapCameraObj->TurnOnLayer(eLayerType::BG);
 		minimapCameraObj->TurnOnLayer(eLayerType::Player);
 		minimapCameraObj->TurnOnLayer(eLayerType::Monster);
 		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
 		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
-
-		CreatePlayerUI();
-		PlayScene::Initialize();
 	}
 	void RutabysBossScene::Update()
 	{
@@ -69,11 +70,10 @@ namespace jns
 	void RutabysBossScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
-
-		//if (Input::GetKeyDown(eKeyCode::P))
-		//{
-		//	SceneManager::LoadScene(L"Login");
-		//}
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysMain);
+		}
 	}
 	void RutabysBossScene::Render()
 	{

@@ -522,29 +522,33 @@ namespace jns
     {
         mPlayerInfo.mHittedTime += Time::DeltaTime();
         Vector3 mPos = tr->GetPosition();
-        Vector3 velocity = mRb->GetVelocity();
+        
         if (isPushedHit)
         {
+            pusehdPower -= 30.0f * Time::DeltaTime();
             if (isBossIsLeft)
             {
-                mRb->AddForce(Vector3(-100.0f, 0.0f, 0.0f));
+                mRb->AddForce(Vector3(100.0f, 0.0f, 0.0f));
+                mPos.x += (isBossIsLeft + 1) * pusehdPower * Time::DeltaTime();
             }
             else
             {
-                mRb->AddForce(Vector3(100.0f, 0.0f, 0.0f));
+                mRb->AddForce(Vector3(-100.0f, 0.0f, 0.0f));
+                mPos.x += -isBossIsLeft * pusehdPower * Time::DeltaTime();
             }
         }
         else
         {
             mPos.x += (float)mPlayerInfo.mDir * -80.0f * Time::DeltaTime();
             mPos.y += 160.0f * Time::DeltaTime();
-            tr->SetPosition(Vector3(mPos.x, mPos.y, mPos.z));
         }
 
+        tr->SetPosition(Vector3(mPos.x, mPos.y, mPos.z));
 
-        if (mPlayerInfo.mHittedTime >= 0.5f)
+        if (mPlayerInfo.mHittedTime >= 1.0f && isPushedHit)
         {
             isPushedHit = false;
+            pusehdPower = 300.0f;
             mPlayerInfo.mHittedTime = 0.0f;
             mPlayerState = ePlayerState::Idle;
         }

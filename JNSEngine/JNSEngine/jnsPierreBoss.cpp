@@ -27,11 +27,13 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\die1", 1000, 0.10f, Vector2(0.027f, 0.040f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\stand", 1000, 0.10f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\transform", 1000, 0.10f, Vector2(0.0125f, -0.02f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\transform2", 1000, 0.10f, Vector2(0.0125f, -0.02f));
 		
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\attack1", 1000, 0.10f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\die1", 1000, 0.10f, Vector2(0.027f, 0.040f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\stand", 1000, 0.10f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\transform", 1000, 0.10f, Vector2(-0.0035f, -0.019f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\BluePierre\\transform2", 1000, 0.10f, Vector2(-0.0035f, -0.019f));
 
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\attack1", 1000, 0.10f, Vector2(-0.013f, 0.115f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\skill1", 1000, 0.10f, Vector2(0.002f, 0.00f));
@@ -41,6 +43,7 @@ namespace jns
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\die1", 1000, 0.10f, Vector2(0.027f, 0.040f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\stand", 1000, 0.10f, Vector2(0.009f, 0.01f));
 		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\transform", 1000, 0.10f, Vector2(-0.0035f, 0.019f));
+		at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\transform2", 1000, 0.10f, Vector2(-0.0035f, 0.019f));
 
 		at->PlayAnimation(L"NormalPierredie1", true);
 		//GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2000.0f, 1.0001f));

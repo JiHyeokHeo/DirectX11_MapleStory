@@ -56,8 +56,11 @@ namespace jns
 		void CompleteAttack();
 		void CompleteDie();
 		void CompleteChange();
+		void CompleteChange2();
 		void CompleteSkill1();
 		void CompleteskillAfter1();
+		void UseTransformSkill();
+
 
 		void Idle();
 		void Move();
@@ -68,6 +71,7 @@ namespace jns
 
 		void MonsterControl();
 		void AnimatorControl();
+		void CheckSkillCoolDown();
 
 		void PlaySpecialAttackAnimation(std::wstring animationname);
 	public:
@@ -107,6 +111,9 @@ namespace jns
 
 		float mChasingTime;
 		std::wstring mUsingSkillName;
+
+
+		std::wstring name = {};
 
 	};
 

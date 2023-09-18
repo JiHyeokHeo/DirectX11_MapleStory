@@ -139,15 +139,6 @@ namespace jns
 				}
 			}
 
-			if (mPrScript->GetUsingSkillName() == L"SmileBloodyQueenSMBQSwallow1")
-			{
-				monsterinfo.skilldmg = maxhp / 1;
-			}
-
-			if (mPrScript->GetUsingSkillName() == L"NormalBloodyQueenNBQBress1")
-			{
-				monsterinfo.skilldmg = maxhp / 1;
-			}
 			// 몬스터 스킬 데미지는 이런식으로 주기
 			DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
 

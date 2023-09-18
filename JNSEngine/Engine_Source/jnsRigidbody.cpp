@@ -8,7 +8,7 @@ namespace jns
 {
 	RigidBody::RigidBody()
 		:Component(eComponentType::RigidBody)
-		, mMass(1.0f)
+		, mMass(0.2f)
 		, mForce(Vector3::Zero)
 		, mAccelation(Vector3::Zero)
 		, mVelocity(Vector3::Zero)
@@ -30,7 +30,7 @@ namespace jns
 		mAccelation = mForce / mMass;
 
 		// 속도에 가속도를 더해준다.
-		//mVelocity += mAccelation * Time::DeltaTime();
+		mVelocity += mAccelation * Time::DeltaTime();
 
 		if (mbGround)
 		{
@@ -47,7 +47,7 @@ namespace jns
 			mVelocity += mGravity * Time::DeltaTime();
 		}
 
-		mVelocity += mAccelation * Time::DeltaTime();
+		//mVelocity += mAccelation * Time::DeltaTime();
 		// 중력가속도 최대 속도 제한
 		Vector3 gravity = mGravity;
 		gravity.Normalize();
@@ -67,25 +67,25 @@ namespace jns
 			sideVelocity *= mLimitedVelocity.x;
 		}
 			
-		// 마찰력 조건 ( 적용된 힘이 없고, 속도가 0이 아님)
-		if (!(mVelocity == Vector3::Zero))
-		{
-			//속도에 반대방향으로 마찰력이 적용된다.
-			Vector3 friction = -mVelocity;
-			friction.Normalize();
-			friction = friction * mFriction * mMass * Time::DeltaTime();
+		//// 마찰력 조건 ( 적용된 힘이 없고, 속도가 0이 아님)
+		//if (!(mVelocity == Vector3::Zero))
+		//{
+		//	//속도에 반대방향으로 마찰력이 적용된다.
+		//	Vector3 friction = -mVelocity;
+		//	friction.Normalize();
+		//	friction = friction * mFriction * mMass * Time::DeltaTime();
 
-			//마찰력으로 인한 속도 감소는 현재 속도보다 큰 경우
+		//	//마찰력으로 인한 속도 감소는 현재 속도보다 큰 경우
 
-			if (mVelocity.Length() < friction.Length())
-			{
-				mVelocity = Vector3::Zero;
-			}
-			else
-			{
-				mVelocity += friction;
-			}
-		}
+		//	if (mVelocity.Length() < friction.Length())
+		//	{
+		//		mVelocity = Vector3::Zero;
+		//	}
+		//	else
+		//	{
+		//		mVelocity += friction;
+		//	}
+		//}
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();

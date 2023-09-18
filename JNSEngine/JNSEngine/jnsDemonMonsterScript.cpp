@@ -238,7 +238,7 @@ namespace jns
 	}
 	void DemonMonsterScript::InitData()
 	{
-		monsterCommonInfo.hp = 100;
+		monsterCommonInfo.hp = 10;
 		monsterCommonInfo.isChasing = false;
 	}
 	void DemonMonsterScript::CompleteAttack()

@@ -190,5 +190,7 @@ namespace jns
 
 		bool isDownGround = true;
 		bool isAttarcted = false;
+
+		float pusehdPower = 300.0f;
 	};
 }
