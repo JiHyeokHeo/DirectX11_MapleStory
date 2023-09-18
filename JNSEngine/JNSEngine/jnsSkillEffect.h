@@ -15,10 +15,15 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void CompleteHitEffect();
 
 	private:
 		SkillBase::eSkillType skillType;
+		float transparecny = 0.0f;
+		float renderDelayTime;
+		float renderDelayMaxTime = 0.0f;
+		float renderTime = 0.0f;
+		std::wstring animationname = {};
+		class Animator* at;
 	};
 
 }

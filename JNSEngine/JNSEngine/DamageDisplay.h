@@ -112,11 +112,14 @@ namespace jns
 			}
 
 			srand(time(NULL));
-			float t = rand() % 20;
 			Vector3 position = other->GetHitColPos();
-			position.x += t;
 			for (int i = 0; i < skillCnt; i++)
 			{
+				float t = rand() % 40;
+				t -= 20;
+				// -10부터 10 사이
+				position.x += t;
+				position.y += t;
 				object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
 			}
 			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);

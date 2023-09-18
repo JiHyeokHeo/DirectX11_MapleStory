@@ -84,7 +84,7 @@ namespace jns
 				float size = groundCol->GetScale().x / 2;
 				if (playerPos.x >= groundPos.x + size || playerPos.x <= groundPos.x - size )
 				{
-					if(playerPos.y >= groundPos.y)	
+					if(playerPos.y - (playerCol->GetScale().y / 2) > groundPos.y)
 						rb->SetGround(false);
 				}
 			}

@@ -1,6 +1,7 @@
 #include "jnsSkillEffect.h"
 #include "jnsResources.h"
 #include "jnsAnimator.h"
+#include "jnsTime.h"
 
 namespace jns
 {
@@ -17,10 +18,8 @@ namespace jns
 		SetName(L"SkillHitEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
-		Animator* at = AddComponent<Animator>();
+		at = AddComponent<Animator>();
 
-		std::wstring animationname = {};
-		
 		switch (skillType)
 		{
 		case jns::SkillBase::eSkillType::AssainHit01:
@@ -35,7 +34,6 @@ namespace jns
 
 		animationname = at->GetAnimationKey();
 
-		at->CompleteEvent(animationname) = std::bind(&SkillEffect::CompleteHitEffect, this);
 		at->PlayAnimation(animationname, true);
 
 
@@ -43,9 +41,17 @@ namespace jns
 	}
 	void SkillEffect::Update()
 	{
-		if (GetState() == eState::Paused)
-			SetState(eState::Dead);
-
+		renderDelayTime += Time::DeltaTime();
+	
+		renderTime += Time::DeltaTime();
+		transparecny += 1.0f * Time::DeltaTime();;
+		at->PlayAnimation(animationname, false);
+		at->GetActiveAnimation()->SetTransparency(transparecny);
+		
+		if (renderTime >= 0.6f)
+		{
+			SetState(GameObject::eState::Dead);
+		}
 		GameObject::Update();
 	}
 	void SkillEffect::LateUpdate()
@@ -55,9 +61,5 @@ namespace jns
 	void SkillEffect::Render()
 	{
 		GameObject::Render();
-	}
-	void SkillEffect::CompleteHitEffect()
-	{
-		SetState(eState::Paused);
 	}
 }

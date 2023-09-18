@@ -1,6 +1,7 @@
 #include "jnsPierreBoss.h"
 #include "CommonSceneInclude.h"
 #include "jnsPierreScript.h"
+#include "jnsPierreAttackRangeScript.h"
 
 namespace jns
 {
@@ -15,7 +16,7 @@ namespace jns
 		SetName(L"PierreBoss");
 		
 		Collider2D* cd =  AddComponent<Collider2D>();
-		cd->SetSize(Vector2(0.21f, 0.24f));
+		cd->SetSize(Vector2(0.16f, 0.24f));
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 		// x 마이너스는 왼쪽으로 y 양수가 밑으로
@@ -46,6 +47,7 @@ namespace jns
 		GetComponent<Transform>()->SetPosition(Vector3(0.0f, -370.0f, 3.0f));
 
 		AddComponent<PierreScript>();
+		AddComponent<PierreAttackRangeScript>();
 		GameObject::Initialize();
 	}
 	void PierreBoss::Update()

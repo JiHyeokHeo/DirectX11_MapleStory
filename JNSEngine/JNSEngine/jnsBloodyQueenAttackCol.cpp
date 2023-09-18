@@ -10,13 +10,8 @@ namespace jns
 		cd->SetSize(Vector2::Zero);
 		cd->SetColliderOn(false);
 		this->SetColNum(2);
-		mColMakeTime = 0.0f;
-		mBlackOutReturnTime = 0.0f;
 		mBQScript = GetOwner()->GetComponent<BloodyQueenScript>();
 		at = mBQScript->GetOwner()->GetComponent<Animator>();
-	}
-	void BloodyQueenAttackCol::Update()
-	{
 	}
 	void BloodyQueenAttackCol::LateUpdate()
 	{
@@ -87,9 +82,6 @@ namespace jns
 				}
 			}
 		}
-	}
-	void BloodyQueenAttackCol::Render()
-	{
 	}
 	void BloodyQueenAttackCol::OnCollisionEnter(Collider2D* other)
 	{

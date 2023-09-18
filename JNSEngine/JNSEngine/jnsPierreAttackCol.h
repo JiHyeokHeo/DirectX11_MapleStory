@@ -1,15 +1,12 @@
 #pragma once
 #include "jnsScript.h"
-#include "jnsBloodyQueenScript.h"
-#include "DamageDisplay.h"
-#include "DamageInterface.h"
+#include "jnsPierreScript.h"
 
 namespace jns
 {
-	class BloodyQueenAttackCol : public Script
+	class PierreAttackColScirpt : public Script
 	{
-	public:
-		struct BloodyQueenSkillDamage
+		struct PierreSkillDamage
 		{
 			int normalAttack = 30;
 			int swallowAttack = 1250;
@@ -23,15 +20,14 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-		void AttackNormal();
+		void AttackNormal(Vector2 collidersize, Vector2 collidercenter, int anistartIdx, int aniendIdx);
 
 		class Collider2D* cd;
-		BloodyQueenScript* mBQScript;
-		BloodyQueenSkillDamage mBQSkillDamage;
+		PierreScript* mPrScript;
+		PierreSkillDamage mPrSkillDamage;
 
 		class Animator* at;
 		DamageDisplay damageDisplay;
 	};
+
 }
-
-

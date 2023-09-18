@@ -32,6 +32,8 @@ namespace jns
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
+		cd->SetColNum(1);
+		this->SetColNum(1);
 
 		at->CompleteEvent(L"NormalPierreattack1") = std::bind(&PierreScript::CompleteAttack, this);
 		at->CompleteEvent(L"NormalPierreattack2") = std::bind(&PierreScript::CompleteAttack, this);
@@ -189,6 +191,7 @@ namespace jns
 	}
 	void PierreScript::CompleteAttack()
 	{
+		mMonsterState = ePierreState::Idle;
 	}
 	void PierreScript::CompleteDie()
 	{

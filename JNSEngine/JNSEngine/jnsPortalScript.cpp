@@ -37,7 +37,7 @@ namespace jns
 	{
 		if (Input::GetKeyDown(eKeyCode::UP))
 		{
-			if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysMob)
+		/*	if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysMob)
 			{
 				mEnter = mPortal->GetDestinationSceneType();
 			}
@@ -53,6 +53,11 @@ namespace jns
 			{
 				mEnter = mPortal->GetDestinationSceneType();
 			}
+			else if (other->GetOwner()->GetName() == L"Player" && mPortal->GetDestinationSceneType() == jns::enums::eSceneType::RutabysPierreBoss)
+			{
+				mEnter = mPortal->GetDestinationSceneType();
+			}*/
+			mEnter = mPortal->GetDestinationSceneType();
 			isEnter = true;
 		}
 	}
