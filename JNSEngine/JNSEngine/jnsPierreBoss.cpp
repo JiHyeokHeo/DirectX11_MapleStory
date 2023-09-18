@@ -57,14 +57,14 @@ namespace jns
 	}
 	void PierreBoss::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::Z))
-		{
-			at->PlayAnimation(L"RedPierreskillAfter1", true);
-		}
-		else if (Input::GetKeyDown(eKeyCode::X))
-		{
-			at->PlayAnimation(L"RedPierreattack2", true);
-		}
+		//if (Input::GetKeyDown(eKeyCode::Z))
+		//{
+		//	at->PlayAnimation(L"RedPierreskillAfter1", true);
+		//}
+		//else if (Input::GetKeyDown(eKeyCode::X))
+		//{
+		//	at->PlayAnimation(L"RedPierreattack2", true);
+		//}
 		GameObject::Update();
 	}
 	void PierreBoss::LateUpdate()

@@ -12,7 +12,7 @@ namespace jns
 	void FireEffect::Initialize()
 	{
 		mBurningTime = 0.0f;
-		SetState(GameObject::eState::Active);
+		SetState(GameObject::eState::Paused);
 		SetName(L"FireEffect");
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));

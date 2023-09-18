@@ -1,6 +1,9 @@
 #include "jnsPierreScript.h"
 #include "CommonSceneInclude.h"
 #include "jnsPierreBoss.h"
+#include "ObjectTemplate.h"
+#include "jnsPierreHat.h"
+#include "jnsPierreHatScript.h"
 // 블러디퀸 좌우 움직임 
 extern std::mt19937_64 rng1;
 extern std::uniform_int_distribution<__int64> dist1;
@@ -11,6 +14,7 @@ namespace jns
 {
 	void PierreScript::Initialize()
 	{
+		
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\attack1", 1000, 0.15f, Vector2(-0.013f, 0.115f));
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\attack2", 1000, 0.15f, Vector2(-0.015f, 0.050f));
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\NormalPierre\\move", 1000, 0.15f, Vector2(0.009f, 0.01f));
@@ -29,6 +33,12 @@ namespace jns
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\die1", 1000, 0.15f, Vector2(0.027f, 0.040f));
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\stand", 1000, 0.15f, Vector2(0.009f, 0.01f));
 		//at->CreateAnimations(L"..\\Resources\\Boss\\Pierre\\RedPierre\\transform", 1000, 0.15f, Vector2(-0.0035f, -0.019f));
+
+		for (int i = -4; i <= 4 ; i++)
+		{
+			mHats.push_back(object::Instantiate<PierreHat>(eLayerType::Monster, Vector3(300.0f * i, -430.0f, 3.0f)));
+		}
+
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
@@ -40,6 +50,7 @@ namespace jns
 		at->CompleteEvent(L"NormalPierredie1") = std::bind(&PierreScript::CompleteDie, this);
 		at->CompleteEvent(L"NormalPierretransform") = std::bind(&PierreScript::CompleteChange, this);
 		at->CompleteEvent(L"NormalPierretransform2") = std::bind(&PierreScript::CompleteChange2, this);
+		//at->StartEvent(L"NormalPierretransform2") = std::bind(&PierreScript::StartTransform, this);
 
 		at->CompleteEvent(L"RedPierreattack1") = std::bind(&PierreScript::CompleteAttack, this);
 		at->CompleteEvent(L"RedPierredie1") = std::bind(&PierreScript::CompleteDie, this);
@@ -53,7 +64,8 @@ namespace jns
 		at->CompleteEvent(L"BluePierredie1") = std::bind(&PierreScript::CompleteDie, this);
 		at->CompleteEvent(L"BluePierretransform") = std::bind(&PierreScript::CompleteChange, this);
 		at->CompleteEvent(L"BluePierretransform2") = std::bind(&PierreScript::CompleteChange2, this);
-
+		//at->StartEvent(L"BluePierretransform2") = std::bind(&PierreScript::StartTransform, this);
+			
 
 		mMonsterState = ePierreState::Idle;
 		pierreInfo.mBossType = ePierreType::Normal;
@@ -204,10 +216,6 @@ namespace jns
 	}
 	void PierreScript::CompleteChange()
 	{
-		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
-		Vector3 mMonsterPos = tr->GetPosition();
-		mMonsterPos.x = mPlayerPos.x;
-		tr->SetPosition(mMonsterPos);
 		std::wstring ani = L"transform2";
 		name += ani;
 		at->PlayAnimation(name, true);
@@ -235,7 +243,7 @@ namespace jns
 		PlayerScript* player = SceneManager::GetPlayer()->GetComponent<PlayerScript>();
 		Vector3 mPlayerPos = player->GetOwner()->GetComponent<Transform>()->GetPosition();
 		
-		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown && mMonsterState != ePierreState::Change && mMonsterState != ePierreState::SpecialAttack && mMonsterState != ePierreState::Attack)
 		{
 			if (mPlayerPos.x - 250.0f < mMonsterPos.x)
 			{
@@ -246,6 +254,13 @@ namespace jns
 				mMonsterState = ePierreState::SpecialAttack;
 			}
 		}
+	}
+	void PierreScript::StartTransform()
+	{
+		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+		Vector3 mMonsterPos = tr->GetPosition();
+		mMonsterPos.x = mPlayerPos.x;
+		tr->SetPosition(mMonsterPos);
 	}
 	void PierreScript::Idle()
 	{
@@ -382,7 +397,35 @@ namespace jns
 			{
 				mChangeTime = 0;
 				int typeNum = rand();
-				typeNum %= 3;
+				if (isFirstChange == false)
+				{
+					typeNum %= 3;
+				}
+
+				if (pierreInfo.mBossType == ePierreType::Normal)
+				{
+					int random = rand();
+					random %= 2;
+
+					if (random == 0)
+					{
+						typeNum = 1;
+					}
+					else
+					{
+						typeNum = 2;
+					}
+					pierreInfo.mBossType = (ePierreType)typeNum;
+				}
+				else if (pierreInfo.mBossType == ePierreType::Blue)
+				{
+					pierreInfo.mBossType = ePierreType::Normal;
+				}
+				else if (pierreInfo.mBossType == ePierreType::Red)
+				{
+					pierreInfo.mBossType = ePierreType::Normal;
+				}
+
 				// 내가 만약에 처음으로 70퍼 이하를 깠다. 
 				if (typeNum == 0 && isFirstChange)
 				{
@@ -399,15 +442,6 @@ namespace jns
 						typeNum = 2;
 					}
 				}
-				else if (pierreInfo.mBossType == ePierreType::Blue && isFirstChange == false)
-				{
-					pierreInfo.mBossType = ePierreType::Red;
-				}
-				else if (pierreInfo.mBossType == ePierreType::Red && isFirstChange == false)
-				{
-					pierreInfo.mBossType = ePierreType::Blue;
-				}
-				pierreInfo.mBossType = (ePierreType)typeNum;
 			}
 		}
 	}
@@ -416,7 +450,6 @@ namespace jns
 	}
 	void PierreScript::SpecialAttack()
 	{
-		
 
 	}
 	void PierreScript::MonsterControl()
@@ -548,6 +581,14 @@ namespace jns
 	void PierreScript::CheckSkillCoolDown()
 	{
 		monsterCommonInfo.skillCoolDown += Time::DeltaTime();
+
+		if (monsterCommonInfo.skillCoolDown >= mBossMaxSkillCollDown)
+		{
+			for (PierreHat* hat : mHats)
+			{
+				hat->GetComponent<PierreHatScript>()->Activate();
+			}
+		}
 	}
 	void PierreScript::PlaySpecialAttackAnimation(std::wstring animationname)
 	{
@@ -563,17 +604,14 @@ namespace jns
 
 		if (pierreInfo.mBossType == ePierreType::Normal)
 		{
-			animationname += animationNameTransform;
-			at->PlayAnimation(animationname, true);
+			mMonsterState = ePierreState::Idle;
 		}
 		else if (pierreInfo.mBossType == ePierreType::Blue)
 		{
-			animationname += animationNameTransform;
-			at->PlayAnimation(animationname, true);
+			mMonsterState = ePierreState::Idle;
 		}
 		else if (pierreInfo.mBossType == ePierreType::Red)
 		{
-	
 			animationname += animationNameSkill1;
 			at->PlayAnimation(animationname, true);
 		}

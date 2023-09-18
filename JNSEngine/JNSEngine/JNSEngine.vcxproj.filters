@@ -268,6 +268,8 @@
     <ClCompile Include="jnsPierreAttackRangeScript.cpp" />
     <ClCompile Include="jnsSkillEffect.cpp" />
     <ClCompile Include="jnsPierreAttackCol.cpp" />
+    <ClCompile Include="jnsPierreHat.cpp" />
+    <ClCompile Include="jnsPierreHatScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -564,6 +566,8 @@
     <ClInclude Include="jnsPierreAttackRangeScript.h" />
     <ClInclude Include="jnsSkillEffect.h" />
     <ClInclude Include="jnsPierreAttackCol.h" />
+    <ClInclude Include="jnsPierreHat.h" />
+    <ClInclude Include="jnsPierreHatScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

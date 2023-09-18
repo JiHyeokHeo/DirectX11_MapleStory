@@ -4,6 +4,7 @@
 #include "jnsBossHpBar.h"
 #include "jnsPierreBoss.h"
 #include "jnsPierreScript.h"
+#include "jnsPierreHat.h"
 
 namespace jns
 {
@@ -26,7 +27,7 @@ namespace jns
 		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1260.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"RightGround", Vector3(1260.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
 		
-
+		//object::Instantiate<PierreHat>(eLayerType::Monster, Vector3(0.0f, -300.0f, 3.0f));
 
 		// 보스 체력바 연동
 		object::Instantiate<BossHp>(eLayerType::UI, Vector3::Zero);

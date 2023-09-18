@@ -61,6 +61,7 @@ namespace jns
 		void CompleteskillAfter1();
 		void UseTransformSkill();
 
+		void StartTransform();
 
 		void Idle();
 		void Move();
@@ -72,6 +73,7 @@ namespace jns
 		void MonsterControl();
 		void AnimatorControl();
 		void CheckSkillCoolDown();
+
 
 		void PlaySpecialAttackAnimation(std::wstring animationname);
 	public:
@@ -112,8 +114,9 @@ namespace jns
 		float mChasingTime;
 		std::wstring mUsingSkillName;
 
-
 		std::wstring name = {};
+
+		std::vector<class PierreHat*> mHats;
 
 	};
 
