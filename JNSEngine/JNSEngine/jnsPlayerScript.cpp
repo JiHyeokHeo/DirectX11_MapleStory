@@ -591,6 +591,20 @@ namespace jns
         isAttarcted = true;
     }
 
+    void PlayerScript::DontMove()
+    {
+        if (Input::GetKeyDown(eKeyCode::LEFT) || Input::GetKeyDown(eKeyCode::LEFT))
+        {
+            clickcnt++;
+        }
+
+        if (clickcnt >= 10)
+        {
+            clickcnt = 0;
+            mPlayerState = ePlayerState::Idle;
+        }
+    }
+
     void PlayerScript::TurnOnLightWhenIHit()
     {
         if (mBlackTime >= 1.0f)
@@ -645,6 +659,9 @@ namespace jns
             break;
         case ePlayerState::Die:
             Die();
+            break;
+        case ePlayerState::DontMove:
+            DontMove();
             break;
         default:
             break;
@@ -708,6 +725,9 @@ namespace jns
                 // 죽을 시 투명도 조절
                 at->GetActiveAnimation()->SetTransparency(0.3f);
                 break;
+            case ePlayerState::DontMove:
+                at->PlayAnimation(L"CharactorCharIdle", true);
+                break;
             default:
                 break;
             }
@@ -732,6 +752,7 @@ namespace jns
         mRb->SetGround(false);
         mPlayerInfo.isGrounded = false;
         mPlayerInfo.mJumpTime = 0.0f;
+        clickcnt = 0;
     }
 
     void PlayerScript::GetNewPosition()

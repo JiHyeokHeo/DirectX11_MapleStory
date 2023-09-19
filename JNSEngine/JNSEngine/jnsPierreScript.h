@@ -118,6 +118,7 @@ namespace jns
 
 		std::vector<class PierreHat*> mHats;
 
+		class HatObject* hat;
 	};
 
 }

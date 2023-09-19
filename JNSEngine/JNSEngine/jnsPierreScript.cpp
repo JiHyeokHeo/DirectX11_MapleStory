@@ -4,6 +4,7 @@
 #include "ObjectTemplate.h"
 #include "jnsPierreHat.h"
 #include "jnsPierreHatScript.h"
+#include "jnsHatObject.h"
 // ºí·¯µðÄý ÁÂ¿ì ¿òÁ÷ÀÓ 
 extern std::mt19937_64 rng1;
 extern std::uniform_int_distribution<__int64> dist1;
@@ -38,6 +39,10 @@ namespace jns
 		{
 			mHats.push_back(object::Instantiate<PierreHat>(eLayerType::Monster, Vector3(300.0f * i, -430.0f, 3.0f)));
 		}
+
+		hat = object::Instantiate<HatObject>(eLayerType::Monster, Vector3::Zero);
+		hat->SetHatType(HatObject::HatType::Blue);
+		
 
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
@@ -103,7 +108,16 @@ namespace jns
 	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Skill)
 		{
-			DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr, Vector2(-25.0f, 120.0f));
+			HatObject::HatType hattype = hat->GetHatType();
+
+			if ((int)hattype != (int)pierreInfo.mBossType)
+			{
+				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr, Vector2(-25.0f, 120.0f));
+			}
+			else
+			{
+				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, tr, Vector2(-25.0f, 120.0f), true);
+			}
 		}
 	
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
@@ -390,6 +404,8 @@ namespace jns
 		if (isChanging == true)
 		{
 			isChanging = false;
+			
+			hat->Activate();
 
 			float hpratio = {};
 			hpratio = (float)monsterCommonInfo.hp / monsterCommonInfo.maxhp;

@@ -22,9 +22,9 @@ namespace jns
 			CreateDamageControls(damageStr, position, damagecnt, offsetYCord);
 		}
 
-		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isreflect = false)
+		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool bosshealthup = false, bool isreflect = false)
 		{
-			SkillDamage(info, other, damageoffset, tr, isreflect);
+			SkillDamage(info, other, damageoffset, tr, bosshealthup, isreflect);
 		}
 
 		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isskilldmg = false, bool isreflect = false)
@@ -79,7 +79,7 @@ namespace jns
 			}
 		}
 
-		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Vector2 damageoffset, Transform* tr, bool isreflect)
+		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Vector2 damageoffset, Transform* tr, bool bosshealthup, bool isreflect)
 		{
 			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 
@@ -102,7 +102,7 @@ namespace jns
 				info.hp -= skillDmg;
 				info.isChasing = true;
 			}
-			else
+			else if(isreflect == true)
 			{
 				// 리플렉트 상태이면 플레이어 데미지 적용
 				PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
@@ -110,6 +110,12 @@ namespace jns
 				skillDmg *= 1000.0f;
 				player->PlayerDamaged(skillDmg);
 			}
+			else if (bosshealthup)
+			{
+				info.hp += skillDmg;
+				info.isChasing = true;
+			}
+
 
 			srand(time(NULL));
 			Vector3 position = other->GetHitColPos();

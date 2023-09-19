@@ -79,6 +79,10 @@ namespace jns
 			{
 				weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", false);
 			}
+			else if (type == PlayerScript::ePlayerState::DontMove)
+			{
+				weaponAnimator->PlayAnimation(weaponFrontName + L"stand1", false);
+			}
 		}
 
 		// 오프셋 변경

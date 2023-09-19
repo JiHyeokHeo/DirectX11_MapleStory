@@ -167,6 +167,7 @@
     <ClInclude Include="jnsDemonAttackCol.h" />
     <ClInclude Include="jnsFireEffectScript.h" />
     <ClInclude Include="jnsGenesisWeapon.h" />
+    <ClInclude Include="jnsHatObject.h" />
     <ClInclude Include="jnsLoadingScene.h" />
     <ClInclude Include="jnsMesoObjectPooling.h" />
     <ClInclude Include="jnsMonsterCommonInfo.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="jnsGridScrpt.cpp" />
     <ClCompile Include="jnsGround.cpp" />
     <ClCompile Include="jnsGroundScript.cpp" />
+    <ClCompile Include="jnsHatObject.cpp" />
     <ClCompile Include="jnsHeart.cpp" />
     <ClCompile Include="jnsHeartScript.cpp" />
     <ClCompile Include="jnsHpBar.cpp" />

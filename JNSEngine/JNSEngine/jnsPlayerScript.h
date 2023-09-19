@@ -23,6 +23,7 @@ namespace jns
 			Hitted,
 			Die,
 			Attracted,
+			DontMove,
 			End,
 		};
 
@@ -107,6 +108,9 @@ namespace jns
 		void Hitted();
 		void Die();
 		void Attarct();
+		void DontMove();
+
+
 		void TurnOnLightWhenIHit();
 		// 애니메이션 이벤트를 통해 스킬 생성 타이밍 조절
 		void CompleteAssasinHit1();
@@ -192,5 +196,7 @@ namespace jns
 		bool isAttarcted = false;
 
 		float pusehdPower = 300.0f;
+
+		int clickcnt = 0;
 	};
 }

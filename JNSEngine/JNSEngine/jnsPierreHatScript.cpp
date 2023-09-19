@@ -67,8 +67,9 @@ namespace jns
 	}
 	void PierreHatScript::OnCollisionEnter(Collider2D* other)
 	{
-		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player && isHit == false)
 		{
+			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::DontMove);
 			isHit = true;
 		}
 	}

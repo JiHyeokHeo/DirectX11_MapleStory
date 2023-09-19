@@ -270,6 +270,7 @@
     <ClCompile Include="jnsPierreAttackCol.cpp" />
     <ClCompile Include="jnsPierreHat.cpp" />
     <ClCompile Include="jnsPierreHatScript.cpp" />
+    <ClCompile Include="jnsHatObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -568,6 +569,7 @@
     <ClInclude Include="jnsPierreAttackCol.h" />
     <ClInclude Include="jnsPierreHat.h" />
     <ClInclude Include="jnsPierreHatScript.h" />
+    <ClInclude Include="jnsHatObject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
