@@ -21,6 +21,8 @@ namespace jns
 		MeshRenderer* mr;
 		Transform* tr;
 		GameObject* chaseObject;
+		bool isEffectOn;
+		Vector3 Offeset;
 	private:
 	};
 }

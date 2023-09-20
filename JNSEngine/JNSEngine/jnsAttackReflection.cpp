@@ -47,10 +47,14 @@ namespace jns
 				}
 				if (reflectionOnTime >= 5.0f)
 				{
-					reflectionOnTime = 0.0f;	
+					ResetTime();
 					effect::tem::SetMonsterEffectIsOn(chaseObject, false);
 				}
 			}
+		}
+		else
+		{
+			ResetTime();
 		}
 
 

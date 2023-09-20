@@ -24,6 +24,7 @@ namespace jns
 		void SetHatType(HatType type) { hattype = type; }
 		HatType GetHatType() { return hattype; }
 		void Activate();
+		void DeActive();
 	private:
 		class Animator* at;
 		HatType hattype;

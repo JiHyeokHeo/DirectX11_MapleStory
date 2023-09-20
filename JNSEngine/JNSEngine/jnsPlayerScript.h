@@ -27,6 +27,11 @@ namespace jns
 			End,
 		};
 
+		struct PlayerSkillInfo
+		{
+			bool isAssainHit1Used;
+		};
+
 		class eKeyType
 		{
 		public:
@@ -82,7 +87,7 @@ namespace jns
 		ePlayerState GetPlayerPrevState() { return mPrevPlayerState; }
 		void SetInventoryScript(InventoryScript* script) { mInventoryScript = script; }
 		PlayerInfo GetPlayerInfo() { return mPlayerInfo; }
-
+		PlayerSkillInfo GetPlayerSkillInfo() { return mPlayerSkillInfo; }
 		
 		void PlayerDamaged(int dmg);
 
@@ -92,6 +97,8 @@ namespace jns
 		void SetBossIsLeft(bool isLeft) { isBossIsLeft = isLeft; }
 
 		void SetIsPushedHit(bool ispushhit) { isPushedHit = ispushhit; }
+
+		void SetIsSkillLock(bool isskilllock) { isSkillLocked = isskilllock; }
 
 		static int GetStaticPlayerDir() { return playerDir; }
 	private:
@@ -137,11 +144,6 @@ namespace jns
 	private:
 		static int playerDir;
 
-		struct PlayerSkillInfo
-		{
-			bool isAssainHit1Used;
-		};
-
 		eKeyType mPlayerKeyType;
 
 		Transform* tr;
@@ -186,6 +188,7 @@ namespace jns
 		bool isPushedHit = false;
 		bool isBossIsLeft = true;
 
+		bool isSkillLocked = false;
 
 
 		int destinationHp;

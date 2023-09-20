@@ -5,6 +5,7 @@
 #include "jnsPierreHat.h"
 #include "jnsPierreHatScript.h"
 #include "jnsHatObject.h"
+#include "jnsSkillLock.h"
 // ºí·¯µðÄý ÁÂ¿ì ¿òÁ÷ÀÓ 
 extern std::mt19937_64 rng1;
 extern std::uniform_int_distribution<__int64> dist1;
@@ -42,7 +43,7 @@ namespace jns
 
 		hat = object::Instantiate<HatObject>(eLayerType::Monster, Vector3::Zero);
 		hat->SetHatType(HatObject::HatType::Blue);
-		
+		skilllock = object::Instantiate<SkillLock>(eLayerType::MapEffect, Vector3::Zero);
 
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
@@ -126,6 +127,11 @@ namespace jns
 			int maxhp = player->GetPlayerInfo().maxhp;
 			monsterCommonInfo.dmg = maxhp / 10;
 			DamageDisplay::DamageToPlayer(monsterCommonInfo, other);
+
+			if (pierreInfo.mBossType == ePierreType::Blue && mUsingSkillName == L"attack1")
+			{
+				skilllock->ActivateToPlayer(Vector3(0.0f,40.0f,0.0f), other->GetOwner());
+			}	
 		}
 	}
 	void PierreScript::OnCollisionStay(Collider2D* other)
@@ -136,6 +142,11 @@ namespace jns
 			int maxhp = player->GetPlayerInfo().maxhp;
 			monsterCommonInfo.dmg = maxhp / 10;
 			DamageDisplay::DamageToPlayer(monsterCommonInfo, other);
+
+			if (pierreInfo.mBossType == ePierreType::Blue && mUsingSkillName == L"attack1")
+			{
+				skilllock->ActivateToPlayer(Vector3(0.0f, 40.0f, 0.0f), other->GetOwner());
+			}
 		}
 	}
 	void PierreScript::OnCollisionExit(Collider2D* other)
@@ -222,10 +233,12 @@ namespace jns
 	}
 	void PierreScript::CompleteAttack()
 	{
+		cd->SetColliderOn(true);
 		mMonsterState = ePierreState::Idle;
 	}
 	void PierreScript::CompleteDie()
 	{
+		hat->DeActive();
 		GetOwner()->SetState(GameObject::eState::Paused);
 	}
 	void PierreScript::CompleteChange()
@@ -241,6 +254,7 @@ namespace jns
 	}
 	void PierreScript::CompleteSkill1()
 	{
+		cd->SetColliderOn(false);
 		Vector3 mPlayerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
 		Vector3 mMonsterPos = tr->GetPosition();
 		mMonsterPos.x = mPlayerPos.x;
@@ -534,10 +548,12 @@ namespace jns
 				if (pierreInfo.mBossType == ePierreType::Blue)
 				{
 					name += animationNameATT;
+					mUsingSkillName = animationNameATT;
 				}
 				else
 				{
 					name += animationNameWALK;
+					mUsingSkillName = animationNameWALK;
 				}
 				at->PlayAnimation(name, true);
 				break;
@@ -639,6 +655,7 @@ namespace jns
 	}
 	void PierreScript::ResetData()
 	{
+		hat->DeActive();
 		if (this->GetOwner()->GetState() == GameObject::eState::Paused)
 		{
 			GetOwner()->SetState(GameObject::eState::Active);

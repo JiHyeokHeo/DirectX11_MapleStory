@@ -3,11 +3,11 @@
 
 namespace jns
 {
-	class AttackReflection : public EffectBase
+	class SkillLock : public EffectBase
 	{
 	public:
-		AttackReflection();
-		~AttackReflection();
+		SkillLock();
+		~SkillLock();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -15,8 +15,12 @@ namespace jns
 		virtual void Render() override;
 
 		void ResetTime();
+		void ActivateToPlayer(Vector3 effectoffset, GameObject* chaseobj);
 	private:
-		float reflectionOnTime;
+		float skillLockOnTime;
+		
 	};
 
 }
+
+

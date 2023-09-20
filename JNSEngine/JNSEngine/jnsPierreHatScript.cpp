@@ -69,6 +69,9 @@ namespace jns
 	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player && isHit == false)
 		{
+			if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerState() == jns::PlayerScript::ePlayerState::Die)
+				return;
+
 			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetPlayerState(jns::PlayerScript::ePlayerState::DontMove);
 			isHit = true;
 		}

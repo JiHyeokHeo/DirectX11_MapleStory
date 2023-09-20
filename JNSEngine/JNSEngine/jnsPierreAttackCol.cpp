@@ -47,6 +47,13 @@ namespace jns
 		}
 		else if (mPrState == PierreScript::ePierreState::SpecialAttack)
 		{
+			if (mPrTypeInfo.mBossType == PierreScript::ePierreType::Red)
+			{
+				if (at->GetActiveAnimation()->GetAnimationName() == L"RedPierreattack2")
+				{
+					AttackNormal(Vector2(0.3f, 0.5f), Vector2(60.0f * (int)mPrInfo.mDir, 100.0f), 4, 13);
+				}
+			}
 			// 특별 공격 할때 콜라이더 추가 
 
 			//Vector3 mMonsterPos = GetOwner()->GetComponent<Transform>()->GetPosition();
@@ -116,17 +123,16 @@ namespace jns
 			int maxhp = player->GetPlayerInfo().maxhp;
 			if (mPrScript->GetUsingSkillName() == L"attack1")
 			{
-				int maxhp = player->GetPlayerInfo().maxhp;
 				monsterinfo.skilldmg = maxhp / 30;
+				DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
 			}
 			else if (mPrScript->GetUsingSkillName() == L"attack2")
 			{
-				int maxhp = player->GetPlayerInfo().maxhp;
-				monsterinfo.skilldmg = maxhp / 30;
-
 				if (mPrTypeInfo.mBossType == PierreScript::ePierreType::Normal)
 				{
+					monsterinfo.skilldmg = maxhp / 30;
 					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsPushedHit(true);
+					DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
 				}
 
 				if (GetOwner()->GetComponent<Transform>()->GetPosition().x > player->GetOwner()->GetComponent<Transform>()->GetPosition().x)
@@ -137,15 +143,59 @@ namespace jns
 				{
 					SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetBossIsLeft(true);
 				}
+
 			}
-
-			// 몬스터 스킬 데미지는 이런식으로 주기
-			DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
-
+			else if (mPrScript->GetUsingSkillName() == L"RedPierreskill1")
+			{
+				if (mPrTypeInfo.mBossType == PierreScript::ePierreType::Red)
+				{
+					monsterinfo.skilldmg = maxhp * 3;
+					DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true, 3);
+				}
+			}
 		}
 	}
 	void PierreAttackColScirpt::OnCollisionStay(Collider2D* other)
 	{
+		//if (other->GetOwner()->GetName() == L"Player")
+		//{
+		//	MonsterCommonInfo monsterinfo = mPrScript->GetMonsterCommonInfo();
+		//	PlayerScript* player = other->GetOwner()->GetComponent<PlayerScript>();
+		//	PierreScript::PierreInfo mPrTypeInfo = mPrScript->GetPierreTypeInfo();
+		//	int maxhp = player->GetPlayerInfo().maxhp;
+		//	if (mPrScript->GetUsingSkillName() == L"attack1")
+		//	{
+		//		monsterinfo.skilldmg = maxhp / 30;
+		//		DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
+		//	}
+		//	else if (mPrScript->GetUsingSkillName() == L"attack2")
+		//	{
+		//		if (mPrTypeInfo.mBossType == PierreScript::ePierreType::Normal)
+		//		{
+		//			monsterinfo.skilldmg = maxhp / 30;
+		//			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetIsPushedHit(true);
+		//			DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true);
+		//		}
+		//		
+		//		if (GetOwner()->GetComponent<Transform>()->GetPosition().x > player->GetOwner()->GetComponent<Transform>()->GetPosition().x)
+		//		{
+		//			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetBossIsLeft(false);
+		//		}
+		//		else
+		//		{
+		//			SceneManager::GetPlayer()->GetComponent<PlayerScript>()->SetBossIsLeft(true);
+		//		}
+
+		//	}
+		//	else if (mPrScript->GetUsingSkillName() == L"RedPierreskill1")
+		//	{
+		//		if (mPrTypeInfo.mBossType == PierreScript::ePierreType::Red)
+		//		{
+		//			monsterinfo.skilldmg = maxhp * 3;
+		//			DamageDisplay::DamageToPlayer(monsterinfo, other, Vector2(0.0f, 50.0f), true, 3);
+		//		}
+		//	}
+		//}
 	}
 	void PierreAttackColScirpt::OnCollisionExit(Collider2D* other)
 	{

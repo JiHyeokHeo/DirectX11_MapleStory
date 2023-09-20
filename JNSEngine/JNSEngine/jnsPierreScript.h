@@ -85,7 +85,6 @@ namespace jns
 		std::wstring GetUsingSkillName() { return mUsingSkillName; }
 
 	private:
-		//class PierreBoss* mPierre;
 		MonsterCommonInfo monsterCommonInfo;
 		PierreInfo pierreInfo;
 		class Transform* tr;
@@ -119,6 +118,7 @@ namespace jns
 		std::vector<class PierreHat*> mHats;
 
 		class HatObject* hat;
+		class SkillLock* skilllock;
 	};
 
 }

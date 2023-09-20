@@ -239,6 +239,9 @@ namespace jns
 
     void PlayerScript::CheckAttackSkills()
     {
+        if (isSkillLocked)
+            return;
+
         if (Input::GetKeyDown(SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillKeyState()))
         {
             mPlayerState = ePlayerState::Attack;

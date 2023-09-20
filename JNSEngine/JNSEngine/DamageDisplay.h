@@ -27,9 +27,9 @@ namespace jns
 			SkillDamage(info, other, damageoffset, tr, bosshealthup, isreflect);
 		}
 
-		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isskilldmg = false, bool isreflect = false)
+		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isskilldmg = false, int damagecnt = 1, bool isreflect = false)
 		{
-			PlayerDamage(monsterinfo, other, damageoffset, isreflect,  isskilldmg);
+			PlayerDamage(monsterinfo, other, damageoffset, isreflect, damagecnt, isskilldmg);
 		}
 	private:
 		static void CreateDamageControls(const std::string& damageStr, const Vector3& position, int damagecnt, const Vector2& offsetYCord)
@@ -96,23 +96,29 @@ namespace jns
 				skillCnt = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamageCnt();
 			}
 
-			if (isreflect == false)
+			if (bosshealthup == false)
 			{
-				// 추후에 연산 추가합시다~ 방어력 + 알파
-				info.hp -= skillDmg;
-				info.isChasing = true;
-			}
-			else if(isreflect == true)
-			{
-				// 리플렉트 상태이면 플레이어 데미지 적용
-				PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
-				// 즉사
-				skillDmg *= 1000.0f;
-				player->PlayerDamaged(skillDmg);
+				if (isreflect == false)
+				{
+					// 추후에 연산 추가합시다~ 방어력 + 알파
+					info.hp -= skillDmg;
+					info.isChasing = true;
+				}
+				else if(isreflect == true)
+				{
+					// 리플렉트 상태이면 플레이어 데미지 적용
+					PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
+					// 즉사
+					skillDmg *= 1000.0f;
+					player->PlayerDamaged(skillDmg);
+				}
 			}
 			else if (bosshealthup)
 			{
-				info.hp += skillDmg;
+				if (info.maxhp >= info.hp)
+				{
+					info.hp += skillDmg;
+				}
 				info.isChasing = true;
 			}
 
@@ -131,7 +137,7 @@ namespace jns
 			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
 		}
 
-		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset, bool isreflect, bool isskilldmg)
+		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset, bool isreflect, int damagecnt, bool isskilldmg)
 		{
 			PlayerScript* playerScript = other->GetOwner()->GetComponent<PlayerScript>();
 			PlayerScript::PlayerInfo playerInfo = playerScript->GetPlayerInfo();
@@ -149,17 +155,17 @@ namespace jns
 					if (isskilldmg)
 					{
 						playerScript->PlayerDamaged(monsterinfo.skilldmg);
-						DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
+						DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset, damagecnt);
 					}
 					else
 					{
 						playerScript->PlayerDamaged(monsterinfo.dmg);
-						DamageDisplay::DisplayDamage(monsterinfo.dmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
+						DamageDisplay::DisplayDamage(monsterinfo.dmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset, damagecnt);
 					}
 				}
 				else
 				{
-					DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset);
+					DamageDisplay::DisplayDamage(monsterinfo.skilldmg, other->GetOwner()->GetComponent<Transform>()->GetPosition(), damageoffset, damagecnt);
 				}
 			}
 
