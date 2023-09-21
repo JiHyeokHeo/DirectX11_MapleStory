@@ -5,20 +5,15 @@ namespace jns::MesoPooling
 {
 	class MesoObjectPooling
 	{
-	private:
-		MesoObjectPooling(const MesoObjectPooling& ref) {}
-		MesoObjectPooling& operator=(const MesoObjectPooling& ref) {}
-
 	public:
 		MesoObjectPooling() {};
 		~MesoObjectPooling() {};
 
-		static MesoObjectPooling*& GetInstance()
+		static MesoObjectPooling& GetInstance()
 		{
-			static MesoObjectPooling* instance = nullptr;
-			return instance;
+			static std::unique_ptr<MesoObjectPooling> instance = std::make_unique<MesoObjectPooling>();
+			return *instance;
 		}
-
 		void InitializePool()
 		{
 			if (isInitialized == false)
@@ -27,11 +22,13 @@ namespace jns::MesoPooling
 				{
 					BloodyMeso* meso = new BloodyMeso();
 					meso->Initialize();
-					mesoPool.push_back(std::shared_ptr<GameObject>(meso));
+					mesoPool.push_back(meso);
 				}
 				isInitialized = true;
 			}
 		}
+
+		void Release();
 
 		GameObject* CreateMesoObject();
 		void RecycleMesoObject(GameObject* gameObject);
@@ -39,6 +36,6 @@ namespace jns::MesoPooling
 		bool isInitialized = false;
 		int maxPoolSize = 20;
 		int defaultCapacity = 15;
-		std::list<std::shared_ptr<GameObject>> mesoPool;
+		std::list<GameObject*> mesoPool;
 	};
 }

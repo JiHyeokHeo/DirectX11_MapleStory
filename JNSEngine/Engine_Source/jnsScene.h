@@ -43,6 +43,26 @@ namespace jns
 
 			return findObjs;
 		}
+
+		template <typename T>
+		std::vector<T*> FindObjects(eLayerType type)
+		{
+			std::vector<T*> findObjs = {};
+			
+			std::vector<T*> gameObjs = {};
+			gameObjs = mLayers[(UINT)type].GetGameObjects();
+
+			for (GameObject* obj : gameObjs)
+			{
+				T* buff = dynamic_cast<T*>(obj);
+
+					if (buff != nullptr)
+						findObjs.push_back(buff);
+			}
+
+			return findObjs;
+		}
+
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 		std::vector<Layer>& GetLayers() { return mLayers; }
 		void SetSceneType(jns::enums::eSceneType type) { mSceneType = type; }

@@ -5,6 +5,7 @@
 #include "jnsPierreBoss.h"
 #include "jnsPierreScript.h"
 #include "jnsPierreHat.h"
+#include "jnsMesoObjectPooling.h"
 
 namespace jns
 {
@@ -55,6 +56,17 @@ namespace jns
 		minimapCameraObj->TurnOnLayer(eLayerType::Monster);
 		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
 		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
+
+
+		MesoPooling::MesoObjectPooling::GetInstance().InitializePool();
+		
+		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+
+		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+
 	}
 	void RutabysPierreBossScene::Update()
 	{

@@ -162,6 +162,7 @@
     <ClInclude Include="CommonSceneInclude.h" />
     <ClInclude Include="DamageDisplay.h" />
     <ClInclude Include="DamageInterface.h" />
+    <ClInclude Include="jnsAttackColScript.h" />
     <ClInclude Include="jnsBGobject.h" />
     <ClInclude Include="jnsBloodyMeso.h" />
     <ClInclude Include="jnsDemonAttackCol.h" />
@@ -279,6 +280,7 @@
     <ClCompile Include="jnsAssainHit01.cpp" />
     <ClCompile Include="jnsAssainHit02.cpp" />
     <ClCompile Include="jnsAssainSkillParticle.cpp" />
+    <ClCompile Include="jnsAttackColScript.cpp" />
     <ClCompile Include="jnsAttackReflection.cpp" />
     <ClCompile Include="jnsBGBase.cpp" />
     <ClCompile Include="jnsBGInstance.cpp" />

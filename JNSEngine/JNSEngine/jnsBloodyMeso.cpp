@@ -1,13 +1,14 @@
 #include "jnsBloodyMeso.h"
 #include "CommonSceneInclude.h"
+#include "jnsAttackColScript.h"
 
 namespace jns
 {
 	BloodyMeso::BloodyMeso()
 		: SkillBase(eSkillType::BloodyMeso)
 	{
-		SetState(GameObject::eState::DontDestroy);
-		SetIsOnlyOne(true);
+		//SetState(GameObject::eState::DontDestroy);
+		//SetIsOnlyOne(true);
 	}
 	BloodyMeso::~BloodyMeso()
 	{
@@ -23,7 +24,8 @@ namespace jns
 		at->PlayAnimation(L"Rogue_SkillBloodyParket", true);
 		tr->SetScale(Vector3(500.0f, 500.0f, 1.0f));
 		cd->SetSize(Vector2(0.1f, 0.1f));
-		SkillBase::Initialize();
+
+		AddComponent<AttackColScript>();
 	}
 	void BloodyMeso::Update()
 	{
@@ -59,5 +61,31 @@ namespace jns
 	}
 	void BloodyMeso::StartSkillAnimation()
 	{
+	}
+	void BloodyMeso::Activate()
+	{
+		if (this->GetState() == eState::Paused)
+			return;
+
+		std::vector<GameObject*> monsters = {};
+		monsters = GetComponent<AttackColScript>()->GetMonsterObjects();
+
+		for (GameObject* obj : monsters)
+		{
+			Vector3 monsterPos = obj->GetComponent<Transform>()->GetPosition();
+			
+			float v = 100.0f;
+			float theta = 30.0f;
+			float g = 9.8f;
+			float t = 1.0f; // 시작 시간
+
+			
+			float x = v * t * cos(theta);
+			float y = v * t * sin(theta) - (0.5f * g * t * t);
+
+			Vector3 newPos = monsterPos + Vector3(x, y, 0.0f);
+
+			tr->SetPosition(monsterPos);
+		}
 	}
 }

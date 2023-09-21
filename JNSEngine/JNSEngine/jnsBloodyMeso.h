@@ -17,6 +17,8 @@ namespace jns
 
 		virtual void CompleteSkillAnimation() override;
 		virtual void StartSkillAnimation() override;
+
+		virtual void Activate() override;
 	private:
 		class Collider2D* cd;
 	};

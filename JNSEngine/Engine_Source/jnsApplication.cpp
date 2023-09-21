@@ -10,6 +10,7 @@
 #include "jnsFontWrapper.h"
 #include "..\\JNSEngine\jnsWeaponManager.h"
 
+
 namespace jns
 {
 	Application::Application()
@@ -23,7 +24,7 @@ namespace jns
 
 	Application::~Application()
 	{
-
+		
 	}
 
 	void Application::Run()

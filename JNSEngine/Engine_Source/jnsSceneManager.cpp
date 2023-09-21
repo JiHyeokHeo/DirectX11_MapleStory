@@ -3,7 +3,7 @@
 #include "jnsCollisionManager.h"
 #include "..\\JNSEngine\ObjectTemplate.h"
 #include "jnsResources.h"
-
+#include "..\\JNSEngine\jnsMesoObjectPooling.h"
 
 namespace jns
 {
@@ -51,6 +51,9 @@ namespace jns
 
 	void SceneManager::Release()
 	{
+		// 풀링 매니저 릴리즈
+		MesoPooling::MesoObjectPooling::GetInstance().Release();
+
 		for (auto& iter : mScenes)
 		{
 			delete iter.second;

@@ -7,6 +7,8 @@
 #include "jnsRenderer.h"
 #include "CommonSceneInclude.h"
 #include "jnsTomb.h"
+#include "jnsMesoObjectPooling.h"
+
 
 namespace jns
 {
@@ -245,6 +247,11 @@ namespace jns
         if (Input::GetKeyDown(SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillKeyState()))
         {
             mPlayerState = ePlayerState::Attack;
+        }
+
+        if (Input::GetKeyDown(eKeyCode::D))
+        {
+            MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
         }
     }
 
@@ -514,10 +521,7 @@ namespace jns
 
     void PlayerScript::Attack()
     {
-        if (Input::GetKeyDown(eKeyCode::D))
-        {
-            
-        }
+        CheckAttackSkills();
   
     }
 
@@ -794,14 +798,17 @@ namespace jns
     }
     void PlayerScript::CheckIsAssainHitUsed()
     {
-		if (mPlayerSkillInfo.isAssainHit1Used == false)
-		{
-			at->PlayAnimation(L"CharactorCharAssain1Hit", true);
-		}
-		else if (mPlayerSkillInfo.isAssainHit1Used == true)
-		{
-			at->PlayAnimation(L"CharactorCharAssain2Hit", true);
-		}
+        if (Input::GetKeyDown(SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillKeyState()))
+        {
+			if (mPlayerSkillInfo.isAssainHit1Used == false)
+			{
+				at->PlayAnimation(L"CharactorCharAssain1Hit", true);
+			}
+			else if (mPlayerSkillInfo.isAssainHit1Used == true)
+			{
+				at->PlayAnimation(L"CharactorCharAssain2Hit", true);
+			}
+        }
     }
 
     void PlayerScript::CheckInvisibleTime()

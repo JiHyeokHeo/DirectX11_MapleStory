@@ -32,6 +32,8 @@ namespace jns
 		virtual void CompleteSkillAnimation() = 0;
 		virtual void StartSkillAnimation() = 0;
 
+		virtual void Activate() {};
+
 		bool GetIsRenderOn() { return isRenderOn; }
 
 		virtual void SetSkillMode(bool isRender)

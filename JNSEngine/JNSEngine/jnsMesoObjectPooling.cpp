@@ -4,15 +4,19 @@
 
 namespace jns::MesoPooling
 {
+    void MesoObjectPooling::Release()
+    {
+        mesoPool.clear();
+    }
     GameObject* MesoObjectPooling::CreateMesoObject()
     {
         if (!mesoPool.empty())
         {
-            std::shared_ptr<GameObject> gameObject = mesoPool.front();
+            GameObject* gameObject = mesoPool.front();
             mesoPool.pop_front();
             Scene* activeScene = SceneManager::GetActiveScene();
-            activeScene->AddGameObject(gameObject->GetLayerType(), gameObject.get());
-            return gameObject.get();
+            activeScene->AddGameObject(gameObject->GetLayerType(), gameObject);
+            return gameObject;
         }
         else
         {
@@ -30,6 +34,8 @@ namespace jns::MesoPooling
         /*gameObject->Reset();*/
         Scene* activeScene = SceneManager::GetActiveScene();
         activeScene->DeleteGameObject(gameObject->GetLayerType(), gameObject);
-        mesoPool.push_back(std::shared_ptr<GameObject>(gameObject));
+        mesoPool.push_back(gameObject);
     }
+
+   
 }

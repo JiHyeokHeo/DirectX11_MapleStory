@@ -96,6 +96,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     jns::SceneManager::Release();
     jns::Fmod::Release();
     jns::FontWrapper::Release();
+    
     // 스마트 포인터 사용
     //jns::SkillManager::Release();
     //jns::WeaponManager::Release();
