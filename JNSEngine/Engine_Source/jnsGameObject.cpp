@@ -84,4 +84,7 @@ namespace jns
 			script->Render();
 		}
 	}
+	void GameObject::Activate()
+	{
+	}
 }

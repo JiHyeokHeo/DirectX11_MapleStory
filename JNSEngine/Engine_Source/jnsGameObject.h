@@ -25,6 +25,7 @@ namespace jns
 		virtual void LateUpdate();
 		virtual void Render();
 		
+		virtual void Activate();
 
 		template <typename T>
 		T* GetComponent()

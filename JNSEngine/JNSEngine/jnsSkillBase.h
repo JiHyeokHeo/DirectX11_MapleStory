@@ -32,7 +32,7 @@ namespace jns
 		virtual void CompleteSkillAnimation() = 0;
 		virtual void StartSkillAnimation() = 0;
 
-		virtual void Activate() {};
+		virtual void Activate() override;
 
 		bool GetIsRenderOn() { return isRenderOn; }
 

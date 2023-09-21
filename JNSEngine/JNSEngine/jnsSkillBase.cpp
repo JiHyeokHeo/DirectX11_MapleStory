@@ -39,4 +39,7 @@ namespace jns
 			return;
 		GameObject::Render();
 	}
+	void SkillBase::Activate()
+	{
+	}
 }

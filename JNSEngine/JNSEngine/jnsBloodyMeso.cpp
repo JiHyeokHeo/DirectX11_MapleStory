@@ -12,6 +12,7 @@ namespace jns
 	}
 	BloodyMeso::~BloodyMeso()
 	{
+		//settarget.clear();
 	}
 	void BloodyMeso::Initialize()
 	{
@@ -46,6 +47,35 @@ namespace jns
 			cd->SetColliderOn(true);
 		}
 
+
+		if (targetNum < 0)
+		{
+			srand(time(NULL));
+			int t = rand();
+			
+			if (settarget.size() >= 1)
+			{
+				targetNum = t % settarget.size();
+			}
+		}
+		else
+		{
+			Vector3 monsterPos = settarget[targetNum]->GetComponent<Transform>()->GetPosition();
+
+			float v = 100.0f;
+			float theta = 30.0f;
+			float g = 9.8f;
+			float t = 1.0f; // 시작 시간
+
+
+			float x = v * t * cos(theta) *Time::DeltaTime();
+			float y = v * t * sin(theta) - (0.5f * g * t * t) * Time::DeltaTime();
+
+			Vector3 newPos = monsterPos + Vector3(x, y, 0.0f);
+			tr->SetPosition(newPos);
+		}
+		
+
 		SkillBase::Update();
 	}
 	void BloodyMeso::LateUpdate()
@@ -68,24 +98,24 @@ namespace jns
 			return;
 
 		std::vector<GameObject*> monsters = {};
-		monsters = GetComponent<AttackColScript>()->GetMonsterObjects();
+		AttackColScript* attackColScript = GetComponent<AttackColScript>();
+		
+		attackColScript->UpdateMonsters();
+		monsters = attackColScript->GetMonsterObjects();
+
 
 		for (GameObject* obj : monsters)
 		{
-			Vector3 monsterPos = obj->GetComponent<Transform>()->GetPosition();
-			
-			float v = 100.0f;
-			float theta = 30.0f;
-			float g = 9.8f;
-			float t = 1.0f; // 시작 시간
+			MonsterBase* base = dynamic_cast<MonsterBase*>(obj);
 
-			
-			float x = v * t * cos(theta);
-			float y = v * t * sin(theta) - (0.5f * g * t * t);
-
-			Vector3 newPos = monsterPos + Vector3(x, y, 0.0f);
-
-			tr->SetPosition(monsterPos);
+			if (base == nullptr)
+			{
+				return;
+			}
+			else
+			{
+				settarget.push_back(base);
+			}
 		}
 	}
 }

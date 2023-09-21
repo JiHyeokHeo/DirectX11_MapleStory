@@ -249,9 +249,9 @@ namespace jns
             mPlayerState = ePlayerState::Attack;
         }
 
-        if (Input::GetKeyDown(eKeyCode::D))
+        if (Input::GetKeyDown(SkillManager::FindSkillData(L"BloodyMeso")->GetSkillKeyState()))
         {
-            MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+            MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject()->Activate();
         }
     }
 
@@ -522,7 +522,6 @@ namespace jns
     void PlayerScript::Attack()
     {
         CheckAttackSkills();
-  
     }
 
     void PlayerScript::Hitted()

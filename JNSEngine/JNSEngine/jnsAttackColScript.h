@@ -6,13 +6,17 @@ namespace jns
 	class AttackColScript : public Script
 	{
 	public:
+		AttackColScript();
+		~AttackColScript();
 		virtual void Update() override;
 
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 
-		std::vector<GameObject*> GetMonsterObjects() { return MonsterGameObjects; }
+		void UpdateMonsters();
+
+		std::vector<GameObject*>& GetMonsterObjects() { return MonsterGameObjects; }
 	private:
 		std::vector<GameObject*> MonsterGameObjects;
 	};

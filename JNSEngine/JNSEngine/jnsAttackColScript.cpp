@@ -3,11 +3,15 @@
 
 namespace jns
 {
+	AttackColScript::AttackColScript()
+	{
+	}
+	AttackColScript::~AttackColScript()
+	{
+		//MonsterGameObjects.clear();
+	}
 	void AttackColScript::Update()
 	{
-		// 상시로 몬스터 갱신
-		Scene* scene = SceneManager::GetActiveScene();
-		MonsterGameObjects = (scene->FindObjects<GameObject>(eLayerType::Monster));
 	}
 
 	void AttackColScript::OnCollisionEnter(Collider2D* other)
@@ -19,5 +23,10 @@ namespace jns
 	}
 	void AttackColScript::OnCollisionExit(Collider2D* other)
 	{
+	}
+	void AttackColScript::UpdateMonsters()
+	{
+		Scene* scene = SceneManager::GetActiveScene();
+		MonsterGameObjects = (scene->FindObjects<GameObject>(eLayerType::Monster));
 	}
 }

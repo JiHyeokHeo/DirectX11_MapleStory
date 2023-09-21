@@ -1,5 +1,6 @@
 #pragma once
 #include "jnsBloodyMeso.h"
+#include "jnsSceneManager.h"
 
 namespace jns::MesoPooling
 {
@@ -22,6 +23,8 @@ namespace jns::MesoPooling
 				{
 					BloodyMeso* meso = new BloodyMeso();
 					meso->Initialize();
+					Scene* activeScene = SceneManager::GetActiveScene();
+					activeScene->AddGameObject(meso->GetLayerType(), meso);
 					mesoPool.push_back(meso);
 				}
 				isInitialized = true;

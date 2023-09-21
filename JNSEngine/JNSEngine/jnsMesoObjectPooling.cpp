@@ -6,7 +6,7 @@ namespace jns::MesoPooling
 {
     void MesoObjectPooling::Release()
     {
-        mesoPool.clear();
+        //mesoPool.clear();
     }
     GameObject* MesoObjectPooling::CreateMesoObject()
     {
@@ -14,8 +14,6 @@ namespace jns::MesoPooling
         {
             GameObject* gameObject = mesoPool.front();
             mesoPool.pop_front();
-            Scene* activeScene = SceneManager::GetActiveScene();
-            activeScene->AddGameObject(gameObject->GetLayerType(), gameObject);
             return gameObject;
         }
         else

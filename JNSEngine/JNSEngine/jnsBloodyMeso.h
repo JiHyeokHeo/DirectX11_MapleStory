@@ -21,6 +21,8 @@ namespace jns
 		virtual void Activate() override;
 	private:
 		class Collider2D* cd;
+		std::vector<GameObject*> settarget;
+		float targetNum = -99;
 	};
 
 }
