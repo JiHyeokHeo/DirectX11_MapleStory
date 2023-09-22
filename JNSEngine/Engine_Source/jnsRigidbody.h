@@ -21,6 +21,8 @@ namespace jns
 		void SetMass(float mass) { mMass = mass; }
 		bool GetGround() { return mbGround; }
 
+		void SetIsRigidBodyOn(bool mRigidBody) { mRigidBodyOn = mRigidBody; }
+
 		Vector3 GetVelocity() {	return mVelocity; }
 		void SetVelocity(Vector3 vel) { mVelocity = vel; }
 		void AddForce(Vector3 force);
@@ -35,6 +37,7 @@ namespace jns
 		Vector3 mGravity;
 		float mFriction;
 		bool mbGround;
+		bool mRigidBodyOn;
 		RigidBody* mRigidBody;
 	};
 

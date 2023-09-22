@@ -15,10 +15,11 @@ namespace jns
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 		void UpdateMonsters();
-
+		void CheckMonster(Collider2D* other);
 		std::vector<GameObject*>& GetMonsterObjects() { return MonsterGameObjects; }
 	private:
 		std::vector<GameObject*> MonsterGameObjects;
+		float mTime;
 	};
 }
 

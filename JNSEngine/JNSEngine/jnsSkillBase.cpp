@@ -11,6 +11,7 @@ namespace jns
 		, mPlayer(nullptr)
 		, mPlayerScript(nullptr)
 	{
+		SetType(eLayerType::Skill);
 		mr = AddComponent<MeshRenderer>();
 		at = AddComponent<Animator>();
 		tr = GetComponent<Transform>();

@@ -26,6 +26,8 @@ namespace jns
 		virtual void Render();
 		
 		virtual void Activate();
+		virtual void DeActivate();
+		virtual void SetPosition(Vector3 pos);
 
 		template <typename T>
 		T* GetComponent()

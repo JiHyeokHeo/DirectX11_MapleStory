@@ -60,12 +60,12 @@ namespace jns
 
 		MesoPooling::MesoObjectPooling::GetInstance().InitializePool();
 		
-		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
-		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
 
-		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
-		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
-		MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
+		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
 
 	}
 	void RutabysPierreBossScene::Update()

@@ -8,9 +8,9 @@ namespace jns
 	void SkillManager::Initialize()
 	{
 		// 만약 추후에 파싱을 하게 된다면 이름이든 이런식으로 연결해서 정보를 생성할수 있을듯 싶다. // 아직 할 계획은 없지만 추후에 여력 있으면 해볼 예정
-		mSkillData[L"Normal_Assain_First_Attack"] = std::make_shared<SkillData>(L"Normal_Assain_First_Attack", 10, 0.5f, 4, eKeyCode::NONE );
-		mSkillData[L"Normal_Assain_Second_Attack"] = std::make_shared<SkillData>(L"Normal_Assain_Second_Attack", 10, 1.0f, 4, eKeyCode::NONE);
-		mSkillData[L"BloodyMeso"] = std::make_shared<SkillData>(L"BloodyMeso", 5, 1.0f, 1, eKeyCode::NONE);
+		mSkillData[L"Normal_Assain_First_Attack"] = std::make_shared<SkillData>(L"Normal_Assain_First_Attack", 1, 0.5f, 4, eKeyCode::NONE );
+		mSkillData[L"Normal_Assain_Second_Attack"] = std::make_shared<SkillData>(L"Normal_Assain_Second_Attack", 1, 1.0f, 4, eKeyCode::NONE);
+		mSkillData[L"BloodyMeso"] = std::make_shared<SkillData>(L"BloodyMeso", 1, 1.0f, 1, eKeyCode::NONE);
 		mSkillData[L"Rogue_SkillflashJump_01"] = std::make_shared<SkillData>(L"Rogue_SkillflashJump_01", 0, 1.0f, 0, eKeyCode::NONE);
 		mSkillData[L"Rogue_SkillflashJump_02"] = std::make_shared<SkillData>(L"Rogue_SkillflashJump_02", 0, 1.0f, 0, eKeyCode::NONE);
 	}

@@ -130,7 +130,20 @@ namespace jns
 			}
 		}
 
-		
+		if (other->GetOwner()->GetName() == L"BloodyMeso")
+		{
+			BloodyMeso* meso = dynamic_cast<BloodyMeso*>(other->GetOwner());
+			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+			if (rb != nullptr)
+			{
+				if (meso->GetIsActive() == false)
+				{
+					rb->SetGround(true);
+
+				}
+			}
+		}
+
 		if (other->GetOwner()->GetName() == L"Tomb")
 		{
 			Tomb* tomb = dynamic_cast<Tomb*>(other->GetOwner());

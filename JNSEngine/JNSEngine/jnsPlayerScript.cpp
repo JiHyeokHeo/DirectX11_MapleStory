@@ -251,7 +251,7 @@ namespace jns
 
         if (Input::GetKeyDown(SkillManager::FindSkillData(L"BloodyMeso")->GetSkillKeyState()))
         {
-            MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject()->Activate();
+            MesoPooling::MesoObjectPooling::GetInstance().ActiveMesoObject();
         }
     }
 

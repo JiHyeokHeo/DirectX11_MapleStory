@@ -4,11 +4,21 @@
 
 namespace jns
 {
+	bool ComparePosition(GameObject* a, GameObject* b)
+	{
+		Vector3 playerPos = SceneManager::GetPlayer()->GetComponent<Transform>()->GetPosition();
+
+		if (abs(a->GetComponent<Transform>()->GetPosition().x - playerPos.x)
+			>= abs(b->GetComponent<Transform>()->GetPosition().x - playerPos.x))
+			return false;
+
+		return true;
+	}
+
 	BloodyMeso::BloodyMeso()
 		: SkillBase(eSkillType::BloodyMeso)
 	{
-		//SetState(GameObject::eState::DontDestroy);
-		//SetIsOnlyOne(true);
+		
 	}
 	BloodyMeso::~BloodyMeso()
 	{
@@ -16,8 +26,17 @@ namespace jns
 	}
 	void BloodyMeso::Initialize()
 	{
-		isRenderOn = true;
+		if (isInitialize)
+			return;
+
+		isInitialize = true;
+
+
 		cd = AddComponent<Collider2D>();
+		//cd->SetColliderOn(false);
+		
+		
+		AddComponent<RigidBody>()->SetGround(false);
 		SetName(L"BloodyMeso");
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
@@ -27,6 +46,10 @@ namespace jns
 		cd->SetSize(Vector2(0.1f, 0.1f));
 
 		AddComponent<AttackColScript>();
+		tr->SetPosition(Vector3(-300.0f, -400.0f, 2.0f));
+
+		// 데이터는 맨 마지막 초기화
+		SetInitData();
 	}
 	void BloodyMeso::Update()
 	{
@@ -36,15 +59,24 @@ namespace jns
 		//mPos.z = 0.0f;
 		//SetPosition(mPos);
 
-		if (isRenderOn == false)
+		RigidBody* rb = GetComponent<RigidBody>();
+
+		if (rb->GetGround() == false)
 		{
-			cd->SetSize(Vector2::Zero);
-			cd->SetColliderOn(false);
+			Vector3 mesoPos = tr->GetPosition();
+			mAirTime += Time::DeltaTime();
+			
+
+			if (mAirTime <= airMaxTime)
+			{
+				mesoPos.y += 10.0f * Time::DeltaTime();
+				tr->SetPosition(mesoPos);
+			}
 		}
 		else
 		{
-			cd->SetSize(Vector2(0.1f, 0.1f));
-			cd->SetColliderOn(true);
+			cd->SetColliderOn(false);
+			mAirTime = 999.0f;
 		}
 
 
@@ -55,24 +87,82 @@ namespace jns
 			
 			if (settarget.size() >= 1)
 			{
-				targetNum = t % settarget.size();
+				targetNum = t % 4;
 			}
 		}
 		else
 		{
+			rb->SetGround(false);
+			rb->SetIsRigidBodyOn(false);
 			Vector3 monsterPos = settarget[targetNum]->GetComponent<Transform>()->GetPosition();
+			
+			if (settarget[targetNum]->GetState() == GameObject::eState::Active)
+			{
 
-			float v = 100.0f;
-			float theta = 30.0f;
-			float g = 9.8f;
-			float t = 1.0f; // 시작 시간
+				/*if (angle <= 360.0f)
+				{
+					angle += 30 * Time::DeltaTime();
+				}
+				else
+				{
+					angle = 0.0f;
+				}*/
+				mTime += Time::DeltaTime();
+				Vector3 newPos = {};
+
+				if (mTime <= 1.0f)
+				{
+					Vector3 pos = tr->GetPosition();
+
+					int randangle = rand();
+					if (monsterPos.x >= tr->GetPosition().x)
+					{
+						randangle %= 180;
+					}
+					else
+					{
+						randangle %= 180;
+						randangle += 180;
+					}
+
+					angle = randangle;
+					angle++;
+
+					int updown = rand();
+					updown %= 2;
+
+					float g = -99;
+					if (updown == 0)
+					{
+						g = -9.8f;
+
+					}
+					else
+					{
+						g = 9.8f;
+					}
+					float t = Time::DeltaTime();
+					float y = velocity * cos(DegreeToRadian(angle)) * t;
+					float x = velocity * sin(DegreeToRadian(angle)) * t - 0.5f * t * g * t;
+					newPos = tr->GetPosition() + Vector3(x, y, 0.0f);
+				}
+				else
+				{
+					newPos = tr->GetPosition();
+				}
 
 
-			float x = v * t * cos(theta) *Time::DeltaTime();
-			float y = v * t * sin(theta) - (0.5f * g * t * t) * Time::DeltaTime();
+				Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 10.0f * Time::DeltaTime());
 
-			Vector3 newPos = monsterPos + Vector3(x, y, 0.0f);
-			tr->SetPosition(newPos);
+				Vector3 pos = tr->GetPosition();
+
+				if (pos.x <= monsterPos.x + 100.0f && pos.x >= monsterPos.x - 100.0f)
+				{
+					cd->SetColliderOn(true);
+				}
+
+				tr->SetPosition(interpolatedPos);
+			}
 		}
 		
 
@@ -85,6 +175,11 @@ namespace jns
 	void BloodyMeso::Render()
 	{
 		SkillBase::Render();
+
+		if (isDamageDisplayed == true)
+		{
+			MesoPooling::MesoObjectPooling::GetInstance().RecycleMesoObject(this);
+		}
 	}
 	void BloodyMeso::CompleteSkillAnimation()
 	{
@@ -96,7 +191,8 @@ namespace jns
 	{
 		if (this->GetState() == eState::Paused)
 			return;
-
+		cd->SetColliderOn(true);
+		active = true;
 		std::vector<GameObject*> monsters = {};
 		AttackColScript* attackColScript = GetComponent<AttackColScript>();
 		
@@ -117,5 +213,35 @@ namespace jns
 				settarget.push_back(base);
 			}
 		}
+
+		std::sort(settarget.begin(), settarget.end(), ComparePosition);
+	}
+	void BloodyMeso::DeActivate()
+	{
+		SetInitData();
+	}
+	void BloodyMeso::SetPosition(Vector3 pos)
+	{
+		tr->SetPosition(pos);
+	}
+
+	// 데이터 초기화
+	void BloodyMeso::SetInitData()
+	{
+		RigidBody* rb = GetComponent<RigidBody>();
+		rb->SetGround(false);
+		rb->SetIsRigidBodyOn(true);
+		settarget.clear();
+		isRenderOn = true;
+		targetNum = -99;
+		velocity = 100.0f;
+		angle = 0.0f;
+
+		mAirTime = 0.0f;
+		airMaxTime = 0.5f;
+
+		active = false;
+		mTime = 0.0f;
+		isDamageDisplayed = false;
 	}
 }

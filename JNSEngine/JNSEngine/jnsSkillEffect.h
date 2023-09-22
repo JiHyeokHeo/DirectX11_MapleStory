@@ -24,6 +24,7 @@ namespace jns
 		float renderTime = 0.0f;
 		std::wstring animationname = {};
 		class Animator* at;
+		bool isMade = false;
 	};
 
 }

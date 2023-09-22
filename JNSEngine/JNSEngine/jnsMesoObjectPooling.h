@@ -21,20 +21,22 @@ namespace jns::MesoPooling
 			{
 				for (int i = 0; i < maxPoolSize; ++i)
 				{
-					BloodyMeso* meso = new BloodyMeso();
+					/*BloodyMeso* meso = new BloodyMeso();
 					meso->Initialize();
-					Scene* activeScene = SceneManager::GetActiveScene();
-					activeScene->AddGameObject(meso->GetLayerType(), meso);
-					mesoPool.push_back(meso);
+					mesoPool.push_back(meso);*/
 				}
 				isInitialized = true;
 			}
 		}
 
+		void ActiveMesoObject();
+
 		void Release();
 
 		GameObject* CreateMesoObject();
 		void RecycleMesoObject(GameObject* gameObject);
+		
+
 	private:
 		bool isInitialized = false;
 		int maxPoolSize = 20;

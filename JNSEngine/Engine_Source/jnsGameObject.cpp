@@ -87,4 +87,10 @@ namespace jns
 	void GameObject::Activate()
 	{
 	}
+	void GameObject::DeActivate()
+	{
+	}
+	void GameObject::SetPosition(Vector3 pos)
+	{
+	}
 }

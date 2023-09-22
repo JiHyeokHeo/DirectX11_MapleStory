@@ -10,6 +10,7 @@
 #include "jnsPlayerScript.h"
 #include "jnsSkillEffect.h"
 #include "ObjectTemplate.h"
+#include "jnsMesoObjectPooling.h"
 
 namespace jns
 {
@@ -22,9 +23,9 @@ namespace jns
 			CreateDamageControls(damageStr, position, damagecnt, offsetYCord);
 		}
 
-		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* tr, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool bosshealthup = false, bool isreflect = false)
+		static void DamageToMonsterWithSkill(MonsterCommonInfo& info, Collider2D* other, Transform* monstertr, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool bosshealthup = false, bool isreflect = false)
 		{
-			SkillDamage(info, other, damageoffset, tr, bosshealthup, isreflect);
+			SkillDamage(info, other, damageoffset, monstertr, bosshealthup, isreflect);
 		}
 
 		static void DamageToPlayer(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset = Vector2(0.0f, 50.0f), bool isskilldmg = false, int damagecnt = 1, bool isreflect = false)
@@ -81,11 +82,16 @@ namespace jns
 
 		static void SkillDamage(MonsterCommonInfo& info, Collider2D* other, Vector2 damageoffset, Transform* tr, bool bosshealthup, bool isreflect)
 		{
+			// tr 은 몬스터 포지션
+			// other 스킬
 			SkillBase* skillbase = dynamic_cast<SkillBase*>(other->GetOwner());
 
 			SkillBase::eSkillType skillType = skillbase->GetSkillType();
 			int skillDmg = 0;
 			int skillCnt = 0;
+
+			bool isCoin = false;
+
 			if (skillType == SkillBase::eSkillType::AssainHit01)
 			{
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_First_Attack")->GetSkillDamage();
@@ -95,36 +101,32 @@ namespace jns
 				skillDmg = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamage();
 				skillCnt = SkillManager::FindSkillData(L"Normal_Assain_Second_Attack")->GetSkillDamageCnt();
 			}
-
-			if (bosshealthup == false)
+			else if (skillType == SkillBase::eSkillType::BloodyMeso)
 			{
-				if (isreflect == false)
-				{
-					// 추후에 연산 추가합시다~ 방어력 + 알파
-					info.hp -= skillDmg;
-					info.isChasing = true;
-				}
-				else if(isreflect == true)
-				{
-					// 리플렉트 상태이면 플레이어 데미지 적용
-					PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
-					// 즉사
-					skillDmg *= 1000.0f;
-					player->PlayerDamaged(skillDmg);
-				}
-			}
-			else if (bosshealthup)
-			{
-				if (info.maxhp >= info.hp)
-				{
-					info.hp += skillDmg;
-				}
-				info.isChasing = true;
+				isCoin = true;
+				skillDmg = SkillManager::FindSkillData(L"BloodyMeso")->GetSkillDamage();
+				skillCnt = SkillManager::FindSkillData(L"BloodyMeso")->GetSkillDamageCnt();
 			}
 
+			if (isCoin == false)
+			{
+				DamageCalculate(info, bosshealthup, tr, isreflect, skillDmg);
+			}
+			else
+			{
+				BloodyMeso* meso = dynamic_cast<BloodyMeso*>(other->GetOwner());
+				
+				if (meso->GetIsActive() == true)
+				{
+					
+					DamageCalculate(info, bosshealthup, tr, isreflect, skillDmg);
+				}
+			}
 
 			srand(time(NULL));
 			Vector3 position = other->GetHitColPos();
+
+			
 			for (int i = 0; i < skillCnt; i++)
 			{
 				float t = rand() % 40;
@@ -132,9 +134,53 @@ namespace jns
 				// -10부터 10 사이
 				position.x += t;
 				position.y += t;
-				object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
+
+				if (isCoin == false)
+				{
+					object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
+				}
+				else if (isCoin == true)
+				{
+					BloodyMeso* meso = dynamic_cast<BloodyMeso*>(other->GetOwner());
+					if (meso->GetIsActive() == true)
+					{
+						meso->SetDamageDone(true);
+						object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
+					}
+				}
 			}
-			DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
+			
+
+			if (isCoin == false)
+			{
+				Vector3 monsterPos = tr->GetPosition();
+				for (int i = 0; i < skillCnt; i++)
+				{
+					float t = rand() % 40;
+					t -= 20;
+					// -10부터 10 사이
+				
+					monsterPos.x += t;
+
+					MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject()->SetPosition(monsterPos);
+				}
+			}
+			
+			if (isCoin == false)
+			{
+				if (skillCnt != 0)
+				{
+					DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
+				}
+			}
+			else
+			{
+				BloodyMeso* meso = dynamic_cast<BloodyMeso*>(other->GetOwner());
+				if (meso->GetIsActive() == true)
+				{
+					DamageDisplay::DisplayDamage(skillDmg / skillCnt, tr->GetPosition(), damageoffset, skillCnt);
+				}
+			}
 		}
 
 		static void PlayerDamage(MonsterCommonInfo& monsterinfo, Collider2D* other, Vector2 damageoffset, bool isreflect, int damagecnt, bool isskilldmg)
@@ -170,5 +216,36 @@ namespace jns
 			}
 
 		}
+
+		static void DamageCalculate(MonsterCommonInfo& info, bool bosshealthup, Transform* tr, bool isreflect, int skillDmg)
+		{
+			if (bosshealthup == false)
+			{
+				if (isreflect == false)
+				{
+					// 추후에 연산 추가합시다~ 방어력 + 알파
+					info.hp -= skillDmg;
+					info.isChasing = true;
+				}
+				else if (isreflect == true)
+				{
+					// 리플렉트 상태이면 플레이어 데미지 적용
+					PlayerScript* player = tr->GetOwner()->GetComponent<PlayerScript>();
+					// 즉사
+					skillDmg *= 1000.0f;
+					player->PlayerDamaged(skillDmg);
+				}
+			}
+			else if (bosshealthup)
+			{
+				if (info.maxhp >= info.hp)
+				{
+					info.hp += skillDmg;
+				}
+				info.isChasing = true;
+			}
+		};
 	};
+
+
 }

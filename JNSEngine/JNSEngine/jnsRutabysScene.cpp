@@ -29,6 +29,7 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Tomb, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Skill, eLayerType::Ground, true);
 
 		object::Instantiate<Tomb>(jns::enums::eLayerType::Tomb, Vector3::Zero);
 		

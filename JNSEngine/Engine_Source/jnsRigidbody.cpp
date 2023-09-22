@@ -15,6 +15,7 @@ namespace jns
 	{
 		mLimitedVelocity.x = 200.0f;
 		mLimitedVelocity.y = 1000.0f;
+		mRigidBodyOn = true;
 		mbGround = false;
 		mGravity = Vector3(0.0f, 1400.0f ,0.0f);
 		mFriction = 100.0f;
@@ -27,6 +28,9 @@ namespace jns
 	}
 	void RigidBody::Update()
 	{
+		if (mRigidBodyOn == false)
+			return;
+
 		mAccelation = mForce / mMass;
 
 		// 속도에 가속도를 더해준다.

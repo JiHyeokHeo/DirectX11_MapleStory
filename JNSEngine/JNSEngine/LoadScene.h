@@ -41,7 +41,7 @@ namespace jns
 		SceneManager::CreateScene<RutabysPierreBossScene>(jns::enums::eSceneType::RutabysPierreBoss);
 		SceneManager::CreateScene<RutabysScene>(jns::enums::eSceneType::RutabysMain);
 
-		SceneManager::LoadScene(jns::enums::eSceneType::RutabysPierreBoss);
+		SceneManager::LoadScene(jns::enums::eSceneType::RutabysMob);
 	}
 	
 	void InitializeLoadingScene()

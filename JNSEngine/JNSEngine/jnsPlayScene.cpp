@@ -45,6 +45,7 @@ namespace jns
 
 	void PlayScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Skill, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		//CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
 		//CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::UI, true);
