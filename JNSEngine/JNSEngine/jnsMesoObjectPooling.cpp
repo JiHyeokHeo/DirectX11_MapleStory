@@ -36,7 +36,15 @@ namespace jns::MesoPooling
     }
     void MesoObjectPooling::Release()
     {
-        //mesoPool.clear();
+        for (GameObject* obj : mesoPool)
+        {
+            if (obj == nullptr)
+                continue;
+
+            delete obj;
+            obj = nullptr;
+        }
+        
     }
     GameObject* MesoObjectPooling::CreateMesoObject()
     {
