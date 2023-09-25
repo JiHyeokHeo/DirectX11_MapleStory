@@ -27,6 +27,8 @@ namespace jns
 		void SetVelocity(Vector3 vel) { mVelocity = vel; }
 		void AddForce(Vector3 force);
 
+
+
 	private:
 		float mMass;
 		Vector3 mForce;

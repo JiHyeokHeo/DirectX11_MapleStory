@@ -1,5 +1,8 @@
 #pragma once
 
+// GameManager // 보스 시간, 데스카운트 관리
+#include "jnsGameManager.h"
+
 #include "DamageDisplay.h"
 // Template
 #include "ObjectTemplate.h"

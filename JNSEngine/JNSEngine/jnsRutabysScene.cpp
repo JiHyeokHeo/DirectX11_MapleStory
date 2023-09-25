@@ -13,6 +13,7 @@
 #include "jnsWeaponManager.h"
 #include "jnsBloodyMeso.h"
 #include "jnsMesoObjectPooling.h"
+#include "jnsDeathCountUI.h"
 
 namespace jns
 {
@@ -152,6 +153,18 @@ namespace jns
 		// NoMove BackGround
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysMain);
 		
+
+		// DeathCnt
+		//{
+		//	DeathCountUI* cnt = new DeathCountUI();
+		//	cnt->Initialize();
+		//	Scene* scene = SceneManager::GetActiveScene();
+		//	scene->AddGameObject(eLayerType::UI, cnt);
+
+		//	DeathCount* cnt2 = new DeathCount();
+		//	cnt2->Initialize();
+		//	scene->AddGameObject(eLayerType::UI, cnt2);
+		//}
 
 
 		//minimapCameraObj->

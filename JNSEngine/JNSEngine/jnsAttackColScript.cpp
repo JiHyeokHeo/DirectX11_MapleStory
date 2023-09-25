@@ -13,16 +13,15 @@ namespace jns
 	void AttackColScript::Update()
 	{
 		
-
 	}
 
 	void AttackColScript::OnCollisionEnter(Collider2D* other)
 	{
-		
+		CheckMonster(other);
 	}
 	void AttackColScript::OnCollisionStay(Collider2D* other)
 	{
-		
+		CheckMonster(other);
 	}
 	void AttackColScript::OnCollisionExit(Collider2D* other)
 	{

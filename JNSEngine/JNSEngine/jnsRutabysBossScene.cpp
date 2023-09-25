@@ -4,6 +4,7 @@
 #include "jnsFireEffect.h"
 #include "jnsBossHp.h"
 #include "jnsBossHpBar.h"
+#include "jnsDeathCountUI.h"
 
 namespace jns
 {
@@ -15,6 +16,9 @@ namespace jns
 	}
 	void RutabysBossScene::Initialize()
 	{
+
+
+
 		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysQueenBoss);
 		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -450.0f, 4.0f), Vector3(5000.0f, 110.0f, 1.0f));
 		object::InstantiateGroundCollider<Ground>(L"LeftGround", Vector3(-1250.0f, -300.0f, 4.0f), Vector3(100.0f, 2500.0f, 1.0f));
@@ -46,6 +50,18 @@ namespace jns
 		object::Instantiate<BossHp>(eLayerType::UI, Vector3::Zero);
 		BossHpBar* bossHpBar = object::Instantiate<BossHpBar>(eLayerType::UI, Vector3::Zero);
 		bossHpBar->SetBossTarget(obj);
+
+		// 데카
+		{
+			DeathCountUI* cnt = new DeathCountUI();
+			cnt->Initialize();
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(eLayerType::UI, cnt);
+
+			DeathCount* cnt2 = new DeathCount();
+			cnt2->Initialize();
+			scene->AddGameObject(eLayerType::UI, cnt2);
+		}
 
 		// 미니맵 카메라
 
@@ -81,6 +97,9 @@ namespace jns
 	}
 	void RutabysBossScene::OnEnter()
 	{
+		// 600초 10분
+		GameManager::GetInstance().SetBossPlayTime(600);
+		GameManager::GetInstance().SetDeathCount(1);
 		PlayScene::OnEnter();
 	}
 	void RutabysBossScene::OnExit()

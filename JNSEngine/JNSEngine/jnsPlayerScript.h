@@ -90,6 +90,7 @@ namespace jns
 		PlayerSkillInfo GetPlayerSkillInfo() { return mPlayerSkillInfo; }
 		
 		void PlayerDamaged(int dmg);
+		void SetPlayerHpFull();
 
 		void SetIsNormalHit(bool isHit) { isNormalHit = isHit; }
 		bool GetIsNormalHit() { return isNormalHit; }
@@ -101,6 +102,8 @@ namespace jns
 		void SetIsSkillLock(bool isskilllock) { isSkillLocked = isskilllock; }
 
 		static int GetStaticPlayerDir() { return playerDir; }
+
+		bool GetIsDead() { return isDead; }
 	private:
 		void CheckAttackSkills();
 		void HpLerp();
@@ -201,5 +204,6 @@ namespace jns
 		float pusehdPower = 300.0f;
 
 		int clickcnt = 0;
+		bool isDead = false;
 	};
 }

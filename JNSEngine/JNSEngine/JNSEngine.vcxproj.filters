@@ -273,6 +273,8 @@
     <ClCompile Include="jnsHatObject.cpp" />
     <ClCompile Include="jnsSkillLock.cpp" />
     <ClCompile Include="jnsAttackColScript.cpp" />
+    <ClCompile Include="jnsGameManager.cpp" />
+    <ClCompile Include="jnsDeathCountUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -574,6 +576,8 @@
     <ClInclude Include="jnsHatObject.h" />
     <ClInclude Include="jnsSkillLock.h" />
     <ClInclude Include="jnsAttackColScript.h" />
+    <ClInclude Include="jnsGameManager.h" />
+    <ClInclude Include="jnsDeathCountUI.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

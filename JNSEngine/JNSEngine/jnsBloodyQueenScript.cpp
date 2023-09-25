@@ -135,7 +135,7 @@ namespace jns
 			else
 			{
 				Transform* playertr = SceneManager::GetPlayer()->GetComponent<Transform>();
-				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, playertr, Vector2(0.0f,50.0f), true);
+				DamageDisplay::DamageToMonsterWithSkill(monsterCommonInfo, other, playertr, Vector2(0.0f,50.0f), true, true);
 			}
 		}
 	}

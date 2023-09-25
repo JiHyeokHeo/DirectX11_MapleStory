@@ -6,6 +6,7 @@
 #include "jnsPierreScript.h"
 #include "jnsPierreHat.h"
 #include "jnsMesoObjectPooling.h"
+#include "jnsDeathCountUI.h"
 
 namespace jns
 {
@@ -57,10 +58,23 @@ namespace jns
 		minimapCameraObj->GetComponent<Camera>()->SetSize(10000.0f);
 		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
 
+		{
+			DeathCountUI* cnt = new DeathCountUI();
+			cnt->Initialize();
+			Scene* scene = SceneManager::GetActiveScene();
+			scene->AddGameObject(eLayerType::UI, cnt);
+
+			DeathCount* cnt2 = new DeathCount();
+			cnt2->Initialize();
+			scene->AddGameObject(eLayerType::UI, cnt2);
+		}
 
 		// 오브젝트 풀링 이니셜라이즈
+		// 게임매니저 정보 이니셜라이즈
+
 		MesoPooling::MesoObjectPooling::GetInstance().InitializePool();
-		
+		GameManager::GetInstance().InitializeMapData();
+
 		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
 		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
 

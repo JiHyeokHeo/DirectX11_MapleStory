@@ -8,6 +8,7 @@ namespace jns::MesoPooling
 	class MesoObjectPooling
 	{
 	public:
+	
 		MesoObjectPooling() {};
 		~MesoObjectPooling() {};
 

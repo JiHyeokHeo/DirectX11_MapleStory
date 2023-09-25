@@ -43,10 +43,10 @@ namespace jns
 		float airMaxTime;
 
 		bool isDamageDisplayed = false;
-
+		int randangle = 0.0f;
 		bool active;
 		float mTime;
-
+		int updown;
 	};
 
 }

@@ -65,12 +65,18 @@ namespace jns
 		{
 			Vector3 mesoPos = tr->GetPosition();
 			mAirTime += Time::DeltaTime();
-			
 
 			if (mAirTime <= airMaxTime)
 			{
-				mesoPos.y += 10.0f * Time::DeltaTime();
+				Vector3 mVelocity = rb->GetVelocity();
+				mVelocity.y -= 600.0f *Time::DeltaTime();
+				rb->SetVelocity(mVelocity);
+				mesoPos.y += 150.0f * Time::DeltaTime();
 				tr->SetPosition(mesoPos);
+			}
+			else
+			{
+				rb->SetIsRigidBodyOn(true);
 			}
 		}
 		else
@@ -115,7 +121,7 @@ namespace jns
 					{
 						Vector3 pos = tr->GetPosition();
 
-						int randangle = rand();
+						int randangle = 10.0f;
 						if (monsterPos.x >= tr->GetPosition().x)
 						{
 							randangle %= 180;
@@ -129,11 +135,10 @@ namespace jns
 						angle = randangle;
 						angle++;
 
-						int updown = rand();
-						updown %= 2;
+					
 
-						float g = -99;
-						if (updown == 0)
+						float g = -9.8f;
+					/*	if (updown == 0)
 						{
 							g = -9.8f;
 
@@ -141,7 +146,7 @@ namespace jns
 						else
 						{
 							g = 9.8f;
-						}
+						}*/
 						float t = Time::DeltaTime();
 						float y = velocity * cos(DegreeToRadian(angle)) * t;
 						float x = velocity * sin(DegreeToRadian(angle)) * t - 0.5f * t * g * t;

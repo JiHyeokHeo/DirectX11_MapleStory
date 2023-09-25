@@ -239,6 +239,11 @@ namespace jns
         mPlayerInfo.hp -= dmg;
     }
 
+    void PlayerScript::SetPlayerHpFull()
+    {
+        mPlayerInfo.hp = mPlayerInfo.maxhp;
+    }
+
     void PlayerScript::CheckAttackSkills()
     {
         if (isSkillLocked)
@@ -767,14 +772,18 @@ namespace jns
 
     void PlayerScript::CheckPlayerHp()
     {
-        if (mPlayerInfo.hp <= 0)
+        if (mPlayerInfo.hp <= 0 && isDead == false)
         {
+            isDead = true;
             isAttarcted = false;
-            Vector3 playerPos = tr->GetPosition();
             mPlayerState = ePlayerState::Die;
+            int deathcnt = GameManager::GetInstance().GetDeathCount();
+            deathcnt--;
+            GameManager::GetInstance().SetDeathCount(deathcnt);
         }
         else if(mPlayerInfo.hp > 0)
         {
+            isDead = false;
             isNotSetDeadPos = true;
         }
     }

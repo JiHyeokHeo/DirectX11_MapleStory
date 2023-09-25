@@ -146,7 +146,10 @@ namespace jns
 					{
 						meso->SetDamageDone(true);
 						
-						MesoPooling::MesoObjectPooling::GetInstance().CreateMesoEffect()->SetPosition(position);
+						if (isreflect == false)
+						{
+							MesoPooling::MesoObjectPooling::GetInstance().CreateMesoEffect()->SetPosition(position);
+						}
 					}
 				}
 			}
@@ -160,10 +163,13 @@ namespace jns
 					float t = rand() % 40;
 					t -= 20;
 					// -10부터 10 사이
-				
+					
 					monsterPos.x += t;
-
-					MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject()->SetPosition(monsterPos);
+					monsterPos.y += 10.0f;
+					if (isreflect == false)
+					{
+						MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject()->SetPosition(monsterPos);
+					}
 				}
 			}
 			

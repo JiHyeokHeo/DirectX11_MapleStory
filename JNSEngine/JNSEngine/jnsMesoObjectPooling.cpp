@@ -132,7 +132,6 @@ namespace jns::MesoPooling
         /*gameObject->Reset();*/
         gameObject->DeActivate();
 
-
         // 그냥 일반적인 포인터로 
         Scene* activeScene = SceneManager::GetActiveScene();
         activeScene->DeleteGameObject(gameObject->GetLayerType(), gameObject);

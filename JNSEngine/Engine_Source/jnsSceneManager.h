@@ -4,17 +4,6 @@
 
 namespace jns
 {
-	enum class eSceneType
-	{
-		Login,
-		Select,
-		CharactorMake,
-		StartScene1,
-		RutabysMain,
-		RutabysMob,
-		RutabysBoss,
-	};
-
 	class Player;
 	class SceneManager
 	{
