@@ -47,6 +47,14 @@ namespace jns
 	{
 		MonsterBase::Render();
 	}
+	void DemonMonster::Activate()
+	{
+		GetComponent<DemonMonsterScript>()->InitData();
+		GetComponent<DemonMonsterScript>()->ResetData();
+	}
+	void DemonMonster::DeActivate()
+	{
+	}
 	void DemonMonster::SetDirection()
 	{
 		MonsterBase::MonsterDir mMonsterDir = GetComponent<DemonMonsterScript>()->GetMonsterDirection();

@@ -9,10 +9,12 @@ namespace jns
 {
 	void DemonMonsterScript::Initialize()
 	{
+		
 		InitData();
 		at = GetOwner()->GetComponent<Animator>();
 		cd = GetOwner()->GetComponent<Collider2D>();
 		tr = GetOwner()->GetComponent<Transform>();
+		initPos = tr->GetPosition();
 		at->CompleteEvent(L"Demondm_attack") = std::bind(&DemonMonsterScript::CompleteAttack, this);
 		at->CompleteEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::CompleteDead, this);
 		cd->SetColNum(1);
@@ -238,6 +240,7 @@ namespace jns
 	}
 	void DemonMonsterScript::InitData()
 	{
+		mMonsterState = eDemonState::Idle;
 		monsterCommonInfo.hp = 10;
 		monsterCommonInfo.isChasing = false;
 	}
@@ -251,5 +254,7 @@ namespace jns
 	}
 	void DemonMonsterScript::ResetData()
 	{
+		GetOwner()->SetState(GameObject::eState::Active);
+		tr->SetPosition(initPos);
 	}
 }

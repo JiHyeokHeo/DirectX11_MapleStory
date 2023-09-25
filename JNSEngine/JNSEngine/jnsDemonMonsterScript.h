@@ -58,9 +58,9 @@ namespace jns
 
 		void CompleteAttack();
 		void CompleteDead();
-
-	private:
+		Vector3 GetInitPos() { return initPos; }
 		void ResetData();
+	private:
 
 	private:
 		class Collider2D* cd;
@@ -83,7 +83,7 @@ namespace jns
 		MonsterCommonInfo monsterCommonInfo;
 		DamageDisplay damageDisplay;
 
-		
+		Vector3 initPos;
 	};
 }
 

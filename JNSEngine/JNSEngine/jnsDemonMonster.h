@@ -14,6 +14,10 @@ namespace jns
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+
+		virtual void Activate() override;
+		virtual void DeActivate() override;
+
 		void SetDirection();
 	private:
 	};

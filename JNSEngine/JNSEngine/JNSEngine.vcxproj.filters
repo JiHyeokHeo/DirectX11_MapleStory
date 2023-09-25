@@ -275,6 +275,7 @@
     <ClCompile Include="jnsAttackColScript.cpp" />
     <ClCompile Include="jnsGameManager.cpp" />
     <ClCompile Include="jnsDeathCountUI.cpp" />
+    <ClCompile Include="jnsSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -578,6 +579,7 @@
     <ClInclude Include="jnsAttackColScript.h" />
     <ClInclude Include="jnsGameManager.h" />
     <ClInclude Include="jnsDeathCountUI.h" />
+    <ClInclude Include="jnsSpawner.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

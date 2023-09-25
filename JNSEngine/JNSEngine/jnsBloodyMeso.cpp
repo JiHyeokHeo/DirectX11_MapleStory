@@ -138,7 +138,7 @@ namespace jns
 					
 
 						float g = -9.8f;
-					/*	if (updown == 0)
+						if (updown == 0)
 						{
 							g = -9.8f;
 
@@ -146,10 +146,10 @@ namespace jns
 						else
 						{
 							g = 9.8f;
-						}*/
+						}
 						float t = Time::DeltaTime();
-						float y = velocity * cos(DegreeToRadian(angle)) * t;
-						float x = velocity * sin(DegreeToRadian(angle)) * t - 0.5f * t * g * t;
+						float y = velocity * cos(DegreeToRadian(45)) * t;
+						float x = velocity * sin(DegreeToRadian(45)) * t - 0.5f * t * g * t;
 						newPos = tr->GetPosition() + Vector3(x, y, 0.0f);
 
 					}
@@ -159,7 +159,7 @@ namespace jns
 					}
 
 
-					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 10.0f * Time::DeltaTime());
+					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 2.0f * Time::DeltaTime());
 
 					Vector3 pos = tr->GetPosition();
 
@@ -250,7 +250,8 @@ namespace jns
 		settarget.clear();
 		isRenderOn = true;
 		targetNum = -99;
-		velocity = 100.0f;
+		velocity = 350.0f;
+		
 		angle = 0.0f;
 
 		mAirTime = 0.0f;
