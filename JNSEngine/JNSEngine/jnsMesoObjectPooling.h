@@ -2,6 +2,7 @@
 #include "jnsBloodyMeso.h"
 #include "jnsSceneManager.h"
 
+
 namespace jns::MesoPooling
 {
 	class MesoObjectPooling
@@ -15,32 +16,23 @@ namespace jns::MesoPooling
 			static std::unique_ptr<MesoObjectPooling> instance = std::make_unique<MesoObjectPooling>();
 			return *instance;
 		}
-		void InitializePool()
-		{
-			if (isInitialized == false)
-			{
-				for (int i = 0; i < maxPoolSize; ++i)
-				{
-					/*BloodyMeso* meso = new BloodyMeso();
-					meso->Initialize();
-					mesoPool.push_back(meso);*/
-				}
-				isInitialized = true;
-			}
-		}
+		void InitializePool();
 
 		void ActiveMesoObject();
 
 		void Release();
 
 		GameObject* CreateMesoObject();
+		GameObject* CreateMesoEffect();
+
 		void RecycleMesoObject(GameObject* gameObject);
-		
+		void RecycleMesoEffect(GameObject* gameObject);
 
 	private:
 		bool isInitialized = false;
-		int maxPoolSize = 20;
+		int maxPoolSize = 50;
 		int defaultCapacity = 15;
 		std::list<GameObject*> mesoPool;
+		std::list<GameObject*> mesoEffects;
 	};
 }

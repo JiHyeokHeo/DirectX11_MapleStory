@@ -92,5 +92,6 @@ namespace jns
 	}
 	void GameObject::SetPosition(Vector3 pos)
 	{
+		GetComponent<Transform>()->SetPosition(pos);
 	}
 }

@@ -79,89 +79,97 @@ namespace jns
 			mAirTime = 999.0f;
 		}
 
-
-		if (targetNum < 0)
+		// 가까운 8명 랜덤으로 잡기
+		if (targetNum < 0 && active)
 		{
 			srand(time(NULL));
 			int t = rand();
 			
-			if (settarget.size() >= 1)
+			if (settarget.size() >= 1)	
 			{
-				targetNum = t % 4;
+				if (settarget.size() >= 8)
+				{
+					targetNum = t % 8;
+				}
+				else
+				{
+					targetNum = t % settarget.size();
+				}
 			}
 		}
-		else
+		else if(targetNum >=0 && active)
 		{
 			rb->SetGround(false);
 			rb->SetIsRigidBodyOn(false);
 			Vector3 monsterPos = settarget[targetNum]->GetComponent<Transform>()->GetPosition();
-			
-			if (settarget[targetNum]->GetState() == GameObject::eState::Active)
+			Vector3 mesoPos = tr->GetPosition();
+		
+			if (abs(monsterPos.x - mesoPos.x) <= 600.0f)
 			{
+				if (settarget[targetNum]->GetState() == GameObject::eState::Active)
+				{
+					mTime += Time::DeltaTime();
+					Vector3 newPos = {};
 
-				/*if (angle <= 360.0f)
-				{
-					angle += 30 * Time::DeltaTime();
-				}
-				else
-				{
-					angle = 0.0f;
-				}*/
-				mTime += Time::DeltaTime();
-				Vector3 newPos = {};
+					if (mTime <= 1.0f)
+					{
+						Vector3 pos = tr->GetPosition();
 
-				if (mTime <= 1.0f)
-				{
+						int randangle = rand();
+						if (monsterPos.x >= tr->GetPosition().x)
+						{
+							randangle %= 180;
+						}
+						else
+						{
+							randangle %= 180;
+							randangle += 180;
+						}
+
+						angle = randangle;
+						angle++;
+
+						int updown = rand();
+						updown %= 2;
+
+						float g = -99;
+						if (updown == 0)
+						{
+							g = -9.8f;
+
+						}
+						else
+						{
+							g = 9.8f;
+						}
+						float t = Time::DeltaTime();
+						float y = velocity * cos(DegreeToRadian(angle)) * t;
+						float x = velocity * sin(DegreeToRadian(angle)) * t - 0.5f * t * g * t;
+						newPos = tr->GetPosition() + Vector3(x, y, 0.0f);
+
+					}
+					else
+					{
+						newPos = tr->GetPosition();
+					}
+
+
+					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 10.0f * Time::DeltaTime());
+
 					Vector3 pos = tr->GetPosition();
 
-					int randangle = rand();
-					if (monsterPos.x >= tr->GetPosition().x)
+					if (pos.x <= monsterPos.x + 100.0f && pos.x >= monsterPos.x - 100.0f)
 					{
-						randangle %= 180;
-					}
-					else
-					{
-						randangle %= 180;
-						randangle += 180;
+						cd->SetColliderOn(true);
 					}
 
-					angle = randangle;
-					angle++;
-
-					int updown = rand();
-					updown %= 2;
-
-					float g = -99;
-					if (updown == 0)
-					{
-						g = -9.8f;
-
-					}
-					else
-					{
-						g = 9.8f;
-					}
-					float t = Time::DeltaTime();
-					float y = velocity * cos(DegreeToRadian(angle)) * t;
-					float x = velocity * sin(DegreeToRadian(angle)) * t - 0.5f * t * g * t;
-					newPos = tr->GetPosition() + Vector3(x, y, 0.0f);
+					tr->SetPosition(interpolatedPos);
 				}
 				else
 				{
-					newPos = tr->GetPosition();
+					isDamageDisplayed = true;
 				}
 
-
-				Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 10.0f * Time::DeltaTime());
-
-				Vector3 pos = tr->GetPosition();
-
-				if (pos.x <= monsterPos.x + 100.0f && pos.x >= monsterPos.x - 100.0f)
-				{
-					cd->SetColliderOn(true);
-				}
-
-				tr->SetPosition(interpolatedPos);
 			}
 		}
 		
@@ -203,6 +211,9 @@ namespace jns
 		for (GameObject* obj : monsters)
 		{
 			MonsterBase* base = dynamic_cast<MonsterBase*>(obj);
+
+			if (obj->GetState() == eState::Paused)
+				continue;
 
 			if (base == nullptr)
 			{

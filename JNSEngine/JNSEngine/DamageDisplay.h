@@ -134,7 +134,7 @@ namespace jns
 				// -10부터 10 사이
 				position.x += t;
 				position.y += t;
-
+				position.z = 0.5f;
 				if (isCoin == false)
 				{
 					object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
@@ -145,7 +145,8 @@ namespace jns
 					if (meso->GetIsActive() == true)
 					{
 						meso->SetDamageDone(true);
-						object::SkillHitEffect<SkillEffect>(eLayerType::MapEffect, skillType, position);
+						
+						MesoPooling::MesoObjectPooling::GetInstance().CreateMesoEffect()->SetPosition(position);
 					}
 				}
 			}

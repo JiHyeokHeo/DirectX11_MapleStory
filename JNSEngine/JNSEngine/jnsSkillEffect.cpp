@@ -2,6 +2,7 @@
 #include "jnsResources.h"
 #include "jnsAnimator.h"
 #include "jnsTime.h"
+#include "jnsMesoObjectPooling.h"
 
 namespace jns
 {
@@ -60,10 +61,16 @@ namespace jns
 			at->GetActiveAnimation()->SetTransparency(transparecny);
 		}*/
 		
-		if (renderTime >= 0.6f)
+		if (renderTime >= 0.6f && skillType != SkillBase::eSkillType::BloodyMeso)
 		{
 			SetState(GameObject::eState::Dead);
 		}
+		else if (skillType == SkillBase::eSkillType::BloodyMeso && at->GetActiveAnimation()->IsComplete())
+		{
+			renderTime = 0.0f;
+			MesoPooling::MesoObjectPooling::GetInstance().RecycleMesoEffect(this);
+		}
+
 		GameObject::Update();
 	}
 	void SkillEffect::LateUpdate()

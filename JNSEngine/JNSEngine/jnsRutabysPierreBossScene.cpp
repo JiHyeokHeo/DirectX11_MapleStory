@@ -58,6 +58,7 @@ namespace jns
 		minimapCameraObj->GetComponent<Transform>()->SetPosition(5000.0f, -2500.0f, 5.0f);
 
 
+		// 오브젝트 풀링 이니셜라이즈
 		MesoPooling::MesoObjectPooling::GetInstance().InitializePool();
 		
 		//MesoPooling::MesoObjectPooling::GetInstance().CreateMesoObject();
