@@ -16,6 +16,8 @@ namespace jns
 		virtual void Render() override;
 
 	private:
+		bool isChanged = false;
+		bool isRender = false;
 	};
 
 }

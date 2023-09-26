@@ -300,6 +300,7 @@ namespace jns
 		else
 		{
 			setKeyCode = skillQuickSlot->GetIndexKeyCode(yidx, xidx);
+			skillQuickSlot->SetIndexOn(yidx, xidx, true);
 		}
 
 		switch (mSkillType)

@@ -1,5 +1,6 @@
 #include "jnsInvenBG.h"
 #include "jnsInventoryScript.h"
+#include "jnsInput.h"
 
 namespace jns
 {
@@ -26,6 +27,17 @@ namespace jns
 	}
 	void InventoryBG::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::I))
+		{
+			if (isRender == false)
+			{
+				isRender = true;
+			}
+			else
+			{
+				isRender = false;
+			}
+		}
 		UIBase::Update();
 	}
 	void InventoryBG::LateUpdate()
@@ -34,6 +46,7 @@ namespace jns
 	}
 	void InventoryBG::Render()
 	{
+		if(isRender)
 		UIBase::Render();
 	}
 }

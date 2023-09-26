@@ -53,9 +53,9 @@ namespace jns
 
 		// ¿”Ω√∑Œ ¿·±≈µ“
 		// //¿Œ∫•≈‰∏Æ
-		//Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
-		//InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
-		//minvenBG->GetComponent<Transform>()->SetParent(minven->GetComponent<Transform>());
+		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
+		
+		
 
 		// ƒ¸ΩΩ∑‘
 		QuickSlotUI* mSkillSlotBack = object::InstantiateNOmove<QuickSlotUI>(eLayerType::UI);
@@ -87,6 +87,11 @@ namespace jns
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::MesoExplosionRed, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::JumpSkill, mSkillSlotBack, skillUIBG, Vector3::Zero, true);
 		object::InstantiateSkillUIType<SkillResources>(SkillResources::eSkillType::JumpSkill, mSkillSlotBack, skillUIBG, Vector3::Zero, false);
+
+		// ¿Œ∫•ø° ƒ¸ΩΩ∑‘ µÓ∑œ
+		
+
+
 		//wchar_t szFloat[50] = L"BIN";
 		//FontWrapper::DrawFont(szFloat, 10.f, 30.f, 20, FONT_RGBA(255, 0, 255, 255));
 
