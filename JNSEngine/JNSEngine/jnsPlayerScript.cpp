@@ -145,9 +145,11 @@ namespace jns
 	}
 	void PlayerScript::OnCollisionStay(Collider2D* other)
 	{
-		if (other->GetName() == L"Item" && Input::GetKeyDown(eKeyCode::Z))
+		if (other->GetOwner()->GetLayerType() == eLayerType::Item && Input::GetKeyDown(eKeyCode::Z))
 		{
 			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
+            item->SetState(GameObject::eState::Dead);
+            
 		}
 
 

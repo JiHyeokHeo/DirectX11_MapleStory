@@ -13,7 +13,7 @@ namespace jns
 		};
 
 
-		ItemResources(eItemType type);
+		ItemResources(eItemType type, bool isItem);
 		~ItemResources();
 
 		virtual void Initialize() override;
@@ -24,6 +24,8 @@ namespace jns
 		void SetPowerPotion();
 	private:
 		eItemType mItemType;
-	
+		bool isitItem = false;
+		float mAirTime = 0.0f;
+		float airMaxTime = 0.5f;
 	};
 }

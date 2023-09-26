@@ -250,6 +250,10 @@ namespace jns
 	}
 	void DemonMonsterScript::CompleteDead()
 	{
+		Vector3 mPos = tr->GetPosition();
+		mPos.y -= 10.0f;
+		mPos.z = 0.0f;
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mPos, true);
 		GetOwner()->SetState(GameObject::eState::Paused);
 	}
 	void DemonMonsterScript::ResetData()

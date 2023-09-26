@@ -1,16 +1,18 @@
 #pragma once
 #include "jnsScript.h"
 #include "jnsGameObject.h"
+#include "jnsItemResources.h"
 
 namespace jns
 {
 	struct ItemInfo
 	{
+		Vector2 idx;
 		Vector3 mItemFinalPos;
 		int mItemCnt;
-		bool isPicked;
 	};
 
+	class ItemResources;
 	class InventoryScript : public Script
 	{
 	public:
@@ -26,8 +28,13 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 		
-		//void CheckItem(ItemResources* item);
+		Vector2 SearchALLItemsToFindIndex();
 	private:
-		std::map<std::wstring, ItemInfo> mInventory;
+		std::map<ItemResources::eItemType, ItemInfo> mInventory;
+		std::vector<std::vector<bool>> indexOn;
+
+		bool isDragging = false;
+		Vector3 initialMousePos;
+		Vector3 initialObjectPos;
 	};
 }

@@ -13,7 +13,13 @@ namespace jns
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		bool GetIsDrag() { return isDragging; }
 	private:
 		bool isRender = false;
+
+		bool isDragging = false;
+		Vector3 initialMousePos;
+		Vector3 initialObjectPos;
 	};		
 }

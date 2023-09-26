@@ -19,6 +19,7 @@ namespace jns
 		eKeyCode GetIndexKeyCode(int xidx, int yidx) { return indexNum[xidx][yidx]; }
 
 		void SetIndexOn(int y, int x, bool on) { indexOn[y][x] = on; }
+		bool GettIndexOn(int y, int x, bool on) { return indexOn[y][x]; }
 	private:
 		std::vector<std::vector<eKeyCode>> indexNum;
 		std::vector<std::vector<bool>> indexOn;

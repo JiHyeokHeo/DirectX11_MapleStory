@@ -27,6 +27,7 @@ namespace jns
 	}
 	void InventoryBG::Update()
 	{
+		SetPosition(Vector3(0.0f, 0.01f, -0.1f));
 		if (Input::GetKeyDown(eKeyCode::I))
 		{
 			if (isRender == false)

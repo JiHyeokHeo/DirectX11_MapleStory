@@ -64,9 +64,14 @@ namespace jns::object
 	}
 
 	template<typename T>
-	T* InstantiateItem(jns::enums::eLayerType type, ItemResources::eItemType type2, Vector3 mPos)
+	T* InstantiateItem(jns::enums::eLayerType type, ItemResources::eItemType type2, Vector3 mPos, bool isitItem = false)
 	{
-		T* gameobj = new T(type2);
+		if (isitItem == false)
+		{
+			type = eLayerType::UI;
+		}
+
+		T* gameobj = new T(type2, isitItem);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameobj);
 		gameobj->GetComponent<Transform>()->SetPosition(mPos);

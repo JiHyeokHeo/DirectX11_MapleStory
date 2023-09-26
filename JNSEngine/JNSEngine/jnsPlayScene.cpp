@@ -45,6 +45,8 @@ namespace jns
 
 	void PlayScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Item, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Item, eLayerType::Player, true);
 		CollisionManager::SetLayer(eLayerType::Skill, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Item, true);
 		//CollisionManager::SetLayer(eLayerType::Cursor, eLayerType::Item, true);
@@ -73,7 +75,7 @@ namespace jns
 		AddGameObject(eLayerType::Camera, mainCameraObj);
 		mainCameraObj->TurnOffLayer(eLayerType::UI);
 		mainCameraObj->TurnOffLayer(eLayerType::Cursor);
-		mainCameraObj->TurnOffLayer(eLayerType::Item);
+		//mainCameraObj->TurnOffLayer(eLayerType::Item);
 		mainCameraObj->AddComponent<CameraScript>();
 	}
 
@@ -85,7 +87,7 @@ namespace jns
 		uiCameraObj->TurnOffAllLayer();
 		uiCameraObj->TurnOnLayer(eLayerType::UI);
 		uiCameraObj->TurnOnLayer(eLayerType::Cursor);
-		uiCameraObj->TurnOnLayer(eLayerType::Item);
+		//uiCameraObj->TurnOnLayer(eLayerType::Item);
 	
 	}
 

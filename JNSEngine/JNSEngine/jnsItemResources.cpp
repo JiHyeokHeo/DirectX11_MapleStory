@@ -3,9 +3,19 @@
 
 namespace jns
 {
-	ItemResources::ItemResources(eItemType type)
+	ItemResources::ItemResources(eItemType type, bool isItem)
 		: mItemType(type)
+		, isitItem(isItem)
 	{
+		if (isItem)
+		{
+
+		}
+		else
+		{
+			SetIsOnlyOne(true);
+			SetState(GameObject::eState::DontDestroy);
+		}
 	}
 	ItemResources::~ItemResources()
 	{
@@ -13,16 +23,53 @@ namespace jns
 	void ItemResources::Initialize()
 	{
 		SetName(L"Item");
-		AddComponent<ItemResourcesScript>();
+		//AddComponent<ItemResourcesScript>();
 		switch (mItemType)
 		{
 		case eItemType::PowerPotion:
 			SetPowerPotion();
 			break;
 		}
+
+
+		if (isitItem)
+		{
+			RigidBody* rb = AddComponent<RigidBody>();
+			Collider2D* cd = AddComponent<Collider2D>();
+			cd->SetSize(Vector2(1.0f, 1.0f));
+			cd->SetColliderOn(false);
+		}
+
 	}
 	void ItemResources::Update()
 	{
+		RigidBody* rb = GetComponent<RigidBody>();
+		if (rb->GetGround() == false)
+		{
+			Collider2D* cd = GetComponent<Collider2D>();
+			cd->SetColliderOn(true);
+			rb->SetIsRigidBodyOn(false);
+			Transform* tr = GetComponent<Transform>();
+			Vector3 mesoPos = tr->GetPosition();
+			mAirTime += Time::DeltaTime();
+
+			if (mAirTime <= airMaxTime)
+			{
+				Vector3 mVelocity = rb->GetVelocity();
+				mVelocity.y -= 300.0f * Time::DeltaTime();
+				rb->SetVelocity(mVelocity);
+				mesoPos.y += 50.0f * Time::DeltaTime();
+				tr->SetPosition(mesoPos);
+			}
+			else
+			{
+				rb->SetIsRigidBodyOn(true);
+			}
+		}
+		else
+		{
+			mAirTime = 999.0f;
+		}
 		GameObject::Update();
 	}
 	void ItemResources::LateUpdate()

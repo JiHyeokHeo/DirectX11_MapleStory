@@ -60,6 +60,11 @@ namespace jns
 		float opacity = 1.0f;
 		bool isChangeSceneDone;
 		class Scene* playeScene;
+
+		Vector3 initialMousePos;
+		Vector3 initialObjectPos;
+
+		bool isInitDrag = false;
 	};
 
 }

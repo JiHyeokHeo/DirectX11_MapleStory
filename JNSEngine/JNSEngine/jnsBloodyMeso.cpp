@@ -88,7 +88,9 @@ namespace jns
 		// 가까운 8명 랜덤으로 잡기
 		if (targetNum < 0 && active)
 		{
-			srand(time(NULL));
+			auto now = std::chrono::high_resolution_clock::now();
+			int seed = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+			srand(seed);
 			int t = rand();
 			
 			if (settarget.size() >= 1)	
@@ -159,7 +161,7 @@ namespace jns
 					}
 
 
-					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 2.0f * Time::DeltaTime());
+					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 4.0f * Time::DeltaTime());
 
 					Vector3 pos = tr->GetPosition();
 
@@ -250,7 +252,7 @@ namespace jns
 		settarget.clear();
 		isRenderOn = true;
 		targetNum = -99;
-		velocity = 350.0f;
+		velocity = 150.0f;
 		
 		angle = 0.0f;
 

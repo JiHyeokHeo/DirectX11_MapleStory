@@ -30,6 +30,7 @@ namespace jns
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Portal, true);
 		CollisionManager::SetLayer(eLayerType::Tomb, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Item, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Skill, eLayerType::Ground, true);
 
 		object::Instantiate<Tomb>(jns::enums::eLayerType::Tomb, Vector3::Zero);
@@ -97,8 +98,13 @@ namespace jns
 
 		// 플레이어 생성
 		GameObject* player = object::Instantiate<Player>(eLayerType::Player, Vector3(0.0f, 200.0f, 0.0f));
+		
+		// 플레이어에게 인벤토리 스크립트 연결
 		PlayerScript* playerScript = player->GetComponent<PlayerScript>();
-		//playerScript->SetInventoryScript(minvenBG->GetComponent<InventoryScript>());
+		playerScript->SetInventoryScript(minven->GetComponent<InventoryScript>());
+		
+
+
 		SceneManager::SetPlayer(player);
 		WeaponObject* weapon = object::Instantiate<WeaponObject>(eLayerType::MapEffect, Vector3::Zero);
 		WeaponManager::AddWeapon(L"Genesis_Thief_Weapon", object::Instantiate<GenesisWeapon>(eLayerType::MapEffect, Vector3::Zero));
@@ -171,7 +177,7 @@ namespace jns
 		//	scene->AddGameObject(eLayerType::UI, cnt2);
 		//}
 
-
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, Vector3::Zero, true);
 		//minimapCameraObj->
 		
 		//CreateInventory();

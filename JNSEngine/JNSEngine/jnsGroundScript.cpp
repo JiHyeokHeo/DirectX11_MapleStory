@@ -144,6 +144,17 @@ namespace jns
 			}
 		}
 
+
+		if (other->GetOwner()->GetLayerType() == eLayerType::Item)
+		{
+			ItemResources* meso = dynamic_cast<ItemResources*>(other->GetOwner());
+			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+			if (rb != nullptr)
+			{
+				rb->SetGround(true);
+			}
+		}
+
 		if (other->GetOwner()->GetName() == L"Tomb")
 		{
 			Tomb* tomb = dynamic_cast<Tomb*>(other->GetOwner());
@@ -264,6 +275,16 @@ namespace jns
 					rb->SetGround(true);
 				}
 				
+			}
+		}
+
+		if (other->GetOwner()->GetLayerType() == eLayerType::Item)
+		{
+			ItemResources* meso = dynamic_cast<ItemResources*>(other->GetOwner());
+			RigidBody* rb = other->GetOwner()->GetComponent<RigidBody>();
+			if (rb != nullptr)
+			{
+				rb->SetGround(true);
 			}
 		}
 

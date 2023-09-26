@@ -10,6 +10,7 @@ namespace jns
 {
 	InventoryScript::InventoryScript()
 	{
+		indexOn.resize(6, std::vector<bool>(4));
 	}
 	InventoryScript::~InventoryScript()
 	{
@@ -19,6 +20,41 @@ namespace jns
 	}
 	void InventoryScript::Update()
 	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 mPos = tr->GetPosition();
+		Vector3 mUIPos = Input::GetUIMousePos();
+
+		Vector3 mLeftTop = Vector3(mPos.x - 100.0f, mPos.y + 190.0f, 0.0f);
+		Vector3 mLeftBottom = Vector3(mPos.x - 100.0f, mPos.y + 170.0f, 0.0f);
+
+		Vector3 mRightTop = Vector3(mPos.x + 100.0f, mPos.y + 190.0f, 0.0f);
+		Vector3 mRightBottom = Vector3(mPos.x + 100.0f, mPos.y + 170.0f, 0.0f);
+
+		if (Input::GetKeyDown(eKeyCode::LBUTTON) 
+			&& mUIPos.x >= mLeftTop.x && mUIPos.x <= mRightBottom.x
+			&& mUIPos.y <= mLeftTop.y && mUIPos.y >= mRightBottom.y)
+		{
+			isDragging = true;
+			initialMousePos = mUIPos;
+			initialObjectPos = mPos;
+		}
+
+		if (isDragging && Input::GetKey(eKeyCode::LBUTTON))
+		{
+			int xOffset = mUIPos.x - initialMousePos.x;
+			int yOffset = mUIPos.y - initialMousePos.y;
+
+			
+			mPos.x = initialObjectPos.x + xOffset;
+			mPos.y = initialObjectPos.y + yOffset;
+			tr->SetPosition(mPos);
+		}
+		else if(Input::GetKeyUp(eKeyCode::LBUTTON))
+		{
+			isDragging = false;
+		}
+
+
 		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Vector3 mUIMousePos = Input::GetUIMousePos();
@@ -50,13 +86,25 @@ namespace jns
 			Vector3 mItemSetPos = Vector3((xidx) * (INVENTORY_SIZE)+(12.5f * xidx) + (INVENTORY_SIZE / 2), (yidx) * (INVENTORY_SIZE)+(12.5f * yidx) + (INVENTORY_SIZE / 2), mPos.z);
 			Vector3 mItemFinalPos = Vector3(mItemSetPos.x + mLeftTop.x, mLeftTop.y - mItemSetPos.y, 3.5f);
 
-			object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mItemFinalPos);
+			Inventory* inven = dynamic_cast<Inventory*>(GetOwner());
+			QuickSlotUI* slot = inven->GetQuickSlotUI();
+
+
+			if (indexOn[yidx][xidx])
+			{
+				object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mItemFinalPos);
+			}
+			else
+			{
+
+			}
+			
+			
 			ItemInfo info = {};
+			info.idx = Vector2(xidx, yidx);
 			info.mItemCnt = 0;
 			info.mItemFinalPos = mItemFinalPos;
-			info.isPicked = true;
-			
-			mInventory.insert(std::make_pair(L"PowerPotion", info));
+			mInventory.insert(std::make_pair(ItemResources::eItemType::PowerPotion, info));
 		}
 		
 	}
@@ -76,6 +124,26 @@ namespace jns
 	void InventoryScript::OnCollisionExit(Collider2D* other)
 	{
 		
+	}
+	Vector2 InventoryScript::SearchALLItemsToFindIndex()
+	{
+	/*	for (int y = 0; y < 6; y++)
+		{
+			for (int x = 0; x < 4; x++)
+			{
+				if (indexOn[y][x] == true)
+				{
+
+					return Vector2(y, x);
+				}
+
+
+				if (indexOn[y][x] == false)
+				{
+					return Vector2(y, x);
+				}
+			}
+		}*/return Vector2::Zero;
 	}
 	//void InventoryScript::CheckItem(ItemResources* item)
 	//{

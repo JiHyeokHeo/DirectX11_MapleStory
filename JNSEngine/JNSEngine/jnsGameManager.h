@@ -32,10 +32,13 @@ namespace jns
 
 		MapDeathCntData GetMapData() { return mapdata; }
 
+		void SetIsDrag(bool drag) { isDragging = drag; }
+		bool GetIsDrag() { return isDragging; }
 	private:
 		static int deathCount;
 		static int bossPlayTime;
 		MapDeathCntData mapdata;
+		static bool isDragging;
 	};
 
 }

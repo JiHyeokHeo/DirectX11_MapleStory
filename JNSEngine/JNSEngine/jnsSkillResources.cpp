@@ -74,6 +74,29 @@ namespace jns
 	}
 	void SkillResources::Update()
 	{
+		Vector3 mPos = tr->GetPosition();
+		Vector3 mMousePos = Input::GetUIMousePos();
+		if (skillBGUI->GetIsDrag() == true && isInitDrag == false)
+		{
+			isInitDrag = true;
+			initialMousePos = Input::GetUIMousePos();
+			initialObjectPos = tr->GetPosition();
+		}
+
+		if (skillBGUI->GetIsDrag() == true)
+		{
+			int xOffset = mMousePos.x - initialMousePos.x;
+			int yOffset = mMousePos.y - initialMousePos.y;
+
+			mPos.x = initialObjectPos.x + xOffset;
+			mPos.y = initialObjectPos.y + yOffset;
+			tr->SetPosition(mPos);
+		}
+		else
+		{
+			isInitDrag = false;
+		}
+
 		if (SceneManager::GetActiveScene() != SceneManager::GetPrevScene())
 		{
 			playeScene = SceneManager::GetActiveScene();

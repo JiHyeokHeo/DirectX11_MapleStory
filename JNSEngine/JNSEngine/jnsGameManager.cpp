@@ -5,7 +5,8 @@ namespace jns
 {
 	int GameManager::deathCount;
 	int GameManager::bossPlayTime;
-	
+	bool GameManager::isDragging = false;
+
 	void GameManager::InitializeMapData()
 	{
 		// 单胶墨款飘 包府

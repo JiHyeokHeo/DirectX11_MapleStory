@@ -165,7 +165,7 @@ namespace gui
 		jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
 		jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
 		
-		if(mesh.layertype == eLayerType::UI || mesh.layertype == eLayerType::Item)
+		if(mesh.layertype == eLayerType::UI)
 		{
 			jns::Camera* uiCamara = renderer::UICamera;
 
