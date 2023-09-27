@@ -80,7 +80,6 @@ namespace jns
 		}
 		
 
-		CreateCursor();
 		PlayScene::Initialize();
 	}
 	void SelectScene::Update()

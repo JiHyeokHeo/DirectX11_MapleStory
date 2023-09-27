@@ -17,7 +17,8 @@ namespace jns
 		
 		virtual void CompleteSkillAnimation() override;
 		virtual void StartSkillAnimation() override;
-		
+
+		virtual void Activate() override;
 
 		void SetSkillJumpNum(int num) { mSkillJumpNum = num; }
 		int GetSkillJumpNum() { return mSkillJumpNum; }

@@ -15,6 +15,8 @@ namespace jns
 	void AssainHit02::Initialize()
 	{
 		cd = AddComponent<Collider2D>();
+		as = AddComponent<AudioSource>();
+		as->SetClip(Resources::Find<AudioClip>(L"Assain01Hit"));
 		SetName(L"Normal_Assain_Second_Attack");
 		SetMesh(L"RectMesh");
 		SetMaterial(L"SpriteAnimaionMaterial");
@@ -64,6 +66,12 @@ namespace jns
 	}
 	void AssainHit02::StartSkillAnimation()
 	{
+	}
+	void AssainHit02::Activate()
+	{
+		as->Play();
+		as->SetLoop(false);
+		as->SetVolume(0.1f);
 	}
 	void AssainHit02::SkillSetPos()
 	{

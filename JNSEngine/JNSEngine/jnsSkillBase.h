@@ -5,6 +5,7 @@
 #include "jnsResources.h"
 #include "jnsAnimator.h"
 #include "jnsPlayerScript.h"
+#include "jnsAudioSource.h"
 
 namespace jns
 {
@@ -130,7 +131,7 @@ namespace jns
 		Animator* at;
 		Transform* tr;
 		MeshRenderer* mr;
-
+		AudioSource* as;
 		Vector2 mTextureSize;
 		Vector2 mSize;
 

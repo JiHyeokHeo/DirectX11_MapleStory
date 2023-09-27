@@ -10,7 +10,7 @@ namespace jns
 	public:
 		static bool isLoading;
 		static bool check;
-
+		static bool isComplete;
 	public:
 		static void Initialize();
 		static void Update();

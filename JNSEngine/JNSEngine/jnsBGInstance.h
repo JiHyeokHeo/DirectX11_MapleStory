@@ -42,7 +42,7 @@ namespace jns
 	private:
 		eBGType mBGtype;
 		AudioSource* as;
-		static bool isBGPlayed;
+		bool isBGPlayed;
 		class Scene* mPrevScene;
 	};
 

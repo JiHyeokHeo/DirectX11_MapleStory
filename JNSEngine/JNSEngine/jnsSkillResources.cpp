@@ -83,7 +83,7 @@ namespace jns
 			initialObjectPos = tr->GetPosition();
 		}
 
-		if (skillBGUI->GetIsDrag() == true)
+		if (skillBGUI->GetIsDrag() == true && isSet == false)
 		{
 			int xOffset = mMousePos.x - initialMousePos.x;
 			int yOffset = mMousePos.y - initialMousePos.y;
@@ -189,10 +189,12 @@ namespace jns
 						isMovePossible = false;
 						isPicked = false;
 						isOnTarget = false;
+						isSet = true;
 						AddSkillResource(xidx, yidx);
 					}
 					else
 					{
+						isSet = false;
 						isRender = false;
 						isPicked = false;
 						DeleteSkillResource();
@@ -222,6 +224,7 @@ namespace jns
 							isMovePossible = false;
 							isPicked = false;
 							isOnTarget = false;
+							isSet = true;
 							AddSkillResource(xidx, yidx);
 						}
 					}
@@ -232,6 +235,7 @@ namespace jns
 					{
 						isRender = false;
 						isPicked = false;
+						isSet = false;
 						DeleteSkillResource();
 					}
 				}

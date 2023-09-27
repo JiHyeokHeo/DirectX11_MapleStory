@@ -6,12 +6,13 @@
 
 namespace jns
 {
-	bool BGInstance::isBGPlayed = false;
+	
 	BGInstance::BGInstance()
 	{
 	}
 	BGInstance::BGInstance(eBGType type)
 		:mBGtype(type)
+		,isBGPlayed(false)
 	{
 	}
 	BGInstance::~BGInstance()
@@ -23,6 +24,8 @@ namespace jns
 		as = AddComponent<AudioSource>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		tr = GetComponent<Transform>();
+
+
 		switch(mBGtype)
 		{
 			case eBGType::Login:
@@ -61,6 +64,7 @@ namespace jns
 				mr->SetMaterial(Resources::Find<Material>(L"SelectBGMaterial"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"CharSelect"));
 				tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
 				break;
 			case eBGType::Start1:
@@ -116,12 +120,14 @@ namespace jns
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre2Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"JoyfulTeaParty"));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 			case eBGType::RutabysPierreBoss:
 				mr->SetMaterial(Resources::Find<Material>(L"Rutabypierre3Material"));
 				mSize = GetComponent<MeshRenderer>()->GetMaterial()->GetTexture()->GetTextureSize();
 				tr->SetPosition(Vector3(0.0f, 0.0f, 5.0f));
+				as->SetClip(Resources::Find<AudioClip>(L"JoyfulTeaParty"));
 				tr->SetScale(Vector3(mSize.x * 1.3f, mSize.y * 1.3f, 1.0f));
 				break;
 		}
@@ -140,7 +146,7 @@ namespace jns
 			tr->SetPosition(mPos);
 		}
 
-		if (mPrevScene != SceneManager::GetActiveScene())
+		if (mPrevScene != SceneManager::GetActiveScene() && SceneManager::isLoading == false)
 		{
 			isBGPlayed = false;
 			as->Stop();
@@ -148,6 +154,8 @@ namespace jns
 
 		if (isBGPlayed == false)
 		{
+			as->SetLoop(true);
+			//	as->SetVolume(0.0f);
 			switch (mBGtype)
 			{
 			case jns::BGInstance::eBGType::Login:
@@ -189,13 +197,23 @@ namespace jns
 			case jns::BGInstance::eBGType::RutabysQueenBoss:
 				as->Play();
 				break;
+			case jns::BGInstance::eBGType::RutabysPierreMob1:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysPierreMob2:
+				as->Play();
+				break;
+			case jns::BGInstance::eBGType::RutabysPierreBoss:
+				as->Play();
+				break;
 			case jns::BGInstance::eBGType::None:
 				break;
 			default:
 				break;
 			}
 			isBGPlayed = true;
-			as->SetMute(true);
+			as->SetVolume(0.1f);
+			//as->SetMute(true);
 		}
 
 		mPrevScene = SceneManager::GetActiveScene();

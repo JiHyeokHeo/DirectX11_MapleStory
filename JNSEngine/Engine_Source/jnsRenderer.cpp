@@ -5,6 +5,7 @@
 #include "jnsStructedBuffer.h"
 #include "jnsPaintShader.h"
 #include "jnsParticleShader.h"
+#include "jnsSceneManager.h"
 
 namespace renderer
 {
@@ -888,7 +889,9 @@ namespace renderer
 	 {
 		 BindNoiseTexture();
 		 BindLights();
-		 mainCamera = cameras[0];
+		 
+		mainCamera = cameras[0];
+		 
 		 for (Camera* cam : cameras)
 		 {
 			 if (cam == nullptr)
@@ -899,6 +902,7 @@ namespace renderer
 
 		 cameras.clear();
 		 lights.clear();
+		 
 	 }
 
 	 void Release()

@@ -49,6 +49,7 @@ namespace jns
 		eSkillType mSkillType;
 	
 		Animator* at;
+		bool isSet;
 		bool isPicked;
 		bool isMovePossible;
 		bool isItIcon;

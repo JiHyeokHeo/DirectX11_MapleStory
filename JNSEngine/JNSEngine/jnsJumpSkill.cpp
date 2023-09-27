@@ -19,6 +19,8 @@ namespace jns
 	}
 	void JumpSkill::Initialize()
 	{
+		as = AddComponent<AudioSource>();
+		as->SetClip(Resources::Find<AudioClip>(L"JumpUse"));
 		std::wstring cnt = {};
 		cnt = std::to_wstring(jumpMakeCnt);
 		SetName(L"Rogue_SkillflashJump_0" + cnt);
@@ -65,6 +67,13 @@ namespace jns
 	}
 	void JumpSkill::StartSkillAnimation()
 	{
+	}
+
+	void JumpSkill::Activate()
+	{
+		as->Play();
+		as->SetLoop(false);
+		as->SetVolume(0.1f);
 	}
 
 }

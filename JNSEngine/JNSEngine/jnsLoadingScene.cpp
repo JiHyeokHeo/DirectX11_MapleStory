@@ -13,18 +13,74 @@ namespace jns
 	void LoadingScene::Initialize()
 	{
 
-		//GameObject* obj = new GameObject();
-		//obj->GetComponent<Transform>()->SetPosition(Vector3::Zero);
-		//obj->GetComponent<Transform>()->SetScale(Vector3(1400.0f,1000.0f,1.0f));
-		//MeshRenderer* mr = obj->AddComponent<MeshRenderer>();
-		//std::shared_ptr<Texture> texture = Resources::Load<Texture>(L"loadingtest", L"..\\Resources\\loadingtext.png");
-		//std::shared_ptr<Material> sprtiteMaterial = std::make_shared<Material>(); 
-		//sprtiteMaterial->SetShader(Resources::Find<Shader>(L"SpriteShader"));
-		//sprtiteMaterial->SetTexture(texture);
-		//mr->SetMaterial(sprtiteMaterial);
-		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//Scene* scene = SceneManager::GetActiveScene();
-		//scene->AddGameObject(eLayerType::BG, obj);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::CharactorSelect);
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CharacSelectMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(-360.0f, 130.0f, 4.9f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CharacSelectInfoMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(420.0f, -50.0f, 4.9f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CharacSelectInfoMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(420.0f, -50.0f, 4.9f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CharSelectBtSelectMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(420.0f, -130.0f, 4.8f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CharSelectBtNewMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(-100.0f, -350.0f, 4.8f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
+		{
+			GameObject* uiobj = object::InstantiateNOmove<GameObject>(eLayerType::UI);
+			MeshRenderer* mr = uiobj->AddComponent<MeshRenderer>();
+			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+			mr->SetMaterial(Resources::Find<Material>(L"CommonBtPreviewMaterial"));
+			Vector2 mSize = mr->GetMaterial()->GetTexture()->GetTextureSize();
+			Transform* tr = uiobj->GetComponent<Transform>();
+			tr->SetPosition(Vector3(-480, -370.0f, 4.8f));
+			tr->SetScale(Vector3(mSize.x, mSize.y, 1.0f));
+		}
+
 		
 		PlayScene::Initialize();
 	}
@@ -35,6 +91,12 @@ namespace jns
 	void LoadingScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
+		if (Input::GetKeyDown(eKeyCode::LBUTTON) && SceneManager::isComplete == true)
+		{
+			jns::SceneManager::check = true;
+			mBGInstance->GetComponent<AudioSource>()->Stop();
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysBoss);
+		}
 	}
 	void LoadingScene::Render()
 	{

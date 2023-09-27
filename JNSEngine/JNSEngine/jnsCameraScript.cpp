@@ -23,13 +23,14 @@ namespace jns
 	{
 		cameratr = GetOwner()->GetComponent<Transform>();
 
-		if (FollowTarget())
+		if (FollowTarget() && SceneManager::isLoading == false)
 		{
 
 		}
 		else
 		{
 			pos = cameratr->GetPosition();
+			cameratr->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		}
 
 		

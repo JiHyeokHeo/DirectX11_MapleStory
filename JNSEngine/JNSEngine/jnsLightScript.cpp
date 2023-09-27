@@ -17,21 +17,21 @@ namespace jns
 		{
 			chageScene = true;
 			mDarkTime += Time::DeltaTime();
-			if (SceneManager::GetPrevScene() != SceneManager::GetActiveScene())
+			if (SceneManager::GetPrevScene() != SceneManager::GetActiveScene() && SceneManager::isLoading == false)
 			{
-				mOpacity = 0.0f;
+				mOwnOpacity = 0.0f;
 			}
 		}
 
 		if (mDarkTime >= 0.3f)
 		{
-			if (mOpacity < 1.0f )
+			if (mOwnOpacity < 1.0f )
 			{
-				mOpacity += Time::DeltaTime();
+				mOwnOpacity += Time::DeltaTime();
 			}
 			else
 			{
-				mOpacity = 1.0f;
+				mOwnOpacity = 1.0f;
 				chageScene = false;
 			}
 		}
@@ -45,17 +45,19 @@ namespace jns
 				if (SceneManager::GetPlayer()->GetComponent<PlayerScript>()
 					->GetIsNormalHit() == true)
 				{
-					mOpacity = 0.0f;
+					mOwnOpacity = 0.0f;
 				}
 				else
 				{
-					mOpacity = 1.0f;
+					mOwnOpacity = 1.0f;
 				}
 			}
 		}
 
 
-		this->GetOwner()->GetComponent<Light>()->SetColor(Vector4(0.8f * mOpacity, 0.8f * mOpacity, 0.8f * mOpacity, 1.0f));
+		this->GetOwner()->GetComponent<Light>()->SetColor(Vector4(0.8f * mOwnOpacity, 0.8f * mOwnOpacity, 0.8f * mOwnOpacity, 1.0f));
+
+		mOpacity = mOwnOpacity;
 	}
 
 }

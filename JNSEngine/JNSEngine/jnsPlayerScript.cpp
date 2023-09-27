@@ -387,7 +387,7 @@ namespace jns
         else
         {
             isLadderMoving = false;
-        }
+        }   
 
 
 
@@ -867,6 +867,7 @@ namespace jns
         mPlayerSkillInfo.isAssainHit1Used = true;
         GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_First_Attack");
         AssainHit01* obj2 = dynamic_cast<AssainHit01*>(obj);
+        obj2->Activate();
         obj2->SetSkillMode(true);
         obj2->SetSkillPlay(true);
     }
@@ -875,6 +876,7 @@ namespace jns
         mPlayerSkillInfo.isAssainHit1Used = false;
         GameObject* obj = SkillManager::FindSkill(L"Normal_Assain_Second_Attack");
         AssainHit02* obj2 = dynamic_cast<AssainHit02*>(obj);
+        obj2->Activate();
         obj2->SetSkillMode(true);
         obj2->SetSkillPlay(true);
     }
@@ -896,6 +898,7 @@ namespace jns
         {
             GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_01");
             JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
+            obj2->Activate();
             obj2->SetSkillMode(true);
             obj2->SetSkillPlay(true);
             obj2->IsPosSet(true);
@@ -904,6 +907,7 @@ namespace jns
         {
             GameObject* obj = SkillManager::FindSkill(L"Rogue_SkillflashJump_02");
             JumpSkill* obj2 = dynamic_cast<JumpSkill*>(obj);
+            obj2->Activate();
             obj2->SetSkillMode(true);
             obj2->SetSkillPlay(true);
             obj2->IsPosSet(true);

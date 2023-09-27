@@ -15,6 +15,7 @@ namespace jns
 	private:
 		Scene* mPrevScene;
 		Scene* mActiveScene;
+		float mOwnOpacity;
 		static float mOpacity;
 		float mDarkTime;
 		bool chageScene = false;

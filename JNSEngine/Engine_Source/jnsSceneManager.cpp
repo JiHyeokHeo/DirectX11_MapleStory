@@ -8,6 +8,8 @@
 namespace jns
 {
 	bool SceneManager::isLoading = false;
+	bool SceneManager::check = false;
+	bool SceneManager::isComplete = false;
 	Scene* SceneManager::mActiveScene = nullptr;
 	Scene* SceneManager::mLoadingScene = nullptr;
 	Scene* SceneManager::mPrevScene = nullptr;
@@ -15,10 +17,16 @@ namespace jns
 	GameObject* SceneManager::mPlayer;
 	void SceneManager::Initialize()
 	{
-
 		// 임시로 사운드 이쪽에서 로드
 		Resources::Load<AudioClip>(L"RutaBysMain", L"..\\Resources\\Sound\\YggdrasilPrayer.mp3");
 		Resources::Load<AudioClip>(L"QueenPalace", L"..\\Resources\\Sound\\QueenPalace.mp3");
+		Resources::Load<AudioClip>(L"JoyfulTeaParty", L"..\\Resources\\Sound\\JoyfulTeaParty.mp3");
+		Resources::Load<AudioClip>(L"Assain01Hit", L"..\\Resources\\Sound\\Assain01Hit.mp3");
+		Resources::Load<AudioClip>(L"Assain01Use", L"..\\Resources\\Sound\\Assain01Use.mp3");
+		Resources::Load<AudioClip>(L"Assain02Hit2", L"..\\Resources\\Sound\\Assain02Hit2.mp3");
+		Resources::Load<AudioClip>(L"Assain02Use2", L"..\\Resources\\Sound\\Assain02Use2.mp3");
+		Resources::Load<AudioClip>(L"JumpUse", L"..\\Resources\\Sound\\JumpUse.mp3");
+		Resources::Load<AudioClip>(L"CharSelect", L"..\\Resources\\Sound\\CharSelect.mp3");
 	}
 	void SceneManager::Update()
 	{
