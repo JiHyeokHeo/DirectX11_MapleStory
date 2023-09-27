@@ -34,11 +34,16 @@ namespace jns
 
 		void SetIsDrag(bool drag) { isDragging = drag; }
 		bool GetIsDrag() { return isDragging; }
+
+		void SetInvetory(class Inventory* inven) { inventory = inven; }
+		class Inventory* GetInventory() { return inventory; }
 	private:
 		static int deathCount;
 		static int bossPlayTime;
 		MapDeathCntData mapdata;
 		static bool isDragging;
+
+		class Inventory* inventory;
 	};
 
 }

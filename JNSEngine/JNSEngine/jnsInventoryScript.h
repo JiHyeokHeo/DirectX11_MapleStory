@@ -10,6 +10,7 @@ namespace jns
 		Vector2 idx;
 		Vector3 mItemFinalPos;
 		int mItemCnt;
+		int itemnum;
 	};
 
 	class ItemResources;
@@ -28,10 +29,18 @@ namespace jns
 		virtual void OnCollisionStay(Collider2D* other) override;
 		virtual void OnCollisionExit(Collider2D* other) override;
 		
-		Vector2 SearchALLItemsToFindIndex();
+		void CheckItems(ItemResources::eItemType type);
+		Vector2 SearchALLItemsToFindIndex(ItemResources::eItemType type);
+
+		bool GetIsDrag() { return isDragging; }
+
+		static std::map<ItemResources::eItemType, ItemInfo>& GetInvenInfo() { return mInventory; }
+		static std::vector<std::vector<bool>>& GetInvenIndx() { return indexOn; }
 	private:
-		std::map<ItemResources::eItemType, ItemInfo> mInventory;
-		std::vector<std::vector<bool>> indexOn;
+		static std::map<ItemResources::eItemType, ItemInfo> mInventory;
+		static std::vector<std::vector<bool>> indexOn;
+
+		
 
 		bool isDragging = false;
 		Vector3 initialMousePos;

@@ -86,7 +86,7 @@ namespace jns
 			if (Input::GetKeyDown(eKeyCode::LBUTTON))
 			{
 				std::wstring animationName = eInvenUIBTNToString(mInvenBTNType);
-				invenBtnNumber = (int)mInvenBTNType + 1;
+				invenBtnNumber = (int)mInvenBTNType + 1	;
 				pushedInvenBtnNumber = invenBtnNumber;
 				animationName += able;
 				at->PlayAnimation(animationName, false);

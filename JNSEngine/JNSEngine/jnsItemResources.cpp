@@ -1,5 +1,6 @@
 #include "jnsItemResources.h"
 #include "CommonSceneInclude.h"
+#include "InventoryBTN.h"
 
 namespace jns
 {
@@ -28,9 +29,9 @@ namespace jns
 		{
 		case eItemType::PowerPotion:
 			SetPowerPotion();
+			itemType = 2;
 			break;
 		}
-
 
 		if (isitItem)
 		{
@@ -39,37 +40,107 @@ namespace jns
 			cd->SetSize(Vector2(1.0f, 1.0f));
 			cd->SetColliderOn(false);
 		}
-
 	}
 	void ItemResources::Update()
 	{
-		RigidBody* rb = GetComponent<RigidBody>();
-		if (rb->GetGround() == false)
-		{
-			Collider2D* cd = GetComponent<Collider2D>();
-			cd->SetColliderOn(true);
-			rb->SetIsRigidBodyOn(false);
-			Transform* tr = GetComponent<Transform>();
-			Vector3 mesoPos = tr->GetPosition();
-			mAirTime += Time::DeltaTime();
+		Inventory* inven = GameManager::GetInstance().GetInventory();
+		bool isDragging = inven->GetComponent<InventoryScript>()->GetIsDrag();
+		Vector3 mMousePos = Input::GetUIMousePos();
+		Transform* tr = GetComponent<Transform>();
+		Vector3 mPos = tr->GetPosition();
 
-			if (mAirTime <= airMaxTime)
-			{
-				Vector3 mVelocity = rb->GetVelocity();
-				mVelocity.y -= 300.0f * Time::DeltaTime();
-				rb->SetVelocity(mVelocity);
-				mesoPos.y += 50.0f * Time::DeltaTime();
-				tr->SetPosition(mesoPos);
-			}
-			else
-			{
-				rb->SetIsRigidBodyOn(true);
-			}
+		// 드래그 관련
+		if (isDragging == true && isInitDrag == false)
+		{
+			isInitDrag = true;
+			initialMousePos = Input::GetUIMousePos();
+			initialObjectPos = tr->GetPosition();
+		}
+
+		if (isDragging == true)
+		{
+			int xOffset = mMousePos.x - initialMousePos.x;
+			int yOffset = mMousePos.y - initialMousePos.y;
+
+			mPos.x = initialObjectPos.x + xOffset;
+			mPos.y = initialObjectPos.y + yOffset;
+
+			std::map<ItemResources::eItemType, ItemInfo>::iterator iter
+				= InventoryScript::GetInvenInfo().find(mItemType);
+
+			iter->second.mItemFinalPos = mPos;
+
+			tr->SetPosition(mPos);
 		}
 		else
 		{
-			mAirTime = 999.0f;
+			isInitDrag = false;
 		}
+
+		// 랜더 관련
+		if (Input::GetKeyDown(eKeyCode::I) && isitItem == false)
+		{
+			if (isRender == false)
+			{
+				isIconRender = true;
+				isRender = true;
+			}
+			else
+			{
+				isIconRender = false;
+				isRender = false;
+			}
+		}
+
+		if (isRender)
+		{
+			if (isitItem == false)
+			{
+				if (InventoryBTN::GetPushedInvenNumber() == itemType)
+				{
+					isIconRender = true;
+				}
+				else
+				{
+					isIconRender = false;
+				}
+			}
+		}
+
+
+		// 필드 아이템인지, 혹은 그냥 아이템창 아이템인지 
+		if (isitItem)
+		{
+			RigidBody* rb = GetComponent<RigidBody>();
+			if (rb->GetGround() == false)
+			{
+				Collider2D* cd = GetComponent<Collider2D>();
+				cd->SetColliderOn(true);
+				rb->SetIsRigidBodyOn(false);
+				Transform* tr = GetComponent<Transform>();
+				Vector3 mesoPos = tr->GetPosition();
+				mAirTime += Time::DeltaTime();
+
+				if (mAirTime <= airMaxTime)
+				{
+					Vector3 mVelocity = rb->GetVelocity();
+					mVelocity.y -= 300.0f * Time::DeltaTime();
+					rb->SetVelocity(mVelocity);
+					mesoPos.y += 50.0f * Time::DeltaTime();
+					tr->SetPosition(mesoPos);
+				}
+				else
+				{
+					rb->SetIsRigidBodyOn(true);
+				}
+			}
+			else
+			{
+				mAirTime = 999.0f;
+			}
+		}
+
+
 		GameObject::Update();
 	}
 	void ItemResources::LateUpdate()
@@ -78,6 +149,7 @@ namespace jns
 	}
 	void ItemResources::Render()
 	{
+		if ((isRender == true && isitItem == true) || (isIconRender == true && isitItem == false))
 		GameObject::Render();
 	}
 	void ItemResources::SetPowerPotion()

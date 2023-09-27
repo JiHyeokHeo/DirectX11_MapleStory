@@ -148,6 +148,8 @@ namespace jns
 		if (other->GetOwner()->GetLayerType() == eLayerType::Item && Input::GetKeyDown(eKeyCode::Z))
 		{
 			ItemResources* item = dynamic_cast<ItemResources*>(other->GetOwner());
+            mInventoryScript->CheckItems(item->GetMyItemType());
+
             item->SetState(GameObject::eState::Dead);
             
 		}

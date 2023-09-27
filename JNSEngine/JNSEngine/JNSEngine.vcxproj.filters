@@ -276,6 +276,7 @@
     <ClCompile Include="jnsGameManager.cpp" />
     <ClCompile Include="jnsDeathCountUI.cpp" />
     <ClCompile Include="jnsSpawner.cpp" />
+    <ClCompile Include="jnsFontObjects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -580,6 +581,7 @@
     <ClInclude Include="jnsGameManager.h" />
     <ClInclude Include="jnsDeathCountUI.h" />
     <ClInclude Include="jnsSpawner.h" />
+    <ClInclude Include="jnsFontObjects.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -55,7 +55,7 @@ namespace jns
 		// ¿”Ω√∑Œ ¿·±≈µ“
 		// //¿Œ∫•≈‰∏Æ
 		Inventory* minven = object::InstantiateNOmove<Inventory>(eLayerType::UI);
-		
+		GameManager::GetInstance().SetInvetory(minven);
 		
 
 		// ƒ¸ΩΩ∑‘
@@ -178,6 +178,9 @@ namespace jns
 		//}
 
 		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, Vector3::Zero, true);
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, Vector3(100.0f,0.0f,0.0f), true);
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, Vector3(200.0f, 0.0f, 0.0f), true);
+		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, Vector3(300.0f, 0.0f, 0.0f), true);
 		//minimapCameraObj->
 		
 		//CreateInventory();
@@ -208,6 +211,7 @@ namespace jns
 		{
 			SceneManager::LoadScene(jns::enums::eSceneType::RutabysMob);
 		}
+
 	}
 	void RutabysScene::Render()
 	{

@@ -3,6 +3,9 @@
 // GameManager // 보스 시간, 데스카운트 관리
 #include "jnsGameManager.h"
 
+// 폰트 라이브러리
+#include "jnsFontWrapper.h"
+
 #include "DamageDisplay.h"
 // Template
 #include "ObjectTemplate.h"
