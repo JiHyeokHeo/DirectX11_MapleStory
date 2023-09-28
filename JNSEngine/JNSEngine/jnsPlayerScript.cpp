@@ -789,6 +789,7 @@ namespace jns
         {
             isDead = false;
             isNotSetDeadPos = true;
+
         }
     }
 

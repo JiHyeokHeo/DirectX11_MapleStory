@@ -16,7 +16,6 @@ namespace jns
 	}
 	void WeaponObject::Initialize()
 	{
-		
 		tr = GetComponent<Transform>();
 	}
 	void WeaponObject::Update()

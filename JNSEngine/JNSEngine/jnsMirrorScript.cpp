@@ -6,7 +6,7 @@ namespace jns
 {
 	void MirrorScript::Initialize()
 	{
-		monsterinfo.hp = 100.0f;
+		monsterinfo.hp = 10.0f;
 		isNotPlayed = true;
 		isDead = false;
 		mSummonMaxTime = 5.0f;

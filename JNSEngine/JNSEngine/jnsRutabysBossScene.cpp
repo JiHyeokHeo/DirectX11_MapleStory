@@ -99,11 +99,13 @@ namespace jns
 	{
 		// 600УЪ 10Ка
 		GameManager::GetInstance().SetBossPlayTime(600);
-		GameManager::GetInstance().SetDeathCount(1);
+		GameManager::GetInstance().SetDeathCount(5);
 		PlayScene::OnEnter();
 	}
 	void RutabysBossScene::OnExit()
 	{
+		GameManager::GetInstance().SetBossPlayTime(600);
+		GameManager::GetInstance().SetDeathCount(5);
 		mBQscript->ResetData();
 		atObj->ResetTime();
 		PlayScene::OnExit();

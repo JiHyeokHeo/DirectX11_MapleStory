@@ -161,7 +161,7 @@ namespace jns
 					}
 
 
-					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 4.0f * Time::DeltaTime());
+					Vector3 interpolatedPos = Vector3::Lerp(newPos, monsterPos, 5.0f * Time::DeltaTime());
 
 					Vector3 pos = tr->GetPosition();
 
