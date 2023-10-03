@@ -36,6 +36,7 @@ namespace jns
 
 		static std::map<ItemResources::eItemType, ItemInfo>& GetInvenInfo() { return mInventory; }
 		static std::vector<std::vector<bool>>& GetInvenIndx() { return indexOn; }
+		
 	private:
 		static std::map<ItemResources::eItemType, ItemInfo> mInventory;
 		static std::vector<std::vector<bool>> indexOn;

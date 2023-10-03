@@ -21,6 +21,7 @@ namespace jns
 		void SetQuickSlotUI(QuickSlotUI* skillquickslot) { skillQuickSlot = skillquickslot; }
 
 		QuickSlotUI* GetQuickSlotUI() { return skillQuickSlot; }
+		InventoryBG* GetInventoryBG() { return minvenBG; }
 
 	private:
 		QuickSlotUI* skillQuickSlot;

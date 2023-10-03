@@ -64,8 +64,8 @@ namespace jns
 				int cnt = iter->second.mItemCnt;
 				Vector3 finalPos = iter->second.mItemFinalPos;
 
-				std::wstring num = std::to_wstring(cnt); // wstring으로 변환
 
+				std::wstring num = std::to_wstring(cnt); // wstring으로 변환
 				float adjustedX = finalPos.x + (application.GetMetaDataWidth() / 2.0f);
 				float adjustedY = (application.GetMedtaDataHeight() / 2.0f) - finalPos.y;;
 
@@ -73,9 +73,14 @@ namespace jns
 				adjustedY -= 20.0f;
 				const wchar_t* wcs = num.c_str();
 
+			
+
 				if (InventoryBTN::GetPushedInvenNumber() == iter->second.itemnum)
 				{
-					FontWrapper::DrawFont(wcs, adjustedX, adjustedY, 15, FONT_RGBA(0, 0, 0, 255));
+					if (cnt > 0)
+					{
+						FontWrapper::DrawFont(wcs, adjustedX, adjustedY, 15, FONT_RGBA(0, 0, 0, 255));
+					}
 				}
 			}
 		}

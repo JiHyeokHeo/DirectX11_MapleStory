@@ -57,6 +57,10 @@ namespace jns
 
         if (Input::GetKeyDown(eKeyCode::H))
         {
+            std::map<ItemResources::eItemType, ItemInfo>::iterator iter = 
+            InventoryScript::GetInvenInfo().find(ItemResources::eItemType::PowerPotion);
+
+            iter->second.mItemCnt--;
             mPlayerInfo.hp = mPlayerInfo.maxhp;
             mRb->SetGround(false);
         }

@@ -45,9 +45,36 @@ namespace jns
 	{
 		Inventory* inven = GameManager::GetInstance().GetInventory();
 		bool isDragging = inven->GetComponent<InventoryScript>()->GetIsDrag();
+
 		Vector3 mMousePos = Input::GetUIMousePos();
 		Transform* tr = GetComponent<Transform>();
 		Vector3 mPos = tr->GetPosition();
+
+		if (inven->GetInventoryBG() != nullptr)
+		{
+			std::map<ItemResources::eItemType, ItemInfo>::iterator iter
+				= inven->GetComponent<InventoryScript>()->GetInvenInfo().find(mItemType);
+			
+			if (iter == inven->GetComponent<InventoryScript>()->GetInvenInfo().end())
+			{
+				
+			}
+			else
+			{
+				if (iter->second.mItemCnt <= 0 && isitItem == false)
+				{
+					isIconRender = false;
+				}
+				else if(iter->second.mItemCnt >=1 && isitItem == false)
+				{
+					isIconRender = true;
+				}
+
+			}
+
+		}
+
+
 
 		// 드래그 관련
 		if (isDragging == true && isInitDrag == false)
@@ -98,7 +125,12 @@ namespace jns
 			{
 				if (InventoryBTN::GetPushedInvenNumber() == itemType)
 				{
-					isIconRender = true;
+					std::map<ItemResources::eItemType, ItemInfo>::iterator iter
+						= inven->GetComponent<InventoryScript>()->GetInvenInfo().find(mItemType);
+					if (iter->second.mItemCnt >= 1)
+					{
+						isIconRender = true;
+					}
 				}
 				else
 				{

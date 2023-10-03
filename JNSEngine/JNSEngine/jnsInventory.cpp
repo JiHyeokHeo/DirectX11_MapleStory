@@ -16,7 +16,7 @@ namespace jns
 	void Inventory::Initialize()
 	{
 		// 인벤토리 배경
-		InventoryBG* minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
+		minvenBG = object::InstantiateNOmove<InventoryBG>(eLayerType::UI);
 		minvenBG->GetComponent<Transform>()->SetParent(GetComponent<Transform>());
 
 		for (int i = 0; i < 3; i++)
