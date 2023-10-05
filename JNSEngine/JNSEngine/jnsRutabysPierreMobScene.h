@@ -18,5 +18,6 @@ namespace jns
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
 	private:
+		class Spawner* spawn;
 	};
 }

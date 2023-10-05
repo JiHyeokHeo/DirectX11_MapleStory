@@ -95,7 +95,7 @@ namespace jns
 		{
 			jns::SceneManager::check = true;
 			mBGInstance->GetComponent<AudioSource>()->Stop();
-			SceneManager::LoadScene(jns::enums::eSceneType::RutabysBoss);
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysMain);
 		}
 	}
 	void LoadingScene::Render()
