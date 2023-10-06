@@ -21,6 +21,7 @@ namespace jns
 		mPreveScene = nullptr;
 		mPlayerInfo = {};
 		mPlayerInfo.mMoveSpeed = 200.0f;
+        mPlayerInfo.dmg = 10.0f;
 		mPlayerInfo.mJumpCnt = 0;
 		mPlayerInfo.mDir = PlayerDir::Left;
         mPlayerInfo.maxhp = 300.0f;
@@ -49,10 +50,28 @@ namespace jns
 	{
 		mActveScene = SceneManager::GetActiveScene();
         
+        if (Input::GetKeyDown(eKeyCode::T))
+        {
+            mPlayerInfo.dmg += 10.0f;
+        }
+
+        if (Input::GetKeyDown(eKeyCode::B))
+        {
+            mPlayerInfo.hp = 10.0f;
+        }
+
+        if (Input::GetKeyDown(eKeyCode::Y))
+        {
+            mPlayerInfo.dmg -= 10.0f;
+        }
+
         if (Input::GetKeyDown(eKeyCode::O))
         {
-            tr->SetPosition(Vector3(100.0f, 300.0f, 1.0f));
+            Vector3 mPos = tr->GetPosition();
+            mPos.y += 50.0f;
+            tr->SetPosition(mPos);
             mPlayerState = ePlayerState::Idle;
+            mRb->SetGround(false);
         }
 
         if (Input::GetKeyDown(eKeyCode::H))
@@ -60,9 +79,14 @@ namespace jns
             std::map<ItemResources::eItemType, ItemInfo>::iterator iter = 
             InventoryScript::GetInvenInfo().find(ItemResources::eItemType::PowerPotion);
 
-            iter->second.mItemCnt--;
+            if (iter != InventoryScript::GetInvenInfo().end())
+            {
+                if (iter->second.mItemCnt > 0)
+                {
+                    iter->second.mItemCnt--;
+                }
+            }
             mPlayerInfo.hp = mPlayerInfo.maxhp;
-            mRb->SetGround(false);
         }
 
         if (mPreveScene != mActveScene)

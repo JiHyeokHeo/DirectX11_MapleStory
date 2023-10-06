@@ -456,7 +456,7 @@ namespace renderer
 		 debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
 		 debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		 debugShader->SetRSState(eRSType::WireframeNone);
-		 //debugShader->SetDSState(eDSType::NoWrite);
+		 debugShader->SetDSState(eDSType::NoWrite);
 		 jns::Resources::Insert(L"DebugShader", debugShader);
 
 		 std::shared_ptr<Shader> debugCircleShader = std::make_shared<Shader>();

@@ -108,6 +108,13 @@ namespace jns
 				skillCnt = SkillManager::FindSkillData(L"BloodyMeso")->GetSkillDamageCnt();
 			}
 
+			skillDmg += SceneManager::GetPlayer()->GetComponent<PlayerScript>()->GetPlayerInfo().dmg;
+
+			if (skillDmg <= 0)
+			{
+				skillDmg = 1;
+			}
+
 			if (isCoin == false)
 			{
 				DamageCalculate(info, bosshealthup, tr, isreflect, skillDmg);

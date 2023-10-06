@@ -16,6 +16,7 @@ namespace jns
 		tr = GetOwner()->GetComponent<Transform>();
 		initPos = tr->GetPosition();
 		at->CompleteEvent(L"Demondm_attack") = std::bind(&DemonMonsterScript::CompleteAttack, this);
+		at->StartEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::StartDead, this);
 		at->CompleteEvent(L"Demondm_die") = std::bind(&DemonMonsterScript::CompleteDead, this);
 		cd->SetColNum(1);
 		monsterCommonInfo.dmg = 20.0f;
@@ -250,11 +251,14 @@ namespace jns
 	}
 	void DemonMonsterScript::CompleteDead()
 	{
+		GetOwner()->SetState(GameObject::eState::Paused);
+	}
+	void DemonMonsterScript::StartDead()
+	{
 		Vector3 mPos = tr->GetPosition();
 		mPos.y -= 10.0f;
 		mPos.z = 0.0f;
 		object::InstantiateItem<ItemResources>(eLayerType::Item, ItemResources::eItemType::PowerPotion, mPos, true);
-		GetOwner()->SetState(GameObject::eState::Paused);
 	}
 	void DemonMonsterScript::ResetData()
 	{

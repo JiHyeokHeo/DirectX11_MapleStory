@@ -58,6 +58,7 @@ namespace jns
 
 		void CompleteAttack();
 		void CompleteDead();
+		void StartDead();
 		Vector3 GetInitPos() { return initPos; }
 		void ResetData();
 	private:

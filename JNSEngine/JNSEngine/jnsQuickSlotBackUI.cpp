@@ -11,7 +11,8 @@ namespace jns
 		int row = 2;
 		int col = 16;
 		indexNum.assign(row, std::vector<eKeyCode>(col, eKeyCode::END));
-		indexOn.resize(2, std::vector<bool>(5));
+		indexOn.assign(row, std::vector<bool>(col,false));
+		/*indexOn.resize(2, std::vector<bool>(5));*/
 	}
 	QuickSlotUI::~QuickSlotUI()
 	{

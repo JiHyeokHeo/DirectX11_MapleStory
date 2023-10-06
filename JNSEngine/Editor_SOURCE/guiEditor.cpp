@@ -8,7 +8,7 @@
 #include "..\\Engine_Source\\jnsRenderer.h"
 #include "jnsCursor.h"
 #include "jnsGridScrpt.h"
-
+#include "..\\Engine_SOURCE\\jnsInput.h"
 
 namespace gui
 {
@@ -16,6 +16,7 @@ namespace gui
 	std::vector<Widget*> Editor::mWidgets = {};
 	std::vector<EditorObject*> Editor::mEditorObjects = {};
 	std::vector<DebugObject*> Editor::mDebugObjects = {};
+	bool Editor::_colOnOff = true;
 
 	void Editor::Initialize()
 	{
@@ -93,10 +94,10 @@ namespace gui
 		//Microsoft::WRL::ComPtr<ID3D11DepthStencilState> ds
 		//	= renderer::depthStencilStates[(UINT)ya::graphics::eDSType::Less];
 		//ya::graphics::GetDevice()->BindDepthStencilState(ds.Get());
-		for (EditorObject* obj : mEditorObjects)
-		{
-			obj->Render();
-		}
+		//for (EditorObject* obj : mEditorObjects)
+		//{
+		//	obj->Render();
+		//}
 
 		for (const jns::graphics::DebugMesh& mesh
 			: renderer::debugMeshes)
@@ -135,6 +136,20 @@ namespace gui
 
 		
 
+		if (jns::Input::GetKeyDown(jns::eKeyCode::N))
+		{
+			_colOnOff = true;
+		}
+
+		if (jns::Input::GetKeyDown(jns::eKeyCode::M))
+		{
+			_colOnOff = false;
+		}
+
+		if (!_colOnOff)
+		{
+			return;
+		}
 
 		Vector3 pos = mesh.position;
 		pos.z -= 0.01f;
@@ -148,31 +163,39 @@ namespace gui
 		
 		
 		// ºÓÀº»ö ¼¼ÆÃ
-		renderer::ObjectTypeMoveCB colObj = {};
-		colObj.mtype = mesh.isCollide;
-		colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
-		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
-		cb->SetData(&colObj);
-		cb->Bind(eShaderStage::PS);
+		if (_colOnOff)
+		{
+			renderer::ObjectTypeMoveCB colObj = {};
+			colObj.mtype = mesh.isCollide;
+			colObj.mTime = Vector3(0.0f, 0.0f, 0.0f);
+			ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Move];
+			cb->SetData(&colObj);
+			cb->Bind(eShaderStage::PS);
+		}
 		
 
 		/*ya::MeshRenderer * mr
 			= debugObj->GetComponent<ya::MeshRenderer>();*/
 			// main camera
 		//if(debugObj->GetLayerType())
-		jns::Camera* mainCamara = renderer::mainCamera;
-
-		jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
-		jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
-		
-		if(mesh.layertype == eLayerType::UI)
+		if (_colOnOff)
 		{
-			jns::Camera* uiCamara = renderer::UICamera;
+			jns::Camera* mainCamara = renderer::mainCamera;
 
-			jns::Camera::SetGpuViewMatrix(uiCamara->GetViewMatrix());
-			jns::Camera::SetGpuProjectionMatrix(uiCamara->GetProjectionMatrix());
+			jns::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
+			jns::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
+
+			if (mesh.layertype == eLayerType::UI)
+			{
+				jns::Camera* uiCamara = renderer::UICamera;
+
+				jns::Camera::SetGpuViewMatrix(uiCamara->GetViewMatrix());
+				jns::Camera::SetGpuProjectionMatrix(uiCamara->GetProjectionMatrix());
+			}
 		}
-
-		debugObj->Render();
+		if (_colOnOff)
+		{
+			debugObj->Render();
+		}
 	}
 }

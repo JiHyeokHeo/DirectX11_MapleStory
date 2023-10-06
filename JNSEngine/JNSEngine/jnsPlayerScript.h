@@ -54,6 +54,7 @@ namespace jns
 		{
 			float invisibilityTime;
 			int maxhp;
+			int dmg;
 			int hp;
 			int mp;
 			int exp;

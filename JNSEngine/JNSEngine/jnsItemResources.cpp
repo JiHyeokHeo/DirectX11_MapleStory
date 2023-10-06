@@ -50,32 +50,6 @@ namespace jns
 		Transform* tr = GetComponent<Transform>();
 		Vector3 mPos = tr->GetPosition();
 
-		if (inven->GetInventoryBG() != nullptr)
-		{
-			std::map<ItemResources::eItemType, ItemInfo>::iterator iter
-				= inven->GetComponent<InventoryScript>()->GetInvenInfo().find(mItemType);
-			
-			if (iter == inven->GetComponent<InventoryScript>()->GetInvenInfo().end())
-			{
-				
-			}
-			else
-			{
-				if (iter->second.mItemCnt <= 0 && isitItem == false)
-				{
-					isIconRender = false;
-				}
-				else if(iter->second.mItemCnt >=1 && isitItem == false)
-				{
-					isIconRender = true;
-				}
-
-			}
-
-		}
-
-
-
 		// 드래그 관련
 		if (isDragging == true && isInitDrag == false)
 		{
@@ -84,7 +58,7 @@ namespace jns
 			initialObjectPos = tr->GetPosition();
 		}
 
-		if (isDragging == true)
+		if (isDragging == true && isitItem == false)
 		{
 			int xOffset = mMousePos.x - initialMousePos.x;
 			int yOffset = mMousePos.y - initialMousePos.y;
@@ -95,8 +69,10 @@ namespace jns
 			std::map<ItemResources::eItemType, ItemInfo>::iterator iter
 				= InventoryScript::GetInvenInfo().find(mItemType);
 
-			iter->second.mItemFinalPos = mPos;
-
+			if (iter != InventoryScript::GetInvenInfo().end())
+			{
+				iter->second.mItemFinalPos = mPos;
+			}
 			tr->SetPosition(mPos);
 		}
 		else
@@ -117,6 +93,30 @@ namespace jns
 				isIconRender = false;
 				isRender = false;
 			}
+		}
+
+		if (inven->GetInventoryBG() != nullptr)
+		{
+			std::map<ItemResources::eItemType, ItemInfo>::iterator iter
+				= inven->GetComponent<InventoryScript>()->GetInvenInfo().find(mItemType);
+
+			if (iter == inven->GetComponent<InventoryScript>()->GetInvenInfo().end())
+			{
+
+			}
+			else
+			{
+				if (iter->second.mItemCnt <= 0 && isitItem == false)
+				{
+					isIconRender = false;
+				}
+				else if (iter->second.mItemCnt >= 1 && isitItem == false && isRender == true)
+				{
+					isIconRender = true;
+				}
+
+			}
+
 		}
 
 		if (isRender)
@@ -181,7 +181,7 @@ namespace jns
 	}
 	void ItemResources::Render()
 	{
-		if ((isRender == true && isitItem == true) || (isIconRender == true && isitItem == false))
+		if ((isRender == true && isitItem == true) || (isRender == true && isIconRender == true && isitItem == false))
 		GameObject::Render();
 	}
 	void ItemResources::SetPowerPotion()
