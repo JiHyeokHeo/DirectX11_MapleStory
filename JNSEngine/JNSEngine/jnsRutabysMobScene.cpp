@@ -66,6 +66,38 @@ namespace jns
 	void RutabysMobScene::OnExit()
 	{
 		spawn->Activate();
+
+		std::vector<GameObject*> objs = SceneManager::GetActiveScene()->FindObjects<GameObject>(eLayerType::Item);
+		std::vector<GameObject*> objs2 = SceneManager::GetActiveScene()->FindObjects<GameObject>(eLayerType::Skill);
+		std::vector<GameObject*>::iterator iter
+			= objs.begin();
+
+		if (iter != objs.end())
+		{
+			int cnt = 0;
+			for (iter; iter != objs.end(); iter++)
+			{
+				objs[cnt]->SetState(GameObject::eState::Dead);
+				cnt++;
+			}
+		}
+
+		iter = objs2.begin();
+
+		
+		if (iter != objs2.end())
+		{
+			int cnt = 0;
+			for (iter; iter != objs2.end(); iter++)
+			{
+				if (objs2[cnt]->GetIsOnlyOne() == false)
+				{
+					objs2[cnt]->SetState(GameObject::eState::Dead);
+				}
+				cnt++;
+			}
+		}
+
 		PlayScene::OnExit();
 	}
 }

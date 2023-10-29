@@ -13,7 +13,7 @@ namespace jns
 	}
 	void RutabysPierreMobScene::Initialize()
 	{
-		/*mBGInstance = */object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreMob1);
+		mBGInstance = object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreMob1);
 		object::InstantiateBG<BGInstance>(eLayerType::BG, BGInstance::eBGType::RutabysPierreMob2);
 
 		object::InstantiateGroundCollider<Ground>(L"DownGround", Vector3(0.0f, -280.0f, 4.0f), Vector3(5000.0f, 110.0f, 1.0f));
@@ -45,15 +45,15 @@ namespace jns
 	}
 	void RutabysPierreMobScene::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::P))
-		{
-			SceneManager::LoadScene(jns::enums::eSceneType::RutabysPierreBoss);
-		}
 		PlayScene::Update();
 	}
 	void RutabysPierreMobScene::LateUpdate()
 	{
 		PlayScene::LateUpdate();
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(jns::enums::eSceneType::RutabysPierreBoss);
+		}
 	}
 	void RutabysPierreMobScene::Render()
 	{

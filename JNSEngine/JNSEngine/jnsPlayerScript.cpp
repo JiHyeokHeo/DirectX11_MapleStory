@@ -71,6 +71,7 @@ namespace jns
             mPos.y += 50.0f;
             tr->SetPosition(mPos);
             mPlayerState = ePlayerState::Idle;
+            mPlayerInfo.hp = mPlayerInfo.maxhp;
             mRb->SetGround(false);
         }
 

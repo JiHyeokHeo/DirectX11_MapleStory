@@ -38,7 +38,6 @@ namespace jns
 	{
 		if (GetFocus())
 		{
-
 			for (UINT i = 0; i < (UINT)eKeyCode::END; i++)
 			{
 				if (GetAsyncKeyState(ASCII[i]) & 0x8000)

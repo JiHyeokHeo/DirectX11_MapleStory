@@ -58,7 +58,7 @@ namespace jns
 		cd->SetColNum(1);
 		this->SetColNum(1);
 		mMonsterState = eBloodyQueenState::Idle;
-		bloodyQueenInfo.mBossType = eBloodyQueenType::Normal;
+		bloodyQueenInfo.mBossType = eBloodyQueenType::Reflect;
 		monsterCommonInfo.maxhp = 1000;
 		monsterCommonInfo.hp = monsterCommonInfo.maxhp;
 		monsterCommonInfo.skillCoolDown = 0.0f;

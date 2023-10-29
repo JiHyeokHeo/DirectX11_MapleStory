@@ -117,8 +117,9 @@ namespace jns
 				iter = mGameObjects.erase(iter);
 				continue;
 			}
-
 			iter++;
 		}
+
+		
 	}
 }

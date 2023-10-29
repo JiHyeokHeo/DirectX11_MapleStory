@@ -60,11 +60,7 @@ namespace jns
 
 		// 0 부터 99 까지 균등하게 나타나는 난수열을 생성하기 위해 균등 분포 정의.
 		std::uniform_int_distribution<int> dis(0, 99);
-		// 플레이어 위치정보 가져오기
-		//int direction = (int)mPlayerScript->GetPlayerDirection();
-		//mPos.x += direction * 130.0f;
-		//mPos.z = 0.0f;
-		//SetPosition(mPos);
+	
 		auto now = std::chrono::high_resolution_clock::now();
 		int seed = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
 		srand(seed);

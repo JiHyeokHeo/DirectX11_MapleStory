@@ -98,6 +98,7 @@ namespace jns
 		}
 		
 		mActiveScene->OnExit();
+		mActiveScene->Destroy();
 		CollisionManager::Clear();
 		mActiveScene = iter->second;
 		mActiveScene->OnEnter();

@@ -46,8 +46,10 @@ namespace jns
 	void PlayScene::OnEnter()
 	{
 		if (mBGInstance != nullptr)
+		{
 			mBGInstance->GetComponent<AudioSource>()->Play();
-		mBGInstance->GetComponent<AudioSource>()->SetVolume(0.1f);
+			mBGInstance->GetComponent<AudioSource>()->SetVolume(0.1f);
+		}
 		CollisionManager::SetLayer(eLayerType::Item, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Item, eLayerType::Player, true);
 		CollisionManager::SetLayer(eLayerType::Skill, eLayerType::Ground, true);

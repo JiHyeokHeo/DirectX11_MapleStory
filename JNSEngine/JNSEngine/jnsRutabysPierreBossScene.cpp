@@ -97,10 +97,14 @@ namespace jns
 	}
 	void RutabysPierreBossScene::OnEnter()
 	{
+		GameManager::GetInstance().SetBossPlayTime(600);
+		GameManager::GetInstance().SetDeathCount(5);
 		PlayScene::OnEnter();
 	}
 	void RutabysPierreBossScene::OnExit()
 	{
+		GameManager::GetInstance().SetBossPlayTime(600);
+		GameManager::GetInstance().SetDeathCount(5);
 		mPrscript->ResetData();
 		PlayScene::OnExit();
 	}
